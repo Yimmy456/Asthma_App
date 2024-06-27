@@ -20,6 +20,8 @@ public abstract class ActionPlanQuestionScript: IDataPersistenceScript
     [SerializeField]
     protected bool _questionAnswered;
 
+    protected Type _questionType;
+
     //[SerializeField]
     protected VariableTypeForAPEnum _variableType;
 
@@ -71,6 +73,11 @@ public abstract class ActionPlanQuestionScript: IDataPersistenceScript
     public bool GetQuestionAnswered()
     {
         return _questionAnswered;
+    }
+
+    public virtual Type GetQuestionType()
+    {
+        return _questionType;
     }
 
     public virtual void SetIntegerAnswer(int _input) { }
@@ -189,6 +196,11 @@ public abstract class ActionPlanQuestionScript<T>:ActionPlanQuestionScript
     [SerializeField]
     protected T _answer;
 
+    public ActionPlanQuestionScript():base()
+    {
+        _questionType = typeof(T);
+    }
+
     public T GetAnswer()
     {
         return _answer;
@@ -202,7 +214,7 @@ public abstract class ActionPlanQuestionScript<T>:ActionPlanQuestionScript
 
 public class ActionPlanQuestionInteger : ActionPlanQuestionScript<int>
 {
-    public ActionPlanQuestionInteger()
+    public ActionPlanQuestionInteger():base()
     {
         _variableType = VariableTypeForAPEnum.Integer;
 
@@ -316,9 +328,13 @@ public abstract class ActionPlanQuestionEnum<T> : ActionPlanQuestionScript<T> wh
     [SerializeField]
     protected ActionPlanEnumLabelProperties<T> _labelProperties;
 
+    protected Type _enumType2;
+
     public ActionPlanQuestionEnum() : base()
     {
         _variableType = VariableTypeForAPEnum.Enum;
+
+        _enumType2 = typeof(T);
     }
 
 
@@ -348,6 +364,11 @@ public abstract class ActionPlanQuestionEnum<T> : ActionPlanQuestionScript<T> wh
     public ActionPlanEnumLabelProperties<T> GetLabelProperties()
     {
         return _labelProperties;
+    }
+
+    public Type GetEnumType2()
+    {
+        return _enumType2;
     }
 }
 

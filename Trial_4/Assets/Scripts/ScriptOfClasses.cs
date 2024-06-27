@@ -1561,6 +1561,15 @@ public class EnumDropdownLabelStyleClass<T> where T : Enum
     [SerializeField]
     protected string _alternativeText;
 
+    [SerializeField]
+    protected Sprite _labelSprite;
+
+    [SerializeField]
+    protected Color _outlineColor;
+
+    [SerializeField]
+    protected Vector2 _outlineEffect = new Vector2(1.0f, -1.0f);
+
     public T GetValue()
     {
         return _value;
@@ -1589,5 +1598,20 @@ public class EnumDropdownLabelStyleClass<T> where T : Enum
         }
 
         return _alternativeText;
+    }
+
+    public Sprite GetLabelSprite()
+    {
+        return _labelSprite;
+    }
+
+    public Color GetOutlineColor()
+    {
+        return _outlineColor;
+    }
+
+    public Vector2 GetOutlineEffect()
+    {
+        return _outlineEffect;
     }
 }
