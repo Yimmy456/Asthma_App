@@ -1434,6 +1434,11 @@ public class ActionPlanEnumLabelProperties<T> where T : Enum
         return _labelProperties;
     }
 
+    public void SetEnum(T _input)
+    {
+        _enum = _input;
+    }
+
     /*void InitializeAtConstructor()
     {
         int _count = Enum.GetValues(typeof(T)).Length;

@@ -525,6 +525,12 @@ public class MainPlayerCanvasScript : MonoBehaviour
             yield return null;
         }
 
+        Color _c2 = _buttonInput.image.color;
+
+        _c2.a = 0.0f;
+
+        _buttonInput.image.color = _c2;
+
         if(_finalButtonBooleanInput)
         {
             _animationComplete = true;

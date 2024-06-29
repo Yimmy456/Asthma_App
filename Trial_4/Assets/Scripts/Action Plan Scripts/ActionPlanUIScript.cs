@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Analytics;
 using UnityEngine.UI;
+//using UnityEngine.UIElements;
 
 public class ActionPlanUIScript : MonoBehaviour
 {
@@ -214,7 +216,7 @@ public class ActionPlanUIScript : MonoBehaviour
 
             if(_enumTrue)
             {
-                SetEnumValues(_input);
+                SetEnumValues2(_input);
 
                 //SetEnumValues2<InhalerColorEnum>(_input);
 
@@ -269,8 +271,6 @@ public class ActionPlanUIScript : MonoBehaviour
 
         if(_enum == VariableTypeForAPEnum.Enum)
         {
-            //Debug.Log("The value is " + _dropdown.value + ".");
-
             _input.SetIntegerAnswer(_dropdown.value);
         }
 
@@ -291,14 +291,6 @@ public class ActionPlanUIScript : MonoBehaviour
 
         if(_enum == VariableTypeForAPEnum.Contact)
         {
-            //_input.SetTextAnswer(_contactBars.GetEMailInputField().text);
-
-            //int.TryParse(_contactBars.GetPhoneNumberInputField().text, out int _intV2);
-
-            //Debug.Log("The phone number is '" + _contactBars.GetPhoneNumberInputField().text + "' and '" + _intV2 + "'.");
-
-            //_input.SetIntegerAnswer(_intV2);
-
             ActionPlanQuestionContact _c = (ActionPlanQuestionContact)(_input);
 
             if(_c != null)
@@ -393,69 +385,6 @@ public class ActionPlanUIScript : MonoBehaviour
         }
     }
 
-    void SetEnumValues2<T>(ActionPlanQuestionScript _input) where T : Enum
-    {
-        if(_input == null)
-        {
-            string _st = typeof(T).ToString();
-
-            Debug.LogError("This enum is not of type " + @"""" + _st + @"""" + ".");
-
-            return;
-        }
-
-        //Enum _e = _input.GetEnumAnswer();
-
-        ActionPlanQuestionEnum<T> _val = _input as ActionPlanQuestionEnum<T>;
-
-        if(_val == null)
-        {
-            return;
-        }
-
-        _dropdown.options.Clear();
-
-        ActionPlanEnumValueLabelProperties<T> _label;
-
-        List<string> _l = new List<string>();
-
-        for(int _i = 0; _i < _val.GetLabelProperties().GetValueLabelProperties().Count; _i++)
-        {
-            _label = _val.GetLabelProperties().GetValueLabelProperties()[_i];
-
-            Debug.Log("Alternative text at " + (_i + 1) + " is " + @"""" + _label.GetAlternativeText() + @"""" + ".");
-
-            _l.Add(_label.GetAlternativeText());
-        }
-
-        _dropdown.AddOptions(_l);
-
-        for(int _i = 0; _i < _dropdown.options.Count; _i++)
-        {
-            RectTransform _rt = GetLabelRT(_dropdown, _i);
-
-            if(_rt == null)
-            {
-                continue;
-            }
-
-            Color _c1 = _val.GetLabelProperties().GetValueLabelProperties()[_i].GetColor();
-
-            float _tSize = (int)_val.GetLabelProperties().GetValueLabelProperties()[_i].GetTextSize();
-
-            Color _c2 = _val.GetLabelProperties().GetValueLabelProperties()[_i].GetTextColor();
-
-            SetLabelStyle(_rt, _c1, _tSize, _c2);
-        }
-
-        //ActionPla
-
-        //ActionPlanQuestionEnum<Enum> _ev = _input as ActionPlanQuestionEnum<GenderEnum>;
-
-       
-        //ActionPlanEn
-    }
-
     void SetEnumValues(ActionPlanQuestionScript _input)
     {
         Enum _e = _input.GetEnumAnswer();
@@ -504,6 +433,41 @@ public class ActionPlanUIScript : MonoBehaviour
         {
             _dropdown.AddOptions(_valueNames.ToList<string>());
         }
+
+        _dropdown.SetValueWithoutNotify(_currentValue);
+    }
+
+    void SetEnumValues2(ActionPlanQuestionScript _input)
+    {
+        List<string> _valueNames = new List<string>();
+
+        Type _type = _input.GetType();
+
+        int _currentValue = _input.GetIntegerAnswer();
+
+        if(_type == typeof(ActionPlanQuestionEnum_InhalerColor))
+        {
+            var _v = ActionPlanManagerScript.GetInstance().GetStylesOfInhalerColorLabels().GetStyles();
+
+            for(int _i = 0; _i < _v.Count; _i++)
+            {
+                _valueNames.Add(_v[_i].GetAlternativeText());
+            }
+        }
+
+        if(_type == typeof(ActionPlanQuestionEnum_Gender))
+        {
+            var _v = ActionPlanManagerScript.GetInstance().GetStylesOfGenderLabels().GetStyles();
+
+            for(int _i = 0; _i < _v.Count; _i++)
+            {
+                _valueNames.Add(_v[_i].GetAlternativeText());
+            }
+        }
+
+        _dropdown.options.Clear();
+
+        _dropdown.AddOptions(_valueNames);
 
         _dropdown.SetValueWithoutNotify(_currentValue);
     }
@@ -588,30 +552,4 @@ public class ActionPlanUIScript : MonoBehaviour
 
         return _rt2;
     }
-
-    void SetLabelStyle(RectTransform _rtInput, Color _labelColorInput, float _textSizeInput, Color _textColorInput)
-    {
-        if(_rtInput == null)
-        {
-            return;
-        }
-
-        Image _img = _rtInput.gameObject.GetComponent<RectTransform>().Find("Item Background").gameObject.GetComponent<Image>();
-
-        if(_img != null)
-        {
-            _img.color = _labelColorInput;
-        }
-
-        Text _labelText = _rtInput.gameObject.GetComponent<RectTransform>().Find("Item Label").gameObject.GetComponent<Text>();
-
-        if(_labelText != null)
-        {
-            _labelText.fontSize = (int)_textSizeInput;
-
-            _labelText.color = _textColorInput;
-        }
-    }
-
-    //void SetLabelProperties(RectTransform _rtInput, )
 }

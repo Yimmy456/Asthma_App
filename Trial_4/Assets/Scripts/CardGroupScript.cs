@@ -667,6 +667,19 @@ public class CardGroupScript : GameGenericMBScript<CardScript>, YesOrNoInterface
     public override void StopGame()
     {
         base.StopGame();
+
+        _gameProperties.GetMainCanvases().SetCanvasesOn(true);
+
+
+        if (_gameProperties.GetGameCanvas() != null)
+        {
+            _gameProperties.GetGameCanvas().gameObject.SetActive(false);
+        }
+
+        if (_gameProperties.GetGameIndicatorCanvas() != null)
+        {
+            _gameProperties.GetGameIndicatorCanvas().gameObject.SetActive(false);
+        }
     }
 
     protected override void WinGame()
@@ -707,5 +720,39 @@ public class CardGroupScript : GameGenericMBScript<CardScript>, YesOrNoInterface
         _gameProperties.AddObjectsAsGO(_cardObjectInput);
 
         _gameProperties.AddObjectToList(_cardProperty);
+    }
+
+    public override void ISetActionsOfNoButton()
+    {
+        if(_gameProperties.GetYesOrNoCanvas() == null)
+        {
+            return;
+        }
+
+        if(_gameProperties.GetYesOrNoCanvas().GetNoButton() == null)
+        {
+            return;
+        }
+
+        Button _bt = _gameProperties.GetYesOrNoCanvas().GetNoButton();
+
+        _bt.onClick.AddListener(delegate { base.ISetActionsOfNoButton(); });
+    }
+
+    public override void ISetActionsOfYesButtonToQuit()
+    {
+        if(_gameProperties.GetYesOrNoCanvas() == null)
+        {
+            return;
+        }
+
+        if(_gameProperties.GetYesOrNoCanvas().GetYesButton() == null)
+        {
+            return;
+        }
+
+        Button _bt = _gameProperties.GetYesOrNoCanvas().GetYesButton();
+
+        _bt.onClick.AddListener(delegate { StopGame(); });
     }
 }

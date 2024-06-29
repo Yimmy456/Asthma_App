@@ -5,7 +5,7 @@ using UnityEngine;
 using System.Linq;
 using System;
 using System.ComponentModel;
-using Org.BouncyCastle.Asn1.X509.Qualified;
+//using Org.BouncyCastle.Asn1.X509.Qualified;
 
 [Serializable]
 public abstract class ActionPlanQuestionScript: IDataPersistenceScript
@@ -322,53 +322,9 @@ public class ActionPlanQuestionText : ActionPlanQuestionScript<string>
 [Description("This should only be used for enum variables.")]
 public abstract class ActionPlanQuestionEnum<T> : ActionPlanQuestionScript<T> where T : Enum
 {
-    [SerializeField]
-    protected APEnumTypeEnum _enumType;
-
-    [SerializeField]
-    protected ActionPlanEnumLabelProperties<T> _labelProperties;
-
-    protected Type _enumType2;
-
     public ActionPlanQuestionEnum() : base()
     {
         _variableType = VariableTypeForAPEnum.Enum;
-
-        _enumType2 = typeof(T);
-    }
-
-
-    /*protected int _selectedValueIndex = 0;
-
-    public int GetSelectedValueIndex()
-    {
-        return _selectedValueIndex;
-    }*/
-
-    /*
-    public override void SetValue(T _input)
-    {
-        base.SetValue(_input);
-    }
-
-    public virtual void SetSelectedValueIndex(int _input)
-    {
-        _selectedValueIndex = _input;
-    }*/
-
-    public APEnumTypeEnum GetEnumType()
-    {
-        return _enumType;
-    }
-
-    public ActionPlanEnumLabelProperties<T> GetLabelProperties()
-    {
-        return _labelProperties;
-    }
-
-    public Type GetEnumType2()
-    {
-        return _enumType2;
     }
 }
 
@@ -377,13 +333,11 @@ public class ActionPlanQuestionEnum_InhalerColor: ActionPlanQuestionEnum<Inhaler
     public ActionPlanQuestionEnum_InhalerColor() : base()
     {
         _questionAnswered = true;
-
-        _enumType = APEnumTypeEnum.Inhaler_Color;
     }
 
     public override int GetIntegerAnswer()
     {
-        return (int)(_labelProperties.GetEnum());
+         return (int)_answer;
     }
 
     public override string GetTextAnswer()
@@ -398,8 +352,6 @@ public class ActionPlanQuestionEnum_InhalerColor: ActionPlanQuestionEnum<Inhaler
 
     public override void SetIntegerAnswer(int _input)
     {
-        base.SetIntegerAnswer(_input);
-
         _answer = (InhalerColorEnum)(_input);
     }
 
@@ -412,37 +364,6 @@ public class ActionPlanQuestionEnum_InhalerColor: ActionPlanQuestionEnum<Inhaler
     {
         _questionAnswered = true;
     }
-
-    /*public override void SetValue(InhalerColorEnum _input)
-    {
-        base.SetValue(_input);
-
-        _selectedValueIndex = (int)_input;
-    }
-
-    public override void SetIntegerAnswer(int _input)
-    {
-        base.SetIntegerAnswer(_input);
-
-        _answer = (InhalerColorEnum)_input;
-
-        switch(_input)
-        {
-            case 1:
-                _answer = InhalerColorEnum.Brown;
-                break;
-            case 2:
-                _answer = InhalerColorEnum.Orange;
-                break;
-            case 3:
-                _answer = InhalerColorEnum.Purple;
-                break;
-            default:
-                _answer = InhalerColorEnum.Blue;
-                break;
-        }
-    
-     }*/
 }
 
 public class ActionPlanQuestionEnum_Gender:ActionPlanQuestionEnum<GenderEnum>
@@ -450,8 +371,6 @@ public class ActionPlanQuestionEnum_Gender:ActionPlanQuestionEnum<GenderEnum>
     public ActionPlanQuestionEnum_Gender():base()
     {
         _questionAnswered = true;
-
-        _enumType = APEnumTypeEnum.Gender;
     }
 
     public override Enum GetEnumAnswer()
@@ -461,7 +380,7 @@ public class ActionPlanQuestionEnum_Gender:ActionPlanQuestionEnum<GenderEnum>
 
     public override int GetIntegerAnswer()
     {
-        return (int)(_labelProperties.GetEnum());
+        return (int)_answer;
     }
 
     public override string GetTextAnswer()
@@ -521,10 +440,6 @@ public class ActionPlanQuestionDate : ActionPlanQuestionGenericTypeScript<DateCl
 
     protected override void IsQuestionAnswered()
     {
-        /*bool _bool = _answer.GetDay() != 0 && _answer.GetMonth() != 0 && _answer.GetYear() != 0;
-
-        _bool = _bool && _answer.GetDay() != -1 && _answer.GetMonth() != -1 && _answer.GetYear() != 1;*/
-
         _questionAnswered = _answer.GetDateSet();
     }
 }
@@ -536,11 +451,6 @@ public class ActionPlanQuestionContact : ActionPlanQuestionGenericTypeScript<Two
         _variableType = VariableTypeForAPEnum.Contact;
     }
 
-    /*public override int GetIntegerAnswer()
-    {
-        return _answer.GetVariable2();
-    }*/
-
     public override string GetTextAnswer()
     {
         return _answer.GetVariable1() + ", " + _answer.GetVariable2();
@@ -551,15 +461,8 @@ public class ActionPlanQuestionContact : ActionPlanQuestionGenericTypeScript<Two
         return _answer.GetVariable1() + ", " + _answer.GetVariable2();
     }
 
-    /*public override void SetIntegerAnswer(int _input)
-    {
-        _answer.SetVariable2(_input);
-    }*/
-
     public override void SetTextAnswer(string _input)
     {
-        //_answer.SetVariable1(_input);
-
         string _st1 = "";
 
         string _st2 = "";
@@ -584,8 +487,6 @@ public class ActionPlanQuestionContact : ActionPlanQuestionGenericTypeScript<Two
                 }
             }
         }
-
-        //int.TryParse(_st2, out int _intValue);
 
         _answer.SetVariables(_st1, _st2);
     }
@@ -616,8 +517,6 @@ public class ActionPlanQuestionContact : ActionPlanQuestionGenericTypeScript<Two
                 }
             }
         }
-
-        //int.TryParse(_st2, out int _intValue);
 
         _answer.SetVariables(_st1, _st2);
     }

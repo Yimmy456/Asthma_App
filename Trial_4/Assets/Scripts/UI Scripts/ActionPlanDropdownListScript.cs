@@ -11,20 +11,40 @@ public class ActionPlanDropdownListScript : MonoBehaviour
     [SerializeField]
     ActionPlanUIScript _actionPlanUI;
 
+    [SerializeField]
+    Sprite _downSprite;
+
+    [SerializeField]
+    Sprite _upSprite;
+
+    [SerializeField]
+    Image _dropdownImage;
+
     bool _listDropped = false;
 
     bool _styleChanged = false;
 
+    bool _mainLabelChanged = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        _mainLabelChanged = true;
+
+        ChangeMainLabelFunction();
     }
 
     // Update is called once per frame
     void Update()
     {
         CheckListDropped();
+    }
+
+    private void OnEnable()
+    {
+        _mainLabelChanged = true;
+
+        ChangeMainLabelFunction();
     }
 
     void CheckListDropped()
@@ -36,6 +56,8 @@ public class ActionPlanDropdownListScript : MonoBehaviour
 
             _styleChanged = false;
 
+            DefaultArrow();
+
             return;
         }
 
@@ -45,19 +67,16 @@ public class ActionPlanDropdownListScript : MonoBehaviour
 
             _styleChanged = false;
 
+            DefaultArrow();
+
             return;
         }
 
-        if(ActionPlanManagerScript.GetInstance().GetCurrentQuestionIndex() == 1)
-        {
-            Debug.Log("We will start to debug...");
-        }
-
-        ActionPlanQuestionScript _currentQuestion= ActionPlanManagerScript.GetInstance().GetCurrentQuestion();
+        ActionPlanQuestionScript _currentQuestion = ActionPlanManagerScript.GetInstance().GetCurrentQuestion();
 
         System.Type _type = _currentQuestion.GetType();
 
-
+        ChangeMainLabelFunction();
 
         _listDropped = (_dropdownList.gameObject.GetComponent<RectTransform>().Find("Dropdown List") != null);
 
@@ -67,6 +86,8 @@ public class ActionPlanDropdownListScript : MonoBehaviour
         }
         else if(!_listDropped)
         {
+            DefaultArrow();
+
             _styleChanged = false;
 
             return;
@@ -84,6 +105,13 @@ public class ActionPlanDropdownListScript : MonoBehaviour
             var _styles = ActionPlanManagerScript.GetInstance().GetStylesOfGenderLabels().GetStyles();
 
             ChangeLabelStyles(_styles);
+        }
+
+        if(_dropdownImage != null && _upSprite != null)
+        {
+            _dropdownImage.sprite = _upSprite;
+
+            _dropdownImage.color = Color.red;
         }
 
         _styleChanged = true;
@@ -145,6 +173,8 @@ public class ActionPlanDropdownListScript : MonoBehaviour
                 continue;
             }
 
+            //_currentOption = _dropdownList.value == _i;
+
             _rt3 = _rt2.gameObject.GetComponent<RectTransform>().Find("Item Background").gameObject.GetComponent<RectTransform>();
 
             _img = _rt3.gameObject.GetComponent<Image>();
@@ -194,5 +224,118 @@ public class ActionPlanDropdownListScript : MonoBehaviour
 
             _selectedStyle = null;
         }
+    }
+
+
+    void ChangeMainLabelFunction()
+    {
+
+        if(ActionPlanManagerScript.GetInstance() == null)
+        {
+            return;
+        }
+
+        if(ActionPlanManagerScript.GetInstance().GetCurrentQuestion() == null)
+        {
+            return;
+        }
+
+        ActionPlanQuestionScript _currentQuestion = ActionPlanManagerScript.GetInstance().GetCurrentQuestion();
+
+        System.Type _type = _currentQuestion.GetType();
+
+        if(_type == typeof(ActionPlanQuestionEnum_InhalerColor))
+        {
+            var _styles = ActionPlanManagerScript.GetInstance().GetStylesOfInhalerColorLabels().GetStyles();
+
+            ColorMainLabel(_styles);
+        }
+
+        if(_type == typeof(ActionPlanQuestionEnum_Gender))
+        {
+            var _styles = ActionPlanManagerScript.GetInstance().GetStylesOfGenderLabels().GetStyles();
+
+            ColorMainLabel(_styles);
+        }
+    }
+
+    void ColorMainLabel<T>(List<EnumDropdownLabelStyleClass<T>> _input) where T : System.Enum 
+    {
+        int _lIndex = _dropdownList.value;
+
+        string _st = _dropdownList.options[_lIndex].text;
+
+        EnumDropdownLabelStyleClass<T> _selectedStyle = null;
+
+        EnumDropdownLabelStyleClass<T> _currentStyle;
+
+        bool _comp;
+
+        for(int _i = 0; _i < _input.Count && _selectedStyle == null; _i++)
+        {
+            _currentStyle = _input[_i];
+
+            _comp = string.Compare(_currentStyle.GetAlternativeText(), _st, true) == 0;
+
+            if(_comp)
+            {
+                _selectedStyle = _currentStyle;
+            }
+        }
+
+        if(_selectedStyle == null)
+        {
+            return;
+        }
+
+        _dropdownList.image.color = _selectedStyle.GetLabelColor();
+
+        RectTransform _rt = _dropdownList.gameObject.GetComponent<RectTransform>();
+
+        _rt =_rt.Find("Label").gameObject.GetComponent<RectTransform>();
+
+        if(_rt == null)
+        {
+            return;
+        }
+
+        Text _labelText = _rt.gameObject.GetComponent<Text>();
+
+        if(_labelText == null)
+        {
+            return;
+        }
+
+        _labelText.color = _selectedStyle.GetTextColor();
+
+        _labelText.gameObject.GetComponent<Outline>().effectColor = _selectedStyle.GetOutlineColor();
+    }
+
+    void DefaultArrow()
+    {
+        if(_dropdownImage == null)
+        {
+            return;
+        }
+
+        if(_dropdownImage.color != Color.green)
+        {
+            _dropdownImage.color = Color.green;
+        }
+
+        if(_downSprite == null)
+        {
+            return;
+        }
+
+        if(_dropdownImage.sprite != _downSprite)
+        {
+            _dropdownImage.sprite = _downSprite;
+        }
+    }
+
+    public void MainLabelHasChanged()
+    {
+        _mainLabelChanged = true;
     }
 }

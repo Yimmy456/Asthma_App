@@ -184,6 +184,11 @@ public class CardScript : MonoBehaviour
         {
             Vector2 _position = _controller.Touch.Position.ReadValue<Vector2>();
 
+            if(Application.platform == RuntimePlatform.WindowsEditor)
+            {
+                _position = _controller.Move.CursorPosition.ReadValue<Vector2>();
+            }
+
             Ray _ray = _camera.ScreenPointToRay(_position);
 
             RaycastHit _hit;

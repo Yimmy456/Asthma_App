@@ -15022,7 +15022,7 @@ MonoBehaviour:
   _arrow: {fileID: 1884706855}
   _camera: {fileID: 488612397}
   _resolutionText: {fileID: 0}
-  _cursorSprite: {fileID: 21300000, guid: 0351ba965ba68f2439d21dc1bb7a590e, type: 3}
+  _cursorSprite: {fileID: 21300000, guid: 60cd767bb2f79c4448c73549ac339e44, type: 3}
   _arrowSprite: {fileID: 21300000, guid: 22f7eb8e991ec534bb6411484e5a7eeb, type: 3}
   _onscreenThreshold: 100
   _meterText: {fileID: 227547016}
@@ -16655,7 +16655,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 488612395}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &488612397
 Camera:
   m_ObjectHideFlags: 0
@@ -24897,7 +24897,7 @@ MonoBehaviour:
   _arrow: {fileID: 1200410330}
   _camera: {fileID: 488612397}
   _resolutionText: {fileID: 0}
-  _cursorSprite: {fileID: 21300000, guid: 0351ba965ba68f2439d21dc1bb7a590e, type: 3}
+  _cursorSprite: {fileID: 21300000, guid: 60cd767bb2f79c4448c73549ac339e44, type: 3}
   _arrowSprite: {fileID: 21300000, guid: 22f7eb8e991ec534bb6411484e5a7eeb, type: 3}
   _onscreenThreshold: 100
   _meterText: {fileID: 2063574805}
@@ -54208,8 +54208,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameName: 
-  _mainContainer: {fileID: 0}
-  _gameSpace: {fileID: 0}
+  _mainContainer: {fileID: 1093082202}
+  _gameSpace: {fileID: 1892339212}
   _gameProperties:
     _meter:
       _textGradient:
@@ -54589,6 +54589,30 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Are you sure you want to quit playing?
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1892339213}
+        m_TargetAssemblyTypeName: CardGroupScript, Assembly-CSharp
+        m_MethodName: ISetActionsOfNoButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1892339213}
+        m_TargetAssemblyTypeName: CardGroupScript, Assembly-CSharp
+        m_MethodName: ISetActionsOfYesButtonToQuit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1922262709

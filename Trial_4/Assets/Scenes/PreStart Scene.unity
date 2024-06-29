@@ -1190,7 +1190,7 @@ MonoBehaviour:
       _textColor: {r: 0, g: 0, b: 0, a: 1}
       _textSize: 90
       _alternativeText: 
-      _labelSprite: {fileID: 0}
+      _labelSprite: {fileID: 21300000, guid: 9b860282610373240a49531220c2ea35, type: 3}
       _outlineColor: {r: 0, g: 0.2352941, b: 0.5, a: 0.5019608}
       _outlineEffect: {x: 1, y: -1}
     - _value: 1
@@ -1198,7 +1198,7 @@ MonoBehaviour:
       _textColor: {r: 0, g: 0, b: 0, a: 1}
       _textSize: 90
       _alternativeText: 
-      _labelSprite: {fileID: 0}
+      _labelSprite: {fileID: 21300000, guid: 6f707fca32c06ea40a59422957580c7c, type: 3}
       _outlineColor: {r: 0.5, g: 0, b: 0.39215684, a: 0.5019608}
       _outlineEffect: {x: 1, y: -1}
     - _value: 2
@@ -1206,7 +1206,7 @@ MonoBehaviour:
       _textColor: {r: 0, g: 0, b: 0, a: 1}
       _textSize: 67
       _alternativeText: I do not wish to specify
-      _labelSprite: {fileID: 0}
+      _labelSprite: {fileID: 21300000, guid: f721538b5abad66418559deb5dee174e, type: 3}
       _outlineColor: {r: 0.195, g: 0.195, b: 0.195, a: 0.5019608}
       _outlineEffect: {x: 1, y: -1}
   references:
