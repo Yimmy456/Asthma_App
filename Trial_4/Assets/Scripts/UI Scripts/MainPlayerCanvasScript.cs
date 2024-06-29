@@ -424,6 +424,12 @@ public class MainPlayerCanvasScript : MonoBehaviour
 
         float _alpha = _buttonInput.image.color.a;
 
+        Color _c;
+
+        bool _amountReached = false;
+
+        float _s = 0.0f;
+
         _buttonsAnim++;
 
         if(!_buttonCircleProperties.GetIsCounterClockwise())
@@ -431,13 +437,17 @@ public class MainPlayerCanvasScript : MonoBehaviour
             _angle = -_angle;
         }
 
-        for(float _s = 0.0f; _s < _finalRadius; _s += _finalSpeed)
+        while(!_amountReached)
         {
+            _s = _s + _finalSpeed;
+
             if(_s >= _finalRadius)
             {
                 _s = _finalRadius;
 
                 _alpha = 1.0f;
+
+                _amountReached = true;
             }
             else
             {
@@ -450,7 +460,7 @@ public class MainPlayerCanvasScript : MonoBehaviour
 
             _buttonInput.GetComponent<RectTransform>().anchoredPosition = _pos;
 
-            Color _c = _buttonInput.image.color;
+            _c = _buttonInput.image.color;
 
             _c.a = _alpha;
 
@@ -486,6 +496,12 @@ public class MainPlayerCanvasScript : MonoBehaviour
 
         float _angle = _angleInput;
 
+        Color _c;
+
+        float _s = _finalRadius;
+
+        bool _amountReached = false;
+
         if (!_buttonCircleProperties.GetIsCounterClockwise())
         {
             _pos.x = -_pos.x;
@@ -493,17 +509,21 @@ public class MainPlayerCanvasScript : MonoBehaviour
             _angle = -_angle;
         }
 
-        float _alpha = _buttonInput.image.color.a;
+        float _alpha;
 
         _buttonsAnim++;
 
-        for(float _s = _finalRadius; _s > 0.0f; _s -= _finalSpeed)
+        while(!_amountReached)  
         {
+            _s = _s - _finalSpeed;
+
             if(_s <= 0.0f)
             {
                 _s = 0.0f;
 
                 _alpha = 0.0f;
+
+                _amountReached = true;
             }
             else
             {
@@ -516,7 +536,7 @@ public class MainPlayerCanvasScript : MonoBehaviour
 
             _buttonInput.GetComponent<RectTransform>().anchoredPosition = _pos;
 
-            Color _c = _buttonInput.image.color;
+            _c = _buttonInput.image.color;
 
             _c.a = _alpha;
 

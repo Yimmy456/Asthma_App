@@ -116,6 +116,8 @@ public class CardGroupScript : GameGenericMBScript<CardScript>, YesOrNoInterface
             return;
         }
 
+        Debug.Log("Card game is starting...");
+
         base.StartGame();
 
         //base.StartGameFunction();
@@ -166,6 +168,8 @@ public class CardGroupScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
         while(_selectionDone < _numberOfCards)
         {
+            Debug.Log("We are in the process of loop 1.");
+
             if(_inf < _infoCardsNeeded)
             {
                 GameObject _cgo = Instantiate(_cardSample.gameObject);
@@ -175,6 +179,8 @@ public class CardGroupScript : GameGenericMBScript<CardScript>, YesOrNoInterface
                 _inf++;
 
                 _selectionDone++;
+
+                Debug.Log("The info condition is complete.");
 
                 continue;
             }
@@ -196,6 +202,8 @@ public class CardGroupScript : GameGenericMBScript<CardScript>, YesOrNoInterface
                     _wordSelectedInLoop = true;
                 }
             }
+
+            Debug.Log("We are finding a word.");
             _wordSelectedInLoop = false;
         }
 
@@ -400,6 +408,8 @@ public class CardGroupScript : GameGenericMBScript<CardScript>, YesOrNoInterface
             _indexes.Add(_i);
 
             _positions.Add(_gameProperties.GetListOfObjects()[_i].GetOriginalPosition());
+
+            Debug.Log("We are preparing to suffle the cards.");
         }
 
         for(int _j = 0; _j < _gameProperties.GetListOfObjects().Count; _j++)
@@ -415,6 +425,8 @@ public class CardGroupScript : GameGenericMBScript<CardScript>, YesOrNoInterface
             _goList.Add(_selectedCard.gameObject);
 
             _selectedCard.SetOriginalPosition(_positions[_j]);
+
+            Debug.Log("We are shuffling the cards.");
 
             _indexes.RemoveAt(_r);
         }

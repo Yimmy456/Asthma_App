@@ -46,6 +46,8 @@ public class GameGenericMBScript<T> : GameMBScript, YesOrNoInterface
             return;
         }
 
+        Debug.Log("We are preparing your selected game...");
+
         _gameProperties.GetMeter().SetValue(0);
 
         if(_gameProperties.GetGameIndicatorProperties() != null)

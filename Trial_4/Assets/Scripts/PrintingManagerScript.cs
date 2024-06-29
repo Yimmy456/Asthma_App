@@ -8,6 +8,7 @@ using System.Linq;
 using System;
 using System.ComponentModel;
 using Unity.VisualScripting;
+using UnityEngine.Networking;
 //using UnityEditorInternal;
 
 public class PrintingManagerScript : MonoBehaviour
@@ -46,20 +47,22 @@ public class PrintingManagerScript : MonoBehaviour
     {
         _path = Application.persistentDataPath + "/AsthmaStatusDoc.pdf";
 
-        _fontPath = Application.dataPath + "/Bubble Bobble.ttf";
+        _fontPath = Application.persistentDataPath + "/Bubble Bobble.ttf";
 
         /*if (Application.platform == RuntimePlatform.Android)
         {
             _fontPath = Path.Combine("/system/fonts/", "BUBBLE BOBBLE.TTF");
         }*/
 
-        Debug.Log("Font is '" + _fontVar.name + "'.");
+        //Debug.Log("Font is '" + _fontVar.name + "'.");
 
-        Debug.Log("Font path is '" + _fontPath + "'.");
+        //Debug.Log("Font path is '" + _fontPath + "'.");
 
         _firstRowBaseColor = new BaseColor(_firstRowColor.r, _firstRowColor.g, _firstRowColor.b, _firstRowColor.a);
 
         _secondRowBaseColor = new BaseColor(_secondRowColor.r, _secondRowColor.g, _secondRowColor.b, _secondRowColor.a);
+
+        Debug.Log(Path.Combine(Application.streamingAssetsPath, _fontPath));
     }
 
     private void OnEnable()
@@ -141,7 +144,17 @@ public class PrintingManagerScript : MonoBehaviour
                 FontFactory.Register(_tempPath, "Bubble Bobble");
             }*/
 
-            var _baseFont = BaseFont.CreateFont(FontFactory.HELVETICA, BaseFont.IDENTITY_H, true);
+            StartCoroutine(CopyFile("BUBBLE_BOBBLE.TTF"));
+
+            //CopyFile2("BUBBLE_BOBBLE.TTF");
+
+            //var _baseFont = BaseFont.CreateFont(FontFactory.HELVETICA, BaseFont.CP1252, false);
+
+            //var _baseFont = BaseFont.CreateFont(Path.Combine(Application.persistentDataPath, "BUBBLE_BOBBLE.TTF"), BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+
+            //var _baseFont = BaseFont.CreateFont(_fontPath, BaseFont.CP1252, BaseFont.EMBEDDED);
+
+            var _baseFont = BaseFont.CreateFont(Path.Combine(Application.persistentDataPath, "BUBBLE_BOBBLE.TTF"), BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
 
             var _normalFont = new iTextSharp.text.Font(_baseFont, 14, iTextSharp.text.Font.NORMAL);
 
@@ -358,7 +371,7 @@ public class PrintingManagerScript : MonoBehaviour
 
         //BaseFont _baseFont = BaseFont.CreateFont(_fontPath, BaseFont.IDENTITY_H, true);
 
-        var _baseFont = BaseFont.CreateFont(FontFactory.HELVETICA, BaseFont.CP1252, false);
+        var _baseFont = BaseFont.CreateFont(Path.Combine(Application.persistentDataPath, "BUBBLE_BOBBLE.TTF"), BaseFont.CP1252, false);
 
         var _pagesFont = new iTextSharp.text.Font(_baseFont, 12, iTextSharp.text.Font.NORMAL);
 
@@ -393,15 +406,15 @@ public class PrintingManagerScript : MonoBehaviour
 
         _listInput = new List(List.UNORDERED, 10.0f);
 
-        _listInput.Add(new ListItem(_integerQ.GetIntegerAnswer().ToString(), _fontInput));
+        string _fullAnswer = _integerQ.GetIntegerAnswer().ToString();
 
-        //_paragraphInput.Add(_integerQ.GetQuestionText());
+        if(_integerQ.GetUnits() != "")
+        {
+            _fullAnswer = _fullAnswer + " " + _integerQ.GetUnits();
+        }
 
-        //_paragraphInput.Add("\n\n");
+        _listInput.Add(new ListItem(_fullAnswer, _fontInput));
 
-        //_paragraphInput.Add("A. " + _integerQ.GetIntegerAnswer().ToString());
-
-        //_paragraphInput.Add("A." + Paragraph.)
     }
 
     void PrintIfDecimal(ActionPlanQuestionScript _questionInput, ref List _listInput, ref iTextSharp.text.Font _fontInput)
@@ -415,11 +428,14 @@ public class PrintingManagerScript : MonoBehaviour
 
         _listInput = new List(List.UNORDERED, 10.0f);
 
-        _listInput.Add(new ListItem(_decimalQ.GetDecimalAnswer().ToString(), _fontInput));
+        string _fullAnswer = _decimalQ.GetDecimalAnswer().ToString();
 
-        //_paragraphInput.Add(_decimalQ.GetQuestionText() + "\n\n");
+        if(_decimalQ.GetUnits() != "")
+        {
+            _fullAnswer = _fullAnswer + " " + _decimalQ.GetUnits();
+        }
 
-        //_paragraphInput.Add("A. " + _decimalQ.GetAnswer().ToString());
+        _listInput.Add(new ListItem(_fullAnswer, _fontInput));
     }
 
     void PrintIfText(ActionPlanQuestionScript _questionInput, ref List _listInput, ref iTextSharp.text.Font _fontInput)
@@ -434,11 +450,6 @@ public class PrintingManagerScript : MonoBehaviour
         _listInput = new List(List.UNORDERED, 10.0f);
 
         _listInput.Add(new ListItem(_textQ.GetTextAnswer(), _fontInput));
-
-
-        //_paragraphInput.Add(_textQ.GetQuestionText() + "\n\n");
-
-        //_paragraphInput.Add("A. " + _textQ.GetAnswer());
     }
 
     void PrintIfEnum(ActionPlanQuestionScript _questionInput, ref List _listInput, ref iTextSharp.text.Font _fontInput)
@@ -450,10 +461,6 @@ public class PrintingManagerScript : MonoBehaviour
         if(_confirmType)
         {
             ActionPlanQuestionEnum_InhalerColor _iCQ = (ActionPlanQuestionEnum_InhalerColor)(_questionInput);
-
-            //_paragraphInput.Add(_iCQ.GetQuestionText() + "\n\n");
-
-            //_paragraphInput.Add("A. " + _iCQ.GetAnswer().ToString());
 
             _listInput = new List(List.UNORDERED, 10.0f);
 
@@ -478,10 +485,6 @@ public class PrintingManagerScript : MonoBehaviour
         }
 
         DateTime _newDate = new DateTime(_dateQ.GetAnswer().GetYear(), _dateQ.GetAnswer().GetMonth(), _dateQ.GetAnswer().GetDay());
-
-        //_paragraphInput.Add(_dateQ.GetQuestionText() + "\n\n");
-
-        //_paragraphInput.Add("A. " + _newDate.ToString("MMMM dd (dddd), yyyy"));
 
         _listInput = new List(List.UNORDERED, 10.0f);
 
@@ -537,8 +540,6 @@ public class PrintingManagerScript : MonoBehaviour
         }
 
         _birthDateOutput.SetDate(_dateClass.GetAnswer().GetDay(), _dateClass.GetAnswer().GetMonth(), _dateClass.GetAnswer().GetYear());
-
-        //_birthDateOutput.SetMonth()
 
         int _age = DateTime.Now.Year - _dateClass.GetAnswer().GetYear();
 
@@ -795,5 +796,53 @@ public class PrintingManagerScript : MonoBehaviour
         }
 
         _output = _textQuestion.GetAnswer();
+    }
+
+    IEnumerator CopyFile(string _fileNameInput)
+    {
+        /*string _fromPath = Application.streamingAssetsPath + "/";
+
+        string _toPath = Application.persistentDataPath + "/";
+
+        WWW _www1 = new WWW(_fromPath + _fileNameInput);
+
+        //UnityWebRequest _www1 = UnityWebRequest.Get(_fromPath + _fileNameInput);
+
+        yield return _www1;
+
+        File.WriteAllBytes((_toPath + _fileNameInput), _www1.bytes);*/
+
+        string filePath = Path.Combine(Application.streamingAssetsPath, _fileNameInput);
+        string savePath = Path.Combine(Application.persistentDataPath, _fileNameInput);
+
+        UnityWebRequest uwr = UnityWebRequest.Get(filePath);
+        DownloadHandlerFile dhf = new DownloadHandlerFile(savePath);
+        dhf.removeFileOnAbort = true;
+        uwr.downloadHandler = dhf;
+        yield return uwr.SendWebRequest();
+
+        dhf.Dispose();
+        uwr.Dispose();
+    }
+
+    void CopyFile2(string _fileNameInput)
+    {
+        string _fromPath = Application.streamingAssetsPath + "/" + _fileNameInput;
+
+        Debug.Log("'From' path is " + @"""" + _fromPath + @"""" + ".");
+
+        string _toPath = Application.persistentDataPath + "/" + _fileNameInput;
+
+        Debug.Log("'To' path is " + @"""" + _toPath + @"""" + ".");
+
+        try
+        {
+            File.Copy(_fromPath, _toPath, true);
+        }
+        catch
+        (Exception ex)
+        {
+            Debug.LogError("Copying failed.");
+        }
     }
 }

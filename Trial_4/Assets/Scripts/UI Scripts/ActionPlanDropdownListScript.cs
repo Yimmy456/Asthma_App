@@ -20,6 +20,12 @@ public class ActionPlanDropdownListScript : MonoBehaviour
     [SerializeField]
     Image _dropdownImage;
 
+    [SerializeField]
+    Image _optionIconImage;
+
+    [SerializeField]
+    float _iconSize = 0.2f;
+
     bool _listDropped = false;
 
     bool _styleChanged = false;
@@ -192,6 +198,8 @@ public class ActionPlanDropdownListScript : MonoBehaviour
 
             _outline = _text.gameObject.GetComponent<Outline>();
 
+            _selectedStyle = null;
+
             for(int _j = 0; _j < _input.Count && _selectedStyle == null; _j++)
             {
                 _currentStyleInLoop = _input[_j];
@@ -222,7 +230,49 @@ public class ActionPlanDropdownListScript : MonoBehaviour
                 _outline.effectDistance = _selectedStyle.GetOutlineEffect();
             }
 
-            _selectedStyle = null;
+            _rt3 = _rt2.gameObject.GetComponent<RectTransform>().Find("Item Icon Area").gameObject.GetComponent<RectTransform>();
+
+            if(_rt3 == null)
+            {
+                continue;
+            }
+
+            _rt3 = _rt3.gameObject.GetComponent<RectTransform>().Find("Image").gameObject.GetComponent<RectTransform>();
+
+            if(_rt3 == null)
+            {
+                continue;
+            }
+
+            Image _labelImage = _rt3.gameObject.GetComponent<Image>();
+
+            if (_labelImage == null)
+            {
+                continue;
+            }
+
+            if(_selectedStyle.GetLabelSprite() == null)
+            {
+                Color _c = _labelImage.color;
+
+                _c.a = 0.0f;
+
+                _labelImage.color = _c;
+
+                continue;
+            }
+            else
+            {
+                _labelImage.color = _selectedStyle.GetLabelSpriteColor();
+            }
+
+            Vector2 _v2 = _selectedStyle.GetLabelSprite().textureRect.size;
+
+            _labelImage.sprite = _selectedStyle.GetLabelSprite();
+
+            _labelImage.GetComponent<RectTransform>().sizeDelta = _v2;
+
+            _labelImage.GetComponent<RectTransform>().localScale = (Vector3.one * _iconSize);
         }
     }
 
@@ -309,6 +359,37 @@ public class ActionPlanDropdownListScript : MonoBehaviour
         _labelText.color = _selectedStyle.GetTextColor();
 
         _labelText.gameObject.GetComponent<Outline>().effectColor = _selectedStyle.GetOutlineColor();
+
+        _labelText.fontSize = _selectedStyle.GetTextSizeOnMainLabel();
+
+        if(_optionIconImage == null)
+        {
+            return;
+        }
+        
+        
+        if(_selectedStyle.GetLabelSprite() == null)
+        {
+            Color _c = _optionIconImage.color;
+
+            _c.a = 0.0f;
+
+            _optionIconImage.color = _c;
+
+            return;
+        }
+        else
+        {
+            _optionIconImage.color = _selectedStyle.GetLabelSpriteColor();
+        }
+
+        Vector2 _originalDim = _selectedStyle.GetLabelSprite().textureRect.size;
+
+        _optionIconImage.GetComponent<RectTransform>().sizeDelta = _originalDim;
+
+        _optionIconImage.GetComponent<RectTransform>().localScale = (Vector3.one * _iconSize);
+
+        _optionIconImage.sprite = _selectedStyle.GetLabelSprite();
     }
 
     void DefaultArrow()

@@ -1489,7 +1489,7 @@ public class ActionPlanEnumValueLabelProperties<T> where T : Enum
     {
         if(_alternativeText == "")
         {
-            return _enumValue.DisplayName();
+            return _enumValue.ToString();
         }
 
         return _alternativeText;
@@ -1564,6 +1564,9 @@ public class EnumDropdownLabelStyleClass<T> where T : Enum
     protected int _textSize = 130;
 
     [SerializeField]
+    protected int _textSizeOnMainLabel = 140;
+
+    [SerializeField]
     protected string _alternativeText;
 
     [SerializeField]
@@ -1571,6 +1574,9 @@ public class EnumDropdownLabelStyleClass<T> where T : Enum
 
     [SerializeField]
     protected Color _outlineColor;
+
+    [SerializeField]
+    protected Color _labelSpriteColor = Color.white;
 
     [SerializeField]
     protected Vector2 _outlineEffect = new Vector2(1.0f, -1.0f);
@@ -1593,6 +1599,11 @@ public class EnumDropdownLabelStyleClass<T> where T : Enum
     public int GetTextSize()
     {
         return _textSize;
+    }
+
+    public int GetTextSizeOnMainLabel()
+    {
+        return _textSizeOnMainLabel;
     }
 
     public string GetAlternativeText()
@@ -1618,5 +1629,10 @@ public class EnumDropdownLabelStyleClass<T> where T : Enum
     public Vector2 GetOutlineEffect()
     {
         return _outlineEffect;
+    }
+
+    public Color GetLabelSpriteColor()
+    {
+        return _labelSpriteColor;
     }
 }

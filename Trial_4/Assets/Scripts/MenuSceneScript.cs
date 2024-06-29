@@ -1,12 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuSceneScript : MonoBehaviour
 {
 
     [SerializeField]
     List<MenuSceneCameraClass> _menuSceneCameras;
+
+    [SerializeField]
+    Button _pcPlayButton;
+
+    [SerializeField]
+    Button _phonePlayButton;
 
     // Start is called before the first frame update
     void Start()
@@ -58,5 +65,24 @@ public class MenuSceneScript : MonoBehaviour
         }
 
         ActionPlanManagerScript.GetInstance().StartPlan();
+    }
+
+    void EnableCorectPlayButton()
+    {
+        bool _bool;
+
+        if(_pcPlayButton != null)
+        {
+            _bool = Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor;
+
+            _pcPlayButton.gameObject.SetActive(_bool);
+        }
+
+        if(_phonePlayButton != null)
+        {
+            _bool = Application.platform == RuntimePlatform.Android;
+
+            _phonePlayButton.gameObject.SetActive(_bool);
+        }
     }
 }

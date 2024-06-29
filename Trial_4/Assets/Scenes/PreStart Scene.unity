@@ -1155,59 +1155,73 @@ MonoBehaviour:
       _labelColor: {r: 0.29622638, g: 0.29622638, b: 1, a: 1}
       _textColor: {r: 1, g: 1, b: 1, a: 1}
       _textSize: 90
+      _textSizeOnMainLabel: 140
       _alternativeText: 
       _labelSprite: {fileID: 0}
       _outlineColor: {r: 0.1490196, g: 0.1490196, b: 0.5, a: 0.5019608}
+      _labelSpriteColor: {r: 0, g: 0, b: 0, a: 0}
       _outlineEffect: {x: 2, y: -2}
     - _value: 1
       _labelColor: {r: 0.5058824, g: 0.19215687, b: 0, a: 1}
       _textColor: {r: 1, g: 1, b: 1, a: 1}
       _textSize: 90
+      _textSizeOnMainLabel: 140
       _alternativeText: 
       _labelSprite: {fileID: 0}
       _outlineColor: {r: 0.255, g: 0.096860446, b: 0, a: 0.5019608}
+      _labelSpriteColor: {r: 0, g: 0, b: 0, a: 0}
       _outlineEffect: {x: 2, y: -2}
     - _value: 2
       _labelColor: {r: 1, g: 0.5437961, b: 0.08399999, a: 1}
       _textColor: {r: 0, g: 0, b: 0, a: 1}
       _textSize: 90
+      _textSizeOnMainLabel: 140
       _alternativeText: 
       _labelSprite: {fileID: 0}
       _outlineColor: {r: 1, g: 0.7719658, b: 0.53999996, a: 0.5019608}
+      _labelSpriteColor: {r: 0, g: 0, b: 0, a: 0}
       _outlineEffect: {x: 2, y: -2}
     - _value: 3
       _labelColor: {r: 0.6666667, g: 0, b: 0.8235294, a: 1}
       _textColor: {r: 1, g: 1, b: 1, a: 1}
       _textSize: 90
+      _textSizeOnMainLabel: 140
       _alternativeText: 
       _labelSprite: {fileID: 0}
       _outlineColor: {r: 0.33190486, g: 0, b: 0.41, a: 0.5019608}
+      _labelSpriteColor: {r: 0, g: 0, b: 0, a: 0}
       _outlineEffect: {x: 2, y: -2}
   _stylesOfGenderLabels:
     _styles:
     - _value: 0
-      _labelColor: {r: 0, g: 0.47058824, b: 1, a: 1}
+      _labelColor: {r: 0.5, g: 0.7352941, b: 1, a: 1}
       _textColor: {r: 0, g: 0, b: 0, a: 1}
       _textSize: 90
+      _textSizeOnMainLabel: 100
       _alternativeText: 
       _labelSprite: {fileID: 21300000, guid: 9b860282610373240a49531220c2ea35, type: 3}
       _outlineColor: {r: 0, g: 0.2352941, b: 0.5, a: 0.5019608}
+      _labelSpriteColor: {r: 1, g: 1, b: 1, a: 1}
       _outlineEffect: {x: 1, y: -1}
     - _value: 1
-      _labelColor: {r: 1, g: 0, b: 0.78431374, a: 1}
+      _labelColor: {r: 1, g: 0.5, b: 0.89215684, a: 1}
       _textColor: {r: 0, g: 0, b: 0, a: 1}
       _textSize: 90
+      _textSizeOnMainLabel: 100
       _alternativeText: 
       _labelSprite: {fileID: 21300000, guid: 6f707fca32c06ea40a59422957580c7c, type: 3}
       _outlineColor: {r: 0.5, g: 0, b: 0.39215684, a: 0.5019608}
+      _labelSpriteColor: {r: 1, g: 1, b: 1, a: 1}
       _outlineEffect: {x: 1, y: -1}
     - _value: 2
-      _labelColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
+      _labelColor: {r: 0.64705884, g: 0.64705884, b: 0.64705884, a: 1}
       _textColor: {r: 0, g: 0, b: 0, a: 1}
       _textSize: 67
+      _textSizeOnMainLabel: 83
       _alternativeText: I do not wish to specify
       _labelSprite: {fileID: 21300000, guid: f721538b5abad66418559deb5dee174e, type: 3}
       _outlineColor: {r: 0.195, g: 0.195, b: 0.195, a: 0.5019608}
+      _labelSpriteColor: {r: 1, g: 1, b: 1, a: 1}
       _outlineEffect: {x: 1, y: -1}
   references:
     version: 2
@@ -1220,6 +1234,7 @@ MonoBehaviour:
         _questionID: 7bc5b4b7-d7b9-402e-a766-e0817137700a
         _questionAnswered: 1
         _answer: 0
+        _units: puffs
     - rid: 1913970612113506305
       type: {class: ActionPlanQuestionEnum_InhalerColor, ns: , asm: Assembly-CSharp}
       data:
@@ -1227,34 +1242,6 @@ MonoBehaviour:
         _questionID: bb8fed09-a3a7-4a9d-8e5c-63f27c1917f2
         _questionAnswered: 1
         _answer: 0
-        _enumType: 1
-        _labelProperties:
-          _enum: 0
-          _labelProperties:
-          - _enumValue: 0
-            _color: {r: 0, g: 0, b: 1, a: 1}
-            _alternativeText: 
-            _textColor: {r: 1, g: 1, b: 1, a: 1}
-            _textSize: 130
-            _labelSprite: {fileID: 0}
-          - _enumValue: 1
-            _color: {r: 0.3882353, g: 0.1882353, b: 0, a: 1}
-            _alternativeText: 
-            _textColor: {r: 1, g: 1, b: 1, a: 1}
-            _textSize: 130
-            _labelSprite: {fileID: 0}
-          - _enumValue: 2
-            _color: {r: 1, g: 0.5019608, b: 0, a: 1}
-            _alternativeText: 
-            _textColor: {r: 0, g: 0, b: 0, a: 1}
-            _textSize: 130
-            _labelSprite: {fileID: 0}
-          - _enumValue: 3
-            _color: {r: 0.6666667, g: 0, b: 0.8235294, a: 1}
-            _alternativeText: 
-            _textColor: {r: 1, g: 1, b: 1, a: 1}
-            _textSize: 130
-            _labelSprite: {fileID: 0}
     - rid: 1913970636440469506
       type: {class: ActionPlanQuestionInteger, ns: , asm: Assembly-CSharp}
       data:
@@ -1263,6 +1250,7 @@ MonoBehaviour:
         _questionID: b7fbec6f-e0e1-46c4-9da2-027d1a75dc28
         _questionAnswered: 1
         _answer: 0
+        _units: puffs
     - rid: 1913970636440469507
       type: {class: ActionPlanQuestionText, ns: , asm: Assembly-CSharp}
       data:
@@ -1294,34 +1282,6 @@ MonoBehaviour:
         _questionID: c32fef46-a674-4fa8-aa26-af88a675275b
         _questionAnswered: 1
         _answer: 0
-        _enumType: 1
-        _labelProperties:
-          _enum: 0
-          _labelProperties:
-          - _enumValue: 0
-            _color: {r: 0, g: 0, b: 1, a: 1}
-            _alternativeText: 
-            _textColor: {r: 1, g: 1, b: 1, a: 1}
-            _textSize: 130
-            _labelSprite: {fileID: 0}
-          - _enumValue: 1
-            _color: {r: 0.38679248, g: 0.18659306, b: 0, a: 1}
-            _alternativeText: 
-            _textColor: {r: 1, g: 1, b: 1, a: 1}
-            _textSize: 130
-            _labelSprite: {fileID: 0}
-          - _enumValue: 2
-            _color: {r: 1, g: 0.5019608, b: 0, a: 1}
-            _alternativeText: 
-            _textColor: {r: 0, g: 0, b: 0, a: 1}
-            _textSize: 130
-            _labelSprite: {fileID: 0}
-          - _enumValue: 3
-            _color: {r: 0.5345911, g: 0, b: 0.8018868, a: 1}
-            _alternativeText: 
-            _textColor: {r: 1, g: 1, b: 1, a: 1}
-            _textSize: 130
-            _labelSprite: {fileID: 0}
     - rid: 1913970636440469516
       type: {class: ActionPlanQuestionInteger, ns: , asm: Assembly-CSharp}
       data:
@@ -1330,13 +1290,15 @@ MonoBehaviour:
         _questionID: db08dff7-6e59-44b9-bc63-a035c19665a0
         _questionAnswered: 1
         _answer: 0
+        _units: puffs
     - rid: 1913970636440469517
       type: {class: ActionPlanQuestionDecimal, ns: , asm: Assembly-CSharp}
       data:
-        _questionText: What is your best peak flow?
+        _questionText: What is your best peak flow (L/min)?
         _questionID: 6a48efde-4826-443e-8857-0a4e02d99871
         _questionAnswered: 1
         _answer: 0
+        _units: L/min
     - rid: 1913970636440469520
       type: {class: ActionPlanQuestionText, ns: , asm: Assembly-CSharp}
       data:
@@ -1348,11 +1310,12 @@ MonoBehaviour:
     - rid: 1913970636440469521
       type: {class: ActionPlanQuestionDecimal, ns: , asm: Assembly-CSharp}
       data:
-        _questionText: What number does your peak flow go under when your asthma
-          starts to cause problems?
+        _questionText: What number does your peak flow (L/min) go under when your
+          asthma starts to cause problems?
         _questionID: 41e0b722-8d45-443e-bc23-e4e6ae35abff
         _questionAnswered: 1
         _answer: 0
+        _units: L/min
     - rid: 1913970636440469522
       type: {class: ActionPlanQuestionInteger, ns: , asm: Assembly-CSharp}
       data:
@@ -1361,6 +1324,7 @@ MonoBehaviour:
         _questionID: 823b2e74-01e2-4269-835c-9d003cf9b92b
         _questionAnswered: 1
         _answer: 0
+        _units: puffs
     - rid: 1913970636440469523
       type: {class: ActionPlanQuestionText, ns: , asm: Assembly-CSharp}
       data:
@@ -1373,11 +1337,12 @@ MonoBehaviour:
     - rid: 1913970636440469524
       type: {class: ActionPlanQuestionDecimal, ns: , asm: Assembly-CSharp}
       data:
-        _questionText: What number does your peak flow go under when you are having
-          an asthma attack?
+        _questionText: What number does your peak flow go (L/min) under when you
+          are having an asthma attack?
         _questionID: 1ea1c92c-5330-47f6-ba35-361873f11de4
         _questionAnswered: 1
         _answer: 0
+        _units: L/min
     - rid: 1913970636440469525
       type: {class: ActionPlanQuestionText, ns: , asm: Assembly-CSharp}
       data:
@@ -1413,28 +1378,6 @@ MonoBehaviour:
         _questionID: 5812c825-eafa-445a-83c2-7922f77c7941
         _questionAnswered: 1
         _answer: 0
-        _enumType: 0
-        _labelProperties:
-          _enum: 0
-          _labelProperties:
-          - _enumValue: 0
-            _color: {r: 0, g: 0.39215687, b: 1, a: 1}
-            _alternativeText: 
-            _textColor: {r: 0, g: 0, b: 0, a: 1}
-            _textSize: 130
-            _labelSprite: {fileID: 0}
-          - _enumValue: 1
-            _color: {r: 1, g: 0, b: 0.78431374, a: 1}
-            _alternativeText: 
-            _textColor: {r: 0, g: 0, b: 0, a: 1}
-            _textSize: 130
-            _labelSprite: {fileID: 0}
-          - _enumValue: 2
-            _color: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
-            _alternativeText: I do not wish to specify.
-            _textColor: {r: 0, g: 0, b: 0, a: 1}
-            _textSize: 100
-            _labelSprite: {fileID: 0}
     - rid: 1913970770633555968
       type: {class: ActionPlanQuestionDate, ns: , asm: Assembly-CSharp}
       data:

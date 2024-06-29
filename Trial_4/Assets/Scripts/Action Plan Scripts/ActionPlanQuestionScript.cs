@@ -80,6 +80,11 @@ public abstract class ActionPlanQuestionScript: IDataPersistenceScript
         return _questionType;
     }
 
+    public virtual string GetUnits()
+    {
+        return "";
+    }
+
     public virtual void SetIntegerAnswer(int _input) { }
 
     public virtual void SetDecimalAnswer(float _input) { }
@@ -214,6 +219,9 @@ public abstract class ActionPlanQuestionScript<T>:ActionPlanQuestionScript
 
 public class ActionPlanQuestionInteger : ActionPlanQuestionScript<int>
 {
+    [SerializeField]
+    string _units;
+
     public ActionPlanQuestionInteger():base()
     {
         _variableType = VariableTypeForAPEnum.Integer;
@@ -241,6 +249,11 @@ public class ActionPlanQuestionInteger : ActionPlanQuestionScript<int>
         return _answer.ToString();
     }
 
+    public override string GetUnits()
+    {
+        return _units;
+    }
+
     protected override void IsQuestionAnswered()
     {
         _questionAnswered = true;
@@ -249,6 +262,9 @@ public class ActionPlanQuestionInteger : ActionPlanQuestionScript<int>
 
 public class ActionPlanQuestionDecimal : ActionPlanQuestionScript<float>
 {
+    [SerializeField]
+    string _units;
+
     public ActionPlanQuestionDecimal()
     {
         _variableType = VariableTypeForAPEnum.Decimal;
@@ -274,6 +290,11 @@ public class ActionPlanQuestionDecimal : ActionPlanQuestionScript<float>
     public override string GetWholeAnswerAsString()
     {
         return _answer.ToString("0.00");
+    }
+
+    public override string GetUnits()
+    {
+        return _units;
     }
 
     protected override void IsQuestionAnswered()
