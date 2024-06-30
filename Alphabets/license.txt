@@ -1,0 +1,8 @@
+Model Information:
+* title:	Alphabet Numbers Pack 3D
+* source:	https://sketchfab.com/3d-models/alphabet-numbers-pack-3d-4f484c31ea4c45ab98b0fd59e00d53a3
+* author:	Logicgo Infotech (https://sketchfab.com/logicgo_infotech)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works
