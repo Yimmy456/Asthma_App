@@ -131,16 +131,8 @@ public class DraggableClass : MonoBehaviour
 
                     DraggableManagerClass.GetInstance().AddToBeginsDragging(this);
 
-                    Debug.Log("You clicked on " + @"""" + gameObject.name + @"""" + ".");
+                    //Debug.Log("You clicked on " + @"""" + gameObject.name + @"""" + ".");
                 }
-                else
-                {
-                    Debug.Log("You clicked something (1)...");
-                }
-            }
-            else
-            {
-                Debug.Log("You clicked something (2)...");
             }
         }
         else if(_touchPhase == UnityEngine.TouchPhase.Began)

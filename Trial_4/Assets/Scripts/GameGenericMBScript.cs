@@ -231,6 +231,11 @@ public class GameGenericMBScript<T> : GameMBScript, YesOrNoInterface
 
         _gameProperties.GetYesOrNoCanvas().gameObject.SetActive(false);
 
+        if(_gameProperties.GetGameIndicatorCanvas() != null)
+        {
+            _gameProperties.GetGameIndicatorCanvas().gameObject.SetActive(true);
+        }
+
         _gamePaused = false;
 
         _gameProperties.GetYesOrNoCanvas().GetYesButton().onClick.RemoveAllListeners();
@@ -245,6 +250,14 @@ public class GameGenericMBScript<T> : GameMBScript, YesOrNoInterface
         if(_gameProperties.GetGameCanvas().gameObject.activeSelf)
         {
             _gameProperties.GetGameCanvas().gameObject.SetActive(false);
+        }
+
+        if(_gameProperties.GetGameIndicatorCanvas() != null)
+        {
+            if(_gameProperties.GetGameIndicatorCanvas().gameObject.activeSelf)
+            {
+                _gameProperties.GetGameIndicatorCanvas().gameObject.SetActive(false);
+            }
         }
 
         StopGame();

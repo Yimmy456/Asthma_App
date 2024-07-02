@@ -214,40 +214,6 @@ public class CardGroupScript : GameGenericMBScript<CardScript>, YesOrNoInterface
         _gameProperties.SignalToUpdateUI();
     }
 
-    public void ClearGameFunction()
-    {
-        //base.ClearGameFunction();
-
-        if (_evalCoroutine != null)
-        {
-            StopCoroutine(_evalCoroutine);
-        }
-
-        if (_newTextC != null)
-        {
-            StopCoroutine(_newTextC);
-        }
-
-        if (_responseText != null)
-        {
-            _responseText.text = "";
-        }
-
-        _selectedWords.Clear();
-
-        _evalInProcess = false;
-
-        _selectedCategory = WordCategoryEnum.None;
-
-        _selectedCard1 = null;
-
-        _selectedCard2 = null;
-
-        _evaluateCards = EvaluateCardsEnum.None;
-
-        _gameProperties.ClearGame();
-    }
-
     public List<CardScript> GetDoneCards()
     {
         List<CardScript> _list = new List<CardScript>();
@@ -682,6 +648,8 @@ public class CardGroupScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
         _gameProperties.GetMainCanvases().SetCanvasesOn(true);
 
+        _selectedWords.Clear();
+
 
         if (_gameProperties.GetGameCanvas() != null)
         {
@@ -697,6 +665,8 @@ public class CardGroupScript : GameGenericMBScript<CardScript>, YesOrNoInterface
     protected override void WinGame()
     {
         base.WinGame();
+
+        _selectedWords.Clear();
     }
 
     void SetCardPositionAndProperty(ref GameObject _cardObjectInput, ref Vector3 _posInput)

@@ -85,6 +85,16 @@ public abstract class ActionPlanQuestionScript: IDataPersistenceScript
         return "";
     }
 
+    public virtual string GetUnits_Singular()
+    {
+        return "";
+    }
+
+    public virtual string GetUnits_Plural()
+    {
+        return "";
+    }
+
     public virtual void SetIntegerAnswer(int _input) { }
 
     public virtual void SetDecimalAnswer(float _input) { }
@@ -220,7 +230,10 @@ public abstract class ActionPlanQuestionScript<T>:ActionPlanQuestionScript
 public class ActionPlanQuestionInteger : ActionPlanQuestionScript<int>
 {
     [SerializeField]
-    string _units;
+    string _units_Singluar;
+
+    [SerializeField]
+    string _units_Plural;
 
     public ActionPlanQuestionInteger():base()
     {
@@ -249,9 +262,25 @@ public class ActionPlanQuestionInteger : ActionPlanQuestionScript<int>
         return _answer.ToString();
     }
 
+    public override string GetUnits_Singular()
+    {
+        return _units_Singluar;
+    }
+
+    public override string GetUnits_Plural()
+    {
+        return _units_Plural;
+    }
+
     public override string GetUnits()
     {
-        return _units;
+        if(_answer == 1 && _units_Singluar != "")
+        {
+            return _units_Singluar;
+        }
+
+        return _units_Plural;
+
     }
 
     protected override void IsQuestionAnswered()
@@ -263,7 +292,10 @@ public class ActionPlanQuestionInteger : ActionPlanQuestionScript<int>
 public class ActionPlanQuestionDecimal : ActionPlanQuestionScript<float>
 {
     [SerializeField]
-    string _units;
+    string _units_Singular;
+
+    [SerializeField]
+    string _units_Plural;
 
     public ActionPlanQuestionDecimal()
     {
@@ -292,9 +324,24 @@ public class ActionPlanQuestionDecimal : ActionPlanQuestionScript<float>
         return _answer.ToString("0.00");
     }
 
+    public override string GetUnits_Singular()
+    {
+        return _units_Singular;
+    }
+
+    public override string GetUnits_Plural()
+    {
+        return _units_Plural;
+    }
+
     public override string GetUnits()
     {
-        return _units;
+        if(_answer == 1.0f && _units_Singular != "")
+        {
+            return _units_Singular;
+        }
+
+        return _units_Plural;
     }
 
     protected override void IsQuestionAnswered()

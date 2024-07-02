@@ -14,12 +14,6 @@ public class TempScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _st = Path.Combine(Application.persistentDataPath, "AsthmaGame.json");
-
-        if(_text != null)
-        {
-            _text.text = "Address is: '" + _st + "'.";
-        }
         //Application.OpenURL(Application.persistentDataPath);
     }
 

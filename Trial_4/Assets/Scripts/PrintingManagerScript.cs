@@ -9,7 +9,9 @@ using System;
 using System.ComponentModel;
 using Unity.VisualScripting;
 using UnityEngine.Networking;
-//using UnityEditorInternal;
+using UnityEngine.UI;
+using I18N;
+using I18N.West;
 
 public class PrintingManagerScript : MonoBehaviour
 {
@@ -30,6 +32,15 @@ public class PrintingManagerScript : MonoBehaviour
     [SerializeField]
     List<string> _questionsToAsk;
 
+    [SerializeField]
+    int _subListLeading = 20;
+
+    [SerializeField]
+    int _questionsSpace = 2;
+
+    [SerializeField]
+    Text _addressText;
+
     BaseColor _firstRowBaseColor;
 
     BaseColor _secondRowBaseColor;
@@ -40,29 +51,21 @@ public class PrintingManagerScript : MonoBehaviour
     [SerializeField]
     UnityEngine.Font _fontVar;
 
-    //Html
+    string _fullAnswer = "";
+
 
     // Start is called before the first frame update
     void Start()
     {
         _path = Application.persistentDataPath + "/AsthmaStatusDoc.pdf";
 
-        _fontPath = Application.persistentDataPath + "/Bubble Bobble.ttf";
-
-        /*if (Application.platform == RuntimePlatform.Android)
-        {
-            _fontPath = Path.Combine("/system/fonts/", "BUBBLE BOBBLE.TTF");
-        }*/
-
-        //Debug.Log("Font is '" + _fontVar.name + "'.");
-
-        //Debug.Log("Font path is '" + _fontPath + "'.");
-
         _firstRowBaseColor = new BaseColor(_firstRowColor.r, _firstRowColor.g, _firstRowColor.b, _firstRowColor.a);
 
         _secondRowBaseColor = new BaseColor(_secondRowColor.r, _secondRowColor.g, _secondRowColor.b, _secondRowColor.a);
 
-        Debug.Log(Path.Combine(Application.streamingAssetsPath, _fontPath));
+        StartCoroutine(CopyFile("BUBBLE_BOBBLE.TTF"));
+
+        _fontPath = Path.Combine(Application.persistentDataPath, "BUBBLE_BOBBLE.TTF");
     }
 
     private void OnEnable()
@@ -119,77 +122,15 @@ public class PrintingManagerScript : MonoBehaviour
 
             var _writer = PdfWriter.GetInstance(_doc, _fileStream);
 
-            //File.Copy(_fontVar, Application.persistentDataPath)
+            string _selectedFont = _fontPath;
 
-            //var _baseFont = BaseFont.CreateFont(_fontPath, BaseFont.IDENTITY_H, true);
-
-            /*if (Application.platform == RuntimePlatform.Android) {
-
-                FontFactory.Register(_fontPath, "BUBBLE BOBBLE");
-            }*/
-            //var _baseFont = BaseFont.CreateFont(FontFactory.HELVETICA, BaseFont.CP1252, false);
-
-            //BaseFont _baseFont = BaseFont.CreateFont(_fontPath, BaseFont.IDENTITY_H, true);
-
-            //var _pagesFont = new iTextSharp.text.Font(_baseFont, 12, iTextSharp.text.Font.NORMAL);
-
-            //var _baseFont = BaseFont.CreateFont(_fontPath, BaseFont.IDENTITY_H, true);
-
-            /*FontFactory.Register(Application.dataPath + "/" + _fontVar.name + ".ttf", "Bubble Bobble");
-
-            if(Application.platform == RuntimePlatform.Android)
-            {
-                string _tempPath = Path.Combine("/system/fonts/", _fontVar.name + ".ttf");
-
-                FontFactory.Register(_tempPath, "Bubble Bobble");
-            }*/
-
-            StartCoroutine(CopyFile("BUBBLE_BOBBLE.TTF"));
-
-            //CopyFile2("BUBBLE_BOBBLE.TTF");
-
-            //var _baseFont = BaseFont.CreateFont(FontFactory.HELVETICA, BaseFont.CP1252, false);
-
-            //var _baseFont = BaseFont.CreateFont(Path.Combine(Application.persistentDataPath, "BUBBLE_BOBBLE.TTF"), BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
-
-            //var _baseFont = BaseFont.CreateFont(_fontPath, BaseFont.CP1252, BaseFont.EMBEDDED);
-
-            var _baseFont = BaseFont.CreateFont(Path.Combine(Application.persistentDataPath, "BUBBLE_BOBBLE.TTF"), BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            var _baseFont = BaseFont.CreateFont(_selectedFont, BaseFont.CP1252, BaseFont.EMBEDDED);
 
             var _normalFont = new iTextSharp.text.Font(_baseFont, 14, iTextSharp.text.Font.NORMAL);
 
             var _miniFont = new iTextSharp.text.Font(_baseFont, 11, iTextSharp.text.Font.NORMAL);
 
             var _headingFont = new iTextSharp.text.Font(_baseFont, 20, iTextSharp.text.Font.NORMAL);
-
-            //var _normalFont = FontFactory.GetFont("Bubble Bobble", BaseFont.IDENTITY_H, false, 14, iTextSharp.text.Font.NORMAL);
-
-            //var _miniFont = FontFactory.GetFont("Bubble Bobble", BaseFont.IDENTITY_H, false, 11, iTextSharp.text.Font.NORMAL);
-
-            //var _headingFont = FontFactory.GetFont("Bubble Bobble", BaseFont.IDENTITY_H, false, 20, iTextSharp.text.Font.NORMAL);
-
-            //FontFactory.Register()
-
-            /*if(Application.platform == RuntimePlatform.Android)
-            {
-                _normalFont = FontFactory.GetFont("BUBBLE BOBBLE",
-                    BaseFont.IDENTITY_H,
-                    false,
-                    14,
-                    iTextSharp.text.Font.NORMAL);
-
-                _miniFont = FontFactory.GetFont("BUBBLE BOBBLE",
-                    BaseFont.IDENTITY_H,
-                    false,
-                    11,
-                    iTextSharp.text.Font.NORMAL);
-
-                _headingFont = FontFactory.GetFont("BUBBLE BOBBLE",
-                    BaseFont.IDENTITY_H,
-                    false,
-                    20,
-                    iTextSharp.text.Font.NORMAL);
-            }*/
 
             _doc.Open();           
             
@@ -237,15 +178,9 @@ public class PrintingManagerScript : MonoBehaviour
 
             _table.SetTotalWidth(_columnWidths);
 
-            //_table.TotalWidth = 270.0f
-
-            //_table.SetTotalWidth(new float[] { 20.0f, 90.0f, 160.0f });
-
             PrintPreInformation(ref _doc, ref _table, ref _normalFont);
 
             _table.DefaultCell.Border = 2;
-
-            //_table.DefaultCell.
 
             _doc.Add(_table);
 
@@ -253,7 +188,7 @@ public class PrintingManagerScript : MonoBehaviour
 
             _par.Font = _headingFont;
 
-            _par.Add("\n\nQuestions");
+            _par.Add("\n\nQuestions\n");
 
             _doc.Add(_par);
 
@@ -261,23 +196,13 @@ public class PrintingManagerScript : MonoBehaviour
 
             _par.Font = _normalFont;
 
-            //Chunk _chunk;
-
             List _l = new List(List.ORDERED, 20.0f);
-
-            //_l.SetListSymbol("Question ");
 
             List _aList = new List(List.UNORDERED, 20.0f);
 
-            //_aList.SetListSymbol("\u2022");
-
             for(int _i = 0; _i < _questions.Count; _i++)
             {
-                //_par = new Paragraph();
-
-                //_par.Add("Question " + (_i + 1).ToString() + ". ");
-
-                _l.Add(new ListItem(40, _questions[_i].GetQuestionText(), _normalFont));
+                _l.Add(new ListItem(20, _questions[_i].GetQuestionText(), _normalFont));
 
                 if (_questions[_i].GetVariableType() == VariableTypeForAPEnum.Integer)
                 {
@@ -305,25 +230,7 @@ public class PrintingManagerScript : MonoBehaviour
                 }
 
                 _l.Add(_aList);
-
-                //if (_questions[_i].GetVariableType() == VariableTypeForAPEnum.Enum)
-
-                //_par.TabSettings = new TabSettings(200);
-
-                //_par.Add(Chunk.TABBING);
-
-                //_doc.Add(_par);
-
-                //_chunk = new Chunk("Apple");
-
-                //_doc.Add(_chunk);
             }
-
-            /*_par = new Paragraph();
-
-            _par.Add(_l);
-
-            _par.SpacingAfter = 15.0f;*/
 
             _doc.Add(_l);
 
@@ -362,6 +269,8 @@ public class PrintingManagerScript : MonoBehaviour
         _process.StartInfo.FileName = _path;
 
         _process.Start();
+
+        Debug.Log("The printing process of the action plan is complete.");
     }
 
 
@@ -369,9 +278,7 @@ public class PrintingManagerScript : MonoBehaviour
     {
         byte[] _bytes = File.ReadAllBytes(_path);
 
-        //BaseFont _baseFont = BaseFont.CreateFont(_fontPath, BaseFont.IDENTITY_H, true);
-
-        var _baseFont = BaseFont.CreateFont(Path.Combine(Application.persistentDataPath, "BUBBLE_BOBBLE.TTF"), BaseFont.CP1252, false);
+        var _baseFont = BaseFont.CreateFont(_fontPath, BaseFont.CP1252, BaseFont.EMBEDDED);
 
         var _pagesFont = new iTextSharp.text.Font(_baseFont, 12, iTextSharp.text.Font.NORMAL);
 
@@ -406,15 +313,18 @@ public class PrintingManagerScript : MonoBehaviour
 
         _listInput = new List(List.UNORDERED, 10.0f);
 
-        string _fullAnswer = _integerQ.GetIntegerAnswer().ToString();
+        _fullAnswer = _integerQ.GetIntegerAnswer().ToString();
 
         if(_integerQ.GetUnits() != "")
         {
             _fullAnswer = _fullAnswer + " " + _integerQ.GetUnits();
         }
 
-        _listInput.Add(new ListItem(_fullAnswer, _fontInput));
+        _fullAnswer = _fullAnswer + ".";
 
+        AddSpaces();
+
+        _listInput.Add(new ListItem(_subListLeading, _fullAnswer, _fontInput));
     }
 
     void PrintIfDecimal(ActionPlanQuestionScript _questionInput, ref List _listInput, ref iTextSharp.text.Font _fontInput)
@@ -428,14 +338,18 @@ public class PrintingManagerScript : MonoBehaviour
 
         _listInput = new List(List.UNORDERED, 10.0f);
 
-        string _fullAnswer = _decimalQ.GetDecimalAnswer().ToString();
+        _fullAnswer = _decimalQ.GetDecimalAnswer().ToString();
 
         if(_decimalQ.GetUnits() != "")
         {
             _fullAnswer = _fullAnswer + " " + _decimalQ.GetUnits();
         }
 
-        _listInput.Add(new ListItem(_fullAnswer, _fontInput));
+        _fullAnswer = _fullAnswer + ".";
+
+        AddSpaces();
+
+        _listInput.Add(new ListItem(_subListLeading, _fullAnswer, _fontInput));
     }
 
     void PrintIfText(ActionPlanQuestionScript _questionInput, ref List _listInput, ref iTextSharp.text.Font _fontInput)
@@ -449,7 +363,11 @@ public class PrintingManagerScript : MonoBehaviour
 
         _listInput = new List(List.UNORDERED, 10.0f);
 
-        _listInput.Add(new ListItem(_textQ.GetTextAnswer(), _fontInput));
+        _fullAnswer = _textQ.GetTextAnswer() + ".";
+
+        AddSpaces();
+
+        _listInput.Add(new ListItem(_subListLeading, _fullAnswer, _fontInput));
     }
 
     void PrintIfEnum(ActionPlanQuestionScript _questionInput, ref List _listInput, ref iTextSharp.text.Font _fontInput)
@@ -464,7 +382,11 @@ public class PrintingManagerScript : MonoBehaviour
 
             _listInput = new List(List.UNORDERED, 10.0f);
 
-            _listInput.Add(new ListItem(_iCQ.GetAnswer().ToString(), _fontInput));
+            _fullAnswer = _iCQ.GetTextAnswer().ToString() + ".";
+
+            AddSpaces();
+
+            _listInput.Add(new ListItem(_subListLeading, _fullAnswer, _fontInput));
 
             return;
         }
@@ -488,12 +410,17 @@ public class PrintingManagerScript : MonoBehaviour
 
         _listInput = new List(List.UNORDERED, 10.0f);
 
-        _listInput.Add(new ListItem(_newDate.ToString("MMMM dd, yyyy (dddd)"), _fontInput));
+        _fullAnswer = _newDate.ToString("MMMM dd, yyyy (dddd)") + ".";
+
+        AddSpaces();
+
+        _listInput.Add(new ListItem(_subListLeading, _fullAnswer, _fontInput));
     }
 
     List<ActionPlanQuestionScript> GetQuestions()
     {
         List<ActionPlanQuestionScript> _list = new List<ActionPlanQuestionScript>();
+
         for(int _i = 0; _i < ActionPlanManagerScript.GetInstance().GetQuestionList().Count; _i++)
         {
             ActionPlanQuestionScript _currentQ = ActionPlanManagerScript.GetInstance().GetQuestionList()[_i];
@@ -665,7 +592,20 @@ public class PrintingManagerScript : MonoBehaviour
 
             _tableInput.AddCell(_cell);
 
-            _cell = new PdfPCell(new Phrase(_age.ToString() + " years old", _fontInput));
+            _fullAnswer = _age.ToString();
+
+            if(_age == 1)
+            {
+                _fullAnswer = _fullAnswer + " year";
+            }
+            else
+            {
+                _fullAnswer = _fullAnswer + " years";
+            }
+
+            _fullAnswer = _fullAnswer + " old.";
+
+            _cell = new PdfPCell(new Phrase(_fullAnswer, _fontInput));
 
             _cell.BackgroundColor = _firstRowBaseColor;
 
@@ -680,8 +620,6 @@ public class PrintingManagerScript : MonoBehaviour
 
         if (_gender == GenderEnum.Unknown)
         {
-            //_paragraphInput.Add("Does not wish to specify gender.");
-
             _cell = new PdfPCell(new Phrase("Does not wish to specify gender.", _fontInput));
 
             _cell.Colspan = 3;
@@ -800,18 +738,6 @@ public class PrintingManagerScript : MonoBehaviour
 
     IEnumerator CopyFile(string _fileNameInput)
     {
-        /*string _fromPath = Application.streamingAssetsPath + "/";
-
-        string _toPath = Application.persistentDataPath + "/";
-
-        WWW _www1 = new WWW(_fromPath + _fileNameInput);
-
-        //UnityWebRequest _www1 = UnityWebRequest.Get(_fromPath + _fileNameInput);
-
-        yield return _www1;
-
-        File.WriteAllBytes((_toPath + _fileNameInput), _www1.bytes);*/
-
         string filePath = Path.Combine(Application.streamingAssetsPath, _fileNameInput);
         string savePath = Path.Combine(Application.persistentDataPath, _fileNameInput);
 
@@ -843,6 +769,14 @@ public class PrintingManagerScript : MonoBehaviour
         (Exception ex)
         {
             Debug.LogError("Copying failed.");
+        }
+    }
+
+    void AddSpaces()
+    {
+        for(int _i = 0; _i < _questionsSpace; _i++)
+        {
+            _fullAnswer = _fullAnswer + "\n";
         }
     }
 }
