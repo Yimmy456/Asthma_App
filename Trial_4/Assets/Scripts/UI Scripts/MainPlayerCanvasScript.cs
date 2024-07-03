@@ -39,7 +39,7 @@ public class MainPlayerCanvasScript : MonoBehaviour
     //[Range(0.0f, 360.0f)]
 
     [SerializeField]
-    UIButtonCircleClass _buttonCircleProperties;
+    CircleClass _buttonCircleProperties;
 
     Coroutine _coroutine;
 
@@ -573,6 +573,8 @@ public class MainPlayerCanvasScript : MonoBehaviour
 
         int _j;
 
+        int _divValue = ToolsStruct.GetCircleDivision(_buttonCircleProperties.GetSpreadingDegrees(), _menuButtonList.Count);
+
         for(int _i = 0; _i < _menuButtonList.Count; _i++)
         {
             if(_reverseShowAnimation)
@@ -586,9 +588,9 @@ public class MainPlayerCanvasScript : MonoBehaviour
                 _j = _i;
             }
 
-            if (_menuButtonList.Count > 1)
+            if (_divValue >= 1)
             {
-                _currentAngle = (_j * _buttonCircleProperties.GetSpreadingDegrees()) / (_menuButtonList.Count - 1);
+                _currentAngle = (_j * _buttonCircleProperties.GetSpreadingDegrees()) / _divValue;
 
                 _currentAngle = _currentAngle + _buttonCircleProperties.GetAdditionalDegrees();
             }
@@ -622,6 +624,8 @@ public class MainPlayerCanvasScript : MonoBehaviour
 
         int _j;
 
+        int _divValue = ToolsStruct.GetCircleDivision(_buttonCircleProperties.GetSpreadingDegrees(), _menuButtonList.Count);
+
         for(int _i = 0; _i < _menuButtonList.Count; _i++)
         {
             if (_reverseHideAnimation)
@@ -635,9 +639,9 @@ public class MainPlayerCanvasScript : MonoBehaviour
                 _j = _i;
             }
 
-            if (_menuButtonList.Count > 1)
+            if (_divValue >= 1)
             {
-                _currentAngle = (_j * _buttonCircleProperties.GetSpreadingDegrees()) / (_menuButtonList.Count - 1);
+                _currentAngle = (_j * _buttonCircleProperties.GetSpreadingDegrees()) / _divValue;
 
                 _currentAngle = _currentAngle + _buttonCircleProperties.GetAdditionalDegrees();
             }

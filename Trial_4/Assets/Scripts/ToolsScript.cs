@@ -124,4 +124,14 @@ public struct ToolsStruct
 
         return true;
     }
+
+    public static int GetCircleDivision(float _wholeCircleInput, int _countInput)
+    {
+        if(_wholeCircleInput < 360.0f)
+        {
+            return (_countInput - 1);
+        }
+
+        return _countInput;
+    }
 }

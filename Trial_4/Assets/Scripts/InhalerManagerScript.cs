@@ -217,4 +217,9 @@ public class InhalerInformationClass
     {
         return _objectIncludedInMatchingGame;
     }
+
+    public void SetExhibition()
+    {
+
+    }
 }

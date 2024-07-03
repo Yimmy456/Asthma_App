@@ -1321,7 +1321,7 @@ public class CurrentBlocksAndHolesForLetterClass : CurrentBlocksAndHolesClass<Le
 }
 
 [System.Serializable]
-public class UIButtonCircleClass
+public class CircleClass
 {
     [SerializeField]
     float _spreadingDegrees = 180.0f;

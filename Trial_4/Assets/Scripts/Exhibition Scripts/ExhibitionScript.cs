@@ -5,9 +5,6 @@ using UnityEngine;
 public class ExhibitionScript : MonoBehaviour
 {
     [SerializeField]
-    float _radius = 10.0f;
-
-    [SerializeField]
     Transform _parent;
 
     [SerializeField]
@@ -16,14 +13,31 @@ public class ExhibitionScript : MonoBehaviour
     [SerializeField]
     Camera _camera;
 
+    [SerializeField]
+    List<ExhibitionGroupClass> _exhibitionGroups;
+
+    [SerializeField]
+    CircleClass _circleProperties;
+
+    [SerializeField]
+    float _objectHeight = 5.0f;
+
+    [SerializeField]
+    ExhibitionCanvasScript _canvas;
+
+    //[SerializeField]
+    ExhibitionGroupClass _currentGroup;
+
     bool _exhibitionOn = false;
 
-    List<GameObject> _exhibitionObjects;
+    List<ExhibitionObjectScript> _exhibitions = new List<ExhibitionObjectScript>();
+
+    List<GameObject> _exhibitionsGO = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
-        _exhibitionObjects = new List<GameObject>();
+        //_exhibitionObjects = new List<GameObject>();
 
         _objectsComplete = new MeterClass();
     }
@@ -32,16 +46,6 @@ public class ExhibitionScript : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public float GetRadius()
-    {
-        return _radius;
-    }
-
-    public void SetRadius(float _input)
-    {
-        _radius = _input;
     }
 
     public MeterClass GetObjectComplete()
@@ -59,45 +63,126 @@ public class ExhibitionScript : MonoBehaviour
         return _camera;
     }
 
-    public void StartExhibition(List<GameObject> _input)
+    public void StartExhibition(int _input)
     {
-        if(_parent == null || _exhibitionOn || _camera == null)
+        if(!(_input >= 0 && _input < _exhibitionGroups.Count))
         {
             return;
         }
 
-        Vector3 _pos = Vector3.zero;
+        string _name = _exhibitionGroups[_input].GetGroupName();
 
-        float _angle = 0;
+        StartExhibition(_name);
+    }
 
-        int _count = _input.Count;
+    public void StartExhibition(string _input)
+    {
+        if(_exhibitionOn || _parent == null)
+        {
+            return;
+        }
 
-        _objectsComplete.SetMaxValue(_count);
+        _currentGroup = GetGroupByName(_input);
 
-        _objectsComplete.SetValue(0);
+        if(_currentGroup == null)
+        {
+            return;
+        }
+
+        int _divValue = ToolsStruct.GetCircleDivision(_circleProperties.GetSpreadingDegrees(), _currentGroup.GetExhibitionGroupListItems().Count);
+
+        int _count = _currentGroup.GetExhibitionGroupListItems().Count;
+
+        float _angle = 0.0f;
+
+        Vector3 _v3 = Vector3.zero;
+
+        ExhibitionObjectScript _currentExh;
 
         GameObject _go;
 
+        ExhibitionListItemClass _currentItemList;
+
+        BoxCollider _collider;
+
+        float _rotAngle;
+
         for(int _i = 0; _i < _count; _i++)
         {
-            _angle = (_i * 360.0f) / _count;
+            _angle = (_i * _circleProperties.GetSpreadingDegrees()) / _divValue;
 
-            _angle = _angle * Mathf.Deg2Rad;
+            _angle = _angle + _circleProperties.GetAdditionalDegrees();
 
-            _go = Instantiate(_input[_i]);
+            _rotAngle = 90.0f - _angle;
 
-            _exhibitionObjects.Add(_go);
+            if(_circleProperties.GetIsCounterClockwise())
+            {
+                _angle = -_angle;
+            }
+
+            _v3.x = Mathf.Cos(_angle * Mathf.Deg2Rad) * _circleProperties.GetRadius();
+
+            _v3.z = Mathf.Sin(_angle * Mathf.Deg2Rad) * _circleProperties.GetRadius();
+
+            if(_circleProperties.GetSwitchAxes())
+            {
+                float _pos = _v3.x;
+
+                _v3.x = _v3.z;
+
+                _v3.z = _pos;
+            }
+
+            _v3.y = _objectHeight;
+
+            _currentItemList = _currentGroup.GetExhibitionGroupListItems()[_i];
+
+            _go = Instantiate(_currentItemList.GetListItemGameObject());
 
             _go.transform.parent = _parent;
 
-            _pos.x = Mathf.Cos(_angle) * _radius;
+            _go.transform.localPosition = _v3;
 
-            _pos.z = Mathf.Sin(_angle) * _radius;
+            _go.transform.localEulerAngles = new Vector3(0.0f, _rotAngle, 0.0f);
 
-            _go.transform.localPosition = _pos;
+            _go.transform.localScale = (Vector3.one * _currentItemList.GetLocalScaleConstant());
+
+            _collider = _go.AddComponent<BoxCollider>();
+
+            _collider.center = _currentItemList.GetBoxColliderPosition();
+
+            _collider.size = _currentItemList.GetBoxColliderSize();
+
+            _exhibitionsGO.Add(_go);
+
+            _currentExh = _go.AddComponent<ExhibitionObjectScript>();
+
+            _currentExh.SetObjectNumber(_i + 1);
+
+            _currentExh.SetObjectName(_currentItemList.GetListItemName());
+
+            _currentExh.SetObjectDescription(_currentItemList.GetListItemDescription());
+
+            _currentExh.SetObjectColor(_currentItemList.GetListItemColor());
+
+            _currentExh.SetObject(_go);
+
+            _currentExh.SetCamera(_camera);
+
+            _currentExh.SetObjectCollider(_collider);
+
+            _currentExh.SetObjectPosition(_v3);
+
+            _currentExh.SetObjectRotation(_rotAngle);
+
+            _currentExh.SetExhibitionCanvas(_canvas);
+
+            _exhibitions.Add(_currentExh);
         }
 
         _exhibitionOn = true;
+
+        _currentGroup.SetExhibitionInPlay(true);
     }
 
     public void EndExhibition()
@@ -107,17 +192,139 @@ public class ExhibitionScript : MonoBehaviour
             return;
         }
 
-        foreach(GameObject _go in _exhibitionObjects)
+        _currentGroup.SetExhibitionInPlay(false);
+
+        foreach(GameObject _go in _exhibitionsGO)
         {
             Destroy(_go);
         }
 
-        _exhibitionObjects.Clear();
+        _exhibitionsGO.Clear();
+
+        _exhibitions.Clear();
+
+        _currentGroup = null;
 
         _exhibitionOn = false;
     }
-    
+
+    ExhibitionGroupClass GetGroupByName(string _nameInput)
+    {
+        ExhibitionGroupClass _g;
+
+        for(int _i = 0; _i < _exhibitionGroups.Count; _i++)
+        {
+            _g = _exhibitionGroups[_i];
+
+            bool _found = string.Compare(_g.GetGroupName(), _nameInput, true) == 0;
+
+            if (_found)
+            {
+                return _g;
+            }
+        }
+
+        return null;
+    }
+}
 
 
-    public List<GameObject> GetExhibitionObjects() { return _exhibitionObjects; }
+[System.Serializable]
+public class ExhibitionGroupClass
+{
+    [SerializeField]
+    string _groupName;
+
+    [SerializeField]
+    List<ExhibitionListItemClass> _exhibitionGroupListItems;
+
+    [SerializeField]
+    MeterClass _groupCompletionMeter;
+
+    bool _exhibitionInPlay = false;
+
+    public string GetGroupName()
+    {
+        return _groupName;
+    }
+
+    public List<ExhibitionListItemClass> GetExhibitionGroupListItems()
+    {
+        return _exhibitionGroupListItems;
+    }
+
+    public bool GetExhibitionInPlay()
+    {
+        return _exhibitionInPlay;
+    }
+
+    public MeterClass GetGroupCompletionMeter()
+    {
+        return _groupCompletionMeter;
+    }
+
+    public void SetExhibitionInPlay(bool _input)
+    {
+        _exhibitionInPlay = _input;
+    }
+}
+
+[System.Serializable]
+public class ExhibitionListItemClass
+{
+    [SerializeField]
+    GameObject _listItemGameObject;
+
+    [SerializeField]
+    string _listItemName;
+
+    [SerializeField]
+    string _listItemDescription;
+
+    [SerializeField]
+    Color _listItemColor;
+
+    [SerializeField]
+    float _localScaleContant = 10.0f;
+
+    [SerializeField]
+    Vector3 _boxColliderPosition;
+
+    [SerializeField]
+    Vector3 _boxColliderSize;
+
+    public GameObject GetListItemGameObject()
+    {
+        return _listItemGameObject;
+    }
+
+    public string GetListItemName()
+    {
+        return _listItemName;
+    }
+
+    public string GetListItemDescription()
+    {
+        return _listItemDescription;
+    }
+
+    public Color GetListItemColor()
+    {
+        return _listItemColor;
+    }
+
+    public float GetLocalScaleConstant()
+    {
+        return _localScaleContant;
+    }
+
+    public Vector3 GetBoxColliderPosition()
+    {
+        return _boxColliderPosition;
+    }
+
+    public Vector3 GetBoxColliderSize()
+    {
+        return _boxColliderSize;
+    }
 }

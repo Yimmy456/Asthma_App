@@ -101,3 +101,11 @@ public enum APEnumTypeEnum
     Gender,
     Inhaler_Color,
 }
+
+public enum ProcessStatusEnum
+{
+    Idle,
+    InProgress,
+    Complete,
+    Cancelled,
+}

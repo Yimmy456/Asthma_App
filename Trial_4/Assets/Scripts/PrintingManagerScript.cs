@@ -12,12 +12,15 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using I18N;
 using I18N.West;
+using System.Diagnostics;
 
 public class PrintingManagerScript : MonoBehaviour
 {
     string _path = "";
 
     string _fontPath = "";
+
+    string _genderImagePath = "";
 
     [SerializeField]
     Color _firstRowColor;
@@ -51,8 +54,18 @@ public class PrintingManagerScript : MonoBehaviour
     [SerializeField]
     UnityEngine.Font _fontVar;
 
+    [SerializeField]
+    Text _statusText;
+
+    [SerializeField]
+    Canvas _targetCanvas;
+
+    [SerializeField]
+    ProcessStatusEnum _printingProcessStatus;
+
     string _fullAnswer = "";
 
+    Coroutine _statusTextCoroutine;
 
     // Start is called before the first frame update
     void Start()
@@ -84,7 +97,7 @@ public class PrintingManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        CheckCanvasStatus();
     }
 
     public List<string> GetQuestionsToAsk()
@@ -92,11 +105,39 @@ public class PrintingManagerScript : MonoBehaviour
         return _questionsToAsk;
     }
 
-    public void GenerateFile()
+    public void TryGeneratingFile()
     {
+        if(_printingProcessStatus != ProcessStatusEnum.Idle)
+        {
+            return;
+        }
 
+        //_statusTextCoroutine = StartCoroutine(DisplayPrintingStatus());
+
+        try
+        {
+            _printingProcessStatus = ProcessStatusEnum.InProgress;
+
+            _statusTextCoroutine = StartCoroutine(DisplayPrintingStatus());
+
+            GenerateFile();
+
+            _printingProcessStatus = ProcessStatusEnum.Complete;
+        }
+        catch (Exception ex)
+        {
+            _printingProcessStatus = ProcessStatusEnum.Cancelled;
+
+            //return;
+        }
+    }
+
+    void GenerateFile()
+    {
         if(ActionPlanManagerScript.GetInstance() == null)
         {
+            _printingProcessStatus = ProcessStatusEnum.Cancelled;
+
             return;
         }
 
@@ -104,10 +145,16 @@ public class PrintingManagerScript : MonoBehaviour
 
         if(!_allQuestionsAnswered)
         {
-            Debug.LogError("Some answers have not been answered yet. You need to answer all of the questions before you can print.");
+            UnityEngine.Debug.LogError("Some answers have not been answered yet. You need to answer all of the questions before you can print.");
+
+            _printingProcessStatus = ProcessStatusEnum.Cancelled;
             
             return;
         }
+
+        //_printingProcessStatus = ProcessStatusEnum.InProgress;
+
+        //_statusTextCoroutine = StartCoroutine(DisplayPrintingStatus());
 
         List<ActionPlanQuestionScript> _questions = GetQuestions();
 
@@ -138,7 +185,7 @@ public class PrintingManagerScript : MonoBehaviour
 
             _par.Font = _miniFont;
 
-            _par.Add("This document was printed on " + @"""" + DateTime.Now.ToString("MMMM d, yyyy (dddd), h:mm tt") + @"""" + ",\n\n");
+            _par.Add("This document was printed on " + @"""" + DateTime.Now.ToString("MMMM dd, yyyy (dddd), h:mm tt") + @"""" + ",\n\n");
 
             var _timeDifference = DateTime.Now - DateTime.UtcNow;
 
@@ -146,7 +193,7 @@ public class PrintingManagerScript : MonoBehaviour
 
             string _timeDifferenceSt = _signChar + Math.Abs(_timeDifference.Hours).ToString() + ":" + _timeDifference.Minutes.ToString("00");
 
-            _par.Add("The timezone of printing this document was " + @"""" + "UTC" + _timeDifferenceSt + @"""" + ".\n\n\n");
+            _par.Add("The timezone of printing this document was " + @"""" + "UTC " + _timeDifferenceSt + @"""" + ".\n\n\n");
 
             _doc.Add(_par);
 
@@ -166,7 +213,9 @@ public class PrintingManagerScript : MonoBehaviour
 
             _doc.Add(_par);
 
-            PdfPTable _table = new PdfPTable(3);
+            int _columnsCount = _columnWidths.Length;
+
+            PdfPTable _table = new PdfPTable(_columnsCount);
 
             _table.DefaultCell.Border = 2;
 
@@ -180,7 +229,7 @@ public class PrintingManagerScript : MonoBehaviour
 
             PrintPreInformation(ref _doc, ref _table, ref _normalFont);
 
-            _table.DefaultCell.Border = 2;
+            _table.DefaultCell.Border = 0;
 
             _doc.Add(_table);
 
@@ -241,7 +290,7 @@ public class PrintingManagerScript : MonoBehaviour
             AddPageNumber();
         }
 
-        PrintFile();
+        PrintFile();        
     }
 
     void PrintFile()
@@ -253,24 +302,31 @@ public class PrintingManagerScript : MonoBehaviour
 
         if(File.Exists(_path))
         {
-            Debug.Log("File is found. We will start printing.");
+            UnityEngine.Debug.Log("File is found. We will start printing.");
         }
         else
         {
-            Debug.LogError("File is not found.");
+            UnityEngine.Debug.LogError("File is not found.");
+
+            _printingProcessStatus = ProcessStatusEnum.Cancelled;
+
             return;
         }
 
-        System.Diagnostics.Process _process = new System.Diagnostics.Process();
+        Process _process = new Process();
 
         _process.StartInfo.CreateNoWindow = true;
-        _process.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal;
+        _process.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
         _process.StartInfo.UseShellExecute = true;
         _process.StartInfo.FileName = _path;
 
         _process.Start();
 
-        Debug.Log("The printing process of the action plan is complete.");
+        _printingProcessStatus = ProcessStatusEnum.Complete;
+
+        //_statusTextCoroutine = StartCoroutine(DisplayPrintingStatus2(_process));
+
+        //Debug.Log("The printing process of the action plan is complete.");
     }
 
 
@@ -510,6 +566,8 @@ public class PrintingManagerScript : MonoBehaviour
 
             _cell.BackgroundColor = _firstRowBaseColor;
 
+            //ColorCellBorder(ref _cell, _firstRowBaseColor);
+
             _tableInput.AddCell(_cell);
 
             _cell = new PdfPCell(new Phrase("User's name:", _fontInput));
@@ -518,6 +576,8 @@ public class PrintingManagerScript : MonoBehaviour
 
             _cell.BackgroundColor = _firstRowBaseColor;
 
+            //ColorCellBorder(ref _cell, _firstRowBaseColor);
+
             _tableInput.AddCell(_cell);
 
             _cell = new PdfPCell(new Phrase(_nameText, _fontInput));
@@ -525,6 +585,8 @@ public class PrintingManagerScript : MonoBehaviour
             _cell.VerticalAlignment = Element.ALIGN_MIDDLE;
 
             _cell.BackgroundColor = _firstRowBaseColor;
+
+            _cell.Colspan = 2;
 
             _tableInput.AddCell(_cell);
         }
@@ -565,6 +627,8 @@ public class PrintingManagerScript : MonoBehaviour
         _cell.VerticalAlignment = Element.ALIGN_MIDDLE;
 
         _cell.BackgroundColor = _secondRowBaseColor;
+
+        _cell.Colspan = 2;
 
         _tableInput.AddCell(_cell);
 
@@ -611,6 +675,8 @@ public class PrintingManagerScript : MonoBehaviour
 
             _cell.VerticalAlignment = Element.ALIGN_MIDDLE;
 
+            _cell.Colspan = 2;
+
             _tableInput.AddCell(_cell);
         }
 
@@ -622,7 +688,7 @@ public class PrintingManagerScript : MonoBehaviour
         {
             _cell = new PdfPCell(new Phrase("Does not wish to specify gender.", _fontInput));
 
-            _cell.Colspan = 3;
+            _cell.Colspan = _columnWidths.Length;
 
             _cell.HorizontalAlignment = 0;
 
@@ -661,6 +727,47 @@ public class PrintingManagerScript : MonoBehaviour
             _cell.VerticalAlignment = Element.ALIGN_MIDDLE;
 
             _cell.BackgroundColor = _secondRowBaseColor;
+
+            _tableInput.AddCell(_cell);
+
+            if(_gender == GenderEnum.Male)
+            {
+                StartCoroutine(CopyFile("Male Symbol.png"));
+
+                _genderImagePath = Path.Combine(Application.persistentDataPath, "Male Symbol.png");
+            }
+            else if(_gender == GenderEnum.Female)
+            {
+                StartCoroutine(CopyFile("Female Symbol.png"));
+
+                _genderImagePath = Path.Combine(Application.persistentDataPath, "Female Symbol.png");
+            }
+
+            iTextSharp.text.Image _img = iTextSharp.text.Image.GetInstance(_genderImagePath);
+
+            iTextSharp.text.Image _img2 = iTextSharp.text.Image.GetInstance(_genderImagePath);
+
+            _img2.ScaleAbsoluteWidth(_img.Width / 15.0f);
+
+            _img2.ScaleAbsoluteHeight(_img.Height / 15.0f);
+
+            //_img2.Height = _img.Height / 10.0f;
+
+            //_cell = new PdfPCell(new Phrase("Test", _fontInput));
+
+            //Vector2 _imgDim = new Vector2(_img.Width, _img.Height);
+
+            //_img.ScalePercent(10.0f);
+
+            _cell = new PdfPCell(_img2);
+
+            //_img.ScalePercent(50.0f);
+
+            _cell.BackgroundColor = _secondRowBaseColor;
+
+            _cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+
+            _cell.HorizontalAlignment = Element.ALIGN_CENTER;
 
             _tableInput.AddCell(_cell);
         }
@@ -751,32 +858,153 @@ public class PrintingManagerScript : MonoBehaviour
         uwr.Dispose();
     }
 
-    void CopyFile2(string _fileNameInput)
-    {
-        string _fromPath = Application.streamingAssetsPath + "/" + _fileNameInput;
-
-        Debug.Log("'From' path is " + @"""" + _fromPath + @"""" + ".");
-
-        string _toPath = Application.persistentDataPath + "/" + _fileNameInput;
-
-        Debug.Log("'To' path is " + @"""" + _toPath + @"""" + ".");
-
-        try
-        {
-            File.Copy(_fromPath, _toPath, true);
-        }
-        catch
-        (Exception ex)
-        {
-            Debug.LogError("Copying failed.");
-        }
-    }
-
     void AddSpaces()
     {
         for(int _i = 0; _i < _questionsSpace; _i++)
         {
             _fullAnswer = _fullAnswer + "\n";
         }
+    }
+
+    IEnumerator DisplayPrintingStatus()
+    {
+        if(_statusText == null)
+        {
+            //_printingProcessStatus = ProcessStatusEnum.Cancelled;
+
+            yield break;
+        }
+
+        string[] _str = { "Printing PDF", "Printing PDF.", "Printing PDF..", "Printing PDF..." };
+
+        int _index = 0;
+
+        _statusText.color = Color.white;
+
+        _statusText.gameObject.GetComponent<Outline>().effectColor = new Color(0.5f, 0.5f, 0.5f, 0.5f);
+
+        while(_printingProcessStatus == ProcessStatusEnum.InProgress)
+        {
+            _statusText.text = _str[_index];
+
+            yield return new WaitForSeconds(0.25f);
+
+            _index++;
+
+            if(_index >= _str.Length)
+            {
+                _index = 0;
+            }
+        }
+
+        if (_printingProcessStatus == ProcessStatusEnum.Complete)
+        {
+            _statusText.color = Color.green;
+
+            _statusText.gameObject.GetComponent<Outline>().effectColor = new Color(0.0f, 0.5f, 0.0f, 0.5f);
+
+            _statusText.text = "Printing Complete.";
+
+            yield return new WaitForSeconds(3.0f);
+        }
+        else if(_printingProcessStatus == ProcessStatusEnum.Cancelled || _printingProcessStatus == ProcessStatusEnum.Idle)
+        {
+            _statusText.color = Color.red;
+
+            _statusText.gameObject.GetComponent<Outline>().effectColor = new Color(0.5f, 0.0f, 0.0f, 0.5f);
+
+            _statusText.text = "An error has occured. The printing process cannot be complete.";
+
+            yield return new WaitForSeconds(6.0f);
+        }
+
+        _printingProcessStatus = ProcessStatusEnum.Idle;
+
+        _statusText.text = "";
+    }
+
+    IEnumerator DisplayPrintingStatus2(Process _input)
+    {
+        if(_input == null || _statusText == null)
+        {
+            yield break;
+        }
+
+        string[] _str = { "Printing PDF", "Printing PDF.", "Printing PDF..", "Printing PDF..." };
+
+        int _index = 0;
+
+        _statusText.color = Color.white;
+
+        _statusText.gameObject.GetComponent<Outline>().effectColor = new Color(0.5f, 0.5f, 0.5f, 0.5f);
+
+        while(!_input.HasExited)
+        {
+            _statusText.text = _str[_index];
+
+            yield return new WaitForSeconds(0.25f);
+
+            _index++;
+
+            if(_index >= _str.Length)
+            {
+                _index = 0;
+            }
+        }
+
+        _statusText.color = Color.green;
+
+        _statusText.gameObject.GetComponent<Outline>().effectColor = new Color(0.0f, 0.5f, 0.0f, 0.5f);
+
+        _statusText.text = "Printing Complete.";
+
+        yield return new WaitForSeconds(3.0f);
+
+        _statusText.text = "";
+    }
+
+    void CheckCanvasStatus()
+    {
+        if(_targetCanvas == null)
+        {
+            return;
+        }
+
+        if(!_targetCanvas.gameObject.activeSelf && _statusTextCoroutine != null)
+        {
+            StopCoroutine(_statusTextCoroutine);
+
+            //_printingInProcess = false;
+
+            _printingProcessStatus = ProcessStatusEnum.Idle;
+
+            _statusText.text = "";
+        }
+    }
+
+    void ColorCellBorder(ref PdfPCell _cellInput, BaseColor _colorInput, float _borderSizeInput = 1.0f)
+    {
+        if(_borderSizeInput == 0.0f || _cellInput == null)
+        {
+            return;
+        }
+
+        BaseColor _newColor = new BaseColor((_colorInput.R / 2.0f), (_colorInput.G / 2.0f), (_colorInput.B / 2.0f), _colorInput.A);
+
+        _cellInput.BorderColorBottom = _newColor;
+
+        _cellInput.BorderColorTop = _newColor;
+
+        _cellInput.BorderColorLeft = _newColor;
+
+        _cellInput.BorderColorRight = _newColor;
+
+        _cellInput.BorderWidthBottom = _borderSizeInput;
+
+        _cellInput.BorderWidthLeft = _borderSizeInput;
+
+        _cellInput.BorderWidthRight = _borderSizeInput;
+
+        _cellInput.BorderWidthTop = _borderSizeInput;
     }
 }

@@ -601,6 +601,7 @@ MonoBehaviour:
   - rid: 1913970819966697475
   - rid: 1913970819966697476
   - rid: 1913970819966697477
+  - rid: 4968103785432350984
   _canvas: {fileID: 0}
   _languages:
   - _language: 0
@@ -647,6 +648,15 @@ MonoBehaviour:
         _settingID: 58f9a25c-c703-472c-977d-f16acdb8258c
         _saveAfterConfirming: 1
         _value: 0
+    - rid: 4968103785432350984
+      type: {class: DecimalSettingsClass, ns: , asm: Assembly-CSharp}
+      data:
+        _settingName: Exhibition Raycast Distance
+        _settingID: e1e1d482-d8a8-412f-b5c0-257e72411ae1
+        _saveAfterConfirming: 1
+        _value: 1000
+        _minimumValue: 100
+        _maximumValue: 100000
 --- !u!4 &134242260
 Transform:
   m_ObjectHideFlags: 0
