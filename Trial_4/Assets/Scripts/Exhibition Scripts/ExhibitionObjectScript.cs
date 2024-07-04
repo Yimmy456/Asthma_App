@@ -148,6 +148,13 @@ public class ExhibitionObjectScript : MonoBehaviour
 
     void PrepareExhibition()
     {
+        if(_objectCollider == null || _camera == null)
+        {
+            Debug.LogError("We cannot make a raycast for " + @"""" + _objectName + @"""" + ".");
+
+            return;
+        }
+
         float _raycastDistance = 100.0f;
 
         string _raycastSettingName = "Exhibition Raycast Distance";
@@ -164,21 +171,31 @@ public class ExhibitionObjectScript : MonoBehaviour
 
         //Vector2 _midPoint = new Vector2(Screen.width / 2, Screen.height / 2);
 
-        Ray _ray = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.0f));
+        Ray _ray = _camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0.0f));
 
-        if(Physics.Raycast(_ray, out _hit))
+        if(Physics.Raycast(_ray, out  _hit, _raycastDistance))
         {
             if(_hit.collider == _objectCollider)
             {
                 if(_exhibitionCanvas.GetCurrentObject() == null)
                 {
                     _exhibitionCanvas.SetCurrentObject(this);
+
+                    Debug.Log("The camera hit " + @"""" + _objectName + @"""" + ".");
                 }
+            }
+            else if(_exhibitionCanvas.GetCurrentObject() == this && _hit.collider != _objectCollider)
+            {
+                _exhibitionCanvas.SetCurrentObject(null);
+
+                Debug.Log("The camera is not hitting anything now.");
             }
         }
         else if(_exhibitionCanvas.GetCurrentObject() == this)
         {
             _exhibitionCanvas.SetCurrentObject(null);
+
+            Debug.Log("The camera is not hitting anything now.");
         }
     }
 }

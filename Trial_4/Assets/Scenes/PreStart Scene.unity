@@ -654,9 +654,9 @@ MonoBehaviour:
         _settingName: Exhibition Raycast Distance
         _settingID: e1e1d482-d8a8-412f-b5c0-257e72411ae1
         _saveAfterConfirming: 1
-        _value: 1000
-        _minimumValue: 100
-        _maximumValue: 100000
+        _value: 50
+        _minimumValue: 10
+        _maximumValue: 100
 --- !u!4 &134242260
 Transform:
   m_ObjectHideFlags: 0
@@ -3771,7 +3771,7 @@ MonoBehaviour:
     _object: {fileID: 7795114222376234084, guid: dd596e05b8b1d57498cc79d52d969db1, type: 3}
     _matchingGameObject: {fileID: 6346176784116105242, guid: 891dabd826fccc043a8ee91678456837, type: 3}
     _matchingGameHole: {fileID: 3590374774483419534, guid: 55fc979955600eb4c8120a84735c34bd, type: 3}
-    _objectColor: {r: 1, g: 0.5019608, b: 0, a: 1}
+    _objectColor: {r: 1, g: 1, b: 1, a: 1}
     _objectDesc: 
     _objectIncludedInMatchingGame: 1
   - _objectName: Reliever Inhaler
@@ -3785,7 +3785,7 @@ MonoBehaviour:
     _object: {fileID: 134907928583110029, guid: 9cda32f608d9a1748811798032632f27, type: 3}
     _matchingGameObject: {fileID: 8173101078571741731, guid: 857b8cb551eae7b4f9c24396f768d804, type: 3}
     _matchingGameHole: {fileID: 8478333606759067134, guid: 49ba93ab6b3a78048a56af8982d4646c, type: 3}
-    _objectColor: {r: 0.46226418, g: 0.1759623, b: 0, a: 1}
+    _objectColor: {r: 0.5019608, g: 0.2509804, b: 0, a: 1}
     _objectDesc: 
     _objectIncludedInMatchingGame: 1
   - _objectName: Hybrid Inhaler
