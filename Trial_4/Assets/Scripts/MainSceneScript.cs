@@ -172,6 +172,21 @@ public class MainSceneScript : MonoBehaviour, YesOrNoInterface
         _yesOrNoCanvas.gameObject.SetActive(false);
     }
 
+    public void ActivateCorrectButton()
+    {
+        if(_playerCanvas == null)
+        {
+            return;
+        }
+
+        if(_playerCanvas.GetComponent<MainPlayerCanvasScript>() == null)
+        {
+            return;
+        }
+
+        _playerCanvas.GetComponent<MainPlayerCanvasScript>().ShowCorrectButton();
+    }
+
     public void PrepareToLeave()
     {
         if(_playerCanvas == null || _indicatorCanvas == null || _yesOrNoCanvas == null || _exitButton == null || _placeIndicator == null || _dialogueCanvas == null)

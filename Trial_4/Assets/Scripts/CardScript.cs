@@ -23,7 +23,7 @@ public class CardScript : MonoBehaviour
     protected string _cardDescription;
 
     [SerializeField]
-    CardGroupScript _group;
+    CardGameScript _group;
 
     PlayerController _controller;
 
@@ -89,7 +89,7 @@ public class CardScript : MonoBehaviour
         return _isInfoCard;
     }
 
-    public CardGroupScript GetGroup()
+    public CardGameScript GetGroup()
     {
         return _group;
     }
@@ -139,7 +139,7 @@ public class CardScript : MonoBehaviour
         _cardName = _input;
     }
 
-    public void SetGroup(CardGroupScript _input)
+    public void SetGroup(CardGameScript _input)
     {
         _group = _input;
     }

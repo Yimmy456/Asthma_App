@@ -1,390 +1,161 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MCQCanvasScript : GameGenericMBScript<QuestionClass>
+public class MCQCanvasScript : GameCanvasScript
 {
-    [Header("2. Properties of this Particular Game.")]
     [SerializeField]
-    Text _questionNumberText;
+    Button[] _answerButtons = new Button[4];
 
     [SerializeField]
-    Text _questionText;
-
-    [SerializeField]
-    List<Button> _buttons;
+    Canvas _gameCanvas;
 
     [SerializeField]
     Button _nextButton;
 
     [SerializeField]
-    QuestionClass _currentQuestion;
+    Text _questionTextNumberField;
 
     [SerializeField]
-    int _numberOfQuestions = 5;
+    Text _questionTextField;
 
     [SerializeField]
-    int _currentQuestionIndex = -1;
+    MCQGameScript _game;
 
-    Coroutine _coroutine;
+    Coroutine _responseTextCoroutine;
+
+    //[SerializeField]
+    Button _correctButton;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        _gameProperties.UpdateUI();
-    }
-
-    void OnEnable()
-    {
-
-    }
-
-    public Text GetQuestionNumberText()
-    {
-        return _questionNumberText;
-    }
-
-    public Text GetQuestionText()
-    {
-        return _questionText;
-    }
-
-    public List<Button> GetButtons()
-    {
-        return _buttons;
-    }
-
-    public Button GetNextButton()
-    {
-        return _nextButton;
-    }
-
-    public QuestionClass GetCurrentQuestion()
-    {
-        return _currentQuestion;
+        
     }
 
     public void SetQuestionNumber(int _input)
     {
-        if(_questionNumberText == null)
+        if(_questionTextNumberField == null)
         {
             return;
         }
 
-        _questionNumberText.text = "Question " + _input.ToString();
+        _questionTextNumberField.text = "Question " + _input.ToString();
     }
 
-    public void SetQuestionText(string _input)
+    public void SetQuestion(QuestionClass _input)
     {
-        if(_questionText == null)
+        if(_questionTextField == null)
         {
             return;
         }
 
-        _questionText.text = _input;
+        _questionTextField.text = _input.GetQuestionText();
     }
 
-    void CorrectAnswer()
+    public void PrepareQuestion(QuestionClass _input)
     {
-        if(_nextButton != null)
+        for(int _i = 0; _i < 4; _i++)
         {
-            _nextButton.gameObject.SetActive(true);
+            _answerButtons[_i].onClick.RemoveAllListeners();
         }
 
-        if(_coroutine != null)
-        {
-            StopCoroutine(_coroutine);
-
-            _gameProperties.ClearResponseText();
-        }
-
-        _gameProperties.SetResponseText("That is correct! Well Done! Press 'Next' to continue.", Color.green, new Color(0.0f, 0.5f, 0.0f, 0.5f), new Vector2(1.0f, -1.0f));
-
-        //_gameProperties.AddObjectToList(_currentQuestion);
-
-        _currentQuestion.SetAnsweredCorrectly(true);
+        _correctButton = null;
 
         for(int _i = 0; _i < 4; _i++)
         {
-            if (_buttons[_i] != null)
-            {
-                SetButtonTextAlpha(_buttons[_i], 0.5f);
+            _answerButtons[_i].interactable = true;
 
-                _buttons[_i].interactable = false;
+            _answerButtons[_i].gameObject.GetComponent<RectTransform>().Find("Text").gameObject.GetComponent<Text>().text = _input.GetAnswers()[_i];
+
+            if(_input.GetCorrectAnswerIndex() == _i)
+            {
+                _correctButton = _answerButtons[_i];
             }
         }
 
-        _gameProperties.GetMeter().AddToValue(1);
-
-        _gameProperties.SignalToUpdateUI();
-
-        if(_nextButton != null)
+        for(int _i = 0; _i < 4; _i++)
         {
-            if(_gameProperties.GetMeter().GetPercentage() == 100.0f && !_gameDone)
+            if(_correctButton == _answerButtons[_i])
             {
-                _nextButton.onClick.AddListener(delegate { WinGame(); });
+                _answerButtons[_i].onClick.AddListener(delegate { CorrectAnswer(); });
             }
             else
             {
-                _nextButton.onClick.AddListener(delegate { PrepareQuestion(); });
+                _answerButtons[_i].onClick.AddListener(delegate { IncorrectAnswer(); });
             }
-
-            _nextButton.onClick.AddListener(delegate { _nextButton.onClick.RemoveAllListeners(); });
         }
     }
 
     void IncorrectAnswer()
     {
-        if(_coroutine != null)
+        if(_game == null)
         {
-            StopCoroutine(_coroutine);
-
-            _gameProperties.ClearResponseText();
+            return;
         }
 
-        _gameProperties.SetResponseText("That is not quite correct. Please, try again. I know you can do it!", Color.red, new Color(0.5f, 0.0f, 0.0f, 0.5f), new Vector2(1.0f, -1.0f));
+        if(_game.GetGameProperties().GetResponseText() == null)
+        {
+            return;
+        }
 
-        _coroutine = StartCoroutine(ClearResponseTextFunction());
+        if(_responseTextCoroutine != null)
+        {
+            StopCoroutine(_responseTextCoroutine);
+
+            _game.GetGameProperties().GetResponseText().text = "";
+        }
+
+        _responseTextCoroutine = StartCoroutine(DisplayResponse("This is not the correct answer. Please, try again. I know you can do it!", 5.0f, new Color(0.5f, 0.5f, 0.5f, 1.0f), new Color(0.25f, 0.25f, 0.25f, 0.5f)));
+
     }
 
-    void PrepareQuestion()
+    void CorrectAnswer()
     {
+        if(_game == null)
+        {
+            return;
+        }
+
+        if(_game.GetGameProperties().GetResponseText() == null)
+        {
+            return;
+        }
+
+        if(_responseTextCoroutine != null)
+        {
+            StopCoroutine(_responseTextCoroutine);
+
+            _game.GetGameProperties().GetResponseText().text = "";
+        }
+
         for(int _i = 0; _i < 4; _i++)
         {
-            _buttons[_i].onClick.RemoveAllListeners();
+            _answerButtons[_i].interactable = false;
         }
 
-        _currentQuestionIndex++;
+        _nextButton.interactable = true;
 
-        if(_currentQuestionIndex >= MCQManagerScript.GetInstance().GetSelectedQuestions().Count)
-        {
-            if(_nextButton != null)
-            {
-                _nextButton.onClick.RemoveAllListeners();
-            }
-
-            return;
-        }
-
-        QuestionClass _crq = MCQManagerScript.GetInstance().GetSelectedQuestions()[_currentQuestionIndex];
-
-        _currentQuestion = _crq;
-
-        SetQuestionNumber(_currentQuestionIndex + 1);
-
-        SetQuestionText(_crq.GetQuestionText());
-
-        _gameProperties.ClearResponseText();
-
-        for(int _i = 0; _i < 4; _i++)
-        {
-            if (_buttons[_i] == null)
-            {
-                continue;
-            }
-
-            Text _t = _buttons[_i].GetComponent<RectTransform>().Find("Text (Legacy)").gameObject.GetComponent<Text>();
-
-            _t.text = _crq.GetAnswers()[_i];
-
-            _buttons[_i].gameObject.SetActive(true);
-
-            _buttons[_i].interactable = true;
-
-            SetButtonTextAlpha(_buttons[_i], 1.0f);
-
-            if(_i == _crq.GetCorrectAnswerIndex())
-            {
-                _buttons[_i].onClick.AddListener(CorrectAnswer);
-            }
-            else
-            {
-                _buttons[_i].onClick.AddListener(IncorrectAnswer);
-            }
-        }
-
-        if (_nextButton != null)
-        {
-            _nextButton.onClick.RemoveAllListeners();
-
-            _nextButton.gameObject.SetActive(false);
-        }
+        _nextButton.gameObject.SetActive(true);
     }
 
-    void SetButtonTextAlpha(Button _buttonInput, float _alphaInput)
+    IEnumerator DisplayResponse(string _textInput, float _timeInput, Color _textColorInput, Color _outlineColorInput)
     {
-        if(_buttonInput == null || !(_alphaInput >= 0.0f && _alphaInput <= 1.0f))
-        {
-            return;
-        }
+        _game.GetGameProperties().GetResponseText().text = _textInput;
 
-        Text _text = _buttonInput.gameObject.GetComponent<RectTransform>().GetComponentInChildren<Text>();
+        _game.GetGameProperties().GetResponseText().color = _textColorInput;
 
-        if(_text == null)
-        {
-            return;
-        }
+        _game.GetGameProperties().GetResponseText().gameObject.GetComponent<Outline>().effectColor = _outlineColorInput;
 
-        Color _c  =_text.color;
+        yield return new WaitForSeconds(_timeInput);
 
-        _c.a = _alphaInput;
-
-        _text.color = _c;
-    }
-
-    IEnumerator ClearResponseTextFunction()
-    {
-        yield return new WaitForSeconds(5.0f);
-
-        _gameProperties.ClearResponseText();
-    }
-
-    public void SetActionsOfYesButton()
-    {
-        if(_gameProperties.GetYesOrNoCanvas() == null)
-        {
-            return;
-        }
-
-        Button _bYes = _gameProperties.GetYesOrNoCanvas().GetYesButton();
-
-        _bYes.onClick.AddListener(_gameProperties.ReturnToPlayerCanvas);
-
-        _bYes.onClick.AddListener(_gameProperties.ActionsOfYesButton);
-    }
-
-    public void SetActionsOfNoButton()
-    {
-        if(_gameProperties.GetYesOrNoCanvas() == null)
-        {
-            return;
-        }
-
-        Button _bNo = _gameProperties.GetYesOrNoCanvas().GetNoButton();
-
-        _bNo.onClick.AddListener(delegate { if (_coroutine != null) { StopCoroutine(_coroutine); _gameProperties.ClearResponseText(); } });
-
-        _bNo.onClick.AddListener(_gameProperties.ActionsOfNoButton);
-    }
-
-    public override void StartGame()
-    {
-        if(MCQManagerScript.GetInstance() == null || GetGameInSession())
-        {
-            return;
-        }
-
-        base.StartGame();
-
-        _currentGame = this;
-
-        int _counter1 = 0;
-
-        int _counter2 = 0;
-
-        int _selectedIndex = -1;
-
-        while(_counter1 < _numberOfQuestions)
-        {
-            _selectedIndex = Random.Range(0, (MCQManagerScript.GetInstance().GetQuestions().Count));
-
-            QuestionClass _currentQ = MCQManagerScript.GetInstance().GetQuestions()[_selectedIndex];
-
-            while(_counter2 < _counter1 && _counter2 != -1)
-            {
-                string _currentID = _gameProperties.GetListOfObjects()[_counter2].GetQuestionID();
-
-                if(string.Compare(_currentQ.GetQuestionID(), _currentID, false) == 0)
-                {
-                    _counter2 = -1;
-
-                    continue;
-                }
-
-                _counter2++;
-            }
-
-            if(_counter2 == -1)
-            {
-                _counter2 = 0;
-
-                continue;
-            }
-
-            _gameProperties.AddObjectToList(_currentQ);
-
-            _counter2 = 0;
-
-            _counter1++;
-        }
-
-        ShuffleFunction();
-
-        MCQManagerScript.GetInstance().SetSelectedQuestions(_gameProperties.GetListOfObjects());
-
-        _gameProperties.GetMeter().SetMaxValue(_numberOfQuestions);
-
-        PrepareQuestion();
-    }
-
-    protected override void ShuffleFunction()
-    {
-        List<QuestionClass> _tempList = _gameProperties.GetListOfObjects();
-
-        List<QuestionClass> _newList = new List<QuestionClass>();
-
-        QuestionClass _currentQ2;
-
-        int _selectedIndex2 = -1;
-
-        while(_tempList.Count > 0)
-        {
-            _selectedIndex2 = Random.Range(0, _tempList.Count);
-
-            _currentQ2 = _tempList[_selectedIndex2];
-
-            _currentQ2.RandomizeAnswerPositions();
-
-            _newList.Add(_currentQ2);
-
-            _tempList.RemoveAt(_selectedIndex2);
-        }
-
-        _gameProperties.SetListOfObjects(_newList);
-    }
-
-    protected override void WinGame()
-    {
-        //_gameProperties.ClearObjectLists();
-
-        MCQManagerScript.GetInstance().GetSelectedQuestions().Clear();
-
-        base.WinGame();
-    }
-
-    public override void QuitGame()
-    {
-        //_gameProperties.ClearObjectLists();
-
-        //MCQManagerScript.GetInstance().GetSelectedQuestions().Clear();
-
-        base.QuitGame();
-    }
-
-    public override void StopGame()
-    {
-        base.StopGame();
-
-        _currentQuestion = null;
-
-        _currentQuestionIndex = -1;
+        _game.GetGameProperties().GetResponseText().text = "";
     }
 }

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CollectionUICanvasScript : MonoBehaviour
+public class CollectionUICanvasScript : CanvasScript
 {
 
-    [Header("1. Variables of any Collection UI Canvas.")]
+    [Header("2. Variables of any Collection UI Canvas.")]
     [SerializeField]
     protected Canvas _selectedItemCanvas;
 

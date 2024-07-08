@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ActionPlanDropdownListScript : MonoBehaviour
+public class ActionPlanDropdownListScript : CanvasScript
 {
     [SerializeField]
     Dropdown _dropdownList;

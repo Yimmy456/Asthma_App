@@ -36,6 +36,9 @@ public class MainPlayerCanvasScript : MonoBehaviour
     [SerializeField]
     bool _reverseHideAnimation;
 
+    [SerializeField]
+    Button _introductionButton;
+
     //[Range(0.0f, 360.0f)]
 
     [SerializeField]
@@ -94,6 +97,11 @@ public class MainPlayerCanvasScript : MonoBehaviour
     public List<Coroutine> GetAnimationCoroutines()
     {
         return _animationCoroutines;
+    }
+
+    public Button GetIntroductionButton()
+    {
+        return _introductionButton;
     }
 
     IEnumerator ShowButtons()
@@ -710,6 +718,39 @@ public class MainPlayerCanvasScript : MonoBehaviour
         _animationCoroutines.Clear();
 
         //_showMenuButtons = false;
+    }
+
+    public void ShowCorrectButton()
+    {
+        if(_menuButton == null || _introductionButton == null)
+        {
+            return;
+        }
+
+        if(DataPersistenceManager.GetInstance() == null)
+        {
+            _menuButton.gameObject.SetActive(true);
+
+            return;
+        }
+
+        if(DataPersistenceManager.GetInstance().GetGameData() == null)
+        {
+            _menuButton.gameObject.SetActive(true);
+
+            return;
+        }
+
+        bool _introComplete = DataPersistenceManager.GetInstance().GetGameData().GetIntroductionComplete();
+
+        if(_introComplete)
+        {
+            _menuButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            _introductionButton.gameObject.SetActive(true);
+        }
     }
 
 }
