@@ -316,7 +316,7 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
             string _textToDisplay = "Nice! You found an info card! Fun Fact:\n\n" + _infoText;
 
-            SetResponseText(_textToDisplay, new Color(0.0f, 1.0f, 0.0f), new Color(0.0f, 0.5f, 0.0f), 10.0f, _finalCard);
+            SetResponseText(_textToDisplay, new Color(0.0f, 1.0f, 0.0f), 10.0f, _finalCard);
 
             if(_finalCard)
             {
@@ -335,7 +335,7 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
             if (_gameProperties.GetMeter().GetPercentage() < 100.0f)
             {
-                SetResponseText("Great! That's a match!", new Color(0.0f, 1.0f, 0.0f), new Color(0.0f, 0.5f, 0.0f));
+                SetResponseText("Great! That's a match!", new Color(0.0f, 1.0f, 0.0f));
             }
         }
         else if(_evaluateCards == EvaluateCardsEnum.MatchCards)
@@ -344,7 +344,7 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
             _selectedCard2.SetCardFlipped(false);
 
-            SetResponseText("That's not quite a match. Please, try again. I'm sure you can do it.", new Color(0.5f, 0.5f, 0.5f), new Color(0.25f, 0.25f, 0.25f));
+            SetResponseText("That's not quite a match. Please, try again. I'm sure you can do it.", new Color(0.5f, 0.5f, 0.5f));
         }
 
         _selectedCard1 = null;
@@ -537,7 +537,7 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
         SetCardMaterial(_c2, _wordInput.GetSprite());
     }
 
-    void SetResponseText(string _textInput, Color _colorInput, Color _outlineColorInput, float _secondsToDisplayInput = 5.0f, bool _endGameInput = false)
+    void SetResponseText(string _textInput, Color _colorInput, float _secondsToDisplayInput = 5.0f, bool _endGameInput = false)
     {
         if (_gameProperties.GetResponseText() == null)
         {
@@ -551,16 +551,16 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
             _gameProperties.GetResponseText().text = "";
         }
 
-        _newTextC = StartCoroutine(SetResponseTextC(_textInput, _colorInput, _outlineColorInput, _secondsToDisplayInput, _endGameInput));
+        _newTextC = StartCoroutine(SetResponseTextC(_textInput, _colorInput, _secondsToDisplayInput, _endGameInput));
     }
 
-    IEnumerator SetResponseTextC(string _textInput, Color _colorInput, Color _outlineColorInput, float _secondsToDisplayInput = 5.0f, bool _endGameInput = false)
+    IEnumerator SetResponseTextC(string _textInput, Color _colorInput, float _secondsToDisplayInput = 5.0f, bool _endGameInput = false)
     {
         _gameProperties.GetResponseText().text = _textInput;
 
         _gameProperties.GetResponseText().color = _colorInput;
 
-        _gameProperties.GetResponseText().gameObject.GetComponent<Outline>().effectColor = _outlineColorInput;
+        _gameProperties.GetResponseText().gameObject.GetComponent<Outline>().effectColor = ToolsStruct.ChangeColorValue(_colorInput, 0.5f, 0.5f);
 
         yield return new WaitForSeconds(_secondsToDisplayInput);
 

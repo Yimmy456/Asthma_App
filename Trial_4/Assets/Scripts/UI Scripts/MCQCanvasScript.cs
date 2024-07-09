@@ -69,6 +69,8 @@ public class MCQCanvasScript : GameCanvasScript
 
         _correctButton = null;
 
+        StopDisplayResponseCoroutine();
+
         for(int _i = 0; _i < 4; _i++)
         {
             _answerButtons[_i].interactable = true;
@@ -92,6 +94,8 @@ public class MCQCanvasScript : GameCanvasScript
                 _answerButtons[_i].onClick.AddListener(delegate { IncorrectAnswer(); });
             }
         }
+
+        _nextButton.gameObject.SetActive(false);
     }
 
     void IncorrectAnswer()
@@ -106,14 +110,9 @@ public class MCQCanvasScript : GameCanvasScript
             return;
         }
 
-        if(_responseTextCoroutine != null)
-        {
-            StopCoroutine(_responseTextCoroutine);
+        StopDisplayResponseCoroutine();
 
-            _game.GetGameProperties().GetResponseText().text = "";
-        }
-
-        _responseTextCoroutine = StartCoroutine(DisplayResponse("This is not the correct answer. Please, try again. I know you can do it!", 5.0f, new Color(0.5f, 0.5f, 0.5f, 1.0f), new Color(0.25f, 0.25f, 0.25f, 0.5f)));
+        _responseTextCoroutine = StartCoroutine(DisplayResponse("This is not the correct answer. Please, try again. I know you can do it!", 5.0f, new Color(0.5f, 0.5f, 0.5f, 1.0f)));
 
     }
 
@@ -129,33 +128,68 @@ public class MCQCanvasScript : GameCanvasScript
             return;
         }
 
-        if(_responseTextCoroutine != null)
-        {
-            StopCoroutine(_responseTextCoroutine);
-
-            _game.GetGameProperties().GetResponseText().text = "";
-        }
+        StopDisplayResponseCoroutine();
 
         for(int _i = 0; _i < 4; _i++)
         {
             _answerButtons[_i].interactable = false;
         }
 
+        _responseTextCoroutine = StartCoroutine(DisplayResponse("That's correct! Well done! Press on " + @"""" + "Next" + @"""" + " to continue.", 5.0f, new Color(0.0f, 1.0f, 0.0f, 1.0f)));
+
         _nextButton.interactable = true;
+
+        _game.GetGameProperties().GetMeter().AddToValue(1);
+
+        _game.GetGameProperties().SignalToUpdateUI();
 
         _nextButton.gameObject.SetActive(true);
     }
 
-    IEnumerator DisplayResponse(string _textInput, float _timeInput, Color _textColorInput, Color _outlineColorInput)
+    IEnumerator DisplayResponse(string _textInput, float _timeInput, Color _textColorInput)
     {
         _game.GetGameProperties().GetResponseText().text = _textInput;
 
         _game.GetGameProperties().GetResponseText().color = _textColorInput;
 
-        _game.GetGameProperties().GetResponseText().gameObject.GetComponent<Outline>().effectColor = _outlineColorInput;
+        _game.GetGameProperties().GetResponseText().gameObject.GetComponent<Outline>().effectColor = ToolsStruct.ChangeColorValue(_textColorInput, 0.5f, 0.5f);
 
         yield return new WaitForSeconds(_timeInput);
 
         _game.GetGameProperties().GetResponseText().text = "";
+    }
+
+    public void StopDisplayResponseCoroutine()
+    {
+        if(_responseTextCoroutine == null)
+        {
+            return;
+        }
+
+        StopCoroutine(_responseTextCoroutine);
+
+        if(_game == null)
+        {
+            return;
+        }
+
+        if(_game.GetGameProperties().GetResponseText() == null)
+        {
+            return;
+        }
+
+        _game.GetGameProperties().GetResponseText().text = "";
+    }
+
+    Text GetButtonText(int _input)
+    {
+        if (!(_input >= 0 && _input < _answerButtons.Length))
+        {
+            return null;
+        }
+
+        Text _tx = _answerButtons[_input].gameObject.GetComponent<RectTransform>().Find("Text").gameObject.GetComponent<Text>();
+
+        return _tx;
     }
 }

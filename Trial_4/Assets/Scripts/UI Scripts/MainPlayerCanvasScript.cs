@@ -741,16 +741,16 @@ public class MainPlayerCanvasScript : MonoBehaviour
             return;
         }
 
-        bool _introComplete = DataPersistenceManager.GetInstance().GetGameData().GetIntroductionComplete();
+        //bool _introComplete = DataPersistenceManager.GetInstance().GetGameData().GetIntroductionComplete();
 
-        if(_introComplete)
-        {
+        //if(_introComplete)
+        //{
             _menuButton.gameObject.SetActive(true);
-        }
-        else
-        {
-            _introductionButton.gameObject.SetActive(true);
-        }
+        //}
+        //else
+       // {
+          //  _introductionButton.gameObject.SetActive(true);
+        //}
     }
 
 }

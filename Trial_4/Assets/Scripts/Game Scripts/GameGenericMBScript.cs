@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -196,6 +197,8 @@ public class GameGenericMBScript<T> : GameMBScript, YesOrNoInterface
                 _gameProperties.GetMeter().SetMaxValue(1);
 
                 _gameProperties.GetMainCanvases().SetCanvasesOn(true);
+
+                _gameDone = false;
 
                 _gameProperties.GetNewBadgeCanvas().gameObject.SetActive(false);
 

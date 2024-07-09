@@ -23,8 +23,8 @@ public class MeterClass
     [SerializeField]
     Gradient _textGradient;
 
-    [SerializeField]
-    Gradient _textBorderGradient;
+    //[SerializeField]
+    //Gradient _textBorderGradient;
 
     public MeterClass()
     {
@@ -93,11 +93,6 @@ public class MeterClass
         return _textGradient;
     }
 
-    public Gradient GetTextBorderGradient()
-    {
-        return _textBorderGradient;
-    }
-
     public void SetValue(int _input)
     {
         _value = _input;
@@ -164,7 +159,7 @@ public class MeterClass
             return;
         }
 
-        _c = _textBorderGradient.Evaluate(_ratio);
+        _c = ToolsStruct.ChangeColorValue(_c, 0.5f, 0.5f);
 
         _input.GetComponent<Outline>().effectColor = _c;
     }

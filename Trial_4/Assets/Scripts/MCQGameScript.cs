@@ -32,6 +32,11 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
     void Update()
     {
         _gameProperties.UpdateUI();
+
+        if(_gameDone)
+        {
+            WinGame();
+        }
     }
 
     void OnEnable()
@@ -320,6 +325,8 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
 
         MCQManagerScript.GetInstance().GetSelectedQuestions().Clear();
 
+        _currentQuestionIndex = -1;
+
         base.WinGame();
     }
 
@@ -330,6 +337,20 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
         //MCQManagerScript.GetInstance().GetSelectedQuestions().Clear();
 
         base.QuitGame();
+
+        //ISetActionsOfYesButtonToQuit
+
+        //_currentQuestionIndex = -1;
+
+        //MCQManagerScript.GetInstance().GetSelectedQuestions().Clear();
+
+        //if(_gameProperties.GetYesOrNoCanvas() != null)
+        //{
+        //    if(_gameProperties.GetYesOrNoCanvas().GetYesButton() != null)
+        //    {
+
+        //    }
+        //}
     }
 
     public override void StopGame()
@@ -399,5 +420,47 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
         _gameProperties.GetMeter().SetMaxValue(_gameProperties.GetListOfObjects().Count);
 
         _gameProperties.GetMeter().SetValue(0);
+
+        _gameProperties.SignalToUpdateUI();
+
+        PrepareQuestion();
+    }
+
+    public void PrepareQuestion()
+    {
+        if(_mcqCanvas == null || MCQManagerScript.GetInstance() == null)
+        {
+            return;
+        }
+
+        _currentQuestionIndex++;
+
+        if(_currentQuestionIndex >= _numberOfQuestions)
+        {
+            _gameDone = true;
+
+            //_currentQuestionIndex = -1;
+
+            return;
+        }
+
+        _currentQuestion = MCQManagerScript.GetInstance().GetSelectedQuestions()[_currentQuestionIndex];
+
+        _mcqCanvas.SetQuestion(_currentQuestion);
+
+        _mcqCanvas.SetQuestionNumber(_currentQuestionIndex + 1);
+
+        _mcqCanvas.PrepareQuestion(_currentQuestion);
+    }
+
+    public override void ISetActionsOfYesButtonToQuit()
+    {
+        _currentQuestionIndex = -1;
+
+        MCQManagerScript.GetInstance().GetSelectedQuestions().Clear();
+
+        Debug.Log("We will quit the MCQ game.");
+
+        base.ISetActionsOfYesButtonToQuit();
     }
 }

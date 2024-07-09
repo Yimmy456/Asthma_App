@@ -134,4 +134,30 @@ public struct ToolsStruct
 
         return _countInput;
     }
+
+    public static Color ChangeColorValue(Color _colorInput, float _valueInput = 0.5f, float _alphaInput = 1.0f, bool _multiplyValueInput = true)
+    {
+        //Color _colorOutput = _colorInput;
+
+        //float _h, _s, _v;
+
+        Color.RGBToHSV(_colorInput, out float _h, out float _s, out float _v);
+
+        if (_multiplyValueInput)
+        {
+            _v = _v * _valueInput;
+        }
+        else
+        {
+            _v = _valueInput;
+        }
+
+        Color _colorOutput = Color.HSVToRGB(_h, _s, _v);
+
+        _colorOutput.a = _alphaInput;
+
+        //_colorOutput = Color.HS
+
+        return _colorOutput;
+    }
 }

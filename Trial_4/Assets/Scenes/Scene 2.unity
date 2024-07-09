@@ -1925,7 +1925,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 478425671}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -2121,35 +2121,6 @@ MonoBehaviour:
         key0: {r: 1, g: 0, b: 0, a: 1}
         key1: {r: 1, g: 1, b: 0, a: 1}
         key2: {r: 0, g: 1, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 32768
-        ctime2: 65535
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 3
-        m_NumAlphaKeys: 2
-      _textBorderGradient:
-        serializedVersion: 2
-        key0: {r: 0.5019608, g: 0, b: 0, a: 0.5019608}
-        key1: {r: 0.49019608, g: 0.49019608, b: 0, a: 0.5019608}
-        key2: {r: 0, g: 0.5019608, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -8686,35 +8657,6 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 3
         m_NumAlphaKeys: 2
-      _textBorderGradient:
-        serializedVersion: 2
-        key0: {r: 0.5019608, g: 0, b: 0, a: 0.5019608}
-        key1: {r: 0.49019608, g: 0.49019608, b: 0, a: 0.5019608}
-        key2: {r: 0, g: 0.5019608, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 32768
-        ctime2: 65535
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 3
-        m_NumAlphaKeys: 2
     _mainCanvases:
       _mainPlayerCanvas: {fileID: 392666910}
       _indicatorCanvas: {fileID: 444502315}
@@ -9008,35 +8950,6 @@ MonoBehaviour:
   _parent: {fileID: 1560775356}
   _objectsComplete:
     _textGradient:
-      serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
-      ctime1: 65535
-      ctime2: 0
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
-      atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
-    _textBorderGradient:
       serializedVersion: 2
       key0: {r: 1, g: 1, b: 1, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
@@ -16692,7 +16605,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &444502311
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17816,7 +17729,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &478425668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17891,6 +17804,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1927950021}
+  - {fileID: 2125610521}
   - {fileID: 2147135493}
   - {fileID: 85477776}
   - {fileID: 581369019}
@@ -17954,35 +17868,6 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 3
         m_NumAlphaKeys: 2
-      _textBorderGradient:
-        serializedVersion: 2
-        key0: {r: 0.5019608, g: 0, b: 0, a: 0.5019608}
-        key1: {r: 0.49019608, g: 0.49019608, b: 0, a: 0.5019608}
-        key2: {r: 0, g: 0.5019608, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 32768
-        ctime2: 65535
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 3
-        m_NumAlphaKeys: 2
     _mainCanvases:
       _mainPlayerCanvas: {fileID: 392666910}
       _indicatorCanvas: {fileID: 444502315}
@@ -17992,8 +17877,8 @@ MonoBehaviour:
     _gameMenuCanvas: {fileID: 956544989}
     _yesOrNoCanvas: {fileID: 363037053}
     _camera: {fileID: 0}
-    _countText: {fileID: 263773281}
-    _percentageText: {fileID: 572793021}
+    _countText: {fileID: 22073920}
+    _percentageText: {fileID: 373758417}
     _listOfObjects: []
     _listOfObjectsAsGO: []
     _responseText: {fileID: 968653058}
@@ -18045,7 +17930,7 @@ MonoBehaviour:
   _nextButton: {fileID: 1299312919}
   _questionTextNumberField: {fileID: 1128344694}
   _questionTextField: {fileID: 1706946168}
-  _game: {fileID: 0}
+  _game: {fileID: 858896033}
 --- !u!1 &478492789
 GameObject:
   m_ObjectHideFlags: 0
@@ -21173,7 +21058,7 @@ RectTransform:
   - {fileID: 954954290}
   - {fileID: 278077831}
   m_Father: {fileID: 478425671}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -21359,8 +21244,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 478425672}
-        m_TargetAssemblyTypeName: MCQCanvasScript, Assembly-CSharp
+      - m_Target: {fileID: 858896033}
+        m_TargetAssemblyTypeName: MCQGameScript, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
@@ -21383,10 +21268,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1605485441}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 392666912}
+        m_TargetAssemblyTypeName: MainPlayerCanvasScript, Assembly-CSharp
+        m_MethodName: HideButtonsImmediately2
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -22078,7 +21963,7 @@ RectTransform:
   - {fileID: 2037728806}
   - {fileID: 341386693}
   m_Father: {fileID: 478425671}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -23028,7 +22913,7 @@ RectTransform:
   m_Children:
   - {fileID: 1760383502}
   m_Father: {fileID: 478425671}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -26963,17 +26848,17 @@ MonoBehaviour:
     _meter:
       _textGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
+        key0: {r: 1, g: 0, b: 0, a: 1}
+        key1: {r: 1, g: 1, b: 0, a: 1}
+        key2: {r: 0, g: 1, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
-        ctime1: 65535
-        ctime2: 0
+        ctime1: 32768
+        ctime2: 65535
         ctime3: 0
         ctime4: 0
         ctime5: 0
@@ -26988,36 +26873,7 @@ MonoBehaviour:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
-      _textBorderGradient:
-        serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
+        m_NumColorKeys: 3
         m_NumAlphaKeys: 2
     _mainCanvases:
       _mainPlayerCanvas: {fileID: 392666910}
@@ -27028,8 +26884,8 @@ MonoBehaviour:
     _gameMenuCanvas: {fileID: 956544989}
     _yesOrNoCanvas: {fileID: 363037053}
     _camera: {fileID: 0}
-    _countText: {fileID: 263773281}
-    _percentageText: {fileID: 572793021}
+    _countText: {fileID: 22073920}
+    _percentageText: {fileID: 373758417}
     _listOfObjects: []
     _listOfObjectsAsGO: []
     _responseText: {fileID: 968653058}
@@ -29093,7 +28949,7 @@ RectTransform:
   m_Children:
   - {fileID: 1323305561}
   m_Father: {fileID: 478425671}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -29671,7 +29527,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 478425671}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -33284,35 +33140,6 @@ MonoBehaviour:
         key0: {r: 1, g: 0, b: 0, a: 1}
         key1: {r: 1, g: 1, b: 0, a: 1}
         key2: {r: 0, g: 1, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 32768
-        ctime2: 65535
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 3
-        m_NumAlphaKeys: 2
-      _textBorderGradient:
-        serializedVersion: 2
-        key0: {r: 0.5019608, g: 0, b: 0, a: 0.5019608}
-        key1: {r: 0.49019608, g: 0.49019608, b: 0, a: 0.5019608}
-        key2: {r: 0, g: 0.5019608, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -37058,7 +36885,7 @@ RectTransform:
   - {fileID: 2108555286}
   - {fileID: 1044302592}
   m_Father: {fileID: 478425671}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -38668,7 +38495,7 @@ RectTransform:
   m_Children:
   - {fileID: 1641855613}
   m_Father: {fileID: 478425671}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -38719,8 +38546,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478425672}
-        m_TargetAssemblyTypeName: MCQCanvasScript, Assembly-CSharp
+      - m_Target: {fileID: 858896033}
+        m_TargetAssemblyTypeName: MCQGameScript, Assembly-CSharp
         m_MethodName: PrepareQuestion
         m_Mode: 1
         m_Arguments:
@@ -39188,7 +39015,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1313643283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41370,68 +41197,10 @@ MonoBehaviour:
       m_Mode: 0
       m_NumColorKeys: 3
       m_NumAlphaKeys: 2
-    _textBorderGradient:
-      serializedVersion: 2
-      key0: {r: 0.5019608, g: 0, b: 0, a: 0.5019608}
-      key1: {r: 0.49019608, g: 0.49019608, b: 0, a: 0.5019608}
-      key2: {r: 0, g: 0.5019608, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
-      ctime1: 32768
-      ctime2: 65535
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
-      atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_NumColorKeys: 3
-      m_NumAlphaKeys: 2
   _phases:
   - _phaseName: 
     _phaseCompletionMeter:
       _textGradient:
-        serializedVersion: 2
-        key0: {r: 0, g: 0, b: 0, a: 0}
-        key1: {r: 0, g: 0, b: 0, a: 0}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
-      _textBorderGradient:
         serializedVersion: 2
         key0: {r: 0, g: 0, b: 0, a: 0}
         key1: {r: 0, g: 0, b: 0, a: 0}
@@ -45057,35 +44826,6 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 3
         m_NumAlphaKeys: 2
-      _textBorderGradient:
-        serializedVersion: 2
-        key0: {r: 0.5019608, g: 0, b: 0, a: 0.5019608}
-        key1: {r: 0.49019608, g: 0.49019608, b: 0, a: 0.5019608}
-        key2: {r: 0, g: 0.5019608, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 32768
-        ctime2: 65535
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 3
-        m_NumAlphaKeys: 2
     _mainCanvases:
       _mainPlayerCanvas: {fileID: 0}
       _indicatorCanvas: {fileID: 0}
@@ -46784,35 +46524,6 @@ MonoBehaviour:
       m_Mode: 0
       m_NumColorKeys: 3
       m_NumAlphaKeys: 2
-    _textBorderGradient:
-      serializedVersion: 2
-      key0: {r: 0.5019608, g: 0, b: 0, a: 0.5019608}
-      key1: {r: 0.49019608, g: 0.49019608, b: 0, a: 0.5019608}
-      key2: {r: 0, g: 0.5019608, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
-      ctime1: 32768
-      ctime2: 65535
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
-      atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_NumColorKeys: 3
-      m_NumAlphaKeys: 2
   _camera: {fileID: 488612397}
   _exhibitionGroups:
   - _groupName: Inhaler Group
@@ -46861,35 +46572,6 @@ MonoBehaviour:
       _boxColliderSize: {x: 10, y: 20, z: 33}
     _groupCompletionMeter:
       _textGradient:
-        serializedVersion: 2
-        key0: {r: 0, g: 0, b: 0, a: 0}
-        key1: {r: 0, g: 0, b: 0, a: 0}
-        key2: {r: 0, g: 0, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
-      _textBorderGradient:
         serializedVersion: 2
         key0: {r: 0, g: 0, b: 0, a: 0}
         key1: {r: 0, g: 0, b: 0, a: 0}
@@ -57367,35 +57049,6 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 3
         m_NumAlphaKeys: 2
-      _textBorderGradient:
-        serializedVersion: 2
-        key0: {r: 0.5019608, g: 0, b: 0, a: 0.5019608}
-        key1: {r: 0.49019608, g: 0.49019608, b: 0, a: 0.5019608}
-        key2: {r: 0, g: 0.5019608, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 32768
-        ctime2: 65535
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 3
-        m_NumAlphaKeys: 2
     _mainCanvases:
       _mainPlayerCanvas: {fileID: 0}
       _indicatorCanvas: {fileID: 0}
@@ -60912,35 +60565,6 @@ MonoBehaviour:
         key0: {r: 1, g: 0, b: 0, a: 1}
         key1: {r: 1, g: 1, b: 0, a: 1}
         key2: {r: 0, g: 1, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 32768
-        ctime2: 65535
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 3
-        m_NumAlphaKeys: 2
-      _textBorderGradient:
-        serializedVersion: 2
-        key0: {r: 0.5019608, g: 0, b: 0, a: 0.5019608}
-        key1: {r: 0.49019608, g: 0.49019608, b: 0, a: 0.5019608}
-        key2: {r: 0, g: 0.5019608, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -71798,6 +71422,82 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2120019411}
   m_Mesh: {fileID: -7672074690561678049, guid: e4bd460765735bc47a5c0a734f2136be, type: 3}
+--- !u!1 &2125610520
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2125610521}
+  - component: {fileID: 2125610523}
+  - component: {fileID: 2125610522}
+  m_Layer: 5
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &2125610521
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125610520}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 478425671}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2125610522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125610520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.504, g: 0.504, b: 0.504, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &2125610523
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125610520}
+  m_CullTransparentMesh: 1
 --- !u!1 &2130212727
 GameObject:
   m_ObjectHideFlags: 0
@@ -71868,7 +71568,7 @@ RectTransform:
   m_Children:
   - {fileID: 1706946167}
   m_Father: {fileID: 478425671}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
