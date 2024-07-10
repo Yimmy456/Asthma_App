@@ -459,6 +459,8 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
 
         MCQManagerScript.GetInstance().GetSelectedQuestions().Clear();
 
+        _currentQuestion = null;
+
         Debug.Log("We will quit the MCQ game.");
 
         base.ISetActionsOfYesButtonToQuit();

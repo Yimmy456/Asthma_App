@@ -29,10 +29,25 @@ public class ExhibitionObjectScript : MonoBehaviour
     Vector3 _objectPosition;
 
     [SerializeField]
-    float _objectRotation;
+    float _objectYRotation;
 
     [SerializeField]
     ExhibitionCanvasScript _exhibitionCanvas;
+
+    [SerializeField]
+    float _outlineThickness = 0.1f;
+
+    [SerializeField]
+    RotationScript _rotationProperties;
+
+    [SerializeField]
+    float _talkingSeconds;
+
+    Quaternion _initalRotation;
+
+    bool _highlighted = false;
+
+    bool _rotateWhenHit;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +60,8 @@ public class ExhibitionObjectScript : MonoBehaviour
     {
         PrepareExhibition();
     }
+
+    //Getters
 
     public string GetObjectName()
     {
@@ -86,15 +103,37 @@ public class ExhibitionObjectScript : MonoBehaviour
         return _objectPosition;
     }
 
-    public float GetObjectRotation()
+    public float GetObjectYRotation()
     {
-        return _objectRotation;
+        return _objectYRotation;
     }
 
     public ExhibitionCanvasScript GetExhibitionCanvas()
     {
         return _exhibitionCanvas;
     }
+
+    public float GetOutlineThickness()
+    {
+        return _outlineThickness;
+    }
+
+    public Quaternion GetInitalRotation()
+    {
+        return _initalRotation;
+    }
+
+    public RotationScript GetRotationProperties()
+    {
+        return _rotationProperties;
+    }
+
+    public float GetTalkingSeconds()
+    {
+        return _talkingSeconds;
+    }
+
+    //Setters
 
     public void SetObjectName(string _input)
     {
@@ -136,14 +175,39 @@ public class ExhibitionObjectScript : MonoBehaviour
         _objectPosition = _input;
     }
 
-    public void SetObjectRotation(float _input)
+    public void SetObjectYRotation(float _input)
     {
-        _objectRotation = _input;
+        _objectYRotation = _input;
     }
 
     public void SetExhibitionCanvas(ExhibitionCanvasScript _input)
     {
         _exhibitionCanvas = _input;
+    }
+
+    public void SetOutlineThickness(float _input)
+    {
+        _outlineThickness = _input;
+    }
+
+    public void SetInitialRotation(Quaternion _input)
+    {
+        _initalRotation = _input;
+    }
+
+    public void SetRotateWhenHit(bool _input)
+    {
+        _rotateWhenHit = _input;
+    }
+
+    public void SetRotationProperties(RotationScript _input)
+    {
+        _rotationProperties = _input;
+    }
+
+    public void SetTalkingSeconds(float _input)
+    {
+        _talkingSeconds = _input;
     }
 
     void PrepareExhibition()
@@ -196,6 +260,57 @@ public class ExhibitionObjectScript : MonoBehaviour
             _exhibitionCanvas.SetCurrentObject(null);
 
             Debug.Log("The camera is not hitting anything now.");
+        }
+
+        if (_exhibitionCanvas.GetExhibition().GetExhibitionHighlightingMaterial() != null)
+        {
+            if (_exhibitionCanvas.GetCurrentObject() == this && !_highlighted)
+            {
+                SetObjectLayer(gameObject, 7);
+
+                _exhibitionCanvas.GetExhibition().GetExhibitionHighlightingMaterial().SetColor("_Base_Color", _objectColor);
+
+                //float _thickness = _exh
+
+                _exhibitionCanvas.GetExhibition().GetExhibitionHighlightingMaterial().SetFloat("_Outline_Thickness", _outlineThickness);
+
+                if(_rotateWhenHit && _rotationProperties != null)
+                {
+                    _rotationProperties.SetDoAction(true);
+                }
+
+                _highlighted = true;
+            }
+            else if (_exhibitionCanvas.GetCurrentObject() != this && _highlighted)
+            {
+                SetObjectLayer(gameObject, 0);
+
+                if(_rotateWhenHit && _rotationProperties != null)
+                {
+                    _rotationProperties.SetDoAction(false);
+
+                    gameObject.transform.localRotation = _initalRotation;
+                }
+
+                _highlighted = false;
+            }
+        }
+    }
+
+    void SetObjectLayer(GameObject _goInput, int _layerInput)
+    {
+        _goInput.layer = _layerInput;
+
+        foreach(Transform _t in _goInput.transform)
+        {
+            _t.gameObject.layer = _layerInput;
+
+            Transform _hasChildren = _t.GetComponentInChildren<Transform>();
+
+            if(_hasChildren != null)
+            {
+                SetObjectLayer(_t.gameObject, _layerInput);
+            }
         }
     }
 }

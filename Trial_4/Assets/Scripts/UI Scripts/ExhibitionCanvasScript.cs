@@ -29,7 +29,15 @@ public class ExhibitionCanvasScript : MonoBehaviour
     [SerializeField]
     Image _cursorImage;
 
+    [SerializeField]
+    Text _objectTitleText;
+
+    [SerializeField]
+    Text _objectDescriptionText;
+
     ExhibitionObjectScript _currentObject;
+
+    Coroutine _talkingCoroutine;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +59,13 @@ public class ExhibitionCanvasScript : MonoBehaviour
         {
             _mainCanvases.GetDoctorCanvas().gameObject.SetActive(true);
         }
+
+        StopExplaining();
+    }
+
+    public ExhibitionScript GetExhibition()
+    {
+        return _exhibition;
     }
 
     public ExhibitionObjectScript GetCurrentObject()
@@ -172,5 +187,72 @@ public class ExhibitionCanvasScript : MonoBehaviour
         _c.a = 0.5f;
 
         return _c;
+    }
+
+    public void StopExplaining()
+    {
+        if(_talkingCoroutine == null)
+        {
+            return;
+        }
+
+        //if(_talkingCoroutine != null)
+        //{
+            StopCoroutine(_talkingCoroutine);
+
+            _objectTitleText.text = "";
+
+            _objectDescriptionText.text = "";
+        //}
+    }
+
+    public void StartExplaining()
+    {
+        if(_currentObject == null)
+        {
+            return;
+        }
+
+        StopExplaining();
+
+        float _time = _currentObject.GetTalkingSeconds();
+
+        int _index = _currentObject.GetObjectNumber();
+
+        string _name = _currentObject.GetObjectName();
+
+        string _description = _currentObject.GetObjectDescription();
+
+        string _fullTitle = _index.ToString() + ". " + _name;
+
+        _talkingCoroutine = StartCoroutine(TalkingCoroutine(_time, _fullTitle, _description));
+
+        Color _color = _currentObject.GetObjectColor();
+
+        ColorTitle(_color);
+    }
+
+    IEnumerator TalkingCoroutine(float _timeInput, string _titleInput, string _descriptionInput)
+    {
+        _objectTitleText.text = _titleInput;
+
+        _objectDescriptionText.text = _descriptionInput;
+
+        yield return new WaitForSeconds(_timeInput);
+
+        _objectDescriptionText.text = "";
+
+        _objectTitleText.text = "";
+    }
+
+    void ColorTitle(Color _input)
+    {
+        _objectTitleText.color = _input;
+
+        Color _outlineColor = ToolsStruct.ChangeColorValue(_input, 0.5f, 0.5f);
+
+        Outline _outline = _objectTitleText.gameObject.GetComponent<Outline>();
+
+        _outline.effectColor = _outlineColor;
     }
 }

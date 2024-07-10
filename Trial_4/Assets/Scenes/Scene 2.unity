@@ -3963,7 +3963,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 163659060}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1397013151}
+        m_TargetAssemblyTypeName: ExhibitionCanvasScript, Assembly-CSharp
+        m_MethodName: StartExplaining
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &163659060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8989,6 +9001,7 @@ MonoBehaviour:
     _defaultAngle: 90
   _objectHeight: 5
   _canvas: {fileID: 0}
+  _exhibitionHighlightingMaterial: {fileID: 0}
 --- !u!1001 &362256763
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16464,6 +16477,102 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 435727997}
   m_CullTransparentMesh: 1
+--- !u!1 &437027871
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 437027872}
+  - component: {fileID: 437027874}
+  - component: {fileID: 437027873}
+  - component: {fileID: 437027875}
+  m_Layer: 5
+  m_Name: Title Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &437027872
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437027871}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1397013150}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.3}
+  m_AnchorMax: {x: 1, y: 0.3}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &437027873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437027871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 1b26adbfa7b4c05459e641c5bcd9c78d, type: 3}
+    m_FontSize: 90
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 7
+    m_MaxSize: 90
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &437027874
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437027871}
+  m_CullTransparentMesh: 1
+--- !u!114 &437027875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437027871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &441009824
 GameObject:
   m_ObjectHideFlags: 0
@@ -17721,7 +17830,6 @@ GameObject:
   - component: {fileID: 478425670}
   - component: {fileID: 478425669}
   - component: {fileID: 478425668}
-  - component: {fileID: 478425672}
   - component: {fileID: 478425673}
   m_Layer: 5
   m_Name: Multiple Choice Questions Canvas
@@ -17822,88 +17930,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &478425672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 478425667}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6bf71dcd142ebf4e91d7d3d0d140195, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gameName: 
-  _mainContainer: {fileID: 0}
-  _gameSpace: {fileID: 0}
-  _gameProperties:
-    _meter:
-      _textGradient:
-        serializedVersion: 2
-        key0: {r: 1, g: 0, b: 0, a: 1}
-        key1: {r: 1, g: 1, b: 0, a: 1}
-        key2: {r: 0, g: 1, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 32768
-        ctime2: 65535
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 3
-        m_NumAlphaKeys: 2
-    _mainCanvases:
-      _mainPlayerCanvas: {fileID: 392666910}
-      _indicatorCanvas: {fileID: 444502315}
-      _doctorCanvas: {fileID: 716302325}
-    _gameCanvas: {fileID: 478425670}
-    _gameIndicatorCanvas: {fileID: 0}
-    _gameMenuCanvas: {fileID: 956544989}
-    _yesOrNoCanvas: {fileID: 363037053}
-    _camera: {fileID: 0}
-    _countText: {fileID: 22073920}
-    _percentageText: {fileID: 373758417}
-    _listOfObjects: []
-    _listOfObjectsAsGO: []
-    _responseText: {fileID: 968653058}
-    _newBadgeCanvas: {fileID: 1330827181}
-    _informationCanvas: {fileID: 834040356}
-    _badge:
-      _badgeName: 
-      _badgeDescription: 
-      _badgeCollected: 0
-      _badgeSprite: {fileID: 0}
-      _badgeID: 
-      _howToEarn: 
-  _indicatorColor: {r: 0, g: 0, b: 0, a: 0}
-  _mcqCanvas: {fileID: 0}
-  _currentQuestion:
-    _questionID: 
-    _questionText: 
-    _answers:
-    - 
-    - 
-    - 
-    - 
-    _correctAnswerIndex: 1
-  _numberOfQuestions: 5
-  _currentQuestionIndex: -1
 --- !u!114 &478425673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29000,8 +29026,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 478425672}
-        m_TargetAssemblyTypeName: MCQCanvasScript, Assembly-CSharp
+      - m_Target: {fileID: 858896033}
+        m_TargetAssemblyTypeName: MCQGameScript, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
@@ -32512,6 +32538,102 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!1 &1071654180
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1071654181}
+  - component: {fileID: 1071654183}
+  - component: {fileID: 1071654182}
+  - component: {fileID: 1071654184}
+  m_Layer: 5
+  m_Name: Description Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1071654181
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071654180}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1397013150}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.2}
+  m_AnchorMax: {x: 1, y: 0.2}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 200}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1071654182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071654180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 1b26adbfa7b4c05459e641c5bcd9c78d, type: 3}
+    m_FontSize: 70
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 7
+    m_MaxSize: 70
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &1071654183
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071654180}
+  m_CullTransparentMesh: 1
+--- !u!114 &1071654184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071654180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1071851394
 GameObject:
   m_ObjectHideFlags: 0
@@ -35457,7 +35579,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1164217578
 RectTransform:
   m_ObjectHideFlags: 0
@@ -42715,6 +42837,8 @@ RectTransform:
   - {fileID: 505063542}
   - {fileID: 1164217578}
   - {fileID: 163659058}
+  - {fileID: 437027872}
+  - {fileID: 1071654181}
   m_Father: {fileID: 2027623194}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -42746,6 +42870,8 @@ MonoBehaviour:
     _indicatorCanvas: {fileID: 444502315}
     _doctorCanvas: {fileID: 716302325}
   _cursorImage: {fileID: 1164217579}
+  _objectTitleText: {fileID: 437027873}
+  _objectDescriptionText: {fileID: 1071654182}
 --- !u!1 &1407718416
 GameObject:
   m_ObjectHideFlags: 0
@@ -46535,6 +46661,8 @@ MonoBehaviour:
       _localScaleContant: 3
       _boxColliderPosition: {x: 1.44, y: 8, z: 1.26}
       _boxColliderSize: {x: 7.9, y: 18, z: 13}
+      _outlineThickness: 0.02
+      _talkingSeconds: 5
     - _listItemGameObject: {fileID: 134907928583110029, guid: 9cda32f608d9a1748811798032632f27, type: 3}
       _listItemName: Preventer Inhaler
       _listItemDescription: 
@@ -46542,6 +46670,8 @@ MonoBehaviour:
       _localScaleContant: 3
       _boxColliderPosition: {x: 1.44, y: 8, z: 1.26}
       _boxColliderSize: {x: 7.9, y: 18, z: 13}
+      _outlineThickness: 0.02
+      _talkingSeconds: 5
     - _listItemGameObject: {fileID: 2169771285789508442, guid: 88de728b7d43f4747800db0c967bca33, type: 3}
       _listItemName: Hybrid Inhaler
       _listItemDescription: 
@@ -46549,6 +46679,8 @@ MonoBehaviour:
       _localScaleContant: 3
       _boxColliderPosition: {x: 1.44, y: 8, z: 1.26}
       _boxColliderSize: {x: 7.9, y: 18, z: 13}
+      _outlineThickness: 0.02
+      _talkingSeconds: 5
     - _listItemGameObject: {fileID: 1984375262102467089, guid: 9d999fae4c810794c9bf725c43b24707, type: 3}
       _listItemName: Medicine
       _listItemDescription: 
@@ -46556,6 +46688,8 @@ MonoBehaviour:
       _localScaleContant: 3
       _boxColliderPosition: {x: 1, y: 12, z: -1.21}
       _boxColliderSize: {x: 7, y: 10, z: 6.4}
+      _outlineThickness: 0.02
+      _talkingSeconds: 5
     - _listItemGameObject: {fileID: 124029742880193190, guid: 454d18a21a2477e49bca97b83ec8176c, type: 3}
       _listItemName: Spacer
       _listItemDescription: 
@@ -46563,6 +46697,8 @@ MonoBehaviour:
       _localScaleContant: 3
       _boxColliderPosition: {x: 1, y: 2, z: 15}
       _boxColliderSize: {x: 9, y: 9, z: 23.5}
+      _outlineThickness: 0.02
+      _talkingSeconds: 5
     - _listItemGameObject: {fileID: 7795114222376234084, guid: dd596e05b8b1d57498cc79d52d969db1, type: 3}
       _listItemName: Whole Inhaler
       _listItemDescription: 
@@ -46570,6 +46706,8 @@ MonoBehaviour:
       _localScaleContant: 3
       _boxColliderPosition: {x: 1.5, y: 7, z: 10.66}
       _boxColliderSize: {x: 10, y: 20, z: 33}
+      _outlineThickness: 0.02
+      _talkingSeconds: 5
     _groupCompletionMeter:
       _textGradient:
         serializedVersion: 2
@@ -46600,6 +46738,7 @@ MonoBehaviour:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
+    _rotateInRaycast: 0
   _circleProperties:
     _spreadingDegrees: 360
     _additionalDegrees: 0
@@ -46609,6 +46748,7 @@ MonoBehaviour:
     _defaultAngle: 90
   _objectHeight: 100
   _canvas: {fileID: 1397013151}
+  _exhibitionHighlightingMaterial: {fileID: 2100000, guid: c2fcf1addd310f54390b2c2af38bee40, type: 2}
 --- !u!1 &1561302720
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,6 +25,9 @@ public class ExhibitionScript : MonoBehaviour
     [SerializeField]
     ExhibitionCanvasScript _canvas;
 
+    [SerializeField]
+    Material _exhibitionHighlightingMaterial;
+
     //[SerializeField]
     ExhibitionGroupClass _currentGroup;
 
@@ -61,6 +64,11 @@ public class ExhibitionScript : MonoBehaviour
     public Camera GetCamera()
     {
         return _camera;
+    }
+
+    public Material GetExhibitionHighlightingMaterial()
+    {
+        return _exhibitionHighlightingMaterial;
     }
 
     public void StartExhibition(int _input)
@@ -101,7 +109,7 @@ public class ExhibitionScript : MonoBehaviour
 
         GameObject _go;
 
-        ExhibitionListItemClass _currentItemList;
+        ExhibitionListItemClass _currentListItem;
 
         BoxCollider _collider;
 
@@ -135,9 +143,9 @@ public class ExhibitionScript : MonoBehaviour
 
             _v3.y = _objectHeight;
 
-            _currentItemList = _currentGroup.GetExhibitionGroupListItems()[_i];
+            _currentListItem = _currentGroup.GetExhibitionGroupListItems()[_i];
 
-            _go = Instantiate(_currentItemList.GetListItemGameObject());
+            _go = Instantiate(_currentListItem.GetListItemGameObject());
 
             _go.transform.parent = _parent;
 
@@ -145,13 +153,13 @@ public class ExhibitionScript : MonoBehaviour
 
             _go.transform.localEulerAngles = new Vector3(0.0f, _rotAngle, 0.0f);
 
-            _go.transform.localScale = (Vector3.one * _currentItemList.GetLocalScaleConstant());
+            _go.transform.localScale = (Vector3.one * _currentListItem.GetLocalScaleConstant());
 
             _collider = _go.AddComponent<BoxCollider>();
 
-            _collider.center = _currentItemList.GetBoxColliderPosition();
+            _collider.center = _currentListItem.GetBoxColliderPosition();
 
-            _collider.size = _currentItemList.GetBoxColliderSize();
+            _collider.size = _currentListItem.GetBoxColliderSize();
 
             _exhibitionsGO.Add(_go);
 
@@ -159,11 +167,11 @@ public class ExhibitionScript : MonoBehaviour
 
             _currentExh.SetObjectNumber(_i + 1);
 
-            _currentExh.SetObjectName(_currentItemList.GetListItemName());
+            _currentExh.SetObjectName(_currentListItem.GetListItemName());
 
-            _currentExh.SetObjectDescription(_currentItemList.GetListItemDescription());
+            _currentExh.SetObjectDescription(_currentListItem.GetListItemDescription());
 
-            _currentExh.SetObjectColor(_currentItemList.GetListItemColor());
+            _currentExh.SetObjectColor(_currentListItem.GetListItemColor());
 
             _currentExh.SetObject(_go);
 
@@ -173,9 +181,24 @@ public class ExhibitionScript : MonoBehaviour
 
             _currentExh.SetObjectPosition(_v3);
 
-            _currentExh.SetObjectRotation(_rotAngle);
+            _currentExh.SetObjectYRotation(_rotAngle);
 
             _currentExh.SetExhibitionCanvas(_canvas);
+
+            _currentExh.SetOutlineThickness(_currentListItem.GetOutlineThickness());
+
+            _currentExh.SetInitialRotation(_go.transform.localRotation);
+
+            _currentExh.SetTalkingSeconds(_currentListItem.GetTalkingSeconds());
+
+            if(_currentGroup.GetRotateInRaycast())
+            {
+                GiveRotationalProperties(_currentExh);
+            }
+            else
+            {
+                _currentExh.SetRotateWhenHit(false);
+            }
 
             _exhibitions.Add(_currentExh);
         }
@@ -206,6 +229,37 @@ public class ExhibitionScript : MonoBehaviour
         _currentGroup = null;
 
         _exhibitionOn = false;
+    }
+
+    void GiveRotationalProperties(ExhibitionObjectScript _input)
+    {
+        if(_input == null)
+        {
+            return;
+        }
+
+        GameObject _go = _input.gameObject;
+
+        RotationScript _rp;
+
+        if(_go.GetComponent<RotationScript>() == null)
+        {
+            _rp = _go.AddComponent<RotationScript>();
+        }
+        else
+        {
+            _rp = _go.GetComponent<RotationScript>();
+        }
+
+        _input.SetRotateWhenHit(true);
+
+        _rp.SetDeltaTime(true);
+
+        _rp.SetAxis(Vector3.up);
+
+        _rp.SetConstant(100.0f);
+
+        _input.SetRotationProperties(_rp);
     }
 
     ExhibitionGroupClass GetGroupByName(string _nameInput)
@@ -241,6 +295,9 @@ public class ExhibitionGroupClass
     [SerializeField]
     MeterClass _groupCompletionMeter;
 
+    [SerializeField]
+    bool _rotateInRaycast = true;
+
     bool _exhibitionInPlay = false;
 
     public string GetGroupName()
@@ -261,6 +318,11 @@ public class ExhibitionGroupClass
     public MeterClass GetGroupCompletionMeter()
     {
         return _groupCompletionMeter;
+    }
+
+    public bool GetRotateInRaycast()
+    {
+        return _rotateInRaycast;
     }
 
     public void SetExhibitionInPlay(bool _input)
@@ -292,6 +354,12 @@ public class ExhibitionListItemClass
 
     [SerializeField]
     Vector3 _boxColliderSize;
+
+    [SerializeField]
+    float _outlineThickness = 0.1f;
+
+    [SerializeField]
+    float _talkingSeconds = 5.0f;
 
     public GameObject GetListItemGameObject()
     {
@@ -326,5 +394,15 @@ public class ExhibitionListItemClass
     public Vector3 GetBoxColliderSize()
     {
         return _boxColliderSize;
+    }
+
+    public float GetOutlineThickness()
+    {
+        return _outlineThickness;
+    }
+
+    public float GetTalkingSeconds()
+    {
+        return _talkingSeconds;
     }
 }
