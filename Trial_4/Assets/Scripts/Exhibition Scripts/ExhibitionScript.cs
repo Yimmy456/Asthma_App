@@ -191,6 +191,8 @@ public class ExhibitionScript : MonoBehaviour
 
             _currentExh.SetTalkingSeconds(_currentListItem.GetTalkingSeconds());
 
+            _currentExh.SetGroup(_currentGroup);
+
             if(_currentGroup.GetRotateInRaycast())
             {
                 GiveRotationalProperties(_currentExh);

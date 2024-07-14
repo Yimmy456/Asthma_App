@@ -14,6 +14,10 @@ public class YesOrNoCanvasScript : MonoBehaviour
     [SerializeField]
     Text _text;
 
+    public Button NoButtonVar {  get { return _noButton; } }
+
+    public Button YesButtonVar { get { return _yesButton; } }
+
     // Start is called before the first frame update
     void Start()
     {

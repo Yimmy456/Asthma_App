@@ -35,6 +35,8 @@ public class ExhibitionCanvasScript : MonoBehaviour
     [SerializeField]
     Text _objectDescriptionText;
 
+    ExhibitionObjectScript _currentlyTalkedAboutObject;
+
     ExhibitionObjectScript _currentObject;
 
     Coroutine _talkingCoroutine;
@@ -71,6 +73,11 @@ public class ExhibitionCanvasScript : MonoBehaviour
     public ExhibitionObjectScript GetCurrentObject()
     {
         return _currentObject;
+    }
+
+    public ExhibitionObjectScript GetCurrentlyTalkedAboutObject()
+    {
+        return _currentlyTalkedAboutObject;
     }
 
     public void SetCurrentObject(ExhibitionObjectScript _input)
@@ -195,15 +202,14 @@ public class ExhibitionCanvasScript : MonoBehaviour
         {
             return;
         }
+        
+        StopCoroutine(_talkingCoroutine);
+        
+        _objectTitleText.text = "";
+        
+        _objectDescriptionText.text = "";
 
-        //if(_talkingCoroutine != null)
-        //{
-            StopCoroutine(_talkingCoroutine);
-
-            _objectTitleText.text = "";
-
-            _objectDescriptionText.text = "";
-        //}
+        _currentlyTalkedAboutObject = null;
     }
 
     public void StartExplaining()
@@ -238,11 +244,15 @@ public class ExhibitionCanvasScript : MonoBehaviour
 
         _objectDescriptionText.text = _descriptionInput;
 
+        _currentlyTalkedAboutObject = _currentObject;
+
         yield return new WaitForSeconds(_timeInput);
 
         _objectDescriptionText.text = "";
 
         _objectTitleText.text = "";
+
+        _currentlyTalkedAboutObject = null;
     }
 
     void ColorTitle(Color _input)

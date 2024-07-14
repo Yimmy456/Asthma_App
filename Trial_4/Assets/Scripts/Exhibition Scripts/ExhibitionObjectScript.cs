@@ -49,6 +49,10 @@ public class ExhibitionObjectScript : MonoBehaviour
 
     bool _rotateWhenHit;
 
+    bool _descriptionComplete = false;
+
+    ExhibitionGroupClass _objectGroup;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -133,6 +137,11 @@ public class ExhibitionObjectScript : MonoBehaviour
         return _talkingSeconds;
     }
 
+    public ExhibitionGroupClass GetGroup()
+    {
+        return _objectGroup;
+    }
+
     //Setters
 
     public void SetObjectName(string _input)
@@ -208,6 +217,11 @@ public class ExhibitionObjectScript : MonoBehaviour
     public void SetTalkingSeconds(float _input)
     {
         _talkingSeconds = _input;
+    }
+
+    public void SetGroup(ExhibitionGroupClass _input)
+    {
+        _objectGroup = _input;
     }
 
     void PrepareExhibition()
@@ -312,5 +326,17 @@ public class ExhibitionObjectScript : MonoBehaviour
                 SetObjectLayer(_t.gameObject, _layerInput);
             }
         }
+    }
+
+    public void SetDescriptionComplete()
+    {
+        if(_descriptionComplete || _objectGroup == null)
+        {
+            return;
+        }
+
+        _objectGroup.GetGroupCompletionMeter().AddToValue(1);
+
+        _descriptionComplete = true;
     }
 }

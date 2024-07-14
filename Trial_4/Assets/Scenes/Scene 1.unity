@@ -16096,7 +16096,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameName: 
-  _mainContainer: {fileID: 0}
+  _mainContainer: {fileID: 1093082202}
   _gameSpace: {fileID: 0}
   _gameProperties:
     _meter:
@@ -24254,7 +24254,7 @@ MonoBehaviour:
         m_NumAlphaKeys: 2
     _mainCanvases:
       _mainPlayerCanvas: {fileID: 392666910}
-      _indicatorCanvas: {fileID: 888431181}
+      _indicatorCanvas: {fileID: 444502315}
       _doctorCanvas: {fileID: 716302325}
     _gameCanvas: {fileID: 701158061}
     _gameIndicatorCanvas: {fileID: 888431181}
