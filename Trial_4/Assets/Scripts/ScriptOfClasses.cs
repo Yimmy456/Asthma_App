@@ -1433,20 +1433,6 @@ public class ActionPlanEnumLabelProperties<T> where T : Enum
     {
         _enum = _input;
     }
-
-    /*void InitializeAtConstructor()
-    {
-        int _count = Enum.GetValues(typeof(T)).Length;
-
-        ActionPlanEnumValueLabelProperties<T> _newValue;
-
-        T _currentValue;
-
-        for (int _i = 0; _i < _count; _i++)
-        {
-            _newValue = new ActionPlanEnumValueLabelProperties<T>();
-        }
-    }*/
 }
 
 [System.Serializable]

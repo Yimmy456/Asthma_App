@@ -43,7 +43,7 @@ public class StateMachineScript : MonoBehaviour
 
         _currentState = _states.GetIntroductionState();
 
-        _currentState.EnterState();
+        //_currentState.EnterState();
     }
 
     // Start is called before the first frame update
@@ -56,7 +56,7 @@ public class StateMachineScript : MonoBehaviour
 
         _currentState = _states.GetIntroductionState();
 
-        _currentState.EnterState();
+        //_currentState.EnterState();
 
         //_machineOn = true;
     }
@@ -140,6 +140,21 @@ public class StateMachineScript : MonoBehaviour
         return _procedureCanvas;
     }
 
+    public LetterGameScript GetLetterGame()
+    {
+        return _letterGame;
+    }
+
+    public CardGameScript GetCardGame()
+    {
+        return _cardGame;
+    }
+
+    public MCQGameScript GetMCQGame()
+    {
+        return _mcqGame;
+    }
+
     public void SetCurrentState(BaseState _input)
     {
         _currentState = _input;
@@ -157,6 +172,8 @@ public class StateMachineScript : MonoBehaviour
             return;
         }
 
+        //_lectureCoroutine.
+
         float _durationTime = _input.GetSeconds();
 
         _lectureCoroutine = StartCoroutine(StartLectureCoroutine(_durationTime));
@@ -166,10 +183,26 @@ public class StateMachineScript : MonoBehaviour
     {
         _procedureCanvas.GetRestartButton().gameObject.SetActive(false);
 
+        Debug.Log("The lecture coroutine begins.");
+
         yield return new WaitForSeconds(_secondsInput);
+
+        Debug.Log("The lecture coroutine ends.");
 
         _procedureCanvas.GetRestartButton().gameObject.SetActive(true);
 
         _procedureCanvas.GetNextButton().gameObject.SetActive(true);
+
+        _lectureCoroutine = null;
+    }
+
+    public void EndLectureImmediately()
+    {
+        if(_lectureCoroutine != null)
+        {
+            StopCoroutine(_lectureCoroutine);
+
+            _lectureCoroutine = null;
+        }
     }
 }

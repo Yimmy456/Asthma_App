@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.SceneManagement;
 using UnityEngine;
-
+using UnityEngine.Events;
 
 public abstract class BaseState
 {
@@ -67,16 +68,16 @@ public abstract class BaseState
 
         ExitStates();
 
-        _input.EnterState();
-
         if (_isRootState)
         {
             _stateMachine.SetCurrentState(_input);
         }
-        else if(_currentSuperState != null)
+        else if (_currentSuperState != null)
         {
             _currentSuperState.SetSubState(_input);
         }
+
+        _input.EnterState();
     }
 
     protected void SetSuperState(BaseState _input)
@@ -135,24 +136,18 @@ public class IntroductionState : SequenceState
 
     public override void EnterState()
     {
-        //base.EnterState();
         Debug.Log("We are entering the introduction state.");
     }
 
     public override void UpdateState()
     {
-        //base.UpdateState();
-
         Debug.Log("We are updating the introduction state.");
 
         CheckSwitchState();
-        //CheckSwitchState();
-    }
+    } 
 
     public override void ExitState()
     {
-        //base.ExitState();
-
         Debug.Log("We are leaving the introduction state.");
     }
 
@@ -163,7 +158,11 @@ public class IntroductionState : SequenceState
             return;
         }
 
+        ExitStates();
+
         _stateMachine.SetCurrentState(_factory.GetStage1State());
+
+        _stateMachine.GetCurrentState().EnterState();
 
         _stateMachine.SetGoToNextState(false);
     }
@@ -184,6 +183,11 @@ public class MainStageState : SequenceState
         _stageNumber = _stageNumberInput;
 
         _partNumber = 0;
+
+        if(_currentSubState != null)
+        {
+            _currentSubState.EnterState();
+        }
     }
 
     public int GetStageNumber()
@@ -203,28 +207,26 @@ public class MainStageState : SequenceState
             return;
         }
 
-
-
         if (_partNumber == 2 || ((_currentSubState as BadgeState) != null))
         {
             _partNumber = 0;
 
             switch (_stageNumber)
             {
-                case 1:
-                    _stateMachine.SetCurrentState(_factory.GetStage2State());
+                case 1:;
+                    SwitchState(_factory.GetStage2State());
                     break;
                 case 2:
-                    _stateMachine.SetCurrentState(_factory.GetStage3State());
+                    SwitchState(_factory.GetStage3State());
                     break;
                 case 3:
-                    _stateMachine.SetCurrentState(_factory.GetStage4State());
+                    SwitchState(_factory.GetStage4State());
                     break;
                 case 4:
-                    _stateMachine.SetCurrentState(_factory.GetStage5State());
+                    SwitchState(_factory.GetStage5State());
                     break;
                 default:
-                    _stateMachine.SetCurrentState(_factory.GetConclusionState());
+                    SwitchState(_factory.GetConclusionState());
                     break;
             }
         }
@@ -239,15 +241,11 @@ public class MainStageState : SequenceState
 
     public override void EnterState()
     {
-        //base.EnterState();
-
         Debug.Log("We are entering stage " + _stageNumber.ToString() + " state.");
     }
 
     public override void UpdateState()
     {
-        //base.UpdateState();
-
         Debug.Log("We are updating stage " + _stageNumber.ToString() + " state.");
     }
 
@@ -273,8 +271,6 @@ public class LectureState : SequenceState
 
     public override void UpdateState()
     {
-        //base.UpdateState();
-
         string _debugText = "We are updating the lecture state";
 
         if (_currentSuperState != null)
@@ -291,13 +287,11 @@ public class LectureState : SequenceState
 
         Debug.Log(_debugText);
 
-
         CheckSwitchState();
     }
 
     public override void CheckSwitchState()
     {
-        //base.CheckSwitchState();
         if(!_stateMachine.GetGoToNextState())
         {
             return;
@@ -328,6 +322,8 @@ public class LectureState : SequenceState
 
         _stateMachine.StartLecture(this);
 
+        _stateMachine.GetProcedureCanvas().GetRestartButton().onClick.AddListener(delegate { _stateMachine.StartLecture(this); });
+
         Debug.Log(_debugText);
     }
 
@@ -349,6 +345,12 @@ public class LectureState : SequenceState
 
         _stateMachine.GetProcedureCompletionMeter().AddToValue(1);
 
+        _stateMachine.GetProcedureCanvas().GetRestartButton().onClick.RemoveAllListeners();
+
+        _stateMachine.EndLectureImmediately();
+
+        _stateMachine.GetProcedureCanvas().GetRestartButton().gameObject.SetActive(false);
+
         Debug.Log(_debugText);
     }
 }
@@ -358,11 +360,13 @@ public class GameState : SequenceState
 {
     GameMBScript _game;
 
-    public GameState(StateMachineScript _machineInput, StateFactoryClass _factory) : base(_machineInput, _factory) { }
+    public GameState(StateMachineScript _machineInput, StateFactoryClass _factory) : base(_machineInput, _factory)
+    {
+        //SelectGame();
+    }
 
     public override void UpdateState()
     {
-        //base.UpdateState();
         string _debugText = "We are updating the game state";
 
         if (_currentSuperState != null)
@@ -416,6 +420,8 @@ public class GameState : SequenceState
         _debugText = _debugText + ".";
 
         Debug.Log(_debugText);
+
+        SelectGame();
     }
 
     public override void ExitState()
@@ -435,6 +441,36 @@ public class GameState : SequenceState
         _debugText = _debugText + ".";
 
         Debug.Log(_debugText);
+    }
+
+    void SelectGame()
+    {
+        if(_currentSuperState == null)
+        {
+            return;
+        }
+
+        if((_currentSuperState as MainStageState) == null)
+        {
+            return;
+        }
+
+        Debug.Log("We are starting the game.");
+
+        MainStageState _mss = _currentSuperState as MainStageState;
+
+        int _stageNo = _mss.GetStageNumber();
+
+        if(_stageNo == 1)
+        {
+            _game = _stateMachine.GetLetterGame();
+
+            LetterGameScript _letterGame = _game as LetterGameScript;
+
+            _letterGame.StartGame(0);
+
+            _letterGame.GetGameProperties().GetGameCanvas().gameObject.SetActive(false);
+        }
     }
 }
 

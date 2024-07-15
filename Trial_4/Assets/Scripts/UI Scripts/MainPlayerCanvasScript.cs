@@ -408,15 +408,6 @@ public class MainPlayerCanvasScript : MonoBehaviour
             {
                 continue;
             }
-
-            //VisualElement _ve = _text.gameObject.GetComponent<VisualElement>();
-
-            //if(_ve == null)
-            //{
-             //   continue;
-            //}
-
-            //_ve.BringToFront();
         }
     }
 
@@ -567,8 +558,6 @@ public class MainPlayerCanvasScript : MonoBehaviour
         }
 
         _buttonsAnim--;
-
-        //_buttonInput.interactable = false;
     }
 
     IEnumerator ShowButtons2()
@@ -740,17 +729,8 @@ public class MainPlayerCanvasScript : MonoBehaviour
 
             return;
         }
-
-        //bool _introComplete = DataPersistenceManager.GetInstance().GetGameData().GetIntroductionComplete();
-
-        //if(_introComplete)
-        //{
-            _menuButton.gameObject.SetActive(true);
-        //}
-        //else
-       // {
-          //  _introductionButton.gameObject.SetActive(true);
-        //}
+        
+        _menuButton.gameObject.SetActive(true);
     }
 
 }
