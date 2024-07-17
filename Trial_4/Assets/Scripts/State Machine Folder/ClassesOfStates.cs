@@ -345,6 +345,8 @@ public class LectureState : SequenceState
 
         _stateMachine.GetProcedureCompletionMeter().AddToValue(1);
 
+        _stateMachine.SignalToUpdateMeter();
+
         _stateMachine.GetProcedureCanvas().GetRestartButton().onClick.RemoveAllListeners();
 
         _stateMachine.EndLectureImmediately();
@@ -376,6 +378,19 @@ public class GameState : SequenceState
                 MainStageState _mss = _currentSuperState as MainStageState;
 
                 _debugText = _debugText + " of stage " + _mss.GetStageNumber().ToString();
+            }
+        }
+
+        if (_game != null)
+        {
+            if (_game.GetProgressUpdated())
+            {
+                _stateMachine.SignalToUpdateMeter();
+            }
+
+            if(_game.GetCompletionMeter() != null)
+            {
+                Debug.Log("The percentage of this game is " + _game.GetCompletionMeter().GetPercentage().ToString("0.00") + "%.");                    
             }
         }
 
@@ -439,6 +454,11 @@ public class GameState : SequenceState
         }
 
         _debugText = _debugText + ".";
+
+        if (_game != null)
+        {
+            _game.StopGame();
+        }
 
         Debug.Log(_debugText);
     }

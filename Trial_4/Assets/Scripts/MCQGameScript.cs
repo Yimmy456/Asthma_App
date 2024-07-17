@@ -33,6 +33,8 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
     {
         _gameProperties.UpdateUI();
 
+        _completionMeter = _gameProperties.GetMeter();
+
         if(_gameDone)
         {
             WinGame();

@@ -83,6 +83,8 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
             _evalInProcess = true;
         }
 
+        _completionMeter = _gameProperties.GetMeter();
+
         _gameProperties.UpdateUI();
 
         if(_gameProperties.GetMeter().GetPercentage() == 100.0f && !_gameDone && _gameProperties.GetResponseText().text == "")
@@ -311,6 +313,19 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
             _gameProperties.GetMeter().AddToValue(1);
 
             _gameProperties.SignalToUpdateUI();
+
+            if(_procedureStateMachine != null)
+            {
+                if(_procedureStateMachine.GetMachineOn() && _procedureStateMachine.GetProcedureCanvas() != null && _procedureStateMachine.GetCardGame() == this)
+                {
+                    if(_procedureStateMachine.GetProcedureCanvas().gameObject.activeSelf)
+                    {
+                        _procedureStateMachine.GetProcedureCompletionMeter().AddToMaxValue(1);
+
+                        _procedureStateMachine.SignalToUpdateMeter();
+                    }
+                }
+            }
 
             bool _finalCard = !_gameDone && _gameProperties.GetMeter().GetPercentage() == 100.0f;
 

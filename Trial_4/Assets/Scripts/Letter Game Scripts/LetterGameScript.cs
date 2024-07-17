@@ -25,6 +25,17 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
 
     private void Update()
     {
+        if(_progressUpdated && !_progressUpdatedSwitchOn)
+        {
+            _progressUpdateCoroutine = StartCoroutine(ProgressUpdateCoroutineFunction());
+
+            Debug.Log("Switch is triggered as on.");
+
+            _progressUpdatedSwitchOn = true;
+        }
+
+        _completionMeter = _gameProperties.GetMeter();
+
         if(_gameProperties.GetMeter().GetPercentage() == 100.0f && !_gameDone)
         {
             WinGame();
@@ -219,6 +230,7 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
             }
 
             //1. Acquiring the Correct Letter
+
             for(int _j = 0; _j < _presetBlocksAndHoles.Count && !_letterFound; _j++)
             {
                 _blockAndHole = _presetBlocksAndHoles[_j] as WordMatchingBlockAndHoleClass;

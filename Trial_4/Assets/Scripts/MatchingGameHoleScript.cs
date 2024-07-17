@@ -373,6 +373,23 @@ public class MatchingGameHoleScript : MonoBehaviour
 
         _holeCanvas.GetGameProperties().SignalToUpdateUI();
 
+        //_holeCanvas.SetProgressUpdated(true);
+
+        if(_holeCanvas.GetProcedureStateMachine() != null)
+        {
+            if(_holeCanvas.GetProcedureStateMachine().GetMachineOn() && _holeCanvas.GetProcedureStateMachine().GetProcedureCanvas() != null)
+            {
+                ProcedureStateMachineCanvasScript _procedureCanvas = _holeCanvas.GetProcedureStateMachine().GetProcedureCanvas();
+
+                if(_procedureCanvas.gameObject.activeSelf)
+                {
+                    _holeCanvas.GetProcedureStateMachine().GetProcedureCompletionMeter().AddToValue(1);
+
+                    _holeCanvas.GetProcedureStateMachine().SignalToUpdateMeter();
+                }
+            }
+        }
+
         _hoveredOn = false;
 
         _canEvaluate = false;

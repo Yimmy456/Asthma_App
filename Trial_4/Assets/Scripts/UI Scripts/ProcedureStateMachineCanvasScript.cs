@@ -17,6 +17,9 @@ public class ProcedureStateMachineCanvasScript : CanvasScript
     [SerializeField]
     Text _percentageText;
 
+    [SerializeField]
+    StateMachineScript _stateMachine;
+
     //[SerializeField]
     //ProcedureStateMachineScript _stateMachine;
 

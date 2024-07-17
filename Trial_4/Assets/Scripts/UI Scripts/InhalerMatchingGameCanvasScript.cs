@@ -27,6 +27,8 @@ public class InhalerMatchingGameCanvasScript : MatchingGameCanvasScript
 
         _minMaxV3Values.MaintainValues();
 
+        _completionMeter = _gameProperties.GetMeter();
+
         if(_gameProperties.GetMeter().GetPercentage() == 100.0f && !_gameDone)
         {
             WinGame();

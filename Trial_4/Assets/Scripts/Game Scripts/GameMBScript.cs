@@ -15,11 +15,22 @@ public class GameMBScript : MonoBehaviour
     [SerializeField]
     protected GameObject _gameSpace;
 
+    [SerializeField]
+    protected StateMachineScript _procedureStateMachine;
+
+    protected MeterClass _completionMeter;
+
     protected bool _currentGameInSession;
 
     protected static GameMBScript _currentGame = null;
 
     protected bool _gameDone = false;
+
+    protected bool _progressUpdated = false;
+
+    protected bool _progressUpdatedSwitchOn = false;
+
+    protected Coroutine _progressUpdateCoroutine;
 
     public string GetGameName()
     {
@@ -41,6 +52,16 @@ public class GameMBScript : MonoBehaviour
     public static bool GetGameInSession()
     {
         return (_currentGame != null);
+    }
+
+    public bool GetProgressUpdated()
+    {
+        return _progressUpdated;
+    }
+
+    public MeterClass GetCompletionMeter()
+    {
+        return _completionMeter;
     }
 
     /*public virtual void StartGameFunction()
@@ -178,4 +199,27 @@ public class GameMBScript : MonoBehaviour
     {
 
     }*/
+
+    protected IEnumerator ProgressUpdateCoroutineFunction()
+    {
+        _progressUpdated = true;
+
+        yield return null;
+
+        _progressUpdated = false;
+
+        _progressUpdatedSwitchOn = false;
+
+        _progressUpdateCoroutine = null;
+    }
+
+    public void SetProgressUpdated(bool _input)
+    {
+        _progressUpdated = _input;
+    }
+
+    public StateMachineScript GetProcedureStateMachine()
+    {
+        return _procedureStateMachine;
+    }
 }

@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class StateMachineScript : MonoBehaviour
+public class StateMachineScript : MonoBehaviour, YesOrNoInterface
 {
     [SerializeField]
     int _stageNumber = -1;
@@ -26,16 +27,26 @@ public class StateMachineScript : MonoBehaviour
     MainCanvasesClass _mainCanvases;
 
     [SerializeField]
+    YesOrNoCanvasScript _yesOrNoCanvas;
+
+    [SerializeField]
     ProcedureStateMachineCanvasScript _procedureCanvas;
 
     [SerializeField]
     MeterClass _procedureCompletionMeter;
+
+    [SerializeField]
+    int _meterMaxValue = 20;
 
     Coroutine _lectureCoroutine;
 
     BaseState _currentState;
 
     StateFactoryClass _states;
+
+    bool _updateMeterTextBoolean = false;
+
+    //GameMBScript _currentGame = null;
 
     private void Awake()
     {
@@ -56,6 +67,8 @@ public class StateMachineScript : MonoBehaviour
 
         _currentState = _states.GetIntroductionState();
 
+        _procedureCompletionMeter.SetMaxValue(_meterMaxValue);
+
         //_currentState.EnterState();
 
         //_machineOn = true;
@@ -67,6 +80,8 @@ public class StateMachineScript : MonoBehaviour
         if (_machineOn)
         {
             _currentState.UpdateStates();
+
+            UpdateMeter();
         }
     }
 
@@ -94,6 +109,8 @@ public class StateMachineScript : MonoBehaviour
 
         _procedureCompletionMeter.SetValue(0);
 
+        _updateMeterTextBoolean = true;
+
         _machineOn = true;
     }
 
@@ -105,9 +122,28 @@ public class StateMachineScript : MonoBehaviour
 
         _goToNextState = false;
 
+        if (_currentState != null)
+        {
+            _currentState.ExitStates();
+
+            _currentState = null;
+        }
+
         _mainCanvases.SetCanvasesOn(true);
 
         _procedureCanvas.gameObject.SetActive(false);
+
+        _cardGame.GetGameProperties().GetMeter().SetValue(0);
+
+        _cardGame.GetGameProperties().SignalToUpdateUI();
+
+        _letterGame.GetGameProperties().GetMeter().SetValue(0);
+
+        _letterGame.GetGameProperties().SignalToUpdateUI();
+
+        _mcqGame.GetGameProperties().GetMeter().SetValue(0);
+
+        _mcqGame.GetGameProperties().SignalToUpdateUI();
     }
 
     public BaseState GetCurrentState()
@@ -204,5 +240,82 @@ public class StateMachineScript : MonoBehaviour
 
             _lectureCoroutine = null;
         }
+    }
+
+    void UpdateMeter()
+    {
+        if(!_updateMeterTextBoolean)
+        {
+            return;
+        }
+        else
+        {
+            _updateMeterTextBoolean = false;
+        }
+
+        Text _tx = _procedureCanvas.GetPercentageText();
+
+        if(_tx == null)
+        {
+            //_updateMeterTextBoolean = false;
+
+            return;
+        }
+
+        float _percentage = _procedureCompletionMeter.GetPercentage();
+
+        _tx.text = _percentage.ToString("0.00") + "%";
+
+        _percentage = _percentage / 100.0f;
+
+        Color _c = _procedureCompletionMeter.GetTextGradient().Evaluate(_percentage);
+
+        _c.a = 1.0f;
+
+        _tx.color = _c;
+
+        if(_tx.gameObject.GetComponent<Outline>() == null)
+        {
+            //_updateMeterTextBoolean = fals
+            return;
+        }
+
+        Outline _outline = _tx.gameObject.GetComponent<Outline>();
+
+        _c = ToolsStruct.ChangeColorValue(_c, 0.5f, 0.5f);
+
+        _outline.effectColor = _c;
+    }
+
+    public void SignalToUpdateMeter()
+    {
+        _updateMeterTextBoolean = true;
+    }
+
+    public void ISetActionsOfNoButton()
+    {
+        _yesOrNoCanvas.GetNoButton().onClick.AddListener(delegate { _procedureCanvas.gameObject.SetActive(true); });
+
+        _yesOrNoCanvas.GetNoButton().onClick.AddListener(delegate { _yesOrNoCanvas.gameObject.SetActive(false); });
+
+        _yesOrNoCanvas.GetNoButton().onClick.AddListener(delegate { _yesOrNoCanvas.GetNoButton().onClick.RemoveAllListeners(); });
+    }
+
+    public void ISetActionsOfYesButtonToQuit()
+    {
+        Button _yesButton = _yesOrNoCanvas.GetYesButton();
+
+        _yesButton.onClick.AddListener(delegate { _mainCanvases.SetCanvasesOn(true); });
+
+        _yesButton.onClick.AddListener(delegate { EndMachine(); });
+
+        _yesButton.onClick.AddListener(delegate { _yesOrNoCanvas.gameObject.SetActive(false); });
+
+        _yesButton.onClick.AddListener(delegate { _yesButton.onClick.RemoveAllListeners(); });
+    }
+
+    public void ISetActionsOfYesButtonToRestart()
+    {
+
     }
 }

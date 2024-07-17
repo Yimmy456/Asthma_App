@@ -54,6 +54,8 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
     // Update is called once per frame
     void Update()
     {
+        _completionMeter = _gameProperties.GetMeter();
+
         _minMaxV3Values.MaintainValues();
     }
 
