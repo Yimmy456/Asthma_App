@@ -38,6 +38,15 @@ public class StateMachineScript : MonoBehaviour, YesOrNoInterface
     [SerializeField]
     int _meterMaxValue = 20;
 
+    [SerializeField]
+    InformationCanvasScript _informationCanvas;
+
+    [SerializeField]
+    Canvas _newBadgeCanvas;
+
+    [SerializeField]
+    List<string> _badgeNames;
+
     Coroutine _lectureCoroutine;
 
     BaseState _currentState;
@@ -189,6 +198,21 @@ public class StateMachineScript : MonoBehaviour, YesOrNoInterface
     public MCQGameScript GetMCQGame()
     {
         return _mcqGame;
+    }
+
+    public InformationCanvasScript GetInformationCanvas()
+    {
+        return _informationCanvas;
+    }
+
+    public Canvas GetNewBadgeCanvas()
+    {
+        return _newBadgeCanvas;
+    }
+
+    public List<string> GetBadgeNames()
+    {
+        return _badgeNames;
     }
 
     public void SetCurrentState(BaseState _input)

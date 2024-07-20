@@ -75,6 +75,8 @@ public class FPSMovingScript : MonoBehaviour
             _directionForward = _directionForward - _camera.transform.forward;
         }
 
+        Debug.Log("Forward is " + _directionForward + ".");
+
         if(_controller.Move.Move.ReadValue<Vector2>().x == 1.0f)
         {
             _directionRight = _directionRight + _camera.transform.right;
@@ -83,6 +85,8 @@ public class FPSMovingScript : MonoBehaviour
         {
             _directionRight = _directionRight - _camera.transform.right;
         }
+
+        Debug.Log("Right is " + _directionRight + ".");
 
         if(_controller.Move.Move_Y.ReadValue<float>() == 1.0f)
         {

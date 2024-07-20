@@ -9,7 +9,7 @@ public enum EvaluateCardsEnum
     MatchCards,
 }
 
-public enum WordCategoryEnum
+public enum InfoCategoryEnum
 {
     None,
     Trigger,

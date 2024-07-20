@@ -210,6 +210,9 @@ public class InformationClass
     [SerializeField]
     protected string _badgeName;
 
+    [SerializeField]
+    protected InfoCategoryEnum _infoCategory;
+
     public InformationClass()
     {
         _informationType = InformationTypeEnum.General;
@@ -243,6 +246,11 @@ public class InformationClass
     public string GetBadgeName()
     {
         return _badgeName;
+    }
+
+    public InfoCategoryEnum GetInfoCategory()
+    {
+        return _infoCategory;
     }
 
     public void SetInformationLearned(bool _input)
@@ -288,9 +296,6 @@ public class DefinitionClass : InformationClass
     [SerializeField]
     protected WordTypeEnum _wordType;
 
-    [SerializeField]
-    protected WordCategoryEnum _wordCategory;
-
     public DefinitionClass()
     {
         _informationType = InformationTypeEnum.Definition;
@@ -299,11 +304,6 @@ public class DefinitionClass : InformationClass
     public Sprite GetSprite()
     {
         return _sprite;
-    }
-
-    public WordCategoryEnum GetWordCategory()
-    {
-        return _wordCategory;
     }
 
     public WordTypeEnum GetWordType()

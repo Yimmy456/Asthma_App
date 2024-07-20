@@ -92,6 +92,22 @@ public class BookScript : MonoBehaviour
         return null;
     }
 
+    public List<InformationClass> GetGeneralInformationByCategory(InfoCategoryEnum _input)
+    {
+        List<InformationClass> _list = new List<InformationClass>();
+
+        for(int _i = 0; _i < _generalInformation.Count; _i++)
+        {
+            InformationClass _info = _generalInformation[_i];
+
+            if(_info.GetInfoCategory() == _input)
+            {
+                _list.Add(_info);
+            }
+        }
+        return _list;
+    }
+
     public List<DefinitionClass> GetWordsByType(WordTypeEnum _input)
     {
         List<DefinitionClass> _words = new List<DefinitionClass>();
@@ -107,13 +123,13 @@ public class BookScript : MonoBehaviour
         return _words;
     }
 
-    public List<DefinitionClass> GetDefinitionsByCategory(WordCategoryEnum _input)
+    public List<DefinitionClass> GetDefinitionsByCategory(InfoCategoryEnum _input)
     {
         List<DefinitionClass> _defs = new List<DefinitionClass>();
 
         foreach(DefinitionClass _def in _definitions)
         {
-            if(_input == _def.GetWordCategory())
+            if(_input == _def.GetInfoCategory())
             {
                 _defs.Add(_def);
             }
@@ -124,9 +140,9 @@ public class BookScript : MonoBehaviour
 
     public List<DefinitionClass> GetDefinitionsByCategory(int _input)
     {
-        WordCategoryEnum _var;
+        InfoCategoryEnum _var;
 
-        int _valueCount = Enum.GetValues(typeof(WordCategoryEnum)).Length;
+        int _valueCount = Enum.GetValues(typeof(InfoCategoryEnum)).Length;
 
         int _i = _input;
 
@@ -142,16 +158,16 @@ public class BookScript : MonoBehaviour
         switch(_i)
         {
             case 1:
-                _var = WordCategoryEnum.Trigger;
+                _var = InfoCategoryEnum.Trigger;
                 break;
             case 2:
-                _var = WordCategoryEnum.Symptom;
+                _var = InfoCategoryEnum.Symptom;
                 break;
             case 3:
-                _var = WordCategoryEnum.Treatment;
+                _var = InfoCategoryEnum.Treatment;
                 break;
             default:
-                _var = WordCategoryEnum.None;
+                _var = InfoCategoryEnum.None;
                 break;
         }
 
@@ -159,8 +175,8 @@ public class BookScript : MonoBehaviour
     }
 
     public List<DefinitionClass> GetDefinitionsByCategory(string _input)
-    {
-        WordCategoryEnum _var = WordCategoryEnum.None;
+    {   
+        InfoCategoryEnum _var = InfoCategoryEnum.None;
 
         if(string.Compare(_input, "Random") == 0.0f)
         {
@@ -169,19 +185,19 @@ public class BookScript : MonoBehaviour
 
         if(string.Compare(_input, "Trigger") == 0.0f || string.Compare(_input, "Triggers") == 0.0f)
         {
-            _var = WordCategoryEnum.Trigger;
+            _var = InfoCategoryEnum.Trigger;
         }
         else if(string.Compare(_input, "Symptom") == 0.0f || string.Compare(_input, "Symptoms") == 0.0f)
         {
-            _var = WordCategoryEnum.Symptom;
+            _var = InfoCategoryEnum.Symptom;
         }
         else if (string.Compare(_input, "Treatment") == 0.0f || string.Compare(_input, "Treatments") == 0.0f || string.Compare(_input, "TTT") == 0.0f)
         {
-            _var = WordCategoryEnum.Treatment;
+            _var = InfoCategoryEnum.Treatment;
         }
 
-        if(_var == WordCategoryEnum.None)
-        {
+        if(_var == InfoCategoryEnum.None)
+        {   
             return new List<DefinitionClass>();
         }
 

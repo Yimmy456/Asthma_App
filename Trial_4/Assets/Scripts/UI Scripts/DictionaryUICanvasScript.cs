@@ -95,18 +95,18 @@ public class DictionaryUICanvasScript : CollectionUICanvasScript
 
     Color GetColorByWordCategory(DefinitionClass _input)
     {
-        WordCategoryEnum _wc = _input.GetWordCategory();
+        InfoCategoryEnum _wc = _input.GetInfoCategory();
 
         Color _c;
 
         switch(_wc) {
-            case WordCategoryEnum.Trigger:
+            case InfoCategoryEnum.Trigger:
                 _c = _triggerColor;
                 break;
-            case WordCategoryEnum.Symptom:
+            case InfoCategoryEnum.Symptom:
                 _c = _symptomColor;
                 break;
-            case WordCategoryEnum.Treatment:
+            case InfoCategoryEnum.Treatment:
                 _c = _treatmentColor;
                 break;
             default:
@@ -205,19 +205,19 @@ public class DictionaryUICanvasScript : CollectionUICanvasScript
 
     string GetWordCategoryAsText(DefinitionClass _input)
     {
-        WordCategoryEnum _category = _input.GetWordCategory();
+        InfoCategoryEnum _category = _input.GetInfoCategory();
 
         string _st;
 
         switch (_category)
         {
-            case WordCategoryEnum.Trigger:
+            case InfoCategoryEnum.Trigger:
                 _st = "Trigger";
                 break;
-            case WordCategoryEnum.Symptom:
+            case InfoCategoryEnum.Symptom:
                 _st = "Symptom";
                 break;
-            case WordCategoryEnum.Treatment:
+            case InfoCategoryEnum.Treatment:
                 _st = "Treatment";
                 break;
             default:

@@ -170,7 +170,7 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
     {
         if (!_gameDone)
         {
-            StopGame();
+            //StopGame();
 
             _gameDone = true;
         }

@@ -52,9 +52,9 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
         }
     }
 
-    WordCategoryEnum _selectedCategory = WordCategoryEnum.None;
+    InfoCategoryEnum _selectedCategory = InfoCategoryEnum.None;
 
-    public WordCategoryEnum SelectedCategory
+    public InfoCategoryEnum SelectedCategory
     {
         get
         {
@@ -110,6 +110,11 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
     public override void StartGame()
     {
+        StartGame(0);
+    }
+
+    public override void StartGame(int _indexInput = 0)
+    {
         if(BookScript.GetInstance() == null || _cardSample == null || GetGameInSession())
         {
             return;
@@ -159,9 +164,11 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
         GenerateRandomIndexForList(ref _infoIndexList, 2);
 
-        SetSelectedCategory(0);
+        SetSelectedCategory(_indexInput);
 
-        List<DefinitionClass> _defList = (_selectedCategory == WordCategoryEnum.None) ? BookScript.GetInstance().GetDefinitions() : BookScript.GetInstance().GetDefinitionsByCategory(_selectedCategory);
+        List<DefinitionClass> _defList = (_selectedCategory == InfoCategoryEnum.None) ? BookScript.GetInstance().GetDefinitions() : BookScript.GetInstance().GetDefinitionsByCategory(_selectedCategory);
+
+        //List<InformationClass> _infoList = (_selectedCategory == InfoCategoryEnum.None) ? BookScript.GetInstance().GetGeneralInformation() : BookScript.GetInstance().GetGeneralInformationByCategory(_selectedCategory);
 
         _evaluateCards = EvaluateCardsEnum.None;
 
@@ -203,6 +210,7 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
             }
 
             Debug.Log("We are finding a word.");
+
             _wordSelectedInLoop = false;
         }
 
@@ -612,7 +620,7 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
         var _instance = BadgesManagerScript.GetInstance();
 
-        _selectedCategory = WordCategoryEnum.None;
+        _selectedCategory = InfoCategoryEnum.None;
 
         if(_instance.GetBadgeByName("Cards' Badge") == null)
         {
@@ -622,32 +630,32 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
         var _badge = _instance.GetBadgeByName("Cards' Badge");
     }
 
-    public void SetSelectedCategory(WordCategoryEnum _input)
+    public void SetSelectedCategory(InfoCategoryEnum _input)
     {
         _selectedCategory = _input;
     }
 
     public void SetSelectedCategory(int _input)
     {
-        WordCategoryEnum _var;
+        InfoCategoryEnum _var;
 
-        int _l = Enum.GetValues(typeof(WordCategoryEnum)).Length;
+        int _l = Enum.GetValues(typeof(InfoCategoryEnum)).Length;
 
         int _i = _input == -1 ? UnityEngine.Random.Range(0, (_l - 1)) : _input;
 
         switch(_i)
         {
             case 1:
-                _var = WordCategoryEnum.Trigger;
+                _var = InfoCategoryEnum.Trigger;
                 break;
             case 2:
-                _var = WordCategoryEnum.Symptom;
+                _var = InfoCategoryEnum.Symptom;
                 break;
             case 3:
-                _var = WordCategoryEnum.Treatment;
+                _var = InfoCategoryEnum.Treatment;
                 break;
             default:
-                _var = WordCategoryEnum.None;
+                _var = InfoCategoryEnum.None;
                 break;
         }
 

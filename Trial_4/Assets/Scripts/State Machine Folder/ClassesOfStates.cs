@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 
 public abstract class BaseState
@@ -362,9 +363,13 @@ public class GameState : SequenceState
 {
     GameMBScript _game;
 
+    bool _gameDone = false;
+
     public GameState(StateMachineScript _machineInput, StateFactoryClass _factory) : base(_machineInput, _factory)
     {
         //SelectGame();
+
+        _gameDone = false;
     }
 
     public override void UpdateState()
@@ -388,9 +393,42 @@ public class GameState : SequenceState
                 _stateMachine.SignalToUpdateMeter();
             }
 
-            if(_game.GetCompletionMeter() != null)
+            if (_game.GetCompletionMeter() != null)
             {
-                Debug.Log("The percentage of this game is " + _game.GetCompletionMeter().GetPercentage().ToString("0.00") + "%.");                    
+                Debug.Log("The completion percentage of this game is " + _game.GetCompletionMeter().GetPercentage().ToString("0.00") + "%.");
+
+                if (_game.GetCompletionMeter().GetPercentage() == 100.0f && !_gameDone)
+                {
+                    _stateMachine.GetProcedureCanvas().GetNextButton().gameObject.SetActive(true);
+
+                    if (_stateMachine.GetInformationCanvas() != null)
+                    {
+                        if (_stateMachine.GetInformationCanvas().gameObject.activeSelf)
+                        {
+                            InformationCanvasScript _infoC = _stateMachine.GetInformationCanvas();
+
+                            _infoC.GetNextButton().gameObject.SetActive(false);
+
+                            UnityAction _call = delegate
+                            {
+                                _stateMachine.SetGoToNextState(true);
+
+                                _infoC.GetNextButton().gameObject.SetActive(true);
+
+                                _infoC.gameObject.SetActive(false);
+                            };
+
+                            _stateMachine.GetProcedureCanvas().GetNextButton().onClick.AddListener(_call);
+
+                            _stateMachine.GetProcedureCanvas().GetNextButton().onClick.AddListener(delegate { _stateMachine.GetProcedureCanvas().GetNextButton().onClick.RemoveListener(_call); });
+                        }
+                        else
+                        {
+                            _stateMachine.SetGoToNextState(true);
+                        }
+                    }
+                    _gameDone = true;
+                }
             }
         }
 
@@ -422,6 +460,8 @@ public class GameState : SequenceState
     {
         string _debugText = "We are entering the game state";
 
+        _gameDone = false;
+
         if (_currentSuperState != null)
         {
             if ((_currentSuperState as MainStageState) != null)
@@ -433,6 +473,11 @@ public class GameState : SequenceState
         }
 
         _debugText = _debugText + ".";
+
+        if(_stateMachine.GetProcedureCanvas() != null)
+        {
+            _stateMachine.GetProcedureCanvas().GetNextButton().gameObject.SetActive(false);
+        }
 
         Debug.Log(_debugText);
 
@@ -491,12 +536,28 @@ public class GameState : SequenceState
 
             _letterGame.GetGameProperties().GetGameCanvas().gameObject.SetActive(false);
         }
+
+        if(_stageNo == 2)
+        {
+            _game = _stateMachine.GetCardGame();
+
+            CardGameScript _cardGame = _game as CardGameScript;
+
+            _cardGame.StartGame(1);
+
+            _cardGame.GetGameProperties().GetGameCanvas().gameObject.SetActive(false);
+        }
     }
 }
 
 public class BadgeState : SequenceState
 {
-    public BadgeState(StateMachineScript _machineInput, StateFactoryClass _factoryInput) : base(_machineInput, _factoryInput) { }
+    BadgeScript _badge;
+
+    public BadgeState(StateMachineScript _machineInput, StateFactoryClass _factoryInput) : base(_machineInput, _factoryInput)
+    {
+        //GetSelectedBadge();    
+    }
 
     public override void UpdateState()
     {
@@ -531,6 +592,13 @@ public class BadgeState : SequenceState
 
                 _debugText = _debugText + " of stage " + _mss.GetStageNumber().ToString();
             }
+        }
+
+        GetSelectedBadge();
+
+        if(_stateMachine.GetProcedureCanvas() != null)
+        {
+            _stateMachine.GetProcedureCanvas().GetNextButton().gameObject.SetActive(true);
         }
 
         _debugText = _debugText + ".";
@@ -570,6 +638,81 @@ public class BadgeState : SequenceState
         }
 
         _stateMachine.SetGoToNextState(false);
+    }
+
+    void GetSelectedBadge()
+    {
+        if (BadgesManagerScript.GetInstance() == null || _currentSuperState == null || _stateMachine.GetNewBadgeCanvas() == null)
+        {
+            return;
+        }
+
+        if ((_currentSuperState as MainStageState) == null)
+        {
+            return;
+        }
+
+        MainStageState _mss = _currentSuperState as MainStageState;
+
+        int _nameIndex = _mss.GetStageNumber() - 1;
+
+        string _name = _stateMachine.GetBadgeNames()[_nameIndex];
+
+        _badge = BadgesManagerScript.GetInstance().GetBadgeByName(_name);
+
+        if (_badge != null)
+        {
+            Debug.Log("We have acquired the requested badge!");
+        }
+        else
+        {
+            Debug.LogError("Sorry, but no badge with the name " + @"""" + _name + @"""" + " was found.");
+
+            return;
+        }
+
+        BadgesManagerScript.GetInstance().SetBadgeEarned(_badge);
+
+        Canvas _newBadgeCanvas = _stateMachine.GetNewBadgeCanvas();
+
+        Transform _tImage = _newBadgeCanvas.gameObject.GetComponent<RectTransform>().Find("Badge Image");
+
+        Transform _tText = _newBadgeCanvas.gameObject.GetComponent<RectTransform>().Find("Congratulations Text");
+
+        if (_tImage == null || _tText == null)
+        {
+            return;
+        }
+
+        Image _img = _tImage.gameObject.GetComponent<Image>();
+
+        Text _txt = _tText.gameObject.GetComponent<Text>();
+
+        if (_img == null || _txt == null)
+        {
+            return;
+        }
+
+        _newBadgeCanvas.gameObject.SetActive(true);
+
+        _newBadgeCanvas.gameObject.GetComponent<RectTransform>().Find("Next Button").gameObject.SetActive(false);
+
+        _img.sprite = _badge.GetBadgeSprite();
+
+        _txt.text = "Congratulations! You have earned the " + @"""" + _badge.GetBadgeName() + @"""" + " badge!";
+
+        UnityAction _action = delegate
+        {
+            _newBadgeCanvas.gameObject.GetComponent<RectTransform>().Find("Next Button").gameObject.SetActive(true);
+
+            _newBadgeCanvas.gameObject.SetActive(false);
+
+            _stateMachine.GetProcedureCanvas().GetNextButton().onClick.RemoveAllListeners();
+
+            _stateMachine.GetProcedureCanvas().GetNextButton().onClick.AddListener(delegate { _stateMachine.SetGoToNextState(true); });
+        };
+
+        _stateMachine.GetProcedureCanvas().GetNextButton().onClick.AddListener(_action);
     }
 }
 
