@@ -15,10 +15,13 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
     CardScript _cardSample;
 
     [SerializeField]
-    Vector2 _cardDistanceRatio;
+    float _cardDistanceConstant = 1.0f;
 
     [SerializeField]
-    float _cardDistanceConstant = 1.0f;
+    int _cardsInARow = 4;
+
+    [SerializeField]
+    Vector2 _cardDistance;
 
     int _numberOfCards = 12;
 
@@ -115,7 +118,7 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
     public override void StartGame(int _indexInput = 0)
     {
-        if(BookScript.GetInstance() == null || _cardSample == null || GetGameInSession())
+        if(BookScript.GetInstance() == null || _cardSample == null || GetGameInSession() || _gameSpace == null)
         {
             return;
         }
@@ -216,9 +219,50 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
         ShuffleFunction();
 
+        ReorganizeObjects();
+
         _gameProperties.StartGame(0, _numberOfCards);
 
         _gameProperties.SignalToUpdateUI();
+    }
+
+    void ReorganizeObjects()
+    {
+        List<GameObject> _currentObjects = new List<GameObject>(_gameProperties.GetListOfObjectsAsGO());
+
+        //List<GameObject> _newList = new List<GameObject>();
+
+        GameObject _currentObj;
+
+        Vector3 _posAdd = Vector3.zero;
+
+        Vector3 _pos = Vector3.zero;
+
+        bool _takePos = false;
+
+        for(int _i = (_currentObjects.Count - 1); _i >= 0; _i--)
+        {
+            _currentObj = _currentObjects[_i];
+
+            _currentObj.transform.SetSiblingIndex(0);
+
+            _currentObj.name = "Card No. " + (_i + 1);
+
+            if(!_takePos)
+            {
+                _posAdd = _currentObj.transform.localPosition / -2.0f;
+
+                _posAdd.y = 0.0f;
+
+                _takePos = true;
+            }
+
+            _pos = _currentObj.transform.localPosition;
+
+            _pos = _pos + _posAdd;
+
+            _currentObj.transform.localPosition = _pos;
+        }
     }
 
     public List<CardScript> GetDoneCards()
@@ -698,7 +742,7 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
         CardScript _cardProperty = _cardObjectInput.GetComponent<CardScript>();
 
-        _cardObjectInput.transform.parent = gameObject.transform;
+        _cardObjectInput.transform.parent = _gameSpace.transform;
 
         _cardObjectInput.transform.localPosition = _posInput;
 
@@ -710,11 +754,11 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
         _cardProperty.SetCamera(_gameProperties.GetCamera());
 
-        _posInput.z = _posInput.z + (_cardDistanceRatio.x * _cardDistanceConstant);
+        _posInput.z = _posInput.z + (_cardDistance.x * _cardDistanceConstant);
 
-        if(_posInput.z >= (_cardDistanceRatio.y * _cardDistanceConstant))
+        if(_posInput.z >= (_cardDistance.x * _cardDistanceConstant * _cardsInARow))
         {
-            _posInput.x = _posInput.x + (_cardDistanceRatio.x * _cardDistanceConstant);
+            _posInput.x = _posInput.x + (_cardDistance.y * _cardDistanceConstant);
 
             _posInput.z = 0.0f;
         }

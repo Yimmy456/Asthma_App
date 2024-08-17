@@ -58,46 +58,9 @@ public class FPSMovingScript : MonoBehaviour
             return;
         }
 
-        //Vector3 _direction = Vector3.zero;
+        Vector3 _directionInputV3 = _controller.Move.Move.ReadValue<Vector3>();
 
-        Vector3 _directionForward = Vector3.zero;
-
-        Vector3 _directionRight = Vector3.zero;
-
-        Vector3 _directionUp = Vector3.zero;
-
-        if(_controller.Move.Move.ReadValue<Vector2>().y == 1.0f)
-        {
-            _directionForward = _directionForward + _camera.transform.forward;
-        }
-        else if(_controller.Move.Move.ReadValue<Vector2>().y == -1.0f)
-        {
-            _directionForward = _directionForward - _camera.transform.forward;
-        }
-
-        Debug.Log("Forward is " + _directionForward + ".");
-
-        if(_controller.Move.Move.ReadValue<Vector2>().x == 1.0f)
-        {
-            _directionRight = _directionRight + _camera.transform.right;
-        }
-        else if (_controller.Move.Move.ReadValue<Vector2>().x == -1.0f)
-        {
-            _directionRight = _directionRight - _camera.transform.right;
-        }
-
-        Debug.Log("Right is " + _directionRight + ".");
-
-        if(_controller.Move.Move_Y.ReadValue<float>() == 1.0f)
-        {
-            _directionUp = _directionUp + _camera.transform.up;
-        }
-        else if(_controller.Move.Move_Y.ReadValue<float>() == -1.0f)
-        {
-            _directionUp = _directionUp - _camera.transform.up;
-        }
-
-        Vector3 _direction = _directionForward + _directionRight + _directionUp;
+        Vector3 _direction = (_camera.transform.right * _directionInputV3.x) + (_camera.transform.up * _directionInputV3.y) + (_camera.transform.forward * _directionInputV3.z);
 
         Vector3 _finalMovingVelocity = _direction * _movingSpeed * Time.deltaTime;
 

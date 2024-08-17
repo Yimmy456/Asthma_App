@@ -543,7 +543,7 @@ public class GameState : SequenceState
 
             CardGameScript _cardGame = _game as CardGameScript;
 
-            _cardGame.StartGame(1);
+            _cardGame.StartGame(0);
 
             _cardGame.GetGameProperties().GetGameCanvas().gameObject.SetActive(false);
         }

@@ -267,7 +267,7 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                     ""name"": ""Move"",
                     ""type"": ""Value"",
                     ""id"": ""02a2e0c3-e0b6-46f4-a910-a7ecdbdb3969"",
-                    ""expectedControlType"": ""Dpad"",
+                    ""expectedControlType"": ""Vector3"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -298,73 +298,9 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Move_Y"",
-                    ""type"": ""Value"",
-                    ""id"": ""66063fb3-c0ce-4563-8148-01009273c2e5"",
-                    ""expectedControlType"": ""Analog"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""82b0d069-f5ad-4bb3-bd92-665e5c034195"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""70327d11-46bb-4b1c-924e-3263bac79454"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""1dd005a1-f8c1-4dda-b008-982b68d8a06c"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""7df0139c-f01f-437c-bf63-4941bc0e851e"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""062199d1-035d-4104-ac2a-97d11536f191"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
                 {
                     ""name"": """",
                     ""id"": ""6947fdca-cea6-4782-a2b8-77fccb2c35fd"",
@@ -410,35 +346,79 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""1D Axis"",
-                    ""id"": ""9a9ffef0-6a3b-4a29-880f-ac7439218bf7"",
-                    ""path"": ""1DAxis"",
+                    ""name"": ""3D Vector"",
+                    ""id"": ""f1447c35-9ba7-46da-9bf9-038fd6b1fe4b"",
+                    ""path"": ""3DVector"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move_Y"",
+                    ""action"": ""Move"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""negative"",
-                    ""id"": ""62ab0c28-9d89-4d25-922b-bda18b8d6a2b"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""name"": ""up"",
+                    ""id"": ""43f38afd-1805-4291-b16b-8d6821760019"",
+                    ""path"": ""<Keyboard>/#(E)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move_Y"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""positive"",
-                    ""id"": ""72141bca-3a61-4d0d-a8fb-ed9f3eb16345"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""name"": ""down"",
+                    ""id"": ""34381eb0-ac10-4b50-a19d-0f241ae94ab7"",
+                    ""path"": ""<Keyboard>/#(Q)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move_Y"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""b663f15e-1e6c-4a9c-8f97-4d0d12d809fc"",
+                    ""path"": ""<Keyboard>/#(A)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""20050b80-79a1-45a2-8db5-fc169d766296"",
+                    ""path"": ""<Keyboard>/#(D)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""forward"",
+                    ""id"": ""ed092111-42ad-485f-8e1c-882d57b050a1"",
+                    ""path"": ""<Keyboard>/#(W)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""backward"",
+                    ""id"": ""e685ad5b-61c4-47ac-8515-55d1f2efe409"",
+                    ""path"": ""<Keyboard>/#(S)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
@@ -462,7 +442,6 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
         m_Move_Look = m_Move.FindAction("Look", throwIfNotFound: true);
         m_Move_LookTrigger = m_Move.FindAction("Look Trigger", throwIfNotFound: true);
         m_Move_CursorPosition = m_Move.FindAction("Cursor Position", throwIfNotFound: true);
-        m_Move_Move_Y = m_Move.FindAction("Move_Y", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -607,7 +586,6 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
     private readonly InputAction m_Move_Look;
     private readonly InputAction m_Move_LookTrigger;
     private readonly InputAction m_Move_CursorPosition;
-    private readonly InputAction m_Move_Move_Y;
     public struct MoveActions
     {
         private @PlayerController m_Wrapper;
@@ -616,7 +594,6 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_Move_Look;
         public InputAction @LookTrigger => m_Wrapper.m_Move_LookTrigger;
         public InputAction @CursorPosition => m_Wrapper.m_Move_CursorPosition;
-        public InputAction @Move_Y => m_Wrapper.m_Move_Move_Y;
         public InputActionMap Get() { return m_Wrapper.m_Move; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -638,9 +615,6 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                 @CursorPosition.started -= m_Wrapper.m_MoveActionsCallbackInterface.OnCursorPosition;
                 @CursorPosition.performed -= m_Wrapper.m_MoveActionsCallbackInterface.OnCursorPosition;
                 @CursorPosition.canceled -= m_Wrapper.m_MoveActionsCallbackInterface.OnCursorPosition;
-                @Move_Y.started -= m_Wrapper.m_MoveActionsCallbackInterface.OnMove_Y;
-                @Move_Y.performed -= m_Wrapper.m_MoveActionsCallbackInterface.OnMove_Y;
-                @Move_Y.canceled -= m_Wrapper.m_MoveActionsCallbackInterface.OnMove_Y;
             }
             m_Wrapper.m_MoveActionsCallbackInterface = instance;
             if (instance != null)
@@ -657,9 +631,6 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
                 @CursorPosition.started += instance.OnCursorPosition;
                 @CursorPosition.performed += instance.OnCursorPosition;
                 @CursorPosition.canceled += instance.OnCursorPosition;
-                @Move_Y.started += instance.OnMove_Y;
-                @Move_Y.performed += instance.OnMove_Y;
-                @Move_Y.canceled += instance.OnMove_Y;
             }
         }
     }
@@ -680,6 +651,5 @@ public partial class @PlayerController : IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnLookTrigger(InputAction.CallbackContext context);
         void OnCursorPosition(InputAction.CallbackContext context);
-        void OnMove_Y(InputAction.CallbackContext context);
     }
 }

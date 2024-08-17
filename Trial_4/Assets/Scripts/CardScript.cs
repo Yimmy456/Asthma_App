@@ -25,6 +25,9 @@ public class CardScript : MonoBehaviour
     [SerializeField]
     CardGameScript _group;
 
+    [SerializeField]
+    float _animationSpeed = 5.0f;
+
     PlayerController _controller;
 
     Vector3 _originalPosition = Vector3.zero;
@@ -39,6 +42,10 @@ public class CardScript : MonoBehaviour
     public Text _text;
 
     int _cardNumber = -1;
+
+    Coroutine _flipUpAnimationCoroutine;
+
+    Coroutine _flipDownAnimationCoroutine;
 
     // Start is called before the first frame update
     void Start()
@@ -243,6 +250,84 @@ public class CardScript : MonoBehaviour
         if (_renderer.material.GetFloat(_referenceName) != _input)
         {
             _renderer.materials[0].SetFloat(_referenceName, _input);
+        }
+    }
+
+    IEnumerator FlipUpCardAnimation()
+    {
+        float _currentRot = -90.0f;
+
+        SetBlackOpacity(0.0f);
+
+        for(float _s = -90.0f; _s < 90.0f; _s += (Time.deltaTime * _animationSpeed))
+        {
+            _currentRot = _s;
+
+            if(_currentRot >= 90.0f)
+            {
+                _currentRot = 90.0f;
+            }
+
+            transform.localRotation = Quaternion.Euler(_currentRot, 0.0f, 0.0f);
+
+            yield return null;
+        }
+
+        _flipUpAnimationCoroutine = null;
+    }
+
+    IEnumerator FlipDownCardAnimation()
+    {
+        float _currentRot = 90.0f;
+
+        for (float _s = 90.0f; _s > -90.0f; _s -= (Time.deltaTime * _animationSpeed))
+        {
+            _currentRot = _s;
+
+            if(_currentRot <= -90.0f)
+            {
+                _currentRot = -90.0f;
+            }
+
+            transform.localRotation = Quaternion.Euler(_currentRot, 0.0f, 0.0f);
+
+            yield return null;
+        }
+
+        SetBlackOpacity(1.0f);
+    }
+
+    public void PlayFlipAnimation(bool _upAnimation = true)
+    {
+        float _angle = transform.localEulerAngles.x;
+
+        if(_upAnimation && _cardFlipped)
+        {
+            if(_flipDownAnimationCoroutine != null)
+            {
+                StopCoroutine(_flipDownAnimationCoroutine);
+
+                _flipDownAnimationCoroutine = null;
+            }
+
+            if(_angle != 90.0f && _flipUpAnimationCoroutine == null)
+            {
+                _flipUpAnimationCoroutine = StartCoroutine(FlipUpCardAnimation());
+            }
+        }
+        else if(!_upAnimation && !_cardFlipped)
+        {
+            if(_flipUpAnimationCoroutine != null)
+            {
+                StopCoroutine(_flipUpAnimationCoroutine);
+                
+                _flipUpAnimationCoroutine = null;
+            }
+
+            if(_angle != -90.0f && _flipDownAnimationCoroutine == null)
+            {
+                _flipDownAnimationCoroutine= StartCoroutine(FlipDownCardAnimation());
+            }
         }
     }
 }
