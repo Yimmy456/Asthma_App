@@ -242,7 +242,7 @@ MonoBehaviour:
     _informationLearned: 0
     _badgeName: 
     _infoCategory: 0
-    _sprite: {fileID: 0}
+    _sprite: {fileID: 21300000, guid: 31d3dbe87d2bf6c41b72c9249096527a, type: 3}
     _wordType: 1
   - _informationName: Mucus
     _informationDesc: A green substance in the lungs that help protect them from
@@ -251,7 +251,7 @@ MonoBehaviour:
     _informationLearned: 0
     _badgeName: 
     _infoCategory: 0
-    _sprite: {fileID: 0}
+    _sprite: {fileID: 21300000, guid: c1b3a63affcec0849a9e4ecda941f348, type: 3}
     _wordType: 0
   - _informationName: Symptom
     _informationDesc: '''Symptoms'' of asthma include coughing, wheezing, tight feeling
@@ -262,7 +262,7 @@ MonoBehaviour:
     _informationLearned: 0
     _badgeName: 
     _infoCategory: 0
-    _sprite: {fileID: 0}
+    _sprite: {fileID: 21300000, guid: 10a21d67cb938e94c876e5e4e666e19d, type: 3}
     _wordType: 0
   - _informationName: Trigger
     _informationDesc: 
@@ -275,7 +275,7 @@ MonoBehaviour:
     _informationLearned: 0
     _badgeName: 
     _infoCategory: 0
-    _sprite: {fileID: 21300000, guid: 61efea9a62174954ebb886a3b0b1a775, type: 3}
+    _sprite: {fileID: 21300000, guid: bece67b3c929b9a4dbeedd82f6d30663, type: 3}
     _wordType: 0
   - _informationName: Animals
     _informationDesc: 
@@ -305,7 +305,17 @@ MonoBehaviour:
     _informationLearned: 0
     _badgeName: 
     _infoCategory: 1
-    _sprite: {fileID: 0}
+    _sprite: {fileID: 21300000, guid: eb41f23df0a4563458a90751dc52bb3a, type: 3}
+    _wordType: 0
+  - _informationName: Exercise
+    _informationDesc: A physical activity that can make asthma worse.
+    _informationExamples:
+    - Swimming
+    - Jogging
+    _informationLearned: 0
+    _badgeName: 
+    _infoCategory: 1
+    _sprite: {fileID: 21300000, guid: ea3f45cfb57ce1048a8a8f637766a392, type: 3}
     _wordType: 0
   - _informationName: Air Pollution
     _informationDesc: Large black smoke that is emitted from work stations, which
@@ -339,7 +349,7 @@ MonoBehaviour:
     _informationLearned: 0
     _badgeName: 
     _infoCategory: 1
-    _sprite: {fileID: 0}
+    _sprite: {fileID: 21300000, guid: 38c68fa4ce0cc934bbf35bde463d00b8, type: 3}
     _wordType: 0
   - _informationName: Perfume
     _informationDesc: A liquid that people spray on their bodies to emit nice odors
@@ -350,13 +360,17 @@ MonoBehaviour:
     _infoCategory: 1
     _sprite: {fileID: 0}
     _wordType: 0
-  - _informationName: Flu
-    _informationDesc: Infection in the nose, throat, or lungs
-    _informationExamples: []
+  - _informationName: Cold
+    _informationDesc: Food, objects, or environments that can worsen a person's ability
+      to breathe
+    _informationExamples:
+    - Ice
+    - Ice cream
+    - Snow
     _informationLearned: 0
     _badgeName: 
-    _infoCategory: 2
-    _sprite: {fileID: 0}
+    _infoCategory: 1
+    _sprite: {fileID: 21300000, guid: ea3f45cfb57ce1048a8a8f637766a392, type: 3}
     _wordType: 0
   - _informationName: Coughing
     _informationDesc: 
@@ -366,6 +380,14 @@ MonoBehaviour:
     _infoCategory: 2
     _sprite: {fileID: 21300000, guid: 3f4b152b0ceb7704c9defb1d14aeb7a2, type: 3}
     _wordType: 1
+  - _informationName: Flu
+    _informationDesc: Infection in the nose, throat, or lungs
+    _informationExamples: []
+    _informationLearned: 0
+    _badgeName: 
+    _infoCategory: 2
+    _sprite: {fileID: 0}
+    _wordType: 0
   - _informationName: Wheezing
     _informationDesc: 
     _informationExamples: []
@@ -374,6 +396,14 @@ MonoBehaviour:
     _infoCategory: 2
     _sprite: {fileID: 21300000, guid: 30533ac270b7500409d6f15716fe2ee5, type: 3}
     _wordType: 1
+  - _informationName: Sleeping Difficulty
+    _informationDesc: The inability to get enough sleep or any sleep at all at night.
+    _informationExamples: []
+    _informationLearned: 0
+    _badgeName: 
+    _infoCategory: 2
+    _sprite: {fileID: 21300000, guid: ea3f45cfb57ce1048a8a8f637766a392, type: 3}
+    _wordType: 0
   - _informationName: Inhaler
     _informationDesc: 
     _informationExamples:
@@ -2514,6 +2544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _secondsToLoad: 5
+  _logo: {fileID: 101673845}
 --- !u!4 &2076120034
 Transform:
   m_ObjectHideFlags: 0

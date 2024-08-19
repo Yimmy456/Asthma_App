@@ -24,6 +24,11 @@ public class DestroyAfterQuitScript : MonoBehaviour
     {
         foreach (var obj in _otherObjects)
         {
+            if(obj == null)
+            {
+                continue;
+            }
+
             if(obj.GetComponent<ParticleSystem>() != null)
             {
                 //ParticleSystem.Particle[] _p = obj.GetComponent<ParticleSystem>().GetParticles();

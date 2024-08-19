@@ -18,7 +18,7 @@ public class MenuSceneScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        EnableCorrectPlayButton();
     }
 
     // Update is called once per frame
@@ -67,7 +67,7 @@ public class MenuSceneScript : MonoBehaviour
         ActionPlanManagerScript.GetInstance().StartPlan();
     }
 
-    void EnableCorectPlayButton()
+    void EnableCorrectPlayButton()
     {
         bool _bool;
 

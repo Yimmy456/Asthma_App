@@ -23,6 +23,9 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
     [SerializeField]
     Vector2 _cardDistance;
 
+    [SerializeField]
+    float _cardFlipAnimationSpeed = 5.0f;
+
     int _numberOfCards = 12;
 
     List<DefinitionClass> _selectedWords;
@@ -308,12 +311,16 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
             _selectedCard1 = _input;
 
             _selectedCard1.SetCardFlipped(true);
+
+            StartCoroutine(FlipUpCardAnimation(_input));
         }
         else if(_selectedCard1 == _input && !_selectedCard1.GetIsInfoCard())
         {
             _selectedCard1.SetCardFlipped(false);
 
             _selectedCard1 = null;
+
+            StartCoroutine(FlipDownCardAnimation(_input));
         }
         else if(_selectedCard2 == null)
         {
@@ -325,6 +332,8 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
             {
                 _evaluateCards = EvaluateCardsEnum.MatchCards;
             }
+
+            StartCoroutine(FlipUpCardAnimation(_input));
         }
     }
 
@@ -360,6 +369,8 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
                 _selectedCard2.SetCardDone(true);
 
                 _selectedCard1.SetCardFlipped(false);
+
+                StartCoroutine(FlipDownCardAnimation(_selectedCard1));
             }
 
             _gameProperties.GetMeter().AddToValue(1);
@@ -412,6 +423,10 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
             _selectedCard2.SetCardFlipped(false);
 
             SetResponseText("That's not quite a match. Please, try again. I'm sure you can do it.", new Color(0.5f, 0.5f, 0.5f));
+
+            StartCoroutine(FlipDownCardAnimation(_selectedCard1));
+
+            StartCoroutine(FlipDownCardAnimation(_selectedCard2));
         }
 
         _selectedCard1 = null;
@@ -511,38 +526,6 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
     void InstantiateInfoCardFunction(ref GameObject _cardGOInput, ref Vector3 _posInput, ref List<int> _listInput)
     {
         CardScript _infoCard = _cardGOInput.GetComponent<CardScript>();
-
-        /*_cardGOInput.transform.parent = gameObject.transform;
-
-        _cardGOInput.transform.localPosition = _posInput;
-
-        _cardGOInput.transform.localRotation = Quaternion.Euler(-90.0f, 90.0f, 0.0f);
-
-        _infoCard.SetIsInfoCard(true);
-
-        if (_gameProperties.GetResponseText() != null)
-        {
-            _infoCard._text = _gameProperties.GetResponseText();
-        }
-
-        _gameProperties.AddObjectToList(_infoCard);
-
-        _gameProperties.AddObjectsAsGO(_cardGOInput);
-
-        _infoCard.SetOriginalPosition(_posInput);
-
-        _infoCard.SetCamera(_gameProperties.GetCamera());
-
-        _posInput.z = _posInput.z + (_cardDistanceRatio.x * _cardDistanceConstant);
-
-        if (_posInput.z >= (_cardDistanceRatio.y * _cardDistanceConstant))
-        {
-            _posInput.x = _posInput.x + (_cardDistanceRatio.x * _cardDistanceConstant);
-
-            _posInput.z = 0.0f;
-        }*/
-
-        //_infoCard.SetGroup(this);
 
         SetCardPositionAndProperty(ref _cardGOInput, ref _posInput);
 
@@ -800,5 +783,55 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
         Button _bt = _gameProperties.GetYesOrNoCanvas().GetYesButton();
 
         _bt.onClick.AddListener(delegate { StopGame(); });
+    }
+
+    IEnumerator FlipUpCardAnimation(CardScript _input)
+    {
+        float _a = _input.gameObject.transform.localEulerAngles.x;
+
+        float _currentRot = _a;
+
+        _input.SetBlackOpacity(0.0f);
+
+        for (float _s = _a; _s > 90.0f; _s -= (Time.deltaTime * _cardFlipAnimationSpeed))
+        {
+            _currentRot = _s;
+
+            if (_currentRot <= 90.0f)
+            {
+                _currentRot = 90.0f;
+            }
+
+            _input.gameObject.transform.localRotation = Quaternion.Euler(_currentRot, 0.0f, 90.0f);
+
+            yield return null;
+        }
+
+        _input.gameObject.transform.localRotation = Quaternion.Euler(90.0f, 0.0f, 90.0f);
+    }
+
+    IEnumerator FlipDownCardAnimation(CardScript _input)
+    {
+        float _a = _input.gameObject.transform.localEulerAngles.x;
+
+        float _currentRot = _a;
+
+        for (float _s = _a; _s < 270.0f; _s += (Time.deltaTime * _cardFlipAnimationSpeed))
+        {
+            _currentRot = _s;
+
+            if (_currentRot >= 270.0f)
+            {
+                _currentRot = 270.0f;
+            }
+
+            _input.gameObject.transform.localRotation = Quaternion.Euler(_currentRot, 0.0f, 90.0f);
+
+            yield return null;
+        }
+
+        _input.SetBlackOpacity(1.0f);
+
+        _input.gameObject.transform.localRotation = Quaternion.Euler(270.0f, 0.0f, 90.0f);
     }
 }

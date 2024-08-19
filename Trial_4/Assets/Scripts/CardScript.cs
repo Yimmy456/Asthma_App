@@ -25,9 +25,6 @@ public class CardScript : MonoBehaviour
     [SerializeField]
     CardGameScript _group;
 
-    [SerializeField]
-    float _animationSpeed = 5.0f;
-
     PlayerController _controller;
 
     Vector3 _originalPosition = Vector3.zero;
@@ -42,10 +39,6 @@ public class CardScript : MonoBehaviour
     public Text _text;
 
     int _cardNumber = -1;
-
-    Coroutine _flipUpAnimationCoroutine;
-
-    Coroutine _flipDownAnimationCoroutine;
 
     // Start is called before the first frame update
     void Start()
@@ -216,9 +209,9 @@ public class CardScript : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-        else if(_cardFlipped)
+        /*else if(_cardFlipped)
         {
-            transform.localRotation = Quaternion.Euler(90.0f, 90.0f, 0.0f);
+            //transform.localRotation = Quaternion.Euler(90.0f, 90.0f, 0.0f);
 
             SetBlackOpacity(0.0f);
         }
@@ -230,10 +223,10 @@ public class CardScript : MonoBehaviour
             {
                 transform.localRotation = Quaternion.Euler(-90.0f, 90.0f, 0.0f);
             }
-        }
+        }*/
     }
 
-    void SetBlackOpacity(float _input)
+    public void SetBlackOpacity(float _input)
     {
         if(_renderer.materials.Length == 0)
         {
@@ -253,51 +246,7 @@ public class CardScript : MonoBehaviour
         }
     }
 
-    IEnumerator FlipUpCardAnimation()
-    {
-        float _currentRot = -90.0f;
-
-        SetBlackOpacity(0.0f);
-
-        for(float _s = -90.0f; _s < 90.0f; _s += (Time.deltaTime * _animationSpeed))
-        {
-            _currentRot = _s;
-
-            if(_currentRot >= 90.0f)
-            {
-                _currentRot = 90.0f;
-            }
-
-            transform.localRotation = Quaternion.Euler(_currentRot, 0.0f, 0.0f);
-
-            yield return null;
-        }
-
-        _flipUpAnimationCoroutine = null;
-    }
-
-    IEnumerator FlipDownCardAnimation()
-    {
-        float _currentRot = 90.0f;
-
-        for (float _s = 90.0f; _s > -90.0f; _s -= (Time.deltaTime * _animationSpeed))
-        {
-            _currentRot = _s;
-
-            if(_currentRot <= -90.0f)
-            {
-                _currentRot = -90.0f;
-            }
-
-            transform.localRotation = Quaternion.Euler(_currentRot, 0.0f, 0.0f);
-
-            yield return null;
-        }
-
-        SetBlackOpacity(1.0f);
-    }
-
-    public void PlayFlipAnimation(bool _upAnimation = true)
+    /*public void PlayFlipAnimation(bool _upAnimation = true)
     {
         float _angle = transform.localEulerAngles.x;
 
@@ -330,4 +279,6 @@ public class CardScript : MonoBehaviour
             }
         }
     }
+
+    */
 }
