@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.14840654, g: 0.14041641, b: 0.14339197, a: 1}
+  m_IndirectSpecularColor: {r: 0.20347312, g: 0.2847671, b: 0.78397495, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11057,6 +11057,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ca0a7ee65dbd10847a367215112631d6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c524a751bbcc5c941b29f54f2213ef0f, type: 2}
     - target: {fileID: 919132149155446097, guid: ca0a7ee65dbd10847a367215112631d6, type: 3}
       propertyPath: m_Name
       value: Satellite
@@ -11272,7 +11276,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &511941370
 Transform:
   m_ObjectHideFlags: 0
@@ -11319,8 +11323,8 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Intensity: 1.12
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -26769,6 +26773,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 70f662998b5283d4bb0c0994cd81e387, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b9a11a43b4410d642833ea41a4fc18d9, type: 2}
     - target: {fileID: 919132149155446097, guid: 70f662998b5283d4bb0c0994cd81e387, type: 3}
       propertyPath: m_Name
       value: FullMoon

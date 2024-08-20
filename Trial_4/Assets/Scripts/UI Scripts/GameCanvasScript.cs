@@ -14,6 +14,8 @@ public class GameCanvasScript : CanvasScript, YesOrNoInterface
     [SerializeField]
     protected Text _percentageText;
 
+    protected GameMBScript _currentGame;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,16 @@ public class GameCanvasScript : CanvasScript, YesOrNoInterface
     void Update()
     {
         
+    }
+
+    public GameMBScript GetCurrentGame()
+    {
+        return _currentGame;
+    }
+
+    public void SetCurrentGame(GameMBScript _input)
+    {
+        _currentGame = _input;
     }
 
     public void ISetActionsOfNoButton()

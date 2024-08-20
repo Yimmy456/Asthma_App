@@ -26,6 +26,15 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
     [SerializeField]
     float _cardFlipAnimationSpeed = 5.0f;
 
+    [SerializeField]
+    Color _matchTextColor;
+
+    [SerializeField]
+    Color _noMatchTextColor;
+
+    [SerializeField]
+    Color _infoTextColor;
+
     int _numberOfCards = 12;
 
     List<DefinitionClass> _selectedWords;
@@ -227,6 +236,8 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
         _gameProperties.StartGame(0, _numberOfCards);
 
         _gameProperties.SignalToUpdateUI();
+
+        _gameProperties.SetBadge("Cards' Badge");
     }
 
     void ReorganizeObjects()
@@ -394,7 +405,7 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
             string _textToDisplay = "Nice! You found an info card! Fun Fact:\n\n" + _infoText;
 
-            SetResponseText(_textToDisplay, new Color(0.0f, 1.0f, 0.0f), 10.0f, _finalCard);
+            SetResponseText(_textToDisplay, _infoTextColor, 10.0f, _finalCard);
 
             if(_finalCard)
             {
@@ -413,7 +424,7 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
             if (_gameProperties.GetMeter().GetPercentage() < 100.0f)
             {
-                SetResponseText("Great! That's a match!", new Color(0.0f, 1.0f, 0.0f));
+                SetResponseText("Great! That's a match!", _matchTextColor);
             }
         }
         else if(_evaluateCards == EvaluateCardsEnum.MatchCards)
@@ -422,7 +433,7 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
             _selectedCard2.SetCardFlipped(false);
 
-            SetResponseText("That's not quite a match. Please, try again. I'm sure you can do it.", new Color(0.5f, 0.5f, 0.5f));
+            SetResponseText("That's not quite a match. Please, try again. I'm sure you can do it.", _noMatchTextColor);
 
             StartCoroutine(FlipDownCardAnimation(_selectedCard1));
 

@@ -65,6 +65,14 @@ public class GameGenericMBScript<T> : GameMBScript, YesOrNoInterface
             _gameProperties.GetGameIndicatorCanvas().gameObject.SetActive(PrepareGameIndicator());
         }
 
+
+
+        //GameCanvasScript _gameCanvas = _gameProperties.GetGameCanvas().gameObject.GetComponent<GameCanvasScript>();
+
+        //_gameCanvas.gameObject.SetActive(fal);
+
+        InitializeQuitButton();
+
         base.StartGame();
     }
 
@@ -175,6 +183,14 @@ public class GameGenericMBScript<T> : GameMBScript, YesOrNoInterface
         Button _b = _gameProperties.GetNewBadgeCanvas().gameObject.GetComponent<RectTransform>().Find("Next Button").gameObject.GetComponent<Button>();
 
         _gameProperties.ClearObjectLists();
+
+        if(_gameProperties.GetGameIndicatorCanvas() != null)
+        {
+            if (_gameProperties.GetGameIndicatorCanvas().gameObject.activeSelf)
+            {
+                _gameProperties.GetGameIndicatorCanvas().gameObject.SetActive(false);
+            }
+        }
 
         if(_b != null)
         {
@@ -287,5 +303,37 @@ public class GameGenericMBScript<T> : GameMBScript, YesOrNoInterface
         }
 
         return _boolS.GetBooleanValue();
+    }
+
+    protected void InitializeQuitButton()
+    {
+        if(_gameProperties.GetGameCanvas() == null)
+        {
+            return;
+        }
+
+        GameCanvasScript _canvas = _gameProperties.GetGameCanvas().gameObject.GetComponent<GameCanvasScript>();
+
+        if (_canvas == null)
+        {
+            return;
+        }
+
+        Button _quitButton = _canvas.GetQuitButton();
+
+        if(_quitButton == null)
+        {
+            return;
+        }
+
+        _quitButton.onClick.AddListener(delegate { _gameProperties.GetYesOrNoCanvas().gameObject.SetActive(true); });
+
+        _quitButton.onClick.AddListener(delegate { QuitGame(); });
+
+        //_quitButton.onClick.AddListener(delegate { _gameProperties.GetYesOrNoCanvas().GetYesButton().onClick.AddListener(delegate { ISetActionsOfYesButtonToQuit(); }); });
+
+        _quitButton.onClick.AddListener(delegate { _gameProperties.GetMainCanvases().GetDoctorCanvas().gameObject.SetActive(false); });
+
+        _quitButton.onClick.AddListener(delegate { _canvas.gameObject.SetActive(false); });
     }
 }

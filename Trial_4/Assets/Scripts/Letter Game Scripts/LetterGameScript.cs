@@ -76,6 +76,10 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
         _gameProperties.GetMeter().SetValue(0);
 
         _gameProperties.SignalToUpdateUI();
+
+       // string _badgeName = "Spelling Badge (" + _word.GetInformationName() + ")";
+
+        _gameProperties.SetBadge(2);
     }
 
     public override void StartGame(int _input)
@@ -117,6 +121,10 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
             _gameProperties.GetMeter().SetValue(0);
 
             _gameProperties.SignalToUpdateUI();
+
+            string _badgeName = "Spelling Badge (" + _word2.GetInformationName() + ")";
+
+            _gameProperties.SetBadge(_badgeName);
         }
         else
         {
