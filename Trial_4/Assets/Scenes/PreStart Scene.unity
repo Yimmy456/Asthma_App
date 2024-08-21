@@ -351,16 +351,7 @@ MonoBehaviour:
     _infoCategory: 1
     _sprite: {fileID: 21300000, guid: 38c68fa4ce0cc934bbf35bde463d00b8, type: 3}
     _wordType: 0
-  - _informationName: Perfume
-    _informationDesc: A liquid that people spray on their bodies to emit nice odors
-      on them.
-    _informationExamples: []
-    _informationLearned: 0
-    _badgeName: 
-    _infoCategory: 1
-    _sprite: {fileID: 0}
-    _wordType: 0
-  - _informationName: Cold
+  - _informationName: Cold Weather or Food
     _informationDesc: Food, objects, or environments that can worsen a person's ability
       to breathe
     _informationExamples:

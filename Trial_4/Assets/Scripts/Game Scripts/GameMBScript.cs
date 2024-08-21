@@ -222,4 +222,9 @@ public class GameMBScript : MonoBehaviour
     {
         return _procedureStateMachine;
     }
+
+    public virtual void TryToStartGame()
+    {
+
+    }
 }

@@ -845,4 +845,11 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
         _input.gameObject.transform.localRotation = Quaternion.Euler(270.0f, 0.0f, 90.0f);
     }
+
+    public override void QuitGame()
+    {
+        _gameProperties.GetYesOrNoCanvas().GetYesButton().onClick.AddListener(delegate { StopGame(); });
+
+        base.QuitGame();
+    }
 }

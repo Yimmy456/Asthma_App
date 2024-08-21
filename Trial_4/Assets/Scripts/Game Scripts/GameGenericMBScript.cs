@@ -231,6 +231,8 @@ public class GameGenericMBScript<T> : GameMBScript, YesOrNoInterface
 
         Button _yesButton = _gameProperties.GetYesOrNoCanvas().GetYesButton();
 
+        _gameProperties.GetYesOrNoCanvas().GetText().text = "Are you sure you want to quit the game?";
+
         _gamePaused = true;
 
         if(_noButton != null)

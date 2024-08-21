@@ -171,6 +171,8 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
     {
         _gameProperties.GetYesOrNoCanvas().GetYesButton().onClick.AddListener(delegate { StopGame(); });
 
+        //_gameProperties.GetYesOrNoCanvas().GetText().text = "Are you sure you want to quit the game?";
+
         base.QuitGame();
     }
 

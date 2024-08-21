@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
-public class InhalerMatchingGameCanvasScript : MatchingGameCanvasScript
+public class InhalerMatchingGameScript : MatchingGameCanvasScript
 {
     [ContextMenu("Add To Preset List...")]
     protected override void AddToBnHList()
@@ -17,7 +18,7 @@ public class InhalerMatchingGameCanvasScript : MatchingGameCanvasScript
     // Start is called before the first frame update
     void Start()
     {
-        InitializeCanvas();
+        //InitializeCanvas();
     }
 
     // Update is called once per frame
@@ -73,16 +74,30 @@ public class InhalerMatchingGameCanvasScript : MatchingGameCanvasScript
         gameObject.SetActive(false);
     }
 
+    public override void TryToStartGame()
+    {
+        try
+        {
+            StartGame();
+        }
+        catch(Exception e)
+        {
+            Debug.LogError("There is an error in the inhaler game!");
+        }
+    }
+
     public override void StartGame()
     {
         if(_gameSpace == null || InhalerManagerScript.GetInstance() == null || _currentGame != null || _floor == null || _spawningArea == null || _gameProperties.GetCamera() == null || _spawningSizeForBlocks <= 0.0f || _spawningSizeForHoles <= 0.0f)
         {
             Debug.LogError("Game cannot be loaded.");
 
-            if(gameObject.activeSelf)
-            {
-                gameObject.SetActive(false);
-            }
+            return;
+        }
+
+        if(_presetBlocksAndHoles.Count != InhalerManagerScript.GetInstance().GetInhalerInfoList().Count)
+        {
+            Debug.LogError("There is a mismatch.");
 
             return;
         }
@@ -94,8 +109,6 @@ public class InhalerMatchingGameCanvasScript : MatchingGameCanvasScript
         _floor.SetActive(true);
 
         List<Vector3> _selectedPos = new List<Vector3>();
-
-        bool _errorTextId = false;
 
         _currentlySelectedPositionForHoles = Vector3.zero;
 
@@ -161,53 +174,37 @@ public class InhalerMatchingGameCanvasScript : MatchingGameCanvasScript
 
             InhalerMatchingObjectHoleScript _holeInfo = _newHole.GetComponent<InhalerMatchingObjectHoleScript>();
 
-            if(_holeInfo != null)
+
+            try
             {
-                InhalerInformationClass _currentInfo;
-
-                _holeInfo.SetHoleGameCanvas(this);
-
-                _currentInfo = InhalerManagerScript.GetInstance().GetInhalerInfoList()[_i];
-
-                _holeInfo.SetCamera(_gameProperties.GetCamera());
-
-                _holeInfo.SetHoleName(_givenName);
-
-                if (_holeInfo.GetNameText() != null && _currentInfo != null)
+                if (_holeInfo != null)
                 {
-                    _holeInfo.GetNameText().text = _currentInfo.GetObjectName();
+                    InhalerInformationClass _currentInfo;
 
-                    Color _c = _currentInfo.GetColorWitrhDifferentShadeOrAlpha(2.0f, 0.5f);
+                    _holeInfo.SetHoleGameCanvas(this);
 
-                    _holeInfo.GetTextOutline().effectColor = _c;
-                }
+                    _currentInfo = InhalerManagerScript.GetInstance().GetInhalerInfoList()[_i];
 
-                _currentBlocksAndHoles.AddHole(_holeInfo);
+                    _holeInfo.SetCamera(_gameProperties.GetCamera());
 
-                if(!_errorTextId && _errorText != null && _i == 2)
-                {
-                    _holeInfo._errorIdentifier._debugIdentifierBool = true;
+                    _holeInfo.SetHoleName(_givenName);
 
-                    _holeInfo._errorIdentifier._name = _holeInfo.GetHoleName();
+                    if (_holeInfo.GetNameText() != null && _currentInfo != null)
+                    {
+                        _holeInfo.GetNameText().text = _currentInfo.GetObjectName();
 
-                    _holeInfo._errorIdentifier._textsToDisplay.Add("Hole has an error at 0 for " + @"""" + _holeInfo._errorIdentifier._name + @"""" + ".");
+                        Color _c = _currentInfo.GetColorWitrhDifferentShadeOrAlpha(2.0f, 0.5f);
 
-                    _holeInfo._errorIdentifier._textsToDisplay.Add("Hole has an error at 1 for " + @"""" + _holeInfo._errorIdentifier._name + @"""" + ".");
+                        _holeInfo.GetTextOutline().effectColor = _c;
+                    }
 
-                    _holeInfo._errorIdentifier._textsToDisplay.Add("Hole has an error at 2 for " + @"""" + _holeInfo._errorIdentifier._name + @"""" + ".");
-
-                    _holeInfo._errorIdentifier._textsToDisplay.Add("Hole has an error at 3 for " + @"""" + _holeInfo._errorIdentifier._name + @"""" + ".");
-
-                    _holeInfo._errorIdentifier._textsToDisplay.Add("Hole has an error at 4 for " + @"""" + _holeInfo._errorIdentifier._name + @"""" + ".");
-
-                    //_holeInfo._errorIdentifier._textsToDisplay.Add("Hole has an error at 3 for " + @"""" + _holeInfo._errorIdentifier._name + @"""" + ".");
-
-                    _holeInfo._errorIdentifier._textField = _errorText;
-
-                    _errorTextId = true;
+                    _currentBlocksAndHoles.AddHole(_holeInfo);
                 }
             }
-
+            catch (Exception e)
+            {
+                Debug.LogError("The error occurs at index '" + _i + "'.");
+            }
         }
 
         AlignHolePositions();

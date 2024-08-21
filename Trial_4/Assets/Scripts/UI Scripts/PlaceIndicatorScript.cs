@@ -43,12 +43,23 @@ public class PlaceIndicatorScript : MonoBehaviour
     [SerializeField]
     Vector3 _inhalerLocalPosition;
 
+    [SerializeField]
+    Camera _camera;
+
+    [SerializeField]
+    Text _distanceText;
+
+    [SerializeField]
+    Transform _mainSceneTransform;
+
+    float _planeDistance = -1.0f;
+
     // Start is called before the first frame update
     void Start()
     {
         _raycastManager = FindObjectOfType<ARRaycastManager>();
         _indicator = transform.GetChild(0).gameObject;
-        _indicator.SetActive(false);
+        //_indicator.SetActive(false);
     }
 
     // Update is called once per frame
@@ -61,18 +72,24 @@ public class PlaceIndicatorScript : MonoBehaviour
             _startButton.onClick.RemoveListener(_action);
         }
 
-        if(_raycastManager.Raycast(_ray, _hits, TrackableType.Planes) && !_started)
+        Material _m = _indicator.GetComponent<MeshRenderer>().materials[0];
+
+        if (_raycastManager.Raycast(_ray, _hits, TrackableType.Planes) && !_started)
         {
             Pose _hitPose = _hits[0].pose;
+
+            _planeDistance = Vector3.Distance(_hitPose.position, _camera.gameObject.transform.position);
 
             transform.position = _hitPose.position;
             transform.rotation = _hitPose.rotation;
 
             _indicator.SetActive(true);
 
-            RotateIndicator();
+            _distanceText.text = "Distance: " + _planeDistance.ToString("0.00");
 
-            if(_startButton != null)
+            //RotateIndicator();
+
+            if (_startButton != null)
             {
                 _startButton.gameObject.SetActive(true);
 
@@ -92,36 +109,31 @@ public class PlaceIndicatorScript : MonoBehaviour
                 _canvasGroup.interactable = true;
             }
 
+            _m.SetColor("_Color", Color.green);
+
+            //_raycastManager.
+        }
+        else if(!_started)
+        {   
+            //_indicator.SetActive(false);
+
             if(_inhaler != null)
             {
-                _inhaler.SetActive(true);
+                _inhaler.SetActive(false);
             }
-        }
-        else
-        {
-            if (_started)
-            {
-                Material _m = _indicator.GetComponent<MeshRenderer>().materials[0];
 
-                _m.SetColor("_Color", Color.green);
+            _m.SetColor("_Color", Color.red);
+            
 
-                RotateIndicator();
-            }
-            else
-            {
-                _indicator.SetActive(false);
-
-                if(_inhaler != null)
-                {
-                    _inhaler.SetActive(false);
-                }
-            }
+            _distanceText.text = "";
 
             if(_startButton != null)
             {
                 _startButton.gameObject.SetActive(false);
             }
         }
+
+        RotateIndicator();
     }
 
     void RotateIndicator()
