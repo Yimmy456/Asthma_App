@@ -19,6 +19,9 @@ public class PlaceIndicatorScript : MonoBehaviour
     Button _startButton;
 
     [SerializeField]
+    Button _noLandButton;
+
+    [SerializeField]
     GameObject _prefab;
 
     bool _started = false;
@@ -109,6 +112,11 @@ public class PlaceIndicatorScript : MonoBehaviour
                 _canvasGroup.interactable = true;
             }
 
+            if(_noLandButton != null)
+            {
+                _noLandButton.gameObject.SetActive(false);
+            }
+
             _m.SetColor("_Color", Color.green);
 
             //_raycastManager.
@@ -130,6 +138,11 @@ public class PlaceIndicatorScript : MonoBehaviour
             if(_startButton != null)
             {
                 _startButton.gameObject.SetActive(false);
+            }
+
+            if(_noLandButton != null)
+            {
+                _noLandButton.gameObject.SetActive(true);
             }
         }
 
