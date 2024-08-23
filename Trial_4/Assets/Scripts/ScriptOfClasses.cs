@@ -1617,3 +1617,31 @@ public class EnumDropdownLabelStyleClass<T> where T : Enum
         return _labelSpriteColor;
     }
 }
+
+[System.Serializable]
+public class TextPropertiesClass
+{
+    [SerializeField]
+    Color _textColor;
+
+    [SerializeField]
+    string _text;
+
+    [SerializeField]
+    float _textTimeToDisplay = 5.0f;
+
+    public string GetText()
+    {
+        return _text;
+    }
+
+    public Color GetTextColor()
+    {
+        return _textColor;
+    }
+
+    public float GetTextTimeToDisplay()
+    {
+        return _textTimeToDisplay;
+    }
+}

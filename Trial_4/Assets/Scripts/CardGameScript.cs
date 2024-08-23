@@ -27,13 +27,13 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
     float _cardFlipAnimationSpeed = 5.0f;
 
     [SerializeField]
-    Color _matchTextColor;
+    TextPropertiesClass _matchP;
 
     [SerializeField]
-    Color _noMatchTextColor;
+    TextPropertiesClass _noMatchP;
 
     [SerializeField]
-    Color _infoTextColor;
+    TextPropertiesClass _infoP;
 
     int _numberOfCards = 12;
 
@@ -212,15 +212,18 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
                 DefinitionClass _currentWord = _defList[_s];
 
-                if(!_selectedWords.Contains(_currentWord) && _currentWord.GetSprite() != null)
+                if (!_selectedWords.Contains(_currentWord) && _currentWord.GetSprite() != null)
                 {
-                    InstantiateNormalCardsFunction(ref _currentWord, ref _pos, ref _i);
+                    if (_selectedCategory == InfoCategoryEnum.None || _selectedCategory != InfoCategoryEnum.None && _currentWord.GetInfoCategory() == _selectedCategory)
+                    {
+                        InstantiateNormalCardsFunction(ref _currentWord, ref _pos, ref _i);
 
-                    _i++;
+                        _i++;
 
-                    _selectionDone = _selectionDone + 2;
+                        _selectionDone = _selectionDone + 2;
 
-                    _wordSelectedInLoop = true;
+                        _wordSelectedInLoop = true;
+                    }
                 }
             }
 
@@ -403,9 +406,9 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
             bool _finalCard = !_gameDone && _gameProperties.GetMeter().GetPercentage() == 100.0f;
 
-            string _textToDisplay = "Nice! You found an info card! Fun Fact:\n\n" + _infoText;
+            string _textToDisplay = _infoP.GetText() + "Fun Fact:\n\n" + _infoText;
 
-            SetResponseText(_textToDisplay, _infoTextColor, 10.0f, _finalCard);
+            SetResponseText(_textToDisplay, _infoP.GetTextColor(), _infoP.GetTextTimeToDisplay(), _finalCard);
 
             if(_finalCard)
             {
@@ -424,7 +427,7 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
             if (_gameProperties.GetMeter().GetPercentage() < 100.0f)
             {
-                SetResponseText("Great! That's a match!", _matchTextColor);
+                SetResponseText(_matchP.GetText(), _matchP.GetTextColor(), _matchP.GetTextTimeToDisplay());
             }
         }
         else if(_evaluateCards == EvaluateCardsEnum.MatchCards)
@@ -433,7 +436,7 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
             _selectedCard2.SetCardFlipped(false);
 
-            SetResponseText("That's not quite a match. Please, try again. I'm sure you can do it.", _noMatchTextColor);
+            SetResponseText(_noMatchP.GetText(), _noMatchP.GetTextColor(), _noMatchP.GetTextTimeToDisplay());
 
             StartCoroutine(FlipDownCardAnimation(_selectedCard1));
 

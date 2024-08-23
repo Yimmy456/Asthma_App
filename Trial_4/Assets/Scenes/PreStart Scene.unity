@@ -361,7 +361,7 @@ MonoBehaviour:
     _informationLearned: 0
     _badgeName: 
     _infoCategory: 1
-    _sprite: {fileID: 21300000, guid: ea3f45cfb57ce1048a8a8f637766a392, type: 3}
+    _sprite: {fileID: 0}
     _wordType: 0
   - _informationName: Coughing
     _informationDesc: 

@@ -366,7 +366,7 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
 
     public override void StartGame()
     {
-        if(GetGameInSession() || MCQManagerScript.GetInstance() == null)
+        if(GetGameInSession() || MCQManagerScript.GetInstance() == null || _mcqCanvas == null)
         {
             return;
         }

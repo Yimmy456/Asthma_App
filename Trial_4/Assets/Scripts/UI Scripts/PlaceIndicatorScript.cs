@@ -55,7 +55,15 @@ public class PlaceIndicatorScript : MonoBehaviour
     [SerializeField]
     Transform _mainSceneTransform;
 
+    [SerializeField]
+    float _constantSizeOfMainScene = 0.1f;
+
+    [SerializeField]
+    float _expandingAnimationSpeed = 0.5f;
+
     float _planeDistance = -1.0f;
+
+    bool _lookForTerrainBool = false;
 
     // Start is called before the first frame update
     void Start()
@@ -68,6 +76,26 @@ public class PlaceIndicatorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        LookForTerrain();
+    }
+
+    void LookForTerrain()
+    {
+        if(!_lookForTerrainBool)
+        {
+            _indicator.SetActive(false);
+
+            _noLandButton.gameObject.SetActive(false);
+
+            _startButton.gameObject.SetActive(false);
+
+            return;
+        }
+        else
+        {
+            _indicator.SetActive(true);
+        }
+
         var _ray = new Vector2(Screen.width / 2, Screen.height / 2);
 
         if (_action != null)
@@ -105,14 +133,14 @@ public class PlaceIndicatorScript : MonoBehaviour
                 _startButton.onClick.AddListener(_action);
             }
 
-            if(_canvasGroup != null)
+            if (_canvasGroup != null)
             {
                 _canvasGroup.alpha = 1.0f;
 
                 _canvasGroup.interactable = true;
             }
 
-            if(_noLandButton != null)
+            if (_noLandButton != null)
             {
                 _noLandButton.gameObject.SetActive(false);
             }
@@ -121,29 +149,31 @@ public class PlaceIndicatorScript : MonoBehaviour
 
             //_raycastManager.
         }
-        else if(!_started)
-        {   
+        else if (!_started)
+        {
             //_indicator.SetActive(false);
 
-            if(_inhaler != null)
+            if (_inhaler != null)
             {
                 _inhaler.SetActive(false);
             }
 
             _m.SetColor("_Color", Color.red);
-            
+
 
             _distanceText.text = "";
 
-            if(_startButton != null)
+            if (_startButton != null)
             {
                 _startButton.gameObject.SetActive(false);
             }
 
-            if(_noLandButton != null)
+            if (_noLandButton != null)
             {
                 _noLandButton.gameObject.SetActive(true);
             }
+
+            _planeDistance = -1.0f;
         }
 
         RotateIndicator();
@@ -177,5 +207,25 @@ public class PlaceIndicatorScript : MonoBehaviour
     public void ResetInhalerPosition()
     {
         _inhaler.transform.localPosition = _inhalerLocalPosition;
+    }
+
+    public float GetPlaneDistance()
+    {
+        return _planeDistance;
+    }
+
+    public float GetConstantSizeOfMainScene()
+    {
+        return _constantSizeOfMainScene;
+    }
+
+    public float GetExpandingAnimationSpeed()
+    {
+        return _expandingAnimationSpeed;
+    }
+
+    public void SetLookForTerrainBool(bool _input)
+    {
+        _lookForTerrainBool = _input;
     }
 }

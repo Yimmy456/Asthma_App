@@ -53,6 +53,9 @@ public class MainSceneScript : MonoBehaviour, YesOrNoInterface
     [SerializeField]
     Animator _fastyAnimator;
 
+    [SerializeField]
+    Transform _landingTerrain;
+
     public bool _started;
 
 
@@ -276,5 +279,43 @@ public class MainSceneScript : MonoBehaviour, YesOrNoInterface
         }
 
         _fastyAnimator.SetTrigger("Shake Inhaler");
+    }
+
+    public void ShowLandingTerrain()
+    {
+        if(_landingTerrain == null || _placeIndicator == null)
+        {
+            return;
+        }
+
+        _landingTerrain.gameObject.SetActive(true);
+
+        StartCoroutine(ExpandLandingTerrain());
+    }
+
+    IEnumerator ExpandLandingTerrain()
+    {
+        float _finalSize = _placeIndicator.GetConstantSizeOfMainScene();
+
+        float _expandSpeed = _placeIndicator.GetExpandingAnimationSpeed();
+
+        float _distance = _placeIndicator.GetPlaneDistance();
+
+        float _c = (_expandSpeed * _finalSize) / _distance;
+
+        Vector3 _size = Vector3.one;
+
+        for(float _t = 0.0f; _t < (_finalSize * _distance); _t += (Time.deltaTime * _c))
+        {
+            _size = _size * _t;
+
+            _landingTerrain.localScale = _size;
+
+            yield return null;
+        }
+
+        _size = Vector3.one * _finalSize;
+
+        _landingTerrain.localScale = _size;
     }
 }
