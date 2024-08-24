@@ -228,4 +228,16 @@ public class PlaceIndicatorScript : MonoBehaviour
     {
         _lookForTerrainBool = _input;
     }
+
+    public void SetSceneSize()
+    {
+        if(_mainSceneTransform == null)
+        {
+            return;
+        }
+
+        Vector3 _size = Vector3.one * _planeDistance * _constantSizeOfMainScene;
+
+        _mainSceneTransform.localScale = _size;
+    }
 }
