@@ -25,6 +25,8 @@ public class MCQCanvasScript : GameCanvasScript
 
     Coroutine _responseTextCoroutine;
 
+    string _correctAnswerResponse;
+
     //[SerializeField]
     Button _correctButton;
 
@@ -83,6 +85,8 @@ public class MCQCanvasScript : GameCanvasScript
             }
         }
 
+        _correctAnswerResponse = _input.GetCorrectAnswerResponse();
+
         for(int _i = 0; _i < 4; _i++)
         {
             if(_correctButton == _answerButtons[_i])
@@ -135,7 +139,11 @@ public class MCQCanvasScript : GameCanvasScript
             _answerButtons[_i].interactable = false;
         }
 
-        _responseTextCoroutine = StartCoroutine(DisplayResponse("That's correct! Well done! Press on " + @"""" + "Next" + @"""" + " to continue.", 5.0f, new Color(0.0f, 1.0f, 0.0f, 1.0f)));
+        string _response = "That's correct! Well done! ";
+
+        _response = _response + _correctAnswerResponse + "Press on " + @"""" + "Next" + @"""" + " to continue.";
+
+        _responseTextCoroutine = StartCoroutine(DisplayResponse(_response, 5.0f, new Color(0.0f, 1.0f, 0.0f, 1.0f)));
 
         _nextButton.interactable = true;
 

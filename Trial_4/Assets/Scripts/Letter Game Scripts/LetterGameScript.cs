@@ -273,9 +273,9 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
 
             _newLetterBlock.SetMatchingGameCanvas(this);
 
-            _newLetterBlockGO.transform.localScale = (Vector3.one * _spawningSizeForBlocks);
-
             _newLetterBlockGO.transform.parent = _spawningArea;
+
+            _newLetterBlockGO.transform.localScale = (Vector3.one * _spawningSizeForBlocks);
 
             _currentBlocksAndHoles.AddBlock(_newLetterBlock);
 
@@ -301,11 +301,11 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
 
             _newLetterHole.SetCamera(_gameProperties.GetCamera());
 
+            _newLetterHoleGO.transform.parent = _gameSpace.transform;
+
             _newLetterHoleGO.transform.localScale = (Vector3.one * _spawningSizeForHoles);
 
             _currentBlocksAndHoles.AddHole(_newLetterHole);
-
-            _newLetterHoleGO.transform.parent = _gameSpace.transform;
 
             _newLetterHoleGO.transform.localPosition = _currentlySelectedPositionForHoles;
 

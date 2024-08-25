@@ -61,6 +61,12 @@ public class PlaceIndicatorScript : MonoBehaviour
     [SerializeField]
     float _expandingAnimationSpeed = 0.5f;
 
+    [SerializeField]
+    Transform _front;
+
+    [SerializeField]
+    float _frontDistance = 5.0f;
+
     float _planeDistance = -1.0f;
 
     bool _lookForTerrainBool = false;
@@ -107,7 +113,9 @@ public class PlaceIndicatorScript : MonoBehaviour
 
         if (_raycastManager.Raycast(_ray, _hits, TrackableType.Planes) && !_started)
         {
-            Pose _hitPose = _hits[0].pose;
+            int _hitIndex = _hits.Count - 1;
+
+            Pose _hitPose = _hits[_hitIndex].pose;
 
             _planeDistance = Vector3.Distance(_hitPose.position, _camera.gameObject.transform.position);
 
@@ -239,5 +247,16 @@ public class PlaceIndicatorScript : MonoBehaviour
         Vector3 _size = Vector3.one * _planeDistance * _constantSizeOfMainScene;
 
         _mainSceneTransform.localScale = _size;
+
+        if(_front == null)
+        {
+            return;
+        }
+
+        Vector3 _frontDistanceV3 = Vector3.zero;
+
+        _frontDistanceV3.z = _frontDistance;
+
+        _front.localPosition = _frontDistanceV3;
     }
 }

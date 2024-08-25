@@ -166,7 +166,6 @@ public class UIIndicatorCanvasScript : MonoBehaviour
 
             if (_d >= _onscreenThreshold)
             {
-
                 _arrow.SetActive(true);
 
                 _arrow.transform.localPosition = (_pos - _screenCenter) + new Vector3(_onscreenOffset.x, _onscreenOffset.y, 0.0f);

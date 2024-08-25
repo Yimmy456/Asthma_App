@@ -171,6 +171,9 @@ public class QuestionClass : IDataPersistenceScript
     [SerializeField]
     int _correctAnswerIndex = 0;
 
+    [SerializeField]
+    string _correctAnswerResponse;
+
     QuestionGroupClass _belongingGroup;
 
     public string GetQuestionID()
@@ -197,6 +200,11 @@ public class QuestionClass : IDataPersistenceScript
     public QuestionGroupClass GetBelongingGroup()
     {
         return _belongingGroup;
+    }
+
+    public string GetCorrectAnswerResponse()
+    {
+        return _correctAnswerResponse;
     }
 
     public void SetAnsweredCorrectly(bool _input)

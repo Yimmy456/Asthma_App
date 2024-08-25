@@ -425,9 +425,13 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
             _gameProperties.SignalToUpdateUI();
 
+            string _cardDesc = _selectedCard1.GetCardDescription();
+
+            _cardDesc = _matchP.GetText() + " " + _cardDesc;
+
             if (_gameProperties.GetMeter().GetPercentage() < 100.0f)
             {
-                SetResponseText(_matchP.GetText(), _matchP.GetTextColor(), _matchP.GetTextTimeToDisplay());
+                SetResponseText(_cardDesc, _matchP.GetTextColor(), _matchP.GetTextTimeToDisplay());
             }
         }
         else if(_evaluateCards == EvaluateCardsEnum.MatchCards)
