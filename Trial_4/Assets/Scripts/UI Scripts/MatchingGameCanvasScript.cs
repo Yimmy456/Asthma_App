@@ -69,6 +69,16 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
         return _presetBlocksAndHoles;
     }
 
+    public void SetSpawningSizeForBlocks(float _input)
+    {
+        _spawningSizeForBlocks = _input;
+    }
+
+    public void SetSpawningSizeForHoles(float _input)
+    {
+        _spawningSizeForHoles = _input;
+    }
+
     public void SetPresetBlocksAndHoles(List<MatchingBlockAndHoleClass> _input)
     {
         _presetBlocksAndHoles = _input;

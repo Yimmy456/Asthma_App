@@ -56,6 +56,12 @@ public class MainSceneScript : MonoBehaviour, YesOrNoInterface
     [SerializeField]
     Transform _landingTerrain;
 
+    [SerializeField]
+    Button _menuButton;
+
+    //[SerializeField]
+    //Animator _sceneAnimator;
+
     public bool _started;
 
 
@@ -145,6 +151,12 @@ public class MainSceneScript : MonoBehaviour, YesOrNoInterface
         _startingCanvas.gameObject.SetActive(true);
 
         _playerCanvas.gameObject.SetActive(true);
+
+        _menuButton.gameObject.SetActive(false);
+
+        _indicatorCanvas.gameObject.SetActive(false);
+
+        _animator.enabled = true;
 
         _yesOrNoCanvas.GetNoButton().onClick.RemoveAllListeners();
 
@@ -317,5 +329,10 @@ public class MainSceneScript : MonoBehaviour, YesOrNoInterface
         _size = Vector3.one * _finalSize;
 
         _landingTerrain.localScale = _size;
+    }
+
+    public void SwitchOffAnimator()
+    {
+        _animator.enabled = false;
     }
 }

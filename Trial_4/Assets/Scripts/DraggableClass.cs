@@ -196,6 +196,8 @@ public class DraggableClass : MonoBehaviour
 
         Vector3 _v3 = _camera.ScreenToWorldPoint(_pos);
 
+        DebugDragInfo();
+
         gameObject.transform.position = _v3;
 
         //2. Setting the Variables.
@@ -424,7 +426,7 @@ public class DraggableClass : MonoBehaviour
             return null;
         }
 
-        Transform _t = _camera.transform.Find("Front");
+        Transform _t = _camera.gameObject.transform.Find("Front");
 
         return _t;
     }
@@ -450,5 +452,20 @@ public class DraggableClass : MonoBehaviour
         {
             Destroy(_body);
         }
+    }
+
+    void DebugDragInfo()
+    {
+        Debug.Log("1. The global position of " + @"""" + gameObject.name + @"""" + " is " + gameObject.transform.position + ".");
+
+        Debug.Log("2. The local position of " + @"""" + gameObject.name + @"""" + " is " + gameObject.transform.localPosition + ".");
+
+        Debug.Log("3. The scale of " + @"""" + gameObject.name + @"""" + " is " + gameObject.transform.lossyScale + ".");
+
+        Debug.Log("4. The local scale of " + @"""" + gameObject.name + @"""" + " is " + gameObject.transform.localScale + ".");
+
+        float _camD = Vector3.Distance(gameObject.transform.position, _camera.gameObject.transform.position);
+
+        Debug.Log("5. The distance of " + @"""" + gameObject.name + @"""" + " from the camera is " + _camD.ToString("0.00") + ".");
     }
 }

@@ -18,6 +18,9 @@ public class GameMBScript : MonoBehaviour
     [SerializeField]
     protected StateMachineScript _procedureStateMachine;
 
+    [SerializeField]
+    protected PlaceIndicatorScript _placeIndicator;
+
     protected MeterClass _completionMeter;
 
     protected bool _currentGameInSession;

@@ -275,7 +275,9 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
 
             _newLetterBlockGO.transform.parent = _spawningArea;
 
-            _newLetterBlockGO.transform.localScale = (Vector3.one * _spawningSizeForBlocks);
+            float _dist = _placeIndicator.GetPlaneDistance();
+
+            _newLetterBlockGO.transform.localScale = ((Vector3.one * _spawningSizeForBlocks));
 
             _currentBlocksAndHoles.AddBlock(_newLetterBlock);
 
@@ -288,8 +290,6 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
             _newLetterBlock.GetDraggableProperties().SetCamera(_gameProperties.GetCamera());
 
             _newLetterBlock.GetDraggableProperties().GetBody().velocity = Vector3.zero;
-
-            _newLetterBlockGO.transform.parent = _mainContainer;
 
             //3. Instaitiating Hole
 
