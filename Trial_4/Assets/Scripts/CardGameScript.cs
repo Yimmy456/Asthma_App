@@ -35,6 +35,9 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
     [SerializeField]
     TextPropertiesClass _infoP;
 
+    [SerializeField]
+    float _cardLocalScale = 75.0f;
+
     int _numberOfCards = 12;
 
     List<DefinitionClass> _selectedWords;
@@ -125,7 +128,7 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
     public override void StartGame()
     {
-        StartGame(0);
+        StartGame(1);
     }
 
     public override void StartGame(int _indexInput = 0)
@@ -748,6 +751,8 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
         _cardObjectInput.transform.localPosition = _posInput;
 
         _cardObjectInput.transform.localRotation = Quaternion.Euler(-90.0f, 90.0f, 0.0f);
+
+        _cardObjectInput.transform.localScale = Vector3.one * _cardLocalScale;
 
         _cardProperty.SetGroup(this);
 

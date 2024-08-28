@@ -35,6 +35,9 @@ public class ExhibitionCanvasScript : MonoBehaviour
     [SerializeField]
     Text _objectDescriptionText;
 
+    [SerializeField]
+    GameObject _rocketContainerGO;
+
     ExhibitionObjectScript _currentlyTalkedAboutObject;
 
     ExhibitionObjectScript _currentObject;
@@ -60,6 +63,11 @@ public class ExhibitionCanvasScript : MonoBehaviour
         if(_mainCanvases.GetDoctorCanvas() != null)
         {
             _mainCanvases.GetDoctorCanvas().gameObject.SetActive(true);
+        }
+
+        if(_rocketContainerGO != null)
+        {
+            _rocketContainerGO.SetActive(true);
         }
 
         StopExplaining();

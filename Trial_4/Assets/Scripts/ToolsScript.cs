@@ -161,4 +161,42 @@ public struct ToolsStruct
 
         return _colorOutput;
     }
+
+    public static Vector3 GetGlobalScale(Transform _input)
+    {
+        GameObject _obj = GameObject.Instantiate(_input.gameObject);
+
+        _obj.transform.parent = null;
+
+        Vector3 _v3 = _obj.transform.localScale;
+
+        GameObject.Destroy(_obj);
+
+        return _v3;
+    }
+
+    public static void SetGlobalScale(Transform _transformInput, float _inputX, float _inputY, float _inputZ)
+    {
+        Transform _t = _transformInput.parent;
+
+        _transformInput.parent = null;
+
+        _transformInput.localScale = new Vector3(_inputX, _inputY, _inputZ);
+
+        _transformInput.parent = _t;
+    }
+
+    public static void SetGlobalScale(Transform _transformInput, Vector3 _scaleInput)
+    {
+        SetGlobalScale(_transformInput, _scaleInput.x, _scaleInput.y, _scaleInput.z);
+    }
+
+    public static float GetVectorAverage(Vector3 _input)
+    {
+        float _v = _input.x + _input.y + _input.z;
+
+        _v = _v / 3.0f;
+
+        return _v;
+    }
 }

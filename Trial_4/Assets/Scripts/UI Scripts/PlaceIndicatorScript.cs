@@ -9,6 +9,8 @@ using UnityEngine.Events;
 public class PlaceIndicatorScript : MonoBehaviour
 {
     private ARRaycastManager _raycastManager;
+
+    [SerializeField]
     private GameObject _indicator;
     private List<ARRaycastHit> _hits = new List<ARRaycastHit>();
 
@@ -67,6 +69,9 @@ public class PlaceIndicatorScript : MonoBehaviour
     [SerializeField]
     float _frontDistance = 5.0f;
 
+    [SerializeField]
+    GameObject _landingTerrain;
+
     float _planeDistance = -1.0f;
 
     bool _lookForTerrainBool = false;
@@ -75,31 +80,56 @@ public class PlaceIndicatorScript : MonoBehaviour
     void Start()
     {
         _raycastManager = FindObjectOfType<ARRaycastManager>();
-        _indicator = transform.GetChild(0).gameObject;
+        //_indicator = transform.GetChild(0).gameObject;
         //_indicator.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        LookForTerrain();
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            LookForTerrain();
+        }
     }
 
     void LookForTerrain()
     {
         if(!_lookForTerrainBool)
         {
-            _indicator.SetActive(false);
+            if (_indicator != null)
+            {
+                _indicator.SetActive(false);
+            }
 
-            _noLandButton.gameObject.SetActive(false);
+            if(_landingTerrain != null)
+            {
+                _landingTerrain.SetActive(false);
+            }
 
-            _startButton.gameObject.SetActive(false);
+            if (_noLandButton != null)
+            {
+                _noLandButton.gameObject.SetActive(false);
+            }
+
+            if (_startButton != null)
+            {
+                _startButton.gameObject.SetActive(false);
+            }
 
             return;
         }
         else
         {
-            _indicator.SetActive(true);
+            if (_indicator != null)
+            {
+                _indicator.SetActive(true);
+            }
+
+            if (_landingTerrain != null)
+            {
+                _landingTerrain.SetActive(true);
+            }
         }
 
         var _ray = new Vector2(Screen.width / 2, Screen.height / 2);
@@ -122,7 +152,17 @@ public class PlaceIndicatorScript : MonoBehaviour
             transform.position = _hitPose.position;
             transform.rotation = _hitPose.rotation;
 
-            _indicator.SetActive(true);
+            if (_indicator != null)
+            {
+                _indicator.SetActive(true);
+
+                _indicator.transform.localScale = Vector3.one * _planeDistance;
+            }
+
+            if(_landingTerrain != null)
+            {
+                _landingTerrain.SetActive(true);
+            }
 
             _distanceText.text = "Distance: " + _planeDistance.ToString("0.00");
 
@@ -168,6 +208,11 @@ public class PlaceIndicatorScript : MonoBehaviour
 
             _m.SetColor("_Color", Color.red);
 
+            if(_landingTerrain != null)
+            {
+                _landingTerrain.SetActive(false);
+            }
+
 
             _distanceText.text = "";
 
@@ -184,7 +229,7 @@ public class PlaceIndicatorScript : MonoBehaviour
             _planeDistance = -1.0f;
         }
 
-        RotateIndicator();
+        //RotateIndicator();
     }
 
     void RotateIndicator()
@@ -230,6 +275,16 @@ public class PlaceIndicatorScript : MonoBehaviour
     public float GetExpandingAnimationSpeed()
     {
         return _expandingAnimationSpeed;
+    }
+
+    public GameObject GetIndicator()
+    {
+        return _indicator;
+    }
+
+    public void SetIndicatorOn(bool _input = true)
+    {
+        _indicator.gameObject.SetActive(_input);
     }
 
     public void SetLookForTerrainBool(bool _input)

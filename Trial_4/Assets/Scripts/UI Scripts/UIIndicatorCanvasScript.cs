@@ -77,6 +77,8 @@ public class UIIndicatorCanvasScript : MonoBehaviour
     {
         if(_targetObject == null || _arrow == null || _camera == null)
         {
+            Debug.Log("We are returning at 1.");
+
             return;
         }
 
@@ -92,12 +94,16 @@ public class UIIndicatorCanvasScript : MonoBehaviour
 
             if(!_continue)
             {
+                Debug.Log("We are returning at 2.");
+
                 return;
             }
         }
 
         if(!_targetObject.activeSelf || !_on)
         {
+            Debug.Log("We are returning at 3.");
+
             return;
         }
 

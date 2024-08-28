@@ -1526,19 +1526,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 52065915}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2133252544}
   m_Father: {fileID: 2005895380}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -197.1, y: -53.55}
+  m_SizeDelta: {x: 876, y: 238}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &52643828
 GameObject:
@@ -4045,8 +4045,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 629.4}
-  m_SizeDelta: {x: -200, y: 299.19995}
+  m_AnchoredPosition: {x: 0, y: 165}
+  m_SizeDelta: {x: -200, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &151913035
 MonoBehaviour:
@@ -17192,6 +17192,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 551265654}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 444502310}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -18175,7 +18187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee14d8c2711243478897c421781214d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetObject: {fileID: 1759490898}
+  _targetObject: {fileID: 551265654}
   _arrow: {fileID: 1884706855}
   _camera: {fileID: 946855229}
   _resolutionText: {fileID: 0}
@@ -20945,19 +20957,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 543775248}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1799549009}
   m_Father: {fileID: 2005895380}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.25}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 197.1, y: 53.55}
+  m_SizeDelta: {x: 876, y: 238}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &550862692
 GameObject:
@@ -21065,7 +21077,7 @@ Transform:
   m_GameObject: {fileID: 551265654}
   m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2078217414}
@@ -22035,18 +22047,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ExhibitionScript, Assembly-CSharp
-        m_MethodName: EndExhibition
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2076186287}
         m_TargetAssemblyTypeName: ExhibitionCanvasScript, Assembly-CSharp
         m_MethodName: QuitExhibition
@@ -22452,7 +22452,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 879.93}
+  m_AnchoredPosition: {x: 0, y: 355}
   m_SizeDelta: {x: 1080, y: 112.69995}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &581948677
@@ -22942,7 +22942,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &601199373
 Transform:
   m_ObjectHideFlags: 0
@@ -24902,19 +24902,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 670473208}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1859411133}
   m_Father: {fileID: 2005895380}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.75}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 197.1, y: -53.55}
+  m_SizeDelta: {x: 876, y: 238}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &681447876
 GameObject:
@@ -28608,6 +28608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa098e66df55ccb4a871db10a0bb0d53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _indicator: {fileID: 0}
   _speed: 100
   _startButton: {fileID: 0}
   _noLandButton: {fileID: 0}
@@ -28625,6 +28626,7 @@ MonoBehaviour:
   _expandingAnimationSpeed: 0.5
   _front: {fileID: 0}
   _frontDistance: 5
+  _landingTerrain: {fileID: 0}
 --- !u!4 &825542654
 Transform:
   m_ObjectHideFlags: 0
@@ -33941,7 +33943,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009342902}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -80, y: 61.799995, z: 0}
+  m_LocalPosition: {x: -80, y: 150, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -35663,7 +35665,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1071851395
 Transform:
   m_ObjectHideFlags: 0
@@ -36964,6 +36966,7 @@ MonoBehaviour:
   _rocketParticles: {fileID: 368887653}
   _fastyAnimator: {fileID: 8979086420280341110}
   _landingTerrain: {fileID: 601199373}
+  _menuButton: {fileID: 0}
   _started: 0
 --- !u!1 &1096482939
 GameObject:
@@ -39277,7 +39280,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1153913168}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -200, y: 0, z: 0}
+  m_LocalPosition: {x: -300, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -41084,12 +41087,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa098e66df55ccb4a871db10a0bb0d53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _indicator: {fileID: 1071851394}
   _speed: 100
   _startButton: {fileID: 1097086954}
   _noLandButton: {fileID: 213691841}
   _prefab: {fileID: 0}
   _scale: 1
-  _plane: {fileID: 1071851394}
+  _plane: {fileID: 601199372}
   _canvasGroup: {fileID: 1080932103}
   _inhaler: {fileID: 1219848555049984593}
   _startingAnimator: {fileID: 1093082203}
@@ -41101,6 +41105,7 @@ MonoBehaviour:
   _expandingAnimationSpeed: 2
   _front: {fileID: 366229647}
   _frontDistance: 5
+  _landingTerrain: {fileID: 601199372}
 --- !u!4 &1228395063
 Transform:
   m_ObjectHideFlags: 0
@@ -43209,19 +43214,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1322728552}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 840904704}
   m_Father: {fileID: 2005895380}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.25}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -197.1, y: 53.55}
+  m_SizeDelta: {x: 876, y: 238}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1327292339
 GameObject:
@@ -46691,9 +46696,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1420920650}
-  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 100}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: 38.1, y: 45, z: 51.9}
+  m_LocalScale: {x: 4.5, y: 4.5, z: 4.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1365051044}
@@ -46701,7 +46706,7 @@ Transform:
   - {fileID: 348699063}
   m_Father: {fileID: 601199373}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
 --- !u!1 &1422284282
 GameObject:
   m_ObjectHideFlags: 0
@@ -48815,6 +48820,7 @@ MonoBehaviour:
     _textColor: {r: 0, g: 0, b: 0, a: 0}
     _text: 
     _textTimeToDisplay: 5
+  _cardLocalScale: 75
 --- !u!1 &1503153858
 GameObject:
   m_ObjectHideFlags: 0
@@ -50152,7 +50158,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1539999574
 RectTransform:
   m_ObjectHideFlags: 0
@@ -52565,7 +52571,8 @@ MonoBehaviour:
   _infoP:
     _textColor: {r: 0, g: 0.37922654, b: 0.6886792, a: 1}
     _text: Great! That's an info card!
-    _textTimeToDisplay: 10
+    _textTimeToDisplay: 15
+  _cardLocalScale: 75
 --- !u!1 &1648406748
 GameObject:
   m_ObjectHideFlags: 0
@@ -71821,8 +71828,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 876, y: 953}
+  m_AnchoredPosition: {x: 0, y: -218}
+  m_SizeDelta: {x: 876, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2014445680
 GameObject:
@@ -75095,6 +75102,7 @@ MonoBehaviour:
   _cursorImage: {fileID: 601827387}
   _objectTitleText: {fileID: 852745502}
   _objectDescriptionText: {fileID: 845060678}
+  _rocketContainerGO: {fileID: 551265654}
 --- !u!114 &2076186288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80657,10 +80665,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3133301044881720058}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.56, y: 0, z: -2.57}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -18.75, y: 0, z: -1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6286534131873387732}
   - {fileID: 9160298310710328696}
@@ -81643,7 +81651,7 @@ Transform:
   m_GameObject: {fileID: 2393632410112258742}
   m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
   m_LocalPosition: {x: -6.2, y: 0, z: 8.3}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.08, y: 0.08, z: 0.08}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6254626873867892882}
@@ -96945,7 +96953,10 @@ Animator:
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: 
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed
+    by Humanoid clips.\n\tTransform 'Armature'\n\tTransform 'Armature'\n\tFrom animation
+    clip 'Armature|astronaut animation'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0

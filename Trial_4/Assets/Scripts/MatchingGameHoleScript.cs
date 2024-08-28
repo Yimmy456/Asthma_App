@@ -43,6 +43,9 @@ public class MatchingGameHoleScript : MonoBehaviour
     [SerializeField]
     protected MatchingGameCanvasScript _holeCanvas;
 
+    [SerializeField]
+    protected ParticleSystem _matchingPS;
+
     protected float _currentSizeValue;
 
     protected bool _objectPlaced = false;
@@ -109,6 +112,11 @@ public class MatchingGameHoleScript : MonoBehaviour
     public MatchingGameCanvasScript GetMatchingGameCanvas()
     {
         return _holeCanvas;
+    }
+
+    public ParticleSystem GetMatchingParticleSystem()
+    {
+        return _matchingPS;
     }
 
     public void SetCamera(Camera _input)
@@ -404,6 +412,11 @@ public class MatchingGameHoleScript : MonoBehaviour
             _errorIdentifier._textField.color = Color.red;
 
             _errorIdentifier.DisplayTextByIndex(-1);
+        }
+
+        if(_matchingPS != null)
+        {
+            _matchingPS.Play();
         }
 
         ResetValues();
