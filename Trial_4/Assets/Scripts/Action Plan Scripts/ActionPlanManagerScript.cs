@@ -225,6 +225,11 @@ public class ActionPlanManagerScript : MonoBehaviour, IDataPersistenceScript
         _actionPlanCanvas.SetCorrectInputUI(_currentQuestion);
 
         _actionPlanCanvas.LoadAnswer(_currentQuestion);
+
+        if(_actionPlanCanvas.GetQuestionsSlider() != null)
+        {
+            _actionPlanCanvas.GetQuestionsSlider().value = _currentQuestionIndex + 1;
+        }
     }
 
     public void GoToPreviousQuestion()

@@ -47,6 +47,9 @@ public class ActionPlanUIScript : MonoBehaviour
     [SerializeField]
     Button _submitButton;
 
+    [SerializeField]
+    Slider _questionsSlider;
+
     int _totalNumberOfQuestions = 12;
 
     // Start is called before the first frame update
@@ -121,6 +124,11 @@ public class ActionPlanUIScript : MonoBehaviour
     public Button GetSubmitButton()
     {
         return _submitButton;
+    }
+
+    public Slider GetQuestionsSlider()
+    {
+        return _questionsSlider;
     }
 
     public int GetTotalNumberOfQuestions()
@@ -484,6 +492,15 @@ public class ActionPlanUIScript : MonoBehaviour
         _nextButton.onClick.AddListener(delegate { ActionPlanManagerScript.GetInstance().GoToNextQuestion(); });
 
         _previousButton.onClick.AddListener(delegate { ActionPlanManagerScript.GetInstance().GoToPreviousQuestion(); });
+
+        if(_questionsSlider != null)
+        {
+            _questionsSlider.maxValue = ActionPlanManagerScript.GetInstance().GetQuestionList().Count;
+
+            _questionsSlider.minValue = 1;
+
+            _questionsSlider.value = 1;
+        }
     }
 
     public void FinishPlan()

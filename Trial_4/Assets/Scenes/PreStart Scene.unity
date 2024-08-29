@@ -1127,6 +1127,7 @@ MonoBehaviour:
   - rid: 1913970636440469526
   - rid: 1913970770633555968
   - rid: 1913970686163419136
+  - rid: 4275215235273195544
   _stylesOfInhalerColorLabels:
     _styles:
     - _value: 0
@@ -1368,6 +1369,16 @@ MonoBehaviour:
       data:
         _questionText: What is your date of birth?
         _questionID: 4f9a2027-0a86-46e6-999d-6ca3807da713
+        _questionAnswered: 0
+        _answer:
+          _year: -1
+          _month: -1
+          _day: -1
+    - rid: 4275215235273195544
+      type: {class: ActionPlanQuestionDate, ns: , asm: Assembly-CSharp}
+      data:
+        _questionText: When is the expiry date of your current medication?
+        _questionID: 41cb63fa-8cca-41ec-b757-36db2365a1b2
         _questionAnswered: 0
         _answer:
           _year: -1

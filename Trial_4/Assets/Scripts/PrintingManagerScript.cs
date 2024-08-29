@@ -63,6 +63,8 @@ public class PrintingManagerScript : MonoBehaviour
     [SerializeField]
     ProcessStatusEnum _printingProcessStatus;
 
+    int _errorType = 0;
+
     string _fullAnswer = "";
 
     Coroutine _statusTextCoroutine;
@@ -122,11 +124,16 @@ public class PrintingManagerScript : MonoBehaviour
 
             GenerateFile();
 
-            _printingProcessStatus = ProcessStatusEnum.Complete;
+            if (_errorType == 0)
+            {
+                _printingProcessStatus = ProcessStatusEnum.Complete;
+            }
         }
         catch (Exception ex)
         {
             _printingProcessStatus = ProcessStatusEnum.Cancelled;
+
+            _errorType = 2;
 
             //return;
         }
@@ -146,6 +153,8 @@ public class PrintingManagerScript : MonoBehaviour
         if(!_allQuestionsAnswered)
         {
             UnityEngine.Debug.LogError("Some answers have not been answered yet. You need to answer all of the questions before you can print.");
+
+            _errorType = 1;
 
             _printingProcessStatus = ProcessStatusEnum.Cancelled;
             
@@ -913,12 +922,14 @@ public class PrintingManagerScript : MonoBehaviour
 
             _statusText.gameObject.GetComponent<Outline>().effectColor = new Color(0.5f, 0.0f, 0.0f, 0.5f);
 
-            _statusText.text = "An error has occured. The printing process cannot be complete.";
+            _statusText.text = _errorType == 1 ? "Some answers have not been answered yet. You need to answer all of the questions before you can print." : "An error has occured. The printing process cannot be complete.";
 
             yield return new WaitForSeconds(6.0f);
         }
 
         _printingProcessStatus = ProcessStatusEnum.Idle;
+
+        _errorType = 0;
 
         _statusText.text = "";
     }
