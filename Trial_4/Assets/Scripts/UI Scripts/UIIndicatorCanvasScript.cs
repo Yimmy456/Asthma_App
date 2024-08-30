@@ -75,6 +75,11 @@ public class UIIndicatorCanvasScript : MonoBehaviour
 
     void LookForObject()
     {
+        if(Application.platform == RuntimePlatform.Android)
+        {
+            Debug.Log("We are looking for the area...");
+        }
+
         if(_targetObject == null || _arrow == null || _camera == null)
         {
             Debug.Log("We are returning at 1.");

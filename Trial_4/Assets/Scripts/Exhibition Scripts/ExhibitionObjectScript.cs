@@ -290,7 +290,7 @@ public class ExhibitionObjectScript : MonoBehaviour
 
                 float _size = ToolsStruct.GetVectorAverage(_globalS);
 
-                _exhibitionCanvas.GetExhibition().GetExhibitionHighlightingMaterial().SetFloat("_Outline_Thickness", (_outlineThickness / _size));
+                _exhibitionCanvas.GetExhibition().GetExhibitionHighlightingMaterial().SetFloat("_Outline_Thickness", _outlineThickness);
 
                 if(_rotateWhenHit && _rotationProperties != null)
                 {

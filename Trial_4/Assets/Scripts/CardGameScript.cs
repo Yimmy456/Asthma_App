@@ -142,8 +142,6 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
         base.StartGame();
 
-        //base.StartGameFunction();
-
         _evalInProcess = false;
 
         int _infoCardsNeeded = 1;
@@ -185,8 +183,6 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
         SetSelectedCategory(_indexInput);
 
         List<DefinitionClass> _defList = (_selectedCategory == InfoCategoryEnum.None) ? BookScript.GetInstance().GetDefinitions() : BookScript.GetInstance().GetDefinitionsByCategory(_selectedCategory);
-
-        //List<InformationClass> _infoList = (_selectedCategory == InfoCategoryEnum.None) ? BookScript.GetInstance().GetGeneralInformation() : BookScript.GetInstance().GetGeneralInformationByCategory(_selectedCategory);
 
         _evaluateCards = EvaluateCardsEnum.None;
 

@@ -164,6 +164,8 @@ public class PlaceIndicatorScript : MonoBehaviour
                 _landingTerrain.SetActive(true);
             }
 
+            SetSceneSize();
+
             _distanceText.text = "Distance: " + _planeDistance.ToString("0.00");
 
             //RotateIndicator();

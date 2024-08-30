@@ -114,15 +114,7 @@ public class ExhibitionCanvasScript : MonoBehaviour
 
         if (_outline != null)
         {
-            Color _c = _currentObject.GetObjectColor();
-
-            _c.r = _c.r / 2.0f;
-
-            _c.g = _c.g / 2.0f;
-
-            _c.b = _c.b / 2.0f;
-
-            _c.a = 0.5f;
+            Color _c = ToolsStruct.ChangeColorValue(_currentObject.GetObjectColor(), 0.5f, 0.5f, true);
 
             _outline.effectColor = _c;
         }

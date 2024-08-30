@@ -349,7 +349,7 @@ public class ExhibitionListItemClass
     Color _listItemColor;
 
     [SerializeField]
-    float _localScaleContant = 10.0f;
+    float _localScaleConstant = 10.0f;
 
     [SerializeField]
     Vector3 _boxColliderPosition;
@@ -385,7 +385,7 @@ public class ExhibitionListItemClass
 
     public float GetLocalScaleConstant()
     {
-        return _localScaleContant;
+        return _localScaleConstant;
     }
 
     public Vector3 GetBoxColliderPosition()
