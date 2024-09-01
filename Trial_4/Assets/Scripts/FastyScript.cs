@@ -5,7 +5,13 @@ using UnityEngine;
 public class FastyScript : MonoBehaviour
 {
     [SerializeField]
-    GameObject _fastyModel;
+    GameObject _fastyContainer;
+
+    [SerializeField]
+    GameObject _fastyDefaultModel;
+
+    [SerializeField]
+    GameObject _fastyInhalerModel;
 
     [SerializeField]
     Transform _lookingModel;
@@ -25,6 +31,25 @@ public class FastyScript : MonoBehaviour
     [SerializeField]
     Vector3 _defaultRotation;
 
+    [SerializeField]
+    Animator _defaultAnimator;
+
+    [SerializeField]
+    Animator _inhalerAnimator;
+
+    [SerializeField]
+    Canvas _mainPlayerCanvas;
+
+    [SerializeField]
+    MainPlayerCanvasScript _mainPlayerCanvasClass;
+
+    [SerializeField]
+    AnimationClip _animationClip;
+
+    Coroutine _inhalerCoroutine;
+
+    bool _playingInhaler = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,11 +65,25 @@ public class FastyScript : MonoBehaviour
     private void LateUpdate()
     {
         RotateFasty();
+
+        if(_fastyDefaultModel != null)
+        {
+            _fastyDefaultModel.transform.localPosition = Vector3.zero;
+
+            _fastyDefaultModel.transform.localRotation = Quaternion.identity;
+        }
+
+        if(_fastyInhalerModel != null)
+        {
+            _fastyInhalerModel.transform.localPosition = Vector3.zero;
+
+            _fastyInhalerModel.transform.localRotation = Quaternion.identity;
+        }
     }
 
     void RotateFasty()
     {
-        if(_fastyModel == null)
+        if(_fastyContainer == null)
         {
             return;
         }
@@ -58,31 +97,72 @@ public class FastyScript : MonoBehaviour
 
         if(!_rotateToLookAtTarget)
         {
-            var _lookPos = _defaultRotation - _fastyModel.transform.position;
+            var _lookPos = _defaultRotation - _fastyContainer.transform.position;
 
             _lookPos.y = 0.0f;
 
             var _rot = Quaternion.LookRotation(_lookPos);
 
-            _fastyModel.transform.localRotation = Quaternion.Slerp(_fastyModel.transform.localRotation, _rot, (_rotationSpeed * Time.deltaTime));
+            _fastyContainer.transform.localRotation = Quaternion.Slerp(_fastyContainer.transform.localRotation, _rot, (_rotationSpeed * Time.deltaTime));
 
             return;
         }
 
         if (_camera != null)
         {
-            var _lookPosCam = _camera.transform.position - _fastyModel.transform.position;
+            var _lookPosCam = _camera.transform.position - _fastyContainer.transform.position;
 
             _lookPosCam.y = 0.0f;
 
             var _rotCam = Quaternion.LookRotation(-_lookPosCam);
 
-            _fastyModel.transform.localRotation = Quaternion.Slerp(_fastyModel.transform.localRotation, _rotCam, (_rotationSpeed * Time.deltaTime));
+            _fastyContainer.transform.localRotation = Quaternion.Slerp(_fastyContainer.transform.localRotation, _rotCam, (_rotationSpeed * Time.deltaTime));
         }
     }
 
     public void SetRotate(bool _input)
     {
         _rotate = _input;
+    }
+
+    public void PlayInhalerAnimation()
+    {
+        if(_fastyDefaultModel == null || _fastyInhalerModel == null || _playingInhaler || _defaultAnimator == null || _inhalerAnimator == null || _animationClip == null)
+        {
+            return;
+        }
+
+        _fastyInhalerModel.SetActive(true);
+
+        _fastyDefaultModel.SetActive(false);
+
+        _playingInhaler = true;
+
+        _inhalerCoroutine = StartCoroutine(PlayAnimation());
+    }
+
+    void AbortAnimaton()
+    {
+        if(_inhalerCoroutine != null)
+        {
+            StopCoroutine(_inhalerCoroutine);
+
+            _inhalerCoroutine = null;
+        }
+
+        _fastyDefaultModel.SetActive(true);
+
+        _fastyInhalerModel.SetActive(false);
+
+        _playingInhaler = false;
+    }
+
+    IEnumerator PlayAnimation()
+    {
+        float _seconds = _animationClip.length;
+
+        yield return new WaitForSeconds(_seconds);
+
+        AbortAnimaton();
     }
 }

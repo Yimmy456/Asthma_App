@@ -39,6 +39,9 @@ public class MainPlayerCanvasScript : MonoBehaviour
     [SerializeField]
     Button _introductionButton;
 
+    [SerializeField]
+    Button _procedureButton;
+
     //[Range(0.0f, 360.0f)]
 
     [SerializeField]
@@ -731,6 +734,11 @@ public class MainPlayerCanvasScript : MonoBehaviour
         }
         
         _menuButton.gameObject.SetActive(true);
+    }
+
+    public Button GetProcedureButton()
+    {
+        return _procedureButton;
     }
 
 }
