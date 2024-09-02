@@ -37,7 +37,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 5968112597283704512}
-    m_Position: {x: 450, y: -40, z: 0}
+    m_Position: {x: 340, y: 10, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -78,7 +78,13 @@ AnimatorController:
   m_PrefabAsset: {fileID: 0}
   m_Name: Inhaler Animator
   serializedVersion: 5
-  m_AnimatorParameters: []
+  m_AnimatorParameters:
+  - m_Name: Count
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Fasty
@@ -124,7 +130,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -945580332620029257, guid: 62cd77fe3e3e30b47b8d520c32ec0630, type: 3}
+  m_Motion: {fileID: 7400000, guid: d3023fee7cec6344a9ca1f248c515072, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

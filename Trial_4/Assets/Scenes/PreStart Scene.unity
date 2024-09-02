@@ -800,7 +800,7 @@ MonoBehaviour:
     _badgeDescription: The badge proves that you have completed the multiple choice
       questions correctly! Excellent Job!
     _badgeCollected: 0
-    _badgeSprite: {fileID: 21300000, guid: 3ceed6f0ba4745845b76b08cc5dca11d, type: 3}
+    _badgeSprite: {fileID: 21300000, guid: 4d3ea4cf1b7dab14782f85a8609fe651, type: 3}
     _badgeID: 1967458f-1527-4bee-a097-9ebf7cfc6642
     _howToEarn: You must complete the multiple choice questions to earn this badge.
   - _badgeName: Cards' Badge

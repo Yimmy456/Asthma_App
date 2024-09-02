@@ -15,6 +15,9 @@ public class FunctionsScript : MonoBehaviour
     [SerializeField]
     Variables _variables;
 
+    [SerializeField]
+    Text _text;
+
     //[SerializeField]
     //Variables _vars;
 
@@ -208,4 +211,30 @@ public class FunctionsScript : MonoBehaviour
 
         ApplicationManagerScript.GetInstance().SetFirstUseComplete(_input);
     }*/
+
+    public void CountText(float _countInput = 10.0f)
+    {
+        if(_text == null)
+        {
+            return;
+        }
+
+        StartCoroutine(CountCoroutine(_countInput));
+    }
+
+    IEnumerator CountCoroutine(float _input)
+    {
+        int _t = 0;
+
+        for(float _f = 0.0f; _f < 10.0f; _f += Time.deltaTime)
+        {
+            _t = (int)_f + 1;
+
+            _text.text = _t.ToString();
+
+            yield return null;
+        }
+
+        _text.text = "";
+    }
 }
