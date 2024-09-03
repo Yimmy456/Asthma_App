@@ -16109,6 +16109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _graph: {fileID: 0}
   _variables: {fileID: 0}
+  _text: {fileID: 0}
 --- !u!320 &689489029
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -38579,6 +38580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _graph: {fileID: 0}
   _variables: {fileID: 0}
+  _text: {fileID: 0}
 --- !u!1 &1572141430
 GameObject:
   m_ObjectHideFlags: 0
@@ -40422,7 +40424,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1633771753
 Transform:
   m_ObjectHideFlags: 0

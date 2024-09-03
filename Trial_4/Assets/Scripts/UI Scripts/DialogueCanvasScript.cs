@@ -11,6 +11,9 @@ public class DialogueCanvasScript : MonoBehaviour
     [SerializeField]
     int _currentPanelNumber = -1;
 
+    [SerializeField]
+    RectTransform _doctorsImage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,5 +47,29 @@ public class DialogueCanvasScript : MonoBehaviour
                 _panels[_i].gameObject.SetActive(_currentPanelNumber == _i);
             }
         }
+    }
+
+    public RectTransform GetDoctorsImage()
+    {
+        return _doctorsImage;
+    }
+
+    public void SetImageAnchoredPosition(Vector2 _input)
+    {
+        _doctorsImage.anchoredPosition = _input;
+    }
+
+    public void SetUniformScale(float _input)
+    {
+        Vector3 _size = Vector3.one * _input;
+
+        _doctorsImage.localScale = _size;
+    }
+
+    public void ResetDoctorsImageToOriginalValues()
+    {
+        SetImageAnchoredPosition(new Vector2(0.0f, -217.0f));
+
+        SetUniformScale(1.0f);
     }
 }

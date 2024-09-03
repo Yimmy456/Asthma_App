@@ -362,6 +362,8 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
         _currentQuestion = null;
 
         _currentQuestionIndex = -1;
+
+        MoveBackDoctorSalem();
     }
 
     public override void StartGame()
@@ -386,6 +388,8 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
         bool _questionInList = false;
 
         bool _comp = false;
+
+        MoveDoctorSalem();
 
         while(_counter < _numberOfQuestions)
         {
@@ -466,5 +470,45 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
         Debug.Log("We will quit the MCQ game.");
 
         base.ISetActionsOfYesButtonToQuit();
+    }
+
+    void MoveDoctorSalem()
+    {
+        if(_gameProperties.GetMainCanvases().GetDoctorCanvas() == null)
+        {
+            return;
+        }
+
+        Canvas _docCanvas = _gameProperties.GetMainCanvases().GetDoctorCanvas();
+
+        DialogueCanvasScript _dialogueS = _docCanvas.gameObject.GetComponent<DialogueCanvasScript>();
+
+        if(_dialogueS == null)
+        {
+            return;
+        }
+
+        _dialogueS.SetImageAnchoredPosition(new Vector2(0.0f, -100.0f));
+
+        _dialogueS.SetUniformScale(0.7f);
+    }
+
+    void MoveBackDoctorSalem()
+    {
+        if (_gameProperties.GetMainCanvases().GetDoctorCanvas() == null)
+        {
+            return;
+        }
+
+        Canvas _docCanvas = _gameProperties.GetMainCanvases().GetDoctorCanvas();
+
+        DialogueCanvasScript _dialogueS = _docCanvas.gameObject.GetComponent<DialogueCanvasScript>();
+
+        if (_dialogueS == null)
+        {
+            return;
+        }
+
+        _dialogueS.ResetDoctorsImageToOriginalValues();
     }
 }
