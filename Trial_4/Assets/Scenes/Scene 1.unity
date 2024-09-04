@@ -22018,7 +22018,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &551265655
 Transform:
   m_ObjectHideFlags: 0
@@ -32123,6 +32123,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 392666912}
+        m_TargetAssemblyTypeName: MainPlayerCanvasScript, Assembly-CSharp
+        m_MethodName: HideButtonsImmediately2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 363037048}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -37854,12 +37866,12 @@ MonoBehaviour:
   _startingCanvas: {fileID: 1313643285}
   _animator: {fileID: 1093082203}
   _placeIndicator: {fileID: 1228395062}
-  _rocket: {fileID: 919132149474698658}
+  _rocket: {fileID: 551265654}
   _flag: {fileID: 1420920650}
   _rocketParticles: {fileID: 368887653}
   _fastyAnimator: {fileID: 8979086420280341110}
   _landingTerrain: {fileID: 601199373}
-  _menuButton: {fileID: 0}
+  _menuButton: {fileID: 1153826026}
   _started: 0
 --- !u!1 &1096482939
 GameObject:

@@ -129,7 +129,7 @@ public class MainSceneScript : MonoBehaviour, YesOrNoInterface
 
     public void ISetActionsOfYesButtonToRestart()
     {
-        if (_animator != null)
+        /*if (_animator != null)
         {
             //_animator.StopPlayback();
 
@@ -146,15 +146,15 @@ public class MainSceneScript : MonoBehaviour, YesOrNoInterface
 
         _placeIndicator.ResetInhalerPosition();
 
-        _restartButton.gameObject.SetActive(false);
+        //_restartButton.gameObject.SetActive(false);
 
         _startingCanvas.gameObject.SetActive(true);
 
-        _playerCanvas.gameObject.SetActive(true);
+        //_playerCanvas.gameObject.SetActive(true);
 
         _menuButton.gameObject.SetActive(false);
 
-        _indicatorCanvas.gameObject.SetActive(false);
+        //_indicatorCanvas.gameObject.SetActive(false);
 
         _animator.enabled = true;
 
@@ -167,24 +167,43 @@ public class MainSceneScript : MonoBehaviour, YesOrNoInterface
             _rocket.SetActive(false);
         }
 
-        if(_flag != null)
-        {
-            _flag.SetActive(false);
-        }
+        //if(_flag != null)
+        //{
+        //    _flag.SetActive(false);
+        //}
 
-        if(_playerCanvas.gameObject.GetComponent<MainPlayerCanvasScript>() != null)
-        {
-            _playerCanvas.gameObject.GetComponent<MainPlayerCanvasScript>().HideButtonsImmediately();
-        }
+        //if(_playerCanvas.gameObject.GetComponent<MainPlayerCanvasScript>() != null)
+        //{
+        //    _playerCanvas.gameObject.GetComponent<MainPlayerCanvasScript>().HideButtonsImmediately();
+        //}
 
         if(_rocketParticles != null)
         {
             _rocketParticles.Play();
         }
 
+        if(_landingTerrain != null)
+        {
+            _landingTerrain.gameObject.SetActive(false);
+        }
+
+        if(_rocket != null)
+        {
+            _rocket.SetActive(false);
+        }
+
         _dialogueCanvas.gameObject.SetActive(true);
 
-        _yesOrNoCanvas.gameObject.SetActive(false);
+        _yesOrNoCanvas.gameObject.SetActive(false);*/
+
+        if(DataPersistenceManager.GetInstance() != null)
+        {
+            DataPersistenceManager.GetInstance().SaveGame();
+        }
+
+        string _currentSceneName = SceneManager.GetActiveScene().name;
+
+        SceneManager.LoadScene(_currentSceneName);
     }
 
     public void ActivateCorrectButton()

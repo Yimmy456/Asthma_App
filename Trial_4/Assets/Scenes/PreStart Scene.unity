@@ -288,13 +288,13 @@ MonoBehaviour:
     _infoCategory: 1
     _sprite: {fileID: 21300000, guid: f48881395673607459dbebb5b43bef02, type: 3}
     _wordType: 0
-  - _informationName: Mites
+  - _informationName: Mites and Dust
     _informationDesc: 
     _informationExamples: []
     _informationLearned: 0
     _badgeName: 
     _infoCategory: 1
-    _sprite: {fileID: 21300000, guid: 47423183b12d3cd468c69f0fc3f10ca1, type: 3}
+    _sprite: {fileID: 21300000, guid: cddab6311e68f4347a540c0f0fb9c71f, type: 3}
     _wordType: 0
   - _informationName: Smoke
     _informationDesc: Grey, black, or white visible mixture of gas that is triggered
@@ -351,6 +351,14 @@ MonoBehaviour:
     _infoCategory: 1
     _sprite: {fileID: 21300000, guid: 38c68fa4ce0cc934bbf35bde463d00b8, type: 3}
     _wordType: 0
+  - _informationName: Weather Change
+    _informationDesc: The increase or decrease of the temperature.
+    _informationExamples: []
+    _informationLearned: 0
+    _badgeName: 
+    _infoCategory: 1
+    _sprite: {fileID: 21300000, guid: e61a2bd61446778429c792c352fe9da1, type: 3}
+    _wordType: 0
   - _informationName: Cold Weather or Food
     _informationDesc: Food, objects, or environments that can worsen a person's ability
       to breathe
@@ -362,6 +370,14 @@ MonoBehaviour:
     _badgeName: 
     _infoCategory: 1
     _sprite: {fileID: 0}
+    _wordType: 0
+  - _informationName: Mould and Damp
+    _informationDesc: 
+    _informationExamples: []
+    _informationLearned: 0
+    _badgeName: 
+    _infoCategory: 1
+    _sprite: {fileID: 21300000, guid: 06262a97aa8961c4e8de630895f8213b, type: 3}
     _wordType: 0
   - _informationName: Coughing
     _informationDesc: 

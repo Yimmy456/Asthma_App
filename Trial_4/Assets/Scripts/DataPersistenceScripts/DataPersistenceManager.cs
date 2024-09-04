@@ -22,6 +22,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     FileDataHandlerScript _fileHandler;
 
+    bool _doctorGreets = false;
 
     static DataPersistenceManager _instance;
 
@@ -49,6 +50,8 @@ public class DataPersistenceManager : MonoBehaviour
         _dataPersistentObjects = new List<IDataPersistenceScript>();
 
         Debug.Log("File path is: " + _fileHandler + ".");
+
+        _doctorGreets = false;
 
         LoadGame();
     }
@@ -136,6 +139,11 @@ public class DataPersistenceManager : MonoBehaviour
         return _data;
     }
 
+    public bool GetDoctorGreets()
+    {
+        return _doctorGreets;
+    }
+
     string GetFilePath()
     {
         string _path = Application.persistentDataPath;
@@ -146,5 +154,10 @@ public class DataPersistenceManager : MonoBehaviour
         }
 
         return _path;
+    }
+
+    public void SetDoctorGreets(bool _input)
+    {
+        _doctorGreets = _input;
     }
 }

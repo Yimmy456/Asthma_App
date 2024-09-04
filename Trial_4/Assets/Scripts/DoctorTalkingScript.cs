@@ -28,9 +28,14 @@ public class DoctorTalkingScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(_talkAtStart && _animator != null)
+        if (DataPersistenceManager.GetInstance() != null)
         {
-            StartTalking(_secondsToTalkAtStart);
+            if (_talkAtStart && _animator != null && !DataPersistenceManager.GetInstance().GetDoctorGreets())
+            {
+                StartTalking(_secondsToTalkAtStart);
+
+                DataPersistenceManager.GetInstance().SetDoctorGreets(true);
+            }
         }
     }
 
