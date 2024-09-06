@@ -226,17 +226,32 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
 
     public override void QuitGame()
     {
+        //base.QuitGame();
+
+        //_gameProperties.GetYesOrNoCanvas().gameObject.SetActive(true);
+
+        //gameObject.SetActive(false);
+
+        _gameProperties.GetYesOrNoCanvas().GetYesButton().onClick.AddListener(delegate { StopGame(); });
+
+        //_gameProperties.GetYesOrNoCanvas().GetText().text = "Are you sure you want to quit the game?";
+
         base.QuitGame();
-
-        _gameProperties.GetYesOrNoCanvas().gameObject.SetActive(true);
-
-        gameObject.SetActive(false);
     }
 
     public override void StopGame()
     {
         base.StopGame();
 
+        _addedSpace = 0;
+
+        _floor.SetActive(false);
+
         _currentBlocksAndHoles.ClearLists();
+
+        if(_currentGame == this)
+        {
+            _currentGame = null;
+        }
     }
 }
