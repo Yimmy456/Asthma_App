@@ -193,6 +193,8 @@ public class ExhibitionScript : MonoBehaviour
 
             _currentExh.SetGroup(_currentGroup);
 
+            _currentExh.SetExhibitionRaycastOn(true);
+
             if(_currentGroup.GetRotateInRaycast())
             {
                 GiveRotationalProperties(_currentExh);
@@ -281,6 +283,14 @@ public class ExhibitionScript : MonoBehaviour
         }
 
         return null;
+    }
+
+    public void SetRaycastOn(bool _input)
+    {
+        foreach(ExhibitionObjectScript _exhO in _exhibitions)
+        {
+            _exhO.SetExhibitionRaycastOn(_input);
+        }
     }
 }
 

@@ -53,6 +53,8 @@ public class ExhibitionObjectScript : MonoBehaviour
 
     ExhibitionGroupClass _objectGroup;
 
+    bool _exhibitionRaycastOn = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -142,6 +144,11 @@ public class ExhibitionObjectScript : MonoBehaviour
         return _objectGroup;
     }
 
+    public bool GetExhibitionRaycastOn()
+    {
+        return _exhibitionRaycastOn;
+    }
+
     //Setters
 
     public void SetObjectName(string _input)
@@ -224,6 +231,11 @@ public class ExhibitionObjectScript : MonoBehaviour
         _objectGroup = _input;
     }
 
+    public void SetExhibitionRaycastOn(bool _input)
+    {
+        _exhibitionRaycastOn = _input;
+    }
+
     void PrepareExhibition()
     {
         if(_objectCollider == null || _camera == null)
@@ -251,7 +263,7 @@ public class ExhibitionObjectScript : MonoBehaviour
 
         Ray _ray = _camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0.0f));
 
-        if(Physics.Raycast(_ray, out  _hit, _raycastDistance))
+        if(Physics.Raycast(_ray, out  _hit, _raycastDistance) && _exhibitionRaycastOn)
         {
             if(_hit.collider == _objectCollider)
             {

@@ -38,7 +38,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Place Indicator/Main Scene/Rocket Container Prefab
+    path: Place Indicator/Main Scene/Rocket Container
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -63,7 +63,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Fasty Object
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Fasty Object
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -106,8 +106,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Rocket Window
-      Hinge
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Rocket Window Hinge
   m_PositionCurves:
   - curve:
       serializedVersion: 2
@@ -142,7 +141,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Place Indicator/Main Scene/Rocket Container Prefab
+    path: Place Indicator/Main Scene/Rocket Container
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -185,7 +184,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Fasty Object
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Fasty Object
   m_ScaleCurves:
   - curve:
       serializedVersion: 2
@@ -220,7 +219,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Fasty Object
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Fasty Object
   m_FloatCurves:
   - curve:
       serializedVersion: 2
@@ -285,93 +284,9 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: _landed
-    path: Place Indicator/Main Scene/Rocket Container Prefab
+    path: Place Indicator/Main Scene/Rocket Container
     classID: 114
     script: {fileID: 11500000, guid: 8d398ea7643fa1947903f0bd899d0896, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 4.9333334
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_IsActive
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Particle System
-    classID: 1
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 60
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 4.9333334
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: EmissionModule.rateOverTime.scalar
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Particle System
-    classID: 198
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0.4
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 4.9333334
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_VelocityScale
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Particle System
-    classID: 199
-    script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -397,7 +312,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: _rotate
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Fasty Object
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Fasty Object
     classID: 114
     script: {fileID: 11500000, guid: 7ef26303876df5c479bee33632ec4f19, type: 3}
   - curve:
@@ -425,7 +340,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: _rotateToLookAtTarget
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Fasty Object
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Fasty Object
     classID: 114
     script: {fileID: 11500000, guid: 7ef26303876df5c479bee33632ec4f19, type: 3}
   - curve:
@@ -453,8 +368,92 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Fasty Object
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Fasty Object
     classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 4.9333334
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Particle System
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 60
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 4.9333334
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: EmissionModule.rateOverTime.scalar
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Particle System
+    classID: 198
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.4
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 4.9333334
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_VelocityScale
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Particle System
+    classID: 199
     script: {fileID: 0}
   m_PPtrCurves: []
   m_SampleRate: 60
@@ -465,42 +464,42 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 2516733699
+      path: 2164601344
       attribute: 1
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 892995532
+      path: 60527709
       attribute: 1
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 2516733699
+      path: 2164601344
       attribute: 4
       script: {fileID: 0}
       typeID: 4
       customType: 4
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 892995532
+      path: 60527709
       attribute: 4
       script: {fileID: 0}
       typeID: 4
       customType: 4
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3494082858
+      path: 2584310036
       attribute: 4
       script: {fileID: 0}
       typeID: 4
       customType: 4
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 892995532
+      path: 60527709
       attribute: 3
       script: {fileID: 0}
       typeID: 4
@@ -521,52 +520,52 @@ AnimationClip:
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 2516733699
+      path: 2164601344
       attribute: 1441205907
       script: {fileID: 11500000, guid: 8d398ea7643fa1947903f0bd899d0896, type: 3}
       typeID: 114
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3269173199
-      attribute: 2086281974
-      script: {fileID: 0}
-      typeID: 1
-      customType: 0
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 3269173199
-      attribute: 2883525743
-      script: {fileID: 0}
-      typeID: 198
-      customType: 27
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 3269173199
-      attribute: 237351048
-      script: {fileID: 0}
-      typeID: 199
-      customType: 0
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 892995532
+      path: 60527709
       attribute: 3468342671
       script: {fileID: 11500000, guid: 7ef26303876df5c479bee33632ec4f19, type: 3}
       typeID: 114
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 892995532
+      path: 60527709
       attribute: 3251421647
       script: {fileID: 11500000, guid: 7ef26303876df5c479bee33632ec4f19, type: 3}
       typeID: 114
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 892995532
+      path: 60527709
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 3317106585
+      attribute: 2086281974
+      script: {fileID: 0}
+      typeID: 1
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 3317106585
+      attribute: 2883525743
+      script: {fileID: 0}
+      typeID: 198
+      customType: 27
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 3317106585
+      attribute: 237351048
+      script: {fileID: 0}
+      typeID: 199
       customType: 0
       isPPtrCurve: 0
     pptrCurveMapping: []
@@ -672,7 +671,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Place Indicator/Main Scene/Rocket Container Prefab
+    path: Place Indicator/Main Scene/Rocket Container
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -709,7 +708,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Place Indicator/Main Scene/Rocket Container Prefab
+    path: Place Indicator/Main Scene/Rocket Container
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -746,7 +745,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Place Indicator/Main Scene/Rocket Container Prefab
+    path: Place Indicator/Main Scene/Rocket Container
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -774,7 +773,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Place Indicator/Main Scene/Rocket Container Prefab
+    path: Place Indicator/Main Scene/Rocket Container
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -802,7 +801,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Place Indicator/Main Scene/Rocket Container Prefab
+    path: Place Indicator/Main Scene/Rocket Container
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -830,7 +829,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Place Indicator/Main Scene/Rocket Container Prefab
+    path: Place Indicator/Main Scene/Rocket Container
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -849,93 +848,9 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: _landed
-    path: Place Indicator/Main Scene/Rocket Container Prefab
+    path: Place Indicator/Main Scene/Rocket Container
     classID: 114
     script: {fileID: 11500000, guid: 8d398ea7643fa1947903f0bd899d0896, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 4.9333334
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_IsActive
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Particle System
-    classID: 1
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 60
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 4.9333334
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: EmissionModule.rateOverTime.scalar
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Particle System
-    classID: 198
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0.4
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 4.9333334
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_VelocityScale
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Particle System
-    classID: 199
-    script: {fileID: 0}
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -979,7 +894,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Fasty Object
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Fasty Object
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1025,7 +940,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Fasty Object
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Fasty Object
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1071,73 +986,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Fasty Object
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 21.016666
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: localEulerAnglesRaw.x
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Fasty Object
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 21.016666
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 28.25
-        value: 45
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 1
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: localEulerAnglesRaw.y
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Fasty Object
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 21.016666
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: localEulerAnglesRaw.z
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Fasty Object
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Fasty Object
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1174,7 +1023,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Fasty Object
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Fasty Object
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1211,7 +1060,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Fasty Object
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Fasty Object
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1248,7 +1097,73 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Fasty Object
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Fasty Object
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 21.016666
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.x
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Fasty Object
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 21.016666
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 28.25
+        value: 45
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 1
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.y
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Fasty Object
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 21.016666
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Fasty Object
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1276,7 +1191,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: _rotate
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Fasty Object
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Fasty Object
     classID: 114
     script: {fileID: 11500000, guid: 7ef26303876df5c479bee33632ec4f19, type: 3}
   - curve:
@@ -1304,7 +1219,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: _rotateToLookAtTarget
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Fasty Object
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Fasty Object
     classID: 114
     script: {fileID: 11500000, guid: 7ef26303876df5c479bee33632ec4f19, type: 3}
   - curve:
@@ -1332,8 +1247,92 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Fasty Object
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Fasty Object
     classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 4.9333334
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Particle System
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 60
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 4.9333334
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: EmissionModule.rateOverTime.scalar
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Particle System
+    classID: 198
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.4
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 4.9333334
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_VelocityScale
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Particle System
+    classID: 199
     script: {fileID: 0}
   - curve:
       serializedVersion: 2
@@ -1378,8 +1377,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Rocket Window
-      Hinge
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Rocket Window Hinge
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1416,8 +1414,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Rocket Window
-      Hinge
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Rocket Window Hinge
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1454,8 +1451,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Rocket Window
-      Hinge
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Rocket Window Hinge
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves:
@@ -1466,7 +1462,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Place Indicator/Main Scene/Rocket Container Prefab
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Fasty Object
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1476,7 +1472,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Place Indicator/Main Scene/Rocket Container Prefab
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Fasty Object
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1486,7 +1482,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Place Indicator/Main Scene/Rocket Container Prefab
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Fasty Object
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1496,7 +1492,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Fasty Object
+    path: Place Indicator/Main Scene/Rocket Container
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1506,7 +1502,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Fasty Object
+    path: Place Indicator/Main Scene/Rocket Container
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1516,7 +1512,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Fasty Object
+    path: Place Indicator/Main Scene/Rocket Container
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1526,8 +1522,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Rocket Window
-      Hinge
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Rocket Window Hinge
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1537,8 +1532,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Rocket Window
-      Hinge
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Rocket Window Hinge
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -1548,8 +1542,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Place Indicator/Main Scene/Rocket Container Prefab/Rocket/Rocket Window
-      Hinge
+    path: Place Indicator/Main Scene/Rocket Container/Rocket/Rocket Window Hinge
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
