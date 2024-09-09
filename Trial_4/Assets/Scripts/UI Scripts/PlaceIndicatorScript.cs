@@ -139,7 +139,10 @@ public class PlaceIndicatorScript : MonoBehaviour
             _startButton.onClick.RemoveListener(_action);
         }
 
-        Material _m = _indicator.GetComponent<MeshRenderer>().materials[0];
+        if (_indicator != null)
+        {
+            Material _m = _indicator.GetComponent<MeshRenderer>().materials[0];
+        }
 
         if (_raycastManager.Raycast(_ray, _hits, TrackableType.Planes) && !_started)
         {
@@ -195,7 +198,7 @@ public class PlaceIndicatorScript : MonoBehaviour
                 _noLandButton.gameObject.SetActive(false);
             }
 
-            _m.SetColor("_Color", Color.green);
+            //_m.SetColor("_Color", Color.green);
 
             //_raycastManager.
         }
@@ -208,7 +211,7 @@ public class PlaceIndicatorScript : MonoBehaviour
                 _inhaler.SetActive(false);
             }
 
-            _m.SetColor("_Color", Color.red);
+            //_m.SetColor("_Color", Color.red);
 
             if(_landingTerrain != null)
             {
