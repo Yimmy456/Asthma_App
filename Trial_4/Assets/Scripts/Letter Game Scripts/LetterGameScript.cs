@@ -36,6 +36,8 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
 
         _completionMeter = _gameProperties.GetMeter();
 
+        LookIntoCamera();
+
         if(_gameProperties.GetMeter().GetPercentage() == 100.0f && !_gameDone)
         {
             WinGame();
@@ -76,6 +78,8 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
         _gameProperties.GetMeter().SetValue(0);
 
         _gameProperties.SignalToUpdateUI();
+
+        AdjustContainer();
 
        // string _badgeName = "Spelling Badge (" + _word.GetInformationName() + ")";
 
@@ -194,6 +198,8 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
         _gameProperties.GetInformationCanvas().SetText(SetInfoText());
 
         Button _nextB = _gameProperties.GetInformationCanvas().GetNextButton();
+
+        _gameSpace.transform.localRotation = Quaternion.Euler(0.0f, -90.0f, 0.0f);
 
         _nextB.onClick.AddListener(delegate { base.WinGame(); _gameProperties.GetInformationCanvas().gameObject.SetActive(false); _nextB.onClick.RemoveAllListeners(); });
 

@@ -162,6 +162,10 @@ public class GameGenericMBScript<T> : GameMBScript, YesOrNoInterface
             _gameDone = true;
         }
 
+        _gameProperties.GetMainCanvases().SetCanvasesOn(false);
+
+        _gameProperties.GetMainCanvases().GetDoctorCanvas().gameObject.SetActive(true);
+
         _gameProperties.GetNewBadgeCanvas().gameObject.SetActive(true);
 
         Text _newBadgeText = _gameProperties.GetNewBadgeCanvas().gameObject.GetComponent<RectTransform>().Find("Congratulations Text").gameObject.GetComponent<Text>();
@@ -214,7 +218,7 @@ public class GameGenericMBScript<T> : GameMBScript, YesOrNoInterface
 
                 _gameProperties.GetMainCanvases().SetCanvasesOn(true);
 
-                _gameDone = false;
+                //_gameDone = false;
 
                 _gameProperties.GetNewBadgeCanvas().gameObject.SetActive(false);
 

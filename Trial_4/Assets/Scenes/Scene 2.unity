@@ -4641,7 +4641,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1093082202}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &230291436
 MonoBehaviour:
@@ -6089,6 +6089,7 @@ MonoBehaviour:
       _variable1: -5
       _variable2: 5
   _reverseDirectionForHoles: 0
+  _additionalLookingAngles: {x: 0, y: 0, z: 0}
   _errorText: {fileID: 0}
   references:
     version: 2
@@ -6793,7 +6794,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1093082202}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &344282882
 MonoBehaviour:
@@ -18027,12 +18028,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 554944036}
   m_LocalRotation: {x: -0, y: 0.9659258, z: -0.2588191, w: 0}
-  m_LocalPosition: {x: 6.2000003, y: 118.99, z: -125.09}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 2.2962966, y: 7.033333, z: 4.3000007}
+  m_LocalScale: {x: 0.3703704, y: 0.37037033, z: 0.37037033}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1093082202}
-  m_RootOrder: 2
+  m_Father: {fileID: 543450653252918471}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 30, y: 180, z: 0}
 --- !u!114 &554944038
 MonoBehaviour:
@@ -18889,6 +18890,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: MainPlayerCanvasScript, Assembly-CSharp
         m_MethodName: HideButtonsImmediately2
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 392666907}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -26680,7 +26693,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009342902}
-  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.000011920929, y: 200, z: -80}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 1
@@ -28181,7 +28194,6 @@ Transform:
   m_Children:
   - {fileID: 526290379}
   - {fileID: 1836057716}
-  - {fileID: 554944037}
   - {fileID: 1243258536}
   - {fileID: 230291435}
   - {fileID: 1880734039}
@@ -30189,18 +30201,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 1771115577}
         m_TargetAssemblyTypeName: LetterGameScript, Assembly-CSharp
         m_MethodName: StartGame
@@ -30224,6 +30224,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 392666912}
+        m_TargetAssemblyTypeName: MainPlayerCanvasScript, Assembly-CSharp
+        m_MethodName: SetShowInhalerBoolean
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 956544986}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
@@ -31619,7 +31631,7 @@ Transform:
   m_Children:
   - {fileID: 989997445}
   m_Father: {fileID: 1093082202}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1228988995
 GameObject:
@@ -31971,7 +31983,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1093082202}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1243258537
 MonoBehaviour:
@@ -35139,7 +35151,7 @@ Transform:
   - {fileID: 858896032}
   - {fileID: 309082473}
   m_Father: {fileID: 1093082202}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1365051039
 GameObject:
@@ -36569,7 +36581,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1420920651
 Transform:
   m_ObjectHideFlags: 0
@@ -38268,6 +38280,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 392666912}
+        m_TargetAssemblyTypeName: MainPlayerCanvasScript, Assembly-CSharp
+        m_MethodName: SetShowInhalerBoolean
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1397013146}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -38602,7 +38626,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1093082202}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1546906188
 MonoBehaviour:
@@ -40127,7 +40151,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 543450653252918471}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: -90, y: 180, z: 0}
 --- !u!114 &1628622046
 MonoBehaviour:
@@ -43850,6 +43874,7 @@ MonoBehaviour:
       _variable1: -5
       _variable2: 5
   _reverseDirectionForHoles: 1
+  _additionalLookingAngles: {x: 0, y: 0, z: 0}
   _currentWord:
     _informationName: 
     _informationDesc: 
@@ -46230,6 +46255,42 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 392666907}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 392666912}
+        m_TargetAssemblyTypeName: MainPlayerCanvasScript, Assembly-CSharp
+        m_MethodName: SetShowInhalerBoolean
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 392666907}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 956544986}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -46363,7 +46424,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1093082202}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1884706855
 GameObject:
@@ -49244,7 +49305,7 @@ Transform:
   - {fileID: 1916310820}
   - {fileID: 665322804}
   m_Father: {fileID: 1093082202}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2028114626
 GameObject:
@@ -49709,7 +49770,7 @@ Cloth:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2035726235}
-  m_Enabled: 1
+  m_Enabled: 0
   m_StretchingStiffness: 1
   m_BendingStiffness: 0
   m_UseTethers: 1
@@ -52305,6 +52366,7 @@ Transform:
   - {fileID: 7302356278503656029}
   - {fileID: 8879528566894873689}
   - {fileID: 1757740975}
+  - {fileID: 554944037}
   - {fileID: 1628622045}
   m_Father: {fileID: 488612398}
   m_RootOrder: 0

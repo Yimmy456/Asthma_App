@@ -30,6 +30,8 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
 
         _completionMeter = _gameProperties.GetMeter();
 
+        LookIntoCamera();
+
         if(_gameProperties.GetMeter().GetPercentage() == 100.0f && !_gameDone)
         {
             WinGame();
@@ -222,6 +224,8 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
     protected override void WinGame()
     {
         base.WinGame();
+
+        _gameSpace.transform.localRotation = Quaternion.Euler(0.0f, -90.0f, 0.0f);
     }
 
     public override void QuitGame()

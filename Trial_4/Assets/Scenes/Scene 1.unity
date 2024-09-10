@@ -12784,6 +12784,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 392666912}
+        m_TargetAssemblyTypeName: MainPlayerCanvasScript, Assembly-CSharp
+        m_MethodName: SetShowInhalerBoolean
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 392666907}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -16415,6 +16427,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1520048836}
+        m_TargetAssemblyTypeName: ExhibitionScript, Assembly-CSharp
+        m_MethodName: EndExhibition
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 2076186287}
         m_TargetAssemblyTypeName: ExhibitionCanvasScript, Assembly-CSharp
         m_MethodName: QuitExhibition
@@ -17107,6 +17131,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 392666912}
+        m_TargetAssemblyTypeName: MainPlayerCanvasScript, Assembly-CSharp
+        m_MethodName: SetShowInhalerBoolean
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 430472405}
         m_TargetAssemblyTypeName: MCQGameScript, Assembly-CSharp
@@ -19027,6 +19063,7 @@ MonoBehaviour:
       _variable1: -5
       _variable2: 5
   _reverseDirectionForHoles: 1
+  _additionalLookingAngles: {x: 0, y: -90, z: 0}
   _currentWord:
     _informationName: 
     _informationDesc: 
@@ -28571,7 +28608,7 @@ RectTransform:
   m_GameObject: {fileID: 1169157989}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1330827182}
@@ -28579,7 +28616,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 484}
+  m_AnchoredPosition: {x: 0, y: 249}
   m_SizeDelta: {x: 520, y: 734}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1169157991
@@ -28811,9 +28848,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
+      - m_Target: {fileID: 392666912}
+        m_TargetAssemblyTypeName: MainPlayerCanvasScript, Assembly-CSharp
+        m_MethodName: SetShowInhalerBoolean
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -28821,7 +28858,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 708602651}
         m_TargetAssemblyTypeName: LetterGameScript, Assembly-CSharp
@@ -39341,6 +39378,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 392666912}
+        m_TargetAssemblyTypeName: MainPlayerCanvasScript, Assembly-CSharp
+        m_MethodName: SetShowInhalerBoolean
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 716302322}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -42472,6 +42521,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 392666912}
+        m_TargetAssemblyTypeName: MainPlayerCanvasScript, Assembly-CSharp
+        m_MethodName: SetShowInhalerBoolean
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1645192343}
         m_TargetAssemblyTypeName: CardGameScript, Assembly-CSharp
         m_MethodName: StartGame
@@ -45223,7 +45284,7 @@ MonoBehaviour:
   _spawningArea: {fileID: 837075716}
   _addedDistanceForHoles: 1
   _facingDirection: {x: 0, y: -90, z: 0}
-  _spawningSizeForBlocks: 2
+  _spawningSizeForBlocks: 5
   _spawningSizeForHoles: 2
   _spawningDistanceForBlocks: 1
   _minMaxV3Values:
@@ -45237,6 +45298,7 @@ MonoBehaviour:
       _variable1: -5
       _variable2: 5
   _reverseDirectionForHoles: 0
+  _additionalLookingAngles: {x: 0, y: -90, z: 0}
   _errorText: {fileID: 0}
   references:
     version: 2
