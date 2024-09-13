@@ -15,10 +15,15 @@ public class MenuSceneScript : MonoBehaviour
     [SerializeField]
     Button _phonePlayButton;
 
+    [SerializeField]
+    Material _material;
+
     // Start is called before the first frame update
     void Start()
     {
         EnableCorrectPlayButton();
+
+        SetMaterialValues();
     }
 
     // Update is called once per frame
@@ -84,5 +89,17 @@ public class MenuSceneScript : MonoBehaviour
 
             _phonePlayButton.gameObject.SetActive(_bool);
         }
+    }
+
+    void SetMaterialValues()
+    {
+        if(_material == null)
+        {
+            return;
+        }
+
+        _material.SetFloat("_Alpha", 0.0f);
+
+        _material.SetFloat("_Outline_Thickness", 0.0f);
     }
 }

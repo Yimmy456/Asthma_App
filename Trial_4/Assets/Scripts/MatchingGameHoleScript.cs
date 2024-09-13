@@ -46,6 +46,9 @@ public class MatchingGameHoleScript : MonoBehaviour
     [SerializeField]
     protected ParticleSystem _matchingPS;
 
+    [SerializeField]
+    protected AudioSource _audioSource;
+
     protected float _currentSizeValue;
 
     protected bool _objectPlaced = false;
@@ -117,6 +120,11 @@ public class MatchingGameHoleScript : MonoBehaviour
     public ParticleSystem GetMatchingParticleSystem()
     {
         return _matchingPS;
+    }
+
+    public AudioSource GetAudioSource()
+    {
+        return _audioSource;
     }
 
     public void SetCamera(Camera _input)
@@ -417,6 +425,15 @@ public class MatchingGameHoleScript : MonoBehaviour
         if(_matchingPS != null)
         {
             _matchingPS.Play();
+        }
+
+        if(_audioSource != null && _holeCanvas.GetCorrectAudioClip() != null)
+        {
+            _audioSource.clip = _holeCanvas.GetCorrectAudioClip();
+
+            _audioSource.Play();
+
+            Debug.Log("We are playing the audio for the correct reponse for hole " + @"""" + gameObject.name + @"""" + ".");
         }
 
         ResetValues();

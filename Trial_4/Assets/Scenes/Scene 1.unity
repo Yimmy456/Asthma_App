@@ -4828,6 +4828,134 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &266275800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 266275801}
+  - component: {fileID: 266275802}
+  m_Layer: 0
+  m_Name: Audio Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &266275801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266275800}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1153913169}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &266275802
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266275800}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 100
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &270581588
 GameObject:
   m_ObjectHideFlags: 0
@@ -6509,7 +6637,7 @@ RectTransform:
   - {fileID: 1346609254}
   - {fileID: 1447770887}
   m_Father: {fileID: 2027623194}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -12285,7 +12413,7 @@ RectTransform:
   - {fileID: 1435741336}
   - {fileID: 1495296882}
   m_Father: {fileID: 2027623194}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -12331,6 +12459,7 @@ MonoBehaviour:
   _inhalerGameObject: {fileID: 1219848555049984593}
   _showInhalerSprite: {fileID: 21300000, guid: d3e3218a75bac7346a39d39a419eda0f, type: 3}
   _hideInhalerSprite: {fileID: 21300000, guid: b75aab683d7107746afd4d02670dcd1e, type: 3}
+  _initialInhalerPosition: {x: 0, y: 0.18, z: -150}
 --- !u!1 &393231100
 GameObject:
   m_ObjectHideFlags: 0
@@ -13136,6 +13265,8 @@ MonoBehaviour:
   _gameSpace: {fileID: 0}
   _procedureStateMachine: {fileID: 0}
   _placeIndicator: {fileID: 1228395062}
+  _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
+  _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
   _gameProperties:
     _meter:
       _textGradient:
@@ -13723,7 +13854,7 @@ RectTransform:
   m_Children:
   - {fileID: 1884706856}
   m_Father: {fileID: 2027623194}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -18955,6 +19086,8 @@ MonoBehaviour:
   _gameSpace: {fileID: 1009342902}
   _procedureStateMachine: {fileID: 0}
   _placeIndicator: {fileID: 1228395062}
+  _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
+  _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
   _gameProperties:
     _meter:
       _textGradient:
@@ -19549,7 +19682,7 @@ RectTransform:
   - {fileID: 627680758}
   - {fileID: 334509319}
   m_Father: {fileID: 2027623194}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -22343,7 +22476,7 @@ RectTransform:
   m_Children:
   - {fileID: 1200410331}
   m_Father: {fileID: 2027623194}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -23797,7 +23930,7 @@ RectTransform:
   - {fileID: 1066593373}
   - {fileID: 1065637095}
   m_Father: {fileID: 2027623194}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -24966,7 +25099,7 @@ RectTransform:
   - {fileID: 819678028}
   - {fileID: 359052651}
   m_Father: {fileID: 2027623194}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -28330,7 +28463,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -200}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 266275801}
   m_Father: {fileID: 601199373}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -31552,7 +31686,7 @@ RectTransform:
   - {fileID: 213691840}
   - {fileID: 1081885258}
   m_Father: {fileID: 2027623194}
-  m_RootOrder: 0
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -31957,7 +32091,7 @@ RectTransform:
   - {fileID: 1179092217}
   - {fileID: 122460261}
   m_Father: {fileID: 2027623194}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -36610,7 +36744,7 @@ RectTransform:
   - {fileID: 1890698590}
   - {fileID: 1826947755}
   m_Father: {fileID: 2027623194}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -38345,6 +38479,8 @@ MonoBehaviour:
   _gameSpace: {fileID: 1153913168}
   _procedureStateMachine: {fileID: 0}
   _placeIndicator: {fileID: 1228395062}
+  _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
+  _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
   _gameProperties:
     _meter:
       _textGradient:
@@ -38418,6 +38554,7 @@ MonoBehaviour:
     _text: Great! That's an info card!
     _textTimeToDisplay: 15
   _cardLocalScale: 75
+  _audioSource: {fileID: 266275802}
 --- !u!1 &1648406748
 GameObject:
   m_ObjectHideFlags: 0
@@ -45210,6 +45347,8 @@ MonoBehaviour:
   _gameSpace: {fileID: 1009342902}
   _procedureStateMachine: {fileID: 0}
   _placeIndicator: {fileID: 1228395062}
+  _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
+  _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
   _gameProperties:
     _meter:
       _textGradient:
@@ -45828,7 +45967,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1313643286}
   - {fileID: 392666911}
   - {fileID: 1330827182}
   - {fileID: 956544990}
@@ -45838,6 +45976,7 @@ Transform:
   - {fileID: 444502311}
   - {fileID: 888431177}
   - {fileID: 716302326}
+  - {fileID: 1313643286}
   - {fileID: 1138368659}
   - {fileID: 17966684}
   - {fileID: 2076186286}

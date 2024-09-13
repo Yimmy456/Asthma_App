@@ -38,6 +38,9 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
     [SerializeField]
     float _cardLocalScale = 75.0f;
 
+    [SerializeField]
+    AudioSource _audioSource;
+
     int _numberOfCards = 12;
 
     List<DefinitionClass> _selectedWords;
@@ -307,6 +310,11 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
         return _gameProperties.GetResponseText();
     }
 
+    public AudioSource GetAudioSource()
+    {
+        return _audioSource;
+    }
+
     public void SetSelectedCard(CardScript _input)
     {
         if(_input == null)
@@ -432,6 +440,13 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
             {
                 SetResponseText(_cardDesc, _matchP.GetTextColor(), _matchP.GetTextTimeToDisplay());
             }
+
+            if(_audioSource != null && _correctAudioClip != null)
+            {
+                _audioSource.clip = _correctAudioClip;
+
+                _audioSource.Play();
+            }
         }
         else if(_evaluateCards == EvaluateCardsEnum.MatchCards)
         {
@@ -444,6 +459,13 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
             StartCoroutine(FlipDownCardAnimation(_selectedCard1));
 
             StartCoroutine(FlipDownCardAnimation(_selectedCard2));
+
+            if (_audioSource != null && _incorrectAudioClip != null)
+            {
+                _audioSource.clip = _incorrectAudioClip;
+
+                _audioSource.Play();
+            }
         }
 
         _selectedCard1 = null;

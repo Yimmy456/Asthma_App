@@ -21,6 +21,12 @@ public class GameMBScript : MonoBehaviour
     [SerializeField]
     protected PlaceIndicatorScript _placeIndicator;
 
+    [SerializeField]
+    protected AudioClip _correctAudioClip;
+
+    [SerializeField]
+    protected AudioClip _incorrectAudioClip;
+
     protected MeterClass _completionMeter;
 
     protected bool _currentGameInSession;
@@ -65,6 +71,16 @@ public class GameMBScript : MonoBehaviour
     public MeterClass GetCompletionMeter()
     {
         return _completionMeter;
+    }
+
+    public AudioClip GetCorrectAudioClip()
+    {
+        return _correctAudioClip;
+    }
+
+    public AudioClip GetIncorrectAudioClip()
+    {
+        return _incorrectAudioClip;
     }
 
     /*public virtual void StartGameFunction()

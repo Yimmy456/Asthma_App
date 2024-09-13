@@ -298,13 +298,11 @@ public class ExhibitionObjectScript : MonoBehaviour
 
                 //float _thickness = _exh
 
-                Vector3 _globalS = ToolsStruct.GetGlobalScale(gameObject.transform);
-
-                float _size = ToolsStruct.GetVectorAverage(_globalS);
-
                 _exhibitionCanvas.GetExhibition().GetExhibitionHighlightingMaterial().SetFloat("_Outline_Thickness", _outlineThickness);
 
-                if(_rotateWhenHit && _rotationProperties != null)
+                _exhibitionCanvas.GetExhibition().GetExhibitionHighlightingMaterial().SetFloat("_Alpha", 1.0f);
+
+                if (_rotateWhenHit && _rotationProperties != null)
                 {
                     _rotationProperties.SetDoAction(true);
                 }

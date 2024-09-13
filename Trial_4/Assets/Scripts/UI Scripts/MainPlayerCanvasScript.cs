@@ -53,6 +53,9 @@ public class MainPlayerCanvasScript : MonoBehaviour
     [SerializeField]
     Sprite _hideInhalerSprite;
 
+    [SerializeField]
+    Vector3 _initialInhalerPosition;
+
     bool _showInhalerBoolean = false;
 
     Coroutine _coroutine;
@@ -807,6 +810,11 @@ public class MainPlayerCanvasScript : MonoBehaviour
 
                 _outline.effectColor = _textColor;
             }
+        }
+
+        if(!_showInhalerBoolean)
+        {
+            _inhalerGameObject.transform.localPosition = _initialInhalerPosition;
         }
     }
 
