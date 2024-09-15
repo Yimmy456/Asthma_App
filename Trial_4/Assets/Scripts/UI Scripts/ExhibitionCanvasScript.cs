@@ -38,6 +38,13 @@ public class ExhibitionCanvasScript : MonoBehaviour
     [SerializeField]
     GameObject _rocketContainerGO;
 
+    [SerializeField]
+    Animator _doctorAnimator;
+
+    bool _timerStarts;
+
+    float _timeElapsed = 0.0f;
+
     ExhibitionObjectScript _currentlyTalkedAboutObject;
 
     ExhibitionObjectScript _currentObject;
@@ -54,6 +61,11 @@ public class ExhibitionCanvasScript : MonoBehaviour
     void Update()
     {
         UpdateExhibitionStatus();
+
+        if (_timerStarts)
+        {
+            CheckTimeElaped();
+        }
     }
 
     public void QuitExhibition()
@@ -246,7 +258,23 @@ public class ExhibitionCanvasScript : MonoBehaviour
 
         _currentlyTalkedAboutObject = _currentObject;
 
+        _timerStarts = true;
+
+        if(_doctorAnimator != null)
+        {
+            _doctorAnimator.SetBool("Talking", true);
+        }
+
         yield return new WaitForSeconds(_timeInput);
+
+        if (_doctorAnimator != null)
+        {
+            _doctorAnimator.SetBool("Talking", false);
+        }
+
+        _timerStarts = false;
+
+        _timeElapsed = 0.0f;
 
         _objectDescriptionText.text = "";
 
@@ -264,5 +292,13 @@ public class ExhibitionCanvasScript : MonoBehaviour
         Outline _outline = _objectTitleText.gameObject.GetComponent<Outline>();
 
         _outline.effectColor = _outlineColor;
+    }
+
+
+    void CheckTimeElaped()
+    {
+        _timeElapsed = _timeElapsed + Time.deltaTime;
+
+        Debug.Log("The time elapsed for the coroutine is " + @"""" + _timeElapsed.ToString() + @"""" + ".");
     }
 }

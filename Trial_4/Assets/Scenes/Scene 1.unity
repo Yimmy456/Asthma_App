@@ -36300,6 +36300,10 @@ MonoBehaviour:
   _objectHeight: 100
   _canvas: {fileID: 2076186287}
   _exhibitionHighlightingMaterial: {fileID: 2100000, guid: c2fcf1addd310f54390b2c2af38bee40, type: 2}
+  _highlightMaterialSizes:
+    _variable1: 1
+    _variable2: 1.5
+  _highlightMaterialAnimationSpeed: 2
 --- !u!1 &1520426185
 GameObject:
   m_ObjectHideFlags: 0

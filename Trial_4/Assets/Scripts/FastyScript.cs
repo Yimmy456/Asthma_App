@@ -50,6 +50,12 @@ public class FastyScript : MonoBehaviour
     [SerializeField]
     Text _countingText;
 
+    [SerializeField]
+    Outline _countingTextOutline;
+
+    [SerializeField]
+    Gradient _countingGradient;
+
     bool _startCounting = false;
 
     Coroutine _inhalerCoroutine;
@@ -222,11 +228,29 @@ public class FastyScript : MonoBehaviour
     {
         int _t = 0;
 
+        Color _textC;
+
+        Color _outlineC;
+
+        float _ratio;
+
         for(float _f = 0.0f; _f < 10.0f; _f += Time.deltaTime)
         {
             _t = (int)_f + 1;
 
             _countingText.text = _t.ToString();
+
+            _ratio = (_t - 1) / 9.0f;
+
+            _textC = _countingGradient.Evaluate(_ratio);
+
+            _outlineC = _textC;
+
+            _outlineC = ToolsStruct.ChangeColorValue(_textC, 0.5f, 0.5f, false);
+
+            _countingText.color = _textC;
+
+            _countingTextOutline.effectColor = _outlineC;
 
             yield return null;
         }

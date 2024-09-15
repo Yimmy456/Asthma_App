@@ -18,6 +18,12 @@ public class FunctionsScript : MonoBehaviour
     [SerializeField]
     Text _text;
 
+    [SerializeField]
+    FastyScript _fasty;
+
+    [SerializeField]
+    Gradient _textGradient;
+
     //[SerializeField]
     //Variables _vars;
 
@@ -222,6 +228,16 @@ public class FunctionsScript : MonoBehaviour
         StartCoroutine(CountCoroutine(_countInput));
     }
 
+    public void CountText2(float _countInput)
+    {
+        if (_text == null)
+        {
+            return;
+        }
+
+        StartCoroutine(CountCoroutine2(_countInput));
+    }
+
     IEnumerator CountCoroutine(float _input)
     {
         int _t = 0;
@@ -236,5 +252,50 @@ public class FunctionsScript : MonoBehaviour
         }
 
         _text.text = "";
+    }
+
+    IEnumerator CountCoroutine2(float _countInput)
+    {
+        int _t = 0;
+
+        float _key;
+
+        Color _textColor, _outlineColor;
+
+        for (float _f = 0.0f; _f < 10.0f; _f += Time.deltaTime)
+        {
+            _t = (int)_f + 1;
+
+            _text.text = _t.ToString();
+
+            _key = (_t - 1) / (_countInput - 1);
+
+            _textColor = _textGradient.Evaluate(_key);
+
+            _text.color = _textColor;
+
+            if(_text.gameObject.GetComponent<Outline>() != null)
+            {
+                Outline _outline = _text.gameObject.GetComponent<Outline>();
+
+                _outlineColor = ToolsStruct.ChangeColorValue(_textColor, 0.5f, 0.5f, false);
+
+                _outline.effectColor = _outlineColor;
+            }
+
+            yield return null;
+        }
+
+        _text.text = "";
+    }
+
+    public void StartCountdownFromFasty()
+    {
+        if(_fasty == null)
+        {
+            return;
+        }
+
+        _fasty.CountToTenFunction();
     }
 }

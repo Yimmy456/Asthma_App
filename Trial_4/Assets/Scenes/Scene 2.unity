@@ -3081,7 +3081,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _graph: {fileID: 0}
   _variables: {fileID: 0}
-  _text: {fileID: 0}
+  _text: {fileID: 152717985}
+  _fasty: {fileID: 682149337}
+  _textGradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
 --- !u!1 &159180427
 GameObject:
   m_ObjectHideFlags: 0
@@ -15039,6 +15069,36 @@ MonoBehaviour:
   _graph: {fileID: 0}
   _variables: {fileID: 0}
   _text: {fileID: 0}
+  _fasty: {fileID: 0}
+  _textGradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
 --- !u!114 &425400999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15605,6 +15665,36 @@ MonoBehaviour:
   _graph: {fileID: 0}
   _variables: {fileID: 0}
   _text: {fileID: 152717985}
+  _fasty: {fileID: 682149337}
+  _textGradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 0, b: 0, a: 1}
+    key1: {r: 1, g: 1, b: 0, a: 1}
+    key2: {r: 0, g: 1, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 32768
+    ctime2: 65535
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 3
+    m_NumAlphaKeys: 2
 --- !u!1 &444502310
 GameObject:
   m_ObjectHideFlags: 0
@@ -18139,6 +18229,36 @@ MonoBehaviour:
   _graph: {fileID: 0}
   _variables: {fileID: 0}
   _text: {fileID: 0}
+  _fasty: {fileID: 0}
+  _textGradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
 --- !u!95 &551265658
 Animator:
   serializedVersion: 4
@@ -20920,6 +21040,36 @@ MonoBehaviour:
   _animationClip: {fileID: -945580332620029257, guid: 62cd77fe3e3e30b47b8d520c32ec0630, type: 3}
   _doctorTalking: {fileID: 919132149601814143}
   _countingText: {fileID: 152717985}
+  _countingTextOutline: {fileID: 152717987}
+  _countingGradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 0, b: 0, a: 1}
+    key1: {r: 1, g: 1, b: 0, a: 1}
+    key2: {r: 0, g: 1, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 32768
+    ctime2: 65535
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 3
+    m_NumAlphaKeys: 2
 --- !u!1 &682305366
 GameObject:
   m_ObjectHideFlags: 0
@@ -36749,7 +36899,8 @@ MonoBehaviour:
   _cursorImage: {fileID: 1164217579}
   _objectTitleText: {fileID: 437027873}
   _objectDescriptionText: {fileID: 1071654182}
-  _rocketContainerGO: {fileID: 0}
+  _rocketContainerGO: {fileID: 551265654}
+  _doctorAnimator: {fileID: 919132149601814142}
 --- !u!1 &1397361682
 GameObject:
   m_ObjectHideFlags: 0
@@ -39381,6 +39532,10 @@ MonoBehaviour:
   _objectHeight: 100
   _canvas: {fileID: 1397013151}
   _exhibitionHighlightingMaterial: {fileID: 2100000, guid: c2fcf1addd310f54390b2c2af38bee40, type: 2}
+  _highlightMaterialSizes:
+    _variable1: 1
+    _variable2: 1.5
+  _highlightMaterialAnimationSpeed: 2
 --- !u!1 &1572279624
 GameObject:
   m_ObjectHideFlags: 0
@@ -46840,6 +46995,36 @@ MonoBehaviour:
   _graph: {fileID: 0}
   _variables: {fileID: 0}
   _text: {fileID: 0}
+  _fasty: {fileID: 0}
+  _textGradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
 --- !u!4 &1880734039
 Transform:
   m_ObjectHideFlags: 0

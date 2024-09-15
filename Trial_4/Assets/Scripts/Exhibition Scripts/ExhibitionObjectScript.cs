@@ -43,6 +43,9 @@ public class ExhibitionObjectScript : MonoBehaviour
     [SerializeField]
     float _talkingSeconds;
 
+    [SerializeField]
+    Mesh _colliderMesh;
+
     Quaternion _initalRotation;
 
     bool _highlighted = false;
@@ -54,6 +57,8 @@ public class ExhibitionObjectScript : MonoBehaviour
     ExhibitionGroupClass _objectGroup;
 
     bool _exhibitionRaycastOn = false;
+
+    Coroutine _animationCoroutine;
 
     // Start is called before the first frame update
     void Start()
@@ -308,6 +313,13 @@ public class ExhibitionObjectScript : MonoBehaviour
                 }
 
                 _highlighted = true;
+
+                if(_animationCoroutine != null)
+                {
+                    StopCoroutine(_animationCoroutine);
+                }
+
+                _animationCoroutine = StartCoroutine(AnimateBorderSize());
             }
             else if (_exhibitionCanvas.GetCurrentObject() != this && _highlighted)
             {
@@ -321,6 +333,13 @@ public class ExhibitionObjectScript : MonoBehaviour
                 }
 
                 _highlighted = false;
+
+                if (_animationCoroutine != null)
+                {
+                    StopCoroutine(_animationCoroutine);
+                }
+
+                _animationCoroutine = StartCoroutine(AnimateBorderSize());
             }
         }
     }
@@ -352,5 +371,49 @@ public class ExhibitionObjectScript : MonoBehaviour
         _objectGroup.GetGroupCompletionMeter().AddToValue(1);
 
         _descriptionComplete = true;
+    }
+
+    IEnumerator AnimateBorderSize()
+    {
+        float _currentOutlineSize = _exhibitionCanvas.GetExhibition().GetHighlightMaterialSizes().GetVariable1();
+
+        float _minSize = _exhibitionCanvas.GetExhibition().GetHighlightMaterialSizes().GetVariable1();
+
+        float _maxSize = _exhibitionCanvas.GetExhibition().GetHighlightMaterialSizes().GetVariable2();
+
+        float _animSpeed = _exhibitionCanvas.GetExhibition().GetHighlightMaterialAnimationSpeed();
+
+        bool _expand = true;
+
+        while(_highlighted)
+        {
+            if(_expand)
+            {
+                _currentOutlineSize = _currentOutlineSize + (Time.deltaTime * _animSpeed);
+            }
+            else
+            {
+                _currentOutlineSize = _currentOutlineSize - (Time.deltaTime * _animSpeed);
+            }
+
+            if(_currentOutlineSize >= _maxSize)
+            {
+                _currentOutlineSize = _maxSize;
+
+                _expand = false;
+            }
+            else if(_currentOutlineSize <= _minSize)
+            {
+                _currentOutlineSize = _minSize;
+
+                _expand = true;
+            }
+
+            _exhibitionCanvas.GetExhibition().GetExhibitionHighlightingMaterial().SetFloat("_Outline_Thickness", _currentOutlineSize);
+
+            yield return null;
+        }
+
+        _currentOutlineSize = _outlineThickness;
     }
 }

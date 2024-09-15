@@ -5707,7 +5707,7 @@ GameObject:
   - component: {fileID: 278602175}
   - component: {fileID: 278602177}
   - component: {fileID: 278602176}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Left Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5798,7 +5798,7 @@ Light:
   m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 256
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -8186,7 +8186,7 @@ GameObject:
   - component: {fileID: 429729206}
   - component: {fileID: 429729208}
   - component: {fileID: 429729207}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Up Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10352,7 +10352,7 @@ GameObject:
   - component: {fileID: 511941370}
   - component: {fileID: 511941372}
   - component: {fileID: 511941371}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Main Directional Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11061,7 +11061,7 @@ GameObject:
   - component: {fileID: 571489932}
   - component: {fileID: 571489934}
   - component: {fileID: 571489933}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Forward Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11152,7 +11152,7 @@ Light:
   m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 256
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -12399,7 +12399,7 @@ GameObject:
   - component: {fileID: 626411923}
   - component: {fileID: 626411925}
   - component: {fileID: 626411924}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Down Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22087,7 +22087,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 871448408}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Light for the Sun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29732,7 +29732,7 @@ GameObject:
   - component: {fileID: 1298202294}
   - component: {fileID: 1298202296}
   - component: {fileID: 1298202295}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Backwards Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29823,7 +29823,7 @@ Light:
   m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 256
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -43869,7 +43869,7 @@ GameObject:
   - component: {fileID: 2067410831}
   - component: {fileID: 2067410833}
   - component: {fileID: 2067410832}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Right Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43960,7 +43960,7 @@ Light:
   m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 256
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -51857,7 +51857,7 @@ GameObject:
   - component: {fileID: 5593475652672013019}
   - component: {fileID: 8795494807339322750}
   - component: {fileID: 6767547553472854452}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Sun
   m_TagString: Untagged
   m_Icon: {fileID: 0}

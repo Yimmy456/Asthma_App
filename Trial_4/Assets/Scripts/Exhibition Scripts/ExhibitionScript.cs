@@ -28,6 +28,12 @@ public class ExhibitionScript : MonoBehaviour
     [SerializeField]
     Material _exhibitionHighlightingMaterial;
 
+    [SerializeField]
+    TwoVariablesClass<float, float> _highlightMaterialSizes;
+
+    [SerializeField]
+    float _highlightMaterialAnimationSpeed = 2.0f;
+
     //[SerializeField]
     ExhibitionGroupClass _currentGroup;
 
@@ -43,6 +49,15 @@ public class ExhibitionScript : MonoBehaviour
         //_exhibitionObjects = new List<GameObject>();
 
         _objectsComplete = new MeterClass();
+
+        if(_highlightMaterialSizes.GetVariable1() > _highlightMaterialSizes.GetVariable2())
+        {
+            float _v = _highlightMaterialSizes.GetVariable1();
+
+            _highlightMaterialSizes.SetVariable1(_highlightMaterialSizes.GetVariable2());
+
+            _highlightMaterialSizes.SetVariable2(_v);
+        }
     }
 
     // Update is called once per frame
@@ -69,6 +84,16 @@ public class ExhibitionScript : MonoBehaviour
     public Material GetExhibitionHighlightingMaterial()
     {
         return _exhibitionHighlightingMaterial;
+    }
+
+    public TwoVariablesClass<float, float> GetHighlightMaterialSizes()
+    {
+        return _highlightMaterialSizes;
+    }
+
+    public float GetHighlightMaterialAnimationSpeed()
+    {
+        return _highlightMaterialAnimationSpeed;
     }
 
     public void StartExhibition(int _input)
@@ -113,6 +138,8 @@ public class ExhibitionScript : MonoBehaviour
 
         BoxCollider _collider;
 
+        //MeshCollider _collider2;
+
         float _rotAngle;
 
         for(int _i = 0; _i < _count; _i++)
@@ -156,6 +183,8 @@ public class ExhibitionScript : MonoBehaviour
             _go.transform.localScale = (Vector3.one * _currentListItem.GetLocalScaleConstant());
 
             _collider = _go.AddComponent<BoxCollider>();
+
+            //_collider2 = _go.AddComponent<MeshCollider>();
 
             _collider.center = _currentListItem.GetBoxColliderPosition();
 
