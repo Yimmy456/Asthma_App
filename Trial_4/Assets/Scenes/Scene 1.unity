@@ -13170,6 +13170,36 @@ MonoBehaviour:
   _graph: {fileID: 0}
   _variables: {fileID: 0}
   _text: {fileID: 0}
+  _fasty: {fileID: 0}
+  _textGradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
 --- !u!114 &425400999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15551,6 +15581,36 @@ MonoBehaviour:
   _graph: {fileID: 0}
   _variables: {fileID: 0}
   _text: {fileID: 0}
+  _fasty: {fileID: 0}
+  _textGradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
 --- !u!114 &534874036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15935,6 +15995,36 @@ MonoBehaviour:
   _graph: {fileID: 0}
   _variables: {fileID: 0}
   _text: {fileID: 0}
+  _fasty: {fileID: 0}
+  _textGradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
 --- !u!95 &551265658
 Animator:
   serializedVersion: 4
@@ -36209,54 +36299,42 @@ MonoBehaviour:
       _listItemName: Reliever Inhaler
       _listItemDescription: 
       _listItemColor: {r: 0, g: 0.6666667, b: 1, a: 1}
-      _localScaleConstant: 3
-      _boxColliderPosition: {x: 1.44, y: 8, z: 1.26}
-      _boxColliderSize: {x: 7.9, y: 18, z: 13}
+      _localScaleConstant: 500
       _outlineThickness: 1
       _talkingSeconds: 5
     - _listItemGameObject: {fileID: 134907928583110029, guid: 9cda32f608d9a1748811798032632f27, type: 3}
       _listItemName: Preventer Inhaler
       _listItemDescription: 
       _listItemColor: {r: 0.5, g: 0.2509804, b: 0, a: 1}
-      _localScaleConstant: 3
-      _boxColliderPosition: {x: 1.44, y: 8, z: 1.26}
-      _boxColliderSize: {x: 7.9, y: 18, z: 13}
+      _localScaleConstant: 500
       _outlineThickness: 1
       _talkingSeconds: 5
     - _listItemGameObject: {fileID: 2169771285789508442, guid: 88de728b7d43f4747800db0c967bca33, type: 3}
       _listItemName: Hybrid Inhaler
       _listItemDescription: 
       _listItemColor: {r: 0.6666667, g: 0, b: 0.8235294, a: 1}
-      _localScaleConstant: 3
-      _boxColliderPosition: {x: 1.44, y: 8, z: 1.26}
-      _boxColliderSize: {x: 7.9, y: 18, z: 13}
+      _localScaleConstant: 500
       _outlineThickness: 1
       _talkingSeconds: 5
-    - _listItemGameObject: {fileID: 1984375262102467089, guid: 9d999fae4c810794c9bf725c43b24707, type: 3}
+    - _listItemGameObject: {fileID: 8907650479044642488, guid: 0436b66cd5d38544a9af82cb0be2fa8a, type: 3}
       _listItemName: Medicine
       _listItemDescription: 
       _listItemColor: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 1}
-      _localScaleConstant: 3
-      _boxColliderPosition: {x: 1, y: 12, z: -1.21}
-      _boxColliderSize: {x: 7, y: 10, z: 6.4}
+      _localScaleConstant: 500
       _outlineThickness: 1
       _talkingSeconds: 5
     - _listItemGameObject: {fileID: 124029742880193190, guid: 454d18a21a2477e49bca97b83ec8176c, type: 3}
       _listItemName: Spacer
       _listItemDescription: 
       _listItemColor: {r: 0, g: 0, b: 1, a: 1}
-      _localScaleConstant: 3
-      _boxColliderPosition: {x: 1, y: 2, z: 15}
-      _boxColliderSize: {x: 9, y: 9, z: 23.5}
+      _localScaleConstant: 500
       _outlineThickness: 1
       _talkingSeconds: 5
     - _listItemGameObject: {fileID: 7795114222376234084, guid: dd596e05b8b1d57498cc79d52d969db1, type: 3}
       _listItemName: Whole Inhaler
       _listItemDescription: 
       _listItemColor: {r: 1, g: 1, b: 1, a: 1}
-      _localScaleConstant: 3
-      _boxColliderPosition: {x: 1.5, y: 7, z: 10.66}
-      _boxColliderSize: {x: 10, y: 20, z: 33}
+      _localScaleConstant: 500
       _outlineThickness: 1
       _talkingSeconds: 5
     _groupCompletionMeter:
@@ -36290,6 +36368,7 @@ MonoBehaviour:
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     _rotateInRaycast: 0
+    _exhibitionGroupUniformScale: 1
   _circleProperties:
     _spreadingDegrees: 360
     _additionalDegrees: 0
@@ -36299,11 +36378,14 @@ MonoBehaviour:
     _defaultAngle: 90
   _objectHeight: 100
   _canvas: {fileID: 2076186287}
-  _exhibitionHighlightingMaterial: {fileID: 2100000, guid: c2fcf1addd310f54390b2c2af38bee40, type: 2}
+  _exhibitionHighlightingMaterial1: {fileID: 2100000, guid: c2fcf1addd310f54390b2c2af38bee40, type: 2}
+  _exhibitionHighlightingMaterial2: {fileID: 2100000, guid: c2537b3474947fa4b986bbe0179367d4, type: 2}
   _highlightMaterialSizes:
     _variable1: 1
     _variable2: 1.5
   _highlightMaterialAnimationSpeed: 2
+  _additionalThichnessFotMat2: 0.5
+  _exhibitionUniformScale: 1
 --- !u!1 &1520426185
 GameObject:
   m_ObjectHideFlags: 0
@@ -38766,7 +38848,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1661460776
 Transform:
   m_ObjectHideFlags: 0
@@ -38811,6 +38893,36 @@ MonoBehaviour:
   _animationClip: {fileID: -945580332620029257, guid: 62cd77fe3e3e30b47b8d520c32ec0630, type: 3}
   _doctorTalking: {fileID: 149968732}
   _countingText: {fileID: 534874037}
+  _countingTextOutline: {fileID: 534874036}
+  _countingGradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 0, b: 0, a: 1}
+    key1: {r: 1, g: 1, b: 0, a: 1}
+    key2: {r: 0, g: 1, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 32768
+    ctime2: 65535
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 3
+    m_NumAlphaKeys: 2
 --- !u!1 &1663800521
 GameObject:
   m_ObjectHideFlags: 0
@@ -42780,6 +42892,36 @@ MonoBehaviour:
   _graph: {fileID: 0}
   _variables: {fileID: 0}
   _text: {fileID: 0}
+  _fasty: {fileID: 0}
+  _textGradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
 --- !u!4 &1880734039
 Transform:
   m_ObjectHideFlags: 0
@@ -47740,6 +47882,7 @@ MonoBehaviour:
   _objectTitleText: {fileID: 852745502}
   _objectDescriptionText: {fileID: 845060678}
   _rocketContainerGO: {fileID: 551265654}
+  _doctorAnimator: {fileID: 0}
 --- !u!114 &2076186288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49525,6 +49668,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543450651588677773}
   - component: {fileID: 919132147918670392}
+  - component: {fileID: 919132147918670393}
   m_Layer: 0
   m_Name: Fasty (Inhaler)
   m_TagString: Untagged
@@ -49552,6 +49696,51 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &919132147918670393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147918670391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee3ceb19b079fc844ae98ece66d48706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _graph: {fileID: 0}
+  _variables: {fileID: 0}
+  _text: {fileID: 534874037}
+  _fasty: {fileID: 1661460777}
+  _textGradient:
+    serializedVersion: 2
+    key0: {r: 1, g: 0, b: 0, a: 1}
+    key1: {r: 1, g: 1, b: 0, a: 1}
+    key2: {r: 0, g: 1, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 32768
+    ctime2: 65535
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 3
+    m_NumAlphaKeys: 2
 --- !u!1 &919132148711787210
 GameObject:
   m_ObjectHideFlags: 0

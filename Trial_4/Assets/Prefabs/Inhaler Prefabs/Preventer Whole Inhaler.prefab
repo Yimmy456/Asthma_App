@@ -25,8 +25,8 @@ Transform:
   m_GameObject: {fileID: 1211498347468067270}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6880091797534275604}
   - {fileID: 2104363350755613957}
@@ -60,8 +60,8 @@ Transform:
   m_GameObject: {fileID: 1211498348848026543}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3855730127639300668}
   - {fileID: 1857806616273682847}
@@ -327,6 +327,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4535555354449376135}
   - component: {fileID: 3329062350986093107}
+  - component: {fileID: 602846845754502259}
   m_Layer: 0
   m_Name: Preventer Whole Inhaler
   m_TagString: Untagged
@@ -343,8 +344,8 @@ Transform:
   m_GameObject: {fileID: 3871502745351694653}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 7318.472, y: 2.256292, z: -314.405}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1211498347468067271}
   - {fileID: 9124044988383435233}
@@ -372,6 +373,20 @@ MonoBehaviour:
   _deltaTimeY: 1
   _deltaTimeZ: 1
   _space: 0
+--- !u!64 &602846845754502259
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3871502745351694653}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2432090755550338912, guid: 71f89c69a41b12846b23c65196e64c5e, type: 3}
 --- !u!1 &4170773924270111345
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,8 +663,8 @@ Transform:
   m_GameObject: {fileID: 7503365328692313609}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4535555354449376135}
   m_RootOrder: 1

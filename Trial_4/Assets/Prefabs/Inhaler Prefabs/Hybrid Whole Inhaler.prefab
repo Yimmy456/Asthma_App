@@ -176,6 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1736036057231270055}
   - component: {fileID: 5128700626676378783}
+  - component: {fileID: 6452347691780719881}
   m_Layer: 0
   m_Name: Hybrid Whole Inhaler
   m_TagString: Untagged
@@ -192,8 +193,8 @@ Transform:
   m_GameObject: {fileID: 1395116651858000413}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 7311.753, y: 2.256292, z: -331.9058}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3906379391618761447}
   - {fileID: 6375191186035854017}
@@ -221,6 +222,20 @@ MonoBehaviour:
   _deltaTimeY: 1
   _deltaTimeZ: 1
   _space: 0
+--- !u!64 &6452347691780719881
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395116651858000413}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2432090755550338912, guid: 71f89c69a41b12846b23c65196e64c5e, type: 3}
 --- !u!1 &2040861606652912523
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,8 +427,8 @@ Transform:
   m_GameObject: {fileID: 3906379391618761446}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8763119774503971636}
   - {fileID: 4310533466207473189}
@@ -447,8 +462,8 @@ Transform:
   m_GameObject: {fileID: 3906379392310722703}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1397358432518871324}
   - {fileID: 4552687660573151935}
@@ -565,8 +580,8 @@ Transform:
   m_GameObject: {fileID: 5676623550601407785}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1736036057231270055}
   m_RootOrder: 1

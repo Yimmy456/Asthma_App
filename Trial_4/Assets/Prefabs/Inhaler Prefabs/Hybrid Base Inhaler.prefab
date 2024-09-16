@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2169771285789508421}
   - component: {fileID: 7898932804386197341}
+  - component: {fileID: 3565345730308639626}
   m_Layer: 0
   m_Name: Hybrid Base Inhaler
   m_TagString: Untagged
@@ -26,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 2169771285789508442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7316.13, y: 0.219797, z: -316.2182}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4273571031851653833}
   - {fileID: 8093978681109350676}
@@ -55,6 +56,20 @@ MonoBehaviour:
   _deltaTimeY: 1
   _deltaTimeZ: 1
   _space: 0
+--- !u!64 &3565345730308639626
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2169771285789508442}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2432090755550338912, guid: 43f79bee10752d2449943a614e19f343, type: 3}
 --- !u!1 &2727853824938388306
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,8 +97,8 @@ Transform:
   m_GameObject: {fileID: 2727853824938388306}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2169771285789508421}
   m_RootOrder: 2
@@ -165,8 +180,8 @@ Transform:
   m_GameObject: {fileID: 3780830093472063582}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2169771285789508421}
   m_RootOrder: 0
@@ -248,8 +263,8 @@ Transform:
   m_GameObject: {fileID: 7416803146043977468}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2169771285789508421}
   m_RootOrder: 1

@@ -15754,7 +15754,7 @@ MonoBehaviour:
   _resolutionText: {fileID: 0}
   _cursorSprite: {fileID: 21300000, guid: 60cd767bb2f79c4448c73549ac339e44, type: 3}
   _arrowSprite: {fileID: 21300000, guid: 22f7eb8e991ec534bb6411484e5a7eeb, type: 3}
-  _onscreenThreshold: 100
+  _onscreenThreshold: 10
   _meterText: {fileID: 227547016}
   _onscreenOffset: {x: 0, y: 0}
   _indicatorColor: {r: 0, g: 1, b: 0, a: 1}
@@ -24300,7 +24300,7 @@ MonoBehaviour:
   _resolutionText: {fileID: 0}
   _cursorSprite: {fileID: 21300000, guid: 60cd767bb2f79c4448c73549ac339e44, type: 3}
   _arrowSprite: {fileID: 21300000, guid: 22f7eb8e991ec534bb6411484e5a7eeb, type: 3}
-  _onscreenThreshold: 100
+  _onscreenThreshold: 10
   _meterText: {fileID: 2063574805}
   _onscreenOffset: {x: 0, y: 0}
   _indicatorColor: {r: 0, g: 1, b: 0, a: 1}
@@ -39441,54 +39441,42 @@ MonoBehaviour:
       _listItemName: Reliever Inhaler
       _listItemDescription: 
       _listItemColor: {r: 0, g: 0.6666667, b: 1, a: 1}
-      _localScaleConstant: 10
-      _boxColliderPosition: {x: 1.44, y: 8, z: 1.26}
-      _boxColliderSize: {x: 7.9, y: 18, z: 13}
+      _localScaleConstant: 500
       _outlineThickness: 1
       _talkingSeconds: 5
     - _listItemGameObject: {fileID: 134907928583110029, guid: 9cda32f608d9a1748811798032632f27, type: 3}
       _listItemName: Preventer Inhaler
       _listItemDescription: 
       _listItemColor: {r: 0.5, g: 0.2509804, b: 0, a: 1}
-      _localScaleConstant: 10
-      _boxColliderPosition: {x: 1.44, y: 8, z: 1.26}
-      _boxColliderSize: {x: 7.9, y: 18, z: 13}
+      _localScaleConstant: 500
       _outlineThickness: 1
       _talkingSeconds: 5
     - _listItemGameObject: {fileID: 2169771285789508442, guid: 88de728b7d43f4747800db0c967bca33, type: 3}
       _listItemName: Hybrid Inhaler
       _listItemDescription: 
       _listItemColor: {r: 0.6666667, g: 0, b: 0.8235294, a: 1}
-      _localScaleConstant: 10
-      _boxColliderPosition: {x: 1.44, y: 8, z: 1.26}
-      _boxColliderSize: {x: 7.9, y: 18, z: 13}
+      _localScaleConstant: 500
       _outlineThickness: 1
       _talkingSeconds: 5
-    - _listItemGameObject: {fileID: 1984375262102467089, guid: 9d999fae4c810794c9bf725c43b24707, type: 3}
+    - _listItemGameObject: {fileID: 8907650479044642488, guid: 0436b66cd5d38544a9af82cb0be2fa8a, type: 3}
       _listItemName: Medicine
       _listItemDescription: 
       _listItemColor: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 1}
-      _localScaleConstant: 10
-      _boxColliderPosition: {x: 1, y: 12, z: -1.21}
-      _boxColliderSize: {x: 7, y: 10, z: 6.4}
+      _localScaleConstant: 500
       _outlineThickness: 1
       _talkingSeconds: 5
     - _listItemGameObject: {fileID: 124029742880193190, guid: 454d18a21a2477e49bca97b83ec8176c, type: 3}
       _listItemName: Spacer
       _listItemDescription: 
       _listItemColor: {r: 0, g: 0, b: 1, a: 1}
-      _localScaleConstant: 10
-      _boxColliderPosition: {x: 1, y: 2, z: 15}
-      _boxColliderSize: {x: 9, y: 9, z: 23.5}
+      _localScaleConstant: 500
       _outlineThickness: 1
       _talkingSeconds: 5
     - _listItemGameObject: {fileID: 7795114222376234084, guid: dd596e05b8b1d57498cc79d52d969db1, type: 3}
       _listItemName: Whole Inhaler
       _listItemDescription: 
       _listItemColor: {r: 1, g: 1, b: 1, a: 1}
-      _localScaleConstant: 10
-      _boxColliderPosition: {x: 1.5, y: 7, z: 10.66}
-      _boxColliderSize: {x: 10, y: 20, z: 33}
+      _localScaleConstant: 500
       _outlineThickness: 1
       _talkingSeconds: 5
     _groupCompletionMeter:
@@ -39522,6 +39510,7 @@ MonoBehaviour:
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
     _rotateInRaycast: 0
+    _exhibitionGroupUniformScale: 1
   _circleProperties:
     _spreadingDegrees: 360
     _additionalDegrees: 0
@@ -39531,11 +39520,14 @@ MonoBehaviour:
     _defaultAngle: 90
   _objectHeight: 100
   _canvas: {fileID: 1397013151}
-  _exhibitionHighlightingMaterial: {fileID: 2100000, guid: c2fcf1addd310f54390b2c2af38bee40, type: 2}
+  _exhibitionHighlightingMaterial1: {fileID: 2100000, guid: c2fcf1addd310f54390b2c2af38bee40, type: 2}
+  _exhibitionHighlightingMaterial2: {fileID: 2100000, guid: c2537b3474947fa4b986bbe0179367d4, type: 2}
   _highlightMaterialSizes:
     _variable1: 1
     _variable2: 1.5
   _highlightMaterialAnimationSpeed: 2
+  _additionalThichnessFotMat2: 0.5
+  _exhibitionUniformScale: 1
 --- !u!1 &1572279624
 GameObject:
   m_ObjectHideFlags: 0

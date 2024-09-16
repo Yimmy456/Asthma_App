@@ -26,13 +26,22 @@ public class ExhibitionScript : MonoBehaviour
     ExhibitionCanvasScript _canvas;
 
     [SerializeField]
-    Material _exhibitionHighlightingMaterial;
+    Material _exhibitionHighlightingMaterial1;
+
+    [SerializeField]
+    Material _exhibitionHighlightingMaterial2;
 
     [SerializeField]
     TwoVariablesClass<float, float> _highlightMaterialSizes;
 
     [SerializeField]
     float _highlightMaterialAnimationSpeed = 2.0f;
+
+    [SerializeField]
+    float _additionalThichnessFotMat2 = 0.5f;
+
+    [SerializeField]
+    float _exhibitionUniformScale = 1.0f;
 
     //[SerializeField]
     ExhibitionGroupClass _currentGroup;
@@ -81,9 +90,14 @@ public class ExhibitionScript : MonoBehaviour
         return _camera;
     }
 
-    public Material GetExhibitionHighlightingMaterial()
+    public Material GetExhibitionHighlightingMaterial1()
     {
-        return _exhibitionHighlightingMaterial;
+        return _exhibitionHighlightingMaterial1;
+    }
+
+    public Material GetExhibitionHighlightingMaterial2()
+    {
+        return _exhibitionHighlightingMaterial2;
     }
 
     public TwoVariablesClass<float, float> GetHighlightMaterialSizes()
@@ -94,6 +108,16 @@ public class ExhibitionScript : MonoBehaviour
     public float GetHighlightMaterialAnimationSpeed()
     {
         return _highlightMaterialAnimationSpeed;
+    }
+
+    public float GetAdditionalThicknessForMat2()
+    {
+        return _additionalThichnessFotMat2;
+    }
+
+    public float GetExhibitionUniformScale()
+    {
+        return _exhibitionUniformScale;
     }
 
     public void StartExhibition(int _input)
@@ -136,7 +160,7 @@ public class ExhibitionScript : MonoBehaviour
 
         ExhibitionListItemClass _currentListItem;
 
-        BoxCollider _collider;
+        MeshCollider _collider;
 
         //MeshCollider _collider2;
 
@@ -180,15 +204,11 @@ public class ExhibitionScript : MonoBehaviour
 
             _go.transform.localEulerAngles = new Vector3(0.0f, _rotAngle, 0.0f);
 
-            _go.transform.localScale = (Vector3.one * _currentListItem.GetLocalScaleConstant());
+            _go.transform.localScale = (Vector3.one * _currentListItem.GetLocalScaleConstant() * _exhibitionUniformScale * _currentGroup.GetExhibitionGroupUniformScale());
 
-            _collider = _go.AddComponent<BoxCollider>();
+            _collider = _go.GetComponent<MeshCollider>();
 
             //_collider2 = _go.AddComponent<MeshCollider>();
-
-            _collider.center = _currentListItem.GetBoxColliderPosition();
-
-            _collider.size = _currentListItem.GetBoxColliderSize();
 
             _exhibitionsGO.Add(_go);
 
@@ -206,7 +226,10 @@ public class ExhibitionScript : MonoBehaviour
 
             _currentExh.SetCamera(_camera);
 
-            _currentExh.SetObjectCollider(_collider);
+            if (_collider != null)
+            {
+                _currentExh.SetObjectCollider(_collider);
+            }
 
             _currentExh.SetObjectPosition(_v3);
 
@@ -339,6 +362,9 @@ public class ExhibitionGroupClass
     [SerializeField]
     bool _rotateInRaycast = true;
 
+    [SerializeField]
+    float _exhibitionGroupUniformScale = 1.0f;
+
     bool _exhibitionInPlay = false;
 
     public string GetGroupName()
@@ -370,6 +396,11 @@ public class ExhibitionGroupClass
     {
         _exhibitionInPlay = _input;
     }
+
+    public float GetExhibitionGroupUniformScale()
+    {
+        return _exhibitionGroupUniformScale;
+    }
 }
 
 [System.Serializable]
@@ -389,12 +420,6 @@ public class ExhibitionListItemClass
 
     [SerializeField]
     float _localScaleConstant = 10.0f;
-
-    [SerializeField]
-    Vector3 _boxColliderPosition;
-
-    [SerializeField]
-    Vector3 _boxColliderSize;
 
     [SerializeField]
     float _outlineThickness = 0.1f;
@@ -425,16 +450,6 @@ public class ExhibitionListItemClass
     public float GetLocalScaleConstant()
     {
         return _localScaleConstant;
-    }
-
-    public Vector3 GetBoxColliderPosition()
-    {
-        return _boxColliderPosition;
-    }
-
-    public Vector3 GetBoxColliderSize()
-    {
-        return _boxColliderSize;
     }
 
     public float GetOutlineThickness()
