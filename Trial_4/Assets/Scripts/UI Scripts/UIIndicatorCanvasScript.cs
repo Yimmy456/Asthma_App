@@ -185,6 +185,14 @@ public class UIIndicatorCanvasScript : MonoBehaviour
 
                 _arrow.GetComponent<Image>().sprite = _cursorSprite;
 
+                _arrow.GetComponent<Image>().color = _indicatorColor;
+
+                _meterText.color = _indicatorColor;
+
+                Color _c = ToolsStruct.ChangeColorValue(_indicatorColor, 0.5f, 0.5f, true);
+
+                _meterText.gameObject.GetComponent<Outline>().effectColor = _c;
+
                 _arrow.GetComponent<RectTransform>().sizeDelta = new Vector2(1124, 1123);
 
                 if(_meterText != null)

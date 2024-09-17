@@ -74,11 +74,29 @@ public class MatchingGameHoleScript : MonoBehaviour
 
         _currentSizeValue = _defaultSizeValue;
 
+        Debug.Log("The current size value is " + @"""" + _currentSizeValue + @"""" + ", and the default size is " + @"""" + _defaultSizeValue + @"""" + ".");
+
         _originalSize = _originalSize * _currentSizeValue;
 
         if(_holeObject != null)
         {
             _holeObject.transform.localScale = _originalSize;
+        }
+    }
+
+    private void Start()
+    {
+        if(!_objectPlaced)
+        {
+            _currentSizeValue = _defaultSizeValue;
+        }
+    }
+
+    private void OnEnable()
+    {
+        if (!_objectPlaced)
+        {
+            _currentSizeValue = _defaultSizeValue;
         }
     }
 
@@ -136,6 +154,8 @@ public class MatchingGameHoleScript : MonoBehaviour
     {
         while (_currentSizeValue > _defaultSizeValue)
         {
+            Debug.Log("The current size while decreasing is " + @"""" + _currentSizeValue + @"""" + ".");
+
             _currentSizeValue = (_currentSizeValue - (Time.deltaTime * _animationSpeed));
 
             if (_currentSizeValue <= _defaultSizeValue)
@@ -155,6 +175,8 @@ public class MatchingGameHoleScript : MonoBehaviour
     {
         while (_currentSizeValue < _expandedSizeValue)
         {
+            Debug.Log("The current size while increasing is " + @"""" + _currentSizeValue + @"""" + ".");
+
             _currentSizeValue = (_currentSizeValue + (Time.deltaTime * _animationSpeed));
 
             if (_currentSizeValue >= _expandedSizeValue)
