@@ -293,36 +293,17 @@ public class ExhibitionObjectScript : MonoBehaviour
             Debug.Log("The camera is not hitting anything now.");
         }
 
-        if (_exhibitionCanvas.GetExhibition().GetExhibitionHighlightingMaterial1() != null)
+        HighlightingAnimationClass _highlightingProperties = _exhibitionCanvas.GetExhibition().GetHighlightingAnimationProperties();
+
+        if (_highlightingProperties.GetHighlightingMaterial1() != null)
         {
             if (_exhibitionCanvas.GetCurrentObject() == this && !_highlighted)
             {
                 SetObjectLayer(gameObject, 7);
 
-                _exhibitionCanvas.GetExhibition().GetExhibitionHighlightingMaterial1().SetColor("_Base_Color", _objectColor);
+                _highlightingProperties.SetHighlightingMaterialColor(_objectColor);
 
-                //float _thickness = _exh
-
-                _exhibitionCanvas.GetExhibition().GetExhibitionHighlightingMaterial1().SetFloat("_Outline_Thickness", _outlineThickness);
-
-                _exhibitionCanvas.GetExhibition().GetExhibitionHighlightingMaterial1().SetFloat("_Alpha", 1.0f);
-
-                if (_exhibitionCanvas.GetExhibition().GetExhibitionHighlightingMaterial2() != null && _exhibitionCanvas.GetExhibition().GetAdditionalThicknessForMat2() > 0.0f)
-                {
-                    Color _color2 = ToolsStruct.ChangeColorValue(_objectColor, 0.5f, 1.0f, true);
-
-                    float _thickness2 = _outlineThickness + _exhibitionCanvas.GetExhibition().GetAdditionalThicknessForMat2();
-
-                    _exhibitionCanvas.GetExhibition().GetExhibitionHighlightingMaterial2().SetColor("_Base_Color", _color2);
-
-                    _exhibitionCanvas.GetExhibition().GetExhibitionHighlightingMaterial2().SetFloat("_Outline_Thickness", _thickness2);
-
-                    _exhibitionCanvas.GetExhibition().GetExhibitionHighlightingMaterial2().SetFloat("_Alpha", 1.0f);
-                }
-                else
-                {
-                    _exhibitionCanvas.GetExhibition().GetExhibitionHighlightingMaterial2().SetFloat("_Alpha", 0.0f);
-                }
+                _highlightingProperties.GetAlphas().SetVariables(1.0f, 1.0f);
 
                 if (_rotateWhenHit && _rotationProperties != null)
                 {
@@ -336,7 +317,7 @@ public class ExhibitionObjectScript : MonoBehaviour
                     StopCoroutine(_animationCoroutine);
                 }
 
-                _animationCoroutine = StartCoroutine(AnimateBorderSize());
+                _animationCoroutine = StartCoroutine(_highlightingProperties.Animate());
             }
             else if (_exhibitionCanvas.GetCurrentObject() != this && _highlighted)
             {
@@ -351,16 +332,16 @@ public class ExhibitionObjectScript : MonoBehaviour
 
                 _highlighted = false;
 
+                _highlightingProperties.SetAnimateBool(false);
+
                 if (_animationCoroutine != null)
                 {
                     StopCoroutine(_animationCoroutine);
                 }
 
-                _animationCoroutine = StartCoroutine(AnimateBorderSize());
+                _animationCoroutine = StartCoroutine(_highlightingProperties.Animate());
             }
         }
-
-
     }
 
     void SetObjectLayer(GameObject _goInput, int _layerInput)
@@ -390,56 +371,5 @@ public class ExhibitionObjectScript : MonoBehaviour
         _objectGroup.GetGroupCompletionMeter().AddToValue(1);
 
         _descriptionComplete = true;
-    }
-
-    IEnumerator AnimateBorderSize()
-    {
-        float _currentOutlineSize = _exhibitionCanvas.GetExhibition().GetHighlightMaterialSizes().GetVariable1();
-
-        float _minSize = _exhibitionCanvas.GetExhibition().GetHighlightMaterialSizes().GetVariable1();
-
-        float _maxSize = _exhibitionCanvas.GetExhibition().GetHighlightMaterialSizes().GetVariable2();
-
-        float _animSpeed = _exhibitionCanvas.GetExhibition().GetHighlightMaterialAnimationSpeed();
-
-        float _additionalThickness = _exhibitionCanvas.GetExhibition().GetAdditionalThicknessForMat2();
-
-        bool _expand = true;
-
-        while(_highlighted)
-        {
-            if(_expand)
-            {
-                _currentOutlineSize = _currentOutlineSize + (Time.deltaTime * _animSpeed);
-            }
-            else
-            {
-                _currentOutlineSize = _currentOutlineSize - (Time.deltaTime * _animSpeed);
-            }
-
-            if(_currentOutlineSize >= _maxSize)
-            {
-                _currentOutlineSize = _maxSize;
-
-                _expand = false;
-            }
-            else if(_currentOutlineSize <= _minSize)
-            {
-                _currentOutlineSize = _minSize;
-
-                _expand = true;
-            }
-
-            _exhibitionCanvas.GetExhibition().GetExhibitionHighlightingMaterial1().SetFloat("_Outline_Thickness", _currentOutlineSize);
-
-            if(_additionalThickness > 0.0f)
-            {
-                _exhibitionCanvas.GetExhibition().GetExhibitionHighlightingMaterial2().SetFloat("_Outline_Thickness", (_currentOutlineSize + _additionalThickness));
-            }
-
-            yield return null;
-        }
-
-        _currentOutlineSize = _outlineThickness;
     }
 }

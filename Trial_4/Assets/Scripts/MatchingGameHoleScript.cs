@@ -49,6 +49,9 @@ public class MatchingGameHoleScript : MonoBehaviour
     [SerializeField]
     protected AudioSource _audioSource;
 
+    [SerializeField]
+    Vector3 _localPositionAfterPlacement;
+
     protected float _currentSizeValue;
 
     protected bool _objectPlaced = false;
@@ -145,9 +148,28 @@ public class MatchingGameHoleScript : MonoBehaviour
         return _audioSource;
     }
 
+    public Vector3 GetLocalPositionAfterPlacement()
+    {
+        return _localPositionAfterPlacement;
+    }
+
     public void SetCamera(Camera _input)
     {
         _camera = _input;
+    }
+
+    public void SetLocalPositionAfterPlacement(float _inputX, float _inputY, float _inputZ)
+    {
+        _localPositionAfterPlacement.x = _inputX;
+
+        _localPositionAfterPlacement.y = _inputY;
+
+        _localPositionAfterPlacement.z = _inputZ;
+    }
+
+    public void SetLocalPositionAfterPlacement(Vector3 _input)
+    {
+        SetLocalPositionAfterPlacement(_input.x, _input.y, _input.z);
     }
 
     protected virtual IEnumerator DecreaseSizeAnimation()
@@ -458,6 +480,27 @@ public class MatchingGameHoleScript : MonoBehaviour
             Debug.Log("We are playing the audio for the correct reponse for hole " + @"""" + gameObject.name + @"""" + ".");
         }
 
+        _currentObject.transform.localPosition = _localPositionAfterPlacement;
+
         ResetValues();
+    }
+
+    public void HaveDoctorTalk()
+    {
+        if(_holeCanvas.GetGameProperties().GetMainCanvases().GetDoctorCanvas() == null)
+        {
+            return;
+        }
+
+        Canvas _doctorCanvas = _holeCanvas.GetGameProperties().GetMainCanvases().GetDoctorCanvas();
+
+        DialogueCanvasScript _dialogCanvas = _doctorCanvas.gameObject.GetComponent<DialogueCanvasScript>();
+
+        if(_dialogCanvas == null)
+        {
+            return;
+        }
+
+        _dialogCanvas._doctorTalkingProperties.StartTalking();
     }
 }

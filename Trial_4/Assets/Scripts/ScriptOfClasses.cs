@@ -1645,3 +1645,190 @@ public class TextPropertiesClass
         return _textTimeToDisplay;
     }
 }
+
+[System.Serializable]
+public class HighlightingAnimationClass
+{
+    [SerializeField]
+    Material _highlightingMaterial1;
+
+    [SerializeField]
+    Material _highlightingMaterial2;
+
+    [SerializeField]
+    Color _highlightingMaterialColor;
+
+    [SerializeField]
+    float _animationSpeed = 0.1f;
+
+    [SerializeField]
+    float _additionalThicknessForMat2 = 0.5f;
+
+    [SerializeField]
+    float _colorValueForMaterial2 = 0.5f;
+
+    [SerializeField]
+    TwoVariablesClass<float, float> _range;
+
+    [SerializeField]
+    TwoVariablesClass<float, float> _alphas = new TwoVariablesClass<float, float>(1.0f, 1.0f);
+
+    bool _animateBool = false;
+
+    public Material GetHighlightingMaterial1()
+    {
+        return _highlightingMaterial1;
+    }
+
+    public Material GetHighlightingMaterial2()
+    {
+        return _highlightingMaterial2;
+    }
+
+    public Color GetHighlightingMaterialColor()
+    {
+        return _highlightingMaterialColor;
+    }
+
+    public float GetAnimationSpeed()
+    {
+        return _animationSpeed;
+    }
+
+    public float GetAdditionalThicknessForMaterial2()
+    {
+        return _additionalThicknessForMat2;
+    }
+
+    public bool GetAnimate()
+    {
+        return _animateBool;
+    }
+
+    public TwoVariablesClass<float, float> GetRange()
+    {
+        return _range;
+    }
+
+    public float GetColorValueForMaterial2()
+    {
+        return _colorValueForMaterial2;
+    }
+
+    public TwoVariablesClass<float, float> GetAlphas()
+    {
+        return _alphas;
+    }
+
+    public void SetHighlightingMaterialColor(Color _input)
+    {
+        _highlightingMaterialColor = _input;
+    }
+
+    public void SetAnimationSpeed(float _input)
+    {
+        _animationSpeed = _input;
+    }
+
+    public void SetAdditionalThicknessForMaterial2(float _input)
+    {
+        _additionalThicknessForMat2 = _input;
+    }
+
+    public void SetAnimateBool(bool _input)
+    {
+        _animateBool = _input;
+    }
+
+    public void SetColorValueForMaterial2(float _input)
+    {
+        _colorValueForMaterial2 = _input;
+    }
+
+    public IEnumerator Animate()
+    {
+        if(_highlightingMaterial1 == null)
+        {
+            yield break;
+        }
+
+        _animateBool = true;
+
+        bool _expand = true;
+
+        CheckValues();
+
+        float _currentValue = _range.GetVariable1();
+
+        float _currentValue2 = _range.GetVariable1() + _additionalThicknessForMat2;
+
+        Color _c2 = ToolsStruct.ChangeColorValue(_highlightingMaterialColor, _colorValueForMaterial2, 1.0f, true);
+
+        _highlightingMaterial1.SetColor("_Base_Color", _highlightingMaterialColor);
+
+        _highlightingMaterial1.SetFloat("_Alpha", _alphas.GetVariable1());
+
+        if (_highlightingMaterial2 != null)
+        {
+            _highlightingMaterial2.SetColor("_Base_Color", _c2);
+
+            _highlightingMaterial2.SetFloat("_Alpha", _alphas.GetVariable2());
+        }
+
+        while(_animateBool)
+        {
+            if(_expand)
+            {
+                _currentValue = _currentValue + (Time.deltaTime * _animationSpeed);
+
+                if(_currentValue >= _range.GetVariable2() && _animationSpeed > 0.0f)
+                {
+                    _currentValue = _range.GetVariable2();
+
+                    _expand = false;
+                }
+            }
+            else
+            {
+                _currentValue = _currentValue - (Time.deltaTime * _animationSpeed);
+
+                if (_currentValue <= _range.GetVariable1() && _animationSpeed > 0.0f)
+                {
+                    _currentValue = _range.GetVariable1();
+
+                    _expand = true;
+                }
+            }
+
+            _highlightingMaterial1.SetFloat("_Outline_Thickness", _currentValue);
+
+            if (_highlightingMaterial2 != null && _additionalThicknessForMat2 > 0.0f)
+            {
+                _currentValue2 = _currentValue + _additionalThicknessForMat2;
+
+                _highlightingMaterial2.SetFloat("_Outline_Thickness", _currentValue2);
+            }
+
+            yield return null;
+        }
+
+        _highlightingMaterial1.SetFloat("_Alpha", 0.0f);
+
+        if (_highlightingMaterial2 != null)
+        {
+            _highlightingMaterial2.SetFloat("_Alpha", 0.0f);
+        }
+    }
+
+    void CheckValues()
+    {
+        if(_range.GetVariable1() > _range.GetVariable2())
+        {
+            float _v  = _range.GetVariable2();
+
+            _range.SetVariable2(_range.GetVariable1());
+
+            _range.SetVariable1(_v);
+        }
+    }
+}

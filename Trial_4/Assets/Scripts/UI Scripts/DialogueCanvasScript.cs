@@ -14,6 +14,12 @@ public class DialogueCanvasScript : MonoBehaviour
     [SerializeField]
     RectTransform _doctorsImage;
 
+    [SerializeField]
+    public DoctorTalkingScript _doctorTalkingProperties;
+
+    [SerializeField]
+    public Animator _animator;
+
     // Start is called before the first frame update
     void Start()
     {

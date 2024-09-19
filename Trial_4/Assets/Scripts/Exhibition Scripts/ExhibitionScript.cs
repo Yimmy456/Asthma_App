@@ -26,19 +26,7 @@ public class ExhibitionScript : MonoBehaviour
     ExhibitionCanvasScript _canvas;
 
     [SerializeField]
-    Material _exhibitionHighlightingMaterial1;
-
-    [SerializeField]
-    Material _exhibitionHighlightingMaterial2;
-
-    [SerializeField]
-    TwoVariablesClass<float, float> _highlightMaterialSizes;
-
-    [SerializeField]
-    float _highlightMaterialAnimationSpeed = 2.0f;
-
-    [SerializeField]
-    float _additionalThichnessFotMat2 = 0.5f;
+    HighlightingAnimationClass _highlightingAnimationProperties;
 
     [SerializeField]
     float _exhibitionUniformScale = 1.0f;
@@ -58,15 +46,6 @@ public class ExhibitionScript : MonoBehaviour
         //_exhibitionObjects = new List<GameObject>();
 
         _objectsComplete = new MeterClass();
-
-        if(_highlightMaterialSizes.GetVariable1() > _highlightMaterialSizes.GetVariable2())
-        {
-            float _v = _highlightMaterialSizes.GetVariable1();
-
-            _highlightMaterialSizes.SetVariable1(_highlightMaterialSizes.GetVariable2());
-
-            _highlightMaterialSizes.SetVariable2(_v);
-        }
     }
 
     // Update is called once per frame
@@ -90,29 +69,9 @@ public class ExhibitionScript : MonoBehaviour
         return _camera;
     }
 
-    public Material GetExhibitionHighlightingMaterial1()
+    public HighlightingAnimationClass GetHighlightingAnimationProperties()
     {
-        return _exhibitionHighlightingMaterial1;
-    }
-
-    public Material GetExhibitionHighlightingMaterial2()
-    {
-        return _exhibitionHighlightingMaterial2;
-    }
-
-    public TwoVariablesClass<float, float> GetHighlightMaterialSizes()
-    {
-        return _highlightMaterialSizes;
-    }
-
-    public float GetHighlightMaterialAnimationSpeed()
-    {
-        return _highlightMaterialAnimationSpeed;
-    }
-
-    public float GetAdditionalThicknessForMat2()
-    {
-        return _additionalThichnessFotMat2;
+        return _highlightingAnimationProperties;
     }
 
     public float GetExhibitionUniformScale()

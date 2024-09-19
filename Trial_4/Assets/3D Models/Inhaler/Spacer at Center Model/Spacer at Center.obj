@@ -1,6 +1,6 @@
 # Blender 4.1.1
 # www.blender.org
-mtllib Spacer OBJ.mtl
+mtllib Spacer at Center.mtl
 o cap2
 v 0.000000 0.057853 -0.035063
 v 0.017531 0.057853 -0.030365

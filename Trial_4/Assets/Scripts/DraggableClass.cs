@@ -40,6 +40,9 @@ public class DraggableClass : MonoBehaviour
     bool _maintainZDistance = true;
 
     [SerializeField]
+    Vector2 _2DOffset;
+
+    [SerializeField]
     DraggableTypeEnum _draggableType;
 
     // Start is called before the first frame update
@@ -194,7 +197,19 @@ public class DraggableClass : MonoBehaviour
             _pos.z = _camera.WorldToScreenPoint(GetFront().position).z + _zOffset;
         }
 
-        Vector3 _v3 = _camera.ScreenToWorldPoint(_pos);
+        //_pos.x = _pos.x + _2DOffset.x;
+
+        //_pos.y = _pos.y + _2DOffset.y;
+
+        Vector3 _pos2 = Vector3.zero;
+
+        _pos2.x = _pos.x + _2DOffset.x;
+
+        _pos2.y = _pos.y + _2DOffset.y;
+
+        _pos2.z = _pos.z;
+
+        Vector3 _v3 = _camera.ScreenToWorldPoint(_pos2);
 
         DebugDragInfo();
 
@@ -302,6 +317,11 @@ public class DraggableClass : MonoBehaviour
         return _touchPhase;
     }
 
+    public Vector2 Get2DOffset()
+    {
+        return _2DOffset;
+    }
+
     public void SetBodyVelocity(Vector3 _v3Input, float _constantInput = 1.0f)
     {
         if (_body == null)
@@ -334,6 +354,16 @@ public class DraggableClass : MonoBehaviour
     public void SetBodyAngularVelocity(float _inputX, float _inputY, float _inputZ, float _constantInput = 1.0f)
     {
         SetBodyAngularVelocity(new Vector3(_inputX, _inputY, _inputZ), _constantInput);
+    }
+
+    public void Set2DOffset(float _inputX, float _inputY)
+    {
+        _2DOffset = new Vector2(_inputX, _inputY);
+    }
+
+    public void Set2DOffset(Vector2 _input)
+    {
+        Set2DOffset(_input.x, _input.y);
     }
 
     public float GetDraggingDirection(bool _coterminalInput = true, bool _radiansInput = false)
@@ -444,6 +474,11 @@ public class DraggableClass : MonoBehaviour
     public void SetDraggableOn(bool _input)
     {
         _draggableOn = _input;
+    }
+
+    public void SetMaintainZDistance(bool _input)
+    {
+        _maintainZDistance = _input;
     }
 
     public void RemoveRigidBody()
