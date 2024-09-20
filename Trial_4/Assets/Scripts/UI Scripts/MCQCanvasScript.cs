@@ -118,6 +118,13 @@ public class MCQCanvasScript : GameCanvasScript
 
         _responseTextCoroutine = StartCoroutine(DisplayResponse("This is not the correct answer. Please, try again. I know you can do it!", 5.0f, new Color(0.5f, 0.5f, 0.5f, 1.0f)));
 
+        if (_game.GetAudioSource() != null && _game.GetIncorrectAudioClip() != null)
+        {
+            _game.GetAudioSource().clip = _game.GetIncorrectAudioClip();
+
+            _game.GetAudioSource().Play();
+        }
+
     }
 
     void CorrectAnswer()
@@ -130,6 +137,13 @@ public class MCQCanvasScript : GameCanvasScript
         if(_game.GetGameProperties().GetResponseText() == null)
         {
             return;
+        }
+
+        if(_game.GetAudioSource() != null && _game.GetCorrectAudioClip() != null)
+        {
+            _game.GetAudioSource().clip = _game.GetCorrectAudioClip();
+
+            _game.GetAudioSource().Play();
         }
 
         StopDisplayResponseCoroutine();

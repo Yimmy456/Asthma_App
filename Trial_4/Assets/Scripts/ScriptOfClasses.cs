@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using TMPro;
 
 [System.Serializable]
 public class MeterClass
@@ -1673,7 +1674,7 @@ public class HighlightingAnimationClass
     [SerializeField]
     TwoVariablesClass<float, float> _alphas = new TwoVariablesClass<float, float>(1.0f, 1.0f);
 
-    bool _animateBool = false;
+    bool _animateBoolean = false;
 
     public Material GetHighlightingMaterial1()
     {
@@ -1702,7 +1703,7 @@ public class HighlightingAnimationClass
 
     public bool GetAnimate()
     {
-        return _animateBool;
+        return _animateBoolean;
     }
 
     public TwoVariablesClass<float, float> GetRange()
@@ -1735,14 +1736,19 @@ public class HighlightingAnimationClass
         _additionalThicknessForMat2 = _input;
     }
 
-    public void SetAnimateBool(bool _input)
+    public void SetAnimateBoolean(bool _input)
     {
-        _animateBool = _input;
+        _animateBoolean = _input;
     }
 
     public void SetColorValueForMaterial2(float _input)
     {
         _colorValueForMaterial2 = _input;
+    }
+
+    public void SwitchAnimateBoolean()
+    {
+        _animateBoolean = !_animateBoolean;
     }
 
     public IEnumerator Animate()
@@ -1752,7 +1758,7 @@ public class HighlightingAnimationClass
             yield break;
         }
 
-        _animateBool = true;
+        _animateBoolean = true;
 
         bool _expand = true;
 
@@ -1775,7 +1781,7 @@ public class HighlightingAnimationClass
             _highlightingMaterial2.SetFloat("_Alpha", _alphas.GetVariable2());
         }
 
-        while(_animateBool)
+        while(_animateBoolean)
         {
             if(_expand)
             {
@@ -1831,4 +1837,171 @@ public class HighlightingAnimationClass
             _range.SetVariable1(_v);
         }
     }
+}
+
+[System.Serializable]
+public class ArrowAnimationClass
+{
+    [SerializeField]
+    GameObject _arrowContainer;
+
+    [SerializeField]
+    GameObject _arrowObject;
+
+    [SerializeField]
+    float _animationSpeed = 1.0f;
+
+    [SerializeField]
+    Vector3 _pointA;
+
+    [SerializeField]
+    Vector3 _pointB;
+
+    [SerializeField]
+    Space _spaceType;
+
+    bool _animateBoolean = false;
+
+    bool _pauseAnimation = false;
+
+
+    //Getters
+    public GameObject GetArrowContainer() { return _arrowContainer; }
+
+    public GameObject GetArrowObject() { return _arrowObject; }
+
+    public float GetAnimationSpeed() { return _animationSpeed; }
+
+    public Vector3 GetPointA() { return _pointA; }
+
+    public Vector3 GetPointB() { return _pointB; }
+
+    public Space GetSpaceType() { return _spaceType; }
+
+    public bool GetAnimateBoolean() { return _animateBoolean; }
+
+    public bool GetPauseAnimation() { return _pauseAnimation; }
+
+
+    //Setters
+    public void SetArrowContainer(GameObject _input)
+    {
+        _arrowContainer = _input;
+    }
+
+    public void SetArrowObject(GameObject _input)
+    {
+        _arrowObject = _input;
+    }
+
+    public void SetAnimationSpeed(float _input) { _animationSpeed = _input; }
+
+    public void SetPointA(Vector3 _input) { _pointA = _input; }
+
+    public void SetPointB(Vector3 _input) { _pointB = _input; }
+
+    public void SetSpaceType(Space _input) { _spaceType = _input; }
+
+    public void SetAnimateBoolean(bool _input) { _animateBoolean = _input; }
+
+    public void SetPauseAnimation(bool _input) { _pauseAnimation = _input; }
+
+    public void SwitchAnimateBoolean() { _animateBoolean = !_animateBoolean; }
+
+    public void SwitchPauseAnimation() { _pauseAnimation = !_pauseAnimation; }
+
+    public IEnumerator Animate()
+    {
+        if(_arrowContainer == null || _arrowObject == null)
+        {
+            yield break;
+        }
+
+        _animateBoolean = true;
+
+        Vector3 _currentLocation = _pointA;
+
+        Vector3 _nextTarget = _pointB;
+
+        float _t = 0.0f;
+
+        bool _switch = false;
+
+        if(_spaceType == Space.World)
+        {
+            _arrowObject.transform.position = _currentLocation;
+        }
+        else
+        {
+            _arrowObject.transform.localPosition = _currentLocation;
+        }
+
+        Vector3 _positionLerp = Vector3.zero;
+
+        float _distance = Vector3.Distance(_pointA, _pointB);
+
+        if(_distance <= 0.0f)
+        {
+            _animateBoolean = false;
+
+            yield break;
+        }
+
+        while(_animateBoolean)
+        {
+            if(_pauseAnimation)
+            {
+                continue;
+
+                //yield return null;
+            }
+
+            _t = _t + ((Time.deltaTime * _animationSpeed) / _distance);
+
+            if (_t >= 1.0f)
+            {
+                _t = 1.0f;
+
+                _switch = true;
+            }
+
+            _positionLerp = ((_t * _nextTarget) - (_t * _currentLocation)) + _currentLocation;
+
+            if(_spaceType == Space.World)
+            {
+                _arrowObject.transform.position = _positionLerp;
+            }
+            else
+            {
+                _arrowObject.transform.localPosition = _positionLerp;
+            }
+
+            if(_switch)
+            {
+                Vector3 _swV3 = _nextTarget;
+
+                _nextTarget = _currentLocation;
+
+                _currentLocation = _swV3;
+
+                _t = 0.0f;
+
+                _switch = false;
+            }
+
+            yield return null;
+        }
+
+        if(_spaceType == Space.World)
+        {
+            _arrowObject.transform.position = _pointA;
+        }
+        else
+        {
+            _arrowObject.transform.localPosition = _pointA;
+        }
+
+        _animateBoolean = false;
+    }
+
 }

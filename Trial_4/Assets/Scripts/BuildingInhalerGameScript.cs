@@ -10,9 +10,14 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
     HighlightingAnimationClass _highlightingAnimationProperties;
 
     [SerializeField]
-    List<GameObject> _arrowLocations;
+    float _arrowSize = 2.0f;
 
-    List<GameObject> _spawnedArrowLocations = new List<GameObject>();
+    [SerializeField]
+    List<ArrowAnimationClass> _arrowAnimations;
+
+    List<ArrowAnimationClass> _instancedArrowAnimations;
+
+    ArrowAnimationClass _currentInstancedArrowAnimation;
 
     [ContextMenu("Add Components.")]
     protected override void AddToBnHList()
@@ -25,7 +30,9 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
     int _currentPhaseNumber = 0;
 
-    Coroutine _animationCoroutine;
+    Coroutine _animationCoroutineArrow;
+
+    Coroutine _animationCoroutineHighlight;
 
     Vector3 _capLocalPosition;
 
@@ -36,6 +43,11 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
         {
             _completionMeter = new MeterClass();
         }*/
+
+        if(_instancedArrowAnimations == null)
+        {
+            _instancedArrowAnimations = new List<ArrowAnimationClass>();
+        }
     }
 
     // Update is called once per frame
@@ -59,14 +71,19 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
         return _currentPhaseNumber;
     }
 
-    public List<GameObject> GetArrowLocations()
+    public List<ArrowAnimationClass> GetArrowAnimations()
     {
-        return _arrowLocations;
+        return _arrowAnimations;
     }
 
-    public List<GameObject> GetSpawnedArrowLocations()
+    public List<ArrowAnimationClass> GetInstancedArrowAnimations()
     {
-        return _spawnedArrowLocations;
+        return _instancedArrowAnimations;
+    }
+
+    public ArrowAnimationClass GetCurrentInstancedArrowAnimation()
+    {
+        return _currentInstancedArrowAnimation;
     }
 
     public override void StartGame()
@@ -201,21 +218,40 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
         GameObject _go;
 
-        for(int _i = 0;  _i < _arrowLocations.Count; _i++)
+        for(int _i = 0;  _i < _arrowAnimations.Count; _i++)
         {
-            _go = Instantiate(_arrowLocations[_i]);
+            ArrowAnimationClass _currentAnim = _arrowAnimations[_i];
 
-            _go.transform.parent = _gameSpace.transform;
+            if(_currentAnim.GetArrowContainer() == null || _currentAnim.GetArrowObject() == null)
+            {
+                continue;
+            }
 
-            _go.transform.position = _arrowLocations[_i].transform.position;
+            ArrowAnimationClass _newAnim = new ArrowAnimationClass();
 
-            _go.transform.rotation = _arrowLocations[_i].transform.rotation;
+            _newAnim.SetPointA(_currentAnim.GetPointA());
 
-            _go.transform.localScale = Vector3.one;
+            _newAnim.SetPointB(_currentAnim.GetPointB());
 
-            _spawnedArrowLocations.Add(_go);
+            _newAnim.SetSpaceType(_currentAnim.GetSpaceType());
 
-            _go.SetActive(_i == 0);
+            _newAnim.SetAnimationSpeed(_currentAnim.GetAnimationSpeed());
+
+            _go = Instantiate(_currentAnim.GetArrowContainer());
+
+            _go.transform.position = _currentAnim.GetArrowContainer().transform.position;
+
+            _go.transform.rotation = _currentAnim.GetArrowContainer().transform.rotation;
+
+            _newAnim.SetArrowContainer(_go);
+
+            _newAnim.SetArrowObject(_go.transform.Find("Arrow 3D Object").gameObject);
+
+            _newAnim.GetArrowContainer().SetActive(false);
+
+            _newAnim.GetArrowObject().transform.localScale = (Vector3.one * _arrowSize);
+
+            _instancedArrowAnimations.Add(_newAnim);
         }
 
         _gameProperties.GetMeter().SetMaxValue(4);
@@ -223,6 +259,12 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
         _gameProperties.GetMeter().SetValue(0);
 
         _gameProperties.SignalToUpdateUI();
+
+        _instancedArrowAnimations[0].GetArrowContainer().SetActive(true);
+
+        _currentInstancedArrowAnimation = _instancedArrowAnimations[0];
+
+        _animationCoroutineArrow = StartCoroutine(_instancedArrowAnimations[0].Animate());
     }
 
     void GetCap(GameObject _input)
@@ -272,13 +314,28 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
             _currentHole.gameObject.SetActive(true);
 
-            _spawnedArrowLocations[0].SetActive(false);
+            //_spawnedArrowLocations[0].SetActive(false);
 
             _currentPhaseNumber = 1;
 
-            _spawnedArrowLocations[1].SetActive(true);
+            //_spawnedArrowLocations[1].SetActive(true);
 
             //_gameProperties.GetMeter().AddToValue(1);
+
+            _instancedArrowAnimations[0].SetAnimateBoolean(false);
+
+            if(_animationCoroutineArrow != null)
+            {
+                StopCoroutine(_animationCoroutineArrow);
+            }
+
+            _instancedArrowAnimations[0].GetArrowContainer().SetActive(false);
+
+            _instancedArrowAnimations[1].GetArrowContainer().SetActive(true);
+
+            _currentInstancedArrowAnimation = _instancedArrowAnimations[1];
+
+            _animationCoroutineArrow = StartCoroutine(_instancedArrowAnimations[1].Animate());
 
             _gameProperties.SignalToUpdateUI();
         }
@@ -293,11 +350,26 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
             _currentPhaseNumber = 2;
 
-            _spawnedArrowLocations[1].SetActive(false);
+            //_spawnedArrowLocations[1].SetActive(false);
 
-            _spawnedArrowLocations[2].SetActive(true);
+            //_spawnedArrowLocations[2].SetActive(true);
 
             //_gameProperties.GetMeter().AddToValue(1);
+
+            _instancedArrowAnimations[1].SetAnimateBoolean(false);
+
+            if (_animationCoroutineArrow != null)
+            {
+                StopCoroutine(_animationCoroutineArrow);
+            }
+
+            _instancedArrowAnimations[1].GetArrowContainer().SetActive(false);
+
+            _instancedArrowAnimations[2].GetArrowContainer().SetActive(true);
+
+            _animationCoroutineArrow = StartCoroutine(_instancedArrowAnimations[2].Animate());
+
+            _currentInstancedArrowAnimation = _instancedArrowAnimations[2];
 
             _gameProperties.SignalToUpdateUI();
         }
@@ -316,22 +388,37 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
                     _currentPhaseNumber = 3;
 
-                    _highlightingAnimationProperties.SetAnimateBool(false);
+                    _highlightingAnimationProperties.SetAnimateBoolean(false);
 
-                    if(_animationCoroutine != null)
+                    if(_animationCoroutineHighlight != null)
                     {
-                        StopCoroutine(_animationCoroutine);
+                        StopCoroutine(_animationCoroutineHighlight);
                     }
 
                     _cap.layer = 0;
 
                     Destroy(_cap);
 
+                    _instancedArrowAnimations[2].SetAnimateBoolean(false);
+
+                    if (_animationCoroutineArrow != null)
+                    {
+                        StopCoroutine(_animationCoroutineArrow);
+                    }
+
+                    _instancedArrowAnimations[2].GetArrowContainer().SetActive(false);
+
+                    _instancedArrowAnimations[3].GetArrowContainer().SetActive(true);
+
+                    _animationCoroutineArrow = StartCoroutine(_instancedArrowAnimations[3].Animate());
+
+                    _currentInstancedArrowAnimation = _instancedArrowAnimations[3];
+
                     _gameProperties.GetMeter().AddToValue(1);
 
-                    _spawnedArrowLocations[2].SetActive(false);
+                    //_spawnedArrowLocations[2].SetActive(false);
 
-                    _spawnedArrowLocations[3].SetActive(true);
+                    //_spawnedArrowLocations[3].SetActive(true);
 
                     _gameProperties.SignalToUpdateUI();
                 }
@@ -341,22 +428,60 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
                 }
             }
         }
+
+        if(_currentPhaseNumber == 3 && _currentBlocksAndHoles.GetHoles()[2].GetObjectPlaced())
+        {
+            _instancedArrowAnimations[3].SetAnimateBoolean(false);
+
+            if (_animationCoroutineArrow != null)
+            {
+                StopCoroutine(_animationCoroutineArrow);
+            }
+
+            _instancedArrowAnimations[3].GetArrowContainer().SetActive(false);
+
+            _currentInstancedArrowAnimation = null;
+        }
     }
 
     public override void StopGame()
     {
         base.StopGame();
 
+        if(_currentInstancedArrowAnimation != null)
+        {
+            _currentInstancedArrowAnimation.SetAnimateBoolean(false);
+
+            _currentInstancedArrowAnimation = null;
+        }
+
         _currentPhaseNumber = 0;
 
         _floor.SetActive(false);
 
-        foreach(GameObject _go in  _spawnedArrowLocations)
+        if(_animationCoroutineArrow != null)
+        {
+            StopCoroutine(_animationCoroutineArrow);
+        }
+
+        if(_animationCoroutineHighlight != null)
+        {
+            StopCoroutine(_animationCoroutineHighlight);
+        }
+
+        /*foreach(GameObject _go in  _spawnedArrowLocations)
         {
             Destroy(_go);
         }
 
-        _spawnedArrowLocations.Clear();
+        _spawnedArrowLocations.Clear();*/
+
+        foreach(ArrowAnimationClass _anim in _instancedArrowAnimations)
+        {
+            Destroy(_anim.GetArrowContainer());
+        }
+
+        _instancedArrowAnimations.Clear();
 
         _currentBlocksAndHoles.ClearLists();
 
@@ -368,6 +493,13 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
     public override void QuitGame()
     {
+        if (_currentInstancedArrowAnimation != null)
+        {
+            _gameProperties.GetYesOrNoCanvas().GetNoButton().onClick.AddListener(delegate { _currentInstancedArrowAnimation.SetPauseAnimation(false); });
+
+            _currentInstancedArrowAnimation.SetPauseAnimation(true);
+        }
+
         _gameProperties.GetYesOrNoCanvas().GetYesButton().onClick.AddListener(delegate { StopGame(); });
 
         base.QuitGame();
@@ -392,6 +524,6 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
         _cap.layer = 7;
 
-        _animationCoroutine = StartCoroutine(_highlightingAnimationProperties.Animate());
+        _animationCoroutineHighlight = StartCoroutine(_highlightingAnimationProperties.Animate());
     }
 }

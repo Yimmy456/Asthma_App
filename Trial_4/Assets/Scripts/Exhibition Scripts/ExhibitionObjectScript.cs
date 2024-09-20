@@ -332,7 +332,7 @@ public class ExhibitionObjectScript : MonoBehaviour
 
                 _highlighted = false;
 
-                _highlightingProperties.SetAnimateBool(false);
+                _highlightingProperties.SetAnimateBoolean(false);
 
                 if (_animationCoroutine != null)
                 {

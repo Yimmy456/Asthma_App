@@ -22,6 +22,9 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
 
     Coroutine _coroutine;
 
+    [SerializeField]
+    AudioSource _audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +52,11 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
     public QuestionClass GetCurrentQuestion()
     {
         return _currentQuestion;
+    }
+
+    public AudioSource GetAudioSource()
+    {
+        return _audioSource;
     }
 
     /*
@@ -428,6 +436,8 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
         _gameProperties.GetMeter().SetValue(0);
 
         _gameProperties.SignalToUpdateUI();
+
+        _gameProperties.SetBadge("Multiple Choice Question's Badge");
 
         PrepareQuestion();
     }
