@@ -420,11 +420,35 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
                     //_spawnedArrowLocations[3].SetActive(true);
 
+                    if(_correctAudioClip != null)
+                    {
+                        AudioSource _as = _currentBlocksAndHoles.GetHoles()[0].GetAudioSource();
+
+                        if(_as != null)
+                        {
+                            _as.clip = _correctAudioClip;
+
+                            _as.Play();
+                        }
+                    }
+
                     _gameProperties.SignalToUpdateUI();
                 }
                 else if(_cap.GetComponent<DraggableClass>().GetTouchPhase() == TouchPhase.Ended)
                 {
                     _cap.transform.localPosition = _capLocalPosition;
+
+                    if (_incorrectAudioClip != null)
+                    {
+                        AudioSource _as = _currentBlocksAndHoles.GetHoles()[0].GetAudioSource();
+
+                        if (_as != null)
+                        {
+                            _as.clip = _incorrectAudioClip;
+
+                            _as.Play();
+                        }
+                    }
                 }
             }
         }

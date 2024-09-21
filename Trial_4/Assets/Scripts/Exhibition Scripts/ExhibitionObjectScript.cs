@@ -312,7 +312,9 @@ public class ExhibitionObjectScript : MonoBehaviour
 
                 _highlighted = true;
 
-                if(_animationCoroutine != null)
+                _highlightingProperties.SetAnimateBoolean(false);
+
+                if (_animationCoroutine != null)
                 {
                     StopCoroutine(_animationCoroutine);
                 }
@@ -339,7 +341,7 @@ public class ExhibitionObjectScript : MonoBehaviour
                     StopCoroutine(_animationCoroutine);
                 }
 
-                _animationCoroutine = StartCoroutine(_highlightingProperties.Animate());
+                //_animationCoroutine = StartCoroutine(_highlightingProperties.Animate());
             }
         }
     }

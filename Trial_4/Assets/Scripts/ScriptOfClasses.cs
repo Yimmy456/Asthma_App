@@ -1648,7 +1648,7 @@ public class TextPropertiesClass
 }
 
 [System.Serializable]
-public class HighlightingAnimationClass
+public class HighlightingAnimationClass : BasicAnimationClass
 {
     [SerializeField]
     Material _highlightingMaterial1;
@@ -1658,9 +1658,6 @@ public class HighlightingAnimationClass
 
     [SerializeField]
     Color _highlightingMaterialColor;
-
-    [SerializeField]
-    float _animationSpeed = 0.1f;
 
     [SerializeField]
     float _additionalThicknessForMat2 = 0.5f;
@@ -1673,8 +1670,6 @@ public class HighlightingAnimationClass
 
     [SerializeField]
     TwoVariablesClass<float, float> _alphas = new TwoVariablesClass<float, float>(1.0f, 1.0f);
-
-    bool _animateBoolean = false;
 
     public Material GetHighlightingMaterial1()
     {
@@ -1689,11 +1684,6 @@ public class HighlightingAnimationClass
     public Color GetHighlightingMaterialColor()
     {
         return _highlightingMaterialColor;
-    }
-
-    public float GetAnimationSpeed()
-    {
-        return _animationSpeed;
     }
 
     public float GetAdditionalThicknessForMaterial2()
@@ -1726,19 +1716,9 @@ public class HighlightingAnimationClass
         _highlightingMaterialColor = _input;
     }
 
-    public void SetAnimationSpeed(float _input)
-    {
-        _animationSpeed = _input;
-    }
-
     public void SetAdditionalThicknessForMaterial2(float _input)
     {
         _additionalThicknessForMat2 = _input;
-    }
-
-    public void SetAnimateBoolean(bool _input)
-    {
-        _animateBoolean = _input;
     }
 
     public void SetColorValueForMaterial2(float _input)
@@ -1746,12 +1726,8 @@ public class HighlightingAnimationClass
         _colorValueForMaterial2 = _input;
     }
 
-    public void SwitchAnimateBoolean()
-    {
-        _animateBoolean = !_animateBoolean;
-    }
 
-    public IEnumerator Animate()
+    public override IEnumerator Animate()
     {
         if(_highlightingMaterial1 == null)
         {
@@ -1760,13 +1736,17 @@ public class HighlightingAnimationClass
 
         _animateBoolean = true;
 
-        bool _expand = true;
+        //CheckValues();
 
-        CheckValues();
+        float _currentSize = _range.GetVariable1();
 
-        float _currentValue = _range.GetVariable1();
+        float _nextSize = _range.GetVariable2();
 
-        float _currentValue2 = _range.GetVariable1() + _additionalThicknessForMat2;
+        float _lerp;
+
+        float _difference = Math.Abs(_nextSize - _currentSize);
+
+        _t = 0.0f;
 
         Color _c2 = ToolsStruct.ChangeColorValue(_highlightingMaterialColor, _colorValueForMaterial2, 1.0f, true);
 
@@ -1774,56 +1754,86 @@ public class HighlightingAnimationClass
 
         _highlightingMaterial1.SetFloat("_Alpha", _alphas.GetVariable1());
 
+        //_highlightingMaterial1.SetFloat("_Outline_Thickness", _currentValue);
+
         if (_highlightingMaterial2 != null)
         {
             _highlightingMaterial2.SetColor("_Base_Color", _c2);
 
             _highlightingMaterial2.SetFloat("_Alpha", _alphas.GetVariable2());
+
+            //_highlightingMaterial1.SetFloat("_Outline_Thickness", _currentValue2);
         }
 
         while(_animateBoolean)
         {
-            if(_expand)
+            if(_pauseAnimation)
             {
-                _currentValue = _currentValue + (Time.deltaTime * _animationSpeed);
+                yield return null;
 
-                if(_currentValue >= _range.GetVariable2() && _animationSpeed > 0.0f)
-                {
-                    _currentValue = _range.GetVariable2();
-
-                    _expand = false;
-                }
-            }
-            else
-            {
-                _currentValue = _currentValue - (Time.deltaTime * _animationSpeed);
-
-                if (_currentValue <= _range.GetVariable1() && _animationSpeed > 0.0f)
-                {
-                    _currentValue = _range.GetVariable1();
-
-                    _expand = true;
-                }
+                continue;
             }
 
-            _highlightingMaterial1.SetFloat("_Outline_Thickness", _currentValue);
+            _delta = _animationSpeed;
+
+            if(_withDeltaTime)
+            {
+                _delta = _delta * Time.deltaTime;
+            }
+
+            if(_discardDifference && _difference > 0.0f)
+            {
+                _delta = _delta / _difference;
+            }
+
+            _t = _t + _delta;
+
+            if(_t >= 1.0f)
+            {
+                _t = 1.0f;
+
+                _switch = true;
+            }
+
+            _lerp = ((_nextSize * _t) - (_currentSize * _t)) + _currentSize;
+
+            _highlightingMaterial1.SetFloat("_Outline_Thickness", _lerp);
 
             if (_highlightingMaterial2 != null && _additionalThicknessForMat2 > 0.0f)
             {
-                _currentValue2 = _currentValue + _additionalThicknessForMat2;
+                _highlightingMaterial2.SetFloat("_Outline_Thickness", (_lerp + _additionalThicknessForMat2));
+            }
 
-                _highlightingMaterial2.SetFloat("_Outline_Thickness", _currentValue2);
+            if(_switch)
+            {
+                float _sw = _nextSize;
+
+                _nextSize = _currentSize;
+
+                _currentSize = _sw;
+
+                _t = 0.0f;
+
+                _switch = false;
             }
 
             yield return null;
         }
 
+        _highlightingMaterial1.SetFloat("_Outline_Thickness", _range.GetVariable1());
+
         _highlightingMaterial1.SetFloat("_Alpha", 0.0f);
+
+        _t = 0.0f;
 
         if (_highlightingMaterial2 != null)
         {
+            _highlightingMaterial1.SetFloat("_Outline_Thickness", (_range.GetVariable1() + _additionalThicknessForMat2));
+
             _highlightingMaterial2.SetFloat("_Alpha", 0.0f);
         }
+
+        _animateBoolean = false;
     }
 
     void CheckValues()
@@ -1840,16 +1850,13 @@ public class HighlightingAnimationClass
 }
 
 [System.Serializable]
-public class ArrowAnimationClass
+public class ArrowAnimationClass : BasicAnimationClass
 {
     [SerializeField]
     GameObject _arrowContainer;
 
     [SerializeField]
     GameObject _arrowObject;
-
-    [SerializeField]
-    float _animationSpeed = 1.0f;
 
     [SerializeField]
     Vector3 _pointA;
@@ -1860,27 +1867,17 @@ public class ArrowAnimationClass
     [SerializeField]
     Space _spaceType;
 
-    bool _animateBoolean = false;
-
-    bool _pauseAnimation = false;
-
 
     //Getters
     public GameObject GetArrowContainer() { return _arrowContainer; }
 
     public GameObject GetArrowObject() { return _arrowObject; }
 
-    public float GetAnimationSpeed() { return _animationSpeed; }
-
     public Vector3 GetPointA() { return _pointA; }
 
     public Vector3 GetPointB() { return _pointB; }
 
     public Space GetSpaceType() { return _spaceType; }
-
-    public bool GetAnimateBoolean() { return _animateBoolean; }
-
-    public bool GetPauseAnimation() { return _pauseAnimation; }
 
 
     //Setters
@@ -1894,23 +1891,13 @@ public class ArrowAnimationClass
         _arrowObject = _input;
     }
 
-    public void SetAnimationSpeed(float _input) { _animationSpeed = _input; }
-
     public void SetPointA(Vector3 _input) { _pointA = _input; }
 
     public void SetPointB(Vector3 _input) { _pointB = _input; }
 
     public void SetSpaceType(Space _input) { _spaceType = _input; }
 
-    public void SetAnimateBoolean(bool _input) { _animateBoolean = _input; }
-
-    public void SetPauseAnimation(bool _input) { _pauseAnimation = _input; }
-
-    public void SwitchAnimateBoolean() { _animateBoolean = !_animateBoolean; }
-
-    public void SwitchPauseAnimation() { _pauseAnimation = !_pauseAnimation; }
-
-    public IEnumerator Animate()
+    public override IEnumerator Animate()
     {
         if(_arrowContainer == null || _arrowObject == null)
         {
@@ -1923,9 +1910,9 @@ public class ArrowAnimationClass
 
         Vector3 _nextTarget = _pointB;
 
-        float _t = 0.0f;
+        _t = 0.0f;
 
-        bool _switch = false;
+        _switch = false;
 
         if(_spaceType == Space.World)
         {
@@ -1951,12 +1938,26 @@ public class ArrowAnimationClass
         {
             if(_pauseAnimation)
             {
-                continue;
+                //continue;
 
-                //yield return null;
+                yield return null;
+
+                continue;
             }
 
-            _t = _t + ((Time.deltaTime * _animationSpeed) / _distance);
+            _delta = _animationSpeed;
+
+            if(_withDeltaTime)
+            {
+                _delta = _delta * Time.deltaTime;
+            }
+
+            if(_discardDifference && _distance > 0.0f)
+            {
+                _delta = _delta / _distance;
+            }
+
+            _t = _t + _delta;
 
             if (_t >= 1.0f)
             {
@@ -2004,4 +2005,105 @@ public class ArrowAnimationClass
         _animateBoolean = false;
     }
 
+}
+
+[System.Serializable]
+public class BasicAnimationClass
+{
+    [SerializeField]
+    protected float _animationSpeed = 1.0f;
+
+    [SerializeField]
+    protected bool _withDeltaTime = true;
+
+    [SerializeField]
+    protected bool _discardDifference = true;
+
+    protected bool _animateBoolean;
+
+    protected bool _pauseAnimation;
+
+    protected float _t = 0.0f;
+
+    protected bool _switch;
+
+    protected float _delta = 0.0f;
+    
+    public float GetAnimationSpeed()
+    {
+        return _animationSpeed;
+    }
+
+    public bool GetWithDeltaTime()
+    {
+        return _withDeltaTime;
+    }
+
+    public bool GetDiscardDifference()
+    {
+        return _discardDifference;
+    }
+
+    public bool GetAnimateBoolean()
+    {
+        return _animateBoolean;
+    }
+
+    public bool GetPauseAnimation()
+    {
+        return _pauseAnimation;
+    }
+
+    public float GetT()
+    {
+        return _t;
+    }
+
+    public float GetDelta()
+    {
+        return _delta;
+    }
+
+    public void SetAnimationSpeed(float _input)
+    {
+        _animationSpeed = _input;
+    }
+
+    public void SetWithDeltaTime(bool _input)
+    {
+        _withDeltaTime = _input;
+    }
+
+    public void SetDiscardDifference(bool _input)
+    {
+        _discardDifference = _input;
+    }
+
+    public void SetAnimateBoolean(bool _input)
+    {
+        _animateBoolean = _input;
+    }
+
+    public void SetPauseAnimation(bool _input)
+    {
+        _pauseAnimation = _input;
+    }
+
+    public void SwitchAnimateBoolean()
+    {
+        _animateBoolean = !_animateBoolean;
+    }
+
+    public void SwitchPauseAnimation()
+    {
+        _pauseAnimation = !_pauseAnimation;
+    }
+
+    public virtual IEnumerator Animate()
+    {
+        while (_animateBoolean)
+        {
+            yield return null;
+        }
+    }
 }
