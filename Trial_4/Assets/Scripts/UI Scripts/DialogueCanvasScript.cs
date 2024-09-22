@@ -60,6 +60,11 @@ public class DialogueCanvasScript : MonoBehaviour
         return _doctorsImage;
     }
 
+    public DoctorTalkingScript GetDoctorTalkingProperties()
+    {
+        return _doctorTalkingProperties;
+    }
+
     public void SetImageAnchoredPosition(Vector2 _input)
     {
         _doctorsImage.anchoredPosition = _input;

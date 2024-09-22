@@ -12924,7 +12924,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 543450653413146392}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &372676376
 GameObject:
@@ -14336,6 +14336,37 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.032182574, y: 0.16481161, z: 0.10990292}
     m_Extent: {x: 2.370288, y: 4.5388885, z: 1.8666317}
   m_DirtyAABB: 0
+--- !u!1 &401255248
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 401255249}
+  m_Layer: 0
+  m_Name: Rocket Center
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &401255249
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401255248}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0071845055, y: 6.8429046, z: 0}
+  m_LocalScale: {x: 12.5, y: 12.5, z: 12.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 543450653413146392}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &401722067
 GameObject:
   m_ObjectHideFlags: 0
@@ -15913,7 +15944,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee14d8c2711243478897c421781214d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetObject: {fileID: 551265654}
+  _targetObject: {fileID: 401255248}
   _arrow: {fileID: 1884706855}
   _camera: {fileID: 488612397}
   _resolutionText: {fileID: 0}
@@ -21208,7 +21239,7 @@ Transform:
   - {fileID: 296267559}
   - {fileID: 442917244}
   m_Father: {fileID: 543450653413146392}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
 --- !u!114 &682149337
 MonoBehaviour:
@@ -43131,7 +43162,7 @@ Transform:
   m_Children:
   - {fileID: 2952270042737802693}
   m_Father: {fileID: 543450653413146392}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!136 &1699618319
 CapsuleCollider:
@@ -54137,6 +54168,7 @@ MonoBehaviour:
   _matchingPS: {fileID: 0}
   _audioSource: {fileID: 364331096503780984}
   _localPositionAfterPlacement: {x: 0, y: 0, z: -0.01}
+  _talkingSeconds: 5
   _textCanvas: {fileID: 0}
   _nameText: {fileID: 0}
   _textOutline: {fileID: 0}
@@ -54221,6 +54253,7 @@ MonoBehaviour:
   _matchingPS: {fileID: 0}
   _audioSource: {fileID: 364331097745663333}
   _localPositionAfterPlacement: {x: 0, y: 0, z: 0}
+  _talkingSeconds: 5
   _textCanvas: {fileID: 0}
   _nameText: {fileID: 0}
   _textOutline: {fileID: 0}
@@ -54434,6 +54467,7 @@ MonoBehaviour:
   _matchingPS: {fileID: 0}
   _audioSource: {fileID: 364331097053412894}
   _localPositionAfterPlacement: {x: 0, y: 0, z: 0}
+  _talkingSeconds: 5
   _textCanvas: {fileID: 0}
   _nameText: {fileID: 0}
   _textOutline: {fileID: 0}
@@ -54875,6 +54909,7 @@ Transform:
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 401255249}
   - {fileID: 368887654}
   - {fileID: 1699618318}
   - {fileID: 3985573043294476600}
@@ -58163,7 +58198,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 543450653413146392}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4021051314977396036
 GameObject:
@@ -60654,7 +60689,7 @@ MonoBehaviour:
   _camera: {fileID: 488612397}
   _applyGravity: 0
   _zOffset: 0
-  _maintainZDistance: 1
+  _maintainZDistance: 0
   _2DOffset: {x: 0, y: 0}
   _draggableType: 0
 --- !u!64 &6767589810071351368

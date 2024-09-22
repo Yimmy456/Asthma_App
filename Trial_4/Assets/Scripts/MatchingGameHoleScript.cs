@@ -52,6 +52,9 @@ public class MatchingGameHoleScript : MonoBehaviour
     [SerializeField]
     Vector3 _localPositionAfterPlacement;
 
+    [SerializeField]
+    protected float _talkingSeconds = 5.0f;
+
     protected float _currentSizeValue;
 
     protected bool _objectPlaced = false;
@@ -432,6 +435,13 @@ public class MatchingGameHoleScript : MonoBehaviour
         _holeCanvas.GetGameProperties().GetMeter().AddToValue(1);
 
         _holeCanvas.GetGameProperties().SignalToUpdateUI();
+
+        if (_holeCanvas.GetDoctorTalkingProperties() != null)
+        {
+            _holeCanvas.GetDoctorTalkingProperties().StartTalking(_talkingSeconds);
+
+            Debug.Log("Dr. Salem is talking about " + @"""" + gameObject.name + @"""" + ".");
+        }
 
         //_holeCanvas.SetProgressUpdated(true);
 

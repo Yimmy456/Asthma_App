@@ -175,10 +175,6 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
 
         _lookPosCam.y = 0.0f;
 
-        //_lookPosCam = _lookPosCam;
-
-        //var _addQ = Quaternion.LookRotation(_additionalLookingAngles);
-
         var _rotCam = Quaternion.LookRotation(-_lookPosCam) * Quaternion.Euler(_additionalLookingAngles);
 
         _gameSpace.transform.localRotation = Quaternion.Slerp(_gameSpace.transform.localRotation, _rotCam, Time.deltaTime);

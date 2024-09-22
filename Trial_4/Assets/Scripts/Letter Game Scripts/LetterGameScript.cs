@@ -189,21 +189,7 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
             _gameDone = true;
         }
 
-        _floor.SetActive(false);
-
-        _gameProperties.GetInformationCanvas().gameObject.SetActive(true);
-
-        _gameProperties.ClearObjectLists();
-
-        _gameProperties.GetInformationCanvas().SetText(SetInfoText());
-
-        Button _nextB = _gameProperties.GetInformationCanvas().GetNextButton();
-
-        _gameSpace.transform.localRotation = Quaternion.Euler(0.0f, -90.0f, 0.0f);
-
-        _nextB.onClick.AddListener(delegate { base.WinGame(); _gameProperties.GetInformationCanvas().gameObject.SetActive(false); _nextB.onClick.RemoveAllListeners(); });
-
-        _gameProperties.GetGameCanvas().gameObject.SetActive(false);
+        StartCoroutine(WaitUntilCompletion());
     }
 
     void CreateWord(DefinitionClass _input)
@@ -347,5 +333,26 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
         _gameProperties.GetMainCanvases().SetCanvasesOn(true);
 
         gameObject.SetActive(false);
+    }
+
+    IEnumerator WaitUntilCompletion()
+    {
+        yield return new WaitForSeconds(5.0f);
+
+        _floor.SetActive(false);
+
+        _gameProperties.GetInformationCanvas().gameObject.SetActive(true);
+
+        _gameProperties.ClearObjectLists();
+
+        _gameProperties.GetInformationCanvas().SetText(SetInfoText());
+
+        Button _nextB = _gameProperties.GetInformationCanvas().GetNextButton();
+
+        _gameSpace.transform.localRotation = Quaternion.Euler(0.0f, -90.0f, 0.0f);
+
+        _nextB.onClick.AddListener(delegate { base.WinGame(); _gameProperties.GetInformationCanvas().gameObject.SetActive(false); _nextB.onClick.RemoveAllListeners(); });
+
+        _gameProperties.GetGameCanvas().gameObject.SetActive(false);
     }
 }

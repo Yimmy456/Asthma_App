@@ -57,6 +57,8 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
         {
             UpdateStatus();
 
+            //LookIntoCamera();
+
             _gameProperties.UpdateUI();
         }
     }

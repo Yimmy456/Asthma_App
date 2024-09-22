@@ -40,6 +40,23 @@ public class GameGenericMBScript<T> : GameMBScript, YesOrNoInterface
         return _badgeStatement;
     }
 
+    public DoctorTalkingScript GetDoctorTalkingProperties()
+    {
+        if(_gameProperties.GetMainCanvases().GetDoctorCanvas() == null)
+        {
+            return null;
+        }
+
+        DialogueCanvasScript _dialogueS = _gameProperties.GetMainCanvases().GetDoctorCanvas().gameObject.GetComponent<DialogueCanvasScript>();
+
+        if(_dialogueS == null)
+        {
+            return null;
+        }
+
+        return _dialogueS.GetDoctorTalkingProperties();
+    }
+
     public override void StartGame()
     {
         if(_currentGame != null)

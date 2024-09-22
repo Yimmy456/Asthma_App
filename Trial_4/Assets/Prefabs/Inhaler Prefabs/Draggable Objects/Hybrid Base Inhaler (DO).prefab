@@ -252,7 +252,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: 1fc6afe63997800489eb42136f1ed8e0, type: 3}
 --- !u!114 &5390775666236022496
@@ -273,6 +273,7 @@ MonoBehaviour:
   _applyGravity: 1
   _zOffset: 0
   _maintainZDistance: 0
+  _2DOffset: {x: 0, y: 0}
   _draggableType: 2
 --- !u!114 &-6271362131891551829
 MonoBehaviour:

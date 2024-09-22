@@ -4952,6 +4952,7 @@ MonoBehaviour:
   _matchingPS: {fileID: 986049977}
   _audioSource: {fileID: 8564585485859851531}
   _localPositionAfterPlacement: {x: 0, y: 0, z: 0}
+  _talkingSeconds: 10
   _letter: 65
 --- !u!1 &8697713899850738189
 GameObject:

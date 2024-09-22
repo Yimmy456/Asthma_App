@@ -413,11 +413,18 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
             bool _finalCard = !_gameDone && _gameProperties.GetMeter().GetPercentage() == 100.0f;
 
-            string _textToDisplay = _infoP.GetText() + "Fun Fact:\n\n" + _infoText;
+            string _textToDisplay = _infoP.GetText() + " Fun Fact:\n\n" + _infoText;
 
             SetResponseText(_textToDisplay, _infoP.GetTextColor(), _infoP.GetTextTimeToDisplay(), _finalCard);
 
-            if(_finalCard)
+            if (_audioSource != null && _correctAudioClip != null)
+            {
+                _audioSource.clip = _correctAudioClip;
+
+                _audioSource.Play();
+            }
+
+            if (_finalCard)
             {
                 _gameProperties.GetGameCanvas().gameObject.SetActive(false);
             }
@@ -870,6 +877,8 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
             yield return null;
         }
+
+        yield return new WaitForSeconds(0.1f);
 
         _input.SetBlackOpacity(1.0f);
 
