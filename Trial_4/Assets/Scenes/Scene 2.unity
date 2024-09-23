@@ -4690,23 +4690,23 @@ MonoBehaviour:
   _spawningArea: {fileID: 837075716}
   _addedDistanceForHoles: 0
   _facingDirection: {x: 0, y: 0, z: 0}
-  _spawningSizeForBlocks: 3
+  _spawningSizeForBlocks: 300
   _spawningSizeForHoles: 3
   _spawningDistanceForBlocks: 2
   _minMaxV3Values:
     _xRange:
-      _variable1: -2
-      _variable2: 2
+      _variable1: -3
+      _variable2: 3
     _yRange:
       _variable1: 5
       _variable2: 5
     _zRange:
-      _variable1: -2
-      _variable2: 2
+      _variable1: -3
+      _variable2: 3
   _reverseDirectionForHoles: 0
   _additionalLookingAngles: {x: 0, y: 0, z: 0}
   _highlightingAnimationProperties:
-    _animationSpeed: 0.1
+    _animationSpeed: 0.01
     _withDeltaTime: 1
     _discardDifference: 1
     _highlightingMaterial1: {fileID: 2100000, guid: c2fcf1addd310f54390b2c2af38bee40, type: 2}
@@ -4720,6 +4720,7 @@ MonoBehaviour:
     _alphas:
       _variable1: 1
       _variable2: 1
+  _arrowContainerSize: 100
   _arrowSize: 10
   _arrowAnimations:
   - _animationSpeed: 0.5
@@ -4754,6 +4755,7 @@ MonoBehaviour:
     _pointA: {x: 0.05, y: 0, z: 0}
     _pointB: {x: 0.27, y: 0, z: 0}
     _spaceType: 1
+  _instancedArrowAnimations: []
   _cap: {fileID: 0}
   references:
     version: 2
@@ -15044,6 +15046,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 716302322}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 956544986}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -23940,7 +23954,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &842127046
 Transform:
   m_ObjectHideFlags: 0

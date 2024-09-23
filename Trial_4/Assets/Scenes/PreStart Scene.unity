@@ -499,7 +499,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &101673843
 GameObject:
@@ -682,7 +682,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &134242261
 MonoBehaviour:
@@ -764,7 +764,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &285852430
 GameObject:
@@ -796,7 +796,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &285852432
 MonoBehaviour:
@@ -907,7 +907,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &545774299
 MonoBehaviour:
@@ -967,7 +967,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &556850248
 MonoBehaviour:
@@ -1304,7 +1304,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1433789797
 GameObject:
@@ -1336,7 +1336,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1433789799
 MonoBehaviour:
@@ -1424,7 +1424,7 @@ MonoBehaviour:
     _correctAnswerIndex: 2
     _correctAnswerResponse: 
   - _questionID: 23a53a76-78bf-407e-877f-a16eaf022962
-    _questionText: What is the most common color of the reliever inhaler
+    _questionText: What is the most common color of the reliever inhaler?
     _answers:
     - Red
     - Yellow
@@ -1516,7 +1516,7 @@ MonoBehaviour:
     _correctAnswerResponse: 
   - _questionID: 2f3188f1-1077-4a30-8737-6091f99d91e1
     _questionText: Before inhaling the medicine, you need to fully breathe out. Why
-      is that
+      is that?
     _answers:
     - To clear out any blackage
     - To prepare the medicine
@@ -1535,7 +1535,7 @@ MonoBehaviour:
     _correctAnswerIndex: 2
     _correctAnswerResponse: 
   - _questionID: 6f54b841-61c9-4d9a-8c4a-bb7bd1125e4a
-    _questionText: What is the purpose of a preventer inhaler
+    _questionText: What is the purpose of a preventer inhaler?
     _answers:
     - Reduce inflammation in the lungs
     - Loosen the mucles around the lungs
@@ -1544,7 +1544,7 @@ MonoBehaviour:
     _correctAnswerIndex: 0
     _correctAnswerResponse: 
   - _questionID: 0927233d-29b5-402b-922a-fb49c2b924b4
-    _questionText: What is the purpose of a reliever inhaler
+    _questionText: What is the purpose of a reliever inhaler?
     _answers:
     - Reduce inflammation in the lungs
     - Loosen the mucles around the lungs
@@ -1602,7 +1602,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1722041708
 MonoBehaviour:
@@ -1924,7 +1924,7 @@ RectTransform:
   - {fileID: 2053266388}
   - {fileID: 101673844}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1975,7 +1975,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2083498302
 GameObject:
@@ -2062,36 +2062,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &257435031907845492
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 637619302965157838}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.5927277, y: 0, z: -4.1567087}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &637619302965157838
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 257435031907845492}
-  m_Layer: 0
-  m_Name: Spacer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1

@@ -84,14 +84,14 @@ public class FastyScript : MonoBehaviour
         {
             _fastyDefaultModel.transform.localPosition = Vector3.zero;
 
-            _fastyDefaultModel.transform.localRotation = Quaternion.identity;
+            //_fastyDefaultModel.transform.localRotation = Quaternion.identity;
         }
 
         if(_fastyInhalerModel != null)
         {
             _fastyInhalerModel.transform.localPosition = Vector3.zero;
 
-            _fastyInhalerModel.transform.localRotation = Quaternion.identity;
+            //_fastyInhalerModel.transform.localRotation = Quaternion.identity;
         }
     }
 
@@ -109,7 +109,7 @@ public class FastyScript : MonoBehaviour
             return;
         }
 
-        if(!_rotateToLookAtTarget)
+        /*if(!_rotateToLookAtTarget)
         {
             var _lookPos = _defaultRotation - _fastyContainer.transform.position;
 
@@ -131,7 +131,9 @@ public class FastyScript : MonoBehaviour
             var _rotCam = Quaternion.LookRotation(-_lookPosCam);
 
             _fastyContainer.transform.localRotation = Quaternion.Slerp(_fastyContainer.transform.localRotation, _rotCam, (_rotationSpeed * Time.deltaTime));
-        }
+        }*/
+
+        _fastyContainer.transform.LookAt(_camera.transform.position, Vector3.up);
     }
 
     public void SetRotate(bool _input)

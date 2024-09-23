@@ -10,11 +10,15 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
     HighlightingAnimationClass _highlightingAnimationProperties;
 
     [SerializeField]
+    float _arrowContainerSize = 2.0f;
+
+    [SerializeField]
     float _arrowSize = 2.0f;
 
     [SerializeField]
     List<ArrowAnimationClass> _arrowAnimations;
 
+    [SerializeField]
     List<ArrowAnimationClass> _instancedArrowAnimations;
 
     ArrowAnimationClass _currentInstancedArrowAnimation;
@@ -136,11 +140,13 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
                 GetCap(_newBlock);
             }
 
+            _newBlock.transform.parent = _spawningArea;
+
             base.FindSpawningSpot(ref _blockPositions, ref _newBlock);
 
-            _newBlock.transform.parent = _spawningArea.transform;
+            _newBlock.transform.parent = _mainContainer;
 
-            _newBlock.transform.localScale = (Vector3.one * _spawningSizeForBlocks);
+            //_newBlock.transform.localScale = (Vector3.one * _spawningSizeForBlocks);
 
             _newBlock.GetComponent<InhalerMatchingObjectScript>().SetMatchingGameCanvas(this);
 
@@ -149,8 +155,6 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
             _newBlock.GetComponent<InhalerMatchingObjectScript>().GetDraggableProperties().SetApplyGravity(true);
 
             _newBlock.GetComponent<InhalerMatchingObjectScript>().SetObjectName(_currentPreset.GetMatchingAttribute());
-
-            //_newBlock.GetComponent<InhalerMatchingObjectScript>().SetObjectName(_givenName);
 
             _gameProperties.AddObjectToList(_newBlock.GetComponent<InhalerMatchingObjectScript>());
 
@@ -162,7 +166,7 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
             _newBlock.GetComponent<DraggableClass>().GetBody().velocity = Vector3.zero;
 
-            _newBlock.transform.parent = _mainContainer;
+            _newBlock.transform.localScale = (Vector3.one * _spawningSizeForBlocks);
 
             _newBlock.SetActive(true);
 
@@ -218,7 +222,7 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
             }
         }
 
-        GameObject _go;
+        GameObject _go, _3dObject;
 
         for(int _i = 0;  _i < _arrowAnimations.Count; _i++)
         {
@@ -247,13 +251,21 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
             _newAnim.SetArrowContainer(_go);
 
-            _newAnim.SetArrowObject(_go.transform.Find("Arrow 3D Object").gameObject);
+            _3dObject = _go.transform.Find("Arrow 3D Object").gameObject;
+
+            _newAnim.SetArrowObject(_3dObject);
 
             _newAnim.GetArrowContainer().SetActive(false);
 
-            _newAnim.GetArrowObject().transform.localScale = (Vector3.one * _arrowSize);
+            //_newAnim.GetArrowObject().transform.localScale = (Vector3.one * _arrowSize);
 
             _instancedArrowAnimations.Add(_newAnim);
+
+            _go.transform.parent = _mainContainer.transform;
+
+            _go.transform.localScale = Vector3.one * _arrowContainerSize;
+
+            _3dObject.transform.localScale = Vector3.one * _arrowSize;
         }
 
         _gameProperties.GetMeter().SetMaxValue(4);
@@ -308,6 +320,8 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
         if(_currentPhaseNumber == 0 && _currentBlocksAndHoles.GetHoles()[0].GetObjectPlaced())
         {
+            Debug.Log("In the building game, we are entering phase 2.");
+
             _currentHole = _currentBlocksAndHoles.GetHoles()[0];
 
             _currentHole.GetRenderer().materials[0].SetFloat("_Alpha", 0.0f);
@@ -316,13 +330,7 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
             _currentHole.gameObject.SetActive(true);
 
-            //_spawnedArrowLocations[0].SetActive(false);
-
             _currentPhaseNumber = 1;
-
-            //_spawnedArrowLocations[1].SetActive(true);
-
-            //_gameProperties.GetMeter().AddToValue(1);
 
             _instancedArrowAnimations[0].SetAnimateBoolean(false);
 
@@ -374,6 +382,11 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
             _currentInstancedArrowAnimation = _instancedArrowAnimations[2];
 
             _gameProperties.SignalToUpdateUI();
+
+            if (_arrowAnimations[1].GetArrowContainer().activeSelf)
+            {
+                _arrowAnimations[1].GetArrowContainer().SetActive(false);
+            }
         }
 
         if(_currentPhaseNumber == 2 && _cap != null)

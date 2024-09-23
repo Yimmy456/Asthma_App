@@ -644,7 +644,7 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
         {
             StopCoroutine(_newTextC);
 
-            _gameProperties.GetResponseText().text = "";
+            //_gameProperties.GetResponseText().text = "";
         }
 
         _newTextC = StartCoroutine(SetResponseTextC(_textInput, _colorInput, _secondsToDisplayInput, _endGameInput));
