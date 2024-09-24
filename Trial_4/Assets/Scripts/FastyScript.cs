@@ -33,6 +33,9 @@ public class FastyScript : MonoBehaviour
     Vector3 _defaultRotation;
 
     [SerializeField]
+    Vector3 _additionalRotationWhenLooking;
+
+    [SerializeField]
     Animator _defaultAnimator;
 
     [SerializeField]
@@ -102,14 +105,14 @@ public class FastyScript : MonoBehaviour
             return;
         }
 
-        if(!_rotate)
+        /*if(!_rotate)
         {
             //_rotateToLookAtTarget = false;
 
             return;
         }
 
-        /*if(!_rotateToLookAtTarget)
+        if(!_rotateToLookAtTarget)
         {
             var _lookPos = _defaultRotation - _fastyContainer.transform.position;
 
@@ -130,10 +133,25 @@ public class FastyScript : MonoBehaviour
 
             var _rotCam = Quaternion.LookRotation(-_lookPosCam);
 
-            _fastyContainer.transform.localRotation = Quaternion.Slerp(_fastyContainer.transform.localRotation, _rotCam, (_rotationSpeed * Time.deltaTime));
+            _fastyContainer.transform.rotation = Quaternion.Slerp(_fastyContainer.transform.rotation, _rotCam, (_rotationSpeed * Time.deltaTime));
+
+            _fastyContainer.transform.rotation = Quaternion.LookRotation(_lookPosCam, Vector3.up);
         }*/
 
-        _fastyContainer.transform.LookAt(_camera.transform.position, Vector3.up);
+        if (_rotateToLookAtTarget)
+        {
+            var _lookPosCam = _camera.gameObject.transform.position - _fastyContainer.transform.position;
+
+            _lookPosCam.y = 0.0f;
+
+            var _rot = Quaternion.LookRotation(_lookPosCam);
+
+            _rot = _rot * Quaternion.Euler(_additionalRotationWhenLooking);
+
+            _fastyContainer.transform.rotation = Quaternion.Slerp(_fastyContainer.transform.rotation, _rot, Time.deltaTime);
+        }
+
+        //_fastyContainer.transform.LookAt(_camera.transform.position, Vector3.up);
     }
 
     public void SetRotate(bool _input)

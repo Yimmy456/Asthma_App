@@ -1867,6 +1867,9 @@ public class ArrowAnimationClass : BasicAnimationClass
     [SerializeField]
     Space _spaceType;
 
+    [SerializeField]
+    GameObject _number3DObject;
+
 
     //Getters
     public GameObject GetArrowContainer() { return _arrowContainer; }
@@ -1878,6 +1881,8 @@ public class ArrowAnimationClass : BasicAnimationClass
     public Vector3 GetPointB() { return _pointB; }
 
     public Space GetSpaceType() { return _spaceType; }
+
+    public GameObject GetNumber3DObject() { return _number3DObject; }
 
 
     //Setters
