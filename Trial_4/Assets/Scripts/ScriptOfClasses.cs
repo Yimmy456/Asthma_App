@@ -1902,6 +1902,8 @@ public class ArrowAnimationClass : BasicAnimationClass
 
     public void SetSpaceType(Space _input) { _spaceType = _input; }
 
+    public void SetNumber3DObject(GameObject _input) { _number3DObject = _input; }
+
     public override IEnumerator Animate()
     {
         if(_arrowContainer == null || _arrowObject == null)

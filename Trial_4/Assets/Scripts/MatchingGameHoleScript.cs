@@ -179,7 +179,7 @@ public class MatchingGameHoleScript : MonoBehaviour
     {
         while (_currentSizeValue > _defaultSizeValue)
         {
-            Debug.Log("The current size while decreasing is " + @"""" + _currentSizeValue + @"""" + ".");
+            //Debug.Log("The current size while decreasing is " + @"""" + _currentSizeValue + @"""" + ".");
 
             _currentSizeValue = (_currentSizeValue - (Time.deltaTime * _animationSpeed));
 
