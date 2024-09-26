@@ -14,12 +14,9 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
         _presetBlocksAndHoles.Add(new WordMatchingBlockAndHoleClass());
     }
 
-    [Header("2. Variables for the Current Word.")]
+    [Header("3. Variables for the Current Word.")]
     [SerializeField]
     DefinitionClass _currentWord;
-
-    [SerializeField]
-    Transform _currentRotation;
 
     LetterHoleScript _currentHole;
 
@@ -51,10 +48,7 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
         return _currentHole;
     }
 
-    public Transform GetCurrentRotation()
-    {
-        return _currentRotation;
-    }
+
     //Calling the start of the game
     public override void StartGame()
     {

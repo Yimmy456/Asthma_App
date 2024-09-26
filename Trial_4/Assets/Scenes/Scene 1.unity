@@ -6719,7 +6719,7 @@ GameObject:
   - component: {fileID: 344282879}
   - component: {fileID: 344282882}
   m_Layer: 0
-  m_Name: Letter Rotation
+  m_Name: Object Rotation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20121,6 +20121,7 @@ MonoBehaviour:
       _variable1: -5
       _variable2: 5
   _reverseDirectionForHoles: 1
+  _currentRotation: {fileID: 344282881}
   _additionalLookingAngles: {x: 0, y: 90, z: 0}
   _currentWord:
     _informationName: 
@@ -20131,7 +20132,6 @@ MonoBehaviour:
     _infoCategory: 0
     _sprite: {fileID: 0}
     _wordType: 0
-  _currentRotation: {fileID: 344282881}
   references:
     version: 2
     RefIds:
@@ -31184,7 +31184,7 @@ MonoBehaviour:
   _noLandButton: {fileID: 213691841}
   _prefab: {fileID: 0}
   _scale: 1
-  _plane: {fileID: 601199372}
+  _plane: {fileID: 0}
   _canvasGroup: {fileID: 0}
   _inhaler: {fileID: 1219848555049984593}
   _startingAnimator: {fileID: 1093082203}
@@ -36165,6 +36165,7 @@ MonoBehaviour:
       _variable1: -3
       _variable2: 3
   _reverseDirectionForHoles: 0
+  _currentRotation: {fileID: 0}
   _additionalLookingAngles: {x: 0, y: 0, z: 0}
   _highlightingAnimationProperties:
     _animationSpeed: 0.01
@@ -47633,6 +47634,7 @@ MonoBehaviour:
       _variable1: -5
       _variable2: 5
   _reverseDirectionForHoles: 0
+  _currentRotation: {fileID: 0}
   _additionalLookingAngles: {x: 0, y: 90, z: 0}
   _errorText: {fileID: 0}
   references:

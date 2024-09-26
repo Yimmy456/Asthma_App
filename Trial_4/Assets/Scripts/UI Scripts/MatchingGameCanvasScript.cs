@@ -41,6 +41,9 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
     protected bool _reverseDirectionForHoles;
 
     [SerializeField]
+    protected Transform _currentRotation;
+
+    [SerializeField]
     Vector3 _additionalLookingAngles;
 
     protected Vector3 _initialPositionForHoles;
@@ -71,6 +74,11 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
     public List<MatchingBlockAndHoleClass> GetPresetBlockAndHoles()
     {
         return _presetBlocksAndHoles;
+    }
+
+    public Transform GetCurrentRotation()
+    {
+        return _currentRotation;
     }
 
     public void SetSpawningSizeForBlocks(float _input)

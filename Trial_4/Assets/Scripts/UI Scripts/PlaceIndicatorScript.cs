@@ -76,6 +76,8 @@ public class PlaceIndicatorScript : MonoBehaviour
 
     bool _lookForTerrainBool = false;
 
+    Coroutine _startingAnimationCoroutine;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -181,7 +183,7 @@ public class PlaceIndicatorScript : MonoBehaviour
 
                 //_startButton.onClick.AddListener(delegate { SpawnObject(_hitPose.position); });
 
-                _action = delegate { _started = true; };
+                _action = delegate { _started = true; CallToStartAnimation(); };
 
                 _startButton.onClick.AddListener(_action);
             }
@@ -304,7 +306,7 @@ public class PlaceIndicatorScript : MonoBehaviour
             return;
         }
 
-        Vector3 _size = Vector3.one * _planeDistance * _constantSizeOfMainScene;
+        Vector3 _size = Vector3.one * _constantSizeOfMainScene;
 
         _mainSceneTransform.localScale = _size;
 
@@ -318,5 +320,44 @@ public class PlaceIndicatorScript : MonoBehaviour
         _frontDistanceV3.z = _frontDistance;
 
         _front.localPosition = _frontDistanceV3;
+    }
+
+    void CallToStartAnimation()
+    {
+        if(_mainSceneTransform == null)
+        {
+            Debug.LogError("There is nothing to expand.");
+
+            return;
+        }
+
+        _startingAnimationCoroutine = StartCoroutine(StartingGameCoroutine());
+    }
+
+    IEnumerator StartingGameCoroutine()
+    {
+        Vector3 _v31 = Vector3.one * _constantSizeOfMainScene;
+
+        Vector3 _v32 = Vector3.one * _constantSizeOfMainScene * _planeDistance;
+
+        Vector3 _v3C = _v31;
+
+        for(float _t = 0.0f; _t < 1.0f; _t += (Time.deltaTime * _expandingAnimationSpeed))
+        {
+            if(_t >= 1.0f)
+            {
+                _t = 1.0f;
+
+                Debug.Log("'_t' is now '1', and the expansion is complete.");
+            }
+
+            _v3C = Vector3.Lerp(_v31, _v32, _t);
+
+            _mainSceneTransform.localScale = _v3C;
+
+            Debug.Log("'_t' is now '" + _t.ToString() + "', and _v3C is now " + _v3C.ToString() + ".");
+
+            yield return null;
+        }
     }
 }

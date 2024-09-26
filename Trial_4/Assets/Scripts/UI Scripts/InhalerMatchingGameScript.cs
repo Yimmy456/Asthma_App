@@ -160,6 +160,8 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
 
             _newBlock.transform.parent = _mainContainer;
 
+            GiveRotationProperties(_newBlock);
+
             //2. Instantiating Hole
 
             GameObject _newHole = Instantiate(_currentPreset.GetGameBlockHole().gameObject);
@@ -257,5 +259,32 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
         {
             _currentGame = null;
         }
+    }
+
+    void GiveRotationProperties(GameObject _input)
+    {
+        if(_input == null)
+        {
+            return;
+        }
+
+        RotationScript _rotationProperties;
+
+        if(_input.GetComponent<RotationScript>() == null)
+        {
+            _rotationProperties = _input.AddComponent<RotationScript>();
+        }
+        else
+        {
+            _rotationProperties = _input.GetComponent<RotationScript>();
+        }
+
+        _rotationProperties.SetDoAction(false);
+
+        _rotationProperties.SetDeltaTime(true);
+
+        _rotationProperties.SetAxis(Vector3.up);
+
+        _rotationProperties.SetConstant(100.0f);
     }
 }

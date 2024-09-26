@@ -181,6 +181,11 @@ public class InhalerMatchingObjectHoleScript : MatchingGameHoleScript
 
     protected override void ConfirmMatch()
     {
+        if(_currentObject.GetComponent<RotationScript>() != null)
+        {
+            _currentObject.GetComponent<RotationScript>().SetDoAction(true);
+        }
+
         base.ConfirmMatch();
 
         if(_textCanvas != null)
