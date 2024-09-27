@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2063684936051385217, guid: 1f041be202c598d4cbfa4e9421f559b8, type: 3}
+  - {fileID: 2100000, guid: 2066515f1d0934d41aeaa5d44ca874f2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -144,7 +144,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2063684936051385217, guid: 1f041be202c598d4cbfa4e9421f559b8, type: 3}
+  - {fileID: 2100000, guid: 2066515f1d0934d41aeaa5d44ca874f2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -237,7 +237,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _applyGravity: 0
   _zOffset: 0
-  _maintainZDistance: 1
+  _maintainZDistance: 0
   _2DOffset: {x: 0, y: 0}
   _draggableType: 2
 --- !u!114 &1234296815325961423
@@ -437,7 +437,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2063684936051385217, guid: 1f041be202c598d4cbfa4e9421f559b8, type: 3}
+  - {fileID: 2100000, guid: 2066515f1d0934d41aeaa5d44ca874f2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

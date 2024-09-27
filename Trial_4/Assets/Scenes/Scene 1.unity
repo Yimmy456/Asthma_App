@@ -40574,7 +40574,6 @@ MonoBehaviour:
   _rotateToLookAtTarget: 0
   _camera: {fileID: 1075211029}
   _rotationSpeed: 100
-  _defaultRotation: {x: 0, y: 45, z: 0}
   _additionalRotationWhenLooking: {x: 0, y: -35, z: 0}
   _defaultAnimator: {fileID: 8979086420280341110}
   _inhalerAnimator: {fileID: 919132147918670392}
@@ -59355,7 +59354,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: ec33120abed72ce4bb872588ca02d237, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that

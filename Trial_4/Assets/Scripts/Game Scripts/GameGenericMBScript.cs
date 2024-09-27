@@ -146,6 +146,8 @@ public class GameGenericMBScript<T> : GameMBScript, YesOrNoInterface
 
         _gameProperties.SignalToUpdateUI();
 
+        SetResponseTextProperties();
+
         if (_gameProperties.GetMainCanvases().GetDoctorCanvas() != null)
         {
             _gameProperties.GetMainCanvases().GetDoctorCanvas().gameObject.SetActive(true);
@@ -312,7 +314,6 @@ public class GameGenericMBScript<T> : GameMBScript, YesOrNoInterface
 
     bool PrepareGameIndicator()
     {
-
         if(SettingsManager.GetInstance() == null)
         {
             return true;
@@ -358,5 +359,29 @@ public class GameGenericMBScript<T> : GameMBScript, YesOrNoInterface
         _quitButton.onClick.AddListener(delegate { _gameProperties.GetMainCanvases().GetDoctorCanvas().gameObject.SetActive(false); });
 
         _quitButton.onClick.AddListener(delegate { _canvas.gameObject.SetActive(false); });
+    }
+
+    protected void SetResponseTextProperties(float _positionYInput = -150.0f, float _heightInput = 250.0f)
+    {
+        if(_gameProperties.GetResponseText() == null)
+        {
+            //Debug.LogError("There is no response text to modify.");
+
+            return;
+        }
+
+        RectTransform _rt = _gameProperties.GetResponseText().gameObject.GetComponent<RectTransform>();
+
+        Vector2 _ancP = _rt.anchoredPosition;
+
+        _ancP.y = _positionYInput;
+
+        _rt.anchoredPosition = _ancP;
+
+        Vector2 _dS = _rt.sizeDelta;
+
+        _dS.y = _heightInput;
+
+        _rt.sizeDelta = _dS;
     }
 }

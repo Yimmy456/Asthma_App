@@ -189,6 +189,8 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
         _evaluateCards = EvaluateCardsEnum.None;
 
+        SetResponseTextProperties(-291.0f, 700.0f);
+
         while(_selectionDone < _numberOfCards)
         {
             Debug.Log("We are in the process of loop 1.");
@@ -197,7 +199,7 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
             {
                 GameObject _cgo = Instantiate(_cardSample.gameObject);
 
-                InstantiateInfoCardFunction(ref _cgo, ref _pos, ref _infoIndexList);
+                InstantiateInfoCardFunction(ref _cgo, ref _pos, _inf);
 
                 _inf++;
 
@@ -569,7 +571,7 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
         _cardInput.GetRenderer().materials[0].SetTexture("_Front_Side", _spriteInput.texture);
     }
 
-    void InstantiateInfoCardFunction(ref GameObject _cardGOInput, ref Vector3 _posInput, ref List<int> _listInput)
+    void InstantiateInfoCardFunction(ref GameObject _cardGOInput, ref Vector3 _posInput, int _indexInput)
     {
         CardScript _infoCard = _cardGOInput.GetComponent<CardScript>();
 
@@ -580,15 +582,17 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
             _infoCard._text = _gameProperties.GetResponseText();
         }
 
+        //int _selectedInfo = UnityEngine.Random.Range(0, _listInput.Count);
+
         _infoCard.SetIsInfoCard(true);
 
-        InformationClass _info = BookScript.GetInstance().GetGeneralInformation()[0];
+        InformationClass _info = BookScript.GetInstance().GetGeneralInformation()[_indexInput];
 
         _infoCard.SetCardName(_info.GetInformationName());
 
         _infoCard.SetCardDescription(_info.GetInformationDescription());
 
-        _listInput.RemoveAt(0);
+        //_listInput.RemoveAt(_selectedInfo);
 
         SetCardMaterial(_infoCard, BookScript.GetInstance().GetInfoCardFrontMaterial());
     }

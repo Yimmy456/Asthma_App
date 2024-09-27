@@ -30,7 +30,9 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
 
         _completionMeter = _gameProperties.GetMeter();
 
-        LookIntoCamera();
+        //LookIntoCamera();
+
+        RotateSpaceFunction();
 
         if(_gameProperties.GetMeter().GetPercentage() == 100.0f && !_gameDone)
         {

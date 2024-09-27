@@ -30,9 +30,6 @@ public class FastyScript : MonoBehaviour
     float _rotationSpeed = 100.0f;
 
     [SerializeField]
-    Vector3 _defaultRotation;
-
-    [SerializeField]
     Vector3 _additionalRotationWhenLooking;
 
     [SerializeField]
@@ -105,37 +102,14 @@ public class FastyScript : MonoBehaviour
             return;
         }
 
-        /*if(!_rotate)
+        /*if (_fastyDefaultModel != null)
         {
-            //_rotateToLookAtTarget = false;
-
-            return;
+            _fastyDefaultModel.transform.localRotation = Quaternion.identity;
         }
 
-        if(!_rotateToLookAtTarget)
+        if (_fastyInhalerModel != null)
         {
-            var _lookPos = _defaultRotation - _fastyContainer.transform.position;
-
-            _lookPos.y = 0.0f;
-
-            var _rot = Quaternion.LookRotation(_lookPos);
-
-            _fastyContainer.transform.localRotation = Quaternion.Slerp(_fastyContainer.transform.localRotation, _rot, (_rotationSpeed * Time.deltaTime));
-
-            return;
-        }
-
-        if (_camera != null)
-        {
-            var _lookPosCam = _camera.transform.position - _fastyContainer.transform.position;
-
-            _lookPosCam.y = 0.0f;
-
-            var _rotCam = Quaternion.LookRotation(-_lookPosCam);
-
-            _fastyContainer.transform.rotation = Quaternion.Slerp(_fastyContainer.transform.rotation, _rotCam, (_rotationSpeed * Time.deltaTime));
-
-            _fastyContainer.transform.rotation = Quaternion.LookRotation(_lookPosCam, Vector3.up);
+            _fastyInhalerModel.transform.localRotation = Quaternion.identity;
         }*/
 
         if (_rotateToLookAtTarget)
@@ -150,8 +124,6 @@ public class FastyScript : MonoBehaviour
 
             _fastyContainer.transform.rotation = Quaternion.Slerp(_fastyContainer.transform.rotation, _rot, Time.deltaTime);
         }
-
-        //_fastyContainer.transform.LookAt(_camera.transform.position, Vector3.up);
     }
 
     public void SetRotate(bool _input)

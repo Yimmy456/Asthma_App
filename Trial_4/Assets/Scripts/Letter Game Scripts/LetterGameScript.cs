@@ -33,7 +33,9 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
 
         _completionMeter = _gameProperties.GetMeter();
 
-        LookIntoCamera();
+        //LookIntoCamera();
+
+        RotateSpaceFunction();
 
         if(_gameProperties.GetMeter().GetPercentage() == 100.0f && !_gameDone)
         {
@@ -72,8 +74,6 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
         _gameProperties.GetMeter().SetValue(0);
 
         _gameProperties.SignalToUpdateUI();
-
-        AdjustContainer();
 
        // string _badgeName = "Spelling Badge (" + _word.GetInformationName() + ")";
 
