@@ -33,9 +33,9 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
 
         _completionMeter = _gameProperties.GetMeter();
 
-        //LookIntoCamera();
+        LookIntoCamera();
 
-        RotateSpaceFunction();
+        //RotateSpaceFunction();
 
         if(_gameProperties.GetMeter().GetPercentage() == 100.0f && !_gameDone)
         {

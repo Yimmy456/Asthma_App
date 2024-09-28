@@ -30,9 +30,11 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
 
         _completionMeter = _gameProperties.GetMeter();
 
-        //LookIntoCamera();
+        LookIntoCamera();
 
-        RotateSpaceFunction();
+        //RotateSpaceFunction();
+
+        RotateHoles();
 
         if(_gameProperties.GetMeter().GetPercentage() == 100.0f && !_gameDone)
         {
@@ -223,6 +225,11 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
         _gameProperties.GetMeter().SetMaxValue(_gameProperties.GetListOfObjects().Count);
 
         _gameProperties.SignalToUpdateUI();
+
+        if(_currentRotation != null)
+        {
+            _currentRotation.GetComponent<RotationScript>().SetDoAction(true);
+        }
     }
 
     protected override void WinGame()
@@ -259,6 +266,11 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
 
         if(_currentGame == this)
         {
+            if (_currentRotation != null)
+            {
+                _currentRotation.GetComponent<RotationScript>().SetDoAction(false);
+            }
+
             _currentGame = null;
         }
     }

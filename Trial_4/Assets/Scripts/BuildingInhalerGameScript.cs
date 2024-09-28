@@ -117,6 +117,8 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
         _gameProperties.SetBadge(BadgesManagerScript.GetInstance().GetBadgeByName("Inhaler Assembly Badge"));
 
+        SetResponseTextProperties(-551.0f, 287.0f);
+
         //_gameProperties.SetResponseText("So, you want to help Fasty assemble the inhaler? Very well! Let's get started, my friend!\n1. Find the neck and place it on the shaded area which is pointed by the green arrow.", new Color(0.0f, 1.0f, 0.0f, 1.0f), new Color(0.0f, 0.5f, 0.0f, 0.5f), new Vector2(1.0f, -1.0f));
 
         for(int _i = 0; _i < _presetBlocksAndHoles.Count; _i++)

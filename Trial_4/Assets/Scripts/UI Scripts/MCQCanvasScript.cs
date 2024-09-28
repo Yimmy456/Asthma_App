@@ -23,6 +23,9 @@ public class MCQCanvasScript : GameCanvasScript
     [SerializeField]
     MCQGameScript _game;
 
+    [SerializeField]
+    Slider _progressionSlider;
+
     Coroutine _responseTextCoroutine;
 
     string _correctAnswerResponse;
@@ -40,6 +43,11 @@ public class MCQCanvasScript : GameCanvasScript
     void Update()
     {
         
+    }
+
+    public Slider GetProgressionSlider()
+    {
+        return _progressionSlider;
     }
 
     public void SetQuestionNumber(int _input)

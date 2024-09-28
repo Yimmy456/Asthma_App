@@ -190,7 +190,17 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
 
         _rot = _rot * Quaternion.Euler(_additionalLookingAngles);
 
-        _gameSpace.transform.rotation = Quaternion.Slerp(_gameSpace.transform.rotation, _rot, Time.deltaTime);
+        bool _notHolding = true;
+
+        if(DraggableManagerClass.GetInstance() != null)
+        {
+            _notHolding = !DraggableManagerClass.GetInstance().GetDraggingSomething();
+        }
+
+        if (_notHolding)
+        {
+            _gameSpace.transform.rotation = Quaternion.Slerp(_gameSpace.transform.rotation, _rot, Time.deltaTime);
+        }
     }
 
     protected void RotateSpaceFunction()
@@ -220,5 +230,28 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
         _rot = _rot * Quaternion.Euler(_additionalLookingAngles);
 
         _gameSpace.transform.rotation = Quaternion.Slerp(_gameSpace.transform.rotation, _rot, Time.deltaTime);
+    }
+
+    protected void RotateHoles()
+    {
+        if(_currentRotation == null || _currentGame == null)
+        {
+            return;
+        }
+
+        if(_currentGame != this)
+        {
+            return;
+        }
+
+        foreach(GameObject _hole in _currentBlocksAndHoles.GetHoleGOs())
+        {
+            if(_hole == null)
+            {
+                continue;
+            }
+
+            _hole.transform.rotation = _currentRotation.rotation;
+        }
     }
 }

@@ -439,6 +439,15 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
 
         _gameProperties.SetBadge("Multiple Choice Question's Badge");
 
+        if(_mcqCanvas.GetProgressionSlider() != null)
+        {
+            _mcqCanvas.GetProgressionSlider().minValue = 1;
+
+            _mcqCanvas.GetProgressionSlider().maxValue = _numberOfQuestions;
+
+            _mcqCanvas.GetProgressionSlider().value = 1;
+        }
+
         PrepareQuestion();
     }
 
@@ -451,7 +460,12 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
 
         _currentQuestionIndex++;
 
-        if(_currentQuestionIndex >= _numberOfQuestions)
+        if (_mcqCanvas.GetProgressionSlider() != null)
+        {
+            _mcqCanvas.GetProgressionSlider().value = _currentQuestionIndex + 1;
+        }
+
+        if (_currentQuestionIndex >= _numberOfQuestions)
         {
             _gameDone = true;
 
