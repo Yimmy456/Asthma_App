@@ -5,6 +5,7 @@ using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using System.Threading;
 
 public class PlaceIndicatorScript : MonoBehaviour
 {
@@ -72,9 +73,19 @@ public class PlaceIndicatorScript : MonoBehaviour
     [SerializeField]
     GameObject _landingTerrain;
 
+    [SerializeField]
+    ShrinkAndExpandAnimationClass _shinkAndExpandAnimationForLandingTerrain;
+
+    [SerializeField]
+    GameObject _pointingArrowGameObject;
+
     float _planeDistance = -1.0f;
 
     bool _lookForTerrainBool = false;
+
+    bool _terrainFound = false;
+
+    float _showingT = 0.0f;
 
     Coroutine _startingAnimationCoroutine;
 
@@ -164,12 +175,15 @@ public class PlaceIndicatorScript : MonoBehaviour
                 _indicator.transform.localScale = Vector3.one * _planeDistance;
             }
 
-            if(_landingTerrain != null)
+            if(_landingTerrain != null && _shinkAndExpandAnimationForLandingTerrain.GetT() < 1.0f && _shinkAndExpandAnimationForLandingTerrain.GetIncreaseOrDecrease() != IncreasOrDecreaseEnum.Increase)
             {
-                _landingTerrain.SetActive(true);
+                //_landingTerrain.SetActive(true);
+                StartCoroutine(_shinkAndExpandAnimationForLandingTerrain.Animate());
             }
 
             SetSceneSize();
+
+            _terrainFound = true;
 
             _distanceText.text = "Distance: " + _planeDistance.ToString("0.00");
 
@@ -178,10 +192,6 @@ public class PlaceIndicatorScript : MonoBehaviour
             if (_startButton != null)
             {
                 _startButton.gameObject.SetActive(true);
-
-                //_action = delegate { SpawnObject(_hitPose.position); };
-
-                //_startButton.onClick.AddListener(delegate { SpawnObject(_hitPose.position); });
 
                 _action = delegate { _started = true; CallToStartAnimation(); };
 
@@ -215,9 +225,17 @@ public class PlaceIndicatorScript : MonoBehaviour
 
             //_m.SetColor("_Color", Color.red);
 
-            if(_landingTerrain != null)
+            //if(_landingTerrain != null)
+            //{
+            //    _landingTerrain.SetActive(false);
+            //}
+
+            _terrainFound = false;
+
+            if (_landingTerrain != null && _shinkAndExpandAnimationForLandingTerrain.GetT() > 0.0f && _shinkAndExpandAnimationForLandingTerrain.GetIncreaseOrDecrease() != IncreasOrDecreaseEnum.Decrease)
             {
-                _landingTerrain.SetActive(false);
+                //_landingTerrain.SetActive(true);
+                StartCoroutine(_shinkAndExpandAnimationForLandingTerrain.ReverseAnimate());
             }
 
 
@@ -287,6 +305,16 @@ public class PlaceIndicatorScript : MonoBehaviour
     public GameObject GetIndicator()
     {
         return _indicator;
+    }
+
+    public ShrinkAndExpandAnimationClass GetShinkAndExpandAnimationForLandingTerrain()
+    {
+        return _shinkAndExpandAnimationForLandingTerrain;
+    }
+
+    public GameObject GetPointingArrowGameObject()
+    {
+        return _pointingArrowGameObject;
     }
 
     public void SetIndicatorOn(bool _input = true)
@@ -360,4 +388,103 @@ public class PlaceIndicatorScript : MonoBehaviour
             yield return null;
         }
     }
+
+    /*IEnumerator AnimatePointingArrow()
+    {
+        if (_pointingArrowGameObject == null)
+        {
+            yield break;
+        }
+
+        float _currentPosY = _pointingArrowGameObject.transform.localPosition.y;
+
+        Vector3 _pos = _pointingArrowGameObject.transform.localPosition;
+
+        _pointingArrowGameObject.SetActive(true);
+
+        bool _landedArrow = false;
+
+        while(_currentPosY > -500.0f && _terrainFound && !_landedArrow)
+        {
+            _currentPosY = _currentPosY - (Time.deltaTime * 300.0f);
+
+            if(_currentPosY <= -500.0f)
+            {
+                _currentPosY = -500.0f;
+
+                _landedArrow = true;
+            }
+
+            _pos.y = _currentPosY;
+
+            _pointingArrowGameObject.transform.localPosition = _pos;
+
+            yield return null;
+        }
+
+        bool _switch = false;
+
+        float _t = 0.0f;
+
+        Vector3 _pointA = new Vector3(0.0f, -400.0f, 0.0f);
+
+        Vector3 _pointB = new Vector3(0.0f, -500.0f, 0.0f);
+
+        Vector3 _V3Lerp = _pointA;
+
+        Vector3 _currentPoint = _pointA;
+
+        Vector3 _nextPoint = _pointB;
+
+        while(_terrainFound && _landedArrow)
+        {
+            _t = _t + Time.deltaTime;
+
+            if(_t >= 1.0f)
+            {
+                _t = 1.0f;
+
+                _switch = true;
+            }
+
+            _V3Lerp = Vector3.Lerp(_currentPoint, _nextPoint, _t);
+
+            _currentPosY = _V3Lerp.y;
+
+            _pointingArrowGameObject.transform.localPosition = _V3Lerp;
+
+            if(_switch)
+            {
+                Vector3 _v3 = _nextPoint;
+
+                _nextPoint = _currentPoint;
+
+                _currentPoint = _v3;
+
+                _switch = false;
+
+                _t = 0.0f;
+            }
+
+            yield return null;
+        }
+
+        while (_currentPosY < 0.0f && !_terrainFound)
+        {
+            _currentPosY = _currentPosY + (Time.deltaTime * 300.0f);
+
+            if (_currentPosY >= 0.0f)
+            {
+                _currentPosY = 0.0f;
+            }
+
+            _pos.y = _currentPosY;
+
+            _pointingArrowGameObject.transform.localPosition = _pos;
+
+            yield return null;
+        }
+
+        _pointingArrowGameObject.SetActive(false);
+    }*/
 }

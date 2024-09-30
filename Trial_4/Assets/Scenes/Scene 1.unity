@@ -3364,7 +3364,7 @@ GameObject:
   - component: {fileID: 159462250}
   - component: {fileID: 159462249}
   m_Layer: 0
-  m_Name: Doctor's Directional Light (1)
+  m_Name: Doctor's Directional Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3950,7 +3950,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 392666912}
         m_TargetAssemblyTypeName: MainPlayerCanvasScript, Assembly-CSharp
-        m_MethodName: SetShowInhalerBoolean
+        m_MethodName: SetShowingInhalerPropertiesBoolean
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13330,11 +13330,28 @@ MonoBehaviour:
     _counterClockwise: 1
     _switchAxes: 0
     _defaultAngle: 90
-  _showInhalerButton: {fileID: 1435741337}
-  _inhalerGameObject: {fileID: 1219848555049984593}
-  _showInhalerSprite: {fileID: 21300000, guid: d3e3218a75bac7346a39d39a419eda0f, type: 3}
-  _hideInhalerSprite: {fileID: 21300000, guid: b75aab683d7107746afd4d02670dcd1e, type: 3}
-  _initialInhalerPosition: {x: 0, y: 0.18, z: -150}
+  _shakingInhalerProperties:
+    _inhalerGO: {fileID: 1219848555049984593}
+    _inhalerInitialPosition: {x: 0, y: 0.18, z: -150}
+    _inhalerShowingButton: {fileID: 1435741337}
+    _showInhalerButtonSprite: {fileID: 21300000, guid: d3e3218a75bac7346a39d39a419eda0f, type: 3}
+    _hideInhalerButtonSprite: {fileID: 21300000, guid: b75aab683d7107746afd4d02670dcd1e, type: 3}
+    _textPropertiesToShowInhaler:
+      _uiText: {fileID: 963317937}
+      _uiTextString: Show Shaking Inhaler
+      _uiTextColor: {r: 0, g: 0.5019608, b: 1, a: 1}
+      _uiTextOutline: {fileID: 963317936}
+      _uiTextOutlineDistance: {x: 1, y: -1}
+      _uiTextOutlineAlpha: 0.5
+      _uiTextOutlineColorValue: 0.5
+    _textPropertiesToHideInhaler:
+      _uiText: {fileID: 963317937}
+      _uiTextString: Hide Shaking Inhaler
+      _uiTextColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+      _uiTextOutline: {fileID: 963317936}
+      _uiTextOutlineDistance: {x: 1, y: -1}
+      _uiTextOutlineAlpha: 0.5
+      _uiTextOutlineColorValue: 0.5
 --- !u!1 &393231100
 GameObject:
   m_ObjectHideFlags: 0
@@ -14783,9 +14800,9 @@ MonoBehaviour:
   _arrow: {fileID: 1884706855}
   _camera: {fileID: 1075211029}
   _resolutionText: {fileID: 0}
-  _cursorSprite: {fileID: 21300000, guid: 0351ba965ba68f2439d21dc1bb7a590e, type: 3}
+  _cursorSprite: {fileID: 21300000, guid: 60cd767bb2f79c4448c73549ac339e44, type: 3}
   _arrowSprite: {fileID: 21300000, guid: 22f7eb8e991ec534bb6411484e5a7eeb, type: 3}
-  _onscreenThreshold: 100
+  _onscreenDistanceThreshold: 4
   _meterText: {fileID: 227547016}
   _onscreenOffset: {x: 0, y: 0}
   _indicatorColor: {r: 0, g: 1, b: 0, a: 1}
@@ -18314,7 +18331,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 392666912}
         m_TargetAssemblyTypeName: MainPlayerCanvasScript, Assembly-CSharp
-        m_MethodName: SetShowInhalerBoolean
+        m_MethodName: SetShowingInhalerPropertiesBoolean
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19481,6 +19498,8 @@ GameObject:
   - component: {fileID: 682063971}
   - component: {fileID: 682063973}
   - component: {fileID: 682063972}
+  - component: {fileID: 682063974}
+  - component: {fileID: 682063975}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -19546,6 +19565,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 682063970}
   m_CullTransparentMesh: 1
+--- !u!225 &682063974
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682063970}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!223 &682063975
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682063970}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &688554183
 GameObject:
   m_ObjectHideFlags: 0
@@ -20655,7 +20707,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &716302323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23691,6 +23743,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 881049901}
   m_CullTransparentMesh: 1
+--- !u!1 &883735929
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 883735930}
+  m_Layer: 0
+  m_Name: Pointing Arrow Container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &883735930
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883735929}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 600, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1253522310326694256}
+  m_Father: {fileID: 1759490899}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &888431176
 GameObject:
   m_ObjectHideFlags: 0
@@ -23748,9 +23832,9 @@ MonoBehaviour:
   _arrow: {fileID: 1200410330}
   _camera: {fileID: 1075211029}
   _resolutionText: {fileID: 0}
-  _cursorSprite: {fileID: 21300000, guid: 0351ba965ba68f2439d21dc1bb7a590e, type: 3}
+  _cursorSprite: {fileID: 21300000, guid: 60cd767bb2f79c4448c73549ac339e44, type: 3}
   _arrowSprite: {fileID: 21300000, guid: 22f7eb8e991ec534bb6411484e5a7eeb, type: 3}
-  _onscreenThreshold: 100
+  _onscreenDistanceThreshold: 4
   _meterText: {fileID: 2063574805}
   _onscreenOffset: {x: 0, y: 0}
   _indicatorColor: {r: 0, g: 1, b: 0, a: 1}
@@ -24405,6 +24489,7 @@ GameObject:
   - component: {fileID: 906618663}
   - component: {fileID: 906618665}
   - component: {fileID: 906618664}
+  - component: {fileID: 906618666}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -24470,6 +24555,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 906618662}
   m_CullTransparentMesh: 1
+--- !u!225 &906618666
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906618662}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &907491113
 GameObject:
   m_ObjectHideFlags: 0
@@ -25311,7 +25408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &963317935
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25327,10 +25424,10 @@ RectTransform:
   m_Father: {fileID: 1435741336}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -106.7, y: 0}
-  m_SizeDelta: {x: 200, y: 42}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 76}
+  m_SizeDelta: {x: 120, y: 132}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &963317936
 MonoBehaviour:
@@ -25372,15 +25469,15 @@ MonoBehaviour:
     m_FontSize: 39
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
-    m_MaxSize: 44
+    m_MinSize: 0
+    m_MaxSize: 131
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Show Inhaler
+  m_Text: Show Shaking Inhaler
 --- !u!222 &963317938
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -30403,7 +30500,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 392666912}
         m_TargetAssemblyTypeName: MainPlayerCanvasScript, Assembly-CSharp
-        m_MethodName: SetShowInhalerBoolean
+        m_MethodName: SetShowingInhalerPropertiesBoolean
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -30626,6 +30723,7 @@ GameObject:
   - component: {fileID: 1186554503}
   - component: {fileID: 1186554505}
   - component: {fileID: 1186554504}
+  - component: {fileID: 1186554506}
   m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
@@ -30691,6 +30789,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1186554502}
   m_CullTransparentMesh: 1
+--- !u!225 &1186554506
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186554502}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1187373810
 GameObject:
   m_ObjectHideFlags: 0
@@ -31436,6 +31546,15 @@ MonoBehaviour:
   _front: {fileID: 366229647}
   _frontDistance: 5
   _landingTerrain: {fileID: 601199372}
+  _shinkAndExpandAnimationForLandingTerrain:
+    _animationSpeed: 1
+    _withDeltaTime: 1
+    _discardDifference: 1
+    _gameObject: {fileID: 601199372}
+    _maxSize: {x: 1, y: 1, z: 1}
+    _maxSizeConstant: 1
+    _increaseOrDecrease: 0
+  _pointingArrowGameObject: {fileID: 0}
 --- !u!4 &1228395063
 Transform:
   m_ObjectHideFlags: 0
@@ -35836,6 +35955,7 @@ GameObject:
   - component: {fileID: 1435741339}
   - component: {fileID: 1435741338}
   - component: {fileID: 1435741337}
+  - component: {fileID: 1435741340}
   m_Layer: 5
   m_Name: Inhaler Button
   m_TagString: Untagged
@@ -35910,7 +36030,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 392666912}
         m_TargetAssemblyTypeName: MainPlayerCanvasScript, Assembly-CSharp
-        m_MethodName: SwitchShowInhalerBoolean
+        m_MethodName: SwitchShowingInhalerPropertiesBoolean
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -35958,6 +36078,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1435741335}
   m_CullTransparentMesh: 1
+--- !u!114 &1435741340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435741335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 963317934}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 963317934}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1436308932
 GameObject:
   m_ObjectHideFlags: 0
@@ -37070,7 +37235,7 @@ GameObject:
   - component: {fileID: 1466207918}
   - component: {fileID: 1466207917}
   m_Layer: 0
-  m_Name: Doctor's Spot Light (1)
+  m_Name: Doctor's Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40558,16 +40723,32 @@ MonoBehaviour:
   _cardDistance: {x: 3, y: 4}
   _cardFlipAnimationSpeed: 250
   _matchP:
-    _textColor: {r: 0, g: 0.735849, b: 0.17534079, a: 1}
-    _text: That's a match! Keep going!
+    _uiText: {fileID: 1721945221}
+    _uiTextString: That's a match! Keep going!
+    _uiTextColor: {r: 0, g: 0.6039216, b: 0.3529412, a: 1}
+    _uiTextOutline: {fileID: 1721945220}
+    _uiTextOutlineDistance: {x: 1, y: -1}
+    _uiTextOutlineAlpha: 0.5
+    _uiTextOutlineColorValue: 0.5
     _textTimeToDisplay: 10
   _noMatchP:
-    _textColor: {r: 0.8207547, g: 0.12073807, b: 0, a: 1}
-    _text: Too Bad! That's not a match. But now you know what these cards are.
+    _uiText: {fileID: 1721945221}
+    _uiTextString: Too Bad! That's not a match. But now you know what cards they
+      are.
+    _uiTextColor: {r: 0.62352943, g: 0, b: 0, a: 1}
+    _uiTextOutline: {fileID: 1721945220}
+    _uiTextOutlineDistance: {x: 1, y: -1}
+    _uiTextOutlineAlpha: 0.5
+    _uiTextOutlineColorValue: 0.5
     _textTimeToDisplay: 5
   _infoP:
-    _textColor: {r: 0, g: 0.37922654, b: 0.6886792, a: 1}
-    _text: Great! That's an info card!
+    _uiText: {fileID: 1721945221}
+    _uiTextString: Great! You found an info card!
+    _uiTextColor: {r: 0, g: 0, b: 0.6117647, a: 1}
+    _uiTextOutline: {fileID: 1721945220}
+    _uiTextOutlineDistance: {x: 1, y: -1}
+    _uiTextOutlineAlpha: 0.5
+    _uiTextOutlineColorValue: 0.5
     _textTimeToDisplay: 15
   _cardLocalScale: 75
   _audioSource: {fileID: 266275802}
@@ -40816,7 +40997,7 @@ MonoBehaviour:
   _rotateToLookAtTarget: 0
   _camera: {fileID: 1075211029}
   _rotationSpeed: 100
-  _additionalRotationWhenLooking: {x: 0, y: -35, z: 0}
+  _additionalRotationWhenLooking: {x: 0, y: 0, z: 0}
   _defaultAnimator: {fileID: 8979086420280341110}
   _inhalerAnimator: {fileID: 919132147918670392}
   _mainPlayerCanvasClass: {fileID: 392666912}
@@ -41594,7 +41775,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 392666912}
         m_TargetAssemblyTypeName: MainPlayerCanvasScript, Assembly-CSharp
-        m_MethodName: SetShowInhalerBoolean
+        m_MethodName: SetShowingInhalerPropertiesBoolean
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -42557,6 +42738,7 @@ Transform:
   - {fileID: 6767589810071351365}
   - {fileID: 551265655}
   - {fileID: 837075716}
+  - {fileID: 883735930}
   m_Father: {fileID: 1228395063}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -44940,7 +45122,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 392666912}
         m_TargetAssemblyTypeName: MainPlayerCanvasScript, Assembly-CSharp
-        m_MethodName: SetShowInhalerBoolean
+        m_MethodName: SetShowingInhalerPropertiesBoolean
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -47397,6 +47579,7 @@ GameObject:
   - component: {fileID: 1999199490}
   - component: {fileID: 1999199492}
   - component: {fileID: 1999199491}
+  - component: {fileID: 1999199493}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -47462,6 +47645,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1999199489}
   m_CullTransparentMesh: 1
+--- !u!225 &1999199493
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999199489}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2003581052
 GameObject:
   m_ObjectHideFlags: 0
@@ -48660,6 +48855,7 @@ GameObject:
   - component: {fileID: 2032574432}
   - component: {fileID: 2032574434}
   - component: {fileID: 2032574433}
+  - component: {fileID: 2032574435}
   m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
@@ -48725,6 +48921,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2032574431}
   m_CullTransparentMesh: 1
+--- !u!225 &2032574435
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032574431}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2035726235
 GameObject:
   m_ObjectHideFlags: 0
@@ -49919,6 +50127,7 @@ GameObject:
   - component: {fileID: 2062506403}
   - component: {fileID: 2062506405}
   - component: {fileID: 2062506404}
+  - component: {fileID: 2062506406}
   m_Layer: 5
   m_Name: Black Panel
   m_TagString: Untagged
@@ -49984,6 +50193,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2062506402}
   m_CullTransparentMesh: 1
+--- !u!225 &2062506406
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062506402}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2063574802
 GameObject:
   m_ObjectHideFlags: 0
@@ -51429,6 +51650,48 @@ Transform:
   m_Father: {fileID: 7260947620524387526}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &85088159558486559
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886646825654217674}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 54e92c95ea7c0a641a2e0e42e94c16a7, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &122908604797024441
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -52606,6 +52869,21 @@ Transform:
   m_Father: {fileID: 6254626873867892882}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1253522310326694256
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886646825654217674}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3000, y: 3000, z: 3000}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 883735930}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!4 &1289457466017633367
 Transform:
   m_ObjectHideFlags: 0
@@ -53364,6 +53642,24 @@ Transform:
   m_Father: {fileID: 543450651588677773}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1886646825654217674
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1253522310326694256}
+  - component: {fileID: 2795253721364414165}
+  - component: {fileID: 85088159558486559}
+  m_Layer: 9
+  m_Name: Pointing Arrow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!4 &1887173565860767531
 Transform:
   m_ObjectHideFlags: 0
@@ -54167,6 +54463,14 @@ Transform:
   m_Father: {fileID: 7411127838729301361}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &2795253721364414165
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886646825654217674}
+  m_Mesh: {fileID: -7929139438592967118, guid: 1faec4783e36a9749a8b9c19ed7daf88, type: 3}
 --- !u!4 &2797278400719970400
 Transform:
   m_ObjectHideFlags: 0

@@ -42,21 +42,7 @@ public class MainPlayerCanvasScript : MonoBehaviour
     CircleClass _buttonCircleProperties;
 
     [SerializeField]
-    Button _showInhalerButton;
-
-    [SerializeField]
-    GameObject _inhalerGameObject;
-
-    [SerializeField]
-    Sprite _showInhalerSprite;
-
-    [SerializeField]
-    Sprite _hideInhalerSprite;
-
-    [SerializeField]
-    Vector3 _initialInhalerPosition;
-
-    bool _showInhalerBoolean = false;
+    InhalerPropertiesClass _shakingInhalerProperties;
 
     Coroutine _coroutine;
 
@@ -75,6 +61,8 @@ public class MainPlayerCanvasScript : MonoBehaviour
         {
             _menuButtonList[_i].gameObject.GetComponent<RectTransform>().localScale = (Vector3.one * _buttonSize);
         }
+
+        _shakingInhalerProperties.SetShowingInhalerBoolean(false);
     }
 
     // Update is called once per frame
@@ -742,80 +730,19 @@ public class MainPlayerCanvasScript : MonoBehaviour
         _menuButton.gameObject.SetActive(true);
     }
 
-    public Button GetShowInhalerButton()
+    public InhalerPropertiesClass GetShakingInhalerProperties()
     {
-        return _showInhalerButton;
+        return _shakingInhalerProperties;
     }
 
-    public bool GetShowInhalerBoolean()
+    public void SetShowingInhalerPropertiesBoolean(bool _input)
     {
-        return _showInhalerBoolean;
+        _shakingInhalerProperties.SetShowingInhalerBoolean(_input);
     }
 
-    public GameObject GetInhalerGameObject()
+
+    public void SwitchShowingInhalerPropertiesBoolean()
     {
-        return _inhalerGameObject;
+        _shakingInhalerProperties.SwitchShowingInhalerBoolean();
     }
-
-    public void SetShowInhalerBoolean(bool _input)
-    {
-        _showInhalerBoolean = _input;
-
-        if (_inhalerGameObject != null)
-        {
-            _inhalerGameObject.SetActive(_showInhalerBoolean);
-        }
-
-        SwitchButtonStatus();
-    }
-
-    public void SwitchShowInhalerBoolean()
-    {
-        _showInhalerBoolean = !_showInhalerBoolean;
-
-        if(_inhalerGameObject != null)
-        {
-            _inhalerGameObject.SetActive(_showInhalerBoolean);
-        }
-
-        SwitchButtonStatus();
-    }
-
-    void SwitchButtonStatus()
-    {
-        if(_showInhalerButton == null)
-        {
-            return;
-        }
-
-        Sprite _sp = _showInhalerBoolean ? _hideInhalerSprite : _showInhalerSprite;
-
-        _showInhalerButton.image.sprite = _sp;
-
-        Text _buttonText = _showInhalerButton.gameObject.GetComponent<RectTransform>().Find("Text").gameObject.GetComponent<Text>();
-
-        if(_buttonText != null)
-        {
-            _buttonText.text = _showInhalerBoolean ? "Hide Inhaler" : "Show Inhaler";
-
-            Color _textColor = _showInhalerBoolean ? new Color(0.5f, 0.5f, 0.5f, 1.0f) : new Color(0.0f, 0.5f, 1.0f, 1.0f);
-
-            _buttonText.color = _textColor;
-
-            Outline _outline = _buttonText.gameObject.GetComponent<Outline>();
-
-            if(_outline != null)
-            {
-                _textColor = ToolsStruct.ChangeColorValue(_textColor, 0.5f, 0.5f, false);
-
-                _outline.effectColor = _textColor;
-            }
-        }
-
-        if(!_showInhalerBoolean)
-        {
-            _inhalerGameObject.transform.localPosition = _initialInhalerPosition;
-        }
-    }
-
 }

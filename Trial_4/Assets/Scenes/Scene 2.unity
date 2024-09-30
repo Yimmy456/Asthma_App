@@ -1925,15 +1925,34 @@ MonoBehaviour:
   _cardDistance: {x: 3, y: 4}
   _cardFlipAnimationSpeed: 250
   _matchP:
-    _textColor: {r: 0, g: 0.6039216, b: 0.35435218, a: 1}
+    _uiText: {fileID: 167036495}
+    _uiTextString: That's a match! Keep going!
+    _uiTextColor: {r: 0, g: 0.6039216, b: 0.3529412, a: 1}
+    _uiTextOutline: {fileID: 167036497}
+    _uiTextOutlineDistance: {x: 1, y: -1}
+    _uiTextOutlineAlpha: 0.5
+    _uiTextOutlineColorValue: 0.5
     _text: That's a match! Keep going!
     _textTimeToDisplay: 15
   _noMatchP:
-    _textColor: {r: 0.62352943, g: 0, b: 0, a: 1}
+    _uiText: {fileID: 167036495}
+    _uiTextString: Too Bad! That's not a match. But now you know what cards they
+      are.
+    _uiTextColor: {r: 0.62352943, g: 0, b: 0, a: 1}
+    _uiTextOutline: {fileID: 167036497}
+    _uiTextOutlineDistance: {x: 1, y: -1}
+    _uiTextOutlineAlpha: 0.5
+    _uiTextOutlineColorValue: 0.5
     _text: Too Bad! That's not a match. But now you know what cards they are.
     _textTimeToDisplay: 5
   _infoP:
-    _textColor: {r: 0, g: 0, b: 0.6117647, a: 1}
+    _uiText: {fileID: 167036495}
+    _uiTextString: Great! You found an info card!
+    _uiTextColor: {r: 0, g: 0, b: 0.6117647, a: 1}
+    _uiTextOutline: {fileID: 167036497}
+    _uiTextOutlineDistance: {x: 1, y: -1}
+    _uiTextOutlineAlpha: 0.5
+    _uiTextOutlineColorValue: 0.5
     _text: Great! You found an info card!
     _textTimeToDisplay: 10
   _cardLocalScale: 75
@@ -13919,11 +13938,28 @@ MonoBehaviour:
     _counterClockwise: 1
     _switchAxes: 0
     _defaultAngle: 90
-  _showInhalerButton: {fileID: 962652049}
-  _inhalerGameObject: {fileID: 1219848555049984593}
-  _showInhalerSprite: {fileID: 21300000, guid: d3e3218a75bac7346a39d39a419eda0f, type: 3}
-  _hideInhalerSprite: {fileID: 21300000, guid: b75aab683d7107746afd4d02670dcd1e, type: 3}
-  _initialInhalerPosition: {x: 0, y: 0.18, z: -150}
+  _shakingInhalerProperties:
+    _inhalerGO: {fileID: 1219848555049984593}
+    _inhalerInitialPosition: {x: 0, y: 0.18, z: -150}
+    _inhalerShowingButton: {fileID: 962652049}
+    _showInhalerButtonSprite: {fileID: 21300000, guid: d3e3218a75bac7346a39d39a419eda0f, type: 3}
+    _hideInhalerButtonSprite: {fileID: 21300000, guid: b75aab683d7107746afd4d02670dcd1e, type: 3}
+    _textPropertiesToShowInhaler:
+      _uiText: {fileID: 1439241814}
+      _uiTextString: Show Shaking Inhaler
+      _uiTextColor: {r: 0, g: 0.5019608, b: 1, a: 1}
+      _uiTextOutline: {fileID: 1439241816}
+      _uiTextOutlineDistance: {x: 1, y: -1}
+      _uiTextOutlineAlpha: 0.5
+      _uiTextOutlineColorValue: 0.5
+    _textPropertiesToHideInhaler:
+      _uiText: {fileID: 1439241814}
+      _uiTextString: Hide Shaking Inhaler
+      _uiTextColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+      _uiTextOutline: {fileID: 1439241816}
+      _uiTextOutlineDistance: {x: 1, y: -1}
+      _uiTextOutlineAlpha: 0.5
+      _uiTextOutlineColorValue: 0.5
 --- !u!1 &394010962
 GameObject:
   m_ObjectHideFlags: 0
@@ -26750,6 +26786,7 @@ GameObject:
   - component: {fileID: 962652051}
   - component: {fileID: 962652050}
   - component: {fileID: 962652049}
+  - component: {fileID: 962652052}
   m_Layer: 5
   m_Name: Inhaler Button
   m_TagString: Untagged
@@ -26824,7 +26861,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 392666912}
         m_TargetAssemblyTypeName: MainPlayerCanvasScript, Assembly-CSharp
-        m_MethodName: SwitchShowInhalerBoolean
+        m_MethodName: SwitchShowingInhalerPropertiesBoolean
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -26872,6 +26909,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 962652047}
   m_CullTransparentMesh: 1
+--- !u!114 &962652052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962652047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1439241812}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1439241812}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &964909891
 GameObject:
   m_ObjectHideFlags: 0
@@ -38824,10 +38906,10 @@ RectTransform:
   m_Father: {fileID: 962652048}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -106.7, y: 0}
-  m_SizeDelta: {x: 200, y: 42}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 76}
+  m_SizeDelta: {x: 120, y: 132}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1439241814
 MonoBehaviour:
@@ -38862,7 +38944,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Show Inhaler
+  m_Text: Show Shaking Inhaler
 --- !u!222 &1439241815
 CanvasRenderer:
   m_ObjectHideFlags: 0

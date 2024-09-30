@@ -27,13 +27,13 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
     float _cardFlipAnimationSpeed = 5.0f;
 
     [SerializeField]
-    TextPropertiesClass _matchP;
+    TimedTextPropertiesClass _matchP;
 
     [SerializeField]
-    TextPropertiesClass _noMatchP;
+    TimedTextPropertiesClass _noMatchP;
 
     [SerializeField]
-    TextPropertiesClass _infoP;
+    TimedTextPropertiesClass _infoP;
 
     [SerializeField]
     float _cardLocalScale = 75.0f;
@@ -415,9 +415,9 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
             bool _finalCard = !_gameDone && _gameProperties.GetMeter().GetPercentage() == 100.0f;
 
-            string _textToDisplay = _infoP.GetText() + " Fun Fact:\n\n" + _infoText;
+            string _textToDisplay = _infoP.GetUITextString() + " Fun Fact:\n\n" + _infoText;
 
-            SetResponseText(_textToDisplay, _infoP.GetTextColor(), _infoP.GetTextTimeToDisplay(), _finalCard);
+            SetResponseText(_textToDisplay, _infoP.GetUTextColor(), _infoP.GetTextTimeToDisplay(), _finalCard);
 
             if (_audioSource != null && _correctAudioClip != null)
             {
@@ -443,11 +443,11 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
             string _cardDesc = _selectedCard1.GetCardDescription();
 
-            _cardDesc = _matchP.GetText() + " " + _cardDesc;
+            _cardDesc = _matchP.GetUITextString() + " " + _cardDesc;
 
             if (_gameProperties.GetMeter().GetPercentage() < 100.0f)
             {
-                SetResponseText(_cardDesc, _matchP.GetTextColor(), _matchP.GetTextTimeToDisplay());
+                SetResponseText(_cardDesc, _matchP.GetUTextColor(), _matchP.GetTextTimeToDisplay());
             }
 
             if(_audioSource != null && _correctAudioClip != null)
@@ -463,7 +463,7 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
             _selectedCard2.SetCardFlipped(false);
 
-            SetResponseText(_noMatchP.GetText(), _noMatchP.GetTextColor(), _noMatchP.GetTextTimeToDisplay());
+            SetResponseText(_noMatchP.GetUITextString(), _noMatchP.GetUTextColor(), _noMatchP.GetTextTimeToDisplay());
 
             StartCoroutine(FlipDownCardAnimation(_selectedCard1));
 

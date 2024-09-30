@@ -1620,26 +1620,10 @@ public class EnumDropdownLabelStyleClass<T> where T : Enum
 }
 
 [System.Serializable]
-public class TextPropertiesClass
+public class TimedTextPropertiesClass : UITextPropertiesClass
 {
     [SerializeField]
-    Color _textColor;
-
-    [SerializeField]
-    string _text;
-
-    [SerializeField]
     float _textTimeToDisplay = 5.0f;
-
-    public string GetText()
-    {
-        return _text;
-    }
-
-    public Color GetTextColor()
-    {
-        return _textColor;
-    }
 
     public float GetTextTimeToDisplay()
     {
@@ -2112,5 +2096,384 @@ public class BasicAnimationClass
         {
             yield return null;
         }
+    }
+}
+
+[System.Serializable]
+public class InhalerPropertiesClass
+{
+    [SerializeField]
+    GameObject _inhalerGO;
+
+    [SerializeField]
+    Vector3 _inhalerInitialPosition;
+
+    [SerializeField]
+    Button _inhalerShowingButton;
+
+    [SerializeField]
+    Sprite _showInhalerButtonSprite;
+
+    [SerializeField]
+    Sprite _hideInhalerButtonSprite;
+
+    [SerializeField]
+    UITextPropertiesClass _textPropertiesToShowInhaler;
+
+    [SerializeField]
+    UITextPropertiesClass _textPropertiesToHideInhaler;
+
+    bool _showingInhalerBoolean = false;
+
+    public GameObject GetInhalerGameObject()
+    {
+        return _inhalerGO;
+    }
+
+    public Vector3 GetInhalerInitialPosition()
+    {
+        return _inhalerInitialPosition;
+    }
+
+    public Button GetInhalerShowingButton()
+    {
+        return _inhalerShowingButton;
+    }
+
+    public Sprite GetHideInhalerButtonSprite()
+    {
+        return _hideInhalerButtonSprite;
+    }
+
+    public Sprite GetShowInhalerButtonSprite()
+    {
+        return _showInhalerButtonSprite;
+    }
+
+    public bool GetShowingInhalerBoolean()
+    {
+        return _showingInhalerBoolean;
+    }
+
+    public void SetShowingInhalerBoolean(bool _input)
+    {
+        _showingInhalerBoolean = _input;
+
+        UpdateInhalerByBoolean();
+    }
+
+    public void SwitchShowingInhalerBoolean()
+    {
+        _showingInhalerBoolean = !_showingInhalerBoolean;
+
+        UpdateInhalerByBoolean();
+    }
+
+    void UpdateInhalerByBoolean()
+    {
+        if(_inhalerGO == null)
+        {
+            return;
+        }
+
+        //1. Setting the activeness of the GO.
+        _inhalerGO.SetActive(_showingInhalerBoolean);
+
+        //2.Setting the sprite of the button.
+        if (_inhalerShowingButton != null)
+        {
+            Sprite _selectedSprite = _showingInhalerBoolean ? _hideInhalerButtonSprite : _showInhalerButtonSprite;
+
+            if (_selectedSprite != null)
+            {
+                _inhalerShowingButton.image.sprite = _selectedSprite;
+            }
+        }
+
+        //3. Setting the text of the button.
+        UITextPropertiesClass _selectedUItextProperties = _showingInhalerBoolean ? _textPropertiesToHideInhaler : _textPropertiesToShowInhaler;
+
+        _selectedUItextProperties.SetTextProperties("", false);
+
+        //4. Returning the GO to the initial position.
+        if(!_showingInhalerBoolean)
+        {
+            _inhalerGO.transform.localPosition = _inhalerInitialPosition;
+        }
+    }
+}
+
+
+[System.Serializable]
+public class UITextPropertiesClass
+{
+    [SerializeField]
+    protected Text _uiText;
+
+    [SerializeField]
+    protected string _uiTextString;
+
+    [SerializeField]
+    protected Color _uiTextColor;
+
+    [SerializeField]
+    protected Outline _uiTextOutline;
+
+    [SerializeField]
+    protected Vector2 _uiTextOutlineDistance = new Vector2(1.0f, -1.0f);
+
+    [SerializeField]
+    protected float _uiTextOutlineAlpha = 0.5f;
+
+    [SerializeField]
+    protected float _uiTextOutlineColorValue = 0.5f;
+
+    public Text GetUIText()
+    {
+        return _uiText;
+    }
+
+    public string GetUITextString()
+    {
+        return _uiTextString;
+    }
+
+    public Color GetUTextColor()
+    {
+        return _uiTextColor;
+    }
+
+    public Outline GetUITextOutline()
+    {
+        return _uiTextOutline;
+    }
+
+    public Vector2 GetUITextOutlineDistance()
+    {
+        return _uiTextOutlineDistance;
+    }
+
+    public float GetUITextOutlineAlpha()
+    {
+        return _uiTextOutlineAlpha;
+    }
+
+    public float GetUITextOutlineColorValue()
+    {
+        return _uiTextOutlineColorValue;
+    }
+
+    public void SetTextString(string _input)
+    {
+        if(_uiText == null)
+        {
+            return;
+        }
+
+        _uiTextString = _input;
+
+        _uiText.text = _uiTextString;
+    }
+
+    public void SetUITextColor(Color _input)
+    {
+        _uiTextColor = _input;
+    }
+
+    public void SetUITextOutlineDistance(Vector2 _input)
+    {
+        _uiTextOutlineDistance = _input;
+    }
+
+    public void SetUITextOutlineDistance(float _inputX, float _inputY)
+    {
+        SetUITextOutlineDistance(new Vector2(_inputX, _inputY));
+    }
+
+    public void SetUITextOutlineAlpha(float _input)
+    {
+        _uiTextOutlineAlpha = _input;
+    }
+
+    public void SetUITextOutlineColorValue(float _input)
+    {
+        _uiTextOutlineColorValue = _input;
+    }
+
+    public void SetTextProperties(string _input, bool _appendBoolean = false)
+    {
+        if(_uiText == null)
+        {
+            return;
+        }
+
+        if(_input != "")
+        {
+            if (_appendBoolean)
+            {
+                _uiTextString = _uiTextString + _input;
+            }
+            else
+            {
+                _uiTextString = _input;
+            }
+        }
+
+        _uiText.text = _uiTextString;
+
+        _uiText.color = _uiTextColor;
+
+        if(_uiTextOutline == null)
+        {
+            return;
+        }
+
+        _uiTextOutline.effectDistance = _uiTextOutlineDistance;
+
+        Color _outlineColor = ToolsStruct.ChangeColorValue(_uiTextColor, _uiTextOutlineColorValue, _uiTextOutlineAlpha, true);
+
+        _uiTextOutline.effectColor = _outlineColor;
+    }
+
+    public void AppendText(string _input)
+    {
+        if(_uiText == null)
+        {
+            return;
+        }
+
+        _uiTextString = _uiTextString + _input;
+
+        _uiText.text = _uiTextString;
+    }
+}
+
+[System.Serializable]
+public class ShrinkAndExpandAnimationClass : BasicAnimationClass
+{
+    [SerializeField]
+    GameObject _gameObject;
+
+    [SerializeField]
+    Vector3 _maxSize = Vector3.one;
+
+    [SerializeField]
+    float _maxSizeConstant = 1.0f;
+
+    [SerializeField]
+    IncreasOrDecreaseEnum _increaseOrDecrease;
+
+    public GameObject GetGameObject()
+    {
+        return _gameObject;
+    }
+
+    public Vector3 GetMaxSize() { return _maxSize; }
+
+    public float GetMaxSizeConstant() { return _maxSizeConstant; }
+
+    public IncreasOrDecreaseEnum GetIncreaseOrDecrease()
+    {
+        return _increaseOrDecrease;
+    }
+
+    public override IEnumerator Animate()
+    {
+        if(_gameObject == null)
+        {
+            _animateBoolean = false;
+
+            yield break;
+        }
+
+        _animateBoolean = true;
+
+        _increaseOrDecrease = IncreasOrDecreaseEnum.Increase;
+
+        Vector3 _finalSize = _maxSize * _maxSizeConstant;
+
+        _gameObject.SetActive(true);
+
+        while(_t < 1.0f)
+        {
+            if(_pauseAnimation)
+            {
+                yield return null;
+
+                continue;
+            }
+
+            _delta = _animationSpeed;
+
+            if(_withDeltaTime)
+            {
+                _delta = _delta * Time.deltaTime;
+            }
+
+            _t = _t + _delta;
+
+            if(_t >= 1.0f)
+            {
+                _t = 1.0f;
+            }
+
+            _gameObject.transform.localScale = (_finalSize * _t);
+
+            yield return null;
+        }
+
+        _increaseOrDecrease = IncreasOrDecreaseEnum.None;
+
+        _animateBoolean = false;
+    }
+
+    public IEnumerator ReverseAnimate()
+    {
+        if (_gameObject == null)
+        {
+            _animateBoolean = false;
+
+            yield break;
+        }
+
+        _animateBoolean = true;
+
+        _increaseOrDecrease = IncreasOrDecreaseEnum.Decrease;
+
+        Vector3 _finalSize = _maxSize * _maxSizeConstant;
+
+        while (_t > 0.0f)
+        {
+            if (_pauseAnimation)
+            {
+                yield return null;
+
+                continue;
+            }
+
+            _delta = _animationSpeed;
+
+            if (_withDeltaTime)
+            {
+                _delta = _delta * Time.deltaTime;
+            }
+
+            _t = _t - _delta;
+
+            if (_t <= 0.0f)
+            {
+                _t = 0.0f;
+            }
+
+            _gameObject.transform.localScale = (_finalSize * _t);
+
+            yield return null;
+        }
+
+        _gameObject.SetActive(false);
+
+        _increaseOrDecrease = IncreasOrDecreaseEnum.None;
+
+        _animateBoolean = false;
     }
 }

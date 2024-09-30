@@ -26,7 +26,7 @@ public class UIIndicatorCanvasScript : MonoBehaviour
     Sprite _arrowSprite;
 
     [SerializeField]
-    float _onscreenThreshold = 100.0f;
+    float _onscreenDistanceThreshold = 100.0f;
 
     [SerializeField]
     Text _meterText;
@@ -175,7 +175,7 @@ public class UIIndicatorCanvasScript : MonoBehaviour
         {
             float _d = Vector3.Distance(_camera.transform.position, _targetObject.transform.position);
 
-            if (_d >= _onscreenThreshold)
+            if (_d >= _onscreenDistanceThreshold)
             {
                 _arrow.SetActive(true);
 
@@ -197,7 +197,7 @@ public class UIIndicatorCanvasScript : MonoBehaviour
 
                 if(_meterText != null)
                 {
-                    int _dText = (int)_d - (int)_onscreenThreshold;
+                    int _dText = (int)_d - (int)_onscreenDistanceThreshold;
 
                     _meterText.text = _dText.ToString() + "m";
                 }
