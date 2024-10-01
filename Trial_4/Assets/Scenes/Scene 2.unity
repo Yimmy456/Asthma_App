@@ -1932,7 +1932,6 @@ MonoBehaviour:
     _uiTextOutlineDistance: {x: 1, y: -1}
     _uiTextOutlineAlpha: 0.5
     _uiTextOutlineColorValue: 0.5
-    _text: That's a match! Keep going!
     _textTimeToDisplay: 15
   _noMatchP:
     _uiText: {fileID: 167036495}
@@ -1943,7 +1942,6 @@ MonoBehaviour:
     _uiTextOutlineDistance: {x: 1, y: -1}
     _uiTextOutlineAlpha: 0.5
     _uiTextOutlineColorValue: 0.5
-    _text: Too Bad! That's not a match. But now you know what cards they are.
     _textTimeToDisplay: 5
   _infoP:
     _uiText: {fileID: 167036495}
@@ -1953,7 +1951,6 @@ MonoBehaviour:
     _uiTextOutlineDistance: {x: 1, y: -1}
     _uiTextOutlineAlpha: 0.5
     _uiTextOutlineColorValue: 0.5
-    _text: Great! You found an info card!
     _textTimeToDisplay: 10
   _cardLocalScale: 75
   _audioSource: {fileID: 350464053}
@@ -16142,7 +16139,7 @@ MonoBehaviour:
   _resolutionText: {fileID: 0}
   _cursorSprite: {fileID: 21300000, guid: 60cd767bb2f79c4448c73549ac339e44, type: 3}
   _arrowSprite: {fileID: 21300000, guid: 22f7eb8e991ec534bb6411484e5a7eeb, type: 3}
-  _onscreenThreshold: 10
+  _onscreenDistanceThreshold: 100
   _meterText: {fileID: 227547016}
   _onscreenOffset: {x: 0, y: 0}
   _indicatorColor: {r: 0, g: 1, b: 0, a: 1}
@@ -25165,7 +25162,7 @@ MonoBehaviour:
   _resolutionText: {fileID: 0}
   _cursorSprite: {fileID: 21300000, guid: 60cd767bb2f79c4448c73549ac339e44, type: 3}
   _arrowSprite: {fileID: 21300000, guid: 22f7eb8e991ec534bb6411484e5a7eeb, type: 3}
-  _onscreenThreshold: 10
+  _onscreenDistanceThreshold: 100
   _meterText: {fileID: 2063574805}
   _onscreenOffset: {x: 0, y: 0}
   _indicatorColor: {r: 0, g: 1, b: 0, a: 1}
@@ -33634,6 +33631,27 @@ MonoBehaviour:
   _front: {fileID: 0}
   _frontDistance: 5
   _landingTerrain: {fileID: 905754353}
+  _shinkAndExpandAnimationForLandingTerrain:
+    _animationSpeed: 1
+    _withDeltaTime: 1
+    _discardDifference: 1
+    _gameObject: {fileID: 0}
+    _maxSize: {x: 1, y: 1, z: 1}
+    _maxSizeConstant: 1
+    _increaseOrDecrease: 0
+  _pointingArrowGameObject: {fileID: 0}
+  _arrowAnimationClass:
+    _animationSpeed: 1
+    _withDeltaTime: 1
+    _discardDifference: 1
+    _arrowContainer: {fileID: 0}
+    _arrowObject: {fileID: 0}
+    _pointA: {x: 0, y: 0, z: 0}
+    _pointB: {x: 0, y: 0, z: 0}
+    _spaceType: 1
+    _number3DObject: {fileID: 0}
+    _pointC: {x: 0, y: 0, z: 0}
+    _updateAnimationSpeed: 5
 --- !u!4 &1228395063
 Transform:
   m_ObjectHideFlags: 0

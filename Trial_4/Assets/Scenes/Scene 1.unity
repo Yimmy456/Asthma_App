@@ -31555,6 +31555,18 @@ MonoBehaviour:
     _maxSizeConstant: 1
     _increaseOrDecrease: 0
   _pointingArrowGameObject: {fileID: 0}
+  _arrowAnimationClass:
+    _animationSpeed: 300
+    _withDeltaTime: 1
+    _discardDifference: 1
+    _arrowContainer: {fileID: 883735929}
+    _arrowObject: {fileID: 1886646825654217674}
+    _pointA: {x: 0, y: 0, z: 0}
+    _pointB: {x: 0, y: -450, z: 0}
+    _spaceType: 1
+    _number3DObject: {fileID: 0}
+    _pointC: {x: 0, y: -500, z: 0}
+    _updateAnimationSpeed: 20
 --- !u!4 &1228395063
 Transform:
   m_ObjectHideFlags: 0
@@ -52878,7 +52890,7 @@ Transform:
   m_GameObject: {fileID: 1886646825654217674}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3000, y: 3000, z: 3000}
+  m_LocalScale: {x: 2000, y: 2000, z: 2000}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 883735930}

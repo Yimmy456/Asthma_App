@@ -1837,22 +1837,22 @@ public class HighlightingAnimationClass : BasicAnimationClass
 public class ArrowAnimationClass : BasicAnimationClass
 {
     [SerializeField]
-    GameObject _arrowContainer;
+    protected GameObject _arrowContainer;
 
     [SerializeField]
-    GameObject _arrowObject;
+    protected GameObject _arrowObject;
 
     [SerializeField]
-    Vector3 _pointA;
+    protected Vector3 _pointA;
 
     [SerializeField]
-    Vector3 _pointB;
+    protected Vector3 _pointB;
 
     [SerializeField]
-    Space _spaceType;
+    protected Space _spaceType;
 
     [SerializeField]
-    GameObject _number3DObject;
+    protected GameObject _number3DObject;
 
 
     //Getters
@@ -2473,6 +2473,255 @@ public class ShrinkAndExpandAnimationClass : BasicAnimationClass
         _gameObject.SetActive(false);
 
         _increaseOrDecrease = IncreasOrDecreaseEnum.None;
+
+        _animateBoolean = false;
+    }
+}
+
+[System.Serializable]
+public class ArrowAnimationClass2: ArrowAnimationClass
+{
+    [SerializeField]
+    Vector3 _pointC;
+
+    [SerializeField]
+    float _updateAnimationSpeed = 5.0f;
+
+    int _stage = 0;
+
+    public Vector3 GetPointC()
+    { return _pointC; }
+
+    public float GetUpdateAnimationSpeed()
+    {
+        return _updateAnimationSpeed;
+    }
+
+    public int GetStage()
+    {
+        return _stage;
+    }
+
+    public void EndAnimation()
+    {
+        if(!_animateBoolean || _stage == 1 || _stage == 2)
+        {
+            _stage = 3;
+        }
+    }
+
+    public void AbortAnimation()
+    {
+        _stage = 0;
+
+        _arrowObject.SetActive(false);
+
+        if(_spaceType == Space.World)
+        {
+            _arrowObject.transform.position = _pointA;
+        }
+        else
+        {
+            _arrowObject.transform.localPosition = _pointA;
+        }
+
+        _t = 0.0f;
+
+        _switch = false;
+
+        _pauseAnimation = false;
+
+        _animateBoolean = false;
+    }
+
+    public override IEnumerator Animate()
+    {
+        if(_arrowObject == null)
+        {
+            _animateBoolean = false;
+
+            yield break;
+        }
+
+        _stage = 1;
+
+        _animateBoolean = true;
+
+        _delta = _animationSpeed;
+
+        _t = 0.0f;
+
+        Vector3 _lerp = _pointA;
+
+        _arrowObject.SetActive(true);
+
+        if(_withDeltaTime)
+        {
+            _delta = _delta * Time.deltaTime;
+        }
+
+        float _distance = Vector3.Distance(_pointA, _pointC);
+
+        if(_discardDifference && _distance > 0.0f)
+        {
+            _delta = _delta / _distance;
+        }
+
+        while(_stage == 1)
+        {
+            if(_pauseAnimation)
+            {
+                yield return null;
+
+                continue;
+            }
+
+            _t = _t + _delta;
+
+            if(_t >= 1.0f)
+            {
+                _t = 1.0f;
+
+                _stage = 2;
+            }
+
+            _lerp = Vector3.Lerp(_pointA, _pointC, _t);
+
+            if(_spaceType == Space.World)
+            {
+                _arrowObject.transform.position = _lerp;
+            }
+            else
+            {
+                _arrowObject.transform.localPosition = _lerp;
+            }
+
+            yield return null;
+        }
+
+        Vector3 _currentPos = _pointC;
+
+        Vector3 _nextPos = _pointB;
+
+        _t = 0.0f;
+
+        _delta = _updateAnimationSpeed;
+
+        if(_withDeltaTime)
+        {
+            _delta = _delta * Time.deltaTime;
+        }
+
+        _distance = Vector3.Distance(_pointB, _pointC);
+
+        if(_discardDifference && _distance > 0.0f)
+        {
+            _delta = _delta / _distance;
+        }
+
+        _switch = false;
+
+        while(_stage == 2)
+        {
+            if(_pauseAnimation)
+            {
+                yield return null;
+
+                continue;
+            }
+
+            _t = _t + _delta;
+
+            if(_t >= 1.0f)
+            {
+                _t = 1.0f;
+
+                _switch = true;
+            }
+
+            _lerp = Vector3.Lerp(_currentPos, _nextPos, _t);
+
+            if(_spaceType == Space.World)
+            {
+                _arrowObject.transform.position = _lerp;
+            }
+            else
+            {
+                _arrowObject.transform.localPosition = _lerp;
+            }
+
+            if(_switch)
+            {
+                Vector3 _v3 = _nextPos;
+
+                _nextPos = _currentPos;
+
+                _currentPos = _v3;
+
+                _switch = false;
+
+                _t = 0.0f;
+            }
+
+            yield return null;
+        }
+
+        _distance = Vector3.Distance(_pointA, _pointC);
+
+        if(_spaceType == Space.World && _distance > 0.0f)
+        {
+            _t = Vector3.Distance(_arrowObject.transform.position, _pointC) / _distance;
+        }
+        else if(_distance > 0.0f)
+        {
+            _t = Vector3.Distance(_arrowObject.transform.localPosition, _pointC) / _distance;
+        }
+
+        _delta = _animationSpeed;
+
+        if(_withDeltaTime)
+        {
+            _delta = _delta * Time.deltaTime;
+        }
+
+        if(_discardDifference && _distance > 0.0f)
+        {
+            _delta = _delta / _distance;
+        }
+
+        while(_stage == 3)
+        {
+            if (_pauseAnimation)
+            {
+                yield return null;
+
+                continue;
+            }
+
+            _t = _t + _delta;
+
+            if (_t >= 1.0f)
+            {
+                _t = 1.0f;
+
+                _stage = 0;
+            }
+
+            _lerp = Vector3.Lerp(_pointC, _pointA, _t);
+
+            if (_spaceType == Space.World)
+            {
+                _arrowObject.transform.position = _lerp;
+            }
+            else
+            {
+                _arrowObject.transform.localPosition = _lerp;
+            }
+
+            yield return null;
+        }
+
+        _arrowObject.SetActive(false);
 
         _animateBoolean = false;
     }

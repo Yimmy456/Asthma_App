@@ -79,6 +79,9 @@ public class PlaceIndicatorScript : MonoBehaviour
     [SerializeField]
     GameObject _pointingArrowGameObject;
 
+    [SerializeField]
+    ArrowAnimationClass2 _arrowAnimationClass;
+
     float _planeDistance = -1.0f;
 
     bool _lookForTerrainBool = false;
@@ -178,8 +181,10 @@ public class PlaceIndicatorScript : MonoBehaviour
             if(_landingTerrain != null && _shinkAndExpandAnimationForLandingTerrain.GetT() < 1.0f && _shinkAndExpandAnimationForLandingTerrain.GetIncreaseOrDecrease() != IncreasOrDecreaseEnum.Increase)
             {
                 //_landingTerrain.SetActive(true);
-                StartCoroutine(_shinkAndExpandAnimationForLandingTerrain.Animate());
+                StartCoroutine(_shinkAndExpandAnimationForLandingTerrain.Animate());                
             }
+
+            StartCoroutine(_arrowAnimationClass.Animate());
 
             SetSceneSize();
 
@@ -222,6 +227,8 @@ public class PlaceIndicatorScript : MonoBehaviour
             {
                 _inhaler.SetActive(false);
             }
+
+            _arrowAnimationClass.EndAnimation();
 
             //_m.SetColor("_Color", Color.red);
 
