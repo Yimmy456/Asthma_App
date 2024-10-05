@@ -318,7 +318,7 @@ MonoBehaviour:
     _sprite: {fileID: 0}
     _wordType: 0
   - _informationName: Air Pollution
-    _informationDesc: Large black smoke that is emitted from work stations, which
+    _informationDesc: Large black smoke that is emitted from workstations, which
       makes it difficult for people to breathe.
     _informationExamples: []
     _informationLearned: 0
@@ -1425,7 +1425,7 @@ MonoBehaviour:
   - _questionID: 8a72ba5b-358b-4536-8b03-c31f6f2bc01c
     _questionText: Which of the following can help with relieving and exhaling?
     _answers:
-    - Releiver
+    - Reliever
     - Exhaler
     - Hybrid
     - Inhaler

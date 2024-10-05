@@ -2725,4 +2725,94 @@ public class ArrowAnimationClass2: ArrowAnimationClass
 
         _animateBoolean = false;
     }
+
+    [System.Serializable]
+    public class DoctorSalemDialoguesClass
+    {
+        [SerializeField]
+        AudioSource _doctorSalemAudioSource;
+
+        [SerializeField]
+        AudioClip _doctorSalemDefaultAudioClip;
+
+        [SerializeField]
+        List<AudioClip> _doctorSalemAudioClips;
+
+        [SerializeField]
+        Animator _doctorAnimator;
+
+        bool _isTalking = false;
+
+        AudioClip _selectedClip = null;
+
+        Coroutine _talkingCoroutine;
+
+        public AudioSource GetDoctorSalemAudioSource()
+        {
+            return _doctorSalemAudioSource;
+        }
+
+        public AudioClip GetDoctorSalemDefaultAudioClip()
+        {
+            return _doctorSalemDefaultAudioClip;
+        }
+
+        public List<AudioClip> GetDoctorSalemAudioClips()
+        {
+            return _doctorSalemAudioClips;
+        }
+
+        public bool GetIsTalking()
+        {
+            return _isTalking;
+        }
+
+        public void StartTalkingFunction(int _input = -1)
+        {
+            if(_talkingCoroutine != null)
+            {
+                //MonoBehaviour.StopCoroutine(_talkingCoroutine);
+            }
+
+            //MonoBehaviour.StartCoroutine(StartTalkingCoroutine(_input));
+        }
+
+        IEnumerator StartTalkingCoroutine(int _audioIndexInput = -1)
+        {
+            if(_doctorSalemAudioSource == null || _doctorAnimator == null)
+            {
+                yield break;
+            }
+
+            if (_audioIndexInput == -1)
+            {
+                _selectedClip = _doctorSalemDefaultAudioClip;
+            }
+            else if (!(_audioIndexInput >= 0 && _audioIndexInput < _doctorSalemAudioClips.Count))
+            {
+                yield break;
+            }
+            else
+            {
+                _selectedClip = _doctorSalemAudioClips[_audioIndexInput];
+            }
+
+            if(_selectedClip == null)
+            {
+                yield break;
+            }
+
+            _doctorAnimator.SetBool("Talking", true);
+
+            float _seconds = _selectedClip.length;
+
+            _isTalking = true;
+
+            yield return new WaitForSeconds(_seconds);
+
+            _doctorAnimator.SetBool("Talking", false);
+
+            _isTalking = false;
+        }
+    }
 }

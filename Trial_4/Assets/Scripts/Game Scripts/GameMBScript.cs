@@ -27,6 +27,12 @@ public class GameMBScript : MonoBehaviour
     [SerializeField]
     protected AudioClip _incorrectAudioClip;
 
+    [SerializeField]
+    protected AudioSource _drSalemAudioSource;
+
+    [SerializeField]
+    protected AudioClip _drSalemDefaultAudioClip;
+
     protected MeterClass _completionMeter;
 
     protected bool _currentGameInSession;
@@ -81,6 +87,16 @@ public class GameMBScript : MonoBehaviour
     public AudioClip GetIncorrectAudioClip()
     {
         return _incorrectAudioClip;
+    }
+
+    public AudioSource GetDrSalemAudioSource()
+    {
+        return _drSalemAudioSource;
+    }
+
+    public AudioClip GetDoctorSalemDefaultAudioClip()
+    {
+        return _drSalemDefaultAudioClip;
     }
 
     /*public virtual void StartGameFunction()

@@ -55,6 +55,9 @@ public class MatchingGameHoleScript : MonoBehaviour
     [SerializeField]
     protected float _talkingSeconds = 5.0f;
 
+    [SerializeField]
+    protected AudioClip _drSalemClip;
+
     protected float _currentSizeValue;
 
     protected bool _objectPlaced = false;
@@ -155,6 +158,9 @@ public class MatchingGameHoleScript : MonoBehaviour
     {
         return _localPositionAfterPlacement;
     }
+
+    public AudioClip GetDrSalemClip()
+    { return _drSalemClip; }
 
     public void SetCamera(Camera _input)
     {

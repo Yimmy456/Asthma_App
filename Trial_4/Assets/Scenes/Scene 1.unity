@@ -6887,8 +6887,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 344282881}
-  - component: {fileID: 344282880}
-  - component: {fileID: 344282879}
   - component: {fileID: 344282882}
   m_Layer: 0
   m_Name: Object Rotation
@@ -6897,56 +6895,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!23 &344282879
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 344282877}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &344282880
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 344282877}
-  m_Mesh: {fileID: 0}
 --- !u!4 &344282881
 Transform:
   m_ObjectHideFlags: 0
@@ -38271,6 +38219,7 @@ MonoBehaviour:
       _localScaleConstant: 500
       _outlineThickness: 1
       _talkingSeconds: 5
+      _audioClip: {fileID: 0}
     - _listItemGameObject: {fileID: 134907928583110029, guid: 9cda32f608d9a1748811798032632f27, type: 3}
       _listItemName: Preventer Inhaler
       _listItemDescription: 
@@ -38278,6 +38227,7 @@ MonoBehaviour:
       _localScaleConstant: 500
       _outlineThickness: 1
       _talkingSeconds: 5
+      _audioClip: {fileID: 0}
     - _listItemGameObject: {fileID: 2169771285789508442, guid: 88de728b7d43f4747800db0c967bca33, type: 3}
       _listItemName: Hybrid Inhaler
       _listItemDescription: 
@@ -38285,6 +38235,7 @@ MonoBehaviour:
       _localScaleConstant: 500
       _outlineThickness: 1
       _talkingSeconds: 5
+      _audioClip: {fileID: 0}
     - _listItemGameObject: {fileID: 8907650479044642488, guid: 0436b66cd5d38544a9af82cb0be2fa8a, type: 3}
       _listItemName: Medicine
       _listItemDescription: 
@@ -38292,6 +38243,7 @@ MonoBehaviour:
       _localScaleConstant: 500
       _outlineThickness: 1
       _talkingSeconds: 5
+      _audioClip: {fileID: 0}
     - _listItemGameObject: {fileID: 124029742880193190, guid: 454d18a21a2477e49bca97b83ec8176c, type: 3}
       _listItemName: Spacer
       _listItemDescription: 
@@ -38299,6 +38251,7 @@ MonoBehaviour:
       _localScaleConstant: 500
       _outlineThickness: 1
       _talkingSeconds: 5
+      _audioClip: {fileID: 0}
     - _listItemGameObject: {fileID: 7795114222376234084, guid: dd596e05b8b1d57498cc79d52d969db1, type: 3}
       _listItemName: Whole Inhaler
       _listItemDescription: 
@@ -38306,6 +38259,7 @@ MonoBehaviour:
       _localScaleConstant: 500
       _outlineThickness: 1
       _talkingSeconds: 5
+      _audioClip: {fileID: 0}
     _groupCompletionMeter:
       _textGradient:
         serializedVersion: 2
@@ -50545,7 +50499,8 @@ MonoBehaviour:
   _objectTitleText: {fileID: 852745502}
   _objectDescriptionText: {fileID: 845060678}
   _rocketContainerGO: {fileID: 551265654}
-  _doctorAnimator: {fileID: 0}
+  _doctorAnimator: {fileID: 149968733}
+  _audioSource: {fileID: 806979363}
 --- !u!114 &2076186288
 MonoBehaviour:
   m_ObjectHideFlags: 0

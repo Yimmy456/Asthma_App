@@ -46,6 +46,9 @@ public class ExhibitionObjectScript : MonoBehaviour
     [SerializeField]
     Mesh _colliderMesh;
 
+    [SerializeField]
+    AudioClip _exhibitionObjectAudioClip;
+
     Quaternion _initalRotation;
 
     bool _highlighted = false;
@@ -154,6 +157,11 @@ public class ExhibitionObjectScript : MonoBehaviour
         return _exhibitionRaycastOn;
     }
 
+    public AudioClip GetObjectAudioClip()
+    {
+        return _exhibitionObjectAudioClip;
+    }
+
     //Setters
 
     public void SetObjectName(string _input)
@@ -239,6 +247,16 @@ public class ExhibitionObjectScript : MonoBehaviour
     public void SetExhibitionRaycastOn(bool _input)
     {
         _exhibitionRaycastOn = _input;
+    }
+
+    public void SetObjectAudioClip(AudioClip _input)
+    {
+        if(_input == null)
+        {
+            return;
+        }
+
+        _exhibitionObjectAudioClip = _input;
     }
 
     void PrepareExhibition()

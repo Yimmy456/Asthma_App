@@ -114,17 +114,20 @@ public class LetterHoleScript : MatchingGameHoleScript
 
         bool _matchingBool = CheckMatch();
 
-        if(_matchingBool)
+        if (_matchingBool)
         {
             ConfirmMatch();
         }
-        else if(_audioSource != null && _holeCanvas.GetIncorrectAudioClip() != null)
+        else
         {
-            _audioSource.clip = _holeCanvas.GetIncorrectAudioClip();
-            
-            _audioSource.Play();
-            
-            Debug.Log("We are playing the audio for the incorrect reponse for hole " + @"""" + gameObject.name + @"""" + ".");            
+            if (_audioSource != null && _holeCanvas.GetIncorrectAudioClip() != null)
+            {
+                _audioSource.clip = _holeCanvas.GetIncorrectAudioClip();
+
+                _audioSource.Play();
+
+                Debug.Log("We are playing the audio for the incorrect reponse for hole " + @"""" + gameObject.name + @"""" + ".");
+            }
         }
 
         ResetValues();

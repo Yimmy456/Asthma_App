@@ -41,6 +41,9 @@ public class ExhibitionCanvasScript : MonoBehaviour
     [SerializeField]
     Animator _doctorAnimator;
 
+    [SerializeField]
+    AudioSource _audioSource;
+
     bool _timerStarts;
 
     float _timeElapsed = 0.0f;
@@ -243,7 +246,14 @@ public class ExhibitionCanvasScript : MonoBehaviour
 
         string _fullTitle = _index.ToString() + ". " + _name;
 
-        _talkingCoroutine = StartCoroutine(TalkingCoroutine(_time, _fullTitle, _description));
+        if (_audioSource != null && _currentObject.GetObjectAudioClip() != null)
+        {
+            _talkingCoroutine = StartCoroutine(TalkingCoroutine2(_currentObject.GetObjectAudioClip(), _fullTitle, _description));
+        }
+        else
+        {
+            _talkingCoroutine = StartCoroutine(TalkingCoroutine(_time, _fullTitle, _description));
+        }
 
         Color _color = _currentObject.GetObjectColor();
 
@@ -282,6 +292,53 @@ public class ExhibitionCanvasScript : MonoBehaviour
 
         _currentlyTalkedAboutObject = null;
     }
+
+    IEnumerator TalkingCoroutine2(AudioClip _clipInput, string _titleInput, string _descriptionInput)
+    {
+        if(_audioSource.isPlaying)
+        {
+            _audioSource.Stop();
+        }
+
+        float _seconds = _clipInput.length;
+
+        _audioSource.clip = _clipInput;
+
+        _objectTitleText.text = _titleInput;
+
+        _objectDescriptionText.text = _descriptionInput;
+
+        _currentlyTalkedAboutObject = _currentObject;
+
+        _timerStarts = true;
+
+        if (_doctorAnimator != null)
+        {
+            _doctorAnimator.SetBool("Talking", true);
+        }
+
+        _audioSource.Play();
+
+        yield return new WaitForSeconds(_seconds);
+
+        if (_doctorAnimator != null)
+        {
+            _doctorAnimator.SetBool("Talking", false);
+        }
+
+        _timerStarts = false;
+
+        _timeElapsed = 0.0f;
+
+        _objectDescriptionText.text = "";
+
+        _objectTitleText.text = "";
+
+        _currentlyTalkedAboutObject = null;
+
+        _audioSource.clip = null;
+    }
+
 
     void ColorTitle(Color _input)
     {

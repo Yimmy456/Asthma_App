@@ -185,6 +185,8 @@ public class ExhibitionScript : MonoBehaviour
 
             _currentExh.SetCamera(_camera);
 
+            _currentExh.SetObjectAudioClip(_currentListItem.GetAudioClip());
+
             if (_collider != null)
             {
                 _currentExh.SetObjectCollider(_collider);
@@ -386,6 +388,9 @@ public class ExhibitionListItemClass
     [SerializeField]
     float _talkingSeconds = 5.0f;
 
+    [SerializeField]
+    AudioClip _audioClip;
+
     public GameObject GetListItemGameObject()
     {
         return _listItemGameObject;
@@ -419,5 +424,10 @@ public class ExhibitionListItemClass
     public float GetTalkingSeconds()
     {
         return _talkingSeconds;
+    }
+
+    public AudioClip GetAudioClip()
+    {
+        return _audioClip;
     }
 }
