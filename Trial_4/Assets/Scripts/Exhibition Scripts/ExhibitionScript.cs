@@ -31,6 +31,12 @@ public class ExhibitionScript : MonoBehaviour
     [SerializeField]
     float _exhibitionUniformScale = 1.0f;
 
+    [SerializeField]
+    DoctorSalemDialoguesClass _doctorDialogue;
+
+    [SerializeField]
+    AudioClip _welcomingClip;
+
     //[SerializeField]
     ExhibitionGroupClass _currentGroup;
 
@@ -39,6 +45,8 @@ public class ExhibitionScript : MonoBehaviour
     List<ExhibitionObjectScript> _exhibitions = new List<ExhibitionObjectScript>();
 
     List<GameObject> _exhibitionsGO = new List<GameObject>();
+
+    Coroutine _doctorSalemTalkingCoroutine;
 
     // Start is called before the first frame update
     void Start()
@@ -77,6 +85,11 @@ public class ExhibitionScript : MonoBehaviour
     public float GetExhibitionUniformScale()
     {
         return _exhibitionUniformScale;
+    }
+
+    public DoctorSalemDialoguesClass GetDoctorDialogue()
+    {
+        return _doctorDialogue;
     }
 
     public void StartExhibition(int _input)
@@ -223,6 +236,16 @@ public class ExhibitionScript : MonoBehaviour
         _exhibitionOn = true;
 
         _currentGroup.SetExhibitionInPlay(true);
+
+        if(DataPersistenceManager.GetInstance() != null)
+        {
+            if(!DataPersistenceManager.GetInstance().GetExhibitionIntroduced())
+            {
+                PlayDialogue(_welcomingClip);
+
+                DataPersistenceManager.GetInstance().SetExhibitionIntroduced(true);
+            }
+        }
     }
 
     public void EndExhibition()
@@ -304,6 +327,23 @@ public class ExhibitionScript : MonoBehaviour
         {
             _exhO.SetExhibitionRaycastOn(_input);
         }
+    }
+
+    public void PlayDialogue(AudioClip _clipInput)
+    {
+        if(_doctorSalemTalkingCoroutine != null)
+        {
+            StopCoroutine(_doctorSalemTalkingCoroutine);
+        }
+
+        if(_doctorDialogue.GetTalkingCoroutine() != null)
+        {
+            StopCoroutine(_doctorDialogue.GetTalkingCoroutine());
+        }
+
+        _doctorSalemTalkingCoroutine = StartCoroutine(_doctorDialogue.TalkCoroutine(_clipInput, false));
+
+        _doctorDialogue.SetTalkingCoroutine(_doctorSalemTalkingCoroutine);
     }
 }
 

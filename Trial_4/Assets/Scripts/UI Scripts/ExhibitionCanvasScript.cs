@@ -39,10 +39,7 @@ public class ExhibitionCanvasScript : MonoBehaviour
     GameObject _rocketContainerGO;
 
     [SerializeField]
-    Animator _doctorAnimator;
-
-    [SerializeField]
-    AudioSource _audioSource;
+    DoctorSalemDialoguesClass _doctorSalemDialogues;
 
     bool _timerStarts;
 
@@ -246,20 +243,24 @@ public class ExhibitionCanvasScript : MonoBehaviour
 
         string _fullTitle = _index.ToString() + ". " + _name;
 
-        if (_audioSource != null && _currentObject.GetObjectAudioClip() != null)
+        /*if (_audioSource != null && _currentObject.GetObjectAudioClip() != null)
         {
             _talkingCoroutine = StartCoroutine(TalkingCoroutine2(_currentObject.GetObjectAudioClip(), _fullTitle, _description));
         }
         else
         {
             _talkingCoroutine = StartCoroutine(TalkingCoroutine(_time, _fullTitle, _description));
-        }
+        }*/
 
         Color _color = _currentObject.GetObjectColor();
 
         ColorTitle(_color);
+
+        _exhibition.PlayDialogue(_currentObject.GetObjectAudioClip());
     }
 
+
+    /*
     IEnumerator TalkingCoroutine(float _timeInput, string _titleInput, string _descriptionInput)
     {
         _objectTitleText.text = _titleInput;
@@ -293,6 +294,9 @@ public class ExhibitionCanvasScript : MonoBehaviour
         _currentlyTalkedAboutObject = null;
     }
 
+
+    */
+    /*
     IEnumerator TalkingCoroutine2(AudioClip _clipInput, string _titleInput, string _descriptionInput)
     {
         if(_audioSource.isPlaying)
@@ -338,7 +342,7 @@ public class ExhibitionCanvasScript : MonoBehaviour
 
         _audioSource.clip = null;
     }
-
+    */
 
     void ColorTitle(Color _input)
     {

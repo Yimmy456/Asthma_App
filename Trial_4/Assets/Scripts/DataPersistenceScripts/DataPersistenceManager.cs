@@ -24,6 +24,8 @@ public class DataPersistenceManager : MonoBehaviour
 
     bool _doctorGreets = false;
 
+    bool _exhibitionIntroduced = false;
+
     static DataPersistenceManager _instance;
 
     bool _fileFound = true;
@@ -144,6 +146,11 @@ public class DataPersistenceManager : MonoBehaviour
         return _doctorGreets;
     }
 
+    public bool GetExhibitionIntroduced()
+    {
+        return _exhibitionIntroduced;
+    }
+
     string GetFilePath()
     {
         string _path = Application.persistentDataPath;
@@ -159,5 +166,10 @@ public class DataPersistenceManager : MonoBehaviour
     public void SetDoctorGreets(bool _input)
     {
         _doctorGreets = _input;
+    }
+
+    public void SetExhibitionIntroduced(bool _input)
+    {
+        _exhibitionIntroduced = _input;
     }
 }

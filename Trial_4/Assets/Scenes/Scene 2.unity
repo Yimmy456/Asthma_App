@@ -1864,6 +1864,8 @@ MonoBehaviour:
   _placeIndicator: {fileID: 1228395062}
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
+  _drSalemAudioSource: {fileID: 0}
+  _drSalemDefaultAudioClip: {fileID: 0}
   _gameProperties:
     _meter:
       _textGradient:
@@ -1911,8 +1913,6 @@ MonoBehaviour:
     _responseText: {fileID: 167036495}
     _newBadgeCanvas: {fileID: 1330827181}
     _informationCanvas: {fileID: 834040356}
-    _drSalemAudioSource: {fileID: 0}
-    _drSalemDefaultAudioClip: {fileID: 0}
     _badge:
       _badgeName: 
       _badgeDescription: 
@@ -4637,6 +4637,8 @@ MonoBehaviour:
   _placeIndicator: {fileID: 0}
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
+  _drSalemAudioSource: {fileID: 0}
+  _drSalemDefaultAudioClip: {fileID: 0}
   _gameProperties:
     _meter:
       _textGradient:
@@ -4684,8 +4686,6 @@ MonoBehaviour:
     _responseText: {fileID: 167036495}
     _newBadgeCanvas: {fileID: 1330827181}
     _informationCanvas: {fileID: 834040356}
-    _drSalemAudioSource: {fileID: 0}
-    _drSalemDefaultAudioClip: {fileID: 0}
     _badge:
       _badgeName: 
       _badgeDescription: 
@@ -6144,6 +6144,8 @@ MonoBehaviour:
   _placeIndicator: {fileID: 1228395062}
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
+  _drSalemAudioSource: {fileID: 0}
+  _drSalemDefaultAudioClip: {fileID: 0}
   _gameProperties:
     _meter:
       _textGradient:
@@ -6191,8 +6193,6 @@ MonoBehaviour:
     _responseText: {fileID: 0}
     _newBadgeCanvas: {fileID: 1330827181}
     _informationCanvas: {fileID: 0}
-    _drSalemAudioSource: {fileID: 0}
-    _drSalemDefaultAudioClip: {fileID: 0}
     _badge:
       _badgeName: 
       _badgeDescription: 
@@ -24582,6 +24582,8 @@ MonoBehaviour:
   _placeIndicator: {fileID: 1228395062}
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
+  _drSalemAudioSource: {fileID: 0}
+  _drSalemDefaultAudioClip: {fileID: 0}
   _gameProperties:
     _meter:
       _textGradient:
@@ -24629,8 +24631,6 @@ MonoBehaviour:
     _responseText: {fileID: 1125309073}
     _newBadgeCanvas: {fileID: 1330827181}
     _informationCanvas: {fileID: 0}
-    _drSalemAudioSource: {fileID: 0}
-    _drSalemDefaultAudioClip: {fileID: 0}
     _badge:
       _badgeName: 
       _badgeDescription: 
@@ -38472,8 +38472,10 @@ MonoBehaviour:
   _objectTitleText: {fileID: 437027873}
   _objectDescriptionText: {fileID: 1071654182}
   _rocketContainerGO: {fileID: 551265654}
-  _doctorAnimator: {fileID: 919132149601814142}
-  _audioSource: {fileID: 1045844157}
+  _doctorSalemDialogues:
+    _doctorAnimator: {fileID: 0}
+    _doctorAudioSource: {fileID: 0}
+    _doctorDefaultAudioClip: {fileID: 0}
 --- !u!1 &1397361682
 GameObject:
   m_ObjectHideFlags: 0
@@ -41097,7 +41099,7 @@ MonoBehaviour:
       _localScaleConstant: 500
       _outlineThickness: 1
       _talkingSeconds: 5
-      _audioClip: {fileID: 0}
+      _audioClip: {fileID: 8300000, guid: 99a215270e99a95478e3a6ceb00d8a38, type: 3}
     - _listItemGameObject: {fileID: 134907928583110029, guid: 9cda32f608d9a1748811798032632f27, type: 3}
       _listItemName: Preventer Inhaler
       _listItemDescription: 
@@ -41195,6 +41197,11 @@ MonoBehaviour:
       _variable1: 1
       _variable2: 1
   _exhibitionUniformScale: 1
+  _doctorDialogue:
+    _doctorAnimator: {fileID: 919132149601814142}
+    _doctorAudioSource: {fileID: 1045844157}
+    _doctorDefaultAudioClip: {fileID: 0}
+  _welcomingClip: {fileID: 0}
 --- !u!1 &1572279624
 GameObject:
   m_ObjectHideFlags: 0
@@ -46009,6 +46016,8 @@ MonoBehaviour:
   _placeIndicator: {fileID: 1228395062}
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
+  _drSalemAudioSource: {fileID: 0}
+  _drSalemDefaultAudioClip: {fileID: 0}
   _gameProperties:
     _meter:
       _textGradient:
@@ -46056,8 +46065,6 @@ MonoBehaviour:
     _responseText: {fileID: 0}
     _newBadgeCanvas: {fileID: 1330827181}
     _informationCanvas: {fileID: 834040356}
-    _drSalemAudioSource: {fileID: 1045844157}
-    _drSalemDefaultAudioClip: {fileID: 8300000, guid: 3141cbc5ca9a7974f817b12450fcf836, type: 3}
     _badge:
       _badgeName: 
       _badgeDescription: 
@@ -56189,9 +56196,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 919132149601814142}
+  _doctorAudioSource: {fileID: 1757740976}
+  _welcomingClip: {fileID: 8300000, guid: d8d253ad8caa6f24895bdb473aef875b, type: 3}
   _talkAtStart: 1
   _secondsToTalkAtStart: 10
-  _doctorAudioSource: {fileID: 1757740976}
 --- !u!4 &972334789260026595
 Transform:
   m_ObjectHideFlags: 0

@@ -2725,94 +2725,100 @@ public class ArrowAnimationClass2: ArrowAnimationClass
 
         _animateBoolean = false;
     }
+}
 
-    [System.Serializable]
-    public class DoctorSalemDialoguesClass
+[System.Serializable]
+public class DoctorSalemDialoguesClass
+{
+    [SerializeField]
+    protected Animator _doctorAnimator;
+
+    [SerializeField]
+    protected AudioSource _doctorAudioSource;
+
+    [SerializeField]
+    protected AudioClip _doctorDefaultAudioClip;
+
+    protected static bool _isDoctorTalking = false;
+
+    protected Coroutine _talkingCoroutine;
+
+    public Animator GetDoctorAnimator()
     {
-        [SerializeField]
-        AudioSource _doctorSalemAudioSource;
+        return _doctorAnimator;
+    }
 
-        [SerializeField]
-        AudioClip _doctorSalemDefaultAudioClip;
+    public AudioSource GetDoctorAudioSource()
+    {
+        return _doctorAudioSource;
+    }
 
-        [SerializeField]
-        List<AudioClip> _doctorSalemAudioClips;
+    public AudioClip GetAudioClip()
+    {
+        return _doctorDefaultAudioClip;
+    }
 
-        [SerializeField]
-        Animator _doctorAnimator;
+    public static bool GetIsDoctorTalking()
+    {
+        return _isDoctorTalking;
+    }
 
-        bool _isTalking = false;
+    public Coroutine GetTalkingCoroutine()
+    {
+        return _talkingCoroutine;
+    }
 
-        AudioClip _selectedClip = null;
+    public void SetDoctorAnimator(Animator _input)
+    {
+        _doctorAnimator = _input;
+    }
 
-        Coroutine _talkingCoroutine;
+    public void SetDoctorAudioSource(AudioSource _input)
+    {
+        _doctorAudioSource = _input;
+    }
 
-        public AudioSource GetDoctorSalemAudioSource()
+    public void SetDoctorDefaultAudioClip(AudioClip _input)
+    {
+        _doctorDefaultAudioClip = _input;
+    }
+
+    public static void SetIsDoctorTalking(bool _input)
+    {
+        _isDoctorTalking = _input;
+    }
+
+    public void SetTalkingCoroutine(Coroutine _input)
+    {
+        _talkingCoroutine = _input;
+    }
+
+    public IEnumerator TalkCoroutine(AudioClip _clipInput = null, bool _setDefaultValueInput = true)
+    {
+        if(_clipInput == null && _setDefaultValueInput)
         {
-            return _doctorSalemAudioSource;
+            _clipInput = _doctorDefaultAudioClip;
         }
 
-        public AudioClip GetDoctorSalemDefaultAudioClip()
+        if(_doctorAudioSource == null || _clipInput == null || _doctorAnimator == null)
         {
-            return _doctorSalemDefaultAudioClip;
+            yield break;
         }
 
-        public List<AudioClip> GetDoctorSalemAudioClips()
-        {
-            return _doctorSalemAudioClips;
-        }
+        _doctorAudioSource.clip = _clipInput;
 
-        public bool GetIsTalking()
-        {
-            return _isTalking;
-        }
+        _isDoctorTalking = true;
 
-        public void StartTalkingFunction(int _input = -1)
-        {
-            if(_talkingCoroutine != null)
-            {
-                //MonoBehaviour.StopCoroutine(_talkingCoroutine);
-            }
+        float _seconds = _clipInput.length;
 
-            //MonoBehaviour.StartCoroutine(StartTalkingCoroutine(_input));
-        }
+        _doctorAnimator.SetBool("Talking", true);
 
-        IEnumerator StartTalkingCoroutine(int _audioIndexInput = -1)
-        {
-            if(_doctorSalemAudioSource == null || _doctorAnimator == null)
-            {
-                yield break;
-            }
+        _doctorAudioSource.Play();
 
-            if (_audioIndexInput == -1)
-            {
-                _selectedClip = _doctorSalemDefaultAudioClip;
-            }
-            else if (!(_audioIndexInput >= 0 && _audioIndexInput < _doctorSalemAudioClips.Count))
-            {
-                yield break;
-            }
-            else
-            {
-                _selectedClip = _doctorSalemAudioClips[_audioIndexInput];
-            }
+        yield return new WaitForSeconds(_seconds);
 
-            if(_selectedClip == null)
-            {
-                yield break;
-            }
+        _isDoctorTalking = false;
 
-            _doctorAnimator.SetBool("Talking", true);
-
-            float _seconds = _selectedClip.length;
-
-            _isTalking = true;
-
-            yield return new WaitForSeconds(_seconds);
-
-            _doctorAnimator.SetBool("Talking", false);
-
-            _isTalking = false;
-        }
+        _doctorAnimator.SetBool("Talking", false);
     }
 }

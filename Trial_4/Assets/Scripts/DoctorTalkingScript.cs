@@ -11,6 +11,11 @@ public class DoctorTalkingScript : MonoBehaviour
 
     const string _talkingString = "Talking";
 
+    [SerializeField]
+    AudioSource _doctorAudioSource;
+
+    AudioClip _currentClip;
+
     [Header("Variables for the start.")]
     [SerializeField]
     bool _talkAtStart = true;
@@ -19,9 +24,7 @@ public class DoctorTalkingScript : MonoBehaviour
     float _secondsToTalkAtStart = 10.0f;
 
     [SerializeField]
-    AudioSource _doctorAudioSource;
-
-    AudioClip _currentClip;
+    AudioClip _welcomingClip;
 
     bool _isTalking = false;
 
@@ -32,7 +35,7 @@ public class DoctorTalkingScript : MonoBehaviour
         {
             if (_talkAtStart && _animator != null && !DataPersistenceManager.GetInstance().GetDoctorGreets())
             {
-                StartTalking(_secondsToTalkAtStart);
+                StartTalking();
 
                 DataPersistenceManager.GetInstance().SetDoctorGreets(true);
             }
@@ -43,6 +46,36 @@ public class DoctorTalkingScript : MonoBehaviour
     void Update()
     {
         
+    }
+
+    IEnumerator WelcomingTalk()
+    {
+        if(_doctorAudioSource == null || _welcomingClip == null)
+        {
+            yield break;
+        }
+
+        yield return new WaitForSeconds(0.2f);
+
+        float _seconds = _welcomingClip.length;
+
+        _isTalking = true;
+
+        Debug.Log("Talking begins now...");
+
+        _doctorAudioSource.clip = _welcomingClip;
+
+        _currentClip = _welcomingClip;
+
+        _doctorAudioSource.Play();
+
+        yield return new WaitForSeconds(_seconds);
+
+        _isTalking = false;
+
+        Debug.Log("Talking ends now.");
+
+        AbortTalking();
     }
 
     IEnumerator Talk(float _secondsInput)
@@ -74,6 +107,22 @@ public class DoctorTalkingScript : MonoBehaviour
         _isTalking = true;
 
         _coroutine = StartCoroutine(Talk(_secondsInput));
+    }
+
+    public void StartTalking()
+    {
+        StopTalking();
+
+        if (_animator == null)
+        {
+            return;
+        }
+
+        _animator.SetBool(_talkingString, true);
+
+        _isTalking = true;
+
+        _coroutine = StartCoroutine(WelcomingTalk());
     }
 
     public Coroutine GetCoroutine()
