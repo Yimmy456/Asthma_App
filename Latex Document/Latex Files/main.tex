@@ -7,7 +7,10 @@
 \usepackage[sorting=none]{biblatex}
 \usepackage{xpatch}
 \usepackage{glossaries}
+\usepackage{fontspec}
+\usepackage[hidelinks]{hyperref}
 \setlength\bibitemsep{20pt} 
+
 
 \addbibresource{References.bib}
 
@@ -60,9 +63,9 @@
     
     \item{String: A text or sequence of characters, such as: “Hello World, 12381 42!”.}
     
-    \item{Vector2: A collection/array of two float variables. The first one is named ‘x’, and the second one is named ‘y’.}
+    \item{\fontspec{CamingoCode}Vector2\normalfont: A collection/array of two float variables. The first one is named ‘x’, and the second one is named ‘y’.}
     
-    \item{Vector3: A collection/array of three float variables. In addition to the two variables in Vector2, the third one is named ‘z’.}
+    \item{\fontspec{CamingoCode}Vector3\normalfont: A collection/array of three float variables. In addition to the two variables in \fontspec{CamingoCode}Vector2\normalfont, the third one is named ‘z’.}
  \end{itemize}
 \section{Acronyms}
 

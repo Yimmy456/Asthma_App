@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.3.22)  7 OCT 2024 22:34
+This is XeTeX, Version 3.141592653-2.6-0.999994 (MiKTeX 22.3) (preloaded format=xelatex 2024.10.8)  8 OCT 2024 12:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -11,14 +11,14 @@ Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
 (C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/base\size12.clo
 File: size12.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
 )
-\c@part=\count185
-\c@section=\count186
-\c@subsection=\count187
-\c@subsubsection=\count188
-\c@paragraph=\count189
-\c@subparagraph=\count190
-\c@figure=\count191
-\c@table=\count192
+\c@part=\count181
+\c@section=\count182
+\c@subsection=\count183
+\c@subsubsection=\count184
+\c@paragraph=\count185
+\c@subparagraph=\count186
+\c@figure=\count187
+\c@table=\count188
 \abovecaptionskip=\skip47
 \belowcaptionskip=\skip48
 \bibindent=\dimen138
@@ -38,11 +38,11 @@ Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
 .cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 107.
+Package graphics Info: Driver file: xetex.def on input line 107.
 
-(C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.d
-ef
-File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+(C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\xetex.de
+f
+File: xetex.def 2021/03/18 v5.0k Graphics/color driver for xetex
 ))
 \Gin@req@height=\dimen139
 \Gin@req@width=\dimen140
@@ -53,24 +53,24 @@ Package: blindtext 2012/01/06 V2.0 blindtext-Package
  (C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/tools\xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 )
-\c@blindtext=\count193
-\c@Blindtext=\count194
-\c@blind@countparstart=\count195
-\blind@countxx=\count196
-\blindtext@numBlindtext=\count197
-\blind@countyy=\count198
-\c@blindlist=\count199
-\c@blindlistlevel=\count266
-\c@blindlist@level=\count267
-\blind@listitem=\count268
-\c@blind@listcount=\count269
-\c@blind@levelcount=\count270
-\blind@mathformula=\count271
-\blind@Mathformula=\count272
-\c@blind@randomcount=\count273
-\c@blind@randommax=\count274
-\c@blind@pangramcount=\count275
-\c@blind@pangrammax=\count276
+\c@blindtext=\count189
+\c@Blindtext=\count190
+\c@blind@countparstart=\count191
+\blind@countxx=\count192
+\blindtext@numBlindtext=\count193
+\blind@countyy=\count194
+\c@blindlist=\count195
+\c@blindlistlevel=\count196
+\c@blindlist@level=\count197
+\blind@listitem=\count198
+\c@blind@listcount=\count199
+\c@blind@levelcount=\count266
+\blind@mathformula=\count267
+\blind@Mathformula=\count268
+\c@blind@randomcount=\count269
+\c@blind@randommax=\count270
+\c@blind@pangramcount=\count271
+\c@blind@pangrammax=\count272
 ) (C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/parskip\parskip.sty
 Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
 
@@ -87,7 +87,7 @@ Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
 ))
 (C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count277
+\etb@tempcnta=\count273
 ))
 (C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/hyphenat\hyphenat.sty
 Package: hyphenat 2009/09/02 v2.3c hyphenation utilities
@@ -102,9 +102,9 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 (C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
 Package: iftex 2022/02/03 v1.0f TeX engine tests
 ))
-\Gm@cnth=\count278
-\Gm@cntv=\count279
-\c@Gm@tempcnt=\count280
+\Gm@cnth=\count274
+\Gm@cntv=\count275
+\c@Gm@tempcnt=\count276
 \Gm@bindingoffset=\dimen141
 \Gm@wd@mp=\dimen142
 \Gm@odd@mp=\dimen143
@@ -131,11 +131,11 @@ Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
+Package pdftexcmds Info: \pdfdraftmode not found.
 )
 (C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/logreq\logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count281
+\lrq@indent=\count277
 
 (C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/logreq\logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
@@ -147,48 +147,48 @@ Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
 \Urlmuskip=\muskip16
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-\c@tabx@nest=\count282
-\c@listtotal=\count283
-\c@listcount=\count284
-\c@liststart=\count285
-\c@liststop=\count286
-\c@citecount=\count287
-\c@citetotal=\count288
-\c@multicitecount=\count289
-\c@multicitetotal=\count290
-\c@instcount=\count291
-\c@maxnames=\count292
-\c@minnames=\count293
-\c@maxitems=\count294
-\c@minitems=\count295
-\c@citecounter=\count296
-\c@maxcitecounter=\count297
-\c@savedcitecounter=\count298
-\c@uniquelist=\count299
-\c@uniquename=\count300
-\c@refsection=\count301
-\c@refsegment=\count302
-\c@maxextratitle=\count303
-\c@maxextratitleyear=\count304
-\c@maxextraname=\count305
-\c@maxextradate=\count306
-\c@maxextraalpha=\count307
-\c@abbrvpenalty=\count308
-\c@highnamepenalty=\count309
-\c@lownamepenalty=\count310
-\c@maxparens=\count311
-\c@parenlevel=\count312
-\blx@tempcnta=\count313
-\blx@tempcntb=\count314
-\blx@tempcntc=\count315
-\c@blx@maxsection=\count316
-\c@blx@maxsegment@0=\count317
-\blx@notetype=\count318
-\blx@parenlevel@text=\count319
-\blx@parenlevel@foot=\count320
-\c@blx@sectionciteorder@0=\count321
-\blx@entrysetcounter=\count322
-\blx@biblioinstance=\count323
+\c@tabx@nest=\count278
+\c@listtotal=\count279
+\c@listcount=\count280
+\c@liststart=\count281
+\c@liststop=\count282
+\c@citecount=\count283
+\c@citetotal=\count284
+\c@multicitecount=\count285
+\c@multicitetotal=\count286
+\c@instcount=\count287
+\c@maxnames=\count288
+\c@minnames=\count289
+\c@maxitems=\count290
+\c@minitems=\count291
+\c@citecounter=\count292
+\c@maxcitecounter=\count293
+\c@savedcitecounter=\count294
+\c@uniquelist=\count295
+\c@uniquename=\count296
+\c@refsection=\count297
+\c@refsegment=\count298
+\c@maxextratitle=\count299
+\c@maxextratitleyear=\count300
+\c@maxextraname=\count301
+\c@maxextradate=\count302
+\c@maxextraalpha=\count303
+\c@abbrvpenalty=\count304
+\c@highnamepenalty=\count305
+\c@lownamepenalty=\count306
+\c@maxparens=\count307
+\c@parenlevel=\count308
+\blx@tempcnta=\count309
+\blx@tempcntb=\count310
+\blx@tempcntc=\count311
+\c@blx@maxsection=\count312
+\c@blx@maxsegment@0=\count313
+\blx@notetype=\count314
+\blx@parenlevel@text=\count315
+\blx@parenlevel@foot=\count316
+\c@blx@sectionciteorder@0=\count317
+\blx@entrysetcounter=\count318
+\blx@biblioinstance=\count319
 \labelnumberwidth=\skip49
 \labelalphawidth=\skip50
 \biblabelsep=\skip51
@@ -200,9 +200,9 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 \blx@bcfin=\read2
 \blx@bcfout=\write3
 \blx@langwohyphens=\language80
-\c@mincomprange=\count324
-\c@maxcomprange=\count325
-\c@mincompwidth=\count326
+\c@mincomprange=\count320
+\c@maxcomprange=\count321
+\c@mincompwidth=\count322
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
 
@@ -211,74 +211,74 @@ File: blx-dm.def 2022/02/02 v3.17 biblatex localization (PK/MW)
 )
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count327
-\c@savedafterword=\count328
-\c@annotator=\count329
-\c@savedannotator=\count330
-\c@author=\count331
-\c@savedauthor=\count332
-\c@bookauthor=\count333
-\c@savedbookauthor=\count334
-\c@commentator=\count335
-\c@savedcommentator=\count336
-\c@editor=\count337
-\c@savededitor=\count338
-\c@editora=\count339
-\c@savededitora=\count340
-\c@editorb=\count341
-\c@savededitorb=\count342
-\c@editorc=\count343
-\c@savededitorc=\count344
-\c@foreword=\count345
-\c@savedforeword=\count346
-\c@holder=\count347
-\c@savedholder=\count348
-\c@introduction=\count349
-\c@savedintroduction=\count350
-\c@namea=\count351
-\c@savednamea=\count352
-\c@nameb=\count353
-\c@savednameb=\count354
-\c@namec=\count355
-\c@savednamec=\count356
-\c@translator=\count357
-\c@savedtranslator=\count358
-\c@shortauthor=\count359
-\c@savedshortauthor=\count360
-\c@shorteditor=\count361
-\c@savedshorteditor=\count362
-\c@labelname=\count363
-\c@savedlabelname=\count364
-\c@institution=\count365
-\c@savedinstitution=\count366
-\c@lista=\count367
-\c@savedlista=\count368
-\c@listb=\count369
-\c@savedlistb=\count370
-\c@listc=\count371
-\c@savedlistc=\count372
-\c@listd=\count373
-\c@savedlistd=\count374
-\c@liste=\count375
-\c@savedliste=\count376
-\c@listf=\count377
-\c@savedlistf=\count378
-\c@location=\count379
-\c@savedlocation=\count380
-\c@organization=\count381
-\c@savedorganization=\count382
-\c@origlocation=\count383
-\c@savedoriglocation=\count384
-\c@origpublisher=\count385
-\c@savedorigpublisher=\count386
-\c@publisher=\count387
-\c@savedpublisher=\count388
-\c@language=\count389
-\c@savedlanguage=\count390
-\c@origlanguage=\count391
-\c@savedoriglanguage=\count392
-\c@pageref=\count393
-\c@savedpageref=\count394
+\c@afterword=\count323
+\c@savedafterword=\count324
+\c@annotator=\count325
+\c@savedannotator=\count326
+\c@author=\count327
+\c@savedauthor=\count328
+\c@bookauthor=\count329
+\c@savedbookauthor=\count330
+\c@commentator=\count331
+\c@savedcommentator=\count332
+\c@editor=\count333
+\c@savededitor=\count334
+\c@editora=\count335
+\c@savededitora=\count336
+\c@editorb=\count337
+\c@savededitorb=\count338
+\c@editorc=\count339
+\c@savededitorc=\count340
+\c@foreword=\count341
+\c@savedforeword=\count342
+\c@holder=\count343
+\c@savedholder=\count344
+\c@introduction=\count345
+\c@savedintroduction=\count346
+\c@namea=\count347
+\c@savednamea=\count348
+\c@nameb=\count349
+\c@savednameb=\count350
+\c@namec=\count351
+\c@savednamec=\count352
+\c@translator=\count353
+\c@savedtranslator=\count354
+\c@shortauthor=\count355
+\c@savedshortauthor=\count356
+\c@shorteditor=\count357
+\c@savedshorteditor=\count358
+\c@labelname=\count359
+\c@savedlabelname=\count360
+\c@institution=\count361
+\c@savedinstitution=\count362
+\c@lista=\count363
+\c@savedlista=\count364
+\c@listb=\count365
+\c@savedlistb=\count366
+\c@listc=\count367
+\c@savedlistc=\count368
+\c@listd=\count369
+\c@savedlistd=\count370
+\c@liste=\count371
+\c@savedliste=\count372
+\c@listf=\count373
+\c@savedlistf=\count374
+\c@location=\count375
+\c@savedlocation=\count376
+\c@organization=\count377
+\c@savedorganization=\count378
+\c@origlocation=\count379
+\c@savedoriglocation=\count380
+\c@origpublisher=\count381
+\c@savedorigpublisher=\count382
+\c@publisher=\count383
+\c@savedpublisher=\count384
+\c@language=\count385
+\c@savedlanguage=\count386
+\c@origlanguage=\count387
+\c@savedoriglanguage=\count388
+\c@pageref=\count389
+\c@savedpageref=\count390
 \shorthandwidth=\skip57
 \shortjournalwidth=\skip58
 \shortserieswidth=\skip59
@@ -293,6 +293,11 @@ Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
 \localshorttitlewidth=\skip68
 \localshortauthorwidth=\skip69
 \localshorteditorwidth=\skip70
+Package biblatex Info: Trying to load enhanced support for Unicode engines...
+Package biblatex Info: ... file 'blx-unicode.def' found.
+
+(C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\blx-unicode.
+def)
 Package biblatex Info: Trying to load compatibility code...
 Package biblatex Info: ... file 'blx-compat.def' found.
 
@@ -305,19 +310,19 @@ Package biblatex Info: ... file 'biblatex.def' found.
 
 (C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.def
 File: biblatex.def 2022/02/02 v3.17 biblatex compatibility (PK/MW)
-\c@textcitecount=\count395
-\c@textcitetotal=\count396
-\c@textcitemaxnames=\count397
-\c@biburlbigbreakpenalty=\count398
-\c@biburlbreakpenalty=\count399
-\c@biburlnumpenalty=\count400
-\c@biburlucpenalty=\count401
-\c@biburllcpenalty=\count402
+\c@textcitecount=\count391
+\c@textcitetotal=\count392
+\c@textcitemaxnames=\count393
+\c@biburlbigbreakpenalty=\count394
+\c@biburlbreakpenalty=\count395
+\c@biburlnumpenalty=\count396
+\c@biburlucpenalty=\count397
+\c@biburllcpenalty=\count398
 \biburlbigskip=\muskip17
 \biburlnumskip=\muskip18
 \biburlucskip=\muskip19
 \biburllcskip=\muskip20
-\c@smartand=\count403
+\c@smartand=\count399
 )
 Package biblatex Info: Trying to load bibliography style 'numeric'...
 Package biblatex Info: ... file 'numeric.bbx' found.
@@ -331,8 +336,8 @@ Package biblatex Info: ... file 'standard.bbx' found.
 (C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/biblatex/bbx\standard
 .bbx
 File: standard.bbx 2022/02/02 v3.17 biblatex bibliography style (PK/MW)
-\c@bbx:relatedcount=\count404
-\c@bbx:relatedtotal=\count405
+\c@bbx:relatedcount=\count400
+\c@bbx:relatedtotal=\count401
 ))
 Package biblatex Info: Trying to load citation style 'numeric'...
 Package biblatex Info: ... file 'numeric.cbx' found.
@@ -358,16 +363,24 @@ Package biblatex Info: ... file 'biblatex.cfg' found.
 (C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/biblatex\biblatex.cfg
 File: biblatex.cfg 
 )
-Package biblatex Info: Input encoding 'utf8' detected.
+Package biblatex Info: XeTeX detected.
+(biblatex)             Assuming input encoding 'utf8'.
 Package biblatex Info: Document encoding is UTF8 ....
  (C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
 Package: expl3 2022-02-24 L3 programming layer (loader) 
 
-(C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-p
-dftex.def
-File: l3backend-pdftex.def 2022-02-07 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count406
+(C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-x
+etex.def
+File: l3backend-xetex.def 2022-02-07 L3 backend support: XeTeX
+ ()
+\c__kernel_sys_dvipdfmx_version_int=\count402
+\l__color_backend_stack_int=\count403
+\g__color_backend_stack_int=\count404
+\g__graphics_track_int=\count405
 \l__pdf_internal_box=\box50
+\g__pdf_backend_object_int=\count406
+\g__pdf_backend_annotation_int=\count407
+\g__pdf_backend_link_int=\count408
 ))
 Package biblatex Info: ... and expl3
 (biblatex)             2022-02-24 L3 programming layer (loader) 
@@ -399,7 +412,7 @@ x
 \XKV@toks=\toks18
 \XKV@tempa@toks=\toks19
 )
-\XKV@depth=\count407
+\XKV@depth=\count409
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
 (C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/mfirstuc\mfirstuc.sty
@@ -436,13 +449,13 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 (C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
 Package: amsopn 2021/08/26 v2.02 operator names
 )
-\inf@bad=\count408
+\inf@bad=\count410
 LaTeX Info: Redefining \frac on input line 234.
-\uproot@=\count409
-\leftroot@=\count410
+\uproot@=\count411
+\leftroot@=\count412
 LaTeX Info: Redefining \overline on input line 399.
-\classnum@=\count411
-\DOTSCASE@=\count412
+\classnum@=\count413
+\DOTSCASE@=\count414
 LaTeX Info: Redefining \ldots on input line 496.
 LaTeX Info: Redefining \dots on input line 499.
 LaTeX Info: Redefining \cdots on input line 620.
@@ -451,15 +464,15 @@ LaTeX Info: Redefining \cdots on input line 620.
 \big@size=\dimen151
 LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
-\macc@depth=\count413
-\c@MaxMatrixCols=\count414
+\macc@depth=\count415
+\c@MaxMatrixCols=\count416
 \dotsspace@=\muskip21
-\c@parentequation=\count415
-\dspbrk@lvl=\count416
+\c@parentequation=\count417
+\dspbrk@lvl=\count418
 \tag@help=\toks23
-\row@=\count417
-\column@=\count418
-\maxfields@=\count419
+\row@=\count419
+\column@=\count420
+\maxfields@=\count421
 \andhelp@=\toks24
 \eqnshift@=\dimen152
 \alignsep@=\dimen153
@@ -476,7 +489,7 @@ LaTeX Info: Redefining \] on input line 2939.
 )
 (C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/substr\substr.sty
 Package: substr 2009/10/20 v1.2 Handle substrings
-\c@su@anzahl=\count420
+\c@su@anzahl=\count422
 )
 (C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/datatool\datatool-fp.
 sty
@@ -487,19 +500,19 @@ Package: fp 1995/04/02
 `Fixed Point Package', Version 0.8, April 2, 1995 (C) Michael Mehlich
 (C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/fp\defpattern.sty
 Package: defpattern 1994/10/12
-\actioncount=\count421
+\actioncount=\count423
 )
 (C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/fp\fp-basic.sty
 Package: fp-basic 1996/05/13
-\FP@xs=\count422
-\FP@xia=\count423
-\FP@xib=\count424
-\FP@xfa=\count425
-\FP@xfb=\count426
-\FP@rega=\count427
-\FP@regb=\count428
-\FP@regs=\count429
-\FP@times=\count430
+\FP@xs=\count424
+\FP@xia=\count425
+\FP@xib=\count426
+\FP@xfa=\count427
+\FP@xfb=\count428
+\FP@rega=\count429
+\FP@regb=\count430
+\FP@regs=\count431
+\FP@times=\count432
 )
 (C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/fp\fp-addons.sty
 Package: fp-addons 1995/03/15
@@ -518,7 +531,7 @@ Package: fp-pas 1994/08/29
 )
 (C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/fp\fp-random.sty
 Package: fp-random 1995/02/23
-\FPseed=\count431
+\FPseed=\count433
 )
 (C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/fp\fp-eqn.sty
 Package: fp-eqn 1995/04/03
@@ -530,20 +543,20 @@ Package: fp-upn 1996/10/21
 Package: fp-eval 1995/04/03
 )))
 \@dtl@toks=\toks27
-\@dtl@tmpcount=\count432
+\@dtl@tmpcount=\count434
 \dtl@tmplength=\skip74
-\dtl@sortresult=\count433
-\@dtl@numgrpsepcount=\count434
-\@dtl@datatype=\count435
-\dtl@codeA=\count436
-\dtl@codeB=\count437
-\@dtl@foreach@level=\count438
+\dtl@sortresult=\count435
+\@dtl@numgrpsepcount=\count436
+\@dtl@datatype=\count437
+\dtl@codeA=\count438
+\dtl@codeB=\count439
+\@dtl@foreach@level=\count440
 )
 (C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/glossaries/base\gloss
 aries-compatible-307.sty
 Package: glossaries-compatible-307 2021/11/01 v4.49 (NLCT)
 )
-\gls@level=\count439
+\gls@level=\count441
 \@gls@tmpb=\toks28
 \gls@tmplen=\skip75
 \glskeylisttok=\toks29
@@ -570,17 +583,17 @@ Package: longtable 2021-09-01 v4.17 Multi-page Table package (DPC)
 \LTright=\skip78
 \LTpre=\skip79
 \LTpost=\skip80
-\LTchunksize=\count440
+\LTchunksize=\count442
 \LTcapwidth=\dimen158
 \LT@head=\box53
 \LT@firsthead=\box54
 \LT@foot=\box55
 \LT@lastfoot=\box56
 \LT@gbox=\box57
-\LT@cols=\count441
-\LT@rows=\count442
-\c@LT@tables=\count443
-\c@LT@chunks=\count444
+\LT@cols=\count443
+\LT@rows=\count444
+\c@LT@tables=\count445
+\c@LT@chunks=\count446
 \LT@p@ftn=\toks33
 )
 \glsdescwidth=\skip81
@@ -593,7 +606,7 @@ Package: glossary-super 2021/11/01 v4.49 (NLCT)
 (C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/supertabular\supertab
 ular.sty
 Package: supertabular 2020/02/02 v4.1g the supertabular environment
-\c@tracingst=\count445
+\c@tracingst=\count447
 \ST@wd=\dimen159
 \ST@rightskip=\skip83
 \ST@leftskip=\skip84
@@ -614,55 +627,65 @@ ssary-tree.sty
 Package: glossary-tree 2021/11/01 v4.49 (NLCT)
 \glstreeindent=\skip86
 ))
-\@quotelevel=\count446
-\@quotereset=\count447
+(C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/fontspec\fontspec.sty
+Package: fontspec 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTeX
+
+(C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/fontspec\fontspec-xet
+ex.sty
+Package: fontspec-xetex 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTe
+X
+\l__fontspec_script_int=\count448
+\l__fontspec_language_int=\count449
+\l__fontspec_strnum_int=\count450
+\l__fontspec_tmp_int=\count451
+\l__fontspec_tmpa_int=\count452
+\l__fontspec_tmpb_int=\count453
+\l__fontspec_tmpc_int=\count454
+\l__fontspec_em_int=\count455
+\l__fontspec_emdef_int=\count456
+\l__fontspec_strong_int=\count457
+\l__fontspec_strongdef_int=\count458
+\l__fontspec_tmpa_dim=\dimen169
+\l__fontspec_tmpb_dim=\dimen170
+\l__fontspec_tmpc_dim=\dimen171
+
+(C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+)
+(C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/fontspec\fontspec.cfg
+)))
+\@quotelevel=\count459
+\@quotereset=\count460
  (main.aux (2. Methodology and Procedures.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 21.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 2
+1.
 
-(C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.
-mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count448
-\scratchdimen=\dimen169
-\scratchbox=\box59
-\nofMPsegments=\count449
-\nofMParguments=\count450
-\everyMPshowfont=\toks34
-\MPscratchCnt=\count451
-\MPscratchDim=\dimen170
-\MPnumerator=\count452
-\makeMPintoPDFobject=\count453
-\everyMPtoPDFconversion=\toks35
+(C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/base\ts1cmr.fd
+File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-(C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf
--base.sty
-Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-85.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
 
-(C:\Users\Manar 2\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys
-.cfg
-File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
-))
 *geometry* driver: auto-detecting
-*geometry* detected driver: pdftex
+*geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
-* driver: pdftex
+* driver: xetex
 * paper: a4paper
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
@@ -700,7 +723,8 @@ Package biblatex Info: ... file 'english.lbx' found.
 lbx
 File: english.lbx 2022/02/02 v3.17 biblatex localization (PK/MW)
 )
-Package biblatex Info: Input encoding 'utf8' detected.
+Package biblatex Info: XeTeX detected.
+(biblatex)             Assuming input encoding 'utf8'.
 Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'utf8'.
 \openout3 = `main.bcf'.
@@ -708,28 +732,111 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
  (main.bbl)
-Package biblatex Info: Reference section=0 on input line 19.
-Package biblatex Info: Reference segment=0 on input line 19.
+Package biblatex Info: Reference section=0 on input line 21.
+Package biblatex Info: Reference segment=0 on input line 21.
+
+Package fontspec Info: Adjusting the maths setup (use [no-math] to avoid
+(fontspec)             this).
+
+\symlegacymaths=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 21.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 21.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 21.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 21.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 21.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 21.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 21.
+LaTeX Font Info:    Redeclaring math accent \check on input line 21.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 21.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 21.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 21.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 21.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 21.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 21.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 21.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 21.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 21.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 21.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 21.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 21.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 21.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 21.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 21.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 21.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `normal' on input line 21.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 21.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `bold' on input line 21.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 21.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 21.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 21.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 21.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 21.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 21.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 21.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 21.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 21.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 21.
  [1
 
-{C:/Users/Manar 2/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
+]
 \openout2 = `"2. Methodology and Procedures.aux"'.
 
  (2. Methodology and Procedures.tex
-Overfull \hbox (5.0074pt too wide) in paragraph at lines 21--22
-[]\OT1/cmr/m/n/12 Encryption: The pro-cess of con-vert-ing a file in a read-abl
-e for-mat to an un-read-able
+
+LaTeX Warning: Citation 'EncryptionAndDecryption' on page 2 undefined on input 
+line 21.
+
+
+Overfull \hbox (5.66803pt too wide) in paragraph at lines 21--22
+[]\TU/lmr/m/n/12 Encryption: The process of converting a file in a readable for
+mat to an unreadable
  []
 
 [2
 
-] [3] [4] [5] [6]) [7] [8
+] [3] [4] [5] [6]
+
+Package fontspec Info: Font family 'CamingoCode(0)' created for font
+(fontspec)             'CamingoCode' with options [].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"CamingoCode/OT:script=latn;language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"CamingoCode/B/OT:script=latn;language=dflt;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->"CamingoCode/I/OT:script=latn;language=dflt;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.: 
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->"CamingoCode/BI/OT:script=latn;language=dflt;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
+
+) [7] [8
 
 
 ]
-Overfull \hbox (9.49194pt too wide) in paragraph at lines 78--78
-\OT1/cmr/m/n/12 2024. Jan. 2023. \OT1/cmr/m/sc/12 url\OT1/cmr/m/n/12 : $\OT1/cm
-tt/m/n/12 https : / / careerfoundry . com / en / blog / web -[] development /
+Overfull \hbox (10.02034pt too wide) in paragraph at lines 80--80
+\TU/lmr/m/n/12 2024. Jan. 2023. \TU/lmr/m/sc/12 url\TU/lmr/m/n/12 : $[][][][][]
+ [] [] [] [][][][][][][][][][][][][] [] [][][] [] [][] [] [][][][] [] [][][] []
+[] [][][][][][][][][][][] []
  []
 
 [9] (main.aux (2. Methodology and Procedures.aux))
@@ -737,40 +844,21 @@ tt/m/n/12 https : / / careerfoundry . com / en / blog / web -[] development /
 LaTeX Warning: There were undefined references.
 
 
-Package biblatex Warning: Please rerun LaTeX.
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                main
+(biblatex)                and rerun LaTeX afterwards.
 
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 15059 strings out of 478582
- 282428 string characters out of 2843364
- 1034974 words of memory out of 3000000
- 33037 multiletter control sequences out of 15000+600000
- 477102 words of font info for 56 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 91i,8n,91p,1142b,1357s stack positions out of 10000i,1000n,20000p,200000b,80000s
- <C:\Users\Manar 2\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tc
-rm1200.pk><C:/Users/Manar 2/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
-sfonts/cm/cmbx12.pfb><C:/Users/Manar 2/AppData/Local/Programs/MiKTeX/fonts/type
-1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/Manar 2/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Manar 2/AppData/Local/Pro
-grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/Manar 2/AppDat
-a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Mana
-r 2/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/
-Users/Manar 2/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr1
-2.pfb><C:/Users/Manar 2/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
-ts/cm/cmr17.pfb><C:/Users/Manar 2/AppData/Local/Programs/MiKTeX/fonts/type1/pub
-lic/amsfonts/cm/cmr7.pfb><C:/Users/Manar 2/AppData/Local/Programs/MiKTeX/fonts/
-type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Manar 2/AppData/Local/Programs/MiKT
-eX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Manar 2/AppData/Local/Pr
-ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Manar 2/AppDat
-a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/Man
-ar 2/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on main.pdf (9 pages, 193560 bytes).
-PDF statistics:
- 107 PDF objects out of 1000 (max. 8388607)
- 0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 17074 strings out of 410967
+ 356053 string characters out of 2823347
+ 1185775 words of memory out of 3000000
+ 37590 multiletter control sequences out of 15000+600000
+ 474476 words of font info for 73 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 91i,8n,90p,1136b,4779s stack positions out of 10000i,1000n,20000p,200000b,80000s
 
+Output written on main.pdf (9 pages).

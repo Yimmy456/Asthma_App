@@ -28,15 +28,29 @@
       \field{title}{What is a Programming Library? A Beginner’s Guide}
       \field{year}{2023}
       \verb{urlraw}
-      \verb https://careerfoundry.com/en/blog/web-development/programming-library-guide/#what-is-a-programming-library
+      \verb https://careerfoundry.com/en/blog/web-development/programming-library-guide/\#what-is-a-programming-library
       \endverb
       \verb{url}
-      \verb https://careerfoundry.com/en/blog/web-development/programming-library-guide/#what-is-a-programming-library
+      \verb https://careerfoundry.com/en/blog/web-development/programming-library-guide/%5C#what-is-a-programming-library
+      \endverb
+    \endentry
+    \entry{EncryptionAndDecryption}{online}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed on: October 4, 2024}
+      \field{title}{Encryption and Decryption}
+      \field{year}{2010}
+      \verb{urlraw}
+      \verb https://docs.oracle.com/cd/E19047-01/sunscreen151/806-5397/i996724/index.html\#:~:text=Encryption\%20is\%20the\%20process\%20by,its\%20original\%20(readable)\%20format.
+      \endverb
+      \verb{url}
+      \verb https://docs.oracle.com/cd/E19047-01/sunscreen151/806-5397/i996724/index.html%5C#:~:text=Encryption%5C%20is%5C%20the%5C%20process%5C%20by,its%5C%20original%5C%20(readable)%5C%20format.
       \endverb
     \endentry
     \entry{Unity}{online}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labeltitlesource}{title}
       \field{title}{Unity}
       \verb{urlraw}
@@ -47,11 +61,11 @@
       \endverb
     \endentry
     \entry{ARCoreDevices}{online}{}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{title}
       \field{month}{1}
-      \field{note}{Accessed on: October 4, 2024}
+      \field{note}{Accessed on: October 6, 2024}
       \field{title}{ARCore supported devices}
       \field{year}{2023}
       \verb{urlraw}
@@ -62,8 +76,8 @@
       \endverb
     \endentry
     \entry{iTextSharp}{online}{}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labeltitlesource}{title}
       \field{title}{iTextSharp}
       \verb{urlraw}

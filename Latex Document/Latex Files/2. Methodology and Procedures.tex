@@ -18,9 +18,9 @@ There are several components and aspects in the field of programming that we nee
     
     \item{Script: A computer file that contains code written in a specific programming language. Some scripts contain only one class, while others can have as many classes as possible.}
     
-    \item{Encryption: The process of converting a file in a readable format to an unreadable format to prevent users from reading and tampering with the information.}
+    \item{Encryption: The process of converting a file in a readable format to an unreadable format to prevent users from reading and tampering with the information \cite{EncryptionAndDecryption}.}
     
-    \item{Decryption: The process of converting a file in an unreadable format back to its original (readable) format.}
+    \item{Decryption: The process of converting a file in an unreadable format back to its original (readable) format \cite{EncryptionAndDecryption}.}
     
     \item{Axis: A long, straight, and infinite line that represents a specific direction. In 3D graphics, there are three axes (each in their negative and positive directions, respectively):
 \begin{enumerate}
@@ -106,16 +106,16 @@ The Action Plan is a survey that prompts the user to ask questions about their s
 \end{enumerate}
 Eventually, only if all questions are answered, the user will be able to make a PDF form of the plan. Also, they are saved, and if the user accesses the action plan again, the input fields will be filled with the previous answers.
 
-\subsubsection{Enums}
+\subsubsection*{Enums}
 There were two types enum questions: 1. The color of the inhaler; and 2. The user’s gender. These are to ensure that the user do not provide various responses to questions that only need a specific answer. Visually, the answer of enum questions is presented in a dropdown menu. When the user taps on the menu, a dropdown box will appear below it, listing the possible choices based on the enum. The user can tap on a specific answer or accept the already selected answer.
 
-\subsubsection{Two Strings}
+\subsubsection*{Two Strings}
 There was only one question that needed two strings, which is the doctor’s contact methods: phone number and e-mail. The phone number must be a string because if it is an integer (or any numerical variable type), the leading zeroes in the sequence will be discarded since they would be treated as numbers. Besides, phone numbers do not provide any mathematical purpose. Visually, there are two input field, each prompting for a contact method. For the phone number, only numerical values can be added. So, in a smartphone, when the input field for the phone number is selected, the on-screen number-pad will appear, rather than the whole on-screen keyboard.
 
-\subsubsection{Date}
+\subsubsection*{Date}
 There are three questions that ask for the date: 1. The birthdate of the user; 2. The expiry date of the medication; and 3. The next appointment with the user’s doctor. There are three input fields: day, month, and year, and each one is an integer. The former two only accepts two digits, while the latter accepts four.
 
-\subsubsection{The Action Plan’s PDF Form}
+\subsubsection*{The Action Plan’s PDF Form}
 All the answers of the Action Plan can be presented in a PDF. This was done using the iTextSharp library \cite{iTextSharp}, which is compatible with C\# and Unity. There is a button called teal button called “Print PDF” in the action plan’s UI, which is responsible for creating the PDF file. When the file is created, the very first thing the is printed is the date and time of printing and the time zone of the device’s current location. Below it, a table is printed showing the personal information of the user, which are 1. Name, 2. Date of birth, 3. Age, and 4. Gender. The age is automatically calculated by the difference between the date of printing and the date of birth. The others are taken from the user’s input, from the app. After this, a list of all the questions and their answers (Other than the personal information) are printed across the document. As for the date and time formats:
 \begin{itemize}
     \item{All the dates in the PDF are in the following format: “MMMM dd, yyyy (dddd)”, for example “September 02, 2024 (Monday)”}
@@ -124,34 +124,31 @@ All the answers of the Action Plan can be presented in a PDF. This was done usin
 \end{itemize}
 
 \subsection{The Exhibition}
+
 The exhibition is a unique experience that users can try. It is similar to seeing exhibits in a museum, and if there is a specific object or display that they want to know more about, they press the corresponding number that is displayed next to the object on their small digital companion. The exhibits that we are showing in the exhibition are the types and components of inhalers, as well as a whole assembled inhaler.
 
-\subsubsection{Preparing the Exhibition}
- In order to make the exhibition visually compelling in a 3D space (Even in AR), some math skills are required. The exhibits are displayed by being spread across in a perfect circle. To make the circle, we need to get the direction of each exhibit and choose a magnitude.
-\paragraph{Getting the Direction}
-The first variable that we will need is the angle of the current exhibit, which is done by the following equation: $\theta_i = (\frac{i \ * \ 360}{n})$.\footnote{“$\theta$” is a Greek symbol, pronounced “Theta”. It is a variable used in geometry to represent angles.}  In the equation:
-\begin{itemize}
-    \item{“$i$” is the current index (Must be a whole number and greater than or equal to 0)}
-    
-    \item{“$\theta_i$” is the angle of the current index (The angle is in degrees). A full circle is 360 degrees}
-    
-    \item{“$n$” is the total number of exhibits, so we can divide the circle into “$n$” equal parts (Must be a whole number and greater than 0)}
-\end{itemize}
+\subsubsection*{Preparing the Exhibition}
+In order to make the exhibition visually compelling in a 3D space (Even in AR), some math skills are required. The exhibits are displayed by being spread across in a perfect circle. To make the circle, we need to get the direction of each exhibit and choose a magnitude. 
 
-Once we get the angle, we need to get its sine and cosine values to establish the direction in the z-axis and the x-axis, respectively:
+Programmatically, the whole process is done in a “\fontspec{CamingoCode}for\normalfont” loop. The loop has an integer variable, called “\fontspec{CamingoCode}\_i\normalfont”, which is the index of each iteration in the loop. Another integer that is involved in the loop is called “\fontspec{CamingoCode}\_n\normalfont”, which is the total number of exhibits. Initially, “\fontspec{CamingoCode}\_i\normalfont” is equal to zero, and with each next iteration, it increases by one until it equals to “\fontspec{CamingoCode}\_n\normalfont”. The following two subsections will describe how the exhibition is created, specifically what is happening in each iteration.
+
+\paragraph{Step 1: Getting the Direction}
+The first thing that we need to do is to instantiate (create a copy and put it in the scene) the current object. The rest of the work is done on that instantiated object. Secondly, we need to get the angle of the current exhibit, which is done by the following equation: “$\theta_i = (\frac{i \ * \ 360}{n})$”.\footnote{“$\theta$” is a Greek symbol, pronounced “Theta”. It is a variable used in geometry to represent angles.}  In the equation, “$\theta_i$” is the angle of the current index (The angle is in degrees). “$i$” and “$n$” correspond to their respective values that were described in the heading section. Once we get the angle, we need to calculate its sine and cosine values to establish the direction in the z-axis and the x-axis, respectively, and store the values in a \fontspec{CamingoCode}Vector3\normalfont \ variable:
 \begin{itemize}
     \item {$dir_{i, x} = cos(\theta_i * \frac{\pi}{180})$}
     \item {$dir_{i, z} = sin(\theta_i * \frac{\pi}{180})$}
  \end{itemize}
-In Unity, the standard unity for angles are radians. Thus, we need to convert the angle from degrees to radians before getting the sine and cosine values, by multiplying it with the fraction ($\frac{\pi}{180}$).\footnote{“$\pi$” is a Greek symbol, pronounced “Pi”. It is a constant value, which equals to 3.141592}  “$dir_{i, y}$” is equal to zero, since we do not want to spread the exhibits across the y-axis, regardless of the value of “$i$”. “$dir_i$” is a Vector3 variable.
+In Unity, the standard unity for angles are radians. Thus, we need to convert the angle from degrees to radians before getting the sine and cosine values, by multiplying it with the fraction ($\frac{\pi}{180}$).\footnote{“$\pi$” is a Greek symbol, pronounced “Pi”. It is a constant value, which equals to 3.141592}  “$dir_{i, y}$” is equal to zero, since we do not want to spread the exhibits across the y-axis, regardless of the value of “$i$”.
 
 
-\paragraph{Completing the Display}
-Lasty, we multiply the values of “$dir_{i, x}$” and “$dir_{i, z}$” with the radius to determine the position of the current exhibit (in meters, which is Unity’s default unit for length/distance measurement). Therefore, the final function is: “$pos_i = dir_i * r$”, where “$r$” is a positive float, which represents the magnitude (or radius) of the circle. It will tell how far the exhibits should be from the center. We repeat the process for all exhibits, and with each next iteration, “$i$” is increased by one until it equals the value of “$n$”. We set the radius to be 500. Like “$dir_i$”, “$pos_i$” is a Vector3 variable.
+\paragraph*{Step 2: Completing the Display}
+Lasty, we multiply the values of “$dir_i$” with the radius to determine the position of the current exhibit (in meters, which is Unity’s default unit for length/distance measurement). Therefore, the final function is: “$pos_i = dir_i \ * \ r$”, where “$r$”, where “$r$” is a positive float, and it represents the magnitude (or the radius of the circle). It will tell how far the exhibits should be from the center. We set the radius to be 500.
+\\ \\
+Before the iteration is complete, we add a C\# component to the exhibit, called “\fontspec{CamingoCode}ExhibitionObjectScript\normalfont”. This script will be further described in the section~“\nameref{ShowcasingExhibition}”.
 
-
-\subsubsection{Showcasing the Exhibition}
-In Unity, there is a technique called “Raycasting”, that is used to make the exhibition work. A raycast is a straight line that starts from one point and continues infinitely (by default) until it detects an object in the way.  It is, conceptually, similar to a laser beam. At the exhibition, the raycasting line/beam starts from the center of the user’s camera. There is a special UI for the exhibition, which has the following components:
+\subsubsection*{Showcasing the Exhibition}
+\label{ShowcasingExhibition}
+In Unity, there is a technique called “Raycasting”, that is used to make the exhibition work. A raycast is a straight line that starts from one point and continues infinitely (by default) until it detects an object in the way.\footnote{In Unity, you can set a limit for the raycast detection by a number, making it finite.}  It is, conceptually, similar to a laser beam. At the exhibition, the raycasting line/beam starts from the center of the user’s camera. There is a special UI for the exhibition, which has the following components:
 \begin{itemize}
     \item{A red circle, which is in the center of the screen, which is the same position as the starting point of the raycasting line}
     
@@ -160,4 +157,54 @@ In Unity, there is a technique called “Raycasting”, that is used to make the
     \item{A microphone button which appears only when an exhibit is hit by the line and disappears otherwise}
     
 \end{itemize}
-All exhibits have one script in common, called “ExhibitionObjectScript”. When the user places the center of his/her camera at an object, the raycasting line will detect if it contains the mentioned script. If so, the object will be highlighted in a specific color, the red circle will turn green, the name of the object will be displayed, and the microphone button will appear below. When the microphone button is pressed, Dr. Salem will discuss the highlighted object.
+All exhibits have one script in common, called “\fontspec{CamingoCode}ExhibitionObjectScript\normalfont”. When the user places the center of his/her camera at an object, the raycasting line will detect if it contains the mentioned script. If so, the object will be highlighted in a specific color, the red circle will turn green, the name of the object will be displayed, and the microphone button will appear below. When the microphone button is pressed, Dr. Salem will discuss the highlighted object.
+
+\subsection{Programming the Games}
+
+There are five mini-games established for the application:
+\begin{enumerate}
+\item{Matching the letters}
+\item{Card matching}
+\item{Multiple Choice Questions}
+\item{Matching the inhalers}
+\item{Assembling the inhaler components}
+\end{enumerate}
+
+From a programming’s perspective, there is a base-class for all the games that has variables which are applicable to all or most of the games, such as the progress percentage, the assigned badge for the game, or the spawning location of the game’s components. However, each game also has its own sub-class, which derives from the base-class mentioned. These sub-classes have variables that are only needed for its specific game. Also in the games, we always provide positive feedback since it is an educational application that is targeted to an audience between the ages of 6 and 13 years, even if they did something incorrectly. Positive feedback gives these demographics encouragement to keep trying to get the answers correctly and learn more about a specific subject.
+ 
+One special property that all the games have is a meter. It tells how the user progressed in the game so far. The meter has two factors: a counter and a percentage. The counter tells how many items are completed correctly out of the total of items. In the UI, the counter is displayed as “Completed / Total” ratio. The percentage is the mentioned ratio multiplied by 100. When something is done correctly in the game, the counter increments by one.
+
+\subsubsection*{Block Matching Games}
+The matching games are games where the user is given a certain number of blocks and holes, and the user needs to drag the blocks into their correct holes. There are two of them: One for the letters, and the other for the inhaler types and components. All the blocks have physicsbodies. For the letters, there are six blocks and holes, and each block and hole are in a specific letter. The letters are: ‘A’, ‘S’, ‘T’, ‘H’, ‘M’, and ‘A’, which spells “ASTHMA”. When a letter block is placed in the correct spot, the hole will be invisible, the game’s counter increments by one, Dr. Salem will talk about a word that starts with that letter, a particle effect of starts will appear once, and the blocks will no longer have a physicsbody. Also, the letter block will rotate indefinitely at 100 degrees per second in the y-axis. The user can drag any letter in no specific order. When the game is complete, Dr. Salem will say what asthma is, then reward the user with a badge. The badge is saved is saved in the “.json” file.
+
+The other matching game, which involves the inhalers and their components instead, works the same way. However, there was a visual problem: There are three types of inhalers, which are the reliever, the preventer, and the hybrid. While they are in different color, they have the same physical shape and size. Meaning, while the blocks are different, the holes are identical in color and opacity. So, to solve this matter, there is a canvas above each hole, which displays the name of its corresponding item (whether it is a type of inhaler, a component of an inhaler, or the whole assembled object).
+
+The assembly game is about putting the components of the inhaler together to make the whole object. Programmatically, it works that same way as the previous two game, where each block should be dragged to the correct hole. However, the difference is that this is a procedural game, meaning that the blocks must be dragged to their holes in a specific order. Each step has a textual description of what the user should do. With each step done correctly, the meter’s counter increases by one, and the next step will be described. The steps of the procedure are:
+\begin{enumerate}
+\item{Place the neck block into its hole}
+\item{Place the medicine block into its hole}
+\item{Remove the cap from the neck}
+\item{Place the spacer block into its hole}
+\end{enumerate}
+Once the game is done, the player will be rewarded with a badge.
+\subsubsection*{Card Matching Game}
+The card matching game is showing two cards and see if they are identical. The game itself is very well known. In this game’s case, though, it is specifically for the triggers of asthma, such as pollens, cigarettes, and pollution. In each session of the game there are 12 cards, aligned in a 4 × 3 structure. However, there is something additional in this game: Two of the cards are information cards, which only provide random information about asthma. Their front side is a picture of a question mark. Thus, we have ten trigger cards (each two are identical), and two information cards. If the player reveals an information card, the game’s meter increments by one, and Dr. Salem will talk about an information about asthma. Otherwise, if the player reveals two identical cards about a specific trigger, the meter increments by two, and Dr. Salem will define the trigger. When the player completes the game, he/she is rewarded with a badge.
+\subsubsection*{Multiple Choice Question Game}
+There is also a fourth game, which is multiple choice questions. We have made up to 24 questions, and each question has four choices, where one of them is correct. In a game session, only five of them are randomly selected. When a question is selected, their choices are randomly shuffled before they are displayed. Unlike the other game where they take place in the AR world, this is the only game that happens on-screen. When the player answers incorrectly, Dr. Salem provides positive feedback to encourage users to continue. When correctly:
+\begin{itemize}
+\item{Dr. Salem praises the player and explains the answer}
+\item{The answer buttons are disabled for interaction}
+\item{A green “next” will appear below}
+\end{itemize}
+
+[More Text Here]
+\paragraph*{The UI Canvas of the MCQ game}
+The game has its own UI canvas, since it needs to be on-screen. It has:
+\begin{itemize}
+\item{A slider to show progression}
+\item{A text to display the current question}
+\item{Four buttons, where each button shows one choice}
+\item{A text below the buttons for responses}
+\end{itemize}
+Designing the canvas was challenging for a device as small as a smartphone and in portrait mode, specifically for the buttons. Aligning the buttons on top of each other could prevent space for other contents, such as the questions’ text bar, the slider, the response text bar, and Dr. Salem’s image. The most ideal structure of the group of buttons in a small display was to have two buttons above and two below to accommodate enough text for the choices, as well as the other UI elements.
+
