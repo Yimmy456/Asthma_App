@@ -1864,8 +1864,7 @@ MonoBehaviour:
   _placeIndicator: {fileID: 1228395062}
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
-  _drSalemAudioSource: {fileID: 0}
-  _drSalemDefaultAudioClip: {fileID: 0}
+  _dialogues: {fileID: 919132149601814144}
   _gameProperties:
     _meter:
       _textGradient:
@@ -4637,8 +4636,7 @@ MonoBehaviour:
   _placeIndicator: {fileID: 0}
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
-  _drSalemAudioSource: {fileID: 0}
-  _drSalemDefaultAudioClip: {fileID: 0}
+  _dialogues: {fileID: 919132149601814144}
   _gameProperties:
     _meter:
       _textGradient:
@@ -6144,8 +6142,7 @@ MonoBehaviour:
   _placeIndicator: {fileID: 1228395062}
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
-  _drSalemAudioSource: {fileID: 0}
-  _drSalemDefaultAudioClip: {fileID: 0}
+  _dialogues: {fileID: 919132149601814144}
   _gameProperties:
     _meter:
       _textGradient:
@@ -24582,8 +24579,7 @@ MonoBehaviour:
   _placeIndicator: {fileID: 1228395062}
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
-  _drSalemAudioSource: {fileID: 0}
-  _drSalemDefaultAudioClip: {fileID: 0}
+  _dialogues: {fileID: 919132149601814144}
   _gameProperties:
     _meter:
       _textGradient:
@@ -46016,8 +46012,7 @@ MonoBehaviour:
   _placeIndicator: {fileID: 1228395062}
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
-  _drSalemAudioSource: {fileID: 0}
-  _drSalemDefaultAudioClip: {fileID: 0}
+  _dialogues: {fileID: 919132149601814144}
   _gameProperties:
     _meter:
       _textGradient:
@@ -54894,6 +54889,9 @@ MonoBehaviour:
   _localPositionAfterPlacement: {x: 0, y: 0, z: -0.01}
   _talkingSeconds: 5
   _drSalemClip: {fileID: 0}
+  _dialogues: {fileID: 0}
+  _correctMatchDialogue: 
+  _incorrectMatchDialogue: 
   _textCanvas: {fileID: 0}
   _nameText: {fileID: 0}
   _textOutline: {fileID: 0}
@@ -54980,6 +54978,9 @@ MonoBehaviour:
   _localPositionAfterPlacement: {x: 0, y: 0, z: 0}
   _talkingSeconds: 5
   _drSalemClip: {fileID: 0}
+  _dialogues: {fileID: 0}
+  _correctMatchDialogue: 
+  _incorrectMatchDialogue: 
   _textCanvas: {fileID: 0}
   _nameText: {fileID: 0}
   _textOutline: {fileID: 0}
@@ -55195,6 +55196,9 @@ MonoBehaviour:
   _localPositionAfterPlacement: {x: 0, y: 0, z: 0}
   _talkingSeconds: 5
   _drSalemClip: {fileID: 0}
+  _dialogues: {fileID: 0}
+  _correctMatchDialogue: 
+  _incorrectMatchDialogue: 
   _textCanvas: {fileID: 0}
   _nameText: {fileID: 0}
   _textOutline: {fileID: 0}
@@ -56156,6 +56160,7 @@ GameObject:
   - component: {fileID: 543450653252918471}
   - component: {fileID: 919132149601814142}
   - component: {fileID: 919132149601814143}
+  - component: {fileID: 919132149601814144}
   m_Layer: 6
   m_Name: doctor idle
   m_TagString: Untagged
@@ -56197,9 +56202,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 919132149601814142}
   _doctorAudioSource: {fileID: 1757740976}
-  _welcomingClip: {fileID: 8300000, guid: d8d253ad8caa6f24895bdb473aef875b, type: 3}
   _talkAtStart: 1
   _secondsToTalkAtStart: 10
+  _welcomingClip: {fileID: 8300000, guid: d8d253ad8caa6f24895bdb473aef875b, type: 3}
+  _dialogues: {fileID: 919132149601814144}
+--- !u!114 &919132149601814144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149601814141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 417df0bd074a44e419fb479e03b522fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClips:
+  - _clip: {fileID: 8300000, guid: d8d253ad8caa6f24895bdb473aef875b, type: 3}
+    _clipName: Welcoming
+  - _clip: {fileID: 8300000, guid: 221c35d3291952941a56c5680b2e7c13, type: 3}
+    _clipName: Exhibition Preventer Inhaler
+  - _clip: {fileID: 8300000, guid: 62083a2915fbc1146887835cde7d70b1, type: 3}
+    _clipName: Exhibition Reliever Inhaler
+  - _clip: {fileID: 8300000, guid: 3a7a45add14a9154da8f50869c031c72, type: 3}
+    _clipName: Exhibition Introduction
+  - _clip: {fileID: 8300000, guid: 96adb79cb3b80c94dae38e2c2da22351, type: 3}
+    _clipName: Matching Letter Game 'S'
+  - _clip: {fileID: 8300000, guid: 64864e5099752de449f58d89f3a4ee1d, type: 3}
+    _clipName: Matching Letter Game 'M'
+  - _clip: {fileID: 8300000, guid: 17e87162c6fd2b84b96a250f431a26a1, type: 3}
+    _clipName: Matching Letter Game 'A' 1
+  - _clip: {fileID: 8300000, guid: 316a23eaacf69ac489a33d8965d6ec54, type: 3}
+    _clipName: Matching Letter Game 'A' 2
+  - _clip: {fileID: 8300000, guid: 393d21b37dd52e74c9ae7e0f4c8fd2aa, type: 3}
+    _clipName: Matching Letter Game 'T'
+  - _clip: {fileID: 8300000, guid: 3141cbc5ca9a7974f817b12450fcf836, type: 3}
+    _clipName: Matching Game Incorrect
+  _audioSource: {fileID: 1757740976}
+  _animator: {fileID: 919132149601814142}
 --- !u!4 &972334789260026595
 Transform:
   m_ObjectHideFlags: 0

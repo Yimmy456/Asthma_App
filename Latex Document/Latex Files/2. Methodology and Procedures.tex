@@ -4,7 +4,7 @@
 [Text Here]
 
 \subsection{Programming and Mathematical Terms}
-There are several components and aspects in the field of programming that we need to discuss before heading to the methodology:
+There are several components and aspects in the fields of programming and mathematics that we need to discuss before heading to the methodology:
 \begin{itemize}
     \item {Class: An asset that contains special properties and represents a specific object in a system or program.}
     
@@ -42,15 +42,19 @@ There are several components and aspects in the field of programming that we nee
     \item{Size}
 \end{itemize}
 }    
+
+\item{Renderer: The component of making an object visible under certain properties or rules.}
+
+\item{Physicsbody: The component to make an object have gravity and other physics-based behaviours.}
 \end{itemize}
 
 \subsection{Unity}
 The program that the team agreed to build this endeavor with is Unity \cite{Unity}. It is the main program used to develop the application. It is a game engine that has a friendly user interface and allows developers to flexibly program their games with as many utilizations as possible. The version that was used for this project was “2021.3.5f1”. In Unity, the programming language that was used was C\#. C\# is an object-oriented programming language, which means we can create classes and assign them to certain objects.
 
-The target platforms that were desired for this game are smartphones and tablets. They allow Augmented Reality (AR) technologies, having virtual scenes and objects “blend in” with the physical world. Smartphones also have touch as their input method, which can simulate actions that happen every day, such as picking-up objects, pressing buttons, or shaking objects.
+The target platforms that were desired for this game are smartphones and tablets. They allow Augmented Reality (AR) technologies, having virtual scenes and objects “blend in” with the physical world. AR is an interesting technology that is being more accessible to consumers. Smartphones also have touch as their input method, which can simulate everyday actions, such as picking-up objects, pressing buttons, or shaking objects.
 
 
-However, other tools were used to complete the application. For example, Photoshop was used in this project to design badges, buttons, icons, and other UI elements. It also helped change the color/hue of UI elements. The version of Photoshop that was used is “20.0.4”. Another software that was used is Blender. It was used to make simple modifications on 3D models and assets and make some 3D animations.
+However, other tools were used to complete the application. For example, Photoshop was used in this project to design badges, buttons, icons, and other UI elements. It also helped change the color or hue of UI elements. The version of Photoshop that was used is “20.0.4”. Another software that was used is Blender (Ver. 4.1). It was used to make simple modifications on 3D models and assets and make some 3D animations. A third tool is GitHub (Ver. 3.4.1), which was used to sync all my works and updates to all the other clients involved in the project, as well as keep track of the project's history and updates. More tools will be discussed throughout this article.
 
 \subsection{AR Package}
 
@@ -66,45 +70,62 @@ The AR package that is implemented for the project is Google’s ARCore package.
 Because we are using an AR environment, there needs to be special components to run the application in AR, such as AR cameras and sessions. These are assets that are within Unity. In the phone, when the camera detects a physical surface, an on-screen button will appear to tell the player to start the game. When the button is pressed the virtual scene will be placed on the very spot that the camera picked.
 
 \subsection{Loading and Saving}
-Loading and saving are very important when opening an application to avoid losing progress from any session. It is done using a “. json” file. It stores information in text-form. There is a C\# script that read from the file and writes to it for loading and saving, respectively. It also encrypts the file to avoid users from easily tempering with the data. Each savable data has at least two variables: 1. Only one key variable and 2. at least one value variable. The key is basically an ID, which is a unique string that contains 32 characters. It can be generated via C\#. The value can be of any type. Therefore, we needed to program what value do we want to save from what asset, and the asset needs a key as a reference to know where the value should be stored. The process of loading is:
+Loading and saving are very important when opening an application to avoid losing progress from any session. It is done using a “.json” file. It stores information in text-form. There is a C\# script that reads from the file and writes to it for loading and saving, respectively. It also encrypts the file to avoid users from easily tempering with the data. Each savable data has at least two variables: 1. Only one key variable and 2. at least one value variable. The key is basically an ID, which is a unique string that contains 32 characters. It can be generated via C\#. The value can be of any type. Therefore, we needed to program what value do we want to save from what asset, and the asset needs a key as a reference to know where the value should be stored. The process of loading is:
 
 \begin{enumerate}
     \item{Decrypt the file}
-    \item{Read the keys and values from it;}
+    
+    \item{Read the keys and values from it}
+    
     \item{Convert the values from text-form to the correct type}
+    
     \item{Find the variable that has its ID match the current one used in the search and assign its value to the variable}
     
     \item{Keep doing this for all the data}
+    
     \item{Encrypt the file again}
 \end{enumerate}
 The process of saving is:
 \begin{enumerate}
     \item{Decrypt the file}
+    
     \item{Read the keys and values from the classes}
+    
     \item{Convert the values from their current form to text}
+    
     \item{Write the information into the “.json” file}
+    
     \item{Keep doing this for all the data}
+    
     \item{Encrypt the “.json” file again}
 \end{enumerate}
 The information that we are saving are:
 \begin{itemize}
     \item{The badges earned}
+    
     \item{The answers on the action plan}
+    
     \item{The settings}
+    
     \item{The type of user}
 \end{itemize}
 
 \subsection{Programming and Designing the Action Plan}
-The Action Plan is a survey that prompts the user to ask questions about their status with asthma. It also has some questions about their personal status such as birthday, name, and gender. The overall number of questions are twenty. However, each question has a different type of answers:
+The Action Plan is a survey that prompts the user to ask questions about their status with asthma. It also has some questions about their personal information such as birthday, name, and gender. The overall number of questions are twenty. However, each question has a different type of answers:
 \begin{enumerate}
     \item{Integer Answers}
+    
     \item{Float Answers}
+    
     \item{String Answers}
+    
     \item{Enum Answers}
+    
     \item{Answer with Two Strings}
+    
     \item{Date (DD/MM/YYYY Format, all integers)}
 \end{enumerate}
-Eventually, only if all questions are answered, the user will be able to make a PDF form of the plan. Also, they are saved, and if the user accesses the action plan again, the input fields will be filled with the previous answers.
+Eventually, only if all questions are answered, the user will be able to make a PDF form of the plan (The PDF is explained in section “\textbf{\nameref{ActionPlanPDF}}”). Also, they are saved, and if the user accesses the action plan again, the input fields will be filled with the previous answers.
 
 \subsubsection*{Enums}
 There were two types enum questions: 1. The color of the inhaler; and 2. The user’s gender. These are to ensure that the user do not provide various responses to questions that only need a specific answer. Visually, the answer of enum questions is presented in a dropdown menu. When the user taps on the menu, a dropdown box will appear below it, listing the possible choices based on the enum. The user can tap on a specific answer or accept the already selected answer.
@@ -116,11 +137,12 @@ There was only one question that needed two strings, which is the doctor’s con
 There are three questions that ask for the date: 1. The birthdate of the user; 2. The expiry date of the medication; and 3. The next appointment with the user’s doctor. There are three input fields: day, month, and year, and each one is an integer. The former two only accepts two digits, while the latter accepts four.
 
 \subsubsection*{The Action Plan’s PDF Form}
-All the answers of the Action Plan can be presented in a PDF. This was done using the iTextSharp library \cite{iTextSharp}, which is compatible with C\# and Unity. There is a button called teal button called “Print PDF” in the action plan’s UI, which is responsible for creating the PDF file. When the file is created, the very first thing the is printed is the date and time of printing and the time zone of the device’s current location. Below it, a table is printed showing the personal information of the user, which are 1. Name, 2. Date of birth, 3. Age, and 4. Gender. The age is automatically calculated by the difference between the date of printing and the date of birth. The others are taken from the user’s input, from the app. After this, a list of all the questions and their answers (Other than the personal information) are printed across the document. As for the date and time formats:
+\label{ActionPlanPDF}
+All the answers of the Action Plan can be presented in a PDF. This was done using the iTextSharp library \cite{iTextSharp}, which is compatible with C\# and Unity. There is a teal button called “Print PDF” in the action plan’s UI, which is responsible for creating the PDF file. When the file is created, the very first attributes that are printed are 1. the date and time of printing; and 2. the time zone of the device’s current location. Below them, a table is printed showing the personal information of the user, which are 1. Name, 2. Date of birth, 3. Age, and 4. Gender. The age is automatically calculated by the difference between the date of printing and the date of birth. The others are taken from the user’s input from the app. After this, a list of all the questions and their answers (Other than the personal information) are printed across the document. As for the date and time formats:
 \begin{itemize}
     \item{All the dates in the PDF are in the following format: “MMMM dd, yyyy (dddd)”, for example “September 02, 2024 (Monday)”}
     
-    \item{The time format used is in 12-hour format, for example “7:05 pm”. Also, it measured the time zone by using “UTC” time zone as a base. For example, “UTC+4:00” in the time zone of the United Arab Emirates, or “UTC+1:59” in Croatia.\footnote{Manar has tested printing the action plan in Croatia in late July of 2024. The time zone was accurate.}}
+    \item{The time format used is in 12-hour format, for example “7:05 pm”. Also, it measures the time zone by using “UTC” time zone as a base. For example, “UTC+4:00” in the time zone of the United Arab Emirates, or “UTC+1:59” in Croatia.\footnote{Manar has tested printing the action plan in Croatia in late July of 2024. The time zone was accurate.}}
 \end{itemize}
 
 \subsection{The Exhibition}
@@ -130,25 +152,25 @@ The exhibition is a unique experience that users can try. It is similar to seein
 \subsubsection*{Preparing the Exhibition}
 In order to make the exhibition visually compelling in a 3D space (Even in AR), some math skills are required. The exhibits are displayed by being spread across in a perfect circle. To make the circle, we need to get the direction of each exhibit and choose a magnitude. 
 
-Programmatically, the whole process is done in a “\fontspec{CamingoCode}for\normalfont” loop. The loop has an integer variable, called “\fontspec{CamingoCode}\_i\normalfont”, which is the index of each iteration in the loop. Another integer that is involved in the loop is called “\fontspec{CamingoCode}\_n\normalfont”, which is the total number of exhibits. Initially, “\fontspec{CamingoCode}\_i\normalfont” is equal to zero, and with each next iteration, it increases by one until it equals to “\fontspec{CamingoCode}\_n\normalfont”. The following two subsections will describe how the exhibition is created, specifically what is happening in each iteration.
+Programmatically, the whole process is done in a “\fontspec{CamingoCode}for\normalfont” loop. The loop has an integer variable, called “\fontspec{CamingoCode}\_i\normalfont”, which is the index of each iteration in the loop. Another integer that is involved in the loop is called “\fontspec{CamingoCode}\_n\normalfont”, which is the total number of exhibits. Initially, “\fontspec{CamingoCode}\_i\normalfont” is equal to zero, and with each next iteration, it increases by one until it equals to “\fontspec{CamingoCode}\_n\normalfont”, exclusively. The following two subsections will describe how the exhibition is created, specifically what is happening in each iteration.
 
 \paragraph{Step 1: Getting the Direction}
-The first thing that we need to do is to instantiate (create a copy and put it in the scene) the current object. The rest of the work is done on that instantiated object. Secondly, we need to get the angle of the current exhibit, which is done by the following equation: “$\theta_i = (\frac{i \ * \ 360}{n})$”.\footnote{“$\theta$” is a Greek symbol, pronounced “Theta”. It is a variable used in geometry to represent angles.}  In the equation, “$\theta_i$” is the angle of the current index (The angle is in degrees). “$i$” and “$n$” correspond to their respective values that were described in the heading section. Once we get the angle, we need to calculate its sine and cosine values to establish the direction in the z-axis and the x-axis, respectively, and store the values in a \fontspec{CamingoCode}Vector3\normalfont \ variable:
+The first thing that we need to do is to instantiate (create a copy and put it in the scene) the current object. The rest of the work is done on that instantiated object, which will be the exhibit. Secondly, we need to get the angle for the current exhibit, which is done using the following equation: “$\theta_i = \left(\frac{i \ * \ 360}{n}\right)$”.\footnote{“$\theta$” is a Greek symbol, pronounced “Theta”. It is a variable used in geometry to represent angles.}  In the equation, “$\theta_i$” is the angle of the current index (The angle is in degrees). “$i$” and “$n$” correspond to their respective values that were described in the heading section. Once we get the angle, we need to calculate its sine and cosine values to establish the direction in the z-axis and the x-axis, respectively, and store the values in a \fontspec{CamingoCode}Vector3\normalfont \ variable:
 \begin{itemize}
-    \item {$dir_{i, x} = cos(\theta_i * \frac{\pi}{180})$}
-    \item {$dir_{i, z} = sin(\theta_i * \frac{\pi}{180})$}
+    \item {$dir_{i, x} = cos\left(\theta_i * \frac{\pi}{180}\right)$}
+    \item {$dir_{i, z} = sin\left(\theta_i * \frac{\pi}{180}\right)$}
  \end{itemize}
-In Unity, the standard unity for angles are radians. Thus, we need to convert the angle from degrees to radians before getting the sine and cosine values, by multiplying it with the fraction ($\frac{\pi}{180}$).\footnote{“$\pi$” is a Greek symbol, pronounced “Pi”. It is a constant value, which equals to 3.141592}  “$dir_{i, y}$” is equal to zero, since we do not want to spread the exhibits across the y-axis, regardless of the value of “$i$”.
+In Unity, the standard unit for angles is radians. Thus, we need to convert the angle from degrees to radians before getting the sine and cosine values, by multiplying it with the fraction $\left(\frac{\pi}{180}\right)$.\footnote{“$\pi$” is a Greek symbol, pronounced “Pi”. It is a constant value, which equals to 3.141592}  “$dir_{i, y}$” is equal to zero, since we do not want to spread the exhibits across the y-axis, regardless of the value of “$i$”.
 
 
-\paragraph*{Step 2: Completing the Display}
-Lasty, we multiply the values of “$dir_i$” with the radius to determine the position of the current exhibit (in meters, which is Unity’s default unit for length/distance measurement). Therefore, the final function is: “$pos_i = dir_i \ * \ r$”, where “$r$”, where “$r$” is a positive float, and it represents the magnitude (or the radius of the circle). It will tell how far the exhibits should be from the center. We set the radius to be 500.
+\paragraph*{Step 2: Assigning the Position and Adding the Script}
+After we get the direction, we multiply the values of “$dir_i$” with the radius to determine the position of the current exhibit (in meters, which is Unity’s default unit for length or distance measurement). Therefore, the final function is: “$pos_i = dir_i \ * \ r$”, where “$r$” is a positive float, and it represents the magnitude (or the radius of the circle). It will tell how far the exhibits should be from the center. We set the radius to be 500. While exhibits' positions are different from each other, their distances from the center are the same.
 \\ \\
-Before the iteration is complete, we add a C\# component to the exhibit, called “\fontspec{CamingoCode}ExhibitionObjectScript\normalfont”. This script will be further described in the section~“\nameref{ShowcasingExhibition}”.
+Lastly, before the iteration is complete, we add a C\# component to the exhibit, called “\fontspec{CamingoCode}ExhibitionObjectScript\normalfont”. This script will be further described in the section~“\textbf{\nameref{ShowcasingExhibition}}”.
 
 \subsubsection*{Showcasing the Exhibition}
 \label{ShowcasingExhibition}
-In Unity, there is a technique called “Raycasting”, that is used to make the exhibition work. A raycast is a straight line that starts from one point and continues infinitely (by default) until it detects an object in the way.\footnote{In Unity, you can set a limit for the raycast detection by a number, making it finite.}  It is, conceptually, similar to a laser beam. At the exhibition, the raycasting line/beam starts from the center of the user’s camera. There is a special UI for the exhibition, which has the following components:
+In Unity, there is a technique called “Raycasting”, that is used to make the exhibition work. A raycast is a straight, invisible line that starts from one point and continues infinitely (by default) until it detects an object in the way.\footnote{In Unity, you can set a limit for the raycast detection by a number, making it finite.}  It is, conceptually, similar to a laser beam. At the exhibition, the raycasting line/beam starts from the center of the user’s camera. There is a special UI for the exhibition, which has the following components:
 \begin{itemize}
     \item{A red circle, which is in the center of the screen, which is the same position as the starting point of the raycasting line}
     
@@ -156,34 +178,66 @@ In Unity, there is a technique called “Raycasting”, that is used to make the
     
     \item{A microphone button which appears only when an exhibit is hit by the line and disappears otherwise}
     
+    \item{A text field to display the name of an exhibit}
+    
 \end{itemize}
-All exhibits have one script in common, called “\fontspec{CamingoCode}ExhibitionObjectScript\normalfont”. When the user places the center of his/her camera at an object, the raycasting line will detect if it contains the mentioned script. If so, the object will be highlighted in a specific color, the red circle will turn green, the name of the object will be displayed, and the microphone button will appear below. When the microphone button is pressed, Dr. Salem will discuss the highlighted object.
+All exhibits have one script in common, called “\fontspec{CamingoCode}ExhibitionObjectScript\normalfont”. When the user places the center of his/her camera at an object, the raycasting line will detect if it contains the mentioned script. If so, the object will be highlighted in a specific color, the red circle will turn green, the name of the object will be displayed in the text field, and the microphone button will appear below. When the microphone button is pressed, Dr. Salem will discuss the highlighted object.
+
+\subsection*{The Draggable Class}
+There are objects that need to be dragged by the user. To make this work, two classes were created: “\fontspec{CamingoCode}DraggableClass\normalfont” and “\fontspec{CamingoCode}DraggableManagerClass\normalfont”. The former is a class that can be a component for any object in a scene. Basically, when the user taps on an object that has this script, the object will follow the finger’s position and movements. When the user lets go of the screen, the object will stop following. The class has four possible states:
+\begin{enumerate}
+
+\item{“Canceled” (The object is not being dragged)}
+\item{“Starting” (The object has started being dragged)}
+\item{“Following” (The object is being dragged)}
+\item{“Ending” (The object has stopped being dragged)}
+\end{enumerate}
+The class contains a Boolean variable, called “\fontspec{CamingoCode}\_draggableOn\normalfont”, to turn on or off the ability to have the object be draggable, and its default value is ‘\fontspec{CamingoCode}true\normalfont’. “\fontspec{CamingoCode}DraggableManagerClass\normalfont” is a singleton class used to keep track of all the objects that contain “\fontspec{CamingoCode}DraggableClass\normalfont”. It also allows other scripts to know which object is being currently dragged by the user.
+\subsubsection*{The Shakable Inhaler}
+There is a simple feature to allow children to shake a virtual inhaler in the application. They can shake the object by flicking their finger up and down to simulate shaking the inhaler in real time. The inhaler object contains the “\fontspec{CamingoCode}DraggableClass\normalfont” component. We can also measure how many shakes were done and how fast each shake was.
+
 
 \subsection{Programming the Games}
 
 There are five mini-games established for the application:
 \begin{enumerate}
 \item{Matching the letters}
+
 \item{Card matching}
+
 \item{Multiple Choice Questions}
+
 \item{Matching the inhalers}
+
 \item{Assembling the inhaler components}
 \end{enumerate}
 
 From a programming’s perspective, there is a base-class for all the games that has variables which are applicable to all or most of the games, such as the progress percentage, the assigned badge for the game, or the spawning location of the game’s components. However, each game also has its own sub-class, which derives from the base-class mentioned. These sub-classes have variables that are only needed for its specific game. Also in the games, we always provide positive feedback since it is an educational application that is targeted to an audience between the ages of 6 and 13 years, even if they did something incorrectly. Positive feedback gives these demographics encouragement to keep trying to get the answers correctly and learn more about a specific subject.
  
-One special property that all the games have is a meter. It tells how the user progressed in the game so far. The meter has two factors: a counter and a percentage. The counter tells how many items are completed correctly out of the total of items. In the UI, the counter is displayed as “Completed / Total” ratio. The percentage is the mentioned ratio multiplied by 100. When something is done correctly in the game, the counter increments by one.
+One special property that all the games have is a meter. It tells how the user progressed in the game so far. The meter has two factors: a counter and a percentage. The counter tells how many items are completed correctly out of the total of items. In the UI, the counter is displayed as “Completed / Total” fraction. The percentage is the mentioned fraction's ratio multiplied by 100. When something is done correctly in the game, the counter increments by one, and the percentage is updated with it automatically.
 
 \subsubsection*{Block Matching Games}
-The matching games are games where the user is given a certain number of blocks and holes, and the user needs to drag the blocks into their correct holes. There are two of them: One for the letters, and the other for the inhaler types and components. All the blocks have physicsbodies. For the letters, there are six blocks and holes, and each block and hole are in a specific letter. The letters are: ‘A’, ‘S’, ‘T’, ‘H’, ‘M’, and ‘A’, which spells “ASTHMA”. When a letter block is placed in the correct spot, the hole will be invisible, the game’s counter increments by one, Dr. Salem will talk about a word that starts with that letter, a particle effect of starts will appear once, and the blocks will no longer have a physicsbody. Also, the letter block will rotate indefinitely at 100 degrees per second in the y-axis. The user can drag any letter in no specific order. When the game is complete, Dr. Salem will say what asthma is, then reward the user with a badge. The badge is saved is saved in the “.json” file.
+The matching games are games where the user is given a certain number of blocks and holes, and the user needs to drag the blocks into their correct holes. There are three of them: One for the letters, the other for the inhaler types and components, and the third is for assembling the inhaler. All the blocks have physicsbodies and the “DraggableScript” components. For the letters, there are six blocks and holes, and each block and hole are in a specific letter. The letters are: ‘A’, ‘S’, ‘T’, ‘H’, ‘M’, and ‘A’, which spells “ASTHMA”. When a letter block is placed in the correct spot, the following will happen: 
+\begin{enumerate}
+\item{the hole's renderer will be invisible}
+\item{the game’s counter increments by one}
+\item{Dr. Salem will talk about a word that starts with that letter}
+\item{a particle effect of stars will appear once}
+\item{the blocks will no longer have a physicsbody}
+\item{the “\fontspec{CamingoCode}\_draggableOn\normalfont” variable in “\fontspec{CamingoCode}DraggableClass\normalfont” will be ‘\fontspec{CamingoCode}false\normalfont’.}
+\end{enumerate}
+Also, the letter block will rotate indefinitely at 100 degrees per second in the y-axis. The user can drag any letter in no specific order. When the game is complete, Dr. Salem will say what asthma is, then reward the user with a badge. The badge is saved is saved in the “.json” file.
 
 The other matching game, which involves the inhalers and their components instead, works the same way. However, there was a visual problem: There are three types of inhalers, which are the reliever, the preventer, and the hybrid. While they are in different color, they have the same physical shape and size. Meaning, while the blocks are different, the holes are identical in color and opacity. So, to solve this matter, there is a canvas above each hole, which displays the name of its corresponding item (whether it is a type of inhaler, a component of an inhaler, or the whole assembled object).
 
 The assembly game is about putting the components of the inhaler together to make the whole object. Programmatically, it works that same way as the previous two game, where each block should be dragged to the correct hole. However, the difference is that this is a procedural game, meaning that the blocks must be dragged to their holes in a specific order. Each step has a textual description of what the user should do. With each step done correctly, the meter’s counter increases by one, and the next step will be described. The steps of the procedure are:
 \begin{enumerate}
 \item{Place the neck block into its hole}
+
 \item{Place the medicine block into its hole}
+
 \item{Remove the cap from the neck}
+
 \item{Place the spacer block into its hole}
 \end{enumerate}
 Once the game is done, the player will be rewarded with a badge.
@@ -193,7 +247,9 @@ The card matching game is showing two cards and see if they are identical. The g
 There is also a fourth game, which is multiple choice questions. We have made up to 24 questions, and each question has four choices, where one of them is correct. In a game session, only five of them are randomly selected. When a question is selected, their choices are randomly shuffled before they are displayed. Unlike the other game where they take place in the AR world, this is the only game that happens on-screen. When the player answers incorrectly, Dr. Salem provides positive feedback to encourage users to continue. When correctly:
 \begin{itemize}
 \item{Dr. Salem praises the player and explains the answer}
+
 \item{The answer buttons are disabled for interaction}
+
 \item{A green “next” will appear below}
 \end{itemize}
 
@@ -202,8 +258,11 @@ There is also a fourth game, which is multiple choice questions. We have made up
 The game has its own UI canvas, since it needs to be on-screen. It has:
 \begin{itemize}
 \item{A slider to show progression}
+
 \item{A text to display the current question}
+
 \item{Four buttons, where each button shows one choice}
+
 \item{A text below the buttons for responses}
 \end{itemize}
 Designing the canvas was challenging for a device as small as a smartphone and in portrait mode, specifically for the buttons. Aligning the buttons on top of each other could prevent space for other contents, such as the questions’ text bar, the slider, the response text bar, and Dr. Salem’s image. The most ideal structure of the group of buttons in a small display was to have two buttons above and two below to accommodate enough text for the choices, as well as the other UI elements.

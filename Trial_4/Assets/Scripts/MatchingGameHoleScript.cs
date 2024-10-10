@@ -58,6 +58,15 @@ public class MatchingGameHoleScript : MonoBehaviour
     [SerializeField]
     protected AudioClip _drSalemClip;
 
+    [SerializeField]
+    protected DialoguesScript _dialogues;
+
+    [SerializeField]
+    protected string _correctMatchDialogue;
+
+    [SerializeField]
+    protected string _incorrectMatchDialogue;
+
     protected float _currentSizeValue;
 
     protected bool _objectPlaced = false;
@@ -159,8 +168,10 @@ public class MatchingGameHoleScript : MonoBehaviour
         return _localPositionAfterPlacement;
     }
 
-    public AudioClip GetDrSalemClip()
-    { return _drSalemClip; }
+    public DialoguesScript GetDialogues()
+    {
+        return _dialogues;
+    }
 
     public void SetCamera(Camera _input)
     {
@@ -179,6 +190,11 @@ public class MatchingGameHoleScript : MonoBehaviour
     public void SetLocalPositionAfterPlacement(Vector3 _input)
     {
         SetLocalPositionAfterPlacement(_input.x, _input.y, _input.z);
+    }
+
+    public void SetDialogues(DialoguesScript _input)
+    {
+        _dialogues = _input;
     }
 
     protected virtual IEnumerator DecreaseSizeAnimation()
@@ -497,6 +513,11 @@ public class MatchingGameHoleScript : MonoBehaviour
         }
 
         _currentObject.transform.localPosition = _localPositionAfterPlacement;
+
+        if(_dialogues != null)
+        {
+            _dialogues.PlayClip(_correctMatchDialogue);
+        }
 
         ResetValues();
     }

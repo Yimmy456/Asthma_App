@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoctorTalkingScript : MonoBehaviour
+public class DoctorTalkingScript : MonoBehaviour, PlayDialogueInterface
 {
     [SerializeField]
     Animator _animator;
@@ -28,6 +28,9 @@ public class DoctorTalkingScript : MonoBehaviour
 
     bool _isTalking = false;
 
+    [SerializeField]
+    DialoguesScript _dialogues;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +38,9 @@ public class DoctorTalkingScript : MonoBehaviour
         {
             if (_talkAtStart && _animator != null && !DataPersistenceManager.GetInstance().GetDoctorGreets())
             {
-                StartTalking();
+                //StartTalking();
+
+                _dialogues.PlayClip("Welcoming");
 
                 DataPersistenceManager.GetInstance().SetDoctorGreets(true);
             }
@@ -184,5 +189,10 @@ public class DoctorTalkingScript : MonoBehaviour
 
             _isTalking = false;
         }
+    }
+
+    public void IPlayDialogue()
+    {
+
     }
 }

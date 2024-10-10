@@ -285,6 +285,8 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
 
             _newLetterHole.SetHoleGameCanvas(this);
 
+            _newLetterHole.SetDialogues(_dialogues);
+
             _newLetterHole.SetCamera(_gameProperties.GetCamera());
 
             _newLetterHoleGO.transform.parent = _gameSpace.transform;

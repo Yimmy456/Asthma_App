@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using TMPro;
+using UnityEditor;
 
 [System.Serializable]
 public class MeterClass
@@ -2820,5 +2821,60 @@ public class DoctorSalemDialoguesClass
         _isDoctorTalking = false;
 
         _doctorAnimator.SetBool("Talking", false);
+    }
+}
+
+
+[System.Serializable]
+public class DoctorSalemDialoguesClass2
+{
+    [SerializeField]
+    protected Animator _animator;
+
+    [SerializeField]
+    protected AudioClip _audioClip;
+
+    [SerializeField]
+    protected AudioSource _doctorAudioSource;
+
+    protected static DoctorSalemDialoguesClass2 _currentDialogue;
+
+    public Animator GetAnimator()
+    {
+        return _animator;
+    }
+
+    public AudioClip GetAudioClip()
+    {
+        return _audioClip;
+    }
+
+    public AudioSource GetAudioSource()
+    {
+        return _doctorAudioSource;
+    }
+
+    public IEnumerator IPlayDialogue()
+    {
+        if (_animator == null || _audioClip == null || _doctorAudioSource == null)
+        {
+            yield break;
+        }
+
+        float _seconds = _audioClip.length;
+
+        _doctorAudioSource.clip = _audioClip;
+
+        _animator.SetBool("Talking", true);
+
+        _doctorAudioSource.Play();
+
+        _currentDialogue = this;
+
+        yield return new WaitForSeconds(_seconds);
+
+        _animator.SetBool("Talking", false);
+
+        _currentDialogue = null;
     }
 }

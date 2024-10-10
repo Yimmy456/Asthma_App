@@ -28,10 +28,7 @@ public class GameMBScript : MonoBehaviour
     protected AudioClip _incorrectAudioClip;
 
     [SerializeField]
-    protected AudioSource _drSalemAudioSource;
-
-    [SerializeField]
-    protected AudioClip _drSalemDefaultAudioClip;
+    protected DialoguesScript _dialogues;
 
     protected MeterClass _completionMeter;
 
@@ -89,14 +86,9 @@ public class GameMBScript : MonoBehaviour
         return _incorrectAudioClip;
     }
 
-    public AudioSource GetDrSalemAudioSource()
+    public DialoguesScript GetDialogues()
     {
-        return _drSalemAudioSource;
-    }
-
-    public AudioClip GetDoctorSalemDefaultAudioClip()
-    {
-        return _drSalemDefaultAudioClip;
+        return _dialogues;
     }
 
     /*public virtual void StartGameFunction()

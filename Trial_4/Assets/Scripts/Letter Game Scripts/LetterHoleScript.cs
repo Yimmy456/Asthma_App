@@ -122,11 +122,16 @@ public class LetterHoleScript : MatchingGameHoleScript
         {
             if (_audioSource != null && _holeCanvas.GetIncorrectAudioClip() != null)
             {
-                _audioSource.clip = _holeCanvas.GetIncorrectAudioClip();
-
+               _audioSource.clip = _holeCanvas.GetIncorrectAudioClip();
+                
                 _audioSource.Play();
-
+                
                 Debug.Log("We are playing the audio for the incorrect reponse for hole " + @"""" + gameObject.name + @"""" + ".");
+            }
+
+            if (_dialogues != null)
+            {
+                _dialogues.PlayClip(_incorrectMatchDialogue);
             }
         }
 

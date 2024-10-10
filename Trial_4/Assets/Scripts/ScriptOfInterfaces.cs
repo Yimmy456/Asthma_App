@@ -14,3 +14,10 @@ public interface YesOrNoInterface
 
     //public void ActionsOfYesButton();
 }
+
+public interface PlayDialogueInterface
+{
+    //public int _coroutine;
+
+    public void IPlayDialogue();
+}
