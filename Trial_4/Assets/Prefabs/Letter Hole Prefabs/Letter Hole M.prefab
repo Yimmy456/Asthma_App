@@ -5080,4 +5080,9 @@ MonoBehaviour:
   _matchingPS: {fileID: 180309297}
   _audioSource: {fileID: 165964095}
   _localPositionAfterPlacement: {x: 0, y: 0, z: 0}
+  _talkingSeconds: 5
+  _drSalemClip: {fileID: 0}
+  _dialogues: {fileID: 0}
+  _correctMatchDialogue: Matching Letter Game 'M'
+  _incorrectMatchDialogue: Matching Game Incorrect
   _letter: 77

@@ -110,6 +110,10 @@ public class DialoguesScript : MonoBehaviour
 
         _isTalking = true;
 
+        _animator.SetBool(_talkingString, true);
+
+        Debug.Log("We are starting to talk about '" + _input + ".");
+
         yield return new WaitForSeconds(_seconds);
 
         _currentAudioClip = null;
@@ -117,6 +121,8 @@ public class DialoguesScript : MonoBehaviour
         _audioSource.clip = null;
 
         _isTalking = false;
+
+        Debug.Log("We are stopping to talk about '" + _input + ".");
 
         _animator.SetBool(_talkingString, false);
     }
@@ -146,6 +152,8 @@ public class DialoguesScript : MonoBehaviour
         _audioSource.Play();
 
         _isTalking = true;
+
+        _animator.SetBool(_talkingString, true);
 
         yield return new WaitForSeconds(_seconds);
 
@@ -194,6 +202,8 @@ public class DialoguesScript : MonoBehaviour
         _currentAudioClip = null;
 
         _audioSource.clip = null;
+
+        _animator.SetBool(_talkingString, false);
     }
 
     void StopCurrentDialogue()

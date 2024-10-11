@@ -4953,6 +4953,10 @@ MonoBehaviour:
   _audioSource: {fileID: 8564585485859851531}
   _localPositionAfterPlacement: {x: 0, y: 0, z: 0}
   _talkingSeconds: 10
+  _drSalemClip: {fileID: 0}
+  _dialogues: {fileID: 0}
+  _correctMatchDialogue: Matching Letter Game 'A' 1
+  _incorrectMatchDialogue: Matching Game Incorrect
   _letter: 65
 --- !u!1 &8697713899850738189
 GameObject:

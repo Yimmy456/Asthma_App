@@ -259,6 +259,11 @@ MonoBehaviour:
   _matchingPS: {fileID: 2690428041238278927}
   _audioSource: {fileID: 310276675}
   _localPositionAfterPlacement: {x: 0, y: 0, z: 0}
+  _talkingSeconds: 5
+  _drSalemClip: {fileID: 0}
+  _dialogues: {fileID: 0}
+  _correctMatchDialogue: Matching Letter Game 'T'
+  _incorrectMatchDialogue: Matching Game Incorrect
   _letter: 84
 --- !u!1 &8941486188264961077
 GameObject:

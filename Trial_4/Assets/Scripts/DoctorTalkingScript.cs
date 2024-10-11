@@ -53,6 +53,8 @@ public class DoctorTalkingScript : MonoBehaviour, PlayDialogueInterface
         
     }
 
+    /*
+
     IEnumerator WelcomingTalk()
     {
         if(_doctorAudioSource == null || _welcomingClip == null)
@@ -83,6 +85,8 @@ public class DoctorTalkingScript : MonoBehaviour, PlayDialogueInterface
         AbortTalking();
     }
 
+    
+
     IEnumerator Talk(float _secondsInput)
     {
         //_animator.SetBool(_talkingString, true);
@@ -98,6 +102,8 @@ public class DoctorTalkingScript : MonoBehaviour, PlayDialogueInterface
         AbortTalking();
     }
 
+    */
+
     public void StartTalking(float _secondsInput = 5.0f)
     {
         StopTalking();
@@ -111,7 +117,7 @@ public class DoctorTalkingScript : MonoBehaviour, PlayDialogueInterface
 
         _isTalking = true;
 
-        _coroutine = StartCoroutine(Talk(_secondsInput));
+        //_coroutine = StartCoroutine(Talk(_secondsInput));
     }
 
     public void StartTalking()
@@ -127,7 +133,7 @@ public class DoctorTalkingScript : MonoBehaviour, PlayDialogueInterface
 
         _isTalking = true;
 
-        _coroutine = StartCoroutine(WelcomingTalk());
+        //_coroutine = StartCoroutine(WelcomingTalk());
     }
 
     public Coroutine GetCoroutine()
@@ -168,7 +174,7 @@ public class DoctorTalkingScript : MonoBehaviour, PlayDialogueInterface
 
         _isTalking = true;
 
-        _coroutine = StartCoroutine(Talk(_duration));
+        //_coroutine = StartCoroutine(Talk(_duration));
     }
 
     public void AbortTalking()
