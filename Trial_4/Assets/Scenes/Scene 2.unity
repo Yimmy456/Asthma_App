@@ -17115,7 +17115,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 488612395}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!20 &488612397
 Camera:
   m_ObjectHideFlags: 0
@@ -36038,7 +36038,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1330074153}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1330074157
 Camera:
   m_ObjectHideFlags: 0
@@ -41096,6 +41096,7 @@ MonoBehaviour:
       _outlineThickness: 1
       _talkingSeconds: 5
       _audioClip: {fileID: 8300000, guid: 99a215270e99a95478e3a6ceb00d8a38, type: 3}
+      _audioClip2: Dr. Salem Exhibition Reliever Inhaler
     - _listItemGameObject: {fileID: 134907928583110029, guid: 9cda32f608d9a1748811798032632f27, type: 3}
       _listItemName: Preventer Inhaler
       _listItemDescription: 
@@ -41104,6 +41105,7 @@ MonoBehaviour:
       _outlineThickness: 1
       _talkingSeconds: 5
       _audioClip: {fileID: 8300000, guid: 221c35d3291952941a56c5680b2e7c13, type: 3}
+      _audioClip2: Dr. Salem Exhibition Preventer Inhaler
     - _listItemGameObject: {fileID: 2169771285789508442, guid: 88de728b7d43f4747800db0c967bca33, type: 3}
       _listItemName: Hybrid Inhaler
       _listItemDescription: 
@@ -41112,6 +41114,7 @@ MonoBehaviour:
       _outlineThickness: 1
       _talkingSeconds: 5
       _audioClip: {fileID: 0}
+      _audioClip2: 
     - _listItemGameObject: {fileID: 8907650479044642488, guid: 0436b66cd5d38544a9af82cb0be2fa8a, type: 3}
       _listItemName: Medicine
       _listItemDescription: 
@@ -41120,6 +41123,7 @@ MonoBehaviour:
       _outlineThickness: 1
       _talkingSeconds: 5
       _audioClip: {fileID: 0}
+      _audioClip2: 
     - _listItemGameObject: {fileID: 124029742880193190, guid: 454d18a21a2477e49bca97b83ec8176c, type: 3}
       _listItemName: Spacer
       _listItemDescription: 
@@ -41128,6 +41132,7 @@ MonoBehaviour:
       _outlineThickness: 1
       _talkingSeconds: 5
       _audioClip: {fileID: 0}
+      _audioClip2: 
     - _listItemGameObject: {fileID: 7795114222376234084, guid: dd596e05b8b1d57498cc79d52d969db1, type: 3}
       _listItemName: Whole Inhaler
       _listItemDescription: 
@@ -41136,6 +41141,7 @@ MonoBehaviour:
       _outlineThickness: 1
       _talkingSeconds: 5
       _audioClip: {fileID: 0}
+      _audioClip2: 
     _groupCompletionMeter:
       _textGradient:
         serializedVersion: 2
@@ -41198,6 +41204,7 @@ MonoBehaviour:
     _doctorAudioSource: {fileID: 1045844157}
     _doctorDefaultAudioClip: {fileID: 0}
   _welcomingClip: {fileID: 0}
+  _dialogues: {fileID: 919132149601814144}
 --- !u!1 &1572279624
 GameObject:
   m_ObjectHideFlags: 0
@@ -42437,7 +42444,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1628622044}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1628622048
 Camera:
   m_ObjectHideFlags: 0
@@ -56239,6 +56246,14 @@ MonoBehaviour:
     _clipName: Matching Letter Game 'T'
   - _clip: {fileID: 8300000, guid: 3141cbc5ca9a7974f817b12450fcf836, type: 3}
     _clipName: Matching Game Incorrect
+  - _clip: {fileID: 8300000, guid: 74ca0d324de1a5e409a504f2f9d294bc, type: 3}
+    _clipName: Dr. Salem Letter Matching Game Word 'Asthma' Winning
+  - _clip: {fileID: 8300000, guid: 221c35d3291952941a56c5680b2e7c13, type: 3}
+    _clipName: Dr. Salem Exhibition Preventer Inhaler
+  - _clip: {fileID: 8300000, guid: 62083a2915fbc1146887835cde7d70b1, type: 3}
+    _clipName: Dr. Salem Exhibition Reliever Inhaler
+  - _clip: {fileID: 8300000, guid: 3a7a45add14a9154da8f50869c031c72, type: 3}
+    _clipName: Dr. Salem Exhibition Introduction
   _audioSource: {fileID: 1757740976}
   _animator: {fileID: 919132149601814142}
 --- !u!4 &972334789260026595

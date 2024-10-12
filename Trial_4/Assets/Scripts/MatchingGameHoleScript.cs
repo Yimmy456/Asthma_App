@@ -173,6 +173,17 @@ public class MatchingGameHoleScript : MonoBehaviour
         return _dialogues;
     }
 
+    public string GetCorrectMatchDialogue()
+    {
+        return _correctMatchDialogue;
+    }
+
+
+    public string GetIncorrectMatchDialogue()
+    {
+        return _incorrectMatchDialogue;
+    }
+
     public void SetCamera(Camera _input)
     {
         _camera = _input;
@@ -253,6 +264,17 @@ public class MatchingGameHoleScript : MonoBehaviour
     public virtual void SetHoleGameCanvas(MatchingGameCanvasScript _input)
     {
         _holeCanvas = _input;
+    }
+
+    
+    public void SetCorrectMatchDialogue(string _input)
+    {
+        _correctMatchDialogue = _input;
+    }
+
+    public void SetIncorrectMatchDialogue(string _input)
+    {
+        _incorrectMatchDialogue = _input;
     }
 
     protected virtual void SeeObject()
@@ -458,12 +480,12 @@ public class MatchingGameHoleScript : MonoBehaviour
 
         _holeCanvas.GetGameProperties().SignalToUpdateUI();
 
-        if (_holeCanvas.GetDoctorTalkingProperties() != null)
+        /*if (_holeCanvas.GetDoctorTalkingProperties() != null)
         {
             _holeCanvas.GetDoctorTalkingProperties().StartTalking(_talkingSeconds);
 
             Debug.Log("Dr. Salem is talking about " + @"""" + gameObject.name + @"""" + ".");
-        }
+        }*/
 
         //_holeCanvas.SetProgressUpdated(true);
 
@@ -510,6 +532,11 @@ public class MatchingGameHoleScript : MonoBehaviour
             _audioSource.Play();
 
             Debug.Log("We are playing the audio for the correct reponse for hole " + @"""" + gameObject.name + @"""" + ".");
+        }
+
+        if(_dialogues != null)
+        {
+            _dialogues.PlayClip(_correctMatchDialogue);
         }
 
         _currentObject.transform.localPosition = _localPositionAfterPlacement;

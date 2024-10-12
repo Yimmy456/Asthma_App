@@ -256,7 +256,7 @@ public class ExhibitionCanvasScript : MonoBehaviour
 
         ColorTitle(_color);
 
-        _exhibition.PlayDialogue(_currentObject.GetObjectAudioClip());
+        _exhibition.PlayDialogue(_currentObject.GetObjectAudioClip2());
     }
 
 

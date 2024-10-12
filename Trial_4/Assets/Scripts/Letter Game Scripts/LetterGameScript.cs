@@ -293,6 +293,8 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
 
             _newLetterHoleGO.transform.localScale = (Vector3.one * _spawningSizeForHoles);
 
+            UseAlternateDialogue(_i, _word, _newLetterHole);
+
             _currentBlocksAndHoles.AddHole(_newLetterHole);
 
             _newLetterHoleGO.transform.localPosition = _currentlySelectedPositionForHoles;
@@ -333,7 +335,13 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
 
     IEnumerator WaitUntilCompletion()
     {
-        yield return new WaitForSeconds(5.0f);
+        float _seconds = _dialogues.GetAudioSource().clip.length;
+
+        yield return new WaitForSeconds(_seconds);
+
+        _dialogues.StopCurrentDialogue();
+
+        yield return new WaitForSeconds(1.0f);
 
         _floor.SetActive(false);
 
@@ -349,6 +357,24 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
 
         _nextB.onClick.AddListener(delegate { base.WinGame(); _gameProperties.GetInformationCanvas().gameObject.SetActive(false); _nextB.onClick.RemoveAllListeners(); });
 
+        _dialogues.PlayClip("Dr. Salem Letter Matching Game Word 'Asthma' Winning");
+
         _gameProperties.GetGameCanvas().gameObject.SetActive(false);
+    }
+
+    void UseAlternateDialogue(int _indexInput, string _wordInput, LetterHoleScript _holeInput)
+    {
+        if(_holeInput == null)
+        {
+            return;
+        }
+
+        if(string.Compare(_wordInput, "Asthma", true) == 0)
+        {
+            if(_indexInput == 5)
+            {
+                _holeInput.SetCorrectMatchDialogue("Matching Letter Game 'A' 2");
+            }
+        }
     }
 }

@@ -2951,6 +2951,7 @@ GameObject:
   - component: {fileID: 149968731}
   - component: {fileID: 149968733}
   - component: {fileID: 149968732}
+  - component: {fileID: 149968734}
   m_Layer: 6
   m_Name: doctor idle
   m_TagString: Untagged
@@ -2991,9 +2992,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 149968733}
+  _doctorAudioSource: {fileID: 806979363}
   _talkAtStart: 1
   _secondsToTalkAtStart: 10
-  _doctorAudioSource: {fileID: 806979363}
+  _welcomingClip: {fileID: 0}
+  _dialogues: {fileID: 149968734}
 --- !u!95 &149968733
 Animator:
   serializedVersion: 4
@@ -3014,6 +3017,43 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &149968734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149968730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 417df0bd074a44e419fb479e03b522fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClips:
+  - _clip: {fileID: 8300000, guid: d8d253ad8caa6f24895bdb473aef875b, type: 3}
+    _clipName: Welcoming
+  - _clip: {fileID: 8300000, guid: 221c35d3291952941a56c5680b2e7c13, type: 3}
+    _clipName: Exhibition Preventer Inhaler
+  - _clip: {fileID: 8300000, guid: 62083a2915fbc1146887835cde7d70b1, type: 3}
+    _clipName: Exhibition Reliever Inhaler
+  - _clip: {fileID: 8300000, guid: 3a7a45add14a9154da8f50869c031c72, type: 3}
+    _clipName: Exhibition Introduction
+  - _clip: {fileID: 8300000, guid: 96adb79cb3b80c94dae38e2c2da22351, type: 3}
+    _clipName: Matching Letter Game 'S'
+  - _clip: {fileID: 8300000, guid: 64864e5099752de449f58d89f3a4ee1d, type: 3}
+    _clipName: Matching Letter Game 'M'
+  - _clip: {fileID: 8300000, guid: 17e87162c6fd2b84b96a250f431a26a1, type: 3}
+    _clipName: Matching Letter Game 'A' 1
+  - _clip: {fileID: 8300000, guid: 316a23eaacf69ac489a33d8965d6ec54, type: 3}
+    _clipName: Matching Letter Game 'A' 2
+  - _clip: {fileID: 8300000, guid: 393d21b37dd52e74c9ae7e0f4c8fd2aa, type: 3}
+    _clipName: Matching Letter Game 'T'
+  - _clip: {fileID: 8300000, guid: 3141cbc5ca9a7974f817b12450fcf836, type: 3}
+    _clipName: Matching Game Incorrect
+  - _clip: {fileID: 8300000, guid: 74ca0d324de1a5e409a504f2f9d294bc, type: 3}
+    _clipName: Dr. Salem Letter Matching Game Word 'Asthma' Winning
+  _audioSource: {fileID: 806979363}
+  _animator: {fileID: 149968733}
 --- !u!1 &151913033
 GameObject:
   m_ObjectHideFlags: 0
@@ -3657,6 +3697,134 @@ Transform:
   m_Father: {fileID: 772079139}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &187867124
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 187867125}
+  - component: {fileID: 187867126}
+  m_Layer: 0
+  m_Name: Default Audio Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &187867125
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187867124}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1075211023}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &187867126
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187867124}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 100
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &192275576
 GameObject:
   m_ObjectHideFlags: 0
@@ -14137,6 +14305,7 @@ MonoBehaviour:
   _placeIndicator: {fileID: 1228395062}
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
+  _dialogues: {fileID: 0}
   _gameProperties:
     _meter:
       _textGradient:
@@ -14205,7 +14374,7 @@ MonoBehaviour:
     _correctAnswerResponse: 
   _numberOfQuestions: 5
   _currentQuestionIndex: -1
-  _audioSource: {fileID: 0}
+  _audioSource: {fileID: 187867126}
 --- !u!1 &435727997
 GameObject:
   m_ObjectHideFlags: 0
@@ -20138,6 +20307,7 @@ MonoBehaviour:
   _placeIndicator: {fileID: 1228395062}
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
+  _dialogues: {fileID: 0}
   _gameProperties:
     _meter:
       _textGradient:
@@ -22027,7 +22197,7 @@ GameObject:
   - component: {fileID: 806979362}
   - component: {fileID: 806979363}
   m_Layer: 6
-  m_Name: Audio Source
+  m_Name: Doctor's Audio Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25508,7 +25678,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 969470981}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &969470985
 Camera:
   m_ObjectHideFlags: 0
@@ -27625,6 +27795,7 @@ Transform:
   - {fileID: 149968731}
   - {fileID: 1466207916}
   - {fileID: 159462248}
+  - {fileID: 187867125}
   m_Father: {fileID: 1045023308}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -29652,6 +29823,10 @@ MonoBehaviour:
   _audioSource: {fileID: 149731638}
   _localPositionAfterPlacement: {x: 0, y: 0, z: 0}
   _talkingSeconds: 5
+  _drSalemClip: {fileID: 0}
+  _dialogues: {fileID: 0}
+  _correctMatchDialogue: 
+  _incorrectMatchDialogue: 
   _textCanvas: {fileID: 0}
   _nameText: {fileID: 0}
   _textOutline: {fileID: 0}
@@ -32579,6 +32754,10 @@ MonoBehaviour:
   _audioSource: {fileID: 1570030776}
   _localPositionAfterPlacement: {x: 0, y: 0, z: -0.01}
   _talkingSeconds: 5
+  _drSalemClip: {fileID: 0}
+  _dialogues: {fileID: 0}
+  _correctMatchDialogue: 
+  _incorrectMatchDialogue: 
   _textCanvas: {fileID: 0}
   _nameText: {fileID: 0}
   _textOutline: {fileID: 0}
@@ -36444,6 +36623,7 @@ MonoBehaviour:
   _placeIndicator: {fileID: 0}
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
+  _dialogues: {fileID: 0}
   _gameProperties:
     _meter:
       _textGradient:
@@ -38317,6 +38497,11 @@ MonoBehaviour:
       _variable1: 1
       _variable2: 1
   _exhibitionUniformScale: 1
+  _doctorDialogue:
+    _doctorAnimator: {fileID: 0}
+    _doctorAudioSource: {fileID: 0}
+    _doctorDefaultAudioClip: {fileID: 0}
+  _welcomingClip: {fileID: 0}
 --- !u!1 &1520426185
 GameObject:
   m_ObjectHideFlags: 0
@@ -40628,6 +40813,7 @@ MonoBehaviour:
   _placeIndicator: {fileID: 1228395062}
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
+  _dialogues: {fileID: 0}
   _gameProperties:
     _meter:
       _textGradient:
@@ -47986,6 +48172,7 @@ MonoBehaviour:
   _placeIndicator: {fileID: 1228395062}
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
+  _dialogues: {fileID: 0}
   _gameProperties:
     _meter:
       _textGradient:
@@ -49440,6 +49627,10 @@ MonoBehaviour:
   _audioSource: {fileID: 1432247300}
   _localPositionAfterPlacement: {x: 0, y: 0, z: 0}
   _talkingSeconds: 5
+  _drSalemClip: {fileID: 0}
+  _dialogues: {fileID: 0}
+  _correctMatchDialogue: 
+  _incorrectMatchDialogue: 
   _textCanvas: {fileID: 0}
   _nameText: {fileID: 0}
   _textOutline: {fileID: 0}
@@ -50499,8 +50690,10 @@ MonoBehaviour:
   _objectTitleText: {fileID: 852745502}
   _objectDescriptionText: {fileID: 845060678}
   _rocketContainerGO: {fileID: 551265654}
-  _doctorAnimator: {fileID: 149968733}
-  _audioSource: {fileID: 806979363}
+  _doctorSalemDialogues:
+    _doctorAnimator: {fileID: 0}
+    _doctorAudioSource: {fileID: 0}
+    _doctorDefaultAudioClip: {fileID: 0}
 --- !u!114 &2076186288
 MonoBehaviour:
   m_ObjectHideFlags: 0

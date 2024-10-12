@@ -37,6 +37,9 @@ public class ExhibitionScript : MonoBehaviour
     [SerializeField]
     AudioClip _welcomingClip;
 
+    [SerializeField]
+    DialoguesScript _dialogues;
+
     //[SerializeField]
     ExhibitionGroupClass _currentGroup;
 
@@ -200,6 +203,13 @@ public class ExhibitionScript : MonoBehaviour
 
             _currentExh.SetObjectAudioClip(_currentListItem.GetAudioClip());
 
+            if (_dialogues != null)
+            {
+                _currentExh.SetDialogues(_dialogues);
+
+                _currentExh.SetObjectAudioClip2(_currentListItem.GetAudioClip2());
+            }
+
             if (_collider != null)
             {
                 _currentExh.SetObjectCollider(_collider);
@@ -241,7 +251,9 @@ public class ExhibitionScript : MonoBehaviour
         {
             if(!DataPersistenceManager.GetInstance().GetExhibitionIntroduced())
             {
-                PlayDialogue(_welcomingClip);
+                //PlayDialogue(_welcomingClip);
+
+                PlayDialogue("Dr. Salem Exhibition Introduction");
 
                 DataPersistenceManager.GetInstance().SetExhibitionIntroduced(true);
             }
@@ -345,6 +357,16 @@ public class ExhibitionScript : MonoBehaviour
 
         _doctorDialogue.SetTalkingCoroutine(_doctorSalemTalkingCoroutine);
     }
+
+    public void PlayDialogue(string _input)
+    {
+        if(_dialogues == null)
+        {
+            return;
+        }
+
+        _dialogues.PlayClip(_input);
+    }
 }
 
 
@@ -431,6 +453,9 @@ public class ExhibitionListItemClass
     [SerializeField]
     AudioClip _audioClip;
 
+    [SerializeField]
+    string _audioClip2;
+
     public GameObject GetListItemGameObject()
     {
         return _listItemGameObject;
@@ -469,5 +494,10 @@ public class ExhibitionListItemClass
     public AudioClip GetAudioClip()
     {
         return _audioClip;
+    }
+
+    public string GetAudioClip2()
+    {
+        return _audioClip2;
     }
 }

@@ -49,6 +49,9 @@ public class ExhibitionObjectScript : MonoBehaviour
     [SerializeField]
     AudioClip _exhibitionObjectAudioClip;
 
+    [SerializeField]
+    string _exhibitionObjectAudioClip2;
+
     Quaternion _initalRotation;
 
     bool _highlighted = false;
@@ -62,6 +65,8 @@ public class ExhibitionObjectScript : MonoBehaviour
     bool _exhibitionRaycastOn = false;
 
     Coroutine _animationCoroutine;
+
+    DialoguesScript _dialogues;
 
     // Start is called before the first frame update
     void Start()
@@ -162,6 +167,16 @@ public class ExhibitionObjectScript : MonoBehaviour
         return _exhibitionObjectAudioClip;
     }
 
+    public string GetObjectAudioClip2()
+    {
+        return _exhibitionObjectAudioClip2;
+    }
+
+    public DialoguesScript GetDialogues()
+    {
+        return _dialogues;
+    }
+
     //Setters
 
     public void SetObjectName(string _input)
@@ -257,6 +272,16 @@ public class ExhibitionObjectScript : MonoBehaviour
         }
 
         _exhibitionObjectAudioClip = _input;
+    }
+
+    public void SetObjectAudioClip2(string _input)
+    {
+        _exhibitionObjectAudioClip2 = _input;
+    }
+
+    public void SetDialogues(DialoguesScript _input)
+    {
+        _dialogues = _input;
     }
 
     void PrepareExhibition()

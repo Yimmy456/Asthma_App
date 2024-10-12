@@ -61,6 +61,11 @@ public class DialoguesScript : MonoBehaviour
         return null;
     }
 
+    public AudioSource GetAudioSource()
+    {
+        return _audioSource;
+    }
+
     public void PlayClip(string _input)
     {
         if(_input == "")
@@ -112,7 +117,7 @@ public class DialoguesScript : MonoBehaviour
 
         _animator.SetBool(_talkingString, true);
 
-        Debug.Log("We are starting to talk about '" + _input + ".");
+        Debug.Log("We are starting to talk about '" + _input + "'.");
 
         yield return new WaitForSeconds(_seconds);
 
@@ -122,7 +127,7 @@ public class DialoguesScript : MonoBehaviour
 
         _isTalking = false;
 
-        Debug.Log("We are stopping to talk about '" + _input + ".");
+        Debug.Log("We are stopping talking about '" + _input + "'.");
 
         _animator.SetBool(_talkingString, false);
     }
@@ -135,11 +140,15 @@ public class DialoguesScript : MonoBehaviour
 
         if (_clip == null || _audioSource == null || _animator == null)
         {
+            Debug.LogError("1. Error 1: Either there is no clip by the name '" + _input1 + "', or there is no audio source or animator.");
+
             yield break;
         }
 
         if (_clip.GetClip() == null)
         {
+            Debug.LogError("1. Error 2: There is no file for the clip by the name '" + _input1 + "'.");
+
             yield break;
         }
 
@@ -155,7 +164,11 @@ public class DialoguesScript : MonoBehaviour
 
         _animator.SetBool(_talkingString, true);
 
+        Debug.Log("1. We are starting to talk about '" + _input1 + "'.");
+
         yield return new WaitForSeconds(_seconds);
+
+        Debug.Log("1. We are stopping talking about '" + _input1 + "'.");
 
         //Audio Clip 2
 
@@ -171,6 +184,8 @@ public class DialoguesScript : MonoBehaviour
 
             _isTalking = false;
 
+            Debug.LogError("2. Error 1: There is no clip by the name '" + _input2 + "'.");
+
             yield break;
         }
 
@@ -184,6 +199,8 @@ public class DialoguesScript : MonoBehaviour
 
             _isTalking = false;
 
+            Debug.LogError("2. Error 2: There is no file for the clip by the name '" + _input2 + "'.");
+
             yield break;
         }
 
@@ -195,6 +212,8 @@ public class DialoguesScript : MonoBehaviour
 
         _audioSource.Play();
 
+        Debug.Log("2. We are starting to talk about '" + _input2 + "'.");
+
         yield return new WaitForSeconds(_seconds);
 
         _isTalking = false;
@@ -203,10 +222,12 @@ public class DialoguesScript : MonoBehaviour
 
         _audioSource.clip = null;
 
+        Debug.Log("2. We are stopping talking about '" + _input2 + "'.");
+
         _animator.SetBool(_talkingString, false);
     }
 
-    void StopCurrentDialogue()
+    public void StopCurrentDialogue()
     {
         if(_dialogueCoroutine != null)
         {
