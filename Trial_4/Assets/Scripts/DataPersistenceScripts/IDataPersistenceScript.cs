@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IDataPersistenceScript
+public interface IDataPersistenceInterface
 {
     void LoadData(GameDataScript _input);
 

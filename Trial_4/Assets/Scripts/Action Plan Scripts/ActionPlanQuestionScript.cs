@@ -8,7 +8,7 @@ using System.ComponentModel;
 //using Org.BouncyCastle.Asn1.X509.Qualified;
 
 [Serializable]
-public abstract class ActionPlanQuestionScript: IDataPersistenceScript
+public abstract class ActionPlanQuestionScript: IDataPersistenceInterface
 {
     [Description("This is where you put the question that you want to ask.")]
     [SerializeField]

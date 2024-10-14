@@ -3052,6 +3052,12 @@ MonoBehaviour:
     _clipName: Matching Game Incorrect
   - _clip: {fileID: 8300000, guid: 74ca0d324de1a5e409a504f2f9d294bc, type: 3}
     _clipName: Dr. Salem Letter Matching Game Word 'Asthma' Winning
+  - _clip: {fileID: 8300000, guid: 221c35d3291952941a56c5680b2e7c13, type: 3}
+    _clipName: Dr. Salem Exhibition Preventer Inhaler
+  - _clip: {fileID: 8300000, guid: 62083a2915fbc1146887835cde7d70b1, type: 3}
+    _clipName: Dr. Salem Exhibition Reliever Inhaler
+  - _clip: {fileID: 8300000, guid: 3a7a45add14a9154da8f50869c031c72, type: 3}
+    _clipName: Dr. Salem Exhibition Introduction
   _audioSource: {fileID: 806979363}
   _animator: {fileID: 149968733}
 --- !u!1 &151913033
@@ -22238,7 +22244,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 100
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -38400,6 +38406,7 @@ MonoBehaviour:
       _outlineThickness: 1
       _talkingSeconds: 5
       _audioClip: {fileID: 0}
+      _audioClip2: Dr. Salem Exhibition Reliever Inhaler
     - _listItemGameObject: {fileID: 134907928583110029, guid: 9cda32f608d9a1748811798032632f27, type: 3}
       _listItemName: Preventer Inhaler
       _listItemDescription: 
@@ -38408,6 +38415,7 @@ MonoBehaviour:
       _outlineThickness: 1
       _talkingSeconds: 5
       _audioClip: {fileID: 0}
+      _audioClip2: Dr. Salem Exhibition Preventer Inhaler
     - _listItemGameObject: {fileID: 2169771285789508442, guid: 88de728b7d43f4747800db0c967bca33, type: 3}
       _listItemName: Hybrid Inhaler
       _listItemDescription: 
@@ -38416,6 +38424,7 @@ MonoBehaviour:
       _outlineThickness: 1
       _talkingSeconds: 5
       _audioClip: {fileID: 0}
+      _audioClip2: 
     - _listItemGameObject: {fileID: 8907650479044642488, guid: 0436b66cd5d38544a9af82cb0be2fa8a, type: 3}
       _listItemName: Medicine
       _listItemDescription: 
@@ -38424,6 +38433,7 @@ MonoBehaviour:
       _outlineThickness: 1
       _talkingSeconds: 5
       _audioClip: {fileID: 0}
+      _audioClip2: 
     - _listItemGameObject: {fileID: 124029742880193190, guid: 454d18a21a2477e49bca97b83ec8176c, type: 3}
       _listItemName: Spacer
       _listItemDescription: 
@@ -38432,6 +38442,7 @@ MonoBehaviour:
       _outlineThickness: 1
       _talkingSeconds: 5
       _audioClip: {fileID: 0}
+      _audioClip2: 
     - _listItemGameObject: {fileID: 7795114222376234084, guid: dd596e05b8b1d57498cc79d52d969db1, type: 3}
       _listItemName: Whole Inhaler
       _listItemDescription: 
@@ -38440,6 +38451,7 @@ MonoBehaviour:
       _outlineThickness: 1
       _talkingSeconds: 5
       _audioClip: {fileID: 0}
+      _audioClip2: 
     _groupCompletionMeter:
       _textGradient:
         serializedVersion: 2
@@ -38498,10 +38510,11 @@ MonoBehaviour:
       _variable2: 1
   _exhibitionUniformScale: 1
   _doctorDialogue:
-    _doctorAnimator: {fileID: 0}
-    _doctorAudioSource: {fileID: 0}
+    _doctorAnimator: {fileID: 149968733}
+    _doctorAudioSource: {fileID: 806979363}
     _doctorDefaultAudioClip: {fileID: 0}
   _welcomingClip: {fileID: 0}
+  _dialogues: {fileID: 149968734}
 --- !u!1 &1520426185
 GameObject:
   m_ObjectHideFlags: 0

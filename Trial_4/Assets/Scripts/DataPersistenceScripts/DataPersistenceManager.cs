@@ -16,7 +16,7 @@ public class DataPersistenceManager : MonoBehaviour
     bool _useEncryption;
 
     //[SerializeField]
-    List<IDataPersistenceScript> _dataPersistentObjects;
+    List<IDataPersistenceInterface> _dataPersistentObjects;
 
     //List<IDataPersistenceScript> _dataPersistentClasses;
 
@@ -49,7 +49,7 @@ public class DataPersistenceManager : MonoBehaviour
         _fileHandler = new FileDataHandlerScript(Application.persistentDataPath, _fileName, _useEncryption);
         //_dataPersistentObjects = FindAllDataPersistenceObject();
         //_dataPersistentClasses = new List<IDataPersistenceScript>();
-        _dataPersistentObjects = new List<IDataPersistenceScript>();
+        _dataPersistentObjects = new List<IDataPersistenceInterface>();
 
         Debug.Log("File path is: " + _fileHandler + ".");
 
@@ -62,7 +62,7 @@ public class DataPersistenceManager : MonoBehaviour
     {
         if(_dataPersistentObjects == null)
         {
-            _dataPersistentObjects = new List<IDataPersistenceScript>();
+            _dataPersistentObjects = new List<IDataPersistenceInterface>();
         }
     }
 
@@ -83,7 +83,7 @@ public class DataPersistenceManager : MonoBehaviour
 
 
 
-        foreach(IDataPersistenceScript _object in _dataPersistentObjects)
+        foreach(IDataPersistenceInterface _object in _dataPersistentObjects)
         {
             if (_object != null)
             {
@@ -95,7 +95,7 @@ public class DataPersistenceManager : MonoBehaviour
     public void SaveGame()
     {
 
-        foreach(IDataPersistenceScript _object in _dataPersistentObjects)
+        foreach(IDataPersistenceInterface _object in _dataPersistentObjects)
         {
             if (_object != null)
             {
@@ -124,11 +124,11 @@ public class DataPersistenceManager : MonoBehaviour
         SaveGame();
     }*/
 
-    private List<IDataPersistenceScript> FindAllDataPersistenceObject()
+    private List<IDataPersistenceInterface> FindAllDataPersistenceObject()
     {
-        IEnumerable<IDataPersistenceScript> _dataPersistenceObject = FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistenceScript>();
+        IEnumerable<IDataPersistenceInterface> _dataPersistenceObject = FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistenceInterface>();
 
-        return new List<IDataPersistenceScript>(_dataPersistenceObject);
+        return new List<IDataPersistenceInterface>(_dataPersistenceObject);
     }
 
     public static DataPersistenceManager GetInstance()

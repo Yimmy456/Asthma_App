@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BadgesManagerScript : MonoBehaviour, IDataPersistenceScript
+public class BadgesManagerScript : MonoBehaviour, IDataPersistenceInterface
 {
     static BadgesManagerScript _instance;
 

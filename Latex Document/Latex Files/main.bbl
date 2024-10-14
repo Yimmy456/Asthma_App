@@ -42,15 +42,15 @@
       \field{title}{Encryption and Decryption}
       \field{year}{2010}
       \verb{urlraw}
-      \verb https://docs.oracle.com/cd/E19047-01/sunscreen151/806-5397/i996724/index.html\#:~:text=Encryption\%20is\%20the\%20process\%20by,its\%20original\%20(readable)\%20format.
+      \verb https://docs.oracle.com/cd/E19047-01/sunscreen151/806-5397/i996724/index.html\#:\~:text=Encryption\%20is\%20the\%20process\%20by,its\%20original\%20(readable)\%20format.
       \endverb
       \verb{url}
-      \verb https://docs.oracle.com/cd/E19047-01/sunscreen151/806-5397/i996724/index.html%5C#:~:text=Encryption%5C%20is%5C%20the%5C%20process%5C%20by,its%5C%20original%5C%20(readable)%5C%20format.
+      \verb https://docs.oracle.com/cd/E19047-01/sunscreen151/806-5397/i996724/index.html%5C#:%5C~:text=Encryption%5C%20is%5C%20the%5C%20process%5C%20by,its%5C%20original%5C%20(readable)%5C%20format.
       \endverb
     \endentry
     \entry{Unity}{online}{}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labeltitlesource}{title}
       \field{title}{Unity}
       \verb{urlraw}
@@ -58,21 +58,6 @@
       \endverb
       \verb{url}
       \verb https://unity.com/
-      \endverb
-    \endentry
-    \entry{ARCoreDevices}{online}{}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
-      \field{labeltitlesource}{title}
-      \field{month}{1}
-      \field{note}{Accessed on: October 6, 2024}
-      \field{title}{ARCore supported devices}
-      \field{year}{2023}
-      \verb{urlraw}
-      \verb https://developers.google.com/ar/devices
-      \endverb
-      \verb{url}
-      \verb https://developers.google.com/ar/devices
       \endverb
     \endentry
     \entry{iTextSharp}{online}{}
@@ -85,6 +70,45 @@
       \endverb
       \verb{url}
       \verb https://itextpdf.com/products/itextsharp
+      \endverb
+    \endentry
+    \entry{DictionaryMeaning}{misc}{}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed on: October 14, 2024}
+      \field{title}{Dictionaries}
+      \verb{urlraw}
+      \verb https://adacomputerscience.org/concepts/struct_dictionary?examBoard=ada&stage=all
+      \endverb
+      \verb{url}
+      \verb https://adacomputerscience.org/concepts/struct_dictionary?examBoard=ada&stage=all
+      \endverb
+    \endentry
+    \entry{InterfaceMeaning}{online}{}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed on: October 14, 2024}
+      \field{title}{Interface}
+      \verb{urlraw}
+      \verb https://www.britannica.com/dictionary/interface
+      \endverb
+      \verb{url}
+      \verb https://www.britannica.com/dictionary/interface
+      \endverb
+    \endentry
+    \entry{ProgInterfaceMeaning}{online}{}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed on: October 14, 2024}
+      \field{title}{Interfaces}
+      \verb{urlraw}
+      \verb https://users.cs.utah.edu/\~germain/PPS/Topics/interfaces.html\#:\~:text=Interfaces\%20in\%20Object\%20Oriented\%20Programming,on\%20an\%20object\%20(class)
+      \endverb
+      \verb{url}
+      \verb https://users.cs.utah.edu/%5C~germain/PPS/Topics/interfaces.html%5C#:%5C~:text=Interfaces%5C%20in%5C%20Object%5C%20Oriented%5C%20Programming,on%5C%20an%5C%20object%5C%20(class)
       \endverb
     \endentry
   \enddatalist

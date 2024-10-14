@@ -1,18 +1,18 @@
 [0] Config.pm:307> INFO - This is Biber 2.17
 [0] Config.pm:310> INFO - Logfile is 'main.blg'
-[152] biber-MSWIN64:340> INFO - === 
-[206] Biber.pm:418> INFO - Reading 'main.bcf'
-[351] Biber.pm:972> INFO - Found 5 citekeys in bib section 0
-[368] Biber.pm:4383> INFO - Processing section 0
-[382] Biber.pm:4574> INFO - Looking for bibtex file 'References.bib' for section 0
-[457] bibtex.pm:1713> INFO - LaTeX decoding ...
-[465] bibtex.pm:1518> INFO - Found BibTeX data source 'References.bib'
-[509] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[509] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[509] Biber.pm:4203> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[509] Biber.pm:4209> INFO - No sort tailoring available for locale 'en-US'
-[517] bbl.pm:654> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[518] bbl.pm:757> INFO - Output to main.bbl
-[518] Biber.pm:130> WARN - BibTeX subsystem: C:\Users\MANAR2~1\AppData\Local\Temp\biber_tmp_Io2Z\2c752702d164267d08a8792d4ccaec82_46980.utf8, line 12, warning: 15 characters of junk seen at toplevel
-[519] Biber.pm:130> WARN - BibTeX subsystem: C:\Users\MANAR2~1\AppData\Local\Temp\biber_tmp_Io2Z\2c752702d164267d08a8792d4ccaec82_46980.utf8, line 21, warning: 13 characters of junk seen at toplevel
-[519] Biber.pm:132> INFO - WARNINGS: 2
+[138] biber-MSWIN64:340> INFO - === 
+[182] Biber.pm:418> INFO - Reading 'main.bcf'
+[306] Biber.pm:972> INFO - Found 7 citekeys in bib section 0
+[323] Biber.pm:4383> INFO - Processing section 0
+[336] Biber.pm:4574> INFO - Looking for bibtex file 'References.bib' for section 0
+[401] bibtex.pm:1713> INFO - LaTeX decoding ...
+[412] bibtex.pm:1518> INFO - Found BibTeX data source 'References.bib'
+[455] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[455] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[455] Biber.pm:4203> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[455] Biber.pm:4209> INFO - No sort tailoring available for locale 'en-US'
+[464] bbl.pm:654> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[466] bbl.pm:757> INFO - Output to main.bbl
+[466] Biber.pm:130> WARN - BibTeX subsystem: C:\Users\MANAR2~1\AppData\Local\Temp\biber_tmp_nnr1\2c752702d164267d08a8792d4ccaec82_1732.utf8, line 12, warning: 15 characters of junk seen at toplevel
+[466] Biber.pm:130> WARN - BibTeX subsystem: C:\Users\MANAR2~1\AppData\Local\Temp\biber_tmp_nnr1\2c752702d164267d08a8792d4ccaec82_1732.utf8, line 23, warning: 13 characters of junk seen at toplevel
+[466] Biber.pm:132> INFO - WARNINGS: 2

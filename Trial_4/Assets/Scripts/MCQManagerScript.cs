@@ -114,7 +114,7 @@ public class MCQManagerScript : MonoBehaviour
 }
 
 [System.Serializable]
-public class QuestionClass : IDataPersistenceScript
+public class QuestionClass : IDataPersistenceInterface
 {
     public void LoadData(GameDataScript _input)
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [System.Serializable]
-public class SettingsScript: IDataPersistenceScript
+public class SettingsScript: IDataPersistenceInterface
 {
     [SerializeField]
     protected string _settingName;

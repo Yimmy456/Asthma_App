@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionPlanManagerScript : MonoBehaviour, IDataPersistenceScript
+public class ActionPlanManagerScript : MonoBehaviour, IDataPersistenceInterface
 {
     static ActionPlanManagerScript _instance;
 

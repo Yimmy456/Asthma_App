@@ -4,7 +4,7 @@
 [Text Here]
 
 \subsection{Programming and Mathematical Terms}
-There are several components and aspects in the fields of programming and mathematics that we need to discuss before heading to the methodology:
+There are several components and aspect in the fields of programming and mathematics that we need to discuss before heading to the methodology:
 \begin{itemize}
     \item {Class: An asset that contains special properties and represents a specific object in a system or program.}
     
@@ -56,21 +56,25 @@ The target platforms that were desired for this game are smartphones and tablets
 
 However, other tools were used to complete the application. For example, Photoshop was used in this project to design badges, buttons, icons, and other UI elements. It also helped change the color or hue of UI elements. The version of Photoshop that was used is “20.0.4”. Another software that was used is Blender (Ver. 4.1). It was used to make simple modifications on 3D models and assets and make some 3D animations. A third tool is GitHub (Ver. 3.4.1), which was used to sync all my works and updates to all the other clients involved in the project, as well as keep track of the project's history and updates. More tools will be discussed throughout this article.
 
-\subsection{AR Package}
+\subsection{AR Packages}
 
-The AR package that is implemented for the project is Google’s ARCore package. The reason that this package is chosen for this project include:
+The AR packages that are implemented for the project are Google’s ARCore package and Apple's ARKit for Android and iOS devices, respectively. The reason that these packages are chosen for this project include:
 \begin{enumerate}
-    \item{It is compatible with iPhones and Android devices, which are the most dominant devices in their market\footnote{As of this document, according to Google’s website, in terms of iPhones, ARCore supports up to iPhone 13 \cite{ARCoreDevices}.}}
     
-    \item{Unity can let the user download the package natively from it}
+    \item{Unity can let the user download the packages natively from it}
     
-    \item{ARCore has the ability to let detect physical surfaces, such as floors, walls, ceilings, and tables. Therefore, no specific pattern is required, which are similar to traditional AR methods}
+    \item{They have the ability to detect physical surfaces, such as floors, walls, ceilings, and tables via the device's camera. Therefore, no specific pattern is required, unlike traditional AR methods}
+    
+    \item{The base package the is needed to program AR in Unity is called ``AR Foundation''. It is also downloaded and installed natively. Once installed, the other two packages are used with it, making it less needed to program further for a specific device}
 
 \end{enumerate}
 Because we are using an AR environment, there needs to be special components to run the application in AR, such as AR cameras and sessions. These are assets that are within Unity. In the phone, when the camera detects a physical surface, an on-screen button will appear to tell the player to start the game. When the button is pressed the virtual scene will be placed on the very spot that the camera picked.
 
 \subsection{Loading and Saving}
-Loading and saving are very important when opening an application to avoid losing progress from any session. It is done using a “.json” file. It stores information in text-form. There is a C\# script that reads from the file and writes to it for loading and saving, respectively. It also encrypts the file to avoid users from easily tempering with the data. Each savable data has at least two variables: 1. Only one key variable and 2. at least one value variable. The key is basically an ID, which is a unique string that contains 32 characters. It can be generated via C\#. The value can be of any type. Therefore, we needed to program what value do we want to save from what asset, and the asset needs a key as a reference to know where the value should be stored. The process of loading is:
+\label{LoadingAndSaving}
+%Loading and saving are very important when opening an application to avoid losing progress from any session. It is done using a “.json” file. It stores information in text-form. There is a C# script that reads from the file and writes to it for loading and saving, respectively. It also encrypts the file to avoid users from easily tempering with the data. Each savable data has at least two variables: 1. Only one key variable and 2. at least one value variable. The key is basically an ID, which is a unique string that contains 32 characters. It can be generated via C#. The value can be of any type. Therefore, we needed to program what value do we want to save from what asset, and the asset needs a key as a reference to know where the value should be stored. The process of loading is:
+
+Loading and saving are very important when opening an application to avoid losing progress from any session. It is done using a “.json” file. It stores information in text-form. There is a C\# script that reads from the file and writes to it for loading and saving, respectively. It also encrypts the file to avoid users from easily tempering with the data. Each data that needs to be saved has an interface () which contains two functions: “LoadData(GameData \_input)” and “SaveData(ref GameData \_input)” (“GameData” will be explained in the section “\textbf{\nameref{GameDataClassSection}}”). It also needs an ID so it can be referred to later on. In this case, the IDs are strings of 32 random characters that can be generated in C\#. The process of loading is:
 
 \begin{enumerate}
     \item{Decrypt the file}
@@ -110,6 +114,35 @@ The information that we are saving are:
     \item{The type of user}
 \end{itemize}
 
+\subsubsection{The “{\codefont GameData}” Class}
+\label{GameDataClassSection}
+This class is responsible for which data needs to be saved. It has five variables, presented in the following table, three which are dictionaries:
+
+\begin{table}[h!]
+\centering
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{|c|c|c|c|} 
+\hline
+\textbf{No.} & \textbf{Variable Name} & \textbf{Variable Type}                                               & \textbf{Variable Description}                                                                                                                                                                     \\ 
+\hline
+1.           & \fontspec{CamingoCode}\_userType\normalfont            & \begin{tabular}[c]{@{}c@{}}“\fontspec{CamingoCode}UserTypeEnum\normalfont”\\Enum\end{tabular}         & \begin{tabular}[c]{@{}c@{}}To know what is the type of user.\\In the “.json” file, it is saved as an integer.\end{tabular}                                                                        \\ 
+\hline
+2.           & \fontspec{CamingoCode}\_userTypeSelected\normalfont     & Boolean                                                              & \begin{tabular}[c]{@{}c@{}}To know if the user has selected their type\\and agreed to the Terms \& Conditions.\\This is to avoid loading the “First Use” scene everytime.\end{tabular}            \\ 
+\hline
+3.           & \fontspec{CamingoCode}\_badgesCollected\normalfont      & \begin{tabular}[c]{@{}c@{}}“String-Boolean”\\Dictionary\end{tabular} & To load and save which badges have been earned.                                                                                                                                                   \\ 
+\hline
+4.           & \fontspec{CamingoCode}\_actionPlanAnswers\normalfont    & \begin{tabular}[c]{@{}c@{}}“String-String”\\Dictionary\end{tabular}  & \begin{tabular}[c]{@{}c@{}}To load and save the user's answers of the action plan.\\When loading, the values will be converted from\\their text forms to their correct value types.\end{tabular}  \\ 
+\hline
+5.           & \fontspec{CamingoCode}\_settingsValues\normalfont       & \begin{tabular}[c]{@{}c@{}}“String-String”\\Dictionary\end{tabular}  & \begin{tabular}[c]{@{}c@{}}To load and save the user's values in the settings menu.\\The process of loading the values is\\similar to that in “\fontspec{CamingoCode}\_actionPlanAnswers\normalfont”\end{tabular}                  \\
+\hline
+\end{tabular}
+}
+\end{table}
+
+There are three types of possible users: 1. doctors; 2. patients; and 3. random users (Which is the default choice). This will only be asked once when the user opens the application for their very first time on their device.
+
+There is another class that represents the collection of data, which we will refer to as the “data class”. This class has dictionaries, where their keys are strings, and their values are of the value type based on the information. The keys of the dictionaries are the 32-character ID strings that were discussed earlier.
+
 \subsection{Programming and Designing the Action Plan}
 The Action Plan is a survey that prompts the user to ask questions about their status with asthma. It also has some questions about their personal information such as birthday, name, and gender. The overall number of questions are twenty. However, each question has a different type of answers:
 \begin{enumerate}
@@ -128,7 +161,7 @@ The Action Plan is a survey that prompts the user to ask questions about their s
 Eventually, only if all questions are answered, the user will be able to make a PDF form of the plan (The PDF is explained in section “\textbf{\nameref{ActionPlanPDF}}”). Also, they are saved, and if the user accesses the action plan again, the input fields will be filled with the previous answers.
 
 \subsubsection*{Enums}
-There were two types enum questions: 1. The color of the inhaler; and 2. The user’s gender. These are to ensure that the user do not provide various responses to questions that only need a specific answer. Visually, the answer of enum questions is presented in a dropdown menu. When the user taps on the menu, a dropdown box will appear below it, listing the possible choices based on the enum. The user can tap on a specific answer or accept the already selected answer.
+There were two types enum questions: 1. The color of the inhaler; and 2. The user’s gender. These are to ensure that the user do not provide various responses to questions that only need a specific answer. Visually, the answer of enum questions is presented in a dropdown menu. When the user taps on the menu, a dropdown box will appear below it, listing the possible choices based on the enum. The user can tap on a specific answer or accept the already selected answer. For the gender enum, there is a third choice called “Unknown” in the C\# script. However, in the canvas's dropdown menu, the option is displayed as “I do not wish to specify”. Also, if this choice is selected, then in the PDF (Explained in section \textbf{\nameref{ActionPlanPDF}}) it will be printed as “Does not wish to specify gender.”.
 
 \subsubsection*{Two Strings}
 There was only one question that needed two strings, which is the doctor’s contact methods: phone number and e-mail. The phone number must be a string because if it is an integer (or any numerical variable type), the leading zeroes in the sequence will be discarded since they would be treated as numbers. Besides, phone numbers do not provide any mathematical purpose. Visually, there are two input field, each prompting for a contact method. For the phone number, only numerical values can be added. So, in a smartphone, when the input field for the phone number is selected, the on-screen number-pad will appear, rather than the whole on-screen keyboard.
@@ -138,7 +171,7 @@ There are three questions that ask for the date: 1. The birthdate of the user; 2
 
 \subsubsection*{The Action Plan’s PDF Form}
 \label{ActionPlanPDF}
-All the answers of the Action Plan can be presented in a PDF. This was done using the iTextSharp library \cite{iTextSharp}, which is compatible with C\# and Unity. There is a teal button called “Print PDF” in the action plan’s UI, which is responsible for creating the PDF file. When the file is created, the very first attributes that are printed are 1. the date and time of printing; and 2. the time zone of the device’s current location. Below them, a table is printed showing the personal information of the user, which are 1. Name, 2. Date of birth, 3. Age, and 4. Gender. The age is automatically calculated by the difference between the date of printing and the date of birth. The others are taken from the user’s input from the app. After this, a list of all the questions and their answers (Other than the personal information) are printed across the document. As for the date and time formats:
+All the answers of the Action Plan can be presented in a PDF. This was done using the iTextSharp library \cite{iTextSharp}, which is compatible with C\# and Unity. There is a teal button called “Print PDF” in the action plan’s UI canvas, which is responsible for creating the PDF file. When the file is created, the very first attributes that are printed are 1. the date and time of printing; and 2. the time zone of the device’s current location. Below them, a table is printed showing the personal information of the user, which are 1. Name, 2. Date of birth, 3. Age, and 4. Gender. The age is automatically calculated by the difference between the date of printing and the date of birth. The others are taken from the user’s input from the app. After this, a list of all the questions and their answers (Other than the personal information) are printed across the document. As for the date and time formats:
 \begin{itemize}
     \item{All the dates in the PDF are in the following format: “MMMM dd, yyyy (dddd)”, for example “September 02, 2024 (Monday)”}
     
@@ -184,6 +217,7 @@ In Unity, there is a technique called “Raycasting”, that is used to make the
 All exhibits have one script in common, called “\fontspec{CamingoCode}ExhibitionObjectScript\normalfont”. When the user places the center of his/her camera at an object, the raycasting line will detect if it contains the mentioned script. If so, the object will be highlighted in a specific color, the red circle will turn green, the name of the object will be displayed in the text field, and the microphone button will appear below. When the microphone button is pressed, Dr. Salem will discuss the highlighted object.
 
 \subsection*{The Draggable Class}
+\label{DraggableClass}
 There are objects that need to be dragged by the user. To make this work, two classes were created: “\fontspec{CamingoCode}DraggableClass\normalfont” and “\fontspec{CamingoCode}DraggableManagerClass\normalfont”. The former is a class that can be a component for any object in a scene. Basically, when the user taps on an object that has this script, the object will follow the finger’s position and movements. When the user lets go of the screen, the object will stop following. The class has four possible states:
 \begin{enumerate}
 
@@ -265,5 +299,29 @@ The game has its own UI canvas, since it needs to be on-screen. It has:
 
 \item{A text below the buttons for responses}
 \end{itemize}
-Designing the canvas was challenging for a device as small as a smartphone and in portrait mode, specifically for the buttons. Aligning the buttons on top of each other could prevent space for other contents, such as the questions’ text bar, the slider, the response text bar, and Dr. Salem’s image. The most ideal structure of the group of buttons in a small display was to have two buttons above and two below to accommodate enough text for the choices, as well as the other UI elements.
+Designing the canvas was challenging for a device as small as a smartphone and in portrait mode, specifically for the buttons. Aligning the buttons on top of each other could prevent space for other contents, such as the questions’ text bar, the slider, the response text bar, and Dr. Salem’s image. The most ideal structure for the group of four buttons in a small display was to have two buttons above and two below to accommodate enough text for the choices, as well as the other UI elements in the canvas.
+
+
+\subsection{Managers}
+In programming, there needs to be a class that is responsible for monitoring certain things, maintaining values, and informing other classes of current updates. This is where managers come in. A manager is a singleton class that keep track of certain assets happening across the application and let other classes know about these assets and any other updates. There are several manager classes in this application:
+
+\begin{itemize}
+\item{Badges,}
+\item{Settings,}
+\item{Draggable Objects (Discussed in section “\textbf{\nameref{DraggableClass}}”),}
+\item{Action Plan,}
+\item{Persistence (Responsible for Loading and Saving Data).}
+\end{itemize}
+
+These classes are always available and accessible throughout the game. Usually, they contain lists of objects, items, or components that they are responsible for keeping track of. For example, there is a list for the badges' manager. This list is for a class that contains all the properties of a badge, such as:
+\begin{itemize}
+\item{Name (String)}
+\item{ID (String, which it's used as a key, that is described in section “\textbf{\nameref{LoadingAndSaving}}”)}
+\item{Sprite (Sprite)}
+\item{Description (String)}
+\item{Description on How to Earn It (String)}
+\item{Collection Status (Boolean)}
+\end{itemize}
+
+When a badge is earned, a setting attribute's value is changed, or an answer of a question in the action plan has changed, their respective managers will store their changes and inform the persistence manager to save the requested change. The persistence manager will then write the changes into the “.json” file to save them, exactly as described in “\textbf{\nameref{LoadingAndSaving}}”. In loading, when opening the app, the persistence manager will read the data from the file, convert the values from their text forms, and give the converted values to the manager responsible for the matter.
 

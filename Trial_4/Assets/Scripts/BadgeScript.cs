@@ -4,7 +4,7 @@ using UnityEngine;
 //using UnityEngine.CoreModule;
 
 [System.Serializable]
-public class BadgeScript : IDataPersistenceScript
+public class BadgeScript : IDataPersistenceInterface
 {
     [SerializeField]
     string _badgeName;
