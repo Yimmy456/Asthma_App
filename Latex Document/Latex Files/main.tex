@@ -6,7 +6,7 @@
 \usepackage[total={6in, 9in}]{geometry}
 \usepackage[sorting=none]{biblatex}
 \usepackage{xpatch}
-\usepackage{glossaries}
+\usepackage[acronym]{glossaries}
 \usepackage{fontspec}
 \usepackage[hidelinks]{hyperref}
 \usepackage{colortbl}
@@ -14,6 +14,14 @@
 \setlength\bibitemsep{20pt} 
 
 \sloppy
+
+\newacronym{AR}{AR}{Augmented Reality}
+
+\newacronym{UI}{UI}{User Interface}
+
+\newacronym{Enum}{Enum}{Enumerator}
+
+\newacronym{MCQ}{MCQ}{Multiple Choice Questions}
 
 \newfontfamily{\codefont}{CamingoCode}
 
@@ -42,6 +50,7 @@
 [Text Here]
 
 \section{Definitions}
+\label{DefinitionsSec}
 \begin{itemize}
     \item{Cosine: The ratio of the adjacent side of a corner in a right triangle to the hypotenuse of the triangle: $cos(\theta) = \frac{adjacent}{hypotenuse}$.}
 
@@ -60,6 +69,7 @@
 \end{itemize}
 
 \subsection{Types of Programming Variables}
+\label{ProgDefinitionsSec}
 \begin{itemize}
     \item{Enumerator: A variable type in programming that has a certain number of possible values where one is selected, for example:
     
@@ -89,11 +99,11 @@
     
     \item{String: A text or sequence of characters, such as: “Hello World, 12381 42!”.}
     
-    \item{\fontspec{CamingoCode}Vector2\normalfont: A collection/array of two float variables. The first one is named ‘x’, and the second one is named ‘y’.}
+    \item{{\codefont Vector2}: A collection/array of two float variables. The first one is named ‘x’, and the second one is named ‘y’.}
     
-    \item{\fontspec{CamingoCode}Vector3\normalfont: A collection/array of three float variables. In addition to the two variables in \fontspec{CamingoCode}Vector2\normalfont, the third one is named ‘z’.}
+    \item{{\codefont Vector3}: A collection/array of three float variables. In addition to the two variables in {\codefont Vector2}, the third one is named ‘z’.}
     
-    \item{Boolean: A variable type that only has two possible values: ‘\fontspec{CamingoCode}true\normalfont’ or ‘\fontspec{CamingoCode}false\normalfont’.}
+    \item{Boolean: A variable type that only has two possible values: ‘{\codefont true}’ or ‘{\codefont false}’.}
     \item{List: A dynamic collection/array of values or data of the same variable type. Examples of variable types include (but not limited to) integers, floats, strings, classes and their sub-classes, objects, or other lists.}
     
         \item{Dictionary: A special list that contains data as key-value pairs. The key:
@@ -108,15 +118,16 @@
         }    
     \item{Interface (three meanings):
     \begin{enumerate}
-    \item{A way information is shown in a computer or device to its user. Example of interfaces in this document's topic are the canvases and the elements they contain and the way they are structured and presented \cite{InterfaceMeaning}. Other examples of interfaces include the green arrows and texts in the assembly game that tell they user what to do, and the unique canvas design in the MCQ game.}
+    \item{A way information is shown in a computer or device to its user. Example of interfaces in this document's topic are the canvases and the elements they contain and the way they are structured and presented \cite{InterfaceMeaning}. Other examples of interfaces include the green arrows and texts in the assembly game that tell they user what to do, and the unique canvas design in the \acrshort{MCQ} game.}
     
     \item{The way that a user is able to interact with a program. For example, the buttons, sliders, and input fields that are shown in the canvases \cite{InterfaceMeaning}.}
     
-    \item{A programming structure that enforces certain properties on an object or class. For example, there can be a phone class, a computer class, and a TV class. All of these classes \textbf{MUST HAVE} a ``\fontspec{CamingoCode}TurnOn()\normalfont'' function, but how the function is written in each specific class is up to the programmer \cite{ProgInterfaceMeaning}.}
+    \item{A programming structure that enforces certain properties on an object or class. For example, there can be a phone class, a computer class, and a TV class. All of these classes \textbf{MUST HAVE} a “{\codefont TurnOn()}” function, but how the function is written in each specific class is up to the programmer \cite{ProgInterfaceMeaning}.}
     
     \end{enumerate}
-    
+
     }
+    
     
  \end{itemize}
 \section{Acronyms}

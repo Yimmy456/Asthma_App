@@ -15,8 +15,6 @@ public class GameDataScript
 
     public bool _userTypeSelected;
 
-    public bool _introductionComplete;
-
     public UserTypeEnum _userType;
 
     public GameDataScript()
@@ -26,8 +24,6 @@ public class GameDataScript
         _userType = UserTypeEnum.Random_User;
 
         _userTypeSelected = false;
-
-        _introductionComplete = false;
 
         _badgesCollected = new SerializableDictionaryScript<string, bool>();
 
@@ -43,60 +39,12 @@ public class GameDataScript
         _userTypeSelected = true;
     }
 
-    public void AddBadge2(BadgeScript _input)
+    public void AddBadge(BadgeScript _input)
     {
         if(!_badgesCollected.ContainsKey(_input.GetBadgeID()))
         {
             _badgesCollected.Add(_input.GetBadgeID(), _input.GetBadgeCollected());
         }
-    }
-
-    public void AddBadge(BadgeScript _input)
-    {
-        if(_input == null)
-        {
-            return;
-        }
-
-        string _id = _input.GetBadgeID();
-
-        if(_id.Equals(""))
-        {
-            return;
-        }
-
-        /*if(_badges.ContainsKey(_id))
-        {
-            return;
-        }*/
-
-        bool _col = _input.GetBadgeCollected();
-
-        _badgesCollected.Add(_id, _col);
-
-        //_badges.Add(_id, _col);
-    }
-
-    public void ChangeBadgeCollectedStatus(ref BadgeScript _badgeInput)
-    {
-        if(_badgeInput == null)
-        {
-            return;
-        }
-
-        string _id = _badgeInput.GetBadgeID();
-
-        if(_id.Equals(""))
-        {
-            return;
-        }
-
-        /*if(!_badges.ContainsKey(_id))
-        {
-            return;
-        }*/
-
-        //_badges[_id] = true;
     }
 
     public void AddQuestionAnswer(ActionPlanQuestionScript _input)
@@ -159,15 +107,4 @@ public class GameDataScript
 
         return (_st1 + _st2);
     }
-
-    public bool GetIntroductionComplete()
-    {
-        return _introductionComplete;
-    }
-
-    public void IntroductionComplete()
-    {
-        _introductionComplete = true;
-    }
-
 }

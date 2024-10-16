@@ -81,8 +81,6 @@ public class DataPersistenceManager : MonoBehaviour
             NewGame();
         }
 
-
-
         foreach(IDataPersistenceInterface _object in _dataPersistentObjects)
         {
             if (_object != null)

@@ -159,8 +159,6 @@ public class BadgesManagerScript : MonoBehaviour, IDataPersistenceInterface
             _input._badgesCollected.TryGetValue(_id2, out _col);
 
             _b2.SetBadgeCollected(_col);
-
-            //_input.AddBadge(_b2);
         }
     }
 
@@ -176,7 +174,6 @@ public class BadgesManagerScript : MonoBehaviour, IDataPersistenceInterface
             }
 
             _input._badgesCollected.Add(_id3, _b3.GetBadgeCollected());
-            //_input.AddBadge(_b3);
         }
     }
 

@@ -56,7 +56,7 @@ public class BadgeScript : IDataPersistenceInterface
     {
         _input._badgesCollected.TryGetValue(_badgeID, out _badgeCollected);
 
-        _input.AddBadge2(this);
+        _input.AddBadge(this);
 
         //_input.AddBadge(this);
     }
@@ -84,7 +84,7 @@ public class BadgeScript : IDataPersistenceInterface
 
         if (!DataPersistenceManager.GetInstance().GetGameData()._badgesCollected.ContainsKey(_badgeID))
         {
-            DataPersistenceManager.GetInstance().GetGameData().AddBadge2(this);
+            DataPersistenceManager.GetInstance().GetGameData().AddBadge(this);
         }
         else
         {

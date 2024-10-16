@@ -184,7 +184,7 @@ public class PlaceIndicatorScript : MonoBehaviour
                 StartCoroutine(_shinkAndExpandAnimationForLandingTerrain.Animate());                
             }
 
-            StartCoroutine(_arrowAnimationClass.Animate());
+            //StartCoroutine(_arrowAnimationClass.Animate());
 
             SetSceneSize();
 
@@ -228,7 +228,7 @@ public class PlaceIndicatorScript : MonoBehaviour
                 _inhaler.SetActive(false);
             }
 
-            _arrowAnimationClass.EndAnimation();
+            //_arrowAnimationClass.EndAnimation();
 
             //_m.SetColor("_Color", Color.red);
 
