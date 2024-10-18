@@ -14,6 +14,12 @@ public class DatePanelScript : MonoBehaviour
     [SerializeField]
     InputField _yearPanel;
 
+    [SerializeField]
+    Dropdown _dayDropdown;
+
+    [SerializeField]
+    Dropdown _monthDropdown;
+
     DateClass _date;
 
     // Start is called before the first frame update
@@ -121,5 +127,48 @@ public class DatePanelScript : MonoBehaviour
         }
 
         _date.SetYear(_input);
+    }
+
+    public void ResetDays()
+    {
+        if(_dayDropdown == null || _monthDropdown == null || _yearPanel == null)
+        {
+            return;
+        }
+
+        int _days = 31;
+
+        //string _st = _yearPanel.text;
+
+        int _year = int.Parse(_yearPanel.text);
+
+        int _m = _monthDropdown.value;
+
+        if(_m == 1)
+        {
+            if((_year % 4) == 0)
+            {
+                _days = 29;
+            }
+            else
+            {
+                _days = 28;
+            }
+        }
+        else if(_m == 3 || _m == 5 || _m == 8 || _m == 10)
+        {
+            _days = 30;
+        }
+
+        _dayDropdown.ClearOptions();
+
+        List<string> _list = new List<string>();
+
+        for(int _i = 0; _i < _days; _i++)
+        {
+            _list.Add((_i + 1).ToString("00"));
+        }
+
+        _dayDropdown.AddOptions(_list);
     }
 }

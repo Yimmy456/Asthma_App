@@ -103,7 +103,7 @@ There is another class that represents the collection of data, called “{\codef
 \hline
 4.           & {\codefont \_actionPlanAnswers}    & \begin{tabular}[c]{@{}c@{}}“String-String”\\Dictionary\end{tabular}  & \begin{tabular}[c]{@{}c@{}}To load and save the user's answers of the action plan.\\When loading, the values will be converted from\\their text forms to their correct value types.\end{tabular}  \\ 
 \hline
-5.           & {\codefont \_settingsValue}       & \begin{tabular}[c]{@{}c@{}}“String-String”\\Dictionary\end{tabular}  & \begin{tabular}[c]{@{}c@{}}To load and save the user's values in the settings menu.\\The process of loading the values is\\similar to that in “{\codefont \_actionPlanAnswers}”\end{tabular}                  \\
+5.           & {\codefont \_settingsValue}       & \begin{tabular}[c]{@{}c@{}}“String-String”\\Dictionary\end{tabular}  & \begin{tabular}[c]{@{}c@{}}To load and save the user's values in the settings menu.\\The process of loading the values is\\similar to that in “{\codefont \_actionPlanAnswers}”.\end{tabular}                  \\
 \hline
 \end{tabular}
 }
@@ -111,7 +111,7 @@ There is another class that represents the collection of data, called “{\codef
 
 The mentioned \glsdisp{Enum}{enum} type, “{\codefont UserTypeEnum}”, has three values that represent the possible types of user. “{\codefont \_userType}” is the variable of this \glsdisp{Enum}{enum} type. There are three types of possible users: 1. doctors; 2. patients; and 3. random users. In the beginning of the application (for the very first time only), the user will be presented with a canvas that contains the question “What type of user are you?” and three choices, each with a tick box next to it. Also a “Select” button will be below the choices. After selecting an option and pressing the button, the value of “{\codefont \_userType}” will change according to the selected value, while the user will be directed to the “Terms and Conditions” canvas, containing a “Next” button. When the button is pressed, the value of “{\codefont \_userTypeSelected}” will change to ‘{\codefont true}’, and both the values of the Boolean and the value of “{\codefont \_userType}” will be saved. Once the Boolean is saved as ‘{\codefont true}’, the user will never be asked the question again. Instead, they will go straight into the menu scene the next time the open the application.
 
-\subsubsection*{The processes of Loading and Saving}
+\subsubsection*{The Processes of Loading and Saving}
 \label{LoadSaveProcessSec}
 
 The process of loading is:
@@ -157,10 +157,10 @@ The action plan is a survey that prompts the user to answer questions about thei
     
     \item{Date (DD/MM/YYYY Format, all integers)}
 \end{enumerate}
-Eventually, only if all questions are answered, the user will be able to make a PDF form of the plan (The PDF is explained in section “\textbf{\nameref{ActionPlanPDF}}”). Also, they are saved, and if the user accesses the action plan again, the input fields will be filled with the previous answers.
+Eventually, only if all questions are answered, the user will be able to make a PDF form of the plan (The PDF is explained in section “\textbf{\nameref{ActionPlanPDF}}”). Also, they are saved (as explained in section “\textbf{\nameref{LoadingAndSaving}}”), and if the user accesses the action plan again, the input fields will be filled with the previously saved answers.
 
 \subsubsection*{Enums}
-There were two types \glsdisp{Enum}{enum} questions: 1. The color of the inhaler; and 2. The user’s gender. These are to ensure that the user do not provide various responses to questions that only need a specific answer. Visually, the answer of \glsdisp{Enum}{enum} questions is presented in a dropdown menu. When the user taps on the menu, a dropdown box will appear below it, listing the possible choices based on the enum. The user can tap on a specific answer or accept the already selected answer.
+There were two types \glsdisp{Enum}{enum} questions: 1. The color of the inhaler; and 2. The user’s gender. These are to ensure that the user do not provide various responses to questions that only need a specific answer. Visually, the input method for answers of \glsdisp{Enum}{enum} questions is a dropdown menu, rather than a text field. When the user taps on the menu, a dropdown box will appear below it, listing the possible choices based on the enum. The user can tap on a specific answer or accept the already selected answer.
 
 For the gender \glsdisp{Enum}{enum}, there is a third choice called “{\codefont Unknown}” in the C\# script. However, in the canvas's dropdown menu, the option is displayed as “I do not wish to specify”. Also, if this choice is selected, it will be printed as “Does not wish to specify gender.” in the PDF form (Explained in section \textbf{\nameref{ActionPlanPDF}}).
 
