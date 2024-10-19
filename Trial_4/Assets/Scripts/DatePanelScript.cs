@@ -67,7 +67,7 @@ public class DatePanelScript : MonoBehaviour
 
     public void ConfirmDate()
     {
-        if(_dayPanel == null || _monthPanel == null || _yearPanel == null)
+        /*if(_dayPanel == null || _monthPanel == null || _yearPanel == null)
         {
             return;
         }
@@ -75,13 +75,27 @@ public class DatePanelScript : MonoBehaviour
         if(_dayPanel.text == "" || _monthPanel.text == "" || _yearPanel.text == "")
         {
             return;
+        }*/
+
+        if(_dayDropdown == null || _monthDropdown == null || _yearPanel == null)
+        {
+            return;
         }
 
-        int.TryParse(_dayPanel.text, out int _day);
+        if(_yearPanel.text == "")
+        {
+            return;
+        }
 
-        int.TryParse(_monthPanel.text, out int _month);
+        //int.TryParse(_dayPanel.text, out int _day);
+
+        //int.TryParse(_monthPanel.text, out int _month);
 
         int.TryParse(_yearPanel.text, out int _year);
+
+        int _day = _dayDropdown.value + 1;
+
+        int _month = _monthDropdown.value + 1;
 
         _date.SetYear(_year);
 

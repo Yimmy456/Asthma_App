@@ -88,7 +88,7 @@ Loading and saving are very important when opening an application to avoid losin
 \label{GameDataClassSection}
 There is another class that represents the collection of data, called “{\codefont GameData}”. This class includes dictionaries, where their keys are strings, and their values are of the value type based on the information. The keys of the dictionaries are the 32-character ID strings that were discussed earlier. This class is responsible for keeping track of which data needs to be saved. It also has two more variables. All the variables of the class are presented in the following table:
 
-\begin{table}[h!]
+\begin{table}[H]
 \centering
 \resizebox{\linewidth}{!}{%
 \begin{tabular}{|c|c|c|c|} 
@@ -139,7 +139,7 @@ The process of saving is:
 \end{enumerate}
 \item{Convert the information from the class  “{\codefont GameData}” into Json format in text form.}
 \item{Encrypt the text}
-\item{Write the .json file with the new encrypted text}
+\item{Rewrite the .json file with the new encrypted text}
 \end{enumerate}
 
 \subsection{Programming and Designing the Action Plan}
@@ -331,3 +331,20 @@ These classes are always available and accessible throughout the game. Usually, 
 
 When a badge is earned, a setting attribute's value is changed, or an answer of a question in the action plan has changed, their respective managers will store their changes and inform the persistence manager to save the requested change. The persistence manager will then write the changes into the “.json” file to save them, exactly as described in “\textbf{\nameref{LoadingAndSaving}}”. In loading, when opening the app, the persistence manager will read the data from the file, convert the values from their text forms, and give the converted values to the manager responsible for the matter.
 
+\subsection*{Other Assets}
+The voice acting of Dr. Salem and Fasty was done by Said. The animations were done by two student in the University of Sharjah, as well as an external talent. The talents were Alaa Laghoub and Fatima Alqaydi, where they used Blender to animate Fasty's animations, such as:
+\begin{itemize}
+\item{Jumping off the rocket}
+\item{Greeting the player}
+\item{Cheering}
+\item{Staying idle}
+\end{itemize}.
+However, there is another essential animation that had to be implemented, which was have Fasty show how to use the inhaler. This particular animation was so challenging that we needed assisstance from outside the university's domain. Thus, we contacted an external talent via a platform called Upwork. The name of the talent is Vaishali Goyani. She did an outstanding job on how Fasty should use the inhaler. The procedure is:
+\begin{enumerate}
+\item{Shake the inhaler for three times}
+\item{Remove the cap from the spacer}
+\item{Place the spacer's mouthpiece into Fasty's mouth firmly}
+\item{Press the medicine}
+\item{Count to 10 seconds with his fingers (A world-space canvas appears above of Fasty's head when he is counting, and the canvas also displays the countdown.)}.
+\end{enumerate}
+All animations files were saved as “.fbx” files.
