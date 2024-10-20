@@ -331,6 +331,124 @@ These classes are always available and accessible throughout the game. Usually, 
 
 When a badge is earned, a setting attribute's value is changed, or an answer of a question in the action plan has changed, their respective managers will store their changes and inform the persistence manager to save the requested change. The persistence manager will then write the changes into the “.json” file to save them, exactly as described in “\textbf{\nameref{LoadingAndSaving}}”. In loading, when opening the app, the persistence manager will read the data from the file, convert the values from their text forms, and give the converted values to the manager responsible for the matter.
 
+\subsection{The Indicator}
+One of the first aspects that had to be programmed for the application was the indicator. It is a feature to tell the user where the target scene is. The indicator has its own C\# script and \acrshort{UI} canvas. The script has two variables to make this feature work: A camera variable and a target's transform variable. The feature has two cases: on-screen and off-screen, which are both based on the script's two variables. If one of the two variable is not assigned, the whole feature will not be executed. In the on-screen's case, when the scene is far enough from the target, a UI indicator will mark on it. The icon of the indicator will be a squared border. Below the square is a number telling how far the user is from the scene. If the user gets close enough, the indicator will disappear.\\
+
+However, if the target is not seen by the camera (which would be the off-screen's case), then more work needs to be done to make the indicator tell the user where to have his/her camera face \cite{IndicatorVideo}. Also, the icon of the indicator will be changed into an arrow. The process also involves some math. The procedure is:
+\begin{enumerate}
+\item{Get the on-screen position of the target (Which is the position of the target in the screen).}
+\begin{itemize}
+\item{{\codefont Vector3 \_pos = \_camera.WorldToScreenPoint(\_targetObject .transform.position)}}
+\end{itemize}
+\item{Substract the on-screen position of the target by the center of the screen.}
+\begin{itemize}
+\item{{\codefont \_screenCenter = new Vector3(Screen.Width, Screen.Height, 0.0f) / 2.0f}}
+\item{{\codefont \_pos = \_pos - \_screenPosition}}
+\end{itemize}
+\item{Get the angle of the on-screen position using $Atan2$.}
+\begin{itemize}
+\item{$\theta = Atan2(\frac{\_pos.y}{\_pos.x})$}
+\end{itemize}
+\item{Multiply the angle by $\frac{\pi}{2}$ radians (which is equal to 90 degrees).}
+\item{Get the cosine and sine values of the angle. Multiply the sine value by -1.}
+\item{Get the ratio “{\codefont \_m}”.}
+\begin{itemize}
+\item{$\_m = \frac{cos(\theta)}{sin(\theta)}$}.
+\end{itemize}
+\item{Get the bounds:}
+\begin{itemize}
+\item{{\codefont Vector3 \_bounds = \_screenCenter * \_threshold}.}
+\item{“{\codefont \_threshold}” is a float variable that ranges between 0.0f and 1.0f, inclusively. It is to tell how close to the edge of the screen should the arrow be. 0.0 means it stays in the center of the screen, while 1.0 means it touches the edge of the screen. We set the float to 0.65. This float variable can be changed by the user in the settings UI (Which is explained in section “\textbf{\nameref{SettingsSec}}”).}
+\end{itemize}
+\item{Assign the position of the arrow (indicator) with the following code:}
+
+\begin{codefont}
+if(\_cos > 0.0f)\\
+\{ \\
+\tab \_pos = new Vector3((\_bounds.y / \_m), \_bounds.y, 0.0f);\\
+\} \\
+else\\
+\{\\
+\tab \_pos = new Vector3((-\_bounds.y / \_m), -\_bounds.y, 0.0f);\\
+\}\\
+
+if (\_pos.x > \_bounds.x)\\
+\{\\
+\tab \_pos = new Vector3(\_bounds.x, (\_bounds.x * \_m), 0.0f);\\
+\}\\
+else if (\_pos.x < -\_bounds.x)\\
+\{\\
+\tab \_pos = new Vector3(-\_bounds.x, -(\_bounds.x * \_m), 0.0f);\\
+\}\\
+\end{codefont}
+
+\item{Assign the UI position of the arrow to the values of “{\codefont \_pos}”.}
+\item{Assign the UI rotation of the arrow in the z-axis to the value of $\theta$ radians. The rotation in the x and y axes will stay 0.0.}
+\end{enumerate}
+In the settings UI, there is a tick box that the user can toggle with to switch on or off the feature. The tick box and the Boolean variable that it is based on will be explained in section “\textbf{\nameref{SettingsSec}}”. The name of the tick box is “Indicator On”.
+\subsection{The Settings}
+\label{SettingsSec}
+Obviously, all users have different preferences of certain aspects. To have the user decide on these preferences, we need a settings \acrshort{UI}. It controls and keeps track of utilities on how the user wants to experience the application. As of now, there are six settings that the user can control:
+\begin{enumerate}
+\item{Languages (“{\codefont LanguagesEnum}” \acrshort{Enum})}
+\item{Indicator On (Boolean)}
+\item{Indicator Threshold (Ranged float between 0.0 and 1.0, inclusively)}
+\begin{itemize}
+\item{This variable's \acrshort{UI} element will be disabled if the “Indicator On” Boolean is set to ‘{\codefont false}’.}
+\end{itemize}
+\item{Voice Dialogues On (Boolean)}
+\item{Text Dialogues On (Boolean)}
+\item{Exhibition Raycast Distance (Ranged float between 10.0 and 100.0, inclusively)}
+\end{enumerate}
+The settings have their own UI canvas as well as their own manager class. Also each type of setting has their own sub-class. The settings' super class is a generic class, meaning the super-class have variables where their type is not specified. The type would need to be specified in each sub-class. Let us assume an example:\\
+\begin{codefont}
+
+public class SettingClass<T>\\
+\{\\
+\tab protected T \_value;\\
+
+\tab public T GetValue()\\
+\tab \{\\
+\tab \tab return \_value;\\
+\tab \}\\
+
+\tab public void SetValue(T \_input)\\
+\tab \{\\
+\tab \tab \_value = \_input;\\
+\tab \}\\
+
+\tab ...\\
+\}\\
+
+public class BooleanSettingClass : SettingClass<bool>\\
+\{\\
+\tab ...\\
+\}\\
+\end{codefont}\\
+In the following piece of code, “{\codefont SettingClass<T>}” is the super-class. The declared “{\codefont T}” represents the unspecified type of variable. All the properties that are of type “{\codefont T}” (such as “{\codefont \_value}”, “{\codefont GetValue()}”, or “{\codefont \_input}”) are not of any specific type, but correspond to one generic type. When declaring the class as a variable type or a super-class for another class, the type \textbf{MUST} be specified. Therefore, “{\codefont T}” needs to be replaced by a specific type. “{\codefont BooleanSettingClass}” is a sub-class that inherits from “{\codefont SettingClass}”. Notice that the “{\codefont T}” in the inheritance has been replaced with “{\codefont bool}”, which means that all of the properties that were of type “{\codefont T}” in the super-class become Booleans in this specific sub-class.\\
+
+There are three types of settings, and each of the types inherits from “{\codefont SettingClass}”. The following table will summarize the types and UI input methods:
+
+\begin{table}[H]
+\centering
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{|c|c|c|} 
+\hline
+\textbf{No.} & \textbf{Variable Type} & \textbf{UI Input Method}  \\ 
+\hline
+1.           & “{\codefont LanguageEnum}” Enum      & Flag Icon                        \\ 
+\hline
+2.           & Boolean                & Toggle Button                    \\ 
+\hline
+3.           & Float                  & Slider and Input Field           \\
+\hline
+\end{tabular}
+}
+\end{table}
+In the setting's UI canvas, there is a panel for each setting. Only one type of setting is an \glsdisp{Enum}{enum}, which is the language select. As of now, there are two languages: English and Arabic. The languages are presented in country flags: For English, the icon is the left half of USA's flag and the right half of UK's flag merged together, whereas in Arabic, the icon is the flag of the UAE. The default language is English. In the panel of the language select, the displayed icon will be the flag of the selected language. If the user taps on the icon, it will change, and the corresponding language should change with it (Although, for the application to work in Arabic has not been implemented yet). The values of “{\codefont LanguageEnum}” are ‘{\codefont English}’ and ‘{\codefont Arabic}’.\\
+
+For the Boolean settings, their panels contain toggle buttons. Their defaults values are ‘{\codefont true}’. The toggle button will have a tick mark if the value of its corresponding Boolean is ‘{\codefont true}’, and not have it if ‘{\codefont false}’. For floats, there are two UI input methods in their panels: a slider and an input text field. If the value of one of them is modified, the value of the other will change with it, accordingly. For the text field, if the user inputs a number that exceeds or deceeds the allowed range of its float setting, the input field will retype its value to maximum or minimum. Lasty, once the user is done modifying the settings, they can press the “Confirm” button to save the changes into the “.json” file. The saving process is done by the settings' and the persistence managers.
+
 \subsection*{Other Assets}
 The voice acting of Dr. Salem and Fasty was done by Said. The animations were done by two student in the University of Sharjah, as well as an external talent. The talents were Alaa Laghoub and Fatima Alqaydi, where they used Blender to animate Fasty's animations, such as:
 \begin{itemize}
