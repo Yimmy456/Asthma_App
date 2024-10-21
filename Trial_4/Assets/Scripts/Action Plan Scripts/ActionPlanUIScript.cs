@@ -284,9 +284,11 @@ public class ActionPlanUIScript : MonoBehaviour
 
         if(_enum == VariableTypeForAPEnum.Date)
         {
-            int.TryParse(_datePanel.GetDayPanel().text, out int _d);
-            int.TryParse(_datePanel.GetMonthPanel().text, out int _m);
             int.TryParse(_datePanel.GetYearPanel().text, out int _y);
+
+            int _d = _datePanel.GetDayDropdown().value + 1;
+
+            int _m = _datePanel.GetMonthDropdown().value + 1;
 
             _input.SetDateAnswer(_d, _m, _y);
 

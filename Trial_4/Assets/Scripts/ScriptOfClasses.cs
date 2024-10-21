@@ -354,13 +354,17 @@ public class DateClass
     [SerializeField]
     int _day = 1;
 
-    string _dayOfWeek;
+    DateTime _date;
 
     public DateClass()
     {
         _year = 2020;
         _month = 1;
         _day = 1;
+
+        Debug.Log("DateTime is (Y: " + _year + ", M: " + _month + ", D: " + _day + ") (1).");
+
+        _date = new DateTime(_year, _month, _day);
     }
 
     public DateClass(bool _setDateInput = true)
@@ -368,6 +372,13 @@ public class DateClass
         _year = _setDateInput ? 2020 : -1;
         _month = _setDateInput ? 1 : -1;
         _day = _setDateInput ? 1 : -1;
+
+        Debug.Log("DateTime is (Y: " + _year + ", M: " + _month + ", D: " + _day + ") (2).");
+
+        if (_setDateInput)
+        {
+            _date = new DateTime(_year, _month, _day);
+        }
     }
 
     public DateClass(int _yearInput, int _monthInput, int _dayInput)
@@ -393,101 +404,11 @@ public class DateClass
             _day = 1;
         }
 
-        GetDayOfWeekInDate();
-    }
+        Debug.Log("DateTime is (Y: " + _year + ", M: " + _month + ", D: " + _day + ") (3).");
 
-    public string GetMonthName()
-    {
-        string _name = "";
+        _date = new DateTime(_year, _month, _day);
 
-        switch(_month)
-        {
-            case 1:
-                _name = "January";
-                break;
-            case 2:
-                _name = "February";
-                break;
-            case 3:
-                _name = "March";
-                break;
-            case 4:
-                _name = "April";
-                break;
-            case 5:
-                _name = "May";
-                break;
-            case 6:
-                _name = "June";
-                break;
-            case 7:
-                _name = "July";
-                break;
-            case 8:
-                _name = "August";
-                break;
-            case 9:
-                _name = "September";
-                break;
-            case 10:
-                _name = "October";
-                break;
-            case 11:
-                _name = "November";
-                break;
-            case 12:
-                _name = "December";
-                break;
-        }
-
-        return _name;
-    }
-
-    public string GetMonthAbbreviation()
-    {
-        string _abb = "";
-
-        switch (_month)
-        {
-            case 1:
-                _abb = "Jan";
-                break;
-            case 2:
-                _abb = "Feb";
-                break;
-            case 3:
-                _abb = "Mar";
-                break;
-            case 4:
-                _abb = "Apr";
-                break;
-            case 5:
-                _abb = "May";
-                break;
-            case 6:
-                _abb = "Jun";
-                break;
-            case 7:
-                _abb = "Jul";
-                break;
-            case 8:
-                _abb = "Aug";
-                break;
-            case 9:
-                _abb = "Sept";
-                break;
-            case 10:
-                _abb = "Oct";
-                break;
-            case 11:
-                _abb = "Nov";
-                break;
-            case 12:
-                _abb = "Dec";
-                break;
-        }
-
-        return _abb;
+        //GetDayOfWeekInDate();
     }
 
     public int GetDay()
@@ -505,73 +426,9 @@ public class DateClass
         return _year;
     }
 
-    public string GetDayOfWeek()
+    public DateTime GetDate()
     {
-        return _dayOfWeek;
-    }
-
-    public string GetDayOfWeekAbb()
-    {
-        string _text = "";
-
-        switch (_dayOfWeek)
-        {
-            case "Monday":
-                _text = "Mon";
-                break;
-            case "Tuesday":
-                _text = "Tues";
-                break;
-            case "Wednesday":
-                _text = "Wed";
-                break;
-            case "Thursday":
-                _text = "Thurs";
-                break;
-            case "Friday":
-                _text = "Fri";
-                break;
-            case "Saturday":
-                _text = "Sat";
-                break;
-            default:
-                _text = "Sun";
-                break;
-        }
-
-        return _text;
-    }
-
-    public int GetDayOfWeekNumber()
-    {
-        int _value;
-
-        switch(_dayOfWeek)
-        {
-            case "Monday":
-                _value = 1;
-                break;
-            case "Tuesday":
-                _value = 2;
-                break;
-            case "Wednesday":
-                _value = 3;
-                break;
-            case "Thursday":
-                _value = 4;
-                break;
-            case "Friday":
-                _value = 5;
-                break;
-            case "Saturday":
-                _value = 6;
-                break;
-            default:
-                _value = 0;
-                break;
-        }
-
-        return _value;
+        return _date;
     }
 
     public void SetDay(int _input)
@@ -595,7 +452,7 @@ public class DateClass
         ReviseDate();
     }
 
-    public int GetMaxDays()
+    int GetMaxDays()
     {
         int _maxDays = 31;
 
@@ -627,13 +484,13 @@ public class DateClass
         switch(_monthDisplayInput)
         {
             case MonthDisplayEnum.Name:
-                _monthText = GetMonthName();
+                _monthText = _date.Month.ToString("MMMM");
                 break;
             case MonthDisplayEnum.Abbreviation:
-                _monthText = GetMonthAbbreviation();
+                _monthText = _date.Month.ToString("MM");
                 break;
             default:
-                _monthText = _month.ToString("00");
+                _monthText = _date.Month.ToString();
                 break;
         }
 
@@ -689,75 +546,14 @@ public class DateClass
             }
         }
 
-        int.TryParse(_dayText, out _day);
-
-        SetMonthFromString(_monthText);
 
         int.TryParse(_yearText, out _year);
-    }
 
-    void SetMonthFromString(string _input)
-    {
-        if (_input.Equals("Jan") || _input.Equals("January") || _input.Equals("1") || _input.Equals("01"))
-        {
-            _month = 1;
-        }
-        else if (_input.Equals("Feb") || _input.Equals("February") || _input.Equals("2") || _input.Equals("02"))
-        {
-            _month = 2;
-        }
-        else if (_input.Equals("Mar") || _input.Equals("March") || _input.Equals("3") || _input.Equals("03"))
-        {
-            _month = 3;
-        }
-        else if (_input.Equals("Apr") || _input.Equals("April") || _input.Equals("4") || _input.Equals("04"))
-        {
-            _month = 4;
-        }
-        else if (_input.Equals("May") || _input.Equals("5") || _input.Equals("05"))
-        {
-            _month = 5;
-        }
-        else if (_input.Equals("Jun") || _input.Equals("June") || _input.Equals("6") || _input.Equals("06"))
-        {
-            _month = 6;
-        }
-        else if (_input.Equals("Jul") || _input.Equals("July") || _input.Equals("7") || _input.Equals("07"))
-        {
-            _month = 7;
-        }
-        else if (_input.Equals("Aug") || _input.Equals("August") || _input.Equals("8") || _input.Equals("08"))
-        {
-            _month = 8;
-        }
-        else if(_input.Equals("Sept") || _input.Equals("September") || _input.Equals("9") || _input.Equals("09"))
-        {
-            _month = 9;
-        }
-        else if(_input.Equals("Oct") || _input.Equals("October") || _input.Equals("10"))
-        {
-            _month = 10;
-        }
-        else if(_input.Equals("Nov") || _input.Equals("November") || _input.Equals("11"))
-        {
-            _month = 11;
-        }
-        else if(_input.Equals("Dec") || _input.Equals("December") || _input.Equals("12"))
-        {
-            _month = 12;
-        }
-    }
+        int.TryParse(_monthText, out _month);
 
-    void GetDayOfWeekInDate()
-    {
-        if (GetDateSet())
-        {
-            Debug.Log("The date is Year: " + _year.ToString() + ", Month: " + _month.ToString() + ", and Day: " + _day.ToString() + ".");
+        int.TryParse(_dayText, out _day);
 
-            DateTime _dt = new DateTime(_year, _month, _day);
-
-            _dayOfWeek = _dt.DayOfWeek.ToString();
-        }
+        //SetMonthFromString(_monthText);
     }
 }
 

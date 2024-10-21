@@ -172,11 +172,18 @@ There are three questions that ask for the date: 1. The birthdate of the user; 2
 
 \subsubsection*{The Action Plan’s PDF Form}
 \label{ActionPlanPDF}
-All the answers of the Action Plan can be presented in a PDF. This was done using the iTextSharp library \cite{iTextSharp}, which is compatible with C\# and Unity. There is a teal button called “Print PDF” in the action plan’s \acrshort{UI} canvas, which is responsible for creating the PDF file. When the file is created, the very first attributes that are printed are 1. the date and time of printing; and 2. the time zone of the device’s current location. Below them, a table is printed showing the personal information of the user, which are 1. Name, 2. Date of birth, 3. Age, and 4. Gender. The age is automatically calculated by the difference between the date of printing and the date of birth. The others are taken from the user’s input from the app. After this, a list of all the questions and their answers (Other than the personal information) are printed across the document. As for the date and time formats:
+All the answers of the Action Plan can be presented in a PDF. This was done using the iTextSharp library \cite{iTextSharp}, which is compatible with C\# and Unity. There is a teal button called “Print PDF” in the action plan’s \acrshort{UI} canvas, which is responsible for creating the PDF file. When the file is created, the very first attributes that are printed are 1. the date and time of printing; and 2. the time zone of the device’s current location. Below them, a table is printed showing the personal information of the user, which are:
+\begin{enumerate}
+\item{Name}
+\item{Date of Birth}
+\item{Age}
+\item{Gender}
+\end{enumerate}
+The age is automatically calculated by the difference between the date of printing and the date of birth. The others are taken from the user’s input from the app. After this, a list of all the questions and their answers (Other than the personal information) are printed across the document. As for the date and time formats:
 \begin{itemize}
     \item{All the dates in the PDF are in the following format: “MMMM dd, yyyy (dddd)”, for example “September 02, 2024 (Monday)”}
     
-    \item{The time format used is in 12-hour format, for example “7:05 pm”. Also, it measures the time zone by using “UTC” time zone as a base. For example, “UTC+4:00” in the time zone of the United Arab Emirates, or “UTC+1:59” in Croatia.\footnote{Manar has tested printing the action plan in Croatia in late July of 2024. The time zone was accurate.}}
+    \item{The time format used is in 12-hour format. Also, it measures the timezone by using “UTC” as a base. For example, if the timezone in UTC is 2:01 PM, then “6:01 PM (UTC+4:00)” is printed if the timezone is in the United Arab Emirates, or “4:00 PM (UTC+1:59)” if in Croatia.\footnote{Manar has tested printing the action plan in Croatia in late July of 2024. The time zone was accurate.}}
 \end{itemize}
 
 \subsection{The Exhibition}
@@ -267,9 +274,9 @@ For the letters, there are six blocks and holes, and each block and hole are the
 \end{enumerate}
 Also, the letter block will rotate indefinitely at 100 degrees per second in the y-axis, counter-clockwise. The user can drag any letter in no specific order. When the game is complete, Dr. Salem will say what asthma is, then reward the user with a badge. The badge is saved is saved in the “.json” file.
 
-The other matching game, which involves the inhalers and their components instead, works the same way. However, there was a visual problem: There are three types of inhalers, which are the reliever, the preventer, and the hybrid. While they are in different color, they have the same physical shape and size. Meaning, while the blocks are different, the holes are identical in color and opacity. So, to solve this matter, there is a canvas above each hole, which displays the name of its corresponding item (whether it is a type of inhaler, a component of an inhaler, or the whole assembled object).
+The other matching game, which involves the inhalers and their components instead, works the same way. However, there was a visual problem: There are three types of inhalers, which are the reliever, the preventer, and the hybrid. While they are in different color, they have the same physical shape and size. Meaning, while the blocks are different, the holes are identical in color and opacity. So, to solve this matter, there is a world-space canvas above each hole, which displays the name of its corresponding item (whether it is a type of inhaler, a component of an inhaler, or the whole assembled object).
 
-The assembly game is about putting the components of the inhaler together to make the whole object. Programmatically, it works that same way as the previous two game, where each block should be dragged to the correct hole. However, the difference is that this is a procedural game, meaning that the blocks must be dragged to their holes in a specific order. Each step has a textual description of what the user should do. With each step done correctly, the meter’s counter increases by one, and the next step will be described. The steps of the procedure are:
+The assembly game is about putting the components of the inhaler together to make the whole object. Programmatically, it works that same way as the previous two games, where each block should be dragged to the correct hole. However, the difference is that this is a procedural game, meaning that the blocks must be dragged to their holes in a specific order. Each step has a textual description of what the user should do. With each step done correctly, the meter’s counter increases by one, and the next step will be described. The steps of the procedure are:
 \begin{enumerate}
 \item{Place the neck block into its hole}
 
@@ -281,18 +288,23 @@ The assembly game is about putting the components of the inhaler together to mak
 \end{enumerate}
 Once the game is done, the player will be rewarded with a badge.
 \subsubsection*{Card Matching Game}
-The card matching game is showing two cards and see if they are identical. The game itself is very well known. In this game’s case, though, it is specifically for the triggers of asthma, such as pollens, cigarettes, and pollution. In each session of the game there are 12 cards, aligned in a 4 × 3 structure. However, there is something additional in this game: Two of the cards are information cards, which only provide random information about asthma. Their front side is a picture of a question mark. Thus, we have ten trigger cards (each two are identical), and two information cards. If the player reveals an information card, the game’s meter increments by one, and Dr. Salem will talk about an information about asthma. Otherwise, if the player reveals two identical cards about a specific trigger, the meter increments by two, and Dr. Salem will define the trigger. When the player completes the game, he/she is rewarded with a badge.
+The card matching game is about showing which two cards are identical. The game itself is very well known. In this game’s case, though, it is specifically for the triggers of asthma, such as pollens, cigarettes, and pollution. In each session of the game there are 12 cards, aligned in a 4 × 3 structure. However, there is something additional in this game: Two of the cards are information cards, which only provide random information about asthma. Their front side is a picture of a question mark. Thus, we have ten trigger cards (each two are identical), and two information cards. If the player reveals an information card, the game’s meter increments by one, and Dr. Salem will talk about an information about asthma. Otherwise, if the player reveals two identical cards about a specific trigger, the meter increments by two, and Dr. Salem will define the trigger. When the player completes the game, he/she is rewarded with a badge.
 \subsubsection*{Multiple Choice Question Game}
-There is also a fifth game, which is \glsdisp{MCQ}{multiple choice questions}. We have made up to 24 questions, and each question has four choices, where one of them is correct. In a game session, only five of them are randomly selected. When a question is selected, their choices' orders are randomly shuffled before they are displayed. Unlike the other game where they take place in the \acrshort{AR} world, this is the only game that happens on-screen. When the player answers incorrectly, Dr. Salem provides positive feedback to encourage users to continue. When correctly:
+There is also a fifth game, which is \glsdisp{MCQ}{multiple choice questions}. We have made up to 24 questions, and each question has four choices, where one of them is correct. In a game session, only five of them are randomly selected. When a question is selected, their choices' orders are randomly shuffled before they are displayed. Unlike the other games where they take place in the \acrshort{AR} world, this is the only game that happens on-screen. When the player answers incorrectly, Dr. Salem provides positive feedback to encourage users to continue. When correctly:
 \begin{itemize}
 \item{Dr. Salem praises the player and explains the answer}
 
 \item{The answer buttons are disabled for interaction}
 
-\item{A green “next” will appear below}
+\item{A green “Next” button will appear below When pressed:
+\begin{enumerate}
+\item{The next question will be displayed with its answers}
+\item{the answer buttons will be interactable again}
+\item{the “Next” button will disappear}
+\end{enumerate}
+}
 \end{itemize}
-
-[More Text Here]
+When all five questions are answered correctly, the user will be rewarded with a badge.
 \paragraph*{The \acrshort{UI} Canvas of the \acrshort{MCQ} Game}
 The game has its own \acrshort{UI} canvas, since it needs to be on-screen. It has:
 \begin{itemize}
@@ -385,7 +397,8 @@ else if (\_pos.x < -\_bounds.x)\\
 \item{Assign the UI position of the arrow to the values of “{\codefont \_pos}”.}
 \item{Assign the UI rotation of the arrow in the z-axis to the value of $\theta$ radians. The rotation in the x and y axes will stay 0.0.}
 \end{enumerate}
-In the settings UI, there is a tick box that the user can toggle with to switch on or off the feature. The tick box and the Boolean variable that it is based on will be explained in section “\textbf{\nameref{SettingsSec}}”. The name of the tick box is “Indicator On”.
+In the settings UI, there is a tick box that the user can toggle with to switch on or off the feature. The tick box and the Boolean variable that it is based on will be explained in section “\textbf{\nameref{SettingsSec}}”. The name of the tick box is “Indicator On”.\\ \\
+In the application, the default target is the main scene, where Fasty is with his rocket spaceship and the main scenery. However, when playing a mini-game (with the exception of the \acrshort{MCQ} game), the target will be the scene of the game, for example, the holes an the matching games, or the cards' set in the cards game.
 \subsection{The Settings}
 \label{SettingsSec}
 Obviously, all users have different preferences of certain aspects. To have the user decide on these preferences, we need a settings \acrshort{UI}. It controls and keeps track of utilities on how the user wants to experience the application. As of now, there are six settings that the user can control:
@@ -394,7 +407,7 @@ Obviously, all users have different preferences of certain aspects. To have the 
 \item{Indicator On (Boolean)}
 \item{Indicator Threshold (Ranged float between 0.0 and 1.0, inclusively)}
 \begin{itemize}
-\item{This variable's \acrshort{UI} element will be disabled if the “Indicator On” Boolean is set to ‘{\codefont false}’.}
+\item{This setting's \acrshort{UI} element will be disabled if the “Indicator On” Boolean is set to ‘{\codefont false}’.}
 \end{itemize}
 \item{Voice Dialogues On (Boolean)}
 \item{Text Dialogues On (Boolean)}
@@ -403,20 +416,24 @@ Obviously, all users have different preferences of certain aspects. To have the 
 The settings have their own UI canvas as well as their own manager class. Also each type of setting has their own sub-class. The settings' super class is a generic class, meaning the super-class have variables where their type is not specified. The type would need to be specified in each sub-class. Let us assume an example:\\
 \begin{codefont}
 
-public class SettingClass<T>\\
+public class SettingClass\\
 \{\\
-\tab protected T \_value;\\
+\tab ...\\
+\}\\
 
-\tab public T GetValue()\\
+public class SettingGenericClass<T>:SettingClass\\
+\{\\
+\tab protected T \_value; %\textbackslash \textbackslash This property is a variable of type ‘T’.
+
+\tab public T GetValue()\\%\textbackslash \textbackslash This property is a function of type ‘T’. \\ 
 \tab \{\\
 \tab \tab return \_value;\\
 \tab \}\\
 
-\tab public void SetValue(T \_input)\\
+\tab public void SetValue(T \_input)\\%\textbackslash \textbackslash This property contains an input parameter of type ‘T’.\\
 \tab \{\\
 \tab \tab \_value = \_input;\\
 \tab \}\\
-
 \tab ...\\
 \}\\
 
@@ -425,7 +442,7 @@ public class BooleanSettingClass : SettingClass<bool>\\
 \tab ...\\
 \}\\
 \end{codefont}\\
-In the following piece of code, “{\codefont SettingClass<T>}” is the super-class. The declared “{\codefont T}” represents the unspecified type of variable. All the properties that are of type “{\codefont T}” (such as “{\codefont \_value}”, “{\codefont GetValue()}”, or “{\codefont \_input}”) are not of any specific type, but correspond to one generic type. When declaring the class as a variable type or a super-class for another class, the type \textbf{MUST} be specified. Therefore, “{\codefont T}” needs to be replaced by a specific type. “{\codefont BooleanSettingClass}” is a sub-class that inherits from “{\codefont SettingClass}”. Notice that the “{\codefont T}” in the inheritance has been replaced with “{\codefont bool}”, which means that all of the properties that were of type “{\codefont T}” in the super-class become Booleans in this specific sub-class.\\
+In the following piece of code, “{\codefont SettingGenericClass<T>}” is the super-class (and is a sub-class of “{\codefont SettingClass}”). The declared “{\codefont T}” represents the unspecified type of variable. All the properties that are of type “{\codefont T}” (such as “{\codefont \_value}”, “{\codefont GetValue()}”, or “{\codefont \_input}”) are not of any specific type, but do correspond to one generic type. When declaring the class as a variable type or a super-class for another class, the type \textbf{MUST} be specified. In other words, the “{\codefont T}” needs to be replaced by a specific type. “{\codefont BooleanSettingClass}” is a sub-class that inherits from “{\codefont SettingGenericClass}”. Notice that the “{\codefont T}” in the inheritance has been replaced with “{\codefont bool}”, which means that all of the properties that were of type “{\codefont T}” in the super-class become Booleans in this specific sub-class.\\
 
 There are three types of settings, and each of the types inherits from “{\codefont SettingClass}”. The following table will summarize the types and UI input methods:
 
@@ -447,7 +464,7 @@ There are three types of settings, and each of the types inherits from “{\code
 \end{table}
 In the setting's UI canvas, there is a panel for each setting. Only one type of setting is an \glsdisp{Enum}{enum}, which is the language select. As of now, there are two languages: English and Arabic. The languages are presented in country flags: For English, the icon is the left half of USA's flag and the right half of UK's flag merged together, whereas in Arabic, the icon is the flag of the UAE. The default language is English. In the panel of the language select, the displayed icon will be the flag of the selected language. If the user taps on the icon, it will change, and the corresponding language should change with it (Although, for the application to work in Arabic has not been implemented yet). The values of “{\codefont LanguageEnum}” are ‘{\codefont English}’ and ‘{\codefont Arabic}’.\\
 
-For the Boolean settings, their panels contain toggle buttons. Their defaults values are ‘{\codefont true}’. The toggle button will have a tick mark if the value of its corresponding Boolean is ‘{\codefont true}’, and not have it if ‘{\codefont false}’. For floats, there are two UI input methods in their panels: a slider and an input text field. If the value of one of them is modified, the value of the other will change with it, accordingly. For the text field, if the user inputs a number that exceeds or deceeds the allowed range of its float setting, the input field will retype its value to maximum or minimum. Lasty, once the user is done modifying the settings, they can press the “Confirm” button to save the changes into the “.json” file. The saving process is done by the settings' and the persistence managers.
+For the Boolean settings, their panels contain toggle buttons. Their defaults values are ‘{\codefont true}’. The toggle button will have a tick mark if the value of its corresponding Boolean is ‘{\codefont true}’, and not if ‘{\codefont false}’. For floats, there are two UI input methods in their panels: a slider and an input text field. If the value of one of them is modified, the value of the other will change with it, automatically. For the text field, if the user inputs a number that exceeds or deceeds the allowed range of its float setting, the input field will retype its value to maximum or minimum. Lasty, once the user is done modifying the settings, they can either press the “Confirm” button to save the changes into the “.json” file, or press the “Cancel” button to load the previous settings' values from the file. The loading and saving processes are done by the settings' and the persistence managers.
 
 \subsection*{Other Assets}
 The voice acting of Dr. Salem and Fasty was done by Said. The animations were done by two student in the University of Sharjah, as well as an external talent. The talents were Alaa Laghoub and Fatima Alqaydi, where they used Blender to animate Fasty's animations, such as:

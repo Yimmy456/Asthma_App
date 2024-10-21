@@ -27,7 +27,7 @@ public class DatePanelScript : MonoBehaviour
     {
         if (_date == null)
         {
-            _date = new DateClass(false);
+            _date = new DateClass();
         }
     }
 
@@ -41,7 +41,7 @@ public class DatePanelScript : MonoBehaviour
     {
         if(_date == null)
         {
-            _date = new DateClass(false);
+            _date = new DateClass();
         }
     }
 
@@ -63,6 +63,16 @@ public class DatePanelScript : MonoBehaviour
     public DateClass GetDate()
     {
         return _date;
+    }
+
+    public Dropdown GetDayDropdown()
+    {
+        return _dayDropdown;
+    }
+
+    public Dropdown GetMonthDropdown()
+    {
+        return _monthDropdown;
     }
 
     public void ConfirmDate()
@@ -106,9 +116,17 @@ public class DatePanelScript : MonoBehaviour
 
     public void SetDayText(int _input)
     {
-        _dayPanel.text = _input.ToString();
 
-        if(_date == null)
+        if (_dayPanel != null)
+        {
+            _dayPanel.text = _input.ToString();
+        }
+        if(_dayDropdown != null)
+        {
+            _dayDropdown.value = _input - 1;
+        }
+
+        if (_date == null)
         {
             Debug.LogError("The date is null (D).");
             //return;
@@ -119,7 +137,14 @@ public class DatePanelScript : MonoBehaviour
 
     public void SetMonthText(int _input)
     {
-        _monthPanel.text = _input.ToString();
+        if (_monthPanel != null)
+        {
+            _monthPanel.text = _input.ToString();
+        }
+        if (_monthDropdown != null)
+        {
+            _monthDropdown.value = _input - 1;
+        }
 
         if (_date == null)
         {
@@ -132,7 +157,10 @@ public class DatePanelScript : MonoBehaviour
 
     public void SetYearText(int _input)
     {
-        _yearPanel.text = _input.ToString();
+        if (_yearPanel != null)
+        {
+            _yearPanel.text = _input.ToString();
+        }
 
         if (_date == null)
         {
@@ -150,11 +178,36 @@ public class DatePanelScript : MonoBehaviour
             return;
         }
 
-        int _days = 31;
+        if(_yearPanel.text == "")
+        {
+            _dayDropdown.interactable = false;
 
-        //string _st = _yearPanel.text;
+            _monthDropdown.interactable = false;
+
+            return;
+        }
 
         int _year = int.Parse(_yearPanel.text);
+
+        if(_year == -1)
+        {
+            _dayDropdown.interactable = false;
+
+            _monthDropdown.interactable = false;
+
+            return;
+        }
+        else
+        {
+
+            _dayDropdown.interactable = true;
+
+            _monthDropdown.interactable = true;
+        }
+
+        int _selectedDay = _dayDropdown.value;
+
+        int _days = 31;
 
         int _m = _monthDropdown.value;
 
@@ -184,5 +237,12 @@ public class DatePanelScript : MonoBehaviour
         }
 
         _dayDropdown.AddOptions(_list);
+
+        if(_selectedDay >= _dayDropdown.options.Count)
+        {
+            _selectedDay = _dayDropdown.options.Count - 1;
+        }
+
+        _dayDropdown.value = _selectedDay;
     }
 }

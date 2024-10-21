@@ -26,6 +26,9 @@ public class ActionPlanDropdownListScript : CanvasScript
     [SerializeField]
     float _iconSize = 0.2f;
 
+    [SerializeField]
+    bool _changeStylesBoolean = true;
+
     bool _listDropped = false;
 
     bool _styleChanged = false;
@@ -125,6 +128,11 @@ public class ActionPlanDropdownListScript : CanvasScript
 
     void ChangeLabelStyles<T>(List<EnumDropdownLabelStyleClass<T>> _input) where T : System.Enum
     {
+        if(!_changeStylesBoolean)
+        {
+            return;
+        }
+
         RectTransform _rt = _dropdownList.gameObject.GetComponent<RectTransform>().Find("Dropdown List").gameObject.GetComponent<RectTransform>();
 
         if (_rt == null)
@@ -280,7 +288,7 @@ public class ActionPlanDropdownListScript : CanvasScript
     void ChangeMainLabelFunction()
     {
 
-        if(ActionPlanManagerScript.GetInstance() == null)
+        if(ActionPlanManagerScript.GetInstance() == null || !_changeStylesBoolean)
         {
             return;
         }

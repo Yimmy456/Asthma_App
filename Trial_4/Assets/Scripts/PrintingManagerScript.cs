@@ -194,15 +194,17 @@ public class PrintingManagerScript : MonoBehaviour
 
             _par.Font = _miniFont;
 
-            _par.Add("This document was printed on " + @"""" + DateTime.Now.ToString("MMMM dd, yyyy (dddd), h:mm tt") + @"""" + ",\n\n");
-
             var _timeDifference = DateTime.Now - DateTime.UtcNow;
 
             char _signChar = _timeDifference.Hours < 0.0f ? '-' : '+';
 
             string _timeDifferenceSt = _signChar + Math.Abs(_timeDifference.Hours).ToString() + ":" + _timeDifference.Minutes.ToString("00");
 
-            _par.Add("The timezone of printing this document was " + @"""" + "UTC " + _timeDifferenceSt + @"""" + ".\n\n\n");
+            //_par.Add("This document was printed on " + @"""" + DateTime.Now.ToString("MMMM dd, yyyy (dddd), h:mm tt") + @"""" + ",\n\n");
+
+            //_par.Add("The timezone of printing this document was " + @"""" + "UTC " + _timeDifferenceSt + @"""" + ".\n\n\n");
+
+            _par.Add("This document was printed on " + @"""" + DateTime.Now.ToString("MMMM dd, yyyy (dddd), h:mm tt") + " (UTC" + _timeDifferenceSt + ")" + @"""" + ",\n\n\n");
 
             _doc.Add(_par);
 
