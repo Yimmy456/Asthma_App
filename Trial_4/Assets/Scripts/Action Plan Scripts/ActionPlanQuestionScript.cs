@@ -60,9 +60,14 @@ public abstract class ActionPlanQuestionScript: IDataPersistenceInterface
         return UserTypeEnum.Random_User;
     }
 
-    public virtual DateClass GetDateAnswer()
+    /*public virtual DateClass GetDateAnswer()
     {
         return new DateClass();
+    }*/
+
+    public virtual DateTime GetDateAnswer()
+    {
+        return DateTime.Now;
     }
 
     public virtual string GetWholeAnswerAsString()
@@ -472,6 +477,7 @@ public class ActionPlanQuestionEnum_Gender:ActionPlanQuestionEnum<GenderEnum>
     }
 }
 
+/*
 public class ActionPlanQuestionDate : ActionPlanQuestionGenericTypeScript<DateClass>
 {
     public ActionPlanQuestionDate():base()
@@ -511,7 +517,7 @@ public class ActionPlanQuestionDate : ActionPlanQuestionGenericTypeScript<DateCl
         _questionAnswered = _answer.GetDateSet();
     }
 }
-
+*/
 public class ActionPlanQuestionContact : ActionPlanQuestionGenericTypeScript<TwoVariablesClass<string, string>>
 {
     public ActionPlanQuestionContact()
@@ -596,5 +602,163 @@ public class ActionPlanQuestionContact : ActionPlanQuestionGenericTypeScript<Two
         _bool2 = _bool2 && _answer.GetVariable2() != "";
 
         _questionAnswered = _bool2;
+    }
+}
+
+public class ActionPlanQuestionDate2: ActionPlanQuestionGenericTypeScript<DateTime>
+{
+    public ActionPlanQuestionDate2():base()
+    {
+        _variableType = VariableTypeForAPEnum.Date;
+
+        _answer = new DateTime(2020, 1, 1);
+    }
+
+    public ActionPlanQuestionDate2(int _yearInput, int _monthInput, int _dayInput) : base()
+    {
+        _variableType = VariableTypeForAPEnum.Date;
+
+        ReviseValues(ref _yearInput, ref _monthInput, ref _dayInput);
+    }
+
+    void ReviseValues(ref int _yearInput, ref int _monthInput, ref int _dayInput)
+    {
+        if(_yearInput < 0)
+        {
+            return;
+        }
+
+        int _maxDays = 31;
+
+        if(_monthInput > 12)
+        {
+            _monthInput = 12;
+        }
+        else if(_monthInput < 1)
+        {
+            _monthInput = 1;
+        }
+
+        if(_monthInput == 2)
+        {
+            if ((_yearInput % 4) == 0)
+            {
+                _maxDays = 29;
+            }
+            else
+            {
+                _maxDays = 28;
+            }
+        }
+        else if(_monthInput == 4 || _monthInput == 6 || _monthInput == 9 || _monthInput == 11)
+        {
+            _maxDays = 30;
+        }
+
+        if(_dayInput < 1)
+        {
+            _dayInput = 1;
+        }
+        else if(_dayInput > _maxDays)
+        {
+            _dayInput = _maxDays;
+        }
+
+        _answer = new DateTime(_yearInput, _monthInput, _dayInput);
+    }
+
+    public override DateTime GetDateAnswer()
+    {
+        return _answer;
+    }
+
+    public void SetDay(int _input)
+    {
+        int _y = _answer.Year;
+
+        int _m = _answer.Month;
+
+        ReviseValues(ref _y, ref _m, ref _input);
+    }
+
+    public void SetMonth(int _input)
+    {
+        int _y = _answer.Year;
+
+        int _d = _answer.Day;
+
+        ReviseValues(ref _y, ref _input, ref _d);
+    }
+
+    public void SetYear(int _input)
+    {
+        int _m = _answer.Month;
+
+        int _d = _answer.Day;
+
+        ReviseValues(ref _input, ref _m, ref _d);
+    }
+
+    public override void SetDateAnswer(int _dayInput, int _monthInput, int _yearInput)
+    {
+        ReviseValues(ref _yearInput, ref _monthInput, ref _dayInput);
+    }
+
+    public override string GetTextAnswer()
+    {
+        string _finalText = "";
+
+        string _dayText = _answer.Day.ToString("00");
+
+        string _monthText;
+
+        _monthText = _answer.Month.ToString();
+
+        string _yearText = _answer.Year.ToString("0000");
+
+        _finalText = _dayText + "/" + _monthText + "/" + _yearText;
+
+        return _finalText;
+    }
+
+    public override void SetAnswerFromString(string _input)
+    {
+        int _stage = 0;
+
+        string _dayText = "";
+        string _monthText = "";
+        string _yearText = "";
+
+        for (int _i = 0; _i < _input.Length; _i++)
+        {
+            if (_input[_i] == '/' || _input[_i] == '-')
+            {
+                _stage++;
+            }
+            else
+            {
+                if (_stage == 0)
+                {
+                    _dayText += _input[_i];
+                }
+                else if (_stage == 1 && _input[_i] != '.')
+                {
+                    _monthText += _input[_i];
+                }
+                else if (_stage == 2)
+                {
+                    _yearText += _input[_i];
+                }
+            }
+        }
+
+
+        int.TryParse(_yearText, out int _year);
+
+        int.TryParse(_monthText, out int _month);
+
+        int.TryParse(_dayText, out int _day);
+
+        ReviseValues(ref _year, ref _month, ref _day);
     }
 }

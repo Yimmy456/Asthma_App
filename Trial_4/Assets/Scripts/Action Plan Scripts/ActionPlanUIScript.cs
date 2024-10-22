@@ -357,7 +357,7 @@ public class ActionPlanUIScript : MonoBehaviour
             _input.SetQuestionAnswered(true);
         }
 
-        if(_enum == VariableTypeForAPEnum.Date && _input.GetDateAnswer().GetDateSet())
+        /*if(_enum == VariableTypeForAPEnum.Date && _input.GetDateAnswer().GetDateSet())
         {
             _datePanel.SetDayText(_input.GetDateAnswer().GetDay());
 
@@ -372,9 +372,26 @@ public class ActionPlanUIScript : MonoBehaviour
             _bool2 = _bool2 && _input.GetDateAnswer().GetYear() != 0 && _input.GetDateAnswer().GetYear() != -1;
 
             _input.SetQuestionAnswered(_bool2);
+        }*/
+
+        if(_enum == VariableTypeForAPEnum.Date)
+        {
+            _datePanel.SetDayText(_input.GetDateAnswer().Day);
+
+            _datePanel.SetMonthText(_input.GetDateAnswer().Month);
+            
+            _datePanel.SetYearText(_input.GetDateAnswer().Year);
+            
+            bool _bool2 = _input.GetDateAnswer().Day != 0 && _input.GetDateAnswer().Day != -1;
+            
+            _bool2 = _bool2 && _input.GetDateAnswer().Month != 0 && _input.GetDateAnswer().Month != -1;
+            
+            _bool2 = _bool2 && _input.GetDateAnswer().Year != 0 && _input.GetDateAnswer().Year != -1;
+            
+            _input.SetQuestionAnswered(_bool2);        
         }
 
-        if(_enum == VariableTypeForAPEnum.Contact)
+        if (_enum == VariableTypeForAPEnum.Contact)
         {
             ActionPlanQuestionContact _c2 = (ActionPlanQuestionContact)(_input);
 

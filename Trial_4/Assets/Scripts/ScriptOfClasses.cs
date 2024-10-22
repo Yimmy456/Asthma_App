@@ -342,6 +342,8 @@ public class MenuSceneCameraClass
     }
 }
 
+
+/*
 [System.Serializable]
 public class DateClass
 {
@@ -557,6 +559,7 @@ public class DateClass
     }
 }
 
+*/
 [System.Serializable]
 public class TwoVariablesClass<T, U>
 {
@@ -2672,5 +2675,81 @@ public class DoctorSalemDialoguesClass2
         _animator.SetBool("Talking", false);
 
         _currentDialogue = null;
+    }
+}
+
+public class DateClass2
+{
+    DateTime _date;
+
+    public DateClass2()
+    {
+        _date = DateTime.Now;
+    }
+
+    public DateClass2(int _yearInput, int _monthInput, int _dayInput)
+    {
+        ReviseDate(_yearInput, _monthInput, _dayInput);
+    }
+
+    void ReviseDate(int _yearInput, int _monthInput, int _dayInput)
+    {
+        if(_yearInput <= 0)
+        {
+            return;
+        }
+
+        int _maxDays = 31;
+
+        if(_monthInput < 1)
+        {
+            _monthInput = 1;
+        }
+        else if(_monthInput > 12)
+        {
+            _monthInput = 12;
+        }
+
+        if(_monthInput == 2)
+        {
+            if((_yearInput % 4) == 0)
+            {
+                _maxDays = 29;
+            }
+            else
+            {
+                _maxDays = 28;
+            }
+        }
+        else if(_monthInput == 4 || _monthInput == 6 || _monthInput == 9 || _monthInput == 11)
+        {
+            _monthInput = 30;
+        }
+
+        if(_dayInput < 1)
+        {
+            _dayInput = 1;
+        }
+        else if(_dayInput > _maxDays)
+        {
+            _dayInput = _maxDays;
+        }
+
+        _date = new DateTime(_yearInput, _monthInput, _dayInput);
+    }
+
+    public DateTime GetDate()
+    {
+        return _date;
+    }
+
+    public void SetDate(DateTime _input)
+    {
+        ReviseDate(_input.Year, _input.Minute, _input.Day);
+    }
+
+    public void SetDate(int _y, int _m, int _d)
+    {
+        ReviseDate(_y, _m, _d);
     }
 }

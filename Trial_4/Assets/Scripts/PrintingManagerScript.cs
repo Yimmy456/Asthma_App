@@ -461,19 +461,19 @@ public class PrintingManagerScript : MonoBehaviour
 
     void PrintIfDate(ActionPlanQuestionScript _questionInput, ref List _listInput, ref iTextSharp.text.Font _fontInput)
     {
-        ActionPlanQuestionDate _dateQ = (ActionPlanQuestionDate)(_questionInput);
+        ActionPlanQuestionDate2 _dateQ = (ActionPlanQuestionDate2)(_questionInput);
 
         if(_dateQ == null)
         {
             return;
         }
 
-        if(!_dateQ.GetDateAnswer().GetDateSet())
+        /*if(!_dateQ.GetDateAnswer().GetDateSet())
         {
             return;
-        }
+        }*/
 
-        DateTime _newDate = new DateTime(_dateQ.GetAnswer().GetYear(), _dateQ.GetAnswer().GetMonth(), _dateQ.GetAnswer().GetDay());
+        DateTime _newDate = new DateTime(_dateQ.GetAnswer().Year, _dateQ.GetAnswer().Month, _dateQ.GetAnswer().Day);
 
         _listInput = new List(List.UNORDERED, 10.0f);
 
@@ -503,6 +503,7 @@ public class PrintingManagerScript : MonoBehaviour
         return _list;
     }
 
+    /*
     void GetAge(ref int _ageOutput, ref DateClass _birthDateOutput)
     {
         ActionPlanQuestionScript _q = null;
@@ -546,6 +547,52 @@ public class PrintingManagerScript : MonoBehaviour
 
         _ageOutput = _age;
     }
+    */
+    void GetAge(ref int _ageOutput, ref DateTime _birthDateOutput)
+    {
+        ActionPlanQuestionScript _q = null;
+
+        ActionPlanQuestionScript _currentQuestion;
+
+        string _questionText = "What is your date of birth?";
+
+        for (int _i = 0; _i < ActionPlanManagerScript.GetInstance().GetQuestionList().Count && _q == null; _i++)
+        {
+            _currentQuestion = ActionPlanManagerScript.GetInstance().GetQuestionList()[_i];
+
+            if (string.Compare(_questionText, _currentQuestion.GetQuestionText(), true) == 0)
+            {
+                _q = _currentQuestion;
+            }
+        }
+
+        if (_q == null)
+        {
+            return;
+        }
+
+        ActionPlanQuestionDate2 _dateClass = (ActionPlanQuestionDate2)(_q);
+
+        if (_dateClass == null)
+        {
+            return;
+        }
+
+        //_birthDateOutput.SetDate(_dateClass.GetAnswer().Day, _dateClass.GetAnswer().Month, _dateClass.GetAnswer().Year);
+
+        _birthDateOutput = new DateTime(_dateClass.GetAnswer().Day, _dateClass.GetAnswer().Month, _dateClass.GetAnswer().Year);
+
+        int _age = DateTime.Now.Year - _dateClass.GetAnswer().Year;
+
+        bool _daysBefore = DateTime.Now.Month == _dateClass.GetAnswer().Month && DateTime.Now.Day < _dateClass.GetAnswer().Day;
+
+        if (DateTime.Now.Month < _dateClass.GetAnswer().Month || _daysBefore)
+        {
+            _age--;
+        }
+
+        _ageOutput = _age;
+    }
 
     void PrintPreInformation(ref Document _docInput, ref PdfPTable _tableInput, ref iTextSharp.text.Font _fontInput)
     {
@@ -555,7 +602,9 @@ public class PrintingManagerScript : MonoBehaviour
 
         GenderEnum _gender = GenderEnum.Unknown;
 
-        DateClass _date = new DateClass(true);
+        //DateClass _date = new DateClass(true);
+
+        DateTime _date = new DateTime(2020, 1, 1);
 
         string _nameText = "";
 
@@ -606,14 +655,14 @@ public class PrintingManagerScript : MonoBehaviour
 
         _basicInfo++;
 
-        if(!_date.GetDateSet())
-        {
-            return;
-        }
+        //if(!_date.GetDateSet())
+        //{
+         //   return;
+        //}
 
         GetAge(ref _age, ref _date);
 
-        DateTime _birthDate = new DateTime(_date.GetYear(), _date.GetMonth(), _date.GetDay());
+        DateTime _birthDate = new DateTime(_date.Year, _date.Month, _date.Day);
 
         _cell = new PdfPCell(new Phrase(_basicInfo.ToString() + ".", _fontInput));
 

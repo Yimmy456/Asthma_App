@@ -748,7 +748,6 @@ MonoBehaviour:
       _keys: []
       _values: []
     _userTypeSelected: 0
-    _introductionComplete: 0
     _userType: 2
   _useEncryption: 1
 --- !u!4 &251678424
@@ -1039,10 +1038,10 @@ MonoBehaviour:
   - rid: 1913970636440469523
   - rid: 1913970636440469524
   - rid: 1913970636440469525
-  - rid: 1913970636440469526
-  - rid: 1913970770633555968
+  - rid: 9072246868594130969
+  - rid: 9072246868594130970
   - rid: 1913970686163419136
-  - rid: 4275215235273195544
+  - rid: 9072246868594130968
   _stylesOfInhalerColorLabels:
     _styles:
     - _value: 0
@@ -1253,16 +1252,6 @@ MonoBehaviour:
         _questionAnswered: 0
         _answer: 
         _inputFieldHolderText: Insert here.
-    - rid: 1913970636440469526
-      type: {class: ActionPlanQuestionDate, ns: , asm: Assembly-CSharp}
-      data:
-        _questionText: When is your next asthma review?
-        _questionID: ab567296-dea2-47d9-b04d-0174451c6723
-        _questionAnswered: 0
-        _answer:
-          _year: 2020
-          _month: 1
-          _day: 1
     - rid: 1913970663210614784
       type: {class: ActionPlanQuestionContact, ns: , asm: Assembly-CSharp}
       data:
@@ -1279,26 +1268,24 @@ MonoBehaviour:
         _questionID: 5812c825-eafa-445a-83c2-7922f77c7941
         _questionAnswered: 1
         _answer: 0
-    - rid: 1913970770633555968
-      type: {class: ActionPlanQuestionDate, ns: , asm: Assembly-CSharp}
-      data:
-        _questionText: What is your date of birth?
-        _questionID: 4f9a2027-0a86-46e6-999d-6ca3807da713
-        _questionAnswered: 0
-        _answer:
-          _year: -1
-          _month: -1
-          _day: -1
-    - rid: 4275215235273195544
-      type: {class: ActionPlanQuestionDate, ns: , asm: Assembly-CSharp}
+    - rid: 9072246868594130968
+      type: {class: ActionPlanQuestionDate2, ns: , asm: Assembly-CSharp}
       data:
         _questionText: When is the expiry date of your current medication?
         _questionID: 41cb63fa-8cca-41ec-b757-36db2365a1b2
         _questionAnswered: 0
-        _answer:
-          _year: -1
-          _month: -1
-          _day: -1
+    - rid: 9072246868594130969
+      type: {class: ActionPlanQuestionDate2, ns: , asm: Assembly-CSharp}
+      data:
+        _questionText: When is your next asthma review?
+        _questionID: ab567296-dea2-47d9-b04d-0174451c6723
+        _questionAnswered: 0
+    - rid: 9072246868594130970
+      type: {class: ActionPlanQuestionDate2, ns: , asm: Assembly-CSharp}
+      data:
+        _questionText: What is your date of birth?
+        _questionID: 4f9a2027-0a86-46e6-999d-6ca3807da713
+        _questionAnswered: 0
 --- !u!4 &599653218
 Transform:
   m_ObjectHideFlags: 0

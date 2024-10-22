@@ -67,7 +67,9 @@ public class ActionPlanManagerScript : MonoBehaviour, IDataPersistenceInterface
     [ContextMenu("Add Date Question")]
     void AddDateQuestion()
     {
-        _questionList.Add(new ActionPlanQuestionDate());
+        //_questionList.Add(new ActionPlanQuestionDate());
+
+        _questionList.Add(new ActionPlanQuestionDate2());
     }
 
     [ContextMenu("Add Contact Question")]

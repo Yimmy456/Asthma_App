@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,15 +21,12 @@ public class DatePanelScript : MonoBehaviour
     [SerializeField]
     Dropdown _monthDropdown;
 
-    DateClass _date;
+    DateTime _date;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (_date == null)
-        {
-            _date = new DateClass();
-        }
+        //_date
     }
 
     // Update is called once per frame
@@ -41,7 +39,7 @@ public class DatePanelScript : MonoBehaviour
     {
         if(_date == null)
         {
-            _date = new DateClass();
+            //_date = new DateClass();
         }
     }
 
@@ -60,10 +58,10 @@ public class DatePanelScript : MonoBehaviour
         return _yearPanel;
     }
 
-    public DateClass GetDate()
+    /*public DateClass GetDate()
     {
         return _date;
-    }
+    }*/
 
     public Dropdown GetDayDropdown()
     {
@@ -107,11 +105,11 @@ public class DatePanelScript : MonoBehaviour
 
         int _month = _monthDropdown.value + 1;
 
-        _date.SetYear(_year);
+        //_date.SetYear(_year);
 
-        _date.SetMonth(_month);
+        //_date.SetMonth(_month);
 
-        _date.SetDay(_day);
+        //_date.SetDay(_day);
     }
 
     public void SetDayText(int _input)
@@ -132,7 +130,7 @@ public class DatePanelScript : MonoBehaviour
             //return;
         }
 
-        _date.SetDay(_input);
+        //_date.SetDay(_input);
     }
 
     public void SetMonthText(int _input)
@@ -152,7 +150,7 @@ public class DatePanelScript : MonoBehaviour
             //return;
         }
 
-        _date.SetMonth(_input);
+        //_date.SetMonth(_input);
     }
 
     public void SetYearText(int _input)
@@ -168,7 +166,7 @@ public class DatePanelScript : MonoBehaviour
             //return;
         }
 
-        _date.SetYear(_input);
+        //_date.SetYear(_input);
     }
 
     public void ResetDays()
