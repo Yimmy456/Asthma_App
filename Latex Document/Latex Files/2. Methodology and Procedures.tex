@@ -225,7 +225,7 @@ In Unity, there is a technique called “Raycasting”, that is used to make the
 \end{itemize}
 All exhibits have one script component in common, called “{\codefont ExhibitionObjectScript}”. When the user places the center of his/her camera at an object, the raycasting line will detect if it contains the mentioned script. If so, the object will be highlighted in a specific color, the red circle will turn green, the name of the object will be displayed in the text field, and the microphone button will appear below. When the microphone button is pressed, Dr. Salem will talk about the highlighted object.
 
-\subsection*{The Draggable Class}
+\subsection{The Draggable Class}
 \label{DraggableClass}
 There are objects that need to be dragged by the user. To make this work, two classes were created: “{\codefont DraggableClass}” and “{\codefont DraggableManagerClass}”. The former is a class that can be a component for any object in a scene. Basically, when the user taps on an object that has this script, the object will follow the finger’s position and movements. This technique is also done using raycasting (Explained in section “\nameref{ShowcasingExhibition}”), where the beam starts at the position of the user's finger on the screen. When the user lets go of the screen, the object will stop following. The class has an \glsdisp{Enum}{enum} of four possible states:
 \begin{enumerate}

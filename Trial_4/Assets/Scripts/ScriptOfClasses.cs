@@ -342,224 +342,6 @@ public class MenuSceneCameraClass
     }
 }
 
-
-/*
-[System.Serializable]
-public class DateClass
-{
-    [SerializeField]
-    int _year = 2020;
-
-    [SerializeField]
-    int _month = 1;
-
-    [SerializeField]
-    int _day = 1;
-
-    DateTime _date;
-
-    public DateClass()
-    {
-        _year = 2020;
-        _month = 1;
-        _day = 1;
-
-        Debug.Log("DateTime is (Y: " + _year + ", M: " + _month + ", D: " + _day + ") (1).");
-
-        _date = new DateTime(_year, _month, _day);
-    }
-
-    public DateClass(bool _setDateInput = true)
-    {
-        _year = _setDateInput ? 2020 : -1;
-        _month = _setDateInput ? 1 : -1;
-        _day = _setDateInput ? 1 : -1;
-
-        Debug.Log("DateTime is (Y: " + _year + ", M: " + _month + ", D: " + _day + ") (2).");
-
-        if (_setDateInput)
-        {
-            _date = new DateTime(_year, _month, _day);
-        }
-    }
-
-    public DateClass(int _yearInput, int _monthInput, int _dayInput)
-    {
-        _year = _yearInput;
-        _month = _monthInput;
-        _day = _dayInput;
-
-        ReviseDate();
-    }
-
-    void ReviseDate()
-    {
-        if(_month > 12 || _month < 1)
-        {
-            _month = 1;
-        }
-
-        int _maxDay = GetMaxDays();
-
-        if(_day < 1 || _day > _maxDay)
-        {
-            _day = 1;
-        }
-
-        Debug.Log("DateTime is (Y: " + _year + ", M: " + _month + ", D: " + _day + ") (3).");
-
-        _date = new DateTime(_year, _month, _day);
-
-        //GetDayOfWeekInDate();
-    }
-
-    public int GetDay()
-    {
-        return _day;
-    }
-
-    public int GetMonth()
-    {
-        return _month;
-    }
-
-    public int GetYear()
-    {
-        return _year;
-    }
-
-    public DateTime GetDate()
-    {
-        return _date;
-    }
-
-    public void SetDay(int _input)
-    {
-        _day = _input;
-
-        ReviseDate();
-    }
-
-    public void SetMonth(int _input)
-    {
-        _month = _input;
-
-        ReviseDate();
-    }
-
-    public void SetYear(int _input)
-    {
-        _year = _input;
-
-        ReviseDate();
-    }
-
-    int GetMaxDays()
-    {
-        int _maxDays = 31;
-
-        if(_month == 2)
-        {
-            _maxDays = 28;
-
-            if((_year % 4) == 0)
-            {
-                _maxDays += 1;
-            }
-        }
-        else if(_month == 4 || _maxDays == 6 || _maxDays == 9 || _maxDays == 11)
-        {
-            _maxDays = 30;
-        }
-
-        return _maxDays;
-    }
-
-    public string GetDateText(MonthDisplayEnum _monthDisplayInput = MonthDisplayEnum.Number)
-    {
-        string _finalText = "";
-
-        string _dayText = _day.ToString("00");
-
-        string _monthText;
-
-        switch(_monthDisplayInput)
-        {
-            case MonthDisplayEnum.Name:
-                _monthText = _date.Month.ToString("MMMM");
-                break;
-            case MonthDisplayEnum.Abbreviation:
-                _monthText = _date.Month.ToString("MM");
-                break;
-            default:
-                _monthText = _date.Month.ToString();
-                break;
-        }
-
-        string _yearText = _year.ToString("0000");
-
-        _finalText = _dayText + "/" + _monthText + "/" + _yearText;
-
-        return _finalText;
-    }
-
-    public bool GetDateSet()
-    {
-        return (_year != -1 && _year != 0 && _month != -1 && _month != 0 && _day != -1 && _day != 0);
-    }
-
-    public void SetDate(int _dayInput, int _monthInput, int _yearInput)
-    {
-        _year = _yearInput;
-        _month = _monthInput;
-        _day = _dayInput;
-
-        ReviseDate();
-    }
-
-    public void SetDateFromString(string _input)
-    {
-        int _stage = 0;
-
-        string _dayText = "";
-        string _monthText = "";
-        string _yearText = "";
-
-        for(int _i = 0; _i < _input.Length; _i++)
-        {
-            if (_input[_i] == '/' || _input[_i] == '-')
-            {
-                _stage++;
-            }
-            else
-            {
-                if(_stage == 0)
-                {
-                    _dayText += _input[_i];
-                }
-                else if(_stage == 1 && _input[_i] != '.')
-                {
-                    _monthText += _input[_i];
-                }
-                else if(_stage == 2)
-                {
-                    _yearText += _input[_i];
-                }
-            }
-        }
-
-
-        int.TryParse(_yearText, out _year);
-
-        int.TryParse(_monthText, out _month);
-
-        int.TryParse(_dayText, out _day);
-
-        //SetMonthFromString(_monthText);
-    }
-}
-
-*/
 [System.Serializable]
 public class TwoVariablesClass<T, U>
 {
@@ -2678,41 +2460,52 @@ public class DoctorSalemDialoguesClass2
     }
 }
 
-public class DateClass2
+public class DateClass
 {
     DateTime _date;
 
-    public DateClass2()
+    bool _dateConfirmed = false;
+
+    public DateClass()
     {
         _date = DateTime.Now;
+
+        _dateConfirmed = true;
     }
 
-    public DateClass2(int _yearInput, int _monthInput, int _dayInput)
+    public DateClass(DateTime _input)
+    {
+        ReviseDate(_input.Year, _input.Month, _input.Day);
+    }
+
+    public DateClass(int _yearInput, int _monthInput, int _dayInput)
     {
         ReviseDate(_yearInput, _monthInput, _dayInput);
     }
 
     void ReviseDate(int _yearInput, int _monthInput, int _dayInput)
     {
-        if(_yearInput <= 0)
+        if (_yearInput <= 0)
         {
+            _dateConfirmed = false;
+
             return;
         }
 
         int _maxDays = 31;
 
-        if(_monthInput < 1)
+        if (_monthInput < 1)
         {
             _monthInput = 1;
         }
-        else if(_monthInput > 12)
+        else if (_monthInput > 12)
         {
             _monthInput = 12;
         }
 
-        if(_monthInput == 2)
+        if (_monthInput == 2)
         {
-            if((_yearInput % 4) == 0)
+            if ((_yearInput % 4) == 0)
             {
                 _maxDays = 29;
             }
@@ -2721,21 +2514,23 @@ public class DateClass2
                 _maxDays = 28;
             }
         }
-        else if(_monthInput == 4 || _monthInput == 6 || _monthInput == 9 || _monthInput == 11)
+        else if (_monthInput == 4 || _monthInput == 6 || _monthInput == 9 || _monthInput == 11)
         {
             _monthInput = 30;
         }
 
-        if(_dayInput < 1)
+        if (_dayInput < 1)
         {
             _dayInput = 1;
         }
-        else if(_dayInput > _maxDays)
+        else if (_dayInput > _maxDays)
         {
             _dayInput = _maxDays;
         }
 
         _date = new DateTime(_yearInput, _monthInput, _dayInput);
+
+        _dateConfirmed = true;
     }
 
     public DateTime GetDate()
@@ -2743,13 +2538,113 @@ public class DateClass2
         return _date;
     }
 
+    public bool GetDateConfirmed()
+    {
+        return _dateConfirmed;
+    }
+
+    public string GetDateText(MonthDisplayEnum _monthDisplayInput = MonthDisplayEnum.Number)
+    {
+        string _finalText = "";
+
+        //string _dayText = _day.ToString("00");
+
+        string _dayText = _date.Day.ToString("00");
+
+        string _monthText;
+
+        switch (_monthDisplayInput)
+        {
+            case MonthDisplayEnum.Name:
+                _monthText = _date.Month.ToString("MMMM");
+                break;
+            case MonthDisplayEnum.Abbreviation:
+                _monthText = _date.Month.ToString("MM");
+                break;
+            default:
+                _monthText = _date.Month.ToString();
+                break;
+        }
+
+        string _yearText = _date.Year.ToString("0000");
+
+        _finalText = _dayText + "/" + _monthText + "/" + _yearText;
+
+        return _finalText;
+    }
+
     public void SetDate(DateTime _input)
     {
-        ReviseDate(_input.Year, _input.Minute, _input.Day);
+        ReviseDate(_input.Year, _input.Month, _input.Day);
     }
 
     public void SetDate(int _y, int _m, int _d)
     {
+        ReviseDate(_y, _m, _d);
+    }
+
+    public void SetDay(int _input)
+    {
+        int _y = _date.Year;
+
+        int _m = _date.Month;
+
+        ReviseDate(_y, _m, _input);
+    }
+
+    public void SetMonth(int _input)
+    {
+        int _y = _date.Year;
+
+        int _d = _date.Day;
+
+        ReviseDate(_y, _input, _d);
+    }
+
+    public void SetYear(int _input)
+    {
+        int _m = _date.Month;
+
+        int _d = _date.Day;
+
+        ReviseDate(_input, _m, _d);
+    }
+
+    public void SetDateFromString(string _input)
+    {
+        int _stage = 0;
+
+        string _dayText = "";
+        string _monthText = "";
+        string _yearText = "";
+
+        for (int _i = 0; _i < _input.Length; _i++)
+        {
+            if (_input[_i] == '/' || _input[_i] == '-')
+            {
+                _stage++;
+            }
+            else
+            {
+                if (_stage == 0)
+                {
+                    _dayText += _input[_i];
+                }
+                else if (_stage == 1 && _input[_i] != '.')
+                {
+                    _monthText += _input[_i];
+                }
+                else if (_stage == 2)
+                {
+                    _yearText += _input[_i];
+                }
+            }
+        }
+
+        int.TryParse(_dayText, out int _d);
+        int.TryParse(_monthText, out int _m);
+        int.TryParse(_yearText, out int _y);
+
         ReviseDate(_y, _m, _d);
     }
 }

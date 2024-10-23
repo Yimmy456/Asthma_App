@@ -461,7 +461,7 @@ public class PrintingManagerScript : MonoBehaviour
 
     void PrintIfDate(ActionPlanQuestionScript _questionInput, ref List _listInput, ref iTextSharp.text.Font _fontInput)
     {
-        ActionPlanQuestionDate2 _dateQ = (ActionPlanQuestionDate2)(_questionInput);
+        ActionPlanQuestionDate _dateQ = (ActionPlanQuestionDate)(_questionInput);
 
         if(_dateQ == null)
         {
@@ -473,7 +473,7 @@ public class PrintingManagerScript : MonoBehaviour
             return;
         }*/
 
-        DateTime _newDate = new DateTime(_dateQ.GetAnswer().Year, _dateQ.GetAnswer().Month, _dateQ.GetAnswer().Day);
+        DateTime _newDate = new DateTime(_dateQ.GetAnswer().GetDate().Year, _dateQ.GetAnswer().GetDate().Month, _dateQ.GetAnswer().GetDate().Day);
 
         _listInput = new List(List.UNORDERED, 10.0f);
 
@@ -503,51 +503,6 @@ public class PrintingManagerScript : MonoBehaviour
         return _list;
     }
 
-    /*
-    void GetAge(ref int _ageOutput, ref DateClass _birthDateOutput)
-    {
-        ActionPlanQuestionScript _q = null;
-
-        ActionPlanQuestionScript _currentQuestion;
-
-        string _questionText = "What is your date of birth?";
-
-        for(int _i = 0; _i < ActionPlanManagerScript.GetInstance().GetQuestionList().Count && _q == null; _i++)
-        {
-            _currentQuestion = ActionPlanManagerScript.GetInstance().GetQuestionList()[_i];
-
-            if(string.Compare(_questionText, _currentQuestion.GetQuestionText(), true) == 0)
-            {
-                _q = _currentQuestion;
-            }
-        }
-
-        if(_q == null)
-        {
-            return;
-        }
-
-        ActionPlanQuestionDate _dateClass = (ActionPlanQuestionDate)(_q);
-
-        if(_dateClass == null)
-        {
-            return;
-        }
-
-        _birthDateOutput.SetDate(_dateClass.GetAnswer().GetDay(), _dateClass.GetAnswer().GetMonth(), _dateClass.GetAnswer().GetYear());
-
-        int _age = DateTime.Now.Year - _dateClass.GetAnswer().GetYear();
-
-        bool _daysBefore = DateTime.Now.Month == _dateClass.GetAnswer().GetMonth() && DateTime.Now.Day < _dateClass.GetAnswer().GetDay();
-
-        if(DateTime.Now.Month < _dateClass.GetAnswer().GetMonth() || _daysBefore)
-        {
-            _age--;
-        }
-
-        _ageOutput = _age;
-    }
-    */
     void GetAge(ref int _ageOutput, ref DateTime _birthDateOutput)
     {
         ActionPlanQuestionScript _q = null;
@@ -571,22 +526,20 @@ public class PrintingManagerScript : MonoBehaviour
             return;
         }
 
-        ActionPlanQuestionDate2 _dateClass = (ActionPlanQuestionDate2)(_q);
+        ActionPlanQuestionDate _dateClass = (ActionPlanQuestionDate)(_q);
 
         if (_dateClass == null)
         {
             return;
         }
 
-        //_birthDateOutput.SetDate(_dateClass.GetAnswer().Day, _dateClass.GetAnswer().Month, _dateClass.GetAnswer().Year);
+        _birthDateOutput = new DateTime(_dateClass.GetAnswer().GetDate().Year, _dateClass.GetAnswer().GetDate().Month, _dateClass.GetAnswer().GetDate().Day);
 
-        _birthDateOutput = new DateTime(_dateClass.GetAnswer().Day, _dateClass.GetAnswer().Month, _dateClass.GetAnswer().Year);
+        int _age = DateTime.Now.Year - _dateClass.GetAnswer().GetDate().Year;
 
-        int _age = DateTime.Now.Year - _dateClass.GetAnswer().Year;
+        bool _daysBefore = DateTime.Now.Month == _dateClass.GetAnswer().GetDate().Month && DateTime.Now.Day < _dateClass.GetAnswer().GetDate().Day;
 
-        bool _daysBefore = DateTime.Now.Month == _dateClass.GetAnswer().Month && DateTime.Now.Day < _dateClass.GetAnswer().Day;
-
-        if (DateTime.Now.Month < _dateClass.GetAnswer().Month || _daysBefore)
+        if (DateTime.Now.Month < _dateClass.GetAnswer().GetDate().Month || _daysBefore)
         {
             _age--;
         }
@@ -654,11 +607,6 @@ public class PrintingManagerScript : MonoBehaviour
         //2. Date of Birth
 
         _basicInfo++;
-
-        //if(!_date.GetDateSet())
-        //{
-         //   return;
-        //}
 
         GetAge(ref _age, ref _date);
 
@@ -811,17 +759,7 @@ public class PrintingManagerScript : MonoBehaviour
 
             _img2.ScaleAbsoluteHeight(_img.Height / 15.0f);
 
-            //_img2.Height = _img.Height / 10.0f;
-
-            //_cell = new PdfPCell(new Phrase("Test", _fontInput));
-
-            //Vector2 _imgDim = new Vector2(_img.Width, _img.Height);
-
-            //_img.ScalePercent(10.0f);
-
             _cell = new PdfPCell(_img2);
-
-            //_img.ScalePercent(50.0f);
 
             _cell.BackgroundColor = _secondRowBaseColor;
 
