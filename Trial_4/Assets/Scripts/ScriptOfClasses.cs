@@ -213,6 +213,9 @@ public class InformationClass
     protected string _badgeName;
 
     [SerializeField]
+    protected string _infoClipName;
+
+    [SerializeField]
     protected InfoCategoryEnum _infoCategory;
 
     public InformationClass()
@@ -253,6 +256,11 @@ public class InformationClass
     public InfoCategoryEnum GetInfoCategory()
     {
         return _infoCategory;
+    }
+
+    public string GetInfoClipName()
+    {
+        return _infoClipName;
     }
 
     public void SetInformationLearned(bool _input)

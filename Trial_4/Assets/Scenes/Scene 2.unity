@@ -4582,6 +4582,7 @@ MonoBehaviour:
   _isInfoCard: 0
   _cardDescription: 
   _group: {fileID: 0}
+  _dialogueClipName: 
   _camera: {fileID: 0}
   _renderer: {fileID: 0}
   _text: {fileID: 0}
@@ -21553,6 +21554,7 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
+  _dialogues: {fileID: 0}
 --- !u!1 &682305366
 GameObject:
   m_ObjectHideFlags: 0
@@ -46137,6 +46139,7 @@ MonoBehaviour:
     _informationExamples: []
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: 
     _infoCategory: 0
     _sprite: {fileID: 0}
     _wordType: 0
@@ -56254,6 +56257,18 @@ MonoBehaviour:
     _clipName: Dr. Salem Exhibition Reliever Inhaler
   - _clip: {fileID: 8300000, guid: 3a7a45add14a9154da8f50869c031c72, type: 3}
     _clipName: Dr. Salem Exhibition Introduction
+  - _clip: {fileID: 8300000, guid: 59b07feba406e1946bfd2362cb066572, type: 3}
+    _clipName: That's a match
+  - _clip: {fileID: 8300000, guid: 20b125d690ed96f44aa04c444a5f18d6, type: 3}
+    _clipName: Card Matching Game (Smoke)
+  - _clip: {fileID: 8300000, guid: 59f81e5f18370554e9db379551ebe9dc, type: 3}
+    _clipName: Card Matching Game (Pollution)
+  - _clip: {fileID: 8300000, guid: 525542f7a58775c4e8dd0fa80db6a903, type: 3}
+    _clipName: Card Matching Game (Cigarette)
+  - _clip: {fileID: 8300000, guid: 8b05d4f47021fc34391e1e9f0121d115, type: 3}
+    _clipName: Card Matching Game (Cold Objects)
+  - _clip: {fileID: 8300000, guid: 272995c34f2a9164e84eac8d13e87866, type: 3}
+    _clipName: Not a match (Card Game)
   _audioSource: {fileID: 1757740976}
   _animator: {fileID: 919132149601814142}
 --- !u!4 &972334789260026595

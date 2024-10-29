@@ -25,6 +25,9 @@ public class CardScript : MonoBehaviour
     [SerializeField]
     CardGameScript _group;
 
+    [SerializeField]
+    string _dialogueClipName;
+
     PlayerController _controller;
 
     Vector3 _originalPosition = Vector3.zero;
@@ -69,6 +72,7 @@ public class CardScript : MonoBehaviour
         }
     }
 
+    //Getters
     public bool GetCardFlipped()
     {
         return _cardFlipped;
@@ -119,6 +123,12 @@ public class CardScript : MonoBehaviour
         return _cardDescription;
     }
 
+    public string GetDialogueClipName()
+    {
+        return _dialogueClipName;
+    }
+
+    //Setters
     public void SetCardFlipped(bool _input)
     {
         _cardFlipped = _input;
@@ -162,6 +172,11 @@ public class CardScript : MonoBehaviour
     public void SetCardDescription(string _input)
     {
         _cardDescription = _input;
+    }
+
+    public void SetDialogueClipName(string _input)
+    {
+        _dialogueClipName = _input;
     }
 
     void CheckTouch()

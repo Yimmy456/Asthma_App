@@ -56,6 +56,9 @@ public class FastyScript : MonoBehaviour
     [SerializeField]
     Gradient _countingGradient;
 
+    [SerializeField]
+    DialoguesScript _dialogues;
+
     bool _startCounting = false;
 
     Coroutine _inhalerCoroutine;
@@ -248,5 +251,10 @@ public class FastyScript : MonoBehaviour
         }
 
         _countingText.text = "";
+    }
+
+    public DialoguesScript GetDialogues()
+    {
+        return _dialogues;
     }
 }

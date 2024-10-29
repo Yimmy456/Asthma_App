@@ -158,6 +158,7 @@ MonoBehaviour:
     _informationExamples: []
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: 
     _infoCategory: 0
   - _informationName: Being Healthy
     _informationDesc: Some activities will help you be healthy.
@@ -167,6 +168,7 @@ MonoBehaviour:
     - Do something that makes you happy, relaxed, or both.
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: 
     _infoCategory: 0
   - _informationName: Common Mistakes
     _informationDesc: 
@@ -182,6 +184,7 @@ MonoBehaviour:
     - Not cleaning he spacer correctly
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: 
     _infoCategory: 0
   - _informationName: Useful Tips
     _informationDesc: 
@@ -198,6 +201,7 @@ MonoBehaviour:
     - Always read you spacer's leaflets
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: 
     _infoCategory: 0
   _definitions:
   - _informationName: Asthma
@@ -206,6 +210,7 @@ MonoBehaviour:
     _informationExamples: []
     _informationLearned: 0
     _badgeName: Asthma
+    _infoClipName: 
     _infoCategory: 0
     _sprite: {fileID: 21300000, guid: 0544eb24a2f24984b81c9321a0d74fac, type: 3}
     _wordType: 0
@@ -215,6 +220,7 @@ MonoBehaviour:
     - Inhaler
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: 
     _infoCategory: 0
     _sprite: {fileID: 21300000, guid: 046ed23fc810f904fa8cd81d275b09be, type: 3}
     _wordType: 0
@@ -223,6 +229,7 @@ MonoBehaviour:
     _informationExamples: []
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: 
     _infoCategory: 0
     _sprite: {fileID: 21300000, guid: 04798f9a549c15647aa14fce5532ccca, type: 3}
     _wordType: 0
@@ -232,6 +239,7 @@ MonoBehaviour:
     _informationExamples: []
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: 
     _infoCategory: 0
     _sprite: {fileID: 21300000, guid: 5e0b19897fba2e045b607da75350a980, type: 3}
     _wordType: 0
@@ -241,6 +249,7 @@ MonoBehaviour:
     _informationExamples: []
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: 
     _infoCategory: 0
     _sprite: {fileID: 21300000, guid: 31d3dbe87d2bf6c41b72c9249096527a, type: 3}
     _wordType: 1
@@ -250,6 +259,7 @@ MonoBehaviour:
     _informationExamples: []
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: 
     _infoCategory: 0
     _sprite: {fileID: 21300000, guid: c1b3a63affcec0849a9e4ecda941f348, type: 3}
     _wordType: 0
@@ -261,6 +271,7 @@ MonoBehaviour:
     - Wheezing
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: 
     _infoCategory: 0
     _sprite: {fileID: 21300000, guid: 10a21d67cb938e94c876e5e4e666e19d, type: 3}
     _wordType: 0
@@ -274,6 +285,7 @@ MonoBehaviour:
     - Dust
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: 
     _infoCategory: 0
     _sprite: {fileID: 21300000, guid: bece67b3c929b9a4dbeedd82f6d30663, type: 3}
     _wordType: 0
@@ -285,6 +297,7 @@ MonoBehaviour:
     - Horses
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: 
     _infoCategory: 1
     _sprite: {fileID: 21300000, guid: f48881395673607459dbebb5b43bef02, type: 3}
     _wordType: 0
@@ -293,6 +306,7 @@ MonoBehaviour:
     _informationExamples: []
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: 
     _infoCategory: 1
     _sprite: {fileID: 21300000, guid: cddab6311e68f4347a540c0f0fb9c71f, type: 3}
     _wordType: 0
@@ -304,6 +318,7 @@ MonoBehaviour:
     - Air Pollution
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: Card Matching Game (Smoke)
     _infoCategory: 1
     _sprite: {fileID: 21300000, guid: eb41f23df0a4563458a90751dc52bb3a, type: 3}
     _wordType: 0
@@ -314,6 +329,7 @@ MonoBehaviour:
     - Jogging
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: 
     _infoCategory: 1
     _sprite: {fileID: 0}
     _wordType: 0
@@ -323,6 +339,7 @@ MonoBehaviour:
     _informationExamples: []
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: Card Matching Game (Pollution)
     _infoCategory: 1
     _sprite: {fileID: 21300000, guid: 3d5e26b26a1a5bd46b14bc2798dbfec0, type: 3}
     _wordType: 0
@@ -331,6 +348,7 @@ MonoBehaviour:
     _informationExamples: []
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: 
     _infoCategory: 1
     _sprite: {fileID: 21300000, guid: 0f82c6854ce820c49a2ac7ea3b51b872, type: 3}
     _wordType: 0
@@ -339,6 +357,7 @@ MonoBehaviour:
     _informationExamples: []
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: 
     _infoCategory: 1
     _sprite: {fileID: 0}
     _wordType: 0
@@ -348,6 +367,7 @@ MonoBehaviour:
     _informationExamples: []
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: Card Matching Game (Cigarette)
     _infoCategory: 1
     _sprite: {fileID: 21300000, guid: 38c68fa4ce0cc934bbf35bde463d00b8, type: 3}
     _wordType: 0
@@ -356,6 +376,7 @@ MonoBehaviour:
     _informationExamples: []
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: 
     _infoCategory: 1
     _sprite: {fileID: 21300000, guid: e61a2bd61446778429c792c352fe9da1, type: 3}
     _wordType: 0
@@ -368,6 +389,7 @@ MonoBehaviour:
     - Snow
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: Card Matching Game (Cold Objects)
     _infoCategory: 1
     _sprite: {fileID: 21300000, guid: 3c500a5e698c0e748b10d1537ed2cdf7, type: 3}
     _wordType: 0
@@ -376,6 +398,7 @@ MonoBehaviour:
     _informationExamples: []
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: 
     _infoCategory: 1
     _sprite: {fileID: 21300000, guid: 06262a97aa8961c4e8de630895f8213b, type: 3}
     _wordType: 0
@@ -384,6 +407,7 @@ MonoBehaviour:
     _informationExamples: []
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: 
     _infoCategory: 2
     _sprite: {fileID: 21300000, guid: 3f4b152b0ceb7704c9defb1d14aeb7a2, type: 3}
     _wordType: 1
@@ -392,6 +416,7 @@ MonoBehaviour:
     _informationExamples: []
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: 
     _infoCategory: 2
     _sprite: {fileID: 0}
     _wordType: 0
@@ -400,6 +425,7 @@ MonoBehaviour:
     _informationExamples: []
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: 
     _infoCategory: 2
     _sprite: {fileID: 21300000, guid: 30533ac270b7500409d6f15716fe2ee5, type: 3}
     _wordType: 1
@@ -408,6 +434,7 @@ MonoBehaviour:
     _informationExamples: []
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: 
     _infoCategory: 2
     _sprite: {fileID: 21300000, guid: ea3f45cfb57ce1048a8a8f637766a392, type: 3}
     _wordType: 0
@@ -419,6 +446,7 @@ MonoBehaviour:
     - Hybrid Inhaler
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: 
     _infoCategory: 3
     _sprite: {fileID: 21300000, guid: 61efea9a62174954ebb886a3b0b1a775, type: 3}
     _wordType: 0
@@ -427,6 +455,7 @@ MonoBehaviour:
     _informationExamples: []
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: 
     _infoCategory: 3
     _sprite: {fileID: 21300000, guid: 61efea9a62174954ebb886a3b0b1a775, type: 3}
     _wordType: 0
@@ -435,6 +464,7 @@ MonoBehaviour:
     _informationExamples: []
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: 
     _infoCategory: 3
     _sprite: {fileID: 0}
     _wordType: 0
@@ -444,6 +474,7 @@ MonoBehaviour:
     _informationExamples: []
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: 
     _infoCategory: 3
     _sprite: {fileID: 0}
     _wordType: 0
@@ -452,6 +483,7 @@ MonoBehaviour:
     _informationExamples: []
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: 
     _infoCategory: 3
     _sprite: {fileID: 0}
     _wordType: 0

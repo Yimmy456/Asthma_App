@@ -445,6 +445,11 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
             _cardDesc = _matchP.GetUITextString() + " " + _cardDesc;
 
+            if (_dialogues != null)
+            {
+                _dialogues.PlayClip("That's a match", _selectedCard1.GetDialogueClipName());
+            }
+
             if (_gameProperties.GetMeter().GetPercentage() < 100.0f)
             {
                 SetResponseText(_cardDesc, _matchP.GetUTextColor(), _matchP.GetTextTimeToDisplay());
@@ -468,6 +473,11 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
             StartCoroutine(FlipDownCardAnimation(_selectedCard1));
 
             StartCoroutine(FlipDownCardAnimation(_selectedCard2));
+
+            if (_dialogues != null)
+            {
+                _dialogues.PlayClip("Not a match (Card Game)");
+            }
 
             if (_audioSource != null && _incorrectAudioClip != null)
             {
@@ -615,11 +625,15 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
         _c1.SetCardName(_wordInput.GetInformationName());
 
+        _c1.SetDialogueClipName(_wordInput.GetInfoClipName());
+
         _c2.SetCardName(_wordInput.GetInformationName());
 
         _c1.SetCardDescription(_wordInput.GetInformationDescription());
 
         _c2.SetCardDescription(_wordInput.GetInformationDescription());
+
+        _c2.SetDialogueClipName(_wordInput.GetInfoClipName());
 
         _c1.SetCardNumber(_numberInput);
 

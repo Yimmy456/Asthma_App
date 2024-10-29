@@ -3058,6 +3058,18 @@ MonoBehaviour:
     _clipName: Dr. Salem Exhibition Reliever Inhaler
   - _clip: {fileID: 8300000, guid: 3a7a45add14a9154da8f50869c031c72, type: 3}
     _clipName: Dr. Salem Exhibition Introduction
+  - _clip: {fileID: 8300000, guid: 59b07feba406e1946bfd2362cb066572, type: 3}
+    _clipName: That's a match
+  - _clip: {fileID: 8300000, guid: 20b125d690ed96f44aa04c444a5f18d6, type: 3}
+    _clipName: Card Matching Game (Smoke)
+  - _clip: {fileID: 8300000, guid: 59f81e5f18370554e9db379551ebe9dc, type: 3}
+    _clipName: Card Matching Game (Pollution)
+  - _clip: {fileID: 8300000, guid: 525542f7a58775c4e8dd0fa80db6a903, type: 3}
+    _clipName: Card Matching Game (Cigarette)
+  - _clip: {fileID: 8300000, guid: 8b05d4f47021fc34391e1e9f0121d115, type: 3}
+    _clipName: Card Matching Game (Cold Objects)
+  - _clip: {fileID: 8300000, guid: 272995c34f2a9164e84eac8d13e87866, type: 3}
+    _clipName: Not a match (Card Game)
   _audioSource: {fileID: 806979363}
   _animator: {fileID: 149968733}
 --- !u!1 &151913033
@@ -20431,6 +20443,7 @@ MonoBehaviour:
     _informationExamples: []
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: 
     _infoCategory: 0
     _sprite: {fileID: 0}
     _wordType: 0
@@ -22929,6 +22942,134 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 829510882}
   m_CullTransparentMesh: 1
+--- !u!1 &830334514
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 830334515}
+  - component: {fileID: 830334516}
+  m_Layer: 0
+  m_Name: Fasty Audio Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &830334515
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830334514}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1661460776}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &830334516
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830334514}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 100
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &833784014
 GameObject:
   m_ObjectHideFlags: 0
@@ -41118,6 +41259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1661460776}
   - component: {fileID: 1661460777}
+  - component: {fileID: 1661460778}
   m_Layer: 0
   m_Name: Fasty Object
   m_TagString: Untagged
@@ -41139,6 +41281,7 @@ Transform:
   m_Children:
   - {fileID: 3061378274743166988}
   - {fileID: 543450651588677773}
+  - {fileID: 830334515}
   m_Father: {fileID: 543450653413146392}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -41199,6 +41342,22 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
+  _dialogues: {fileID: 1661460778}
+--- !u!114 &1661460778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661460775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 417df0bd074a44e419fb479e03b522fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClips: []
+  _audioSource: {fileID: 830334516}
+  _animator: {fileID: 0}
 --- !u!1 &1663800521
 GameObject:
   m_ObjectHideFlags: 0
