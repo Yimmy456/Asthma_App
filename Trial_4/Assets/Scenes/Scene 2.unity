@@ -1595,6 +1595,18 @@ MonoBehaviour:
           m_StringArgument: Shake Inhaler
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 919132149601814144}
+        m_TargetAssemblyTypeName: DialoguesScript, Assembly-CSharp
+        m_MethodName: PlayClip
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Inhaler Animation
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &92383609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15163,7 +15175,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 392666912}
         m_TargetAssemblyTypeName: MainPlayerCanvasScript, Assembly-CSharp
-        m_MethodName: SetShowInhalerBoolean
+        m_MethodName: SetShowingInhalerPropertiesBoolean
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15184,6 +15196,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 919132149601814144}
+        m_TargetAssemblyTypeName: DialoguesScript, Assembly-CSharp
+        m_MethodName: PlayClip
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Dr. Salem Assembly Game Step 1
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 956544986}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
@@ -56269,6 +56293,32 @@ MonoBehaviour:
     _clipName: Card Matching Game (Cold Objects)
   - _clip: {fileID: 8300000, guid: 272995c34f2a9164e84eac8d13e87866, type: 3}
     _clipName: Not a match (Card Game)
+  - _clip: {fileID: 8300000, guid: 66a052081ba47ba4b861082d0e1b5ed8, type: 3}
+    _clipName: Card Matching Game (Pollens)
+  - _clip: {fileID: 8300000, guid: e45b4e097be344e439983a29ed8edaba, type: 3}
+    _clipName: Card Matching Game (Dust)
+  - _clip: {fileID: 8300000, guid: 507282170332cbc4f9643100a03f53d3, type: 3}
+    _clipName: Card Matching Game (Animals)
+  - _clip: {fileID: 8300000, guid: 2a59061dba70e2947bc87e6a8289482c, type: 3}
+    _clipName: Card Matching Game (Weather Change)
+  - _clip: {fileID: 8300000, guid: d46fcf1e16fa86940aa7fd2ac601b98c, type: 3}
+    _clipName: Inhaler Animation
+  - _clip: {fileID: 8300000, guid: 060d96b121b90ef48bcf9b9615a7888a, type: 3}
+    _clipName: New Badge Earned
+  - _clip: {fileID: 8300000, guid: 7551f05273edbf9468c974602b78e1e9, type: 3}
+    _clipName: Badge Already Earned
+  - _clip: {fileID: 8300000, guid: b839a3f15e8d7a14fac143c585bc81ae, type: 3}
+    _clipName: Dr. Salem Assembly Game Step 1
+  - _clip: {fileID: 8300000, guid: 293688cc11afda145bfc5f6e7c2c1ed3, type: 3}
+    _clipName: Dr. Salem Assembly Game Step 2
+  - _clip: {fileID: 8300000, guid: 10f85773cf0c9834b901ece5395e0af4, type: 3}
+    _clipName: Dr. Salem Assembly Game Step 3
+  - _clip: {fileID: 8300000, guid: a4a270dcae460814fa0e416ad5769eef, type: 3}
+    _clipName: Dr. Salem Assembly Game Step 4
+  - _clip: {fileID: 8300000, guid: 8097223ff7033bd4aa7daa01785354b4, type: 3}
+    _clipName: Dr. Salem Assembly Game Final
+  - _clip: {fileID: 8300000, guid: 9180205ba4275ce448f91d049b087e33, type: 3}
+    _clipName: Dr. Salem Assembly Game Not Right
   _audioSource: {fileID: 1757740976}
   _animator: {fileID: 919132149601814142}
 --- !u!4 &972334789260026595

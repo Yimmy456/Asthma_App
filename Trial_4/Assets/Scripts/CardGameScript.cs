@@ -218,7 +218,7 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
                 if (!_selectedWords.Contains(_currentWord) && _currentWord.GetSprite() != null)
                 {
-                    if (_selectedCategory == InfoCategoryEnum.None || _selectedCategory != InfoCategoryEnum.None && _currentWord.GetInfoCategory() == _selectedCategory)
+                    if ((_selectedCategory == InfoCategoryEnum.None || _selectedCategory != InfoCategoryEnum.None && _currentWord.GetInfoCategory() == _selectedCategory) && _currentWord.GetInfoClipName() != "")
                     {
                         InstantiateNormalCardsFunction(ref _currentWord, ref _pos, ref _i);
 
@@ -384,6 +384,13 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
                 _infoText = _selectedCard1.GetCardDescription();
 
                 _selectedCard1.SetCardDone(true);
+
+                if(_selectedCard2 != null)
+                {
+                    _selectedCard2.SetCardFlipped(false);
+                     
+                    StartCoroutine(FlipDownCardAnimation(_selectedCard2));
+                }
             }
             else if(_selectedCard2.GetIsInfoCard())
             {

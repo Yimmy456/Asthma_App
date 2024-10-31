@@ -201,6 +201,18 @@ public class GameGenericMBScript<T> : GameMBScript, YesOrNoInterface
             _badgeImage.sprite = _gameProperties.GetBadge().GetBadgeSprite();
         }
 
+        if (_dialogues != null)
+        {
+            if (!_gameProperties.GetBadge().GetBadgeCollected())
+            {
+                _dialogues.PlayClip("New Badge Earned");
+            }
+            else
+            {
+                _dialogues.PlayClip("Badge Already Earned");
+            }
+        }
+
         BadgesManagerScript.GetInstance().SetBadgeEarned(_gameProperties.GetBadge());
 
         Button _b = _gameProperties.GetNewBadgeCanvas().gameObject.GetComponent<RectTransform>().Find("Next Button").gameObject.GetComponent<Button>();

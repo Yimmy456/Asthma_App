@@ -188,12 +188,20 @@ public class FastyScript : MonoBehaviour
 
     IEnumerator PlayAnimation()
     {
+        //float _s = 5.0f;
+
         float _seconds = _animationClip.length;
 
         if(_doctorTalking != null)
         {
             _doctorTalking.StartTalking(_seconds);
         }
+
+        /*yield return new WaitForSeconds(_s);
+
+        _inhalerAnimator.speed = 0;
+
+        yield return new WaitForSeconds(_seconds - _s);*/
 
         yield return new WaitForSeconds(_seconds);
 
@@ -228,6 +236,8 @@ public class FastyScript : MonoBehaviour
         Color _outlineC;
 
         float _ratio;
+
+        _inhalerAnimator.speed = 1;
 
         for(float _f = 0.0f; _f < 10.0f; _f += Time.deltaTime)
         {

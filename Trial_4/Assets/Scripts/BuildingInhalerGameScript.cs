@@ -47,11 +47,6 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
     // Start is called before the first frame update
     void Start()
     {
-        /*if(_completionMeter == null)
-        {
-            _completionMeter = new MeterClass();
-        }*/
-
         if(_instancedArrowAnimations == null)
         {
             _instancedArrowAnimations = new List<ArrowAnimationClass>();
@@ -64,8 +59,6 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
         if (_currentGame == this)
         {
             UpdateStatus();
-
-            //LookIntoCamera();
 
             _gameProperties.UpdateUI();
         }
@@ -119,8 +112,6 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
         SetResponseTextProperties(-551.0f, 287.0f);
 
-        //_gameProperties.SetResponseText("So, you want to help Fasty assemble the inhaler? Very well! Let's get started, my friend!\n1. Find the neck and place it on the shaded area which is pointed by the green arrow.", new Color(0.0f, 1.0f, 0.0f, 1.0f), new Color(0.0f, 0.5f, 0.0f, 0.5f), new Vector2(1.0f, -1.0f));
-
         for(int _i = 0; _i < _presetBlocksAndHoles.Count; _i++)
         {
             InhalerMatchingBlockAndHoleClass _currentPreset = _presetBlocksAndHoles[_i] as InhalerMatchingBlockAndHoleClass;
@@ -139,8 +130,6 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
                 continue;
             }
 
-            //string _givenName = _currentPreset.GetMatchingAttribute();
-
             //1. Instantiating Block
 
             GameObject _newBlock = Instantiate(_currentPreset.GetGameBlock().gameObject);
@@ -155,8 +144,6 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
             base.FindSpawningSpot(ref _blockPositions, ref _newBlock);
 
             _newBlock.transform.parent = _mainContainer;
-
-            //_newBlock.transform.localScale = (Vector3.one * _spawningSizeForBlocks);
 
             _newBlock.GetComponent<InhalerMatchingObjectScript>().SetMatchingGameCanvas(this);
 
@@ -225,8 +212,6 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
                     _holeInfo.SetHoleName(_currentPreset.GetMatchingAttribute());
 
-                    //_holeInfo.SetHoleName(_givenName);
-
                     _currentBlocksAndHoles.AddHole(_holeInfo);
                 }
             }
@@ -277,13 +262,9 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
             _newAnim.GetArrowContainer().SetActive(false);
 
-            //_newAnim.GetArrowObject().transform.localScale = (Vector3.one * _arrowSize);
-
             _instancedArrowAnimations.Add(_newAnim);
 
             _go.transform.parent = _mainContainer.transform;
-
-            //_go.transform.localScale = Vector3.one * _arrowContainerSize;
 
             _arrow3dObject.transform.localScale = Vector3.one * _arrowSize;
 
@@ -352,6 +333,31 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
     {
         MatchingGameHoleScript _currentHole;
 
+        //_currentBlocksAndHoles
+
+        /*if(DraggableManagerClass.GetInstance() != null && _currentBlocksAndHoles.GetSelectedHole() != null)
+        {
+            if(DraggableManagerClass.GetInstance().GetCurrentlyDraggedObject() != null)
+            {
+                MatchingGameBlockScript _block = DraggableManagerClass.GetInstance().GetCurrentlyDraggedObject().gameObject.GetComponent<MatchingGameBlockScript>();
+
+                bool _dragEnded = DraggableManagerClass.GetInstance().GetTouchPhase() == TouchPhase.Ended;
+
+                if(_block != null && _dragEnded)
+                {
+                    _currentHole = _currentBlocksAndHoles.GetSelectedHole();
+
+                    if(_currentHole != null)
+                    {
+                        if(_block.GetMatchedHole() != _currentHole)
+                        {
+
+                        }
+                    }
+                }
+            }
+        }*/
+
         if(_currentPhaseNumber == 0 && _currentBlocksAndHoles.GetHoles()[0].GetObjectPlaced())
         {
             Debug.Log("In the building game, we are entering phase 2.");
@@ -385,9 +391,12 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
             _animationCoroutineArrow = StartCoroutine(_instancedArrowAnimations[1].Animate());
 
-            //_gameProperties.GetInformationCanvas().GetText().text = "Well Done! 2. Now, find the medicine, and drag it on the shaded area above the neck.";
-
             _gameProperties.SetResponseText("Well Done!\n\n2. Now, find the medicine, and drag it on the shaded area above the neck.", new Color(0.0f, 1.0f, 0.0f, 1.0f), new Color(0.0f, 0.5f, 0.0f, 0.5f), new Vector2(1.0f, -1.0f));
+
+            if(_dialogues != null)
+            {
+                _dialogues.PlayClip("Dr. Salem Assembly Game Step 2");
+            }
 
             _gameProperties.SignalToUpdateUI();
         }
@@ -401,12 +410,6 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
             TurnOnCapComponent();
 
             _currentPhaseNumber = 2;
-
-            //_spawnedArrowLocations[1].SetActive(false);
-
-            //_spawnedArrowLocations[2].SetActive(true);
-
-            //_gameProperties.GetMeter().AddToValue(1);
 
             _instancedArrowAnimations[1].SetAnimateBoolean(false);
 
@@ -429,7 +432,10 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
             _gameProperties.SignalToUpdateUI();
 
-            //_gameProperties.GetInformationCanvas().GetText().text = "You're doing great! 3. Remove the cap from the neck.";
+            if (_dialogues != null)
+            {
+                _dialogues.PlayClip("Dr. Salem Assembly Game Step 3");
+            }
 
             _gameProperties.SetResponseText("You're doing great!\n\n3. Remove the cap from the neck.", new Color(0.0f, 1.0f, 0.0f, 1.0f), new Color(0.0f, 0.5f, 0.0f, 0.5f), new Vector2(1.0f, -1.0f));
 
@@ -484,15 +490,14 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
                     _currentInstancedArrowAnimation = _instancedArrowAnimations[3];
 
+                    if (_dialogues != null)
+                    {
+                        _dialogues.PlayClip("Dr. Salem Assembly Game Step 4");
+                    }
+
                     _gameProperties.GetMeter().AddToValue(1);
 
-                    //_gameProperties.GetInformationCanvas().GetText().text = "We're almost done... 4. Find the spacer and place it on the shaded area pointed by the arrow.";
-
                     _gameProperties.SetResponseText("We're almost done...\n\n4. Find the spacer and place it on the shaded area pointed by the arrow.", new Color(0.0f, 1.0f, 0.0f, 1.0f), new Color(0.0f, 0.5f, 0.0f, 0.5f), new Vector2(1.0f, -1.0f));
-
-                    //_spawnedArrowLocations[2].SetActive(false);
-
-                    //_spawnedArrowLocations[3].SetActive(true);
 
                     if (_correctAudioClip != null)
                     {
@@ -540,6 +545,11 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
             _instancedArrowAnimations[3].GetNumber3DObject().SetActive(false);
 
+            if (_dialogues != null)
+            {
+                _dialogues.PlayClip("Dr. Salem Assembly Game Final");
+            }
+
             StartCoroutine(FinalStep());
 
             _currentPhaseNumber = -1;
@@ -572,13 +582,6 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
         {
             StopCoroutine(_animationCoroutineHighlight);
         }
-
-        /*foreach(GameObject _go in  _spawnedArrowLocations)
-        {
-            Destroy(_go);
-        }
-
-        _spawnedArrowLocations.Clear();*/
 
         foreach(ArrowAnimationClass _anim in _instancedArrowAnimations)
         {
@@ -639,18 +642,12 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
     IEnumerator FinalStep()
     {
-        //_gameProperties.GetInformationCanvas().GetText().text = "Excellent! We now have a complete inhaler!";
-
         _gameProperties.SetResponseText("Excellent! We now have a complete inhaler!", new Color(0.0f, 1.0f, 0.0f, 1.0f), new Color(0.0f, 0.5f, 0.0f, 0.5f), new Vector2(1.0f, -1.0f));
 
         yield return new WaitForSeconds(5.0f);
 
-        //_gameProperties.GetInformationCanvas().gameObject.SetActive(false);
-
         base.WinGame();
 
         _currentPhaseNumber = 0;
-
-        //_gameProperties.GetNewBadgeCanvas().
     }
 }

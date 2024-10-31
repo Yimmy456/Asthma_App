@@ -480,15 +480,6 @@ public class MatchingGameHoleScript : MonoBehaviour
 
         _holeCanvas.GetGameProperties().SignalToUpdateUI();
 
-        /*if (_holeCanvas.GetDoctorTalkingProperties() != null)
-        {
-            _holeCanvas.GetDoctorTalkingProperties().StartTalking(_talkingSeconds);
-
-            Debug.Log("Dr. Salem is talking about " + @"""" + gameObject.name + @"""" + ".");
-        }*/
-
-        //_holeCanvas.SetProgressUpdated(true);
-
         if(_holeCanvas.GetProcedureStateMachine() != null)
         {
             if(_holeCanvas.GetProcedureStateMachine().GetMachineOn() && _holeCanvas.GetProcedureStateMachine().GetProcedureCanvas() != null)
