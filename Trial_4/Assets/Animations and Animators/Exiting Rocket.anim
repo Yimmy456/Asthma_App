@@ -1241,6 +1241,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 24.166666
+    functionName: PlayFastyDialogue
+    data: Hello, My Friend
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 25.45
     functionName: SwitchOffAnimator
     data: 

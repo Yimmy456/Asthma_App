@@ -174,6 +174,9 @@ public class QuestionClass : IDataPersistenceInterface
     [SerializeField]
     string _correctAnswerResponse;
 
+    [SerializeField]
+    string _dialogueClipName;
+
     QuestionGroupClass _belongingGroup;
 
     public string GetQuestionID()
@@ -196,6 +199,11 @@ public class QuestionClass : IDataPersistenceInterface
     }
 
     public int GetCorrectAnswerIndex() { return _correctAnswerIndex; }
+
+    public string GetDialogueClipName()
+    {
+        return _dialogueClipName;
+    }
 
     public QuestionGroupClass GetBelongingGroup()
     {

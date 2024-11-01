@@ -59,6 +59,9 @@ public class MainSceneScript : MonoBehaviour, YesOrNoInterface
     [SerializeField]
     Button _menuButton;
 
+    [SerializeField]
+    DialoguesScript _fastyDialogues;
+
     //[SerializeField]
     //Animator _sceneAnimator;
 
@@ -353,5 +356,15 @@ public class MainSceneScript : MonoBehaviour, YesOrNoInterface
     public void SwitchOffAnimator()
     {
         _animator.enabled = false;
+    }
+
+    public void PlayFastyDialogue(string _input)
+    {
+        if(_fastyDialogues == null)
+        {
+            return;
+        }
+
+        _fastyDialogues.PlayClip(_input);
     }
 }

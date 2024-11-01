@@ -1387,6 +1387,7 @@ MonoBehaviour:
     - Tightening of the muscles
     _correctAnswerIndex: 1
     _correctAnswerResponse: 
+    _dialogueClipName: Dr. Salem MCQ Meaning of Asthma
   - _questionID: d423b456-0515-4fcc-808d-25adb147b007
     _questionText: Which of the following is not a trigger for asthma?
     _answers:
@@ -1396,6 +1397,7 @@ MonoBehaviour:
     - Water
     _correctAnswerIndex: 3
     _correctAnswerResponse: 
+    _dialogueClipName: Dr. Salem MCQ Water is not a trigger
   - _questionID: bb955ec8-9f7e-43c5-aea6-2d5cb0848341
     _questionText: Symptoms of Asthma is cause by
     _answers:
@@ -1405,6 +1407,7 @@ MonoBehaviour:
     - Inhalers
     _correctAnswerIndex: 1
     _correctAnswerResponse: 
+    _dialogueClipName: Dr. Salem MCQ Trigger is the cause
   - _questionID: d35d0815-0ac5-47c7-bf8c-b6d2adf3108f
     _questionText: All of the following are triggers of asthma except
     _answers:
@@ -1414,6 +1417,7 @@ MonoBehaviour:
     - Smoking
     _correctAnswerIndex: 1
     _correctAnswerResponse: 
+    _dialogueClipName: Dr. Salem MCQ Coughing is a symptom
   - _questionID: c43c6c27-1ba7-4787-8b65-881243a808fe
     _questionText: An example of a symptom for asthma is
     _answers:
@@ -1423,6 +1427,7 @@ MonoBehaviour:
     - Feeling pain
     _correctAnswerIndex: 0
     _correctAnswerResponse: 
+    _dialogueClipName: Dr. Salem MCQ Coughing is a symptom
   - _questionID: 8f5ed51d-897d-4e2b-adf8-72e54db134e5
     _questionText: Which of the following is NOT a symptom of asthma?
     _answers:
@@ -1432,6 +1437,7 @@ MonoBehaviour:
     - Shortness of Breath
     _correctAnswerIndex: 2
     _correctAnswerResponse: 
+    _dialogueClipName: Dr. Salem MCQ Smoking is a trigger
   - _questionID: ec446388-4834-4d22-a429-a051f6d7bfbf
     _questionText: The tubes in an asthmatic person's lungs are narrow because
     _answers:
@@ -1441,6 +1447,7 @@ MonoBehaviour:
     - The muscle bands become tight
     _correctAnswerIndex: 3
     _correctAnswerResponse: 
+    _dialogueClipName: Dr. Salem MCQ Muscles in the Lungs become tight
   - _questionID: 8a72ba5b-358b-4536-8b03-c31f6f2bc01c
     _questionText: Which of the following can help with relieving and exhaling?
     _answers:
@@ -1450,6 +1457,7 @@ MonoBehaviour:
     - Inhaler
     _correctAnswerIndex: 2
     _correctAnswerResponse: 
+    _dialogueClipName: Dr. Salem MCQ It is the reliever
   - _questionID: 23a53a76-78bf-407e-877f-a16eaf022962
     _questionText: What is the most common color of the reliever inhaler?
     _answers:
@@ -1459,6 +1467,7 @@ MonoBehaviour:
     - Blue
     _correctAnswerIndex: 3
     _correctAnswerResponse: 
+    _dialogueClipName: Dr. Salem MCQ The reliever is commonly blue
   - _questionID: e88fc02e-ad52-4863-9cd7-f608c2c83abe
     _questionText: How many seconds do have to hold your breath after inhaling the
       medicine?
@@ -1469,6 +1478,7 @@ MonoBehaviour:
     - 20
     _correctAnswerIndex: 1
     _correctAnswerResponse: 
+    _dialogueClipName: Dr. Salem MCQ Hold your breath for 10 seconds
   - _questionID: 0df4de43-1e42-4f58-89f4-ddbdac955ca4
     _questionText: What inhaler is used for treating asthma quickly?
     _answers:
@@ -1478,6 +1488,7 @@ MonoBehaviour:
     - Dry-Powder
     _correctAnswerIndex: 0
     _correctAnswerResponse: 
+    _dialogueClipName: Dr. Salem MCQ Hybrid quickly
   - _questionID: 114ec5e2-303a-4343-af01-21b0465766bc
     _questionText: What is the most common color for the preventer inhaler?
     _answers:
@@ -1487,6 +1498,7 @@ MonoBehaviour:
     - Green
     _correctAnswerIndex: 0
     _correctAnswerResponse: 
+    _dialogueClipName: Dr. Salem MCQ Preventer is commonly brown
   - _questionID: 7c214b50-1194-4e44-a794-32da2fbad4a3
     _questionText: What is the correct posture when inhaling the medicine?
     _answers:
@@ -1496,6 +1508,7 @@ MonoBehaviour:
     - Lying on the tummy
     _correctAnswerIndex: 1
     _correctAnswerResponse: 
+    _dialogueClipName: Dr. Salem MCQ Stand or Sit Straight
   - _questionID: 775fbc7a-d8c2-4bad-90a0-5e6af04ec643
     _questionText: How should you inhale the medicine?
     _answers:
@@ -1505,6 +1518,7 @@ MonoBehaviour:
     - Quickly
     _correctAnswerIndex: 0
     _correctAnswerResponse: 
+    _dialogueClipName: Dr. Salem MCQ Slowly and Deeply for 10 Seconds
   - _questionID: cc573f0f-ee01-4f2c-ab41-2714a6931baa
     _questionText: How should you position your head when inhaling the medicine?
     _answers:
@@ -1514,6 +1528,7 @@ MonoBehaviour:
     - With your head back
     _correctAnswerIndex: 1
     _correctAnswerResponse: 
+    _dialogueClipName: Dr. Salem MCQ Forward and Normal
   - _questionID: 61f18070-b48b-4826-b9db-200465e1270e
     _questionText: How long should you wait between puffs?
     _answers:
@@ -1523,15 +1538,17 @@ MonoBehaviour:
     - 1-3 minutes
     _correctAnswerIndex: 2
     _correctAnswerResponse: 
+    _dialogueClipName: Dr. Salem MCQ 1 to 2 Minutes
   - _questionID: dd939f3a-aeda-4ac6-bdb8-85d75bb0337e
     _questionText: What must you do before inhaling the medicine?
     _answers:
     - Hold your breath for 5 seconds
-    - Inhaler 6 times
+    - Take the inhaler 6 times
     - Shake the inhaler
     - Put your name in the inhaler
     _correctAnswerIndex: 2
     _correctAnswerResponse: 
+    _dialogueClipName: Dr. Salem MCQ Shake Before Use
   - _questionID: 73cc1632-3cb0-46b6-b9ce-4854c2c41a9c
     _questionText: How many puffs should someone take on their inhaler per dose?
     _answers:
@@ -1541,6 +1558,7 @@ MonoBehaviour:
     - Depending on the prescription from the nurse
     _correctAnswerIndex: 3
     _correctAnswerResponse: 
+    _dialogueClipName: Dr. Salem MCQ Follow Doctor's Instructions
   - _questionID: 2f3188f1-1077-4a30-8737-6091f99d91e1
     _questionText: Before inhaling the medicine, you need to fully breathe out. Why
       is that?
@@ -1551,6 +1569,7 @@ MonoBehaviour:
     - So that oxygen can enter the brain
     _correctAnswerIndex: 3
     _correctAnswerResponse: 
+    _dialogueClipName: Dr. Salem MCQ Brain
   - _questionID: 8d550f94-dd7c-4e2e-bb62-b92f27742f2e
     _questionText: If you are using the multi-inhaler method, how many breaths you
       need to perform?
@@ -1561,6 +1580,7 @@ MonoBehaviour:
     - 10
     _correctAnswerIndex: 2
     _correctAnswerResponse: 
+    _dialogueClipName: Dr. Salem MCQ Follow 5 Breaths
   - _questionID: 6f54b841-61c9-4d9a-8c4a-bb7bd1125e4a
     _questionText: What is the purpose of a preventer inhaler?
     _answers:
@@ -1570,6 +1590,7 @@ MonoBehaviour:
     - Increase inflammation in the lungs
     _correctAnswerIndex: 0
     _correctAnswerResponse: 
+    _dialogueClipName: Dr. Salem MCQ Preventer is Used to Prevent
   - _questionID: 0927233d-29b5-402b-922a-fb49c2b924b4
     _questionText: What is the purpose of a reliever inhaler?
     _answers:
@@ -1579,6 +1600,7 @@ MonoBehaviour:
     - Increase inflammation in the lungs
     _correctAnswerIndex: 1
     _correctAnswerResponse: 
+    _dialogueClipName: Dr. Salem MCQ It is the reliever
   - _questionID: d23be9d4-b8fb-429d-8e85-0e85bf6a89ed
     _questionText: The spacer is used because
     _answers:
@@ -1588,6 +1610,7 @@ MonoBehaviour:
     - It can tell you how to inhale the medicine
     _correctAnswerIndex: 1
     _correctAnswerResponse: 
+    _dialogueClipName: Dr. Salem MCQ 1 to 2 Minutes
   - _questionID: a07f322b-2648-41a9-a806-89b281d8163b
     _questionText: When should you have your inhaler with you?
     _answers:
@@ -1597,6 +1620,7 @@ MonoBehaviour:
     - When playing
     _correctAnswerIndex: 2
     _correctAnswerResponse: 
+    _dialogueClipName: Dr. Salem MCQ You Could Need the Inhaler
   _selectedQuestions: []
 --- !u!1 &1722041706
 GameObject:

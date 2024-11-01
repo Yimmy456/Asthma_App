@@ -3096,6 +3096,52 @@ MonoBehaviour:
     _clipName: Dr. Salem Assembly Game Final
   - _clip: {fileID: 8300000, guid: 9180205ba4275ce448f91d049b087e33, type: 3}
     _clipName: Dr. Salem Assembly Game Not Right
+  - _clip: {fileID: 8300000, guid: 1fe48f61a6c46a04bb02bfd24ad7fb63, type: 3}
+    _clipName: Dr. Salem MCQ 1 to 2 Minutes
+  - _clip: {fileID: 8300000, guid: 56f60735aff2a6b43a9df342d34ac617, type: 3}
+    _clipName: Dr. Salem MCQ Always Carry
+  - _clip: {fileID: 8300000, guid: 1c623a6d73db3df4c8b6c971a97fd063, type: 3}
+    _clipName: Dr. Salem MCQ Brain
+  - _clip: {fileID: 8300000, guid: 813ecc3acf6f36040bc1917addfc93d3, type: 3}
+    _clipName: Dr. Salem MCQ Coughing is a symptom
+  - _clip: {fileID: 8300000, guid: 3d70559bac9a11e47a3b67323f000d02, type: 3}
+    _clipName: Dr. Salem MCQ Follow 5 Breaths
+  - _clip: {fileID: 8300000, guid: 9c621b4f53f11244da376ae027f0bc5b, type: 3}
+    _clipName: Dr. Salem MCQ Follow Doctor's Instructions
+  - _clip: {fileID: 8300000, guid: 1d5f4db1258371e4a91d19764a0aadcd, type: 3}
+    _clipName: Dr. Salem MCQ Forward and Normal
+  - _clip: {fileID: 8300000, guid: 929bde3a15bbd0743834d07e02259f39, type: 3}
+    _clipName: Dr. Salem MCQ Hold your breath for 10 seconds
+  - _clip: {fileID: 8300000, guid: 9f8bd9cfa481e90409c36ce4711f8358, type: 3}
+    _clipName: Dr. Salem MCQ Hybrid quickly
+  - _clip: {fileID: 8300000, guid: 6cba52fd32418d84388ea1668473e453, type: 3}
+    _clipName: Dr. Salem MCQ It is the reliever
+  - _clip: {fileID: 8300000, guid: 2e4a089e58570b7408730c03fdc3eb43, type: 3}
+    _clipName: Dr. Salem MCQ Meaning of Asthma
+  - _clip: {fileID: 8300000, guid: 2e49af5756742b14695ea5387c7e33df, type: 3}
+    _clipName: Dr. Salem MCQ Muscles in the Lungs become tight
+  - _clip: {fileID: 8300000, guid: 05d4b54060c0b3c4a9b383b4d5c45251, type: 3}
+    _clipName: Dr. Salem MCQ Other symptoms include
+  - _clip: {fileID: 8300000, guid: 933ff0e61ea48024285334ea33533085, type: 3}
+    _clipName: Dr. Salem MCQ Preventer is commonly brown
+  - _clip: {fileID: 8300000, guid: f1e439ca3914e964da622e2237d4c34b, type: 3}
+    _clipName: Dr. Salem MCQ Preventer is Used to Prevent
+  - _clip: {fileID: 8300000, guid: 7120f372da26cd148b7364e5c456ee53, type: 3}
+    _clipName: Dr. Salem MCQ Shake Before Use
+  - _clip: {fileID: 8300000, guid: 3d0cbe4d8589afb4a9db14af6359f598, type: 3}
+    _clipName: Dr. Salem MCQ Slowly and Deeply for 10 Seconds
+  - _clip: {fileID: 8300000, guid: b488cd8b189944843b9f788494fadb60, type: 3}
+    _clipName: Dr. Salem MCQ Smoking is a trigger
+  - _clip: {fileID: 8300000, guid: 11c6acb2ea4245643a6313d145c373c0, type: 3}
+    _clipName: Dr. Salem MCQ Stand or Sit Straight
+  - _clip: {fileID: 8300000, guid: 1d9ed6c5f0def4a41a4b10f43231b2a5, type: 3}
+    _clipName: Dr. Salem MCQ The reliever is commonly blue
+  - _clip: {fileID: 8300000, guid: 0f862327573539040851114357e5c4f9, type: 3}
+    _clipName: Dr. Salem MCQ Trigger is the cause
+  - _clip: {fileID: 8300000, guid: c22a51b7aebfcc0449c89332d89a7951, type: 3}
+    _clipName: Dr. Salem MCQ Water is not a trigger
+  - _clip: {fileID: 8300000, guid: d7142d450f0440b49b2c9d20443eecbe, type: 3}
+    _clipName: Dr. Salem MCQ You Could Need the Inhaler
   _audioSource: {fileID: 806979363}
   _animator: {fileID: 149968733}
 --- !u!1 &151913033
@@ -14428,6 +14474,7 @@ MonoBehaviour:
     - 
     _correctAnswerIndex: 0
     _correctAnswerResponse: 
+    _dialogueClipName: 
   _numberOfQuestions: 5
   _currentQuestionIndex: -1
   _audioSource: {fileID: 187867126}
@@ -23024,13 +23071,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 200
   DopplerLevel: 1
   MinDistance: 100
   MaxDistance: 500
@@ -28649,6 +28696,7 @@ MonoBehaviour:
   _fastyAnimator: {fileID: 8979086420280341110}
   _landingTerrain: {fileID: 601199373}
   _menuButton: {fileID: 1153826026}
+  _fastyDialogues: {fileID: 1661460778}
   _started: 0
 --- !u!1 &1097086952
 GameObject:
@@ -41393,9 +41441,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 417df0bd074a44e419fb479e03b522fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioClips: []
+  _audioClips:
+  - _clip: {fileID: 8300000, guid: 673a42d3a73500a41b76d94618186ff1, type: 3}
+    _clipName: Hello, My Friend
+  - _clip: {fileID: 8300000, guid: 1279f3c5b527d4145bbaa0a2afe45784, type: 3}
+    _clipName: Hooray
+  - _clip: {fileID: 8300000, guid: cd8de22e08b15f940bda9b3f07878b63, type: 3}
+    _clipName: Let's Begin
+  - _clip: {fileID: 8300000, guid: 768a69ff9b2fe294e9ce4947eb014471, type: 3}
+    _clipName: Nope
+  - _clip: {fileID: 8300000, guid: 9c3391805ceafb6479005dc639d20733, type: 3}
+    _clipName: WOW!
+  - _clip: {fileID: 8300000, guid: 85efb681864b3af47bfbd38c865450a0, type: 3}
+    _clipName: Yes!
+  - _clip: {fileID: 8300000, guid: 0635845b9d0476142855c9819c40dc9e, type: 3}
+    _clipName: You Won!
   _audioSource: {fileID: 830334516}
-  _animator: {fileID: 0}
+  _animator: {fileID: 8979086420280341110}
 --- !u!1 &1663800521
 GameObject:
   m_ObjectHideFlags: 0

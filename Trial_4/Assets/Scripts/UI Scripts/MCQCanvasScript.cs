@@ -154,6 +154,11 @@ public class MCQCanvasScript : GameCanvasScript
             _game.GetAudioSource().Play();
         }
 
+        if(_game.GetDialogues() != null)
+        {
+            _game.GetDialogues().PlayClip(_game.GetCurrentQuestion().GetDialogueClipName());
+        }
+
         StopDisplayResponseCoroutine();
 
         for(int _i = 0; _i < 4; _i++)
