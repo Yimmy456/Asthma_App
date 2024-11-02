@@ -367,4 +367,33 @@ public class MainSceneScript : MonoBehaviour, YesOrNoInterface
 
         _fastyDialogues.PlayClip(_input);
     }
+
+    public void PlaySoundEffect(string _input)
+    {
+        if(_input == "")
+        {
+            return;
+        }
+
+        GameObject _go = GameObject.Find(_input);
+
+        if(_go == null)
+        {
+            return;
+        }
+
+        if(_go.GetComponent<AudioSource>() == null)
+        {
+            return;
+        }
+
+        AudioSource _as = _go.GetComponent<AudioSource>();
+
+        if(_as.clip == null)
+        {
+            return;
+        }
+
+        _as.Play();
+    }
 }
