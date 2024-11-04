@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using System;
 
 public class InhalerMatchingGameScript : MatchingGameCanvasScript
@@ -13,7 +12,7 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
     }
 
 
-    public Text _errorText;
+    //public Text _errorText;
 
     // Start is called before the first frame update
     void Start()

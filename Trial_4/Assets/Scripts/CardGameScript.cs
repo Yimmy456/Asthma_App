@@ -407,19 +407,6 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
             _gameProperties.SignalToUpdateUI();
 
-            if(_procedureStateMachine != null)
-            {
-                if(_procedureStateMachine.GetMachineOn() && _procedureStateMachine.GetProcedureCanvas() != null && _procedureStateMachine.GetCardGame() == this)
-                {
-                    if(_procedureStateMachine.GetProcedureCanvas().gameObject.activeSelf)
-                    {
-                        _procedureStateMachine.GetProcedureCompletionMeter().AddToMaxValue(1);
-
-                        _procedureStateMachine.SignalToUpdateMeter();
-                    }
-                }
-            }
-
             bool _finalCard = !_gameDone && _gameProperties.GetMeter().GetPercentage() == 100.0f;
 
             string _textToDisplay = _infoP.GetUITextString() + " Fun Fact:\n\n" + _infoText;

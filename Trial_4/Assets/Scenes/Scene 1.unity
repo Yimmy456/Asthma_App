@@ -3142,6 +3142,22 @@ MonoBehaviour:
     _clipName: Dr. Salem MCQ Water is not a trigger
   - _clip: {fileID: 8300000, guid: d7142d450f0440b49b2c9d20443eecbe, type: 3}
     _clipName: Dr. Salem MCQ You Could Need the Inhaler
+  - _clip: {fileID: 8300000, guid: 342d7304c64ee9c40a87b69f49f0e5a6, type: 3}
+    _clipName: Give it another go
+  - _clip: {fileID: 8300000, guid: 077e212cec27e0846a988584f8415269, type: 3}
+    _clipName: I don't think that's quite right
+  - _clip: {fileID: 8300000, guid: b5ad4324d645a464bbb86bcbff077c05, type: 3}
+    _clipName: Try again champ
+  - _clip: {fileID: 8300000, guid: 9929c7db7cc6aff40aa53cf236f8b228, type: 3}
+    _clipName: Way to go
+  - _clip: {fileID: 8300000, guid: 353d6bd9ade8dc841bd442df5c84b852, type: 3}
+    _clipName: Well done that's correct
+  - _clip: {fileID: 8300000, guid: 729660c537c0b294582e548898739ec8, type: 3}
+    _clipName: Yippie
+  - _clip: {fileID: 8300000, guid: a437ec26246eb3648aef9a2c73b936eb, type: 3}
+    _clipName: You got it
+  - _clip: {fileID: 8300000, guid: c902a7c86be01384586db922ccdfc327, type: 3}
+    _clipName: Press next
   _audioSource: {fileID: 806979363}
   _animator: {fileID: 149968733}
 --- !u!1 &151913033
@@ -14403,11 +14419,10 @@ MonoBehaviour:
   _gameName: 
   _mainContainer: {fileID: 1093082202}
   _gameSpace: {fileID: 0}
-  _procedureStateMachine: {fileID: 0}
   _placeIndicator: {fileID: 1228395062}
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
-  _dialogues: {fileID: 0}
+  _dialogues: {fileID: 149968734}
   _gameProperties:
     _meter:
       _textGradient:
@@ -14478,6 +14493,15 @@ MonoBehaviour:
   _numberOfQuestions: 5
   _currentQuestionIndex: -1
   _audioSource: {fileID: 187867126}
+  _correctAnswerDialogueStrings:
+  - Yippie
+  - Way to go
+  - Well done that's correct
+  - You got it
+  _incorrectAnswerDialogueStrings:
+  - Give it another go
+  - Try again champ
+  - I don't think that's quite right
 --- !u!1 &435727997
 GameObject:
   m_ObjectHideFlags: 0
@@ -20406,11 +20430,10 @@ MonoBehaviour:
   _gameName: 
   _mainContainer: {fileID: 1093082202}
   _gameSpace: {fileID: 1009342902}
-  _procedureStateMachine: {fileID: 0}
   _placeIndicator: {fileID: 1228395062}
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
-  _dialogues: {fileID: 0}
+  _dialogues: {fileID: 149968734}
   _gameProperties:
     _meter:
       _textGradient:
@@ -36853,11 +36876,10 @@ MonoBehaviour:
   _gameName: 
   _mainContainer: {fileID: 601199373}
   _gameSpace: {fileID: 1679114144}
-  _procedureStateMachine: {fileID: 0}
   _placeIndicator: {fileID: 0}
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
-  _dialogues: {fileID: 0}
+  _dialogues: {fileID: 149968734}
   _gameProperties:
     _meter:
       _textGradient:
@@ -41050,11 +41072,10 @@ MonoBehaviour:
   _gameName: 
   _mainContainer: {fileID: 1093082202}
   _gameSpace: {fileID: 1153913168}
-  _procedureStateMachine: {fileID: 0}
   _placeIndicator: {fileID: 1228395062}
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
-  _dialogues: {fileID: 0}
+  _dialogues: {fileID: 149968734}
   _gameProperties:
     _meter:
       _textGradient:
@@ -48711,11 +48732,10 @@ MonoBehaviour:
   _gameName: 
   _mainContainer: {fileID: 1093082202}
   _gameSpace: {fileID: 1009342902}
-  _procedureStateMachine: {fileID: 0}
   _placeIndicator: {fileID: 1228395062}
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
-  _dialogues: {fileID: 0}
+  _dialogues: {fileID: 149968734}
   _gameProperties:
     _meter:
       _textGradient:
@@ -48807,7 +48827,6 @@ MonoBehaviour:
   _currentRotation: {fileID: 0}
   _additionalLookingAngles: {x: 0, y: 90, z: 0}
   _spaceCamera: {fileID: 0}
-  _errorText: {fileID: 0}
   references:
     version: 2
     RefIds:

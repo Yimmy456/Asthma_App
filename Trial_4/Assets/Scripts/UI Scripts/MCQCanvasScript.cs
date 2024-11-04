@@ -133,6 +133,13 @@ public class MCQCanvasScript : GameCanvasScript
             _game.GetAudioSource().Play();
         }
 
+        if(_game.GetDialogues() != null)
+        {
+            string _dialogueS = _game.SelectRandomDialogue(false);
+
+            _game.GetDialogues().PlayClip(_dialogueS);
+        }
+
     }
 
     void CorrectAnswer()
@@ -164,6 +171,17 @@ public class MCQCanvasScript : GameCanvasScript
         for(int _i = 0; _i < 4; _i++)
         {
             _answerButtons[_i].interactable = false;
+        }
+
+        if (_game.GetDialogues() != null)
+        {
+            string _dialogueS = _game.SelectRandomDialogue();
+
+            //List<string> _dialoguesStrings = new List<string>() { _dialogueS, _game.GetCurrentQuestion().GetDialogueClipName(), "Press Next"};
+
+            //_game.GetDialogues().PlayClips(_dialoguesStrings);
+
+            _game.GetDialogues().PlayClip(_dialogueS, _game.GetCurrentQuestion().GetDialogueClipName(), "Press next");
         }
 
         string _response = "That's correct! Well done! ";

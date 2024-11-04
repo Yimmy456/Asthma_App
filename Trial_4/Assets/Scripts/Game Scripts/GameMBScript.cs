@@ -16,9 +16,6 @@ public class GameMBScript : MonoBehaviour
     protected GameObject _gameSpace;
 
     [SerializeField]
-    protected StateMachineScript _procedureStateMachine;
-
-    [SerializeField]
     protected PlaceIndicatorScript _placeIndicator;
 
     [SerializeField]
@@ -243,11 +240,6 @@ public class GameMBScript : MonoBehaviour
     public void SetProgressUpdated(bool _input)
     {
         _progressUpdated = _input;
-    }
-
-    public StateMachineScript GetProcedureStateMachine()
-    {
-        return _procedureStateMachine;
     }
 
     public virtual void TryToStartGame()

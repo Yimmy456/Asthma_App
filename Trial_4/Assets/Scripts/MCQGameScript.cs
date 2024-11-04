@@ -25,6 +25,12 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
     [SerializeField]
     AudioSource _audioSource;
 
+    [SerializeField]
+    List<string> _correctAnswerDialogueStrings;
+
+    [SerializeField]
+    List<string> _incorrectAnswerDialogueStrings;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +63,16 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
     public AudioSource GetAudioSource()
     {
         return _audioSource;
+    }
+
+    public List<string> GetCorrectAnswerDialogueStrings()
+    {
+        return _correctAnswerDialogueStrings;
+    }
+
+    public List<string> GetIncorrectAnswerDialogueStrings()
+    {
+        return _incorrectAnswerDialogueStrings;
     }
 
     /*
@@ -534,5 +550,16 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
         }
 
         _dialogueS.ResetDoctorsImageToOriginalValues();
+    }
+
+    public string SelectRandomDialogue(bool _correctlyInput = true)
+    {
+        List<string> _r = _correctlyInput ? _correctAnswerDialogueStrings : _incorrectAnswerDialogueStrings;
+
+        int _c = _r.Count;
+
+        int _int = Random.Range(0, _c);
+
+        return _r[_int];
     }
 }

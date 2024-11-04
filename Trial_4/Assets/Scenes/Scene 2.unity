@@ -1872,7 +1872,6 @@ MonoBehaviour:
   _gameName: 
   _mainContainer: {fileID: 1093082202}
   _gameSpace: {fileID: 2100843262}
-  _procedureStateMachine: {fileID: 1863231699}
   _placeIndicator: {fileID: 1228395062}
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
@@ -4645,7 +4644,6 @@ MonoBehaviour:
   _gameName: 
   _mainContainer: {fileID: 905754354}
   _gameSpace: {fileID: 149469848}
-  _procedureStateMachine: {fileID: 0}
   _placeIndicator: {fileID: 0}
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
@@ -6151,7 +6149,6 @@ MonoBehaviour:
   _gameName: 
   _mainContainer: {fileID: 1093082202}
   _gameSpace: {fileID: 1009342902}
-  _procedureStateMachine: {fileID: 0}
   _placeIndicator: {fileID: 1228395062}
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
@@ -6247,7 +6244,6 @@ MonoBehaviour:
   _currentRotation: {fileID: 0}
   _additionalLookingAngles: {x: 0, y: 90, z: 0}
   _spaceCamera: {fileID: 1330074157}
-  _errorText: {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -24083,7 +24079,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1863231699}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: StateMachineScript, Assembly-CSharp
         m_MethodName: SetGoToNextState
         m_Mode: 6
@@ -24633,7 +24629,6 @@ MonoBehaviour:
   _gameName: 
   _mainContainer: {fileID: 1093082202}
   _gameSpace: {fileID: 0}
-  _procedureStateMachine: {fileID: 1863231699}
   _placeIndicator: {fileID: 1228395062}
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
@@ -41606,7 +41601,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1863231699}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: StateMachineScript, Assembly-CSharp
         m_MethodName: ISetActionsOfNoButton
         m_Mode: 1
@@ -41618,7 +41613,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1863231699}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: StateMachineScript, Assembly-CSharp
         m_MethodName: ISetActionsOfYesButtonToQuit
         m_Mode: 1
@@ -46333,7 +46328,6 @@ MonoBehaviour:
   _gameName: 
   _mainContainer: {fileID: 1093082202}
   _gameSpace: {fileID: 1009342902}
-  _procedureStateMachine: {fileID: 1863231699}
   _placeIndicator: {fileID: 1228395062}
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
@@ -48577,97 +48571,6 @@ Transform:
   m_Father: {fileID: 438616013}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1863231697
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1863231698}
-  - component: {fileID: 1863231699}
-  m_Layer: 0
-  m_Name: State Machine
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1863231698
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1863231697}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 540, y: 960, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1863231699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1863231697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9264ed25b4cb88d45b845276901ee984, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _stageNumber: -1
-  _mcqGame: {fileID: 858896033}
-  _cardGame: {fileID: 97500506}
-  _letterGame: {fileID: 1771115577}
-  _machineOn: 0
-  _goToNextState: 0
-  _mainCanvases:
-    _mainPlayerCanvas: {fileID: 392666910}
-    _indicatorCanvas: {fileID: 444502315}
-    _doctorCanvas: {fileID: 716302325}
-  _yesOrNoCanvas: {fileID: 363037053}
-  _procedureCanvas: {fileID: 1916310824}
-  _procedureCompletionMeter:
-    _textGradient:
-      serializedVersion: 2
-      key0: {r: 1, g: 0, b: 0, a: 1}
-      key1: {r: 1, g: 1, b: 0, a: 1}
-      key2: {r: 0, g: 1, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
-      ctime1: 32768
-      ctime2: 65535
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
-      atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_NumColorKeys: 3
-      m_NumAlphaKeys: 2
-  _meterMaxValue: 23
-  _informationCanvas: {fileID: 834040356}
-  _newBadgeCanvas: {fileID: 1330827181}
-  _badgeNames:
-  - Spelling Badge (Asthma)
 --- !u!1 &1864560505
 GameObject:
   m_ObjectHideFlags: 0
@@ -50012,7 +49915,7 @@ MonoBehaviour:
   _nextButton: {fileID: 833975922}
   _restartButton: {fileID: 1797273083}
   _percentageText: {fileID: 1545783613}
-  _stateMachine: {fileID: 1863231699}
+  _stateMachine: {fileID: 0}
 --- !u!1 &1917719400
 GameObject:
   m_ObjectHideFlags: 0
@@ -56913,6 +56816,22 @@ MonoBehaviour:
     _clipName: Dr. Salem MCQ Water is not a trigger
   - _clip: {fileID: 8300000, guid: d7142d450f0440b49b2c9d20443eecbe, type: 3}
     _clipName: Dr. Salem MCQ You Could Need the Inhaler
+  - _clip: {fileID: 8300000, guid: 342d7304c64ee9c40a87b69f49f0e5a6, type: 3}
+    _clipName: Give it another go
+  - _clip: {fileID: 8300000, guid: 077e212cec27e0846a988584f8415269, type: 3}
+    _clipName: I don't think that's quite right
+  - _clip: {fileID: 8300000, guid: b5ad4324d645a464bbb86bcbff077c05, type: 3}
+    _clipName: Try again champ
+  - _clip: {fileID: 8300000, guid: 9929c7db7cc6aff40aa53cf236f8b228, type: 3}
+    _clipName: Way to go
+  - _clip: {fileID: 8300000, guid: 353d6bd9ade8dc841bd442df5c84b852, type: 3}
+    _clipName: Well done that's correct
+  - _clip: {fileID: 8300000, guid: 729660c537c0b294582e548898739ec8, type: 3}
+    _clipName: Yippie
+  - _clip: {fileID: 8300000, guid: a437ec26246eb3648aef9a2c73b936eb, type: 3}
+    _clipName: You got it
+  - _clip: {fileID: 8300000, guid: c902a7c86be01384586db922ccdfc327, type: 3}
+    _clipName: Press next
   _audioSource: {fileID: 1757740976}
   _animator: {fileID: 919132149601814142}
 --- !u!4 &972334789260026595

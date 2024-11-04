@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class BuildingInhalerGameScript : MatchingGameCanvasScript
 {
+    [Header("3. Variables for the Building Game")]
+
     [SerializeField]
     HighlightingAnimationClass _highlightingAnimationProperties;
 
