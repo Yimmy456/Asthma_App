@@ -24703,6 +24703,15 @@ MonoBehaviour:
   _numberOfQuestions: 5
   _currentQuestionIndex: -1
   _audioSource: {fileID: 1045844157}
+  _correctAnswerDialogueStrings:
+  - Yippie
+  - Way to go
+  - Well done that's correct
+  - You got it
+  _incorrectAnswerDialogueStrings:
+  - Give it another go
+  - Try again champ
+  - I don't think that's quite right
 --- !u!1 &864266537
 GameObject:
   m_ObjectHideFlags: 0
@@ -28391,7 +28400,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009342902}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.000011920929, y: 200, z: -80}
+  m_LocalPosition: {x: 0.000011920929, y: 250, z: -80}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 1
   m_Children:

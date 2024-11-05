@@ -496,6 +496,11 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
 
         _mcqCanvas.SetQuestionNumber(_currentQuestionIndex + 1);
 
+        if(_dialogues != null)
+        {
+            _dialogues.StopCurrentDialogue();
+        }
+
         _mcqCanvas.PrepareQuestion(_currentQuestion);
     }
 
@@ -555,6 +560,11 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
     public string SelectRandomDialogue(bool _correctlyInput = true)
     {
         List<string> _r = _correctlyInput ? _correctAnswerDialogueStrings : _incorrectAnswerDialogueStrings;
+
+        if(_r.Count == 0)
+        {
+            return "";
+        }
 
         int _c = _r.Count;
 

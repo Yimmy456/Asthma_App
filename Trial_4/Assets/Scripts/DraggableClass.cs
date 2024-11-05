@@ -481,6 +481,11 @@ public class DraggableClass : MonoBehaviour
         _maintainZDistance = _input;
     }
 
+    public void SetZOffset(float _input)
+    {
+        _zOffset = _input;
+    }
+
     public void RemoveRigidBody()
     {
         if(_body != null)

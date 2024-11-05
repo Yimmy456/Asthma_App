@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -136,10 +137,9 @@ public class MCQCanvasScript : GameCanvasScript
         if(_game.GetDialogues() != null)
         {
             string _dialogueS = _game.SelectRandomDialogue(false);
-
+            
             _game.GetDialogues().PlayClip(_dialogueS);
         }
-
     }
 
     void CorrectAnswer()

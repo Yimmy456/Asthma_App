@@ -1493,7 +1493,7 @@ MonoBehaviour:
     _questionText: What is the most common color for the preventer inhaler?
     _answers:
     - Brown
-    - Orange
+    - Pink
     - Blue
     - Green
     _correctAnswerIndex: 0

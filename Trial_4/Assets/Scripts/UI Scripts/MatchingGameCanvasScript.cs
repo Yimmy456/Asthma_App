@@ -44,6 +44,9 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
     protected Transform _currentRotation;
 
     [SerializeField]
+    protected float _draggingZOffset = -3.8f;
+
+    [SerializeField]
     Vector3 _additionalLookingAngles;
 
     [SerializeField]
@@ -82,6 +85,11 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
     public Transform GetCurrentRotation()
     {
         return _currentRotation;
+    }
+
+    public float GetDraggingZOffset()
+    {
+        return _draggingZOffset;
     }
 
     public void SetSpawningSizeForBlocks(float _input)
