@@ -3158,6 +3158,8 @@ MonoBehaviour:
     _clipName: You got it
   - _clip: {fileID: 8300000, guid: c902a7c86be01384586db922ccdfc327, type: 3}
     _clipName: Press next
+  - _clip: {fileID: 8300000, guid: 90b2b5631f48fab4f80cf15bb5eb0b67, type: 3}
+    _clipName: Dr. Salem Exhibition Hybrid Inhaler
   _audioSource: {fileID: 806979363}
   _animator: {fileID: 149968733}
 --- !u!1 &151913033
@@ -7915,7 +7917,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 366229646}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -20543,6 +20545,7 @@ MonoBehaviour:
       _variable2: 5
   _reverseDirectionForHoles: 1
   _currentRotation: {fileID: 344282881}
+  _draggingZOffset: -3.8
   _additionalLookingAngles: {x: 0, y: 90, z: 0}
   _spaceCamera: {fileID: 0}
   _currentWord:
@@ -26907,7 +26910,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009342902}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 250, z: -80}
+  m_LocalPosition: {x: 0, y: 200, z: -80}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -28720,6 +28723,7 @@ MonoBehaviour:
   _fastyAnimator: {fileID: 8979086420280341110}
   _landingTerrain: {fileID: 601199373}
   _menuButton: {fileID: 1153826026}
+  _drSalemDialogues: {fileID: 149968734}
   _fastyDialogues: {fileID: 1661460778}
   _started: 0
 --- !u!1 &1097086952
@@ -36966,6 +36970,7 @@ MonoBehaviour:
       _variable2: 3
   _reverseDirectionForHoles: 0
   _currentRotation: {fileID: 0}
+  _draggingZOffset: -3.8
   _additionalLookingAngles: {x: 0, y: 0, z: 0}
   _spaceCamera: {fileID: 0}
   _highlightingAnimationProperties:
@@ -38674,7 +38679,7 @@ MonoBehaviour:
       _outlineThickness: 1
       _talkingSeconds: 5
       _audioClip: {fileID: 0}
-      _audioClip2: 
+      _audioClip2: Dr. Salem Exhibition Hybrid Inhaler
     - _listItemGameObject: {fileID: 8907650479044642488, guid: 0436b66cd5d38544a9af82cb0be2fa8a, type: 3}
       _listItemName: Medicine
       _listItemDescription: 
@@ -48825,6 +48830,7 @@ MonoBehaviour:
       _variable2: 5
   _reverseDirectionForHoles: 0
   _currentRotation: {fileID: 0}
+  _draggingZOffset: -3.8
   _additionalLookingAngles: {x: 0, y: 90, z: 0}
   _spaceCamera: {fileID: 0}
   references:
@@ -58774,9 +58780,8 @@ MonoBehaviour:
   _body: {fileID: 0}
   _camera: {fileID: 1075211029}
   _applyGravity: 0
-  _zOffset: 0
   _maintainZDistance: 0
-  _2DOffset: {x: 0, y: 0}
+  _offset: {x: 0, y: 0, z: -4.5}
   _draggableType: 0
 --- !u!64 &6767589810071351368
 MeshCollider:

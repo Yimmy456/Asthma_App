@@ -4734,6 +4734,7 @@ MonoBehaviour:
       _variable2: 3
   _reverseDirectionForHoles: 0
   _currentRotation: {fileID: 0}
+  _draggingZOffset: -3.8
   _additionalLookingAngles: {x: 0, y: 0, z: 0}
   _spaceCamera: {fileID: 0}
   _highlightingAnimationProperties:
@@ -6242,6 +6243,7 @@ MonoBehaviour:
       _variable2: 5
   _reverseDirectionForHoles: 0
   _currentRotation: {fileID: 0}
+  _draggingZOffset: -3.8
   _additionalLookingAngles: {x: 0, y: 90, z: 0}
   _spaceCamera: {fileID: 1330074157}
   references:
@@ -17188,7 +17190,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 488612395}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 4}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -30378,6 +30380,7 @@ MonoBehaviour:
   _fastyAnimator: {fileID: 296267562}
   _landingTerrain: {fileID: 905754354}
   _menuButton: {fileID: 1153826026}
+  _drSalemDialogues: {fileID: 919132149601814144}
   _fastyDialogues: {fileID: 682149338}
   _started: 0
 --- !u!1 &1106223608
@@ -41434,7 +41437,7 @@ MonoBehaviour:
       _outlineThickness: 1
       _talkingSeconds: 5
       _audioClip: {fileID: 0}
-      _audioClip2: 
+      _audioClip2: Dr. Salem Exhibition Hybrid Inhaler
     - _listItemGameObject: {fileID: 8907650479044642488, guid: 0436b66cd5d38544a9af82cb0be2fa8a, type: 3}
       _listItemName: Medicine
       _listItemDescription: 
@@ -46450,6 +46453,7 @@ MonoBehaviour:
       _variable2: 5
   _reverseDirectionForHoles: 1
   _currentRotation: {fileID: 344282881}
+  _draggingZOffset: -3.8
   _additionalLookingAngles: {x: 0, y: 90, z: 0}
   _spaceCamera: {fileID: 1330074157}
   _currentWord:
@@ -56841,6 +56845,8 @@ MonoBehaviour:
     _clipName: You got it
   - _clip: {fileID: 8300000, guid: c902a7c86be01384586db922ccdfc327, type: 3}
     _clipName: Press next
+  - _clip: {fileID: 8300000, guid: 90b2b5631f48fab4f80cf15bb5eb0b67, type: 3}
+    _clipName: Dr. Salem Exhibition Hybrid Inhaler
   _audioSource: {fileID: 1757740976}
   _animator: {fileID: 919132149601814142}
 --- !u!4 &972334789260026595
@@ -62251,9 +62257,8 @@ MonoBehaviour:
   _body: {fileID: 0}
   _camera: {fileID: 488612397}
   _applyGravity: 0
-  _zOffset: 0
   _maintainZDistance: 0
-  _2DOffset: {x: 0, y: 0}
+  _offset: {x: 0, y: 0, z: 0}
   _draggableType: 0
 --- !u!64 &6767589810071351368
 MeshCollider:

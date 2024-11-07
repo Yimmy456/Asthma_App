@@ -247,6 +247,21 @@ public class GamePropertiesClass<T>
             return;
         }
 
+        if(SettingsManager.GetInstance() != null)
+        {
+            BooleanSettingsClass _b = SettingsManager.GetInstance().GetBooleanSettingByName("Text Dialogue");
+
+            if(_b != null)
+            {
+                if(_b.GetBooleanValue() == false)
+                {
+                    _responseText.text = "";
+
+                    return;
+                }
+            }
+        }
+
         _responseText.text = _textInput;
 
         _responseText.color = _textColorInput;

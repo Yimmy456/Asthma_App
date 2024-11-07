@@ -60,6 +60,9 @@ public class MainSceneScript : MonoBehaviour, YesOrNoInterface
     Button _menuButton;
 
     [SerializeField]
+    DialoguesScript _drSalemDialogues;
+
+    [SerializeField]
     DialoguesScript _fastyDialogues;
 
     //[SerializeField]
@@ -269,6 +272,11 @@ public class MainSceneScript : MonoBehaviour, YesOrNoInterface
         if(_rocketParticles != null)
         {
             _rocketParticles.Pause();
+        }
+
+        if(_drSalemDialogues != null)
+        {
+            _drSalemDialogues.StopCurrentDialogue();
         }
 
         _yesOrNoCanvas.GetNoButton().onClick.AddListener(delegate { ISetActionsOfNoButton(); });

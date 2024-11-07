@@ -34,13 +34,11 @@ public class DraggableClass : MonoBehaviour
     bool _applyGravity;
 
     [SerializeField]
-    float _zOffset;
-
-    [SerializeField]
     bool _maintainZDistance = true;
 
+    [Tooltip("This is the offset of an object. The x and y coordinates indicate the offset of the object from the finger's position in the screen, while the z coordinate indicates how far the object will be from the camera or its initial position.")]
     [SerializeField]
-    Vector2 _2DOffset;
+    Vector3 _offset;
 
     [SerializeField]
     DraggableTypeEnum _draggableType;
@@ -190,11 +188,11 @@ public class DraggableClass : MonoBehaviour
 
         if (_maintainZDistance)
         {
-            _pos.z = _camera.WorldToScreenPoint(gameObject.transform.position).z + _zOffset;
+            _pos.z = _camera.WorldToScreenPoint(gameObject.transform.position).z + _offset.z;
         }
         else if(GetFront() != null)
         {
-            _pos.z = _camera.WorldToScreenPoint(GetFront().position).z + _zOffset;
+            _pos.z = _camera.WorldToScreenPoint(GetFront().position).z + _offset.z;
         }
 
         //_pos.x = _pos.x + _2DOffset.x;
@@ -203,9 +201,9 @@ public class DraggableClass : MonoBehaviour
 
         Vector3 _pos2 = Vector3.zero;
 
-        _pos2.x = _pos.x + _2DOffset.x;
+        _pos2.x = _pos.x + _offset.x;
 
-        _pos2.y = _pos.y + _2DOffset.y;
+        _pos2.y = _pos.y + _offset.y;
 
         _pos2.z = _pos.z;
 
@@ -317,9 +315,9 @@ public class DraggableClass : MonoBehaviour
         return _touchPhase;
     }
 
-    public Vector2 Get2DOffset()
+    public Vector3 GetOffset()
     {
-        return _2DOffset;
+        return _offset;
     }
 
     public void SetBodyVelocity(Vector3 _v3Input, float _constantInput = 1.0f)
@@ -354,16 +352,6 @@ public class DraggableClass : MonoBehaviour
     public void SetBodyAngularVelocity(float _inputX, float _inputY, float _inputZ, float _constantInput = 1.0f)
     {
         SetBodyAngularVelocity(new Vector3(_inputX, _inputY, _inputZ), _constantInput);
-    }
-
-    public void Set2DOffset(float _inputX, float _inputY)
-    {
-        _2DOffset = new Vector2(_inputX, _inputY);
-    }
-
-    public void Set2DOffset(Vector2 _input)
-    {
-        Set2DOffset(_input.x, _input.y);
     }
 
     public float GetDraggingDirection(bool _coterminalInput = true, bool _radiansInput = false)
@@ -444,11 +432,6 @@ public class DraggableClass : MonoBehaviour
         return _maintainZDistance;
     }
 
-    public float GetZOffset()
-    {
-        return _zOffset;
-    }
-
     public Transform GetFront()
     {
         if(_camera == null)
@@ -481,9 +464,31 @@ public class DraggableClass : MonoBehaviour
         _maintainZDistance = _input;
     }
 
-    public void SetZOffset(float _input)
+    public void SetOffset(Vector3 _input)
     {
-        _zOffset = _input;
+        SetOffset(_input.x, _input.y, _input.z);
+    }
+
+    public void SetOffset(float _inputX, float _inputY, float _inputZ)
+    {
+        _offset.x = _inputX;
+        _offset.y = _inputY;
+        _offset.z = _inputZ;
+    }
+
+    public void SetOffsetX(float _input)
+    {
+        _offset.x = _input;
+    }
+
+    public void SetOffsetY(float _input)
+    {
+        _offset.y = _input;
+    }
+
+    public void SetOffsetZ(float _input)
+    {
+        _offset.z = _input;
     }
 
     public void RemoveRigidBody()

@@ -270,6 +270,11 @@ public class GameGenericMBScript<T> : GameMBScript, YesOrNoInterface
 
         _gamePaused = true;
 
+        if(_dialogues != null)
+        {
+            _dialogues.StopCurrentDialogue();
+        }
+
         if(_noButton != null)
         {
             _noButton.onClick.AddListener(delegate { ISetActionsOfNoButton(); });
