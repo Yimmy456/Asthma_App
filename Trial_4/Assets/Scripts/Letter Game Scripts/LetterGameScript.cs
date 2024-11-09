@@ -273,7 +273,7 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
 
             _newLetterBlock.GetDraggableProperties().SetCamera(_gameProperties.GetCamera());
 
-            _newLetterBlock.GetDraggableProperties().SetOffsetZ(_draggingZOffset);
+            _newLetterBlock.GetDraggableProperties().SetOffset_Z(_draggingZOffset);
 
             _newLetterBlock.GetDraggableProperties().GetBody().velocity = Vector3.zero;
 

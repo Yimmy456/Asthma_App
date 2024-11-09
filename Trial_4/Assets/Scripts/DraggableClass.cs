@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 
 public class DraggableClass : MonoBehaviour
@@ -39,6 +40,12 @@ public class DraggableClass : MonoBehaviour
     [Tooltip("This is the offset of an object. The x and y coordinates indicate the offset of the object from the finger's position in the screen, while the z coordinate indicates how far the object will be from the camera or its initial position.")]
     [SerializeField]
     Vector3 _offset;
+
+    [SerializeField]
+    Vector3 _lookingDirection = new Vector3(-1.0f, -1.0f, -1.0f);
+
+    [SerializeField]
+    Axis _lookingAxis = Axis.Y;
 
     [SerializeField]
     DraggableTypeEnum _draggableType;
@@ -140,6 +147,8 @@ public class DraggableClass : MonoBehaviour
         {
             _touchPhase = UnityEngine.TouchPhase.Moved;
 
+            RotateToLookAtCamera();
+
             if(DraggableManagerClass.GetInstance().GetTouchPhase() != UnityEngine.TouchPhase.Moved)
             {
                 DraggableManagerClass.GetInstance().SetTouchPhase(UnityEngine.TouchPhase.Moved);
@@ -210,6 +219,8 @@ public class DraggableClass : MonoBehaviour
         Vector3 _v3 = _camera.ScreenToWorldPoint(_pos2);
 
         DebugDragInfo();
+
+        //RotateToLookAtCamera();
 
         gameObject.transform.position = _v3;
 
@@ -318,6 +329,11 @@ public class DraggableClass : MonoBehaviour
     public Vector3 GetOffset()
     {
         return _offset;
+    }
+
+    public Vector3 GetLookingDirection()
+    {
+        return _lookingDirection;
     }
 
     public void SetBodyVelocity(Vector3 _v3Input, float _constantInput = 1.0f)
@@ -432,6 +448,16 @@ public class DraggableClass : MonoBehaviour
         return _maintainZDistance;
     }
 
+    public bool GetLooksAtCamera()
+    {
+        if (_lookingDirection.x == -1.0f && _lookingDirection.y == -1.0f && _lookingDirection.z == -1.0f)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
     public Transform GetFront()
     {
         if(_camera == null)
@@ -476,19 +502,46 @@ public class DraggableClass : MonoBehaviour
         _offset.z = _inputZ;
     }
 
-    public void SetOffsetX(float _input)
+    public void SetLookingDirection(Vector3 _input)
+    {
+        SetLookingDirection(_input.x, _input.y, _input.z);
+    }
+
+    public void SetLookingDirection(float _inputX, float _inputY, float _inputZ)
+    {
+        _lookingDirection.x = _inputX;
+        _lookingDirection.y = _inputY;
+        _lookingDirection.z = _inputZ;
+    }
+
+    public void SetOffset_X(float _input)
     {
         _offset.x = _input;
     }
 
-    public void SetOffsetY(float _input)
+    public void SetOffset_Y(float _input)
     {
         _offset.y = _input;
     }
 
-    public void SetOffsetZ(float _input)
+    public void SetOffset_Z(float _input)
     {
         _offset.z = _input;
+    }
+
+    public void SetLookingDirection_X(float _input)
+    {
+        _lookingDirection.x = _input;
+    }
+
+    public void SetLookingDirection_Y(float _input)
+    {
+        _lookingDirection.y = _input;
+    }
+
+    public void SetLookingDirection_Z(float _input)
+    {
+        _lookingDirection.z = _input;
     }
 
     public void RemoveRigidBody()
@@ -512,5 +565,52 @@ public class DraggableClass : MonoBehaviour
         float _camD = Vector3.Distance(gameObject.transform.position, _camera.gameObject.transform.position);
 
         Debug.Log("5. The distance of " + @"""" + gameObject.name + @"""" + " from the camera is " + _camD.ToString("0.00") + ".");
+    }
+
+    void RotateToLookAtCamera()
+    {
+        if(!GetLooksAtCamera() || _lookingAxis == Axis.None)
+        {
+            return;
+        }
+
+        Vector3 _dirV3 = _camera.gameObject.transform.position - gameObject.transform.position;
+
+        Quaternion _q = Quaternion.identity;
+
+        if(_lookingAxis == Axis.X)
+        {
+            _q = Quaternion.LookRotation(_dirV3, Vector3.right);
+        }
+
+        if (_lookingAxis == Axis.Y)
+        {
+            _q = Quaternion.LookRotation(_dirV3, Vector3.up);
+        }
+
+        if (_lookingAxis == Axis.Z)
+        {
+            _q = Quaternion.LookRotation(_dirV3, Vector3.forward);
+        }
+
+        if (_lookingDirection.x == -1.0f)
+        {
+            _q.x = 0.0f;
+        }
+
+        if (_lookingDirection.y == -1.0f)
+        {
+            _q.y = 0.0f;
+        }
+
+        if (_lookingDirection.z == -1.0f)
+        {
+            _q.z = 0.0f;
+        }
+
+        _q = _q * Quaternion.Euler(_lookingDirection);
+
+        gameObject.transform.rotation = _q;
+
     }
 }
