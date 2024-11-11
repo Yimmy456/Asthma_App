@@ -866,10 +866,24 @@ MonoBehaviour:
     _badgeDescription: You have earned this badge putting the components of the inhaler
       together! Marvelous!
     _badgeCollected: 0
-    _badgeSprite: {fileID: 0}
+    _badgeSprite: {fileID: 21300000, guid: 549ac6267b355f1409a5bd974a915c26, type: 3}
     _badgeID: 8995203e-1102-4a51-8741-fc5306a29bfc
     _howToEarn: You need to learn how to assemble the pieces of the inhaler in order
       to earn this badge.
+  - _badgeName: Inhaler Matching Badge
+    _badgeDescription: You have won this badge matching the correct inhaler types
+      and components! Yippie!
+    _badgeCollected: 0
+    _badgeSprite: {fileID: 21300000, guid: 3e892371df469c74b97b85e98ea98c54, type: 3}
+    _badgeID: bf951a0f-88cf-4993-aadf-caf09a699aa0
+    _howToEarn: You need to win the inhalers' matching game to earn this badge.
+  - _badgeName: Inhaler Exhibition Badge
+    _badgeDescription: You hot this badge by listening to Dr. Salem about all the
+      inhaler types and components in the exhibition! Hooray!
+    _badgeCollected: 0
+    _badgeSprite: {fileID: 21300000, guid: 6ca38fc8c9af01c49bf48ecd1f585c6d, type: 3}
+    _badgeID: 850cdf1f-8107-4ab0-8789-fa69e9005411
+    _howToEarn: You need complete the exhibition to get this badge.
   _badgesCollectedMeter:
     _textGradient:
       serializedVersion: 2

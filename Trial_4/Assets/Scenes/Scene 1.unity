@@ -58806,6 +58806,8 @@ MonoBehaviour:
   _applyGravity: 0
   _maintainZDistance: 0
   _offset: {x: 0, y: -100, z: -3.8}
+  _lookingDirection: {x: -1, y: 90, z: -1}
+  _lookingAxis: 2
   _draggableType: 0
 --- !u!64 &6767589810071351368
 MeshCollider:
