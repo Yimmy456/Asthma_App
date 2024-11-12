@@ -41460,7 +41460,7 @@ MonoBehaviour:
       _localScaleConstant: 500
       _outlineThickness: 1
       _talkingSeconds: 5
-      _audioClip: {fileID: 0}
+      _audioClip: {fileID: 8300000, guid: 90b2b5631f48fab4f80cf15bb5eb0b67, type: 3}
       _audioClip2: Dr. Salem Exhibition Hybrid Inhaler
     - _listItemGameObject: {fileID: 8907650479044642488, guid: 0436b66cd5d38544a9af82cb0be2fa8a, type: 3}
       _listItemName: Medicine
@@ -41521,6 +41521,7 @@ MonoBehaviour:
         m_NumAlphaKeys: 2
     _rotateInRaycast: 0
     _exhibitionGroupUniformScale: 1
+    _badgeName: Inhaler Exhibition Badge
   _circleProperties:
     _spreadingDegrees: 360
     _additionalDegrees: 0

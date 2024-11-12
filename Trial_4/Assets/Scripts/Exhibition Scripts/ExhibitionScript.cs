@@ -51,6 +51,8 @@ public class ExhibitionScript : MonoBehaviour
 
     Coroutine _doctorSalemTalkingCoroutine;
 
+    BadgeScript _currentBadge;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -140,6 +142,11 @@ public class ExhibitionScript : MonoBehaviour
         //MeshCollider _collider2;
 
         float _rotAngle;
+
+        if(BadgesManagerScript.GetInstance() != null)
+        {
+            _currentBadge = BadgesManagerScript.GetInstance().GetBadgeByName(_currentGroup.GetBadgeName());
+        }
 
         for(int _i = 0; _i < _count; _i++)
         {
@@ -388,6 +395,9 @@ public class ExhibitionGroupClass
     [SerializeField]
     float _exhibitionGroupUniformScale = 1.0f;
 
+    [SerializeField]
+    string _badgeName;
+
     bool _exhibitionInPlay = false;
 
     public string GetGroupName()
@@ -413,6 +423,11 @@ public class ExhibitionGroupClass
     public bool GetRotateInRaycast()
     {
         return _rotateInRaycast;
+    }
+
+    public string GetBadgeName()
+    {
+        return _badgeName;
     }
 
     public void SetExhibitionInPlay(bool _input)
@@ -455,6 +470,9 @@ public class ExhibitionListItemClass
 
     [SerializeField]
     string _audioClip2;
+
+    [SerializeField]
+    bool _displayExplained;
 
     public GameObject GetListItemGameObject()
     {
@@ -499,5 +517,15 @@ public class ExhibitionListItemClass
     public string GetAudioClip2()
     {
         return _audioClip2;
+    }
+
+    public bool GetDisplayExplained()
+    {
+        return _displayExplained;
+    }
+
+    public void SetDisplayExplained(bool _input)
+    {
+        _displayExplained = _input;
     }
 }

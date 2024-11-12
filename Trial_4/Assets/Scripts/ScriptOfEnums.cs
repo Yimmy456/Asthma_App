@@ -109,3 +109,12 @@ public enum ProcessStatusEnum
     Complete,
     Cancelled,
 }
+
+public enum TalkingStatusEnum
+{
+    Not_Talking,
+    Starting,
+    Talking,
+    Cancelled,
+    Completed,
+}

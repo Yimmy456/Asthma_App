@@ -38763,6 +38763,7 @@ MonoBehaviour:
         m_NumAlphaKeys: 2
     _rotateInRaycast: 0
     _exhibitionGroupUniformScale: 1
+    _badgeName: Inhaler Exhibition Badge
   _circleProperties:
     _spreadingDegrees: 360
     _additionalDegrees: 0

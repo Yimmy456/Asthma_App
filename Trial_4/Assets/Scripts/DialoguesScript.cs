@@ -14,6 +14,12 @@ public class DialoguesScript : MonoBehaviour
     [SerializeField]
     Animator _animator;
 
+    //Stopwatch _stopWatch;
+
+    System.Diagnostics.Stopwatch _stopWatch;
+
+    System.Diagnostics.Stopwatch _subStopWatch;
+
     AudioClipClass _currentAudioClip;
 
     Coroutine _dialogueCoroutine;
@@ -22,10 +28,22 @@ public class DialoguesScript : MonoBehaviour
 
     bool _isTalking = false;
 
+    TalkingStatusEnum _overallTalkingStatus;
+
+    TalkingStatusEnum _singleTalkingStatus;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(_stopWatch == null)
+        {
+            _stopWatch = new System.Diagnostics.Stopwatch();
+        }
+
+        if(_subStopWatch == null)
+        {
+            _subStopWatch = new System.Diagnostics.Stopwatch();
+        }
     }
 
     // Update is called once per frame
@@ -65,6 +83,16 @@ public class DialoguesScript : MonoBehaviour
     public AudioSource GetAudioSource()
     {
         return _audioSource;
+    }
+
+    public TalkingStatusEnum GetOverallTalkingStatus()
+    {
+        return _overallTalkingStatus;
+    }
+
+    public TalkingStatusEnum GetSingleTalkingStatus()
+    {
+        return _singleTalkingStatus;
     }
 
     public void PlayClip(string _input)
@@ -133,7 +161,15 @@ public class DialoguesScript : MonoBehaviour
 
         Debug.Log("We are starting to talk about '" + _input + "'.");
 
+        _stopWatch.Restart();
+
+        _subStopWatch.Restart();
+
         yield return new WaitForSeconds(_seconds);
+
+        _stopWatch.Stop();
+
+        _subStopWatch.Stop();
 
         _currentAudioClip = null;
 
@@ -178,9 +214,32 @@ public class DialoguesScript : MonoBehaviour
 
         _animator.SetBool(_talkingString, true);
 
+        //_stopWatch.Restart();
+
+        //_subStopWatch.Restart();
+
+        _overallTalkingStatus = TalkingStatusEnum.Starting;
+
+        _singleTalkingStatus = TalkingStatusEnum.Starting;
+
+        for(int _f = 0; _f < 1; _f++)
+        {
+            yield return null;
+        }
+
+        _overallTalkingStatus = TalkingStatusEnum.Talking;
+
+        _singleTalkingStatus = TalkingStatusEnum.Talking;
+
+        //yield return new wait
+
         Debug.Log("1. We are starting to talk about '" + _input1 + "'.");
 
         yield return new WaitForSeconds(_seconds);
+
+        _singleTalkingStatus = TalkingStatusEnum.Completed;
+
+        //_subStopWatch.Stop();
 
         Debug.Log("1. We are stopping talking about '" + _input1 + "'.");
 
@@ -200,6 +259,24 @@ public class DialoguesScript : MonoBehaviour
 
             Debug.LogError("2. Error 1: There is no clip by the name '" + _input2 + "'.");
 
+            //_stopWatch.Stop();
+
+            for (int _f = 0; _f < 1; _f++)
+            {
+                yield return null;
+            }
+
+            _overallTalkingStatus = TalkingStatusEnum.Cancelled;
+
+            for (int _f = 0; _f < 1; _f++)
+            {
+                yield return null;
+            }
+
+            _overallTalkingStatus = TalkingStatusEnum.Not_Talking;
+
+            _singleTalkingStatus = TalkingStatusEnum.Not_Talking;
+
             yield break;
         }
 
@@ -215,6 +292,24 @@ public class DialoguesScript : MonoBehaviour
 
             Debug.LogError("2. Error 2: There is no file for the clip by the name '" + _input2 + "'.");
 
+            //_stopWatch.Stop();
+
+            for (int _f = 0; _f < 1; _f++)
+            {
+                yield return null;
+            }
+
+            _overallTalkingStatus = TalkingStatusEnum.Cancelled;
+
+            for (int _f = 0; _f < 1; _f++)
+            {
+                yield return null;
+            }
+
+            _overallTalkingStatus = TalkingStatusEnum.Not_Talking;
+
+            _singleTalkingStatus = TalkingStatusEnum.Not_Talking;
+
             yield break;
         }
 
@@ -226,9 +321,30 @@ public class DialoguesScript : MonoBehaviour
 
         _audioSource.Play();
 
+        //_subStopWatch.Restart();
+
+        for (int _f = 0; _f < 1; _f++)
+        {
+            yield return null;
+        }
+
+        _singleTalkingStatus = TalkingStatusEnum.Starting;
+
+        for (int _f = 0; _f < 1; _f++)
+        {
+            yield return null;
+        }
+
+        _singleTalkingStatus = TalkingStatusEnum.Talking;
+
         Debug.Log("2. We are starting to talk about '" + _input2 + "'.");
 
         yield return new WaitForSeconds(_seconds);
+
+        //_stopWatch.Stop();
+
+        //_subStopWatch.Stop();
+
 
         _isTalking = false;
 
@@ -237,6 +353,19 @@ public class DialoguesScript : MonoBehaviour
         _audioSource.clip = null;
 
         Debug.Log("2. We are stopping talking about '" + _input2 + "'.");
+
+        _singleTalkingStatus = TalkingStatusEnum.Completed;
+
+        _overallTalkingStatus = TalkingStatusEnum.Completed;
+
+        for (int _f = 0; _f < 1; _f++)
+        {
+            yield return null;
+        }
+
+        _overallTalkingStatus = TalkingStatusEnum.Not_Talking;
+
+        _singleTalkingStatus = TalkingStatusEnum.Not_Talking;
 
         _animator.SetBool(_talkingString, false);
     }
@@ -274,9 +403,24 @@ public class DialoguesScript : MonoBehaviour
 
         _animator.SetBool(_talkingString, true);
 
+        _overallTalkingStatus = TalkingStatusEnum.Starting;
+
+        _singleTalkingStatus = TalkingStatusEnum.Starting;
+
+        for (int _f = 0; _f < 1; _f++)
+        {
+            yield return null;
+        }
+
+        _overallTalkingStatus = TalkingStatusEnum.Talking;
+
+        _singleTalkingStatus = TalkingStatusEnum.Talking;
+
         Debug.Log("1. We are starting to talk about '" + _input1 + "'.");
 
         yield return new WaitForSeconds(_seconds);
+
+        _singleTalkingStatus = TalkingStatusEnum.Completed;
 
         Debug.Log("1. We are stopping talking about '" + _input1 + "'.");
 
@@ -296,6 +440,22 @@ public class DialoguesScript : MonoBehaviour
 
             Debug.LogError("2. Error 1: There is no clip by the name '" + _input2 + "'.");
 
+            for (int _f = 0; _f < 1; _f++)
+            {
+                yield return null;
+            }
+
+            _overallTalkingStatus = TalkingStatusEnum.Cancelled;
+
+            for (int _f = 0; _f < 1; _f++)
+            {
+                yield return null;
+            }
+
+            _overallTalkingStatus = TalkingStatusEnum.Not_Talking;
+
+            _singleTalkingStatus = TalkingStatusEnum.Not_Talking;
+
             yield break;
         }
 
@@ -311,6 +471,22 @@ public class DialoguesScript : MonoBehaviour
 
             Debug.LogError("2. Error 2: There is no file for the clip by the name '" + _input2 + "'.");
 
+            for (int _f = 0; _f < 1; _f++)
+            {
+                yield return null;
+            }
+
+            _overallTalkingStatus = TalkingStatusEnum.Cancelled;
+
+            for (int _f = 0; _f < 1; _f++)
+            {
+                yield return null;
+            }
+
+            _overallTalkingStatus = TalkingStatusEnum.Not_Talking;
+
+            _singleTalkingStatus = TalkingStatusEnum.Not_Talking;
+
             yield break;
         }
 
@@ -324,8 +500,18 @@ public class DialoguesScript : MonoBehaviour
 
         Debug.Log("2. We are starting to talk about '" + _input2 + "'.");
 
+        _singleTalkingStatus = TalkingStatusEnum.Starting;
+
+        for (int _f = 0; _f < 1; _f++)
+        {
+            yield return null;
+        }
+
+        _singleTalkingStatus = TalkingStatusEnum.Talking;
+
         yield return new WaitForSeconds(_seconds);
 
+        _singleTalkingStatus = TalkingStatusEnum.Completed;
 
         _clip = GetClip(_input3);
 
@@ -340,6 +526,22 @@ public class DialoguesScript : MonoBehaviour
             _isTalking = false;
 
             Debug.LogError("3. Error 1: There is no clip by the name '" + _input3 + "'.");
+
+            for (int _f = 0; _f < 1; _f++)
+            {
+                yield return null;
+            }
+
+            _overallTalkingStatus = TalkingStatusEnum.Cancelled;
+
+            for (int _f = 0; _f < 1; _f++)
+            {
+                yield return null;
+            }
+
+            _overallTalkingStatus = TalkingStatusEnum.Not_Talking;
+
+            _singleTalkingStatus = TalkingStatusEnum.Not_Talking;
 
             yield break;
         }
@@ -356,6 +558,22 @@ public class DialoguesScript : MonoBehaviour
 
             Debug.LogError("3. Error 2: There is no file for the clip by the name '" + _input3 + "'.");
 
+            for (int _f = 0; _f < 1; _f++)
+            {
+                yield return null;
+            }
+
+            _overallTalkingStatus = TalkingStatusEnum.Cancelled;
+
+            for (int _f = 0; _f < 1; _f++)
+            {
+                yield return null;
+            }
+
+            _overallTalkingStatus = TalkingStatusEnum.Not_Talking;
+
+            _singleTalkingStatus = TalkingStatusEnum.Not_Talking;
+
             yield break;
         }
 
@@ -367,9 +585,31 @@ public class DialoguesScript : MonoBehaviour
 
         _audioSource.Play();
 
+        _singleTalkingStatus = TalkingStatusEnum.Starting;
+
+        for (int _f = 0; _f < 1; _f++)
+        {
+            yield return null;
+        }
+
+        _singleTalkingStatus = TalkingStatusEnum.Talking;
+
         Debug.Log("3. We are starting to talk about '" + _input3 + "'.");
 
         yield return new WaitForSeconds(_seconds);
+
+        _singleTalkingStatus = TalkingStatusEnum.Completed;
+
+        _overallTalkingStatus = TalkingStatusEnum.Completed;
+
+        for (int _f = 0; _f < 1; _f++)
+        {
+            yield return null;
+        }
+
+        _singleTalkingStatus = TalkingStatusEnum.Not_Talking;
+
+        _overallTalkingStatus = TalkingStatusEnum.Not_Talking;
 
         _isTalking = false;
 
@@ -473,6 +713,16 @@ public class DialoguesScript : MonoBehaviour
             _currentAudioClip = null;
 
             _dialogueCoroutine = null;
+
+            _overallTalkingStatus = TalkingStatusEnum.Cancelled;
+
+            _singleTalkingStatus = TalkingStatusEnum.Cancelled;
+
+            for (int _f = 0; _f < 1; _f++);
+
+            _overallTalkingStatus = TalkingStatusEnum.Not_Talking;
+
+            _singleTalkingStatus = TalkingStatusEnum.Not_Talking;
 
             _isTalking = false;
         }

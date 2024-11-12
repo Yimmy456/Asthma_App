@@ -362,4 +362,14 @@ public class ExhibitionCanvasScript : MonoBehaviour
 
         Debug.Log("The time elapsed for the coroutine is " + @"""" + _timeElapsed.ToString() + @"""" + ".");
     }
+
+    void CheckIfItemIsComplete()
+    {
+        if(_currentlyTalkedAboutObject == null)
+        {
+            return;
+        }
+
+        //_currentlyTalkedAboutObject.
+    }
 }
