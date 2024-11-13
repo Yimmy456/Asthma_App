@@ -41,6 +41,21 @@ public class ExhibitionCanvasScript : MonoBehaviour
     [SerializeField]
     DoctorSalemDialoguesClass _doctorSalemDialogues;
 
+    [SerializeField]
+    Text _countText;
+
+    [SerializeField]
+    Text _percentageText;
+
+    [SerializeField]
+    GameObject _panelTemplate;
+
+    [SerializeField]
+    List<GameObject> _panels;
+
+    [SerializeField]
+    RectTransform _panelParent;
+
     bool _timerStarts;
 
     float _timeElapsed = 0.0f;
@@ -371,5 +386,128 @@ public class ExhibitionCanvasScript : MonoBehaviour
         }
 
         //_currentlyTalkedAboutObject.
+    }
+
+    public void PreparePanels()
+    {
+        if (_exhibition == null || _panelTemplate == null || _panelParent == null)
+        {
+            return;
+        }
+
+        if(_exhibition.GetCurrentGroup() == null)
+        {
+            return;
+        }
+
+        int _total = _exhibition.GetCurrentGroup().GetExhibitionGroupListItems().Count;
+
+        GameObject _currentPanel;
+
+        ExhibitionListItemClass _exhibitItem;
+
+        Text _tx;
+
+        for(int _i = 0; _i < _total; _i++)
+        {
+            _exhibitItem = _exhibition.GetCurrentGroup().GetExhibitionGroupListItems()[_i];
+
+            _currentPanel = Instantiate(_panelTemplate);
+
+            _currentPanel.SetActive(true);
+
+            _currentPanel.GetComponent<RectTransform>().parent = _panelParent;
+
+            _currentPanel.name = "Panel No. " + (_i + 1).ToString();
+
+            _panels.Add(_currentPanel);
+
+            if(_currentPanel.GetComponent<Image>() != null)
+            {
+                _currentPanel.GetComponent<Image>().enabled = true;
+
+                Color _c = _exhibitItem.GetListItemColor();
+
+                _c.a = 0.9f;
+
+                _currentPanel.GetComponent<Image>().color = _c;
+            }
+
+
+            //Exhibit Number
+            if(_currentPanel.GetComponent<RectTransform>().Find("Exhibit Number Panel") != null)
+            {
+                if(_currentPanel.GetComponent<RectTransform>().Find("Exhibit Number Panel").gameObject.GetComponent<RectTransform>().Find("Text") != null)
+                {
+                    if(_currentPanel.GetComponent<RectTransform>().Find("Exhibit Number Panel").gameObject.GetComponent<RectTransform>().Find("Text").GetComponent<Text>() != null)
+                    {
+                        _tx = _currentPanel.GetComponent<RectTransform>().Find("Exhibit Number Panel").gameObject.GetComponent<RectTransform>().Find("Text").GetComponent<Text>();
+
+                        _tx.text = (_i + 1).ToString() + ".";
+                    }
+                }
+            }
+
+
+            //Exhibit Name
+            if (_currentPanel.GetComponent<RectTransform>().Find("Exhibit Name Panel") != null)
+            {
+                if (_currentPanel.GetComponent<RectTransform>().Find("Exhibit Name Panel").gameObject.GetComponent<RectTransform>().Find("Text") != null)
+                {
+                    if (_currentPanel.GetComponent<RectTransform>().Find("Exhibit Name Panel").gameObject.GetComponent<RectTransform>().Find("Text").GetComponent<Text>() != null)
+                    {
+                        _tx = _currentPanel.GetComponent<RectTransform>().Find("Exhibit Name Panel").gameObject.GetComponent<RectTransform>().Find("Text").GetComponent<Text>();
+
+                        _tx.text = _exhibitItem.GetListItemName();
+                    }
+                }
+            }
+
+
+            //Exhibit Talked About
+            if (_currentPanel.GetComponent<RectTransform>().Find("Exhibit Talked About Panel") != null)
+            {
+                if (_currentPanel.GetComponent<RectTransform>().Find("Exhibit Talked About Panel").gameObject.GetComponent<RectTransform>().Find("Text") != null)
+                {
+                    if (_currentPanel.GetComponent<RectTransform>().Find("Exhibit Talked About Panel").gameObject.GetComponent<RectTransform>().Find("Text").GetComponent<Text>() != null)
+                    {
+                        _tx = _currentPanel.GetComponent<RectTransform>().Find("Exhibit Talked About Panel").gameObject.GetComponent<RectTransform>().Find("Text").GetComponent<Text>();
+
+                        bool _talked = _exhibitItem.GetDisplayExplained();
+
+                        if (_talked)
+                        {
+                            _tx.text = "Yes";
+
+                            _tx.color = new Color(0.0f, 1.0f, 0.0f, 1.0f);
+
+                            Outline _outl = _tx.gameObject.GetComponent<Outline>();
+
+                            _outl.effectColor = new Color(0.0f, 0.5f, 0.0f, 1.0f);
+                        }
+                        else
+                        {
+                            _tx.text = "No";
+
+                            _tx.color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
+
+                            Outline _outl = _tx.gameObject.GetComponent<Outline>();
+
+                            _outl.effectColor = new Color(0.5f, 0.0f, 0.0f, 1.0f);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void EndPanels()
+    {
+        foreach(GameObject _obj in _panels)
+        {
+            Destroy(_obj);
+        }
+
+        _panels.Clear();
     }
 }

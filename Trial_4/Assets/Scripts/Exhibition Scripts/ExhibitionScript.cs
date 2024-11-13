@@ -97,6 +97,11 @@ public class ExhibitionScript : MonoBehaviour
         return _doctorDialogue;
     }
 
+    public ExhibitionGroupClass GetCurrentGroup()
+    {
+        return _currentGroup;
+    }
+
     public void StartExhibition(int _input)
     {
         if(!(_input >= 0 && _input < _exhibitionGroups.Count))
