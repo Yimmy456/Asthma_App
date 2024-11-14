@@ -32,6 +32,8 @@ public class DialoguesScript : MonoBehaviour
 
     TalkingStatusEnum _singleTalkingStatus;
 
+    ExhibitionObjectScript _exhibit;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -161,15 +163,35 @@ public class DialoguesScript : MonoBehaviour
 
         Debug.Log("We are starting to talk about '" + _input + "'.");
 
-        _stopWatch.Restart();
+        //_stopWatch.Restart();
 
-        _subStopWatch.Restart();
+        //_subStopWatch.Restart();
+
+        _overallTalkingStatus = TalkingStatusEnum.Starting;
+
+        _singleTalkingStatus = TalkingStatusEnum.Starting;
+
+        for (int _i = 0; _i < 1; _i++);
+
+        _overallTalkingStatus = TalkingStatusEnum.Talking;
+
+        _singleTalkingStatus = TalkingStatusEnum.Talking;
 
         yield return new WaitForSeconds(_seconds);
 
-        _stopWatch.Stop();
+        //_stopWatch.Stop();
 
-        _subStopWatch.Stop();
+        //_subStopWatch.Stop();
+
+        _overallTalkingStatus = TalkingStatusEnum.Completed;
+
+        _singleTalkingStatus = TalkingStatusEnum.Completed;
+
+        for (int _i = 0; _i < 1; _i++) ;
+
+        _overallTalkingStatus = TalkingStatusEnum.Not_Talking;
+
+        _singleTalkingStatus = TalkingStatusEnum.Not_Talking;
 
         _currentAudioClip = null;
 

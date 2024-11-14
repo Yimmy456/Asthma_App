@@ -38,8 +38,11 @@ public class ExhibitionCanvasScript : MonoBehaviour
     [SerializeField]
     GameObject _rocketContainerGO;
 
+    //[SerializeField]
+    //DoctorSalemDialoguesClass _doctorSalemDialogues;
+
     [SerializeField]
-    DoctorSalemDialoguesClass _doctorSalemDialogues;
+    DialoguesScript _doctorSalemDialogues;
 
     [SerializeField]
     Text _countText;
@@ -80,6 +83,25 @@ public class ExhibitionCanvasScript : MonoBehaviour
         if (_timerStarts)
         {
             CheckTimeElaped();
+        }
+
+        if(_doctorSalemDialogues != null && _currentlyTalkedAboutObject != null)
+        {
+            if(_doctorSalemDialogues.GetOverallTalkingStatus() == TalkingStatusEnum.Completed)
+            {
+                ExhibitionListItemClass _item = _exhibition.GetCurrentGroup().GetExhibitionGroupListItems()[_currentlyTalkedAboutObject.GetObjectNumber() - 1];
+
+                if(!_item.GetDisplayExplained())
+                {
+                    _exhibition.GetCurrentGroup().GetGroupCompletionMeter().AddToValue(1);
+
+                    _item.SetDisplayExplained(true);
+
+                    Debug.Log("Explanation is complete for the first time.");
+                }
+
+                Debug.Log("Explanation is complete.");
+            }
         }
     }
 
@@ -272,6 +294,8 @@ public class ExhibitionCanvasScript : MonoBehaviour
         ColorTitle(_color);
 
         _exhibition.PlayDialogue(_currentObject.GetObjectAudioClip2());
+
+        _currentlyTalkedAboutObject = _currentObject;
     }
 
 
@@ -473,6 +497,8 @@ public class ExhibitionCanvasScript : MonoBehaviour
                     {
                         _tx = _currentPanel.GetComponent<RectTransform>().Find("Exhibit Talked About Panel").gameObject.GetComponent<RectTransform>().Find("Text").GetComponent<Text>();
 
+                        Outline _outl = _tx.gameObject.GetComponent<Outline>();
+
                         bool _talked = _exhibitItem.GetDisplayExplained();
 
                         if (_talked)
@@ -481,9 +507,7 @@ public class ExhibitionCanvasScript : MonoBehaviour
 
                             _tx.color = new Color(0.0f, 1.0f, 0.0f, 1.0f);
 
-                            Outline _outl = _tx.gameObject.GetComponent<Outline>();
-
-                            _outl.effectColor = new Color(0.0f, 0.5f, 0.0f, 1.0f);
+                            _outl.effectColor = new Color(0.0f, 0.5f, 0.0f, 0.5f);
                         }
                         else
                         {
@@ -491,9 +515,7 @@ public class ExhibitionCanvasScript : MonoBehaviour
 
                             _tx.color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
 
-                            Outline _outl = _tx.gameObject.GetComponent<Outline>();
-
-                            _outl.effectColor = new Color(0.5f, 0.0f, 0.0f, 1.0f);
+                            _outl.effectColor = new Color(0.5f, 0.0f, 0.0f, 0.5f);
                         }
                     }
                 }
