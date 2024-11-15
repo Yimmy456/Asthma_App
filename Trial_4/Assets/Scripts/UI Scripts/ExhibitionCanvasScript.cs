@@ -293,7 +293,10 @@ public class ExhibitionCanvasScript : MonoBehaviour
 
         ColorTitle(_color);
 
-        _exhibition.PlayDialogue(_currentObject.GetObjectAudioClip2());
+        if(_exhibition.GetDialogues() != null)
+        {
+            _exhibition.GetDialogues().PlayExhibitClip(_currentObject);
+        }
 
         _currentlyTalkedAboutObject = _currentObject;
     }
@@ -426,6 +429,8 @@ public class ExhibitionCanvasScript : MonoBehaviour
 
         int _total = _exhibition.GetCurrentGroup().GetExhibitionGroupListItems().Count;
 
+        int _completed = 0;
+
         GameObject _currentPanel;
 
         ExhibitionListItemClass _exhibitItem;
@@ -508,6 +513,8 @@ public class ExhibitionCanvasScript : MonoBehaviour
                             _tx.color = new Color(0.0f, 1.0f, 0.0f, 1.0f);
 
                             _outl.effectColor = new Color(0.0f, 0.5f, 0.0f, 0.5f);
+
+                            _completed++;
                         }
                         else
                         {
@@ -520,6 +527,36 @@ public class ExhibitionCanvasScript : MonoBehaviour
                     }
                 }
             }
+        }
+
+        _countText.text = _completed.ToString() + " / " + _total.ToString();
+
+        if(_total > 0 && _exhibition != null)
+        {
+            float _ratio = (float)_completed / (float)_total;
+
+            if (_exhibition.GetObjectComplete() != null)
+            {
+                if (_exhibition.GetObjectComplete().GetTextGradient() != null)
+                {
+                    Color _c1 = _exhibition.GetObjectComplete().GetTextGradient().Evaluate(_ratio);
+
+                    _percentageText.color = _c1;
+
+                    Color _c2 = ToolsStruct.ChangeColorValue(_c1, 0.5f, 0.5f, true);
+
+                    Outline _outline = _percentageText.gameObject.GetComponent<Outline>();
+
+                    if (_outline != null)
+                    {
+                        _outline.effectColor = _c2;
+                    }
+                }
+            }
+
+            _ratio = _ratio * 100.0f;
+
+            _percentageText.text = _ratio.ToString("0.00") + " %";
         }
     }
 

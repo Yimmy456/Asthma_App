@@ -217,6 +217,8 @@ public class GameGenericMBScript<T> : GameMBScript, YesOrNoInterface
 
         Button _b = _gameProperties.GetNewBadgeCanvas().gameObject.GetComponent<RectTransform>().Find("Next Button").gameObject.GetComponent<Button>();
 
+        Button _backB = _gameProperties.GetNewBadgeCanvas().gameObject.GetComponent<RectTransform>().Find("Back Button").gameObject.GetComponent<Button>();
+
         _gameProperties.ClearObjectLists();
 
         if(_gameProperties.GetGameIndicatorCanvas() != null)
@@ -255,6 +257,11 @@ public class GameGenericMBScript<T> : GameMBScript, YesOrNoInterface
 
                 _b.onClick.RemoveAllListeners();
             });
+        }
+
+        if(_backB != null)
+        {
+            _backB.gameObject.SetActive(false);
         }
 
         _gameProperties.GetGameCanvas().gameObject.SetActive(false);

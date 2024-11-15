@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ExhibitionScript : MonoBehaviour
 {
@@ -39,6 +40,36 @@ public class ExhibitionScript : MonoBehaviour
 
     [SerializeField]
     DialoguesScript _dialogues;
+
+    [SerializeField]
+    Canvas _newBadgeCanvas;
+
+    bool _exhibitionRaycastOn = false;
+
+    [ContextMenu("Give IDs to exhibits items")]
+    void GiveIDs()
+    {
+        ExhibitionListItemClass _item;
+
+        string _id;
+
+        for (int _i = 0; _i < _exhibitionGroups.Count; _i++)
+        {
+            for(int _j = 0; _j < _exhibitionGroups[_i].GetExhibitionGroupListItems().Count; _j++)
+            {
+                _item = _exhibitionGroups[_i].GetExhibitionGroupListItems()[_j];
+
+                _id = _item.GetExhibitID();
+
+                if(_id == "")
+                {
+                    _id = System.Guid.NewGuid().ToString();
+
+                    _item.SetExhibitID(_id);
+                }
+            }
+        }
+    }
 
     //[SerializeField]
     ExhibitionGroupClass _currentGroup;
@@ -100,6 +131,50 @@ public class ExhibitionScript : MonoBehaviour
     public ExhibitionGroupClass GetCurrentGroup()
     {
         return _currentGroup;
+    }
+
+    public bool GetExhibitionRaycastOn()
+    {
+        return _exhibitionRaycastOn;
+    }
+
+    public ExhibitionListItemClass GetExhibitItemByID(string _input)
+    {
+        ExhibitionListItemClass _item;
+
+        string _id;
+
+        for(int _i = 0; _i < _exhibitionGroups.Count; _i++)
+        {
+            for(int _j = 0; _j < _exhibitionGroups[_i].GetExhibitionGroupListItems().Count; _j++)
+            {
+                _item = _exhibitionGroups[_i].GetExhibitionGroupListItems()[_j];
+
+                if(_item == null)
+                {
+                    continue;
+                }
+
+                _id = _item.GetExhibitID();
+
+                if(_id == "")
+                {
+                    continue;
+                }
+
+                if(string.Compare(_id, _input, false) == 0)
+                {
+                    return _item;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public DialoguesScript GetDialogues()
+    {
+        return _dialogues;
     }
 
     public void StartExhibition(int _input)
@@ -215,6 +290,8 @@ public class ExhibitionScript : MonoBehaviour
 
             _currentExh.SetObjectAudioClip(_currentListItem.GetAudioClip());
 
+            _currentExh.SetID(_currentListItem.GetExhibitID());
+
             if (_dialogues != null)
             {
                 _currentExh.SetDialogues(_dialogues);
@@ -243,6 +320,8 @@ public class ExhibitionScript : MonoBehaviour
 
             _currentExh.SetExhibitionRaycastOn(true);
 
+            _currentExh.SetExhibition(this);
+
             if(_currentGroup.GetRotateInRaycast())
             {
                 GiveRotationalProperties(_currentExh);
@@ -258,6 +337,8 @@ public class ExhibitionScript : MonoBehaviour
         _exhibitionOn = true;
 
         _currentGroup.SetExhibitionInPlay(true);
+
+        _exhibitionRaycastOn = true;
 
         if(DataPersistenceManager.GetInstance() != null)
         {
@@ -291,6 +372,8 @@ public class ExhibitionScript : MonoBehaviour
         _exhibitions.Clear();
 
         _currentGroup = null;
+
+        _exhibitionRaycastOn = false;
 
         _exhibitionOn = false;
     }
@@ -353,6 +436,11 @@ public class ExhibitionScript : MonoBehaviour
         }
     }
 
+    public void SetExhibitionRaycastOn(bool _input)
+    {
+        _exhibitionRaycastOn = _input;
+    }
+
     public void PlayDialogue(AudioClip _clipInput)
     {
         if(_doctorSalemTalkingCoroutine != null)
@@ -379,6 +467,111 @@ public class ExhibitionScript : MonoBehaviour
 
         _dialogues.PlayClip(_input);
     }
+
+    public void RewardBadge()
+    {
+        if(_newBadgeCanvas == null || BadgesManagerScript.GetInstance() == null)
+        {
+            return;
+        }
+
+        //_gameProperties.GetMainCanvases().SetCanvasesOn(false);
+
+        //_gameProperties.GetMainCanvases().GetDoctorCanvas().gameObject.SetActive(true);
+
+        BadgeScript _badge = BadgesManagerScript.GetInstance().GetBadgeByName(_currentGroup.GetBadgeName());
+
+        if(_badge == null)
+        {
+            return;
+        }
+
+        _newBadgeCanvas.gameObject.SetActive(true);
+
+        Text _newBadgeText = _newBadgeCanvas.gameObject.GetComponent<RectTransform>().Find("Congratulations Text").gameObject.GetComponent<Text>();
+
+        _exhibitionRaycastOn = false;
+
+        if (_newBadgeText != null)
+        {
+            //_newBadgeText.text = GetBadgeStatement();
+        }
+
+        Image _badgeImage = _newBadgeCanvas.gameObject.GetComponent<RectTransform>().Find("Badge Image").gameObject.GetComponent<Image>();
+
+        if (_badgeImage != null)
+        {
+            _badgeImage.sprite = _badge.GetBadgeSprite();
+        }
+
+        if (_dialogues != null)
+        {
+            if (_badge.GetBadgeCollected())
+            {
+                _dialogues.PlayClip("New Badge Earned");
+            }
+            else
+            {
+                _dialogues.PlayClip("Badge Already Earned");
+            }
+        }
+
+        BadgesManagerScript.GetInstance().SetBadgeEarned(_badge);
+
+        Button _b = _newBadgeCanvas.gameObject.GetComponent<RectTransform>().Find("Next Button").gameObject.GetComponent<Button>();
+
+        Button _backB = _newBadgeCanvas.gameObject.GetComponent<RectTransform>().Find("Back Button").gameObject.GetComponent<Button>();
+
+        /*if (_gameProperties.GetGameIndicatorCanvas() != null)
+        {
+            if (_gameProperties.GetGameIndicatorCanvas().gameObject.activeSelf)
+            {
+                _gameProperties.GetGameIndicatorCanvas().gameObject.SetActive(false);
+            }
+        }*/
+
+        if (_b != null)
+        {
+            _b.onClick.AddListener(delegate
+            {
+                _canvas.QuitExhibition();
+
+                EndExhibition();
+
+                _newBadgeCanvas.gameObject.SetActive(false);
+
+                if(_backB != null)
+                {
+                    _backB.onClick.RemoveAllListeners();
+                }
+
+                _b.onClick.RemoveAllListeners();
+            });
+        }
+
+        if (_backB != null)
+        {
+            _backB.gameObject.SetActive(true);
+
+            _backB.onClick.AddListener(delegate
+            {
+                _canvas.gameObject.SetActive(true);
+
+                _newBadgeCanvas.gameObject.SetActive(false);
+
+                _exhibitionRaycastOn = true;
+
+                if(_b != null)
+                {
+                    _b.onClick.RemoveAllListeners();
+                }
+
+                _backB.onClick.RemoveAllListeners();
+            });
+        }
+
+        _canvas.gameObject.SetActive(false);
+    }
 }
 
 
@@ -404,6 +597,8 @@ public class ExhibitionGroupClass
     string _badgeName;
 
     bool _exhibitionInPlay = false;
+
+    bool _groupComplete = false;
 
     public string GetGroupName()
     {
@@ -435,6 +630,11 @@ public class ExhibitionGroupClass
         return _badgeName;
     }
 
+    public bool GetGroupComplete()
+    {
+        return _groupComplete;
+    }
+
     public void SetExhibitionInPlay(bool _input)
     {
         _exhibitionInPlay = _input;
@@ -444,6 +644,23 @@ public class ExhibitionGroupClass
     {
         return _exhibitionGroupUniformScale;
     }
+
+    public void CheckIfGroupComplete()
+    {
+        if(!_groupComplete && _groupCompletionMeter.GetPercentage() == 100.0f)
+        {
+            _groupComplete = true;
+        }
+    }
+
+    IEnumerator RewardPlayer()
+    {
+        yield return new WaitForSeconds(5.0f);
+
+        //BadgesManagerScript.GetInstance().
+    }
+
+    
 }
 
 [System.Serializable]
@@ -478,6 +695,9 @@ public class ExhibitionListItemClass
 
     [SerializeField]
     bool _displayExplained;
+
+    [SerializeField]
+    string _exhibitID;
 
     public GameObject GetListItemGameObject()
     {
@@ -529,8 +749,18 @@ public class ExhibitionListItemClass
         return _displayExplained;
     }
 
+    public string GetExhibitID()
+    {
+        return _exhibitID;
+    }
+
     public void SetDisplayExplained(bool _input)
     {
         _displayExplained = _input;
+    }
+
+    public void SetExhibitID(string _input)
+    {
+        _exhibitID = _input;
     }
 }

@@ -52,6 +52,8 @@ public class ExhibitionObjectScript : MonoBehaviour
     [SerializeField]
     string _exhibitionObjectAudioClip2;
 
+    ExhibitionScript _exhibition;
+
     Quaternion _initalRotation;
 
     bool _highlighted = false;
@@ -67,6 +69,8 @@ public class ExhibitionObjectScript : MonoBehaviour
     Coroutine _animationCoroutine;
 
     DialoguesScript _dialogues;
+
+    string _objectID;
 
     // Start is called before the first frame update
     void Start()
@@ -177,6 +181,16 @@ public class ExhibitionObjectScript : MonoBehaviour
         return _dialogues;
     }
 
+    public string GetObjectID()
+    {
+        return _objectID;
+    }
+
+    public ExhibitionScript GetExhibition()
+    {
+        return _exhibition;
+    }
+
     //Setters
 
     public void SetObjectName(string _input)
@@ -264,6 +278,11 @@ public class ExhibitionObjectScript : MonoBehaviour
         _exhibitionRaycastOn = _input;
     }
 
+    public void SetExhibition(ExhibitionScript _input)
+    {
+        _exhibition = _input;
+    }
+
     public void SetObjectAudioClip(AudioClip _input)
     {
         if(_input == null)
@@ -284,12 +303,22 @@ public class ExhibitionObjectScript : MonoBehaviour
         _dialogues = _input;
     }
 
+    public void SetID(string _input)
+    {
+        _objectID = _input;
+    }
+
     void PrepareExhibition()
     {
-        if(_objectCollider == null || _camera == null)
+        if(_objectCollider == null || _camera == null || _exhibition == null)
         {
             Debug.LogError("We cannot make a raycast for " + @"""" + _objectName + @"""" + ".");
 
+            return;
+        }
+
+        if(!_exhibition.GetExhibitionRaycastOn())
+        {
             return;
         }
 
