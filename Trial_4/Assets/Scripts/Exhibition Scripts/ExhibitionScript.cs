@@ -653,6 +653,11 @@ public class ExhibitionGroupClass
         }
     }
 
+    public void SetGroupComplete(bool _input)
+    {
+        _groupComplete = _input;
+    }
+
     IEnumerator RewardPlayer()
     {
         yield return new WaitForSeconds(5.0f);

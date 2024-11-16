@@ -832,6 +832,11 @@ public class DialoguesScript : MonoBehaviour
 
         _animator.SetBool(_talkingString, false);
     }
+
+    public void SetDialogueCoroutine(Coroutine _input)
+    {
+        _dialogueCoroutine = _input;
+    }
 }
 
 
