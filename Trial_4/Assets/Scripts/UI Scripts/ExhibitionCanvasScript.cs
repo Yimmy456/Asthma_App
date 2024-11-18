@@ -492,8 +492,32 @@ public class ExhibitionCanvasScript : MonoBehaviour
                 }
             }
 
+            //Exhibit Animation
 
+            if(_currentPanel.GetComponent<RectTransform>().Find("Exhibit Animation Panel") != null)
+            {
+                Destroy(_currentPanel.GetComponent<RectTransform>().Find("Exhibit Animation Panel").gameObject.GetComponent<RectTransform>().Find("Animation Image Samples").gameObject);
+
+                if (_currentPanel.GetComponent<RectTransform>().Find("Exhibit Animation Panel").gameObject.GetComponent<RectTransform>().Find("Animation Image") != null)
+                {
+                    Image _img = _currentPanel.GetComponent<RectTransform>().Find("Exhibit Animation Panel").gameObject.GetComponent<RectTransform>().Find("Animation Image").GetComponent<Image>();
+
+                    if (_img != null && _exhibitItem.GetUIAnimatorController() != null) { 
+
+                        _img.gameObject.GetComponent<Animator>().runtimeAnimatorController = _exhibitItem.GetUIAnimatorController();
+
+                        if (_img != null)
+                        {
+                            if (_currentPanel.GetComponent<RectTransform>().Find("Exhibit Animation Panel").gameObject.GetComponent<RectTransform>().Find("Text") != null)
+                            {
+                                _currentPanel.GetComponent<RectTransform>().Find("Exhibit Animation Panel").gameObject.GetComponent<RectTransform>().Find("Text").gameObject.SetActive(false);
+                            }
+                        }
+                    }
+                }
+            }
             //Exhibit Talked About
+
             if (_currentPanel.GetComponent<RectTransform>().Find("Exhibit Talked About Panel") != null)
             {
                 if (_currentPanel.GetComponent<RectTransform>().Find("Exhibit Talked About Panel").gameObject.GetComponent<RectTransform>().Find("Text") != null)

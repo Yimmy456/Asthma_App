@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -704,6 +706,9 @@ public class ExhibitionListItemClass
     [SerializeField]
     string _exhibitID;
 
+    [SerializeField]
+    RuntimeAnimatorController _uiAnimatorController;
+
     public GameObject GetListItemGameObject()
     {
         return _listItemGameObject;
@@ -757,6 +762,11 @@ public class ExhibitionListItemClass
     public string GetExhibitID()
     {
         return _exhibitID;
+    }
+
+    public RuntimeAnimatorController GetUIAnimatorController()
+    {
+        return _uiAnimatorController;
     }
 
     public void SetDisplayExplained(bool _input)
