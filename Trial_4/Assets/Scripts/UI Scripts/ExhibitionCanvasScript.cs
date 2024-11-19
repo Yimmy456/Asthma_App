@@ -59,6 +59,12 @@ public class ExhibitionCanvasScript : MonoBehaviour
     [SerializeField]
     RectTransform _panelParent;
 
+    [SerializeField]
+    Animator _doctorAnimator;
+
+    [SerializeField]
+    AudioSource _audioSource;
+
     bool _timerStarts;
 
     float _timeElapsed = 0.0f;
@@ -280,6 +286,8 @@ public class ExhibitionCanvasScript : MonoBehaviour
 
         string _fullTitle = _index.ToString() + ". " + _name;
 
+        AudioClip _c = _doctorSalemDialogues.GetClip(_currentObject.GetObjectAudioClip2()).GetClip();
+
         /*if (_audioSource != null && _currentObject.GetObjectAudioClip() != null)
         {
             _talkingCoroutine = StartCoroutine(TalkingCoroutine2(_currentObject.GetObjectAudioClip(), _fullTitle, _description));
@@ -289,20 +297,29 @@ public class ExhibitionCanvasScript : MonoBehaviour
             _talkingCoroutine = StartCoroutine(TalkingCoroutine(_time, _fullTitle, _description));
         }*/
 
+        if (_audioSource != null && _c != null)
+        {
+            _talkingCoroutine = StartCoroutine(TalkingCoroutine2(_c, _fullTitle, _description));
+        }
+        else
+        {
+            _talkingCoroutine = StartCoroutine(TalkingCoroutine(_time, _fullTitle, _description));
+        }
+
         Color _color = _currentObject.GetObjectColor();
 
         ColorTitle(_color);
 
-        if(_exhibition.GetDialogues() != null)
-        {
-            _exhibition.GetDialogues().PlayExhibitClip(_currentObject);
-        }
+        //if(_exhibition.GetDialogues() != null)
+        //{
+          //  _exhibition.GetDialogues().PlayExhibitClip(_currentObject);
+        //}
 
         _currentlyTalkedAboutObject = _currentObject;
     }
 
 
-    /*
+    
     IEnumerator TalkingCoroutine(float _timeInput, string _titleInput, string _descriptionInput)
     {
         _objectTitleText.text = _titleInput;
@@ -336,9 +353,8 @@ public class ExhibitionCanvasScript : MonoBehaviour
         _currentlyTalkedAboutObject = null;
     }
 
-
-    */
-    /*
+    
+    
     IEnumerator TalkingCoroutine2(AudioClip _clipInput, string _titleInput, string _descriptionInput)
     {
         if(_audioSource.isPlaying)
@@ -372,6 +388,8 @@ public class ExhibitionCanvasScript : MonoBehaviour
             _doctorAnimator.SetBool("Talking", false);
         }
 
+        ConfirmExhibitCompletion(_currentlyTalkedAboutObject);
+
         _timerStarts = false;
 
         _timeElapsed = 0.0f;
@@ -384,7 +402,6 @@ public class ExhibitionCanvasScript : MonoBehaviour
 
         _audioSource.clip = null;
     }
-    */
 
     void ColorTitle(Color _input)
     {
@@ -592,5 +609,43 @@ public class ExhibitionCanvasScript : MonoBehaviour
         }
 
         _panels.Clear();
+    }
+
+    void ConfirmExhibitCompletion(ExhibitionObjectScript _input)
+    {
+        if(_input == null || _exhibition == null)
+        {
+            Debug.LogError("Something is missing.");
+
+            return;
+        }
+
+        if(_input.GetObjectID() == "")
+        {
+            Debug.LogError("There is no ID.");
+            return;
+        }
+
+        string _id = _input.GetObjectID();
+
+        ExhibitionListItemClass _item = _exhibition.GetExhibitItemByID(_id);
+
+        if(_item == null)
+        {
+            Debug.LogError("The item was not found.");
+
+            return;
+        }
+
+        if (!_item.GetDisplayExplained())
+        {
+            _item.SetDisplayExplained(true);
+
+            _exhibition.GetObjectComplete().AddToValue(1);
+
+            Debug.Log("The object is explained for the first time.");
+        }
+
+        Debug.Log("The object is explained.");
     }
 }

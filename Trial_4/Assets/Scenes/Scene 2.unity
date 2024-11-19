@@ -40956,12 +40956,14 @@ MonoBehaviour:
   _objectTitleText: {fileID: 437027873}
   _objectDescriptionText: {fileID: 1071654182}
   _rocketContainerGO: {fileID: 551265654}
-  _doctorSalemDialogues: {fileID: 0}
+  _doctorSalemDialogues: {fileID: 919132149601814144}
   _countText: {fileID: 1340536175}
   _percentageText: {fileID: 1032361021}
   _panelTemplate: {fileID: 96864230}
   _panels: []
   _panelParent: {fileID: 1936028414}
+  _doctorAnimator: {fileID: 919132149601814142}
+  _audioSource: {fileID: 1045844157}
 --- !u!1 &1397361682
 GameObject:
   m_ObjectHideFlags: 0
