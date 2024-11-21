@@ -75,134 +75,6 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
         return _incorrectAnswerDialogueStrings;
     }
 
-    /*
-    void CorrectAnswer()
-    {
-        if(_nextButton != null)
-        {
-            _nextButton.gameObject.SetActive(true);
-        }
-
-        if(_coroutine != null)
-        {
-            StopCoroutine(_coroutine);
-
-            _gameProperties.ClearResponseText();
-        }
-
-        _gameProperties.SetResponseText("That is correct! Well Done! Press 'Next' to continue.", Color.green, new Color(0.0f, 0.5f, 0.0f, 0.5f), new Vector2(1.0f, -1.0f));
-
-        //_gameProperties.AddObjectToList(_currentQuestion);
-
-        _currentQuestion.SetAnsweredCorrectly(true);
-
-        for(int _i = 0; _i < 4; _i++)
-        {
-            if (_buttons[_i] != null)
-            {
-                SetButtonTextAlpha(_buttons[_i], 0.5f);
-
-                _buttons[_i].interactable = false;
-            }
-        }
-
-        _completionMeter.AddToValue(1);
-
-        _gameProperties.SignalToUpdateUI();
-
-        if(_nextButton != null)
-        {
-            if(_completionMeter.GetPercentage() == 100.0f && !_gameDone)
-            {
-                _nextButton.onClick.AddListener(delegate { ICompleteExperience(); });
-            }
-            else
-            {
-                _nextButton.onClick.AddListener(delegate { PrepareQuestion(); });
-            }
-
-            _nextButton.onClick.AddListener(delegate { _nextButton.onClick.RemoveAllListeners(); });
-        }
-    }
-
-    void IncorrectAnswer()
-    {
-        if(_coroutine != null)
-        {
-            StopCoroutine(_coroutine);
-
-            _gameProperties.ClearResponseText();
-        }
-
-        _gameProperties.SetResponseText("That is not quite correct. Please, try again. I know you can do it!", Color.red, new Color(0.5f, 0.0f, 0.0f, 0.5f), new Vector2(1.0f, -1.0f));
-
-        _coroutine = StartCoroutine(ClearResponseTextFunction());
-    }
-
-    void PrepareQuestion()
-    {
-        for(int _i = 0; _i < 4; _i++)
-        {
-            _buttons[_i].onClick.RemoveAllListeners();
-        }
-
-        _currentQuestionIndex++;
-
-        if(_currentQuestionIndex >= MCQManagerScript.GetInstance().GetSelectedQuestions().Count)
-        {
-            if(_nextButton != null)
-            {
-                _nextButton.onClick.RemoveAllListeners();
-            }
-
-            return;
-        }
-
-        QuestionClass _crq = MCQManagerScript.GetInstance().GetSelectedQuestions()[_currentQuestionIndex];
-
-        _currentQuestion = _crq;
-
-        SetQuestionNumber(_currentQuestionIndex + 1);
-
-        SetQuestionText(_crq.GetQuestionText());
-
-        _gameProperties.ClearResponseText();
-
-        for(int _i = 0; _i < 4; _i++)
-        {
-            if (_buttons[_i] == null)
-            {
-                continue;
-            }
-
-            Text _t = _buttons[_i].GetComponent<RectTransform>().Find("Text (Legacy)").gameObject.GetComponent<Text>();
-
-            _t.text = _crq.GetAnswers()[_i];
-
-            _buttons[_i].gameObject.SetActive(true);
-
-            _buttons[_i].interactable = true;
-
-            SetButtonTextAlpha(_buttons[_i], 1.0f);
-
-            if(_i == _crq.GetCorrectAnswerIndex())
-            {
-                _buttons[_i].onClick.AddListener(CorrectAnswer);
-            }
-            else
-            {
-                _buttons[_i].onClick.AddListener(IncorrectAnswer);
-            }
-        }
-
-        if (_nextButton != null)
-        {
-            _nextButton.onClick.RemoveAllListeners();
-
-            _nextButton.gameObject.SetActive(false);
-        }
-    }
-    */
     void SetButtonTextAlpha(Button _buttonInput, float _alphaInput)
     {
         if(_buttonInput == null || !(_alphaInput >= 0.0f && _alphaInput <= 1.0f))
@@ -259,66 +131,6 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
         //_bNo.onClick.AddListener(_gameProperties.ActionsOfNoButton);
     }
 
-    /*public override void StartGame()
-    {
-        if(MCQManagerScript.GetInstance() == null || GetGameInSession())
-        {
-            return;
-        }
-
-        base.StartGame();
-
-        _currentGame = this;
-
-        int _counter1 = 0;
-
-        int _counter2 = 0;
-
-        int _selectedIndex = -1;
-
-        while(_counter1 < _numberOfQuestions)
-        {
-            _selectedIndex = Random.Range(0, (MCQManagerScript.GetInstance().GetQuestions().Count));
-
-            QuestionClass _currentQ = MCQManagerScript.GetInstance().GetQuestions()[_selectedIndex];
-
-            while(_counter2 < _counter1 && _counter2 != -1)
-            {
-                string _currentID = _gameProperties.GetListOfObjects()[_counter2].GetQuestionID();
-
-                if(string.Compare(_currentQ.GetQuestionID(), _currentID, false) == 0)
-                {
-                    _counter2 = -1;
-
-                    continue;
-                }
-
-                _counter2++;
-            }
-
-            if(_counter2 == -1)
-            {
-                _counter2 = 0;
-
-                continue;
-            }
-
-            _gameProperties.AddObjectToList(_currentQ);
-
-            _counter2 = 0;
-
-            _counter1++;
-        }
-
-        ShuffleFunction();
-
-        MCQManagerScript.GetInstance().SetSelectedQuestions(_gameProperties.GetListOfObjects());
-
-        _completionMeter.SetMaxValue(_numberOfQuestions);
-
-        //PrepareQuestion();
-    }*/
-
     protected override void ShuffleFunction()
     {
         List<QuestionClass> _tempList = _gameProperties.GetListOfObjects();
@@ -358,25 +170,7 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
 
     public override void IChooseToQuitExperience()
     {
-        //_gameProperties.ClearObjectLists();
-
-        //MCQManagerScript.GetInstance().GetSelectedQuestions().Clear();
-
         base.IChooseToQuitExperience();
-
-        //ISetActionsOfYesButtonToQuit
-
-        //_currentQuestionIndex = -1;
-
-        //MCQManagerScript.GetInstance().GetSelectedQuestions().Clear();
-
-        //if(_yesOrNoCanvas != null)
-        //{
-        //    if(_yesOrNoCanvas.GetYesButton() != null)
-        //    {
-
-        //    }
-        //}
     }
 
     public override void IStopExperience()
@@ -386,6 +180,8 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
         _currentQuestion = null;
 
         _currentQuestionIndex = -1;
+
+        MCQManagerScript.GetInstance().GetSelectedQuestions().Clear();
 
         MoveBackDoctorSalem();
     }

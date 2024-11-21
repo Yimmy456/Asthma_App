@@ -2163,27 +2163,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd97238530191c740be3130450407d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameName: 
+  _gameName: Card Matching Game
   _mainContainer: {fileID: 1093082202}
   _gameSpace: {fileID: 2100843262}
-  _placeIndicator: {fileID: 1228395062}
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
   _dialogues: {fileID: 919132149601814144}
   _completionMeter:
     _textGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 1, g: 0, b: 0, a: 1}
+      key1: {r: 1, g: 1, b: 0, a: 1}
+      key2: {r: 0, g: 1, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 65535
-      ctime2: 0
+      ctime1: 32768
+      ctime2: 65535
       ctime3: 0
       ctime4: 0
       ctime5: 0
@@ -2198,11 +2197,11 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_NumColorKeys: 2
+      m_NumColorKeys: 3
       m_NumAlphaKeys: 2
-    _countText: {fileID: 0}
-    _percentageText: {fileID: 0}
-  _yesOrNoCanvas: {fileID: 0}
+    _countText: {fileID: 938947678}
+    _percentageText: {fileID: 1288925820}
+  _yesOrNoCanvas: {fileID: 363037053}
   _gameColor: {r: 0, g: 0.54901963, b: 1, a: 1}
   _badge:
     _badgeName: 
@@ -2211,17 +2210,17 @@ MonoBehaviour:
     _badgeSprite: {fileID: 0}
     _badgeID: 
     _howToEarn: 
-  _newBadgeCanvas: {fileID: 0}
-  _gameCanvas: {fileID: 0}
-  _camera: {fileID: 0}
+  _newBadgeCanvas: {fileID: 1330827181}
+  _gameCanvas: {fileID: 1360622406}
+  _camera: {fileID: 488612397}
   _mainCanvases:
-    _mainPlayerCanvas: {fileID: 0}
-    _indicatorCanvas: {fileID: 0}
-    _doctorCanvas: {fileID: 0}
-  _gameMenuCanvas: {fileID: 0}
-  _gameIndicatorCanvas: {fileID: 0}
-  _responseText: {fileID: 0}
-  _informationCanvas: {fileID: 0}
+    _mainPlayerCanvas: {fileID: 392666910}
+    _indicatorCanvas: {fileID: 444502315}
+    _doctorCanvas: {fileID: 716302325}
+  _gameMenuCanvas: {fileID: 956544989}
+  _gameIndicatorCanvas: {fileID: 888431178}
+  _responseText: {fileID: 167036495}
+  _informationCanvas: {fileID: 834040356}
   _gameProperties:
     _listOfObjects: []
     _listOfObjectsAsGO: []
@@ -5107,27 +5106,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cebca12ea0bda4e428b83a64977f0117, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameName: 
+  _gameName: Inhaler Assembly Game
   _mainContainer: {fileID: 905754354}
   _gameSpace: {fileID: 149469848}
-  _placeIndicator: {fileID: 0}
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
   _dialogues: {fileID: 919132149601814144}
   _completionMeter:
     _textGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 1, g: 0, b: 0, a: 1}
+      key1: {r: 1, g: 1, b: 0, a: 1}
+      key2: {r: 0, g: 1, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 65535
-      ctime2: 0
+      ctime1: 32768
+      ctime2: 65535
       ctime3: 0
       ctime4: 0
       ctime5: 0
@@ -5142,11 +5140,11 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_NumColorKeys: 2
+      m_NumColorKeys: 3
       m_NumAlphaKeys: 2
-    _countText: {fileID: 0}
-    _percentageText: {fileID: 0}
-  _yesOrNoCanvas: {fileID: 0}
+    _countText: {fileID: 938947678}
+    _percentageText: {fileID: 1288925820}
+  _yesOrNoCanvas: {fileID: 363037053}
   _gameColor: {r: 1, g: 0.5882353, b: 0, a: 1}
   _badge:
     _badgeName: 
@@ -5155,17 +5153,17 @@ MonoBehaviour:
     _badgeSprite: {fileID: 0}
     _badgeID: 
     _howToEarn: 
-  _newBadgeCanvas: {fileID: 0}
-  _gameCanvas: {fileID: 0}
-  _camera: {fileID: 0}
+  _newBadgeCanvas: {fileID: 1330827181}
+  _gameCanvas: {fileID: 1360622406}
+  _camera: {fileID: 488612397}
   _mainCanvases:
-    _mainPlayerCanvas: {fileID: 0}
-    _indicatorCanvas: {fileID: 0}
-    _doctorCanvas: {fileID: 0}
-  _gameMenuCanvas: {fileID: 0}
-  _gameIndicatorCanvas: {fileID: 0}
-  _responseText: {fileID: 0}
-  _informationCanvas: {fileID: 0}
+    _mainPlayerCanvas: {fileID: 392666910}
+    _indicatorCanvas: {fileID: 444502315}
+    _doctorCanvas: {fileID: 716302325}
+  _gameMenuCanvas: {fileID: 956544989}
+  _gameIndicatorCanvas: {fileID: 888431178}
+  _responseText: {fileID: 167036495}
+  _informationCanvas: {fileID: 834040356}
   _gameProperties:
     _listOfObjects: []
     _listOfObjectsAsGO: []
@@ -6882,27 +6880,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42e6460e493c150408869440305b67f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameName: 
+  _gameName: Inhaler Matching Game
   _mainContainer: {fileID: 1093082202}
   _gameSpace: {fileID: 1009342902}
-  _placeIndicator: {fileID: 1228395062}
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
   _dialogues: {fileID: 919132149601814144}
   _completionMeter:
     _textGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 1, g: 0, b: 0, a: 1}
+      key1: {r: 1, g: 1, b: 0, a: 1}
+      key2: {r: 0, g: 1, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 65535
-      ctime2: 0
+      ctime1: 32768
+      ctime2: 65535
       ctime3: 0
       ctime4: 0
       ctime5: 0
@@ -6917,11 +6914,11 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_NumColorKeys: 2
+      m_NumColorKeys: 3
       m_NumAlphaKeys: 2
-    _countText: {fileID: 0}
-    _percentageText: {fileID: 0}
-  _yesOrNoCanvas: {fileID: 0}
+    _countText: {fileID: 938947678}
+    _percentageText: {fileID: 1288925820}
+  _yesOrNoCanvas: {fileID: 363037053}
   _gameColor: {r: 0.68235296, g: 0, b: 1, a: 1}
   _badge:
     _badgeName: 
@@ -6930,17 +6927,17 @@ MonoBehaviour:
     _badgeSprite: {fileID: 0}
     _badgeID: 
     _howToEarn: 
-  _newBadgeCanvas: {fileID: 0}
-  _gameCanvas: {fileID: 0}
-  _camera: {fileID: 0}
+  _newBadgeCanvas: {fileID: 1330827181}
+  _gameCanvas: {fileID: 1360622406}
+  _camera: {fileID: 488612397}
   _mainCanvases:
-    _mainPlayerCanvas: {fileID: 0}
-    _indicatorCanvas: {fileID: 0}
-    _doctorCanvas: {fileID: 0}
-  _gameMenuCanvas: {fileID: 0}
-  _gameIndicatorCanvas: {fileID: 0}
-  _responseText: {fileID: 0}
-  _informationCanvas: {fileID: 0}
+    _mainPlayerCanvas: {fileID: 392666910}
+    _indicatorCanvas: {fileID: 444502315}
+    _doctorCanvas: {fileID: 716302325}
+  _gameMenuCanvas: {fileID: 956544989}
+  _gameIndicatorCanvas: {fileID: 888431178}
+  _responseText: {fileID: 167036495}
+  _informationCanvas: {fileID: 834040356}
   _gameProperties:
     _listOfObjects: []
     _listOfObjectsAsGO: []
@@ -26334,27 +26331,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6bf71dcd142ebf4e91d7d3d0d140195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameName: 
+  _gameName: MCQ Game
   _mainContainer: {fileID: 1093082202}
   _gameSpace: {fileID: 0}
-  _placeIndicator: {fileID: 1228395062}
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
   _dialogues: {fileID: 919132149601814144}
   _completionMeter:
     _textGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 1, g: 0, b: 0, a: 1}
+      key1: {r: 1, g: 1, b: 0, a: 1}
+      key2: {r: 0, g: 1, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 65535
-      ctime2: 0
+      ctime1: 32768
+      ctime2: 65535
       ctime3: 0
       ctime4: 0
       ctime5: 0
@@ -26369,11 +26365,11 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_NumColorKeys: 2
+      m_NumColorKeys: 3
       m_NumAlphaKeys: 2
-    _countText: {fileID: 0}
-    _percentageText: {fileID: 0}
-  _yesOrNoCanvas: {fileID: 0}
+    _countText: {fileID: 2007658355}
+    _percentageText: {fileID: 546471434}
+  _yesOrNoCanvas: {fileID: 363037053}
   _gameColor: {r: 0, g: 0, b: 0, a: 0}
   _badge:
     _badgeName: 
@@ -26382,17 +26378,17 @@ MonoBehaviour:
     _badgeSprite: {fileID: 0}
     _badgeID: 
     _howToEarn: 
-  _newBadgeCanvas: {fileID: 0}
-  _gameCanvas: {fileID: 0}
+  _newBadgeCanvas: {fileID: 1330827181}
+  _gameCanvas: {fileID: 1349072687}
   _camera: {fileID: 0}
   _mainCanvases:
-    _mainPlayerCanvas: {fileID: 0}
-    _indicatorCanvas: {fileID: 0}
-    _doctorCanvas: {fileID: 0}
-  _gameMenuCanvas: {fileID: 0}
+    _mainPlayerCanvas: {fileID: 392666910}
+    _indicatorCanvas: {fileID: 444502315}
+    _doctorCanvas: {fileID: 716302325}
+  _gameMenuCanvas: {fileID: 956544989}
   _gameIndicatorCanvas: {fileID: 0}
-  _responseText: {fileID: 0}
-  _informationCanvas: {fileID: 0}
+  _responseText: {fileID: 1125309073}
+  _informationCanvas: {fileID: 834040356}
   _gameProperties:
     _listOfObjects: []
     _listOfObjectsAsGO: []
@@ -49359,10 +49355,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c578ee3735aeca4aa51496ed204eb59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameName: 
+  _gameName: Letter Matching Game
   _mainContainer: {fileID: 1093082202}
   _gameSpace: {fileID: 1009342902}
-  _placeIndicator: {fileID: 1228395062}
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
   _dialogues: {fileID: 919132149601814144}
@@ -49475,7 +49470,7 @@ MonoBehaviour:
       _variable2: 5
   _reverseDirectionForHoles: 1
   _currentRotation: {fileID: 344282881}
-  _draggingZOffset: -3.8
+  _draggingZOffset: -1.8
   _additionalLookingAngles: {x: 0, y: 90, z: 0}
   _spaceCamera: {fileID: 1330074157}
   _currentWord:
@@ -49655,7 +49650,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1771115576}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 131.41513, y: 228.42064, z: -633.79224}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

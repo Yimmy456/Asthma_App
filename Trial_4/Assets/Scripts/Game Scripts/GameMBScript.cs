@@ -214,7 +214,7 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
         }
     }
 
-    protected virtual void SetBadge(string _textInput, bool _caseInsensitiveInput = false)
+    protected void SetBadge(string _textInput, bool _caseInsensitiveInput = false)
     {
         if (BadgesManagerScript.GetInstance() == null)
         {
@@ -258,8 +258,6 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
 
     public virtual void ICompleteExperience()
     {
-        //base.ICompleteExperience();
-
         if (!_gameDone)
         {
             IStopExperience();
@@ -360,93 +358,6 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
 
 
         _gameCanvas.gameObject.SetActive(false);
-
-
-        /*
-         * 
-         *         _mainCanvases.SetCanvasesOn(false);
-
-        _mainCanvases.GetDoctorCanvas().gameObject.SetActive(true);
-
-        _newBadgeCanvas.gameObject.SetActive(true);
-
-        Text _newBadgeText = _newBadgeCanvas.gameObject.GetComponent<RectTransform>().Find("Congratulations Text").gameObject.GetComponent<Text>();
-
-        if (_newBadgeText != null)
-        {
-            _newBadgeText.text = GetBadgeStatement();
-        }
-
-        Image _badgeImage = _newBadgeCanvas.gameObject.GetComponent<RectTransform>().Find("Badge Image").gameObject.GetComponent<Image>();
-
-        if (_badgeImage != null)
-        {
-            _badgeImage.sprite = _badge.GetBadgeSprite();
-        }
-
-        if (_dialogues != null)
-        {
-            if (!_badge.GetBadgeCollected())
-            {
-                _dialogues.PlayClip("New Badge Earned");
-            }
-            else
-            {
-                _dialogues.PlayClip("Badge Already Earned");
-            }
-        }
-
-        BadgesManagerScript.GetInstance().SetBadgeEarned(_badge);
-
-        Button _b = _newBadgeCanvas.gameObject.GetComponent<RectTransform>().Find("Next Button").gameObject.GetComponent<Button>();
-
-        Button _backB = _newBadgeCanvas.gameObject.GetComponent<RectTransform>().Find("Back Button").gameObject.GetComponent<Button>();
-
-        if (_gameIndicatorCanvas != null)
-        {
-            if (_gameIndicatorCanvas.gameObject.activeSelf)
-            {
-                _gameIndicatorCanvas.gameObject.SetActive(false);
-            }
-        }
-
-        if (_b != null)
-        {
-            _b.onClick.AddListener(delegate
-            {
-                _gameDone = false;
-
-                if (_currentGame == this)
-                {
-                    _currentGame = null;
-                }
-
-                if (_currentGameInSession)
-                {
-                    _currentGameInSession = false;
-                }
-
-                _completionMeter.SetValue(0);
-
-                _completionMeter.SetMaxValue(1);
-
-                _mainCanvases.SetCanvasesOn(true);
-
-                //_gameDone = false;
-
-                _newBadgeCanvas.gameObject.SetActive(false);
-
-                _b.onClick.RemoveAllListeners();
-            });
-        }
-
-        if (_backB != null)
-        {
-            _backB.gameObject.SetActive(false);
-        }
-
-        _gameCanvas.gameObject.SetActive(false);
-        */
     }
 
     public virtual void IStartExperience()

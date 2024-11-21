@@ -382,7 +382,7 @@ public class ExhibitionScript : MonoBehaviour, ExperienceInterface, RewardingBad
         }
     }
 
-    public void IChooseToResumeExperience()
+    public void IResumeExperience()
     {
 
     }

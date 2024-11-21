@@ -75,8 +75,6 @@ public class LetterGameScript : MatchingGameCanvasScript
 
         _completionMeter.SignalToUpdateUI();
 
-       // string _badgeName = "Spelling Badge (" + _word.GetInformationName() + ")";
-
         SetBadge(2);
     }
 
@@ -122,6 +120,10 @@ public class LetterGameScript : MatchingGameCanvasScript
 
             string _badgeName = "Spelling Badge (" + _word2.GetInformationName() + ")";
 
+            //string _badgeName = "Spelling Badge (" + _textInput + ")";
+
+            //base.SetBadge(_badgeName, _caseSensitiveInput);
+
             SetBadge(_badgeName);
         }
         else
@@ -140,13 +142,6 @@ public class LetterGameScript : MatchingGameCanvasScript
         string _textS = "Well Done! You spelled a new word! It is '" + _currentWord.GetInformationName() + "'! " + _currentWord.GetInformationDescription() + ".";
 
         return _textS;
-    }
-
-    protected override void SetBadge(string _textInput, bool _caseSensitiveInput = false)
-    {
-        string _badgeName = "Spelling Badge (" + _textInput + ")";
-
-        SetBadge(_badgeName, _caseSensitiveInput);
     }
 
     public override void IStopExperience()
