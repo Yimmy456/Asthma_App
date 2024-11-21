@@ -502,7 +502,7 @@ public class GameState : SequenceState
 
         if (_game != null)
         {
-            _game.StopGame();
+            _game.IStopExperience();
         }
 
         Debug.Log(_debugText);
@@ -532,9 +532,9 @@ public class GameState : SequenceState
 
             LetterGameScript _letterGame = _game as LetterGameScript;
 
-            _letterGame.StartGame(0);
+            _letterGame.IStartExperience(0);
 
-            _letterGame.GetGameProperties().GetGameCanvas().gameObject.SetActive(false);
+            _letterGame.GetGameCanvas().gameObject.SetActive(false);
         }
 
         if(_stageNo == 2)
@@ -543,9 +543,9 @@ public class GameState : SequenceState
 
             CardGameScript _cardGame = _game as CardGameScript;
 
-            _cardGame.StartGame(0);
+            _cardGame.IStartExperience(0);
 
-            _cardGame.GetGameProperties().GetGameCanvas().gameObject.SetActive(false);
+            _cardGame.GetGameCanvas().gameObject.SetActive(false);
         }
     }
 }

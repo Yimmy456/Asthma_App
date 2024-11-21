@@ -23,11 +23,11 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
     // Update is called once per frame
     void Update()
     {
-        _gameProperties.UpdateUI();
+        _completionMeter.UpdateUI();
 
         _minMaxV3Values.MaintainValues();
 
-        _completionMeter = _gameProperties.GetMeter();
+        //_completionMeter = _gameProperties.GetMeter();
 
         LookIntoCamera();
 
@@ -35,9 +35,9 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
 
         RotateHoles();
 
-        if(_gameProperties.GetMeter().GetPercentage() == 100.0f && !_gameDone)
+        if(_completionMeter.GetPercentage() == 100.0f && !_gameDone)
         {
-            WinGame();
+            ICompleteExperience();
         }
     }
 
@@ -83,7 +83,7 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
     {
         try
         {
-            StartGame();
+            IStartExperience();
         }
         catch(Exception e)
         {
@@ -91,9 +91,9 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
         }
     }
 
-    public override void StartGame()
+    public override void IStartExperience()
     {
-        if(_gameSpace == null || InhalerManagerScript.GetInstance() == null || _currentGame != null || _floor == null || _spawningArea == null || _gameProperties.GetCamera() == null || _spawningSizeForBlocks <= 0.0f || _spawningSizeForHoles <= 0.0f)
+        if(_gameSpace == null || InhalerManagerScript.GetInstance() == null || _currentGame != null || _floor == null || _spawningArea == null || _camera == null || _spawningSizeForBlocks <= 0.0f || _spawningSizeForHoles <= 0.0f)
         {
             Debug.LogError("Game cannot be loaded.");
 
@@ -107,9 +107,9 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
             return;
         }
 
-        base.StartGame();
+        base.IStartExperience();
 
-        _gameProperties.GetMainCanvases().SetCanvasesOn(false);
+        _mainCanvases.SetCanvasesOn(false);
 
         _floor.SetActive(true);
 
@@ -157,7 +157,7 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
 
             _currentBlocksAndHoles.AddBlock(_newBlock.GetComponent<InhalerMatchingObjectScript>());
 
-            _newBlock.GetComponent<DraggableClass>().SetCamera(_gameProperties.GetCamera());
+            _newBlock.GetComponent<DraggableClass>().SetCamera(_camera);
 
             _newBlock.GetComponent<DraggableClass>().GetBody().velocity = Vector3.zero;
 
@@ -192,7 +192,7 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
 
                     _currentInfo = InhalerManagerScript.GetInstance().GetInhalerInfoList()[_i];
 
-                    _holeInfo.SetCamera(_gameProperties.GetCamera());
+                    _holeInfo.SetCamera(_camera);
 
                     _holeInfo.SetHoleName(_givenName);
 
@@ -221,9 +221,9 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
             _currentBlocksAndHoles.ReverseLists();
         }
 
-        _gameProperties.GetMeter().SetMaxValue(_gameProperties.GetListOfObjects().Count);
-
-        _gameProperties.SignalToUpdateUI();
+        _completionMeter.SetMaxValue(_gameProperties.GetListOfObjects().Count);
+        
+        _completionMeter.SignalToUpdateUI();
 
         if(_currentRotation != null)
         {
@@ -231,14 +231,14 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
         }
     }
 
-    protected override void WinGame()
+    public  override void ICompleteExperience()
     {
-        base.WinGame();
+        base.ICompleteExperience();
 
         _gameSpace.transform.localRotation = Quaternion.Euler(0.0f, -90.0f, 0.0f);
     }
 
-    public override void QuitGame()
+    public override void IChooseToQuitExperience()
     {
         //base.QuitGame();
 
@@ -246,16 +246,16 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
 
         //gameObject.SetActive(false);
 
-        _gameProperties.GetYesOrNoCanvas().GetYesButton().onClick.AddListener(delegate { StopGame(); });
+        _yesOrNoCanvas.GetYesButton().onClick.AddListener(delegate { IStopExperience(); });
 
         //_gameProperties.GetYesOrNoCanvas().GetText().text = "Are you sure you want to quit the game?";
 
-        base.QuitGame();
+        base.IChooseToQuitExperience();
     }
 
-    public override void StopGame()
+    public override void IStopExperience()
     {
-        base.StopGame();
+        base.IStopExperience();
 
         _addedSpace = 0;
 

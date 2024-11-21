@@ -143,6 +143,11 @@ public class ExhibitionCanvasScript : MonoBehaviour
         return _currentlyTalkedAboutObject;
     }
 
+    public MainCanvasesClass GetMainCanvases()
+    {
+        return _mainCanvases;
+    }
+
     public void SetCurrentObject(ExhibitionObjectScript _input)
     {
         _currentObject = _input;
@@ -300,10 +305,14 @@ public class ExhibitionCanvasScript : MonoBehaviour
         if (_audioSource != null && _c != null)
         {
             _talkingCoroutine = StartCoroutine(TalkingCoroutine2(_c, _fullTitle, _description));
+
+            _doctorSalemDialogues.SetDialogueCoroutine(_talkingCoroutine);
         }
         else
         {
             _talkingCoroutine = StartCoroutine(TalkingCoroutine(_time, _fullTitle, _description));
+
+            _doctorSalemDialogues.SetDialogueCoroutine(_talkingCoroutine);
         }
 
         Color _color = _currentObject.GetObjectColor();
@@ -401,6 +410,10 @@ public class ExhibitionCanvasScript : MonoBehaviour
         _currentlyTalkedAboutObject = null;
 
         _audioSource.clip = null;
+
+        yield return new WaitForSeconds(5.0f);
+
+        _exhibition.ICompleteExperience();
     }
 
     void ColorTitle(Color _input)

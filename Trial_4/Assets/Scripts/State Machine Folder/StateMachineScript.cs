@@ -142,17 +142,19 @@ public class StateMachineScript : MonoBehaviour, YesOrNoInterface
 
         _procedureCanvas.gameObject.SetActive(false);
 
-        _cardGame.GetGameProperties().GetMeter().SetValue(0);
+        //_cardGame.GetGameProperties().GetMeter().SetValue(0);
 
-        _cardGame.GetGameProperties().SignalToUpdateUI();
+        _cardGame.GetCompletionMeter().SetValue(0);
 
-        _letterGame.GetGameProperties().GetMeter().SetValue(0);
+        _cardGame.GetCompletionMeter().SignalToUpdateUI();
 
-        _letterGame.GetGameProperties().SignalToUpdateUI();
+        _letterGame.GetCompletionMeter().SetValue(0);
 
-        _mcqGame.GetGameProperties().GetMeter().SetValue(0);
+        _letterGame.GetCompletionMeter().SignalToUpdateUI();
 
-        _mcqGame.GetGameProperties().SignalToUpdateUI();
+        _mcqGame.GetCompletionMeter().SetValue(0);
+
+        _mcqGame.GetCompletionMeter().SignalToUpdateUI();
     }
 
     public BaseState GetCurrentState()

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameCanvasScript : CanvasScript, YesOrNoInterface
+public class GameCanvasScript : CanvasScript
 {
     [SerializeField]
     protected Button _infoPanelButton;
@@ -36,20 +36,5 @@ public class GameCanvasScript : CanvasScript, YesOrNoInterface
     public void SetCurrentGame(GameMBScript _input)
     {
         _currentGame = _input;
-    }
-
-    public void ISetActionsOfNoButton()
-    {
-
-    }
-
-    public void ISetActionsOfYesButtonToQuit()
-    {
-
-    }
-
-    public void ISetActionsOfYesButtonToRestart()
-    {
-
     }
 }

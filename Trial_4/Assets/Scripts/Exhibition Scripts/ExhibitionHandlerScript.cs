@@ -148,7 +148,7 @@ public class ExhibitionHandlerScript : MonoBehaviour
 
             _exhibition.GetCurrentGroup().SetGroupComplete(true);
 
-            _exhibition.RewardBadge();
+            _exhibition.IRewardBadge();
         }
     }
 }

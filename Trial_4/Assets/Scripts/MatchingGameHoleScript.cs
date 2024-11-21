@@ -476,9 +476,9 @@ public class MatchingGameHoleScript : MonoBehaviour
 
         //_holeObject = _currentObject.gameObject;
 
-        _holeCanvas.GetGameProperties().GetMeter().AddToValue(1);
+        //_holeCanvas.GetGameProperties().GetMeter().AddToValue(1);
 
-        _holeCanvas.GetGameProperties().SignalToUpdateUI();
+        _holeCanvas.GetCompletionMeter().SignalToUpdateUI();
 
         _hoveredOn = false;
 
@@ -527,12 +527,12 @@ public class MatchingGameHoleScript : MonoBehaviour
 
     public void HaveDoctorTalk()
     {
-        if(_holeCanvas.GetGameProperties().GetMainCanvases().GetDoctorCanvas() == null)
+        if(_holeCanvas.GetMainCanvases().GetDoctorCanvas() == null)
         {
             return;
         }
 
-        Canvas _doctorCanvas = _holeCanvas.GetGameProperties().GetMainCanvases().GetDoctorCanvas();
+        Canvas _doctorCanvas = _holeCanvas.GetMainCanvases().GetDoctorCanvas();
 
         DialogueCanvasScript _dialogCanvas = _doctorCanvas.gameObject.GetComponent<DialogueCanvasScript>();
 

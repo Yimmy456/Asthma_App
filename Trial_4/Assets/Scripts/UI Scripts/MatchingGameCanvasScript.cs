@@ -67,7 +67,7 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
     // Update is called once per frame
     void Update()
     {
-        _completionMeter = _gameProperties.GetMeter();
+        //_completionMeter = _gameProperties.GetMeter();
 
         _minMaxV3Values.MaintainValues();
     }
@@ -180,7 +180,7 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
 
     protected void LookIntoCamera()
     {
-        if(_gameSpace == null || _gameProperties.GetCamera() == null || _currentGame == null)
+        if(_gameSpace == null || _camera == null || _currentGame == null)
         {
             return;
         }
@@ -190,7 +190,7 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
             return;
         }
 
-        var _lookPosCam = _gameProperties.GetCamera().gameObject.transform.position - _gameSpace.transform.position;
+        var _lookPosCam = _camera.gameObject.transform.position - _gameSpace.transform.position;
 
         _lookPosCam.y = 0.0f;
 
@@ -213,23 +213,23 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
 
     protected void RotateSpaceFunction()
     {
-        if(_gameSpace == null || _gameProperties.GetCamera() == null || _currentGame != this || _spaceCamera == null)
+        if(_gameSpace == null || _camera == null || _currentGame != this || _spaceCamera == null)
         {
             return;
         }
 
-        Vector3 _pos = _spaceCamera.WorldToScreenPoint(_gameProperties.GetCamera().gameObject.transform.position);
+        Vector3 _pos = _spaceCamera.WorldToScreenPoint(_camera.gameObject.transform.position);
 
         bool _withinSight = _pos.z > 0.0f && _pos.x > 0.0f && _pos.x < Screen.width && _pos.y > 0.0f && _pos.y < Screen.height;
 
-        float _distance = Vector3.Distance(_spaceCamera.gameObject.transform.position, _gameProperties.GetCamera().gameObject.transform.position);
+        float _distance = Vector3.Distance(_spaceCamera.gameObject.transform.position, _camera.gameObject.transform.position);
 
         if(_withinSight && _distance <= 5.0f)
         {
             return;
         }
 
-        var _lookPosCam = _gameProperties.GetCamera().gameObject.transform.position - _gameSpace.transform.position;
+        var _lookPosCam = _camera.gameObject.transform.position - _gameSpace.transform.position;
 
         _lookPosCam.y = 0.0f;
 

@@ -40,13 +40,13 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
     // Update is called once per frame
     void Update()
     {
-        _gameProperties.UpdateUI();
+        _completionMeter.UpdateUI();
 
-        _completionMeter = _gameProperties.GetMeter();
+        //_completionMeter = _gameProperties.GetMeter();
 
         if(_gameDone)
         {
-            WinGame();
+            ICompleteExperience();
         }
     }
 
@@ -106,15 +106,15 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
             }
         }
 
-        _gameProperties.GetMeter().AddToValue(1);
+        _completionMeter.AddToValue(1);
 
         _gameProperties.SignalToUpdateUI();
 
         if(_nextButton != null)
         {
-            if(_gameProperties.GetMeter().GetPercentage() == 100.0f && !_gameDone)
+            if(_completionMeter.GetPercentage() == 100.0f && !_gameDone)
             {
-                _nextButton.onClick.AddListener(delegate { WinGame(); });
+                _nextButton.onClick.AddListener(delegate { ICompleteExperience(); });
             }
             else
             {
@@ -228,35 +228,35 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
     {
         yield return new WaitForSeconds(5.0f);
 
-        _gameProperties.ClearResponseText();
+        ClearResponseText();
     }
 
     public void SetActionsOfYesButton()
     {
-        if(_gameProperties.GetYesOrNoCanvas() == null)
+        if(_yesOrNoCanvas == null)
         {
             return;
         }
 
-        Button _bYes = _gameProperties.GetYesOrNoCanvas().GetYesButton();
+        Button _bYes = _yesOrNoCanvas.GetYesButton();
 
-        _bYes.onClick.AddListener(_gameProperties.ReturnToPlayerCanvas);
+        //_bYes.onClick.AddListener(_gameProperties.ReturnToPlayerCanvas);
 
-        _bYes.onClick.AddListener(_gameProperties.ActionsOfYesButton);
+        //_bYes.onClick.AddListener(_gameProperties.ActionsOfYesButton);
     }
 
     public void SetActionsOfNoButton()
     {
-        if(_gameProperties.GetYesOrNoCanvas() == null)
+        if(_yesOrNoCanvas == null)
         {
             return;
         }
 
-        Button _bNo = _gameProperties.GetYesOrNoCanvas().GetNoButton();
+        Button _bNo = _yesOrNoCanvas.GetNoButton();
 
-        _bNo.onClick.AddListener(delegate { if (_coroutine != null) { StopCoroutine(_coroutine); _gameProperties.ClearResponseText(); } });
+        _bNo.onClick.AddListener(delegate { if (_coroutine != null) { StopCoroutine(_coroutine); ClearResponseText(); } });
 
-        _bNo.onClick.AddListener(_gameProperties.ActionsOfNoButton);
+        //_bNo.onClick.AddListener(_gameProperties.ActionsOfNoButton);
     }
 
     /*public override void StartGame()
@@ -314,7 +314,7 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
 
         MCQManagerScript.GetInstance().SetSelectedQuestions(_gameProperties.GetListOfObjects());
 
-        _gameProperties.GetMeter().SetMaxValue(_numberOfQuestions);
+        _completionMeter.SetMaxValue(_numberOfQuestions);
 
         //PrepareQuestion();
     }*/
@@ -345,7 +345,7 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
         _gameProperties.SetListOfObjects(_newList);
     }
 
-    protected override void WinGame()
+    public override void ICompleteExperience()
     {
         //_gameProperties.ClearObjectLists();
 
@@ -353,16 +353,16 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
 
         _currentQuestionIndex = -1;
 
-        base.WinGame();
+        base.ICompleteExperience();
     }
 
-    public override void QuitGame()
+    public override void IChooseToQuitExperience()
     {
         //_gameProperties.ClearObjectLists();
 
         //MCQManagerScript.GetInstance().GetSelectedQuestions().Clear();
 
-        base.QuitGame();
+        base.IChooseToQuitExperience();
 
         //ISetActionsOfYesButtonToQuit
 
@@ -370,18 +370,18 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
 
         //MCQManagerScript.GetInstance().GetSelectedQuestions().Clear();
 
-        //if(_gameProperties.GetYesOrNoCanvas() != null)
+        //if(_yesOrNoCanvas != null)
         //{
-        //    if(_gameProperties.GetYesOrNoCanvas().GetYesButton() != null)
+        //    if(_yesOrNoCanvas.GetYesButton() != null)
         //    {
 
         //    }
         //}
     }
 
-    public override void StopGame()
+    public override void IStopExperience()
     {
-        base.StopGame();
+        base.IStopExperience();
 
         _currentQuestion = null;
 
@@ -390,14 +390,14 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
         MoveBackDoctorSalem();
     }
 
-    public override void StartGame()
+    public override void IStartExperience()
     {
         if(GetGameInSession() || MCQManagerScript.GetInstance() == null || _mcqCanvas == null)
         {
             return;
         }
 
-        base.StartGame();
+        base.IStartExperience();
 
         _currentGame = this;
 
@@ -447,13 +447,13 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
 
         MCQManagerScript.GetInstance().SetSelectedQuestions(_gameProperties.GetListOfObjects());
 
-        _gameProperties.GetMeter().SetMaxValue(_gameProperties.GetListOfObjects().Count);
+        _completionMeter.SetMaxValue(_gameProperties.GetListOfObjects().Count);
 
-        _gameProperties.GetMeter().SetValue(0);
+        _completionMeter.SetValue(0);
 
-        _gameProperties.SignalToUpdateUI();
+        _completionMeter.SignalToUpdateUI();
 
-        _gameProperties.SetBadge("Multiple Choice Question's Badge");
+        SetBadge("Multiple Choice Question's Badge");
 
         if(_mcqCanvas.GetProgressionSlider() != null)
         {
@@ -519,12 +519,12 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
 
     void MoveDoctorSalem()
     {
-        if(_gameProperties.GetMainCanvases().GetDoctorCanvas() == null)
+        if(_mainCanvases.GetDoctorCanvas() == null)
         {
             return;
         }
 
-        Canvas _docCanvas = _gameProperties.GetMainCanvases().GetDoctorCanvas();
+        Canvas _docCanvas = _mainCanvases.GetDoctorCanvas();
 
         DialogueCanvasScript _dialogueS = _docCanvas.gameObject.GetComponent<DialogueCanvasScript>();
 
@@ -540,12 +540,12 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
 
     void MoveBackDoctorSalem()
     {
-        if (_gameProperties.GetMainCanvases().GetDoctorCanvas() == null)
+        if (_mainCanvases.GetDoctorCanvas() == null)
         {
             return;
         }
 
-        Canvas _docCanvas = _gameProperties.GetMainCanvases().GetDoctorCanvas();
+        Canvas _docCanvas = _mainCanvases.GetDoctorCanvas();
 
         DialogueCanvasScript _dialogueS = _docCanvas.gameObject.GetComponent<DialogueCanvasScript>();
 

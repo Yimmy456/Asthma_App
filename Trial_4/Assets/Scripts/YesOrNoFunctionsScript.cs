@@ -27,6 +27,6 @@ public static class YesOrNoFunctionsClass
             return;
         }
 
-        _input.GetGameProperties().GetMeter().SetValue(0);
+        _input.GetCompletionMeter().SetValue(0);
     }
 }

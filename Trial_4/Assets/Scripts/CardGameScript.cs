@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
+public class CardGameScript : GameGenericMBScript<CardScript>
 {
     [Header("2. Properties of this particular Game.")]
 
@@ -104,13 +104,13 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
             _evalInProcess = true;
         }
 
-        _completionMeter = _gameProperties.GetMeter();
+        //_completionMeter = _completionMeter.;
 
-        _gameProperties.UpdateUI();
+        _completionMeter.UpdateUI();
 
-        if(_gameProperties.GetMeter().GetPercentage() == 100.0f && !_gameDone && _gameProperties.GetResponseText().text == "")
+        if(_completionMeter.GetPercentage() == 100.0f && !_gameDone && GetResponseText().text == "")
         {
-            WinGame();
+            ICompleteExperience();
         }
     }
 
@@ -129,12 +129,12 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
         _numberOfCards = _input;
     }
 
-    public override void StartGame()
+    public override void IStartExperience()
     {
-        StartGame(1);
+        IStartExperience(1);
     }
 
-    public override void StartGame(int _indexInput = 0)
+    public override void IStartExperience(int _indexInput = 0)
     {
         if(BookScript.GetInstance() == null || _cardSample == null || GetGameInSession() || _gameSpace == null)
         {
@@ -143,7 +143,7 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
         Debug.Log("Card game is starting...");
 
-        base.StartGame();
+        base.IStartExperience();
 
         _evalInProcess = false;
 
@@ -176,9 +176,9 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
             StopCoroutine(_newTextC);
         }
 
-        if(_gameProperties.GetResponseText() != null)
+        if(GetResponseText() != null)
         {
-            _gameProperties.GetResponseText().text = "";
+            GetResponseText().text = "";
         }
 
         GenerateRandomIndexForList(ref _infoIndexList, 2);
@@ -240,11 +240,13 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
         ReorganizeObjects();
 
-        _gameProperties.StartGame(0, _numberOfCards);
+        _completionMeter.SetMaxValue(_numberOfCards);
 
-        _gameProperties.SignalToUpdateUI();
+        _completionMeter.SetValue(0);
 
-        _gameProperties.SetBadge("Cards' Badge");
+        _completionMeter.SignalToUpdateUI();
+
+        SetBadge("Cards' Badge");
     }
 
     void ReorganizeObjects()
@@ -309,7 +311,7 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
     public Text GetResponseText()
     {
-        return _gameProperties.GetResponseText();
+        return GetResponseText();
     }
 
     public AudioSource GetAudioSource()
@@ -403,11 +405,11 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
                 StartCoroutine(FlipDownCardAnimation(_selectedCard1));
             }
 
-            _gameProperties.GetMeter().AddToValue(1);
+            _completionMeter.AddToValue(1);
 
-            _gameProperties.SignalToUpdateUI();
+            _completionMeter.SignalToUpdateUI();
 
-            bool _finalCard = !_gameDone && _gameProperties.GetMeter().GetPercentage() == 100.0f;
+            bool _finalCard = !_gameDone && _completionMeter.GetPercentage() == 100.0f;
 
             string _textToDisplay = _infoP.GetUITextString() + " Fun Fact:\n\n" + _infoText;
 
@@ -422,7 +424,7 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
             if (_finalCard)
             {
-                _gameProperties.GetGameCanvas().gameObject.SetActive(false);
+                _gameCanvas.gameObject.SetActive(false);
             }
         }
         else if(CardsMatch() && _evaluateCards == EvaluateCardsEnum.MatchCards)
@@ -431,9 +433,9 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
             _selectedCard2.SetCardDone(true);
 
-            _gameProperties.GetMeter().AddToValue(2);
+            _completionMeter.AddToValue(2);
 
-            _gameProperties.SignalToUpdateUI();
+            _completionMeter.SignalToUpdateUI();
 
             string _cardDesc = _selectedCard1.GetCardDescription();
 
@@ -455,7 +457,7 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
                 }
             }
 
-            //if (_gameProperties.GetMeter().GetPercentage() < 100.0f)
+            //if (_completionMeter..GetPercentage() < 100.0f)
             //{
                 SetResponseText(_cardDesc, _matchP.GetUTextColor(), (_seconds + 2.0f));
             //}
@@ -592,9 +594,9 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
         SetCardPositionAndProperty(ref _cardGOInput, ref _posInput);
 
-        if(_gameProperties.GetResponseText() != null)
+        if(GetResponseText() != null)
         {
-            _infoCard._text = _gameProperties.GetResponseText();
+            _infoCard._text = GetResponseText();
         }
 
         //int _selectedInfo = UnityEngine.Random.Range(0, _listInput.Count);
@@ -644,11 +646,11 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
         _c2.SetCardNumber(_numberInput);
 
-        if (_gameProperties.GetResponseText() != null) {
+        if (GetResponseText() != null) {
 
-            _c1._text = _gameProperties.GetResponseText();
+            _c1._text = GetResponseText();
 
-            _c2._text = _gameProperties.GetResponseText();
+            _c2._text = GetResponseText();
         }
 
         SetCardMaterial(_c1, _wordInput.GetSprite());
@@ -658,7 +660,7 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
     void SetResponseText(string _textInput, Color _colorInput, float _secondsToDisplayInput = 5.0f, bool _endGameInput = false)
     {
-        if (_gameProperties.GetResponseText() == null)
+        if (GetResponseText() == null)
         {
             return;            
         }
@@ -667,7 +669,7 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
         {
             StopCoroutine(_newTextC);
 
-            //_gameProperties.GetResponseText().text = "";
+            //GetResponseText().text = "";
         }
 
         _newTextC = StartCoroutine(SetResponseTextC(_textInput, _colorInput, _secondsToDisplayInput, _endGameInput));
@@ -675,20 +677,20 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
     IEnumerator SetResponseTextC(string _textInput, Color _colorInput, float _secondsToDisplayInput = 5.0f, bool _endGameInput = false)
     {
-        _gameProperties.GetResponseText().text = _textInput;
+        GetResponseText().text = _textInput;
 
-        _gameProperties.GetResponseText().color = _colorInput;
+        GetResponseText().color = _colorInput;
 
-        _gameProperties.GetResponseText().gameObject.GetComponent<Outline>().effectColor = ToolsStruct.ChangeColorValue(_colorInput, 0.5f, 0.5f);
+        GetResponseText().gameObject.GetComponent<Outline>().effectColor = ToolsStruct.ChangeColorValue(_colorInput, 0.5f, 0.5f);
 
         yield return new WaitForSeconds(_secondsToDisplayInput);
 
         if(_endGameInput)
         {
-            WinGame();
+            ICompleteExperience();
         }
 
-        _gameProperties.GetResponseText().text = "";
+        GetResponseText().text = "";
     }
 
     protected void OnEnabledFunction()
@@ -758,29 +760,29 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
         SetSelectedCategory(_var);
     }
 
-    public override void StopGame()
+    public override void IStopExperience()
     {
-        base.StopGame();
+        base.IStopExperience();
 
-        _gameProperties.GetMainCanvases().SetCanvasesOn(true);
+        _mainCanvases.SetCanvasesOn(true);
 
         _selectedWords.Clear();
 
 
-        if (_gameProperties.GetGameCanvas() != null)
+        if (_gameCanvas != null)
         {
-            _gameProperties.GetGameCanvas().gameObject.SetActive(false);
+            _gameCanvas.gameObject.SetActive(false);
         }
 
-        if (_gameProperties.GetGameIndicatorCanvas() != null)
+        if (_gameIndicatorCanvas != null)
         {
-            _gameProperties.GetGameIndicatorCanvas().gameObject.SetActive(false);
+            _gameIndicatorCanvas.gameObject.SetActive(false);
         }
     }
 
-    protected override void WinGame()
+    public override void ICompleteExperience()
     {
-        base.WinGame();
+        base.ICompleteExperience();
 
         _selectedWords.Clear();
     }
@@ -806,7 +808,7 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
         _cardProperty.SetOriginalPosition(_posInput);
 
-        _cardProperty.SetCamera(_gameProperties.GetCamera());
+        _cardProperty.SetCamera(_camera);
 
         _posInput.z = _posInput.z + (_cardDistance.x * _cardDistanceConstant);
 
@@ -824,36 +826,36 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
 
     public override void ISetActionsOfNoButton()
     {
-        if(_gameProperties.GetYesOrNoCanvas() == null)
+        if(_yesOrNoCanvas == null)
         {
             return;
         }
 
-        if(_gameProperties.GetYesOrNoCanvas().GetNoButton() == null)
+        if(_yesOrNoCanvas.GetNoButton() == null)
         {
             return;
         }
 
-        Button _bt = _gameProperties.GetYesOrNoCanvas().GetNoButton();
+        Button _bt = _yesOrNoCanvas.GetNoButton();
 
         _bt.onClick.AddListener(delegate { base.ISetActionsOfNoButton(); });
     }
 
     public override void ISetActionsOfYesButtonToQuit()
     {
-        if(_gameProperties.GetYesOrNoCanvas() == null)
+        if(_yesOrNoCanvas == null)
         {
             return;
         }
 
-        if(_gameProperties.GetYesOrNoCanvas().GetYesButton() == null)
+        if(_yesOrNoCanvas.GetYesButton() == null)
         {
             return;
         }
 
-        Button _bt = _gameProperties.GetYesOrNoCanvas().GetYesButton();
+        Button _bt = _yesOrNoCanvas.GetYesButton();
 
-        _bt.onClick.AddListener(delegate { StopGame(); });
+        _bt.onClick.AddListener(delegate { IStopExperience(); });
     }
 
     IEnumerator FlipUpCardAnimation(CardScript _input)
@@ -908,10 +910,10 @@ public class CardGameScript : GameGenericMBScript<CardScript>, YesOrNoInterface
         _input.gameObject.transform.localRotation = Quaternion.Euler(270.0f, 0.0f, 90.0f);
     }
 
-    public override void QuitGame()
+    public override void IChooseToQuitExperience()
     {
-        _gameProperties.GetYesOrNoCanvas().GetYesButton().onClick.AddListener(delegate { StopGame(); });
+        _yesOrNoCanvas.GetYesButton().onClick.AddListener(delegate { IStopExperience(); });
 
-        base.QuitGame();
+        base.IChooseToQuitExperience();
     }
 }

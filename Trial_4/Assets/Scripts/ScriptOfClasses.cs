@@ -22,8 +22,16 @@ public class MeterClass
 
     float _reversePercentage;
 
+    bool _updateUI = false;
+
     [SerializeField]
     Gradient _textGradient;
+
+    [SerializeField]
+    Text _countText;
+
+    [SerializeField]
+    Text _percentageText;
 
     //[SerializeField]
     //Gradient _textBorderGradient;
@@ -93,6 +101,16 @@ public class MeterClass
     public Gradient GetTextGradient()
     {
         return _textGradient;
+    }
+
+    public Text GetCountText()
+    {
+        return _countText;
+    }
+
+    public Text GetPercentageText()
+    {
+        return _percentageText;
     }
 
     public void SetValue(int _input)
@@ -187,6 +205,54 @@ public class MeterClass
         _percentage = (_maxValue > 0) ? (((float)_value / (float)_maxValue) * 100.0f) : -1.0f;
 
         _reversePercentage = (_maxValue > 0) ? (((float)_reverseValue / (float)_maxValue) * 100.0f) : -1.0f;
+
+        _updateUI = true;
+
+        UpdateUI();
+    }
+
+    public void SignalToUpdateUI()
+    {
+        _updateUI = true;
+    }
+
+    public void UpdateUI()
+    {
+        if(!_updateUI)
+        {
+            return;
+        }
+        else
+        {
+            _updateUI = false;
+        }
+
+        if(_countText != null)
+        {
+            _countText.text = _value.ToString() + "/" + _maxValue.ToString();
+        }
+
+        if(_percentageText != null)
+        {
+            string _p = _percentage.ToString("0.00");
+
+            _percentageText.text = _p + "%";
+
+            float _ratio = _percentage / 100.0f;
+
+            Color _c = _textGradient.Evaluate(_ratio);
+
+            _percentageText.color = _c;
+
+            if(_percentageText.gameObject.GetComponent<Outline>() != null)
+            {
+                Outline _out = _percentageText.gameObject.GetComponent<Outline>();
+
+                Color _c2 = ToolsStruct.ChangeColorValue(_c, 0.5f, 0.5f, true);
+
+                _out.effectColor = _c2;
+            }
+        }
     }
 }
 
@@ -2654,5 +2720,100 @@ public class DateClass
         int.TryParse(_yearText, out int _y);
 
         ReviseDate(_y, _m, _d);
+    }
+}
+
+[System.Serializable]
+public class BadgePreperationClass
+{
+    [SerializeField]
+    string _badgeName;
+
+    [SerializeField]
+    Canvas _newBadgeCanvas;
+
+    public string GetBadgeName()
+    {
+        return _badgeName;
+    }
+
+    public Canvas GetNewBadgeCanvas()
+    {
+        return _newBadgeCanvas;
+    }
+
+    public void SetBadgeName(string _input)
+    {
+        _badgeName = _input;
+    }
+
+    public bool GetBadgeFound(bool _ignoreCasingBoolInput = true)
+    {
+        if(BadgesManagerScript.GetInstance() == null || _badgeName == "")
+        {
+            return false;
+        }
+
+        for(int _i = 0; _i < BadgesManagerScript.GetInstance().GetBadges().Count; _i++)
+        {
+            BadgeScript _b = BadgesManagerScript.GetInstance().GetBadges()[_i];
+
+            if(string.Compare(_b.GetBadgeName(), _badgeName, _ignoreCasingBoolInput) == 0)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public void PrepareBadgeDisplay()
+    {
+        if (BadgesManagerScript.GetInstance() == null || _badgeName == "" || _newBadgeCanvas == null)
+        {
+            return;
+        }
+
+        BadgeScript _badge = BadgesManagerScript.GetInstance().GetBadgeByName(_badgeName);
+
+        if (_badge == null)
+        {
+            return;
+        }
+
+        RectTransform _mainRT = _newBadgeCanvas.gameObject.GetComponent<RectTransform>();
+
+        if(_mainRT == null)
+        {
+            return;
+        }
+
+        bool _badgeEarned = _badge.GetBadgeCollected();
+
+        Text _congText = _mainRT.Find("Congratulations Text").gameObject.GetComponent<Text>();
+
+        if(_congText != null)
+        {
+            if(!_badgeEarned)
+            {
+                _congText.text = "Congratulations! You have earned a new badge! It is called the " + @"""" + _badgeName + @"""" + "!";
+
+                BadgesManagerScript.GetInstance().SetBadgeEarned(_badge);
+            }
+            else
+            {
+                _congText.text = "Well done! Although, you have already earned this badge.";
+            }
+        }
+
+        Image _img = _mainRT.Find("Badge Image").gameObject.GetComponent<Image>();
+
+        if(_img != null)
+        {
+            if (_badge.GetBadgeSprite() != null)
+            {
+                _img.sprite = _badge.GetBadgeSprite();
+            }
+        }
     }
 }

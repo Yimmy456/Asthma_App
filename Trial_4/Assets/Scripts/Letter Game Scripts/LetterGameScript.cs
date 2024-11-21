@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
+public class LetterGameScript : MatchingGameCanvasScript
 {
     [ContextMenu("Add to Preset List...")]
     protected override void AddToBnHList()
@@ -31,18 +31,18 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
             _progressUpdatedSwitchOn = true;
         }
 
-        _completionMeter = _gameProperties.GetMeter();
+        //_completionMeter = _gameProperties.GetMeter();
 
         LookIntoCamera();
 
         //RotateSpaceFunction();
 
-        if(_gameProperties.GetMeter().GetPercentage() == 100.0f && !_gameDone)
+        if(_completionMeter.GetPercentage() == 100.0f && !_gameDone)
         {
-            WinGame();
+            ICompleteExperience();
         }
 
-        _gameProperties.UpdateUI();
+        _completionMeter.UpdateUI();
     }
 
     public LetterHoleScript GetCurrentHole()
@@ -52,16 +52,16 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
 
 
     //Calling the start of the game
-    public override void StartGame()
+    public override void IStartExperience()
     {
-        if(GetGameInSession() || BookScript.GetInstance() == null || _spawningArea == null || _gameSpace == null || _mainContainer == null || _gameProperties.GetCamera() == null)
+        if(GetGameInSession() || BookScript.GetInstance() == null || _spawningArea == null || _gameSpace == null || _mainContainer == null || _camera == null)
         {
             AbortGame();
 
             return;
         }
 
-        base.StartGame();
+        base.IStartExperience();
 
         DefinitionClass _word = BookScript.GetInstance().GetRandomDefinition();
 
@@ -69,20 +69,20 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
 
         CreateWord(_word);
 
-        _gameProperties.GetMeter().SetMaxValue(_currentBlocksAndHoles.GetBlockGOs().Count);
+        _completionMeter.SetMaxValue(_currentBlocksAndHoles.GetBlockGOs().Count);
 
-        _gameProperties.GetMeter().SetValue(0);
+        _completionMeter.SetValue(0);
 
-        _gameProperties.SignalToUpdateUI();
+        _completionMeter.SignalToUpdateUI();
 
        // string _badgeName = "Spelling Badge (" + _word.GetInformationName() + ")";
 
-        _gameProperties.SetBadge(2);
+        SetBadge(2);
     }
 
-    public override void StartGame(int _input)
+    public override void IStartExperience(int _input)
     {
-        if(GetGameInSession() || BookScript.GetInstance() == null || _spawningArea == null || _gameSpace == null || _mainContainer == null || _gameProperties.GetCamera() == null)
+        if(GetGameInSession() || BookScript.GetInstance() == null || _spawningArea == null || _gameSpace == null || _mainContainer == null || _camera == null)
         {
             AbortGame();
 
@@ -108,21 +108,21 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
 
         if (_word2 != null)
         {
-            base.StartGame();
+            base.IStartExperience();
 
             _floor.SetActive(true);
 
             CreateWord(_word2);
 
-            _gameProperties.GetMeter().SetMaxValue(_currentBlocksAndHoles.GetBlockGOs().Count);
+            _completionMeter.SetMaxValue(_currentBlocksAndHoles.GetBlockGOs().Count);
 
-            _gameProperties.GetMeter().SetValue(0);
+            _completionMeter.SetValue(0);
 
-            _gameProperties.SignalToUpdateUI();
+            _completionMeter.SignalToUpdateUI();
 
             string _badgeName = "Spelling Badge (" + _word2.GetInformationName() + ")";
 
-            _gameProperties.SetBadge(_badgeName);
+            SetBadge(_badgeName);
         }
         else
         {
@@ -146,12 +146,12 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
     {
         string _badgeName = "Spelling Badge (" + _textInput + ")";
 
-        _gameProperties.SetBadge(_badgeName, _caseSensitiveInput);
+        SetBadge(_badgeName, _caseSensitiveInput);
     }
 
-    public override void StopGame()
+    public override void IStopExperience()
     {
-        base.StopGame();
+        base.IStopExperience();
 
         _floor.SetActive(false);
 
@@ -165,16 +165,16 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
         }
     }
 
-    public override void QuitGame()
+    public override void IChooseToQuitExperience()
     {
-        _gameProperties.GetYesOrNoCanvas().GetYesButton().onClick.AddListener(delegate { StopGame(); });
+        _yesOrNoCanvas.GetYesButton().onClick.AddListener(delegate { IStopExperience(); });
 
-        //_gameProperties.GetYesOrNoCanvas().GetText().text = "Are you sure you want to quit the game?";
+        //_gameProperties._yesOrNoCanvas().GetText().text = "Are you sure you want to quit the game?";
 
-        base.QuitGame();
+        base.IChooseToQuitExperience();
     }
 
-    protected override void WinGame()
+    public  override void ICompleteExperience()
     {
         if (!_gameDone)
         {
@@ -271,7 +271,7 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
 
             _gameProperties.AddObjectToList(_newLetterBlock);
 
-            _newLetterBlock.GetDraggableProperties().SetCamera(_gameProperties.GetCamera());
+            _newLetterBlock.GetDraggableProperties().SetCamera(_camera);
 
             _newLetterBlock.GetDraggableProperties().SetOffset_Z(_draggingZOffset);
 
@@ -289,7 +289,7 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
 
             _newLetterHole.SetDialogues(_dialogues);
 
-            _newLetterHole.SetCamera(_gameProperties.GetCamera());
+            _newLetterHole.SetCamera(_camera);
 
             _newLetterHoleGO.transform.parent = _gameSpace.transform;
 
@@ -330,7 +330,7 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
             _currentGameInSession = false;
         }
 
-        _gameProperties.GetMainCanvases().SetCanvasesOn(true);
+        _mainCanvases.SetCanvasesOn(true);
 
         gameObject.SetActive(false);
     }
@@ -347,21 +347,21 @@ public class LetterGameScript : MatchingGameCanvasScript, YesOrNoInterface
 
         _floor.SetActive(false);
 
-        _gameProperties.GetInformationCanvas().gameObject.SetActive(true);
+        _informationCanvas.gameObject.SetActive(true);
 
         _gameProperties.ClearObjectLists();
 
-        _gameProperties.GetInformationCanvas().SetText(SetInfoText());
+        _informationCanvas.SetText(SetInfoText());
 
-        Button _nextB = _gameProperties.GetInformationCanvas().GetNextButton();
+        Button _nextB = _informationCanvas.GetNextButton();
 
         _gameSpace.transform.localRotation = Quaternion.Euler(0.0f, -90.0f, 0.0f);
 
-        _nextB.onClick.AddListener(delegate { base.WinGame(); _gameProperties.GetInformationCanvas().gameObject.SetActive(false); _nextB.onClick.RemoveAllListeners(); });
+        _nextB.onClick.AddListener(delegate { base.ICompleteExperience(); _informationCanvas.gameObject.SetActive(false); _nextB.onClick.RemoveAllListeners(); });
 
         _dialogues.PlayClip("Dr. Salem Letter Matching Game Word 'Asthma' Winning");
 
-        _gameProperties.GetGameCanvas().gameObject.SetActive(false);
+        _gameCanvas.gameObject.SetActive(false);
     }
 
     void UseAlternateDialogue(int _indexInput, string _wordInput, LetterHoleScript _holeInput)

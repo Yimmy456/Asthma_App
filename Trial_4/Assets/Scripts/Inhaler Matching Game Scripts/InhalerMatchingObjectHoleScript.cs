@@ -196,10 +196,10 @@ public class InhalerMatchingObjectHoleScript : MatchingGameHoleScript
 
     IEnumerator DisplayResponse()
     {
-        _holeCanvas.GetGameProperties().SetResponseText("That's not a match. Please try again. I know you can do it.", Color.red, new Color(0.5f, 0.0f, 0.0f, 0.5f), new Vector2(1.0f, -1.0f));
+        _holeCanvas.SetResponseText("That's not a match. Please try again. I know you can do it.", Color.red, new Vector2(1.0f, -1.0f), new Color(0.5f, 0.0f, 0.0f, 0.5f));
 
         yield return new WaitForSeconds(5.0f);
 
-        _holeCanvas.GetGameProperties().ClearResponseText();
+        _holeCanvas.ClearResponseText();
     }
 }

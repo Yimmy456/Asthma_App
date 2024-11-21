@@ -5,7 +5,7 @@ using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ExhibitionScript : MonoBehaviour
+public class ExhibitionScript : MonoBehaviour, ExperienceInterface, RewardingBadgeInterface
 {
     [SerializeField]
     Transform _parent;
@@ -44,7 +44,7 @@ public class ExhibitionScript : MonoBehaviour
     DialoguesScript _dialogues;
 
     [SerializeField]
-    Canvas _newBadgeCanvas;
+    public BadgePreperationClass _badgePreperation;
 
     bool _exhibitionRaycastOn = false;
 
@@ -57,13 +57,13 @@ public class ExhibitionScript : MonoBehaviour
 
         for (int _i = 0; _i < _exhibitionGroups.Count; _i++)
         {
-            for(int _j = 0; _j < _exhibitionGroups[_i].GetExhibitionGroupListItems().Count; _j++)
+            for (int _j = 0; _j < _exhibitionGroups[_i].GetExhibitionGroupListItems().Count; _j++)
             {
                 _item = _exhibitionGroups[_i].GetExhibitionGroupListItems()[_j];
 
                 _id = _item.GetExhibitID();
 
-                if(_id == "")
+                if (_id == "")
                 {
                     _id = System.Guid.NewGuid().ToString();
 
@@ -91,13 +91,24 @@ public class ExhibitionScript : MonoBehaviour
     {
         //_exhibitionObjects = new List<GameObject>();
 
-        _objectsComplete = new MeterClass();
+        if (_objectsComplete == null)
+        {
+            _objectsComplete = new MeterClass();
+        }
+    }
+
+    void OnEnable()
+    {
+        if (_objectsComplete == null)
+        {
+            _objectsComplete = new MeterClass();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public MeterClass GetObjectComplete()
@@ -146,25 +157,25 @@ public class ExhibitionScript : MonoBehaviour
 
         string _id;
 
-        for(int _i = 0; _i < _exhibitionGroups.Count; _i++)
+        for (int _i = 0; _i < _exhibitionGroups.Count; _i++)
         {
-            for(int _j = 0; _j < _exhibitionGroups[_i].GetExhibitionGroupListItems().Count; _j++)
+            for (int _j = 0; _j < _exhibitionGroups[_i].GetExhibitionGroupListItems().Count; _j++)
             {
                 _item = _exhibitionGroups[_i].GetExhibitionGroupListItems()[_j];
 
-                if(_item == null)
+                if (_item == null)
                 {
                     continue;
                 }
 
                 _id = _item.GetExhibitID();
 
-                if(_id == "")
+                if (_id == "")
                 {
                     continue;
                 }
 
-                if(string.Compare(_id, _input, false) == 0)
+                if (string.Compare(_id, _input, false) == 0)
                 {
                     return _item;
                 }
@@ -179,28 +190,33 @@ public class ExhibitionScript : MonoBehaviour
         return _dialogues;
     }
 
-    public void StartExhibition(int _input)
+    public void IStartExperience()
     {
-        if(!(_input >= 0 && _input < _exhibitionGroups.Count))
+
+    }
+
+    public void IStartExperience(int _input)
+    {
+        if (!(_input >= 0 && _input < _exhibitionGroups.Count))
         {
             return;
         }
 
         string _name = _exhibitionGroups[_input].GetGroupName();
 
-        StartExhibition(_name);
+        IStartExperience(_name);
     }
 
-    public void StartExhibition(string _input)
+    public void IStartExperience(string _input)
     {
-        if(_exhibitionOn || _parent == null)
+        if (_exhibitionOn || _parent == null)
         {
             return;
         }
 
         _currentGroup = GetGroupByName(_input);
 
-        if(_currentGroup == null)
+        if (_currentGroup == null)
         {
             return;
         }
@@ -225,12 +241,18 @@ public class ExhibitionScript : MonoBehaviour
 
         float _rotAngle;
 
-        if(BadgesManagerScript.GetInstance() != null)
+        _objectsComplete.SetMaxValue(_count);
+
+        _objectsComplete.SetValue(0);
+
+        _badgePreperation.SetBadgeName(_currentGroup.GetBadgeName());
+
+        if (BadgesManagerScript.GetInstance() != null)
         {
             _currentBadge = BadgesManagerScript.GetInstance().GetBadgeByName(_currentGroup.GetBadgeName());
         }
 
-        for(int _i = 0; _i < _count; _i++)
+        for (int _i = 0; _i < _count; _i++)
         {
             _angle = (_i * _circleProperties.GetSpreadingDegrees()) / _divValue;
 
@@ -238,7 +260,7 @@ public class ExhibitionScript : MonoBehaviour
 
             _rotAngle = 90.0f - _angle;
 
-            if(_circleProperties.GetIsCounterClockwise())
+            if (_circleProperties.GetIsCounterClockwise())
             {
                 _angle = -_angle;
             }
@@ -247,7 +269,7 @@ public class ExhibitionScript : MonoBehaviour
 
             _v3.z = Mathf.Sin(_angle * Mathf.Deg2Rad) * _circleProperties.GetRadius();
 
-            if(_circleProperties.GetSwitchAxes())
+            if (_circleProperties.GetSwitchAxes())
             {
                 float _pos = _v3.x;
 
@@ -324,13 +346,18 @@ public class ExhibitionScript : MonoBehaviour
 
             _currentExh.SetExhibition(this);
 
-            if(_currentGroup.GetRotateInRaycast())
+            if (_currentGroup.GetRotateInRaycast())
             {
                 GiveRotationalProperties(_currentExh);
             }
             else
             {
                 _currentExh.SetRotateWhenHit(false);
+            }
+
+            if(_currentListItem.GetDisplayExplained())
+            {
+                _objectsComplete.AddToValue(1);
             }
 
             _exhibitions.Add(_currentExh);
@@ -342,9 +369,9 @@ public class ExhibitionScript : MonoBehaviour
 
         _exhibitionRaycastOn = true;
 
-        if(DataPersistenceManager.GetInstance() != null)
+        if (DataPersistenceManager.GetInstance() != null)
         {
-            if(!DataPersistenceManager.GetInstance().GetExhibitionIntroduced())
+            if (!DataPersistenceManager.GetInstance().GetExhibitionIntroduced())
             {
                 //PlayDialogue(_welcomingClip);
 
@@ -355,16 +382,21 @@ public class ExhibitionScript : MonoBehaviour
         }
     }
 
-    public void EndExhibition()
+    public void IChooseToResumeExperience()
     {
-        if(!_exhibitionOn)
+
+    }
+
+    public void IStopExperience()
+    {
+        if (!_exhibitionOn)
         {
             return;
         }
 
         _currentGroup.SetExhibitionInPlay(false);
 
-        foreach(GameObject _go in _exhibitionsGO)
+        foreach (GameObject _go in _exhibitionsGO)
         {
             Destroy(_go);
         }
@@ -372,6 +404,15 @@ public class ExhibitionScript : MonoBehaviour
         _exhibitionsGO.Clear();
 
         _exhibitions.Clear();
+
+        if (_badgePreperation.GetNewBadgeCanvas() != null)
+        {
+            _badgePreperation.GetNewBadgeCanvas().gameObject.SetActive(false);
+        }
+
+        _badgePreperation.SetBadgeName("");
+
+        _canvas.GetMainCanvases().SetCanvasesOn(true);
 
         _currentGroup = null;
 
@@ -382,7 +423,7 @@ public class ExhibitionScript : MonoBehaviour
 
     void GiveRotationalProperties(ExhibitionObjectScript _input)
     {
-        if(_input == null)
+        if (_input == null)
         {
             return;
         }
@@ -391,7 +432,7 @@ public class ExhibitionScript : MonoBehaviour
 
         RotationScript _rp;
 
-        if(_go.GetComponent<RotationScript>() == null)
+        if (_go.GetComponent<RotationScript>() == null)
         {
             _rp = _go.AddComponent<RotationScript>();
         }
@@ -415,7 +456,7 @@ public class ExhibitionScript : MonoBehaviour
     {
         ExhibitionGroupClass _g;
 
-        for(int _i = 0; _i < _exhibitionGroups.Count; _i++)
+        for (int _i = 0; _i < _exhibitionGroups.Count; _i++)
         {
             _g = _exhibitionGroups[_i];
 
@@ -432,7 +473,7 @@ public class ExhibitionScript : MonoBehaviour
 
     public void SetRaycastOn(bool _input)
     {
-        foreach(ExhibitionObjectScript _exhO in _exhibitions)
+        foreach (ExhibitionObjectScript _exhO in _exhibitions)
         {
             _exhO.SetExhibitionRaycastOn(_input);
         }
@@ -445,12 +486,12 @@ public class ExhibitionScript : MonoBehaviour
 
     public void PlayDialogue(AudioClip _clipInput)
     {
-        if(_doctorSalemTalkingCoroutine != null)
+        if (_doctorSalemTalkingCoroutine != null)
         {
             StopCoroutine(_doctorSalemTalkingCoroutine);
         }
 
-        if(_doctorDialogue.GetTalkingCoroutine() != null)
+        if (_doctorDialogue.GetTalkingCoroutine() != null)
         {
             StopCoroutine(_doctorDialogue.GetTalkingCoroutine());
         }
@@ -462,7 +503,7 @@ public class ExhibitionScript : MonoBehaviour
 
     public void PlayDialogue(string _input)
     {
-        if(_dialogues == null)
+        if (_dialogues == null)
         {
             return;
         }
@@ -470,36 +511,32 @@ public class ExhibitionScript : MonoBehaviour
         _dialogues.PlayClip(_input);
     }
 
-    public void RewardBadge()
+    public void IRewardBadge()
     {
-        if(_newBadgeCanvas == null || BadgesManagerScript.GetInstance() == null)
+        if (_badgePreperation == null || BadgesManagerScript.GetInstance() == null)
         {
             return;
         }
 
-        //_gameProperties.GetMainCanvases().SetCanvasesOn(false);
-
-        //_gameProperties.GetMainCanvases().GetDoctorCanvas().gameObject.SetActive(true);
+        if (_badgePreperation.GetNewBadgeCanvas() == null)
+        {
+            return;
+        }
 
         BadgeScript _badge = BadgesManagerScript.GetInstance().GetBadgeByName(_currentGroup.GetBadgeName());
 
-        if(_badge == null)
+        if (_badge == null)
         {
             return;
         }
 
-        _newBadgeCanvas.gameObject.SetActive(true);
+        _badgePreperation.GetNewBadgeCanvas().gameObject.SetActive(true);
 
-        Text _newBadgeText = _newBadgeCanvas.gameObject.GetComponent<RectTransform>().Find("Congratulations Text").gameObject.GetComponent<Text>();
+        Text _newBadgeText = _badgePreperation.GetNewBadgeCanvas().gameObject.GetComponent<RectTransform>().Find("Congratulations Text").gameObject.GetComponent<Text>();
 
         _exhibitionRaycastOn = false;
 
-        if (_newBadgeText != null)
-        {
-            //_newBadgeText.text = GetBadgeStatement();
-        }
-
-        Image _badgeImage = _newBadgeCanvas.gameObject.GetComponent<RectTransform>().Find("Badge Image").gameObject.GetComponent<Image>();
+        Image _badgeImage = _badgePreperation.GetNewBadgeCanvas().gameObject.GetComponent<RectTransform>().Find("Badge Image").gameObject.GetComponent<Image>();
 
         if (_badgeImage != null)
         {
@@ -520,9 +557,9 @@ public class ExhibitionScript : MonoBehaviour
 
         BadgesManagerScript.GetInstance().SetBadgeEarned(_badge);
 
-        Button _b = _newBadgeCanvas.gameObject.GetComponent<RectTransform>().Find("Next Button").gameObject.GetComponent<Button>();
+        Button _nextButton = _badgePreperation.GetNewBadgeCanvas().gameObject.GetComponent<RectTransform>().Find("Next Button").gameObject.GetComponent<Button>();
 
-        Button _backB = _newBadgeCanvas.gameObject.GetComponent<RectTransform>().Find("Back Button").gameObject.GetComponent<Button>();
+        Button _backButton = _badgePreperation.GetNewBadgeCanvas().gameObject.GetComponent<RectTransform>().Find("Back Button").gameObject.GetComponent<Button>();
 
         /*if (_gameProperties.GetGameIndicatorCanvas() != null)
         {
@@ -532,50 +569,76 @@ public class ExhibitionScript : MonoBehaviour
             }
         }*/
 
-        if (_b != null)
+        if (_nextButton != null)
         {
-            _b.onClick.AddListener(delegate
+            _nextButton.onClick.AddListener(delegate
             {
                 _canvas.QuitExhibition();
 
-                EndExhibition();
+                IStopExperience();
 
-                _newBadgeCanvas.gameObject.SetActive(false);
+                _badgePreperation.GetNewBadgeCanvas().gameObject.SetActive(false);
 
-                if(_backB != null)
+                if (_backButton != null)
                 {
-                    _backB.onClick.RemoveAllListeners();
+                    _backButton.onClick.RemoveAllListeners();
                 }
 
-                _b.onClick.RemoveAllListeners();
+                _nextButton.onClick.RemoveAllListeners();
             });
         }
 
-        if (_backB != null)
+        if (_backButton != null)
         {
-            _backB.gameObject.SetActive(true);
+            _backButton.gameObject.SetActive(true);
 
-            _backB.onClick.AddListener(delegate
+            _backButton.onClick.AddListener(delegate
             {
                 _canvas.gameObject.SetActive(true);
 
-                _newBadgeCanvas.gameObject.SetActive(false);
+                _badgePreperation.GetNewBadgeCanvas().gameObject.SetActive(false);
 
                 _exhibitionRaycastOn = true;
 
-                if(_b != null)
+                if (_nextButton != null)
                 {
-                    _b.onClick.RemoveAllListeners();
+                    _nextButton.onClick.RemoveAllListeners();
                 }
 
-                _backB.onClick.RemoveAllListeners();
+                _backButton.onClick.RemoveAllListeners();
             });
         }
 
         _canvas.gameObject.SetActive(false);
     }
-}
 
+    public void IChooseToQuitExperience()
+    {
+
+    }
+
+    public void ICompleteExperience()
+    {
+        if(_currentGroup == null)
+        {
+            return;
+        }
+
+        if(_currentGroup.GetGroupComplete() || _currentGroup.GetGroupCompletionMeter().GetPercentage() > 100.0f)
+        {
+            return;
+        }
+
+        IRewardBadge();
+
+        _currentGroup.SetGroupComplete(true);
+    }
+
+    public void IChooseToRestartExperience()
+    {
+
+    }
+}
 
 [System.Serializable]
 public class ExhibitionGroupClass
@@ -665,9 +728,7 @@ public class ExhibitionGroupClass
         yield return new WaitForSeconds(5.0f);
 
         //BadgesManagerScript.GetInstance().
-    }
-
-    
+    }    
 }
 
 [System.Serializable]

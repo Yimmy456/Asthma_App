@@ -118,7 +118,7 @@ public class MCQCanvasScript : GameCanvasScript
             return;
         }
 
-        if(_game.GetGameProperties().GetResponseText() == null)
+        if(_game.GetResponseText() == null)
         {
             return;
         }
@@ -149,7 +149,7 @@ public class MCQCanvasScript : GameCanvasScript
             return;
         }
 
-        if(_game.GetGameProperties().GetResponseText() == null)
+        if(_game.GetResponseText() == null)
         {
             return;
         }
@@ -192,24 +192,26 @@ public class MCQCanvasScript : GameCanvasScript
 
         _nextButton.interactable = true;
 
-        _game.GetGameProperties().GetMeter().AddToValue(1);
+        _game.GetCompletionMeter().AddToValue(1);
 
-        _game.GetGameProperties().SignalToUpdateUI();
+        _game.GetCompletionMeter().SignalToUpdateUI();
 
         _nextButton.gameObject.SetActive(true);
     }
 
     IEnumerator DisplayResponse(string _textInput, float _timeInput, Color _textColorInput)
     {
-        _game.GetGameProperties().GetResponseText().text = _textInput;
+        //_game.GetResponseText().text = _textInput;
 
-        _game.GetGameProperties().GetResponseText().color = _textColorInput;
+        //_game.GetResponseText().color = _textColorInput;
 
-        _game.GetGameProperties().GetResponseText().gameObject.GetComponent<Outline>().effectColor = ToolsStruct.ChangeColorValue(_textColorInput, 0.5f, 0.5f);
+        //_game.GetResponseText().gameObject.GetComponent<Outline>().effectColor = ToolsStruct.ChangeColorValue(_textColorInput, 0.5f, 0.5f);
+
+        //_game.SetResponseText(_textInput, _textColorInput, new Vector2(1.0f, -1.0f));
 
         yield return new WaitForSeconds(_timeInput);
 
-        _game.GetGameProperties().GetResponseText().text = "";
+        _game.GetResponseText().text = "";
     }
 
     public void StopDisplayResponseCoroutine()
@@ -226,12 +228,12 @@ public class MCQCanvasScript : GameCanvasScript
             return;
         }
 
-        if(_game.GetGameProperties().GetResponseText() == null)
+        if(_game.GetResponseText() == null)
         {
             return;
         }
 
-        _game.GetGameProperties().GetResponseText().text = "";
+        _game.GetResponseText().text = "";
     }
 
     Text GetButtonText(int _input)

@@ -2170,61 +2170,61 @@ MonoBehaviour:
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
   _dialogues: {fileID: 919132149601814144}
+  _completionMeter:
+    _textGradient:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    _countText: {fileID: 0}
+    _percentageText: {fileID: 0}
+  _yesOrNoCanvas: {fileID: 0}
+  _gameColor: {r: 0, g: 0.54901963, b: 1, a: 1}
+  _badge:
+    _badgeName: 
+    _badgeDescription: 
+    _badgeCollected: 0
+    _badgeSprite: {fileID: 0}
+    _badgeID: 
+    _howToEarn: 
+  _newBadgeCanvas: {fileID: 0}
+  _gameCanvas: {fileID: 0}
+  _camera: {fileID: 0}
+  _mainCanvases:
+    _mainPlayerCanvas: {fileID: 0}
+    _indicatorCanvas: {fileID: 0}
+    _doctorCanvas: {fileID: 0}
+  _gameMenuCanvas: {fileID: 0}
+  _gameIndicatorCanvas: {fileID: 0}
+  _responseText: {fileID: 0}
+  _informationCanvas: {fileID: 0}
   _gameProperties:
-    _meter:
-      _textGradient:
-        serializedVersion: 2
-        key0: {r: 1, g: 0, b: 0, a: 1}
-        key1: {r: 1, g: 1, b: 0, a: 1}
-        key2: {r: 0, g: 1, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 32768
-        ctime2: 65535
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 3
-        m_NumAlphaKeys: 2
-    _mainCanvases:
-      _mainPlayerCanvas: {fileID: 392666910}
-      _indicatorCanvas: {fileID: 444502315}
-      _doctorCanvas: {fileID: 716302325}
-    _gameCanvas: {fileID: 1360622405}
-    _gameIndicatorCanvas: {fileID: 888431181}
-    _gameMenuCanvas: {fileID: 956544989}
-    _yesOrNoCanvas: {fileID: 363037053}
-    _camera: {fileID: 488612397}
-    _countText: {fileID: 938947678}
-    _percentageText: {fileID: 1288925820}
     _listOfObjects: []
     _listOfObjectsAsGO: []
-    _responseText: {fileID: 167036495}
-    _newBadgeCanvas: {fileID: 1330827181}
-    _informationCanvas: {fileID: 834040356}
-    _badge:
-      _badgeName: 
-      _badgeDescription: 
-      _badgeCollected: 0
-      _badgeSprite: {fileID: 0}
-      _badgeID: 
-      _howToEarn: 
-  _indicatorColor: {r: 0, g: 0.54901963, b: 1, a: 1}
   _cardSample: {fileID: 7547871330466247891, guid: 5e4e3cf4fb7722f4f9b206f1d486b39d, type: 3}
   _cardDistanceConstant: 20
   _cardsInARow: 4
@@ -5114,61 +5114,61 @@ MonoBehaviour:
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
   _dialogues: {fileID: 919132149601814144}
+  _completionMeter:
+    _textGradient:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    _countText: {fileID: 0}
+    _percentageText: {fileID: 0}
+  _yesOrNoCanvas: {fileID: 0}
+  _gameColor: {r: 1, g: 0.5882353, b: 0, a: 1}
+  _badge:
+    _badgeName: 
+    _badgeDescription: 
+    _badgeCollected: 0
+    _badgeSprite: {fileID: 0}
+    _badgeID: 
+    _howToEarn: 
+  _newBadgeCanvas: {fileID: 0}
+  _gameCanvas: {fileID: 0}
+  _camera: {fileID: 0}
+  _mainCanvases:
+    _mainPlayerCanvas: {fileID: 0}
+    _indicatorCanvas: {fileID: 0}
+    _doctorCanvas: {fileID: 0}
+  _gameMenuCanvas: {fileID: 0}
+  _gameIndicatorCanvas: {fileID: 0}
+  _responseText: {fileID: 0}
+  _informationCanvas: {fileID: 0}
   _gameProperties:
-    _meter:
-      _textGradient:
-        serializedVersion: 2
-        key0: {r: 1, g: 0, b: 0, a: 1}
-        key1: {r: 1, g: 1, b: 0, a: 1}
-        key2: {r: 0, g: 1, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 32768
-        ctime2: 65535
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 3
-        m_NumAlphaKeys: 2
-    _mainCanvases:
-      _mainPlayerCanvas: {fileID: 392666910}
-      _indicatorCanvas: {fileID: 444502315}
-      _doctorCanvas: {fileID: 716302325}
-    _gameCanvas: {fileID: 1360622405}
-    _gameIndicatorCanvas: {fileID: 888431181}
-    _gameMenuCanvas: {fileID: 956544989}
-    _yesOrNoCanvas: {fileID: 363037053}
-    _camera: {fileID: 488612397}
-    _countText: {fileID: 938947678}
-    _percentageText: {fileID: 1288925820}
     _listOfObjects: []
     _listOfObjectsAsGO: []
-    _responseText: {fileID: 167036495}
-    _newBadgeCanvas: {fileID: 1330827181}
-    _informationCanvas: {fileID: 834040356}
-    _badge:
-      _badgeName: 
-      _badgeDescription: 
-      _badgeCollected: 0
-      _badgeSprite: {fileID: 0}
-      _badgeID: 
-      _howToEarn: 
-  _indicatorColor: {r: 1, g: 0.5882353, b: 0, a: 1}
   _presetBlocksAndHoles:
   - rid: 4452223140269654040
   - rid: 4452223140269654041
@@ -6889,61 +6889,61 @@ MonoBehaviour:
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
   _dialogues: {fileID: 919132149601814144}
+  _completionMeter:
+    _textGradient:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    _countText: {fileID: 0}
+    _percentageText: {fileID: 0}
+  _yesOrNoCanvas: {fileID: 0}
+  _gameColor: {r: 0.68235296, g: 0, b: 1, a: 1}
+  _badge:
+    _badgeName: 
+    _badgeDescription: 
+    _badgeCollected: 0
+    _badgeSprite: {fileID: 0}
+    _badgeID: 
+    _howToEarn: 
+  _newBadgeCanvas: {fileID: 0}
+  _gameCanvas: {fileID: 0}
+  _camera: {fileID: 0}
+  _mainCanvases:
+    _mainPlayerCanvas: {fileID: 0}
+    _indicatorCanvas: {fileID: 0}
+    _doctorCanvas: {fileID: 0}
+  _gameMenuCanvas: {fileID: 0}
+  _gameIndicatorCanvas: {fileID: 0}
+  _responseText: {fileID: 0}
+  _informationCanvas: {fileID: 0}
   _gameProperties:
-    _meter:
-      _textGradient:
-        serializedVersion: 2
-        key0: {r: 1, g: 0, b: 0, a: 1}
-        key1: {r: 1, g: 1, b: 0, a: 1}
-        key2: {r: 0, g: 1, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 32768
-        ctime2: 65535
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 3
-        m_NumAlphaKeys: 2
-    _mainCanvases:
-      _mainPlayerCanvas: {fileID: 392666910}
-      _indicatorCanvas: {fileID: 444502315}
-      _doctorCanvas: {fileID: 716302325}
-    _gameCanvas: {fileID: 1360622405}
-    _gameIndicatorCanvas: {fileID: 888431181}
-    _gameMenuCanvas: {fileID: 956544989}
-    _yesOrNoCanvas: {fileID: 363037053}
-    _camera: {fileID: 488612397}
-    _countText: {fileID: 938947678}
-    _percentageText: {fileID: 1288925820}
     _listOfObjects: []
     _listOfObjectsAsGO: []
-    _responseText: {fileID: 0}
-    _newBadgeCanvas: {fileID: 1330827181}
-    _informationCanvas: {fileID: 0}
-    _badge:
-      _badgeName: 
-      _badgeDescription: 
-      _badgeCollected: 0
-      _badgeSprite: {fileID: 0}
-      _badgeID: 
-      _howToEarn: 
-  _indicatorColor: {r: 0.68235296, g: 0, b: 1, a: 1}
   _presetBlocksAndHoles:
   - rid: 4275215052147785877
   - rid: 4275215052147785875
@@ -7499,7 +7499,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 309082474}
         m_TargetAssemblyTypeName: InhalerMatchingGameScript, Assembly-CSharp
-        m_MethodName: StartGame
+        m_MethodName: IStartExperience
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7511,7 +7511,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 392666912}
         m_TargetAssemblyTypeName: MainPlayerCanvasScript, Assembly-CSharp
-        m_MethodName: SetShowInhalerBoolean
+        m_MethodName: SetShowingInhalerPropertiesBoolean
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16191,7 +16191,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 240245803}
         m_TargetAssemblyTypeName: BuildingInhalerGameScript, Assembly-CSharp
-        m_MethodName: StartGame
+        m_MethodName: IStartExperience
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21218,7 +21218,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 858896033}
         m_TargetAssemblyTypeName: MCQGameScript, Assembly-CSharp
-        m_MethodName: StartGame
+        m_MethodName: IStartExperience
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -26341,61 +26341,61 @@ MonoBehaviour:
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
   _dialogues: {fileID: 919132149601814144}
+  _completionMeter:
+    _textGradient:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    _countText: {fileID: 0}
+    _percentageText: {fileID: 0}
+  _yesOrNoCanvas: {fileID: 0}
+  _gameColor: {r: 0, g: 0, b: 0, a: 0}
+  _badge:
+    _badgeName: 
+    _badgeDescription: 
+    _badgeCollected: 0
+    _badgeSprite: {fileID: 0}
+    _badgeID: 
+    _howToEarn: 
+  _newBadgeCanvas: {fileID: 0}
+  _gameCanvas: {fileID: 0}
+  _camera: {fileID: 0}
+  _mainCanvases:
+    _mainPlayerCanvas: {fileID: 0}
+    _indicatorCanvas: {fileID: 0}
+    _doctorCanvas: {fileID: 0}
+  _gameMenuCanvas: {fileID: 0}
+  _gameIndicatorCanvas: {fileID: 0}
+  _responseText: {fileID: 0}
+  _informationCanvas: {fileID: 0}
   _gameProperties:
-    _meter:
-      _textGradient:
-        serializedVersion: 2
-        key0: {r: 1, g: 0, b: 0, a: 1}
-        key1: {r: 1, g: 1, b: 0, a: 1}
-        key2: {r: 0, g: 1, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 32768
-        ctime2: 65535
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 3
-        m_NumAlphaKeys: 2
-    _mainCanvases:
-      _mainPlayerCanvas: {fileID: 392666910}
-      _indicatorCanvas: {fileID: 444502315}
-      _doctorCanvas: {fileID: 716302325}
-    _gameCanvas: {fileID: 1349072690}
-    _gameIndicatorCanvas: {fileID: 0}
-    _gameMenuCanvas: {fileID: 956544989}
-    _yesOrNoCanvas: {fileID: 363037053}
-    _camera: {fileID: 0}
-    _countText: {fileID: 2007658355}
-    _percentageText: {fileID: 546471434}
     _listOfObjects: []
     _listOfObjectsAsGO: []
-    _responseText: {fileID: 1125309073}
-    _newBadgeCanvas: {fileID: 1330827181}
-    _informationCanvas: {fileID: 0}
-    _badge:
-      _badgeName: 
-      _badgeDescription: 
-      _badgeCollected: 0
-      _badgeSprite: {fileID: 0}
-      _badgeID: 
-      _howToEarn: 
-  _indicatorColor: {r: 0, g: 0, b: 0, a: 0}
   _mcqCanvas: {fileID: 1349072687}
   _currentQuestion:
     _questionID: 
@@ -34374,7 +34374,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1771115577}
         m_TargetAssemblyTypeName: LetterGameScript, Assembly-CSharp
-        m_MethodName: StartGame
+        m_MethodName: IStartExperience
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -43119,7 +43119,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1560775357}
         m_TargetAssemblyTypeName: ExhibitionScript, Assembly-CSharp
-        m_MethodName: StartExhibition
+        m_MethodName: IStartExperience
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -43131,7 +43131,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 392666912}
         m_TargetAssemblyTypeName: MainPlayerCanvasScript, Assembly-CSharp
-        m_MethodName: SetShowInhalerBoolean
+        m_MethodName: SetShowingInhalerPropertiesBoolean
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -43704,6 +43704,8 @@ MonoBehaviour:
       m_Mode: 0
       m_NumColorKeys: 3
       m_NumAlphaKeys: 2
+    _countText: {fileID: 0}
+    _percentageText: {fileID: 0}
   _camera: {fileID: 488612397}
   _exhibitionGroups:
   - _groupName: Inhaler Group
@@ -43783,17 +43785,17 @@ MonoBehaviour:
     _groupCompletionMeter:
       _textGradient:
         serializedVersion: 2
-        key0: {r: 0, g: 0, b: 0, a: 0}
-        key1: {r: 0, g: 0, b: 0, a: 0}
-        key2: {r: 0, g: 0, b: 0, a: 0}
+        key0: {r: 1, g: 0, b: 0, a: 1}
+        key1: {r: 1, g: 1, b: 0, a: 1}
+        key2: {r: 0, g: 1, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
-        ctime1: 65535
-        ctime2: 0
+        ctime1: 32768
+        ctime2: 65535
         ctime3: 0
         ctime4: 0
         ctime5: 0
@@ -43808,8 +43810,10 @@ MonoBehaviour:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_NumColorKeys: 2
+        m_NumColorKeys: 3
         m_NumAlphaKeys: 2
+      _countText: {fileID: 0}
+      _percentageText: {fileID: 0}
     _rotateInRaycast: 0
     _exhibitionGroupUniformScale: 1
     _badgeName: Inhaler Exhibition Badge
@@ -43844,7 +43848,9 @@ MonoBehaviour:
     _doctorDefaultAudioClip: {fileID: 0}
   _welcomingClip: {fileID: 0}
   _dialogues: {fileID: 919132149601814144}
-  _newBadgeCanvas: {fileID: 0}
+  _badgePreperation:
+    _badgeName: 
+    _newBadgeCanvas: {fileID: 1330827181}
 --- !u!1 &1567077241
 GameObject:
   m_ObjectHideFlags: 0
@@ -48939,7 +48945,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1560775357}
         m_TargetAssemblyTypeName: ExhibitionScript, Assembly-CSharp
-        m_MethodName: EndExhibition
+        m_MethodName: IStopExperience
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -49360,61 +49366,61 @@ MonoBehaviour:
   _correctAudioClip: {fileID: 8300000, guid: 82859deb4a9d52647a8635b6fb3bf096, type: 3}
   _incorrectAudioClip: {fileID: 8300000, guid: 2238f318f36e01746ad7a0a1c4a914bd, type: 3}
   _dialogues: {fileID: 919132149601814144}
-  _gameProperties:
-    _meter:
-      _textGradient:
-        serializedVersion: 2
-        key0: {r: 1, g: 0, b: 0, a: 1}
-        key1: {r: 1, g: 1, b: 0, a: 1}
-        key2: {r: 0, g: 1, b: 0, a: 0}
-        key3: {r: 0, g: 0, b: 0, a: 0}
-        key4: {r: 0, g: 0, b: 0, a: 0}
-        key5: {r: 0, g: 0, b: 0, a: 0}
-        key6: {r: 0, g: 0, b: 0, a: 0}
-        key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 32768
-        ctime2: 65535
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
-        ctime6: 0
-        ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
-        atime4: 0
-        atime5: 0
-        atime6: 0
-        atime7: 0
-        m_Mode: 0
-        m_NumColorKeys: 3
-        m_NumAlphaKeys: 2
-    _mainCanvases:
-      _mainPlayerCanvas: {fileID: 392666910}
-      _indicatorCanvas: {fileID: 444502315}
-      _doctorCanvas: {fileID: 716302325}
-    _gameCanvas: {fileID: 1360622405}
-    _gameIndicatorCanvas: {fileID: 888431181}
-    _gameMenuCanvas: {fileID: 956544989}
-    _yesOrNoCanvas: {fileID: 363037053}
-    _camera: {fileID: 488612397}
+  _completionMeter:
+    _textGradient:
+      serializedVersion: 2
+      key0: {r: 1, g: 0, b: 0, a: 1}
+      key1: {r: 1, g: 1, b: 0, a: 1}
+      key2: {r: 0, g: 1, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 32768
+      ctime2: 65535
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 3
+      m_NumAlphaKeys: 2
     _countText: {fileID: 938947678}
     _percentageText: {fileID: 1288925820}
+  _yesOrNoCanvas: {fileID: 363037053}
+  _gameColor: {r: 1, g: 1, b: 0.39215687, a: 1}
+  _badge:
+    _badgeName: 
+    _badgeDescription: 
+    _badgeCollected: 0
+    _badgeSprite: {fileID: 0}
+    _badgeID: 
+    _howToEarn: 
+  _newBadgeCanvas: {fileID: 1330827181}
+  _gameCanvas: {fileID: 1360622406}
+  _camera: {fileID: 488612397}
+  _mainCanvases:
+    _mainPlayerCanvas: {fileID: 392666910}
+    _indicatorCanvas: {fileID: 444502315}
+    _doctorCanvas: {fileID: 716302325}
+  _gameMenuCanvas: {fileID: 956544989}
+  _gameIndicatorCanvas: {fileID: 888431178}
+  _responseText: {fileID: 167036495}
+  _informationCanvas: {fileID: 834040356}
+  _gameProperties:
     _listOfObjects: []
     _listOfObjectsAsGO: []
-    _responseText: {fileID: 0}
-    _newBadgeCanvas: {fileID: 1330827181}
-    _informationCanvas: {fileID: 834040356}
-    _badge:
-      _badgeName: 
-      _badgeDescription: 
-      _badgeCollected: 0
-      _badgeSprite: {fileID: 0}
-      _badgeID: 
-      _howToEarn: 
-  _indicatorColor: {r: 1, g: 1, b: 0.39215687, a: 1}
   _presetBlocksAndHoles:
   - rid: 4968103879110557720
   - rid: 4968103902080663552
@@ -52200,7 +52206,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 97500506}
         m_TargetAssemblyTypeName: CardGameScript, Assembly-CSharp
-        m_MethodName: StartGame
+        m_MethodName: IStartExperience
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

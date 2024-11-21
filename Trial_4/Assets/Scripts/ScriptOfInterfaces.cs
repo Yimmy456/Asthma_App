@@ -21,3 +21,21 @@ public interface PlayDialogueInterface
 
     public void IPlayDialogue();
 }
+
+public interface RewardingBadgeInterface
+{
+    public abstract void IRewardBadge();
+}
+
+
+public interface ExperienceInterface
+{
+    public abstract void IStartExperience();
+    public abstract void IStartExperience(int _input);
+    public abstract void IStartExperience(string _input);
+    public abstract void IStopExperience();
+    public abstract void ICompleteExperience();
+    public abstract void IChooseToQuitExperience();
+    public abstract void IChooseToRestartExperience();
+    public abstract void IResumeExperience();
+}
