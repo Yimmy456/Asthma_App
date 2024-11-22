@@ -334,9 +334,9 @@ public class MatchingGameHoleScript : MonoBehaviour
 
         if(_holeCanvas != null)
         {
-            if(_holeCanvas.GetCurrentBlocksAndHoles().GetSelectedHole() == this)
+            if(_holeCanvas.GetCurrentHole() == this)
             {
-                _holeCanvas.GetCurrentBlocksAndHoles().SetSelectedHole(null);
+                _holeCanvas.SetCurrentHole(null);
             }
         }
 
@@ -355,7 +355,7 @@ public class MatchingGameHoleScript : MonoBehaviour
             return false;
         }
 
-        return (_holeCanvas.GetCurrentBlocksAndHoles().GetSelectedHole() == this);
+        return (_holeCanvas.GetCurrentHole() == this);
     }
 
     protected void CheckHoveringStatus()
@@ -378,25 +378,25 @@ public class MatchingGameHoleScript : MonoBehaviour
             _hoveredOn = (_hit.collider.transform == _collider.transform) || (_distanceReachedBool);
         }
 
-        _currentObject = _holeCanvas.GetCurrentBlocksAndHoles().GetSelectedBlock();
+        _currentObject = _holeCanvas.GetCurrentBlock();
 
         if(_currentObject == null && _errorIdentifier.DisplayHere())
         {
             _errorIdentifier._textField.text = "No block was selected.";
         }
 
-        if (_holeCanvas.GetCurrentBlocksAndHoles().GetSelectedHole() == null && _hoveredOn)
+        if (_holeCanvas.GetCurrentHole() == null && _hoveredOn)
         {
-            _holeCanvas.GetCurrentBlocksAndHoles().SetSelectedHole(this);
+            _holeCanvas.SetCurrentHole(this);
         }
-        else if (_holeCanvas.GetCurrentBlocksAndHoles().GetSelectedHole() == this && !_hoveredOn)
+        else if (_holeCanvas.GetCurrentHole() == this && !_hoveredOn)
         {
-            _holeCanvas.GetCurrentBlocksAndHoles().SetSelectedHole(null);
+            _holeCanvas.SetCurrentHole(null);
         }
 
         _canEvaluate = _hoveredOn;
 
-        if (_currentSizeValue < _expandedSizeValue && _holeCanvas.GetCurrentBlocksAndHoles().GetSelectedHole() == this && _animIncreaseOrDecrease != IncreasOrDecreaseEnum.Increase)
+        if (_currentSizeValue < _expandedSizeValue && _holeCanvas.GetCurrentHole() == this && _animIncreaseOrDecrease != IncreasOrDecreaseEnum.Increase)
         {
             if (_animationCoroutine != null)
             {
@@ -408,7 +408,7 @@ public class MatchingGameHoleScript : MonoBehaviour
             _animIncreaseOrDecrease = IncreasOrDecreaseEnum.Increase;
         }
 
-        if (_currentSizeValue > _defaultSizeValue && _holeCanvas.GetCurrentBlocksAndHoles().GetSelectedHole() != this && _animIncreaseOrDecrease != IncreasOrDecreaseEnum.Decrease)
+        if (_currentSizeValue > _defaultSizeValue && _holeCanvas.GetCurrentHole() != this && _animIncreaseOrDecrease != IncreasOrDecreaseEnum.Decrease)
         {
             if (_animationCoroutine != null)
             {
@@ -486,9 +486,9 @@ public class MatchingGameHoleScript : MonoBehaviour
 
         _canEvaluate = false;
 
-        if(_holeCanvas.GetCurrentBlocksAndHoles().GetSelectedBlock() == _currentObject.GetComponent<MatchingGameBlockScript>())
+        if(_holeCanvas.GetCurrentHole() == _currentObject.GetComponent<MatchingGameBlockScript>())
         {
-            _holeCanvas.GetCurrentBlocksAndHoles().SetSelectedBlock(null);
+            _holeCanvas.SetCurrentBlock(null);
         }
 
         if(_errorIdentifier.DisplayHere())

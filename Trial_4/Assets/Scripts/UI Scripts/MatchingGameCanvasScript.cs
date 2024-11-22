@@ -7,11 +7,14 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
 {
     [Header("2. Variables for All Matching Games")]
 
+    [SerializeField]
+    protected GamePropertiesClass<MatchingGameHoleScript> _currentHoleProperties;
+
     [SerializeReference]
     protected List<MatchingBlockAndHoleClass> _presetBlocksAndHoles;
 
-    [SerializeField]
-    protected CurrentBlocksAndHolesDefaultClass _currentBlocksAndHoles;
+    //[SerializeField]
+    //protected CurrentBlocksAndHolesDefaultClass _currentBlocksAndHoles;
 
     [SerializeField]
     protected GameObject _floor;
@@ -58,6 +61,12 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
 
     protected int _addedSpace = 0;
 
+    [SerializeField]
+    protected MatchingGameBlockScript _currentBlock;
+
+    [SerializeField]
+    protected MatchingGameHoleScript _currentHole;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,9 +81,9 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
         _minMaxV3Values.MaintainValues();
     }
 
-    public CurrentBlocksAndHolesDefaultClass GetCurrentBlocksAndHoles()
+    public GamePropertiesClass<MatchingGameHoleScript> GetCurrentHoleProperties()
     {
-        return _currentBlocksAndHoles;
+        return _currentHoleProperties;
     }
 
     public List<MatchingBlockAndHoleClass> GetPresetBlockAndHoles()
@@ -92,6 +101,16 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
         return _draggingZOffset;
     }
 
+    public MatchingGameBlockScript GetCurrentBlock()
+    {
+        return _currentBlock;
+    }
+
+    public MatchingGameHoleScript GetCurrentHole()
+    {
+        return _currentHole;
+    }
+
     public void SetSpawningSizeForBlocks(float _input)
     {
         _spawningSizeForBlocks = _input;
@@ -105,6 +124,16 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
     public void SetPresetBlocksAndHoles(List<MatchingBlockAndHoleClass> _input)
     {
         _presetBlocksAndHoles = _input;
+    }
+
+    public void SetCurrentBlock(MatchingGameBlockScript _input)
+    {
+        _currentBlock = _input;
+    }
+
+    public void SetCurrentHole(MatchingGameHoleScript _input)
+    {
+        _currentHole = _input;
     }
 
     protected virtual void FindSpawningSpot(ref List<Vector3> _posListInput, ref GameObject _gameObjectInput)
@@ -151,9 +180,11 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
 
     }
 
+
+    
     protected void AlignHolePositions()
     {
-        float _pos = (_currentBlocksAndHoles.GetHoleGOs().Count + _addedSpace) * _addedDistanceForHoles;
+        float _pos = (_currentHoleProperties.GetListOfObjectsAsGO().Count + _addedSpace) * _addedDistanceForHoles;
 
         _pos = _pos / -2.0f;
 
@@ -161,9 +192,9 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
 
         _pos = _pos + _a;
 
-        for(int _i = 0; _i < _currentBlocksAndHoles.GetHoleGOs().Count; _i++)
+        for(int _i = 0; _i < _currentHoleProperties.GetListOfObjectsAsGO().Count; _i++)
         {
-            Transform _t = _currentBlocksAndHoles.GetHoleGOs()[_i].transform;
+            Transform _t = _currentHoleProperties.GetListOfObjectsAsGO()[_i].transform;
 
             Vector3 _v3 = _t.localPosition;
             
@@ -252,7 +283,7 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
             return;
         }
 
-        foreach(GameObject _hole in _currentBlocksAndHoles.GetHoleGOs())
+        foreach(GameObject _hole in _currentHoleProperties.GetListOfObjectsAsGO())
         {
             if(_hole == null)
             {

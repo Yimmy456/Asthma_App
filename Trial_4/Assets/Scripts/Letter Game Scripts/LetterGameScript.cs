@@ -69,7 +69,7 @@ public class LetterGameScript : MatchingGameCanvasScript
 
         CreateWord(_word);
 
-        _completionMeter.SetMaxValue(_currentBlocksAndHoles.GetBlockGOs().Count);
+        _completionMeter.SetMaxValue(_gameProperties.GetListOfObjects().Count);
 
         _completionMeter.SetValue(0);
 
@@ -112,7 +112,7 @@ public class LetterGameScript : MatchingGameCanvasScript
 
             CreateWord(_word2);
 
-            _completionMeter.SetMaxValue(_currentBlocksAndHoles.GetBlockGOs().Count);
+            _completionMeter.SetMaxValue(_gameProperties.GetListOfObjects().Count);
 
             _completionMeter.SetValue(0);
 
@@ -150,7 +150,9 @@ public class LetterGameScript : MatchingGameCanvasScript
 
         _floor.SetActive(false);
 
-        _currentBlocksAndHoles.ClearLists();
+        _gameProperties.ClearObjectLists();
+
+        _currentHoleProperties.ClearObjectLists();
 
         _addedSpace = 0;
 
@@ -256,9 +258,7 @@ public class LetterGameScript : MatchingGameCanvasScript
 
             _newLetterBlockGO.transform.parent = _spawningArea;
 
-            _newLetterBlockGO.transform.localScale = ((Vector3.one * _spawningSizeForBlocks));
-
-            _currentBlocksAndHoles.AddBlock(_newLetterBlock);
+            _newLetterBlockGO.transform.localScale = ((Vector3.one * _spawningSizeForBlocks));            
 
             base.FindSpawningSpot(ref _positions, ref _newLetterBlockGO);
 
@@ -292,25 +292,18 @@ public class LetterGameScript : MatchingGameCanvasScript
 
             UseAlternateDialogue(_i, _word, _newLetterHole);
 
-            _currentBlocksAndHoles.AddHole(_newLetterHole);
-
             _newLetterHoleGO.transform.localPosition = _currentlySelectedPositionForHoles;
 
             _currentlySelectedPositionForHoles.z = _currentlySelectedPositionForHoles.z + _addedDistanceForHoles;
 
             _newLetterHoleGO.transform.localEulerAngles = _facingDirection;
 
-            _currentBlocksAndHoles.IncreaseTotalBlocksAndHoles();
+            //_currentBlocksAndHoles.IncreaseTotalBlocksAndHoles();
 
             _letterFound = false;
         }
 
         AlignHolePositions();
-
-        if(_currentBlocksAndHoles.GetReverseListsBoolean())
-        {
-            _currentBlocksAndHoles.ReverseLists();
-        }
     }
 
     void AbortGame()

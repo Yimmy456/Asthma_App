@@ -97,9 +97,9 @@ public class MatchingGameBlockScript : MonoBehaviour
 
         if (_objectCanvas != null)
         {
-            if(_objectCanvas.GetCurrentBlocksAndHoles().GetSelectedBlock() == null)
+            if(_objectCanvas.GetCurrentBlock() == null)
             {
-                _objectCanvas.GetCurrentBlocksAndHoles().SetSelectedBlock(this);
+                _objectCanvas.SetCurrentBlock(this);
             }
         }
 
@@ -142,9 +142,9 @@ public class MatchingGameBlockScript : MonoBehaviour
     {
         if(_objectCanvas != null)
         {
-            if(_objectCanvas.GetCurrentBlocksAndHoles().GetSelectedBlock() == this)
+            if(_objectCanvas.GetCurrentBlock() == this)
             {
-                _objectCanvas.GetCurrentBlocksAndHoles().SetSelectedBlock(null);
+                _objectCanvas.SetCurrentBlock(null);
             }
         }
     }

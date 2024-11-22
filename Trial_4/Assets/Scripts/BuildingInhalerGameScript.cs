@@ -159,7 +159,7 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
             _gameProperties.AddObjectsAsGO(_newBlock);
 
-            _currentBlocksAndHoles.AddBlock(_newBlock.GetComponent<InhalerMatchingObjectScript>());
+            //_currentBlocksAndHoles.AddBlock(_newBlock.GetComponent<InhalerMatchingObjectScript>());
 
             _newBlock.GetComponent<DraggableClass>().SetCamera(_camera);
 
@@ -214,7 +214,9 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
                     _holeInfo.SetHoleName(_currentPreset.GetMatchingAttribute());
 
-                    _currentBlocksAndHoles.AddHole(_holeInfo);
+                    //_currentBlocksAndHoles.AddHole(_holeInfo);
+
+                    _currentHoleProperties.AddObjectToList(_holeInfo);
                 }
             }
             catch (Exception e)
@@ -360,15 +362,15 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
             }
         }*/
 
-        if(_currentPhaseNumber == 0 && _currentBlocksAndHoles.GetHoles()[0].GetObjectPlaced())
+        if(_currentPhaseNumber == 0 && _currentHoleProperties.GetListOfObjects()[0].GetObjectPlaced())
         {
             Debug.Log("In the building game, we are entering phase 2.");
 
-            _currentHole = _currentBlocksAndHoles.GetHoles()[0];
+            _currentHole = _currentHoleProperties.GetListOfObjects()[0];
 
             _currentHole.GetRenderer().materials[0].SetFloat("_Alpha", 0.0f);
 
-            _currentHole = _currentBlocksAndHoles.GetHoles()[1];
+            _currentHole = _currentHoleProperties.GetListOfObjects()[1];
 
             _currentHole.gameObject.SetActive(true);
 
@@ -403,9 +405,9 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
             _completionMeter.SignalToUpdateUI();
         }
 
-        if(_currentPhaseNumber == 1 && _currentBlocksAndHoles.GetHoles()[1].GetObjectPlaced())
+        if(_currentPhaseNumber == 1 && _currentHoleProperties.GetListOfObjects()[1].GetObjectPlaced())
         {
-            _currentHole = _currentBlocksAndHoles.GetHoles()[1];
+            _currentHole = _currentHoleProperties.GetListOfObjects()[1];
 
             _currentHole.GetRenderer().materials[0].SetFloat("_Alpha", 0.0f);
 
@@ -454,7 +456,7 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
             {
                 if (_cap.GetComponent<DraggableClass>().GetTouchPhase() == TouchPhase.Ended && _cap.transform.localPosition.z >= 0.035f)
                 {
-                    _currentHole = _currentBlocksAndHoles.GetHoles()[2];
+                    _currentHole = _currentHoleProperties.GetListOfObjects()[2];
 
                     _currentHole.GetRenderer().materials[0].SetFloat("_Alpha", 0.7f);
 
@@ -503,7 +505,7 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
                     if (_correctAudioClip != null)
                     {
-                        AudioSource _as = _currentBlocksAndHoles.GetHoles()[0].GetAudioSource();
+                        AudioSource _as = _currentHoleProperties.GetListOfObjects()[0].GetAudioSource();
 
                         if(_as != null)
                         {
@@ -521,7 +523,7 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
                     if (_incorrectAudioClip != null)
                     {
-                        AudioSource _as = _currentBlocksAndHoles.GetHoles()[0].GetAudioSource();
+                        AudioSource _as = _currentHoleProperties.GetListOfObjects()[0].GetAudioSource();
 
                         if (_as != null)
                         {
@@ -534,7 +536,7 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
             }
         }
 
-        if(_currentPhaseNumber == 3 && _currentBlocksAndHoles.GetHoles()[2].GetObjectPlaced())
+        if(_currentPhaseNumber == 3 && _currentHoleProperties.GetListOfObjects()[2].GetObjectPlaced())
         {
             _instancedArrowAnimations[3].SetAnimateBoolean(false);
 
@@ -594,7 +596,9 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
         _instancedArrowAnimations.Clear();
 
-        _currentBlocksAndHoles.ClearLists();
+        _gameProperties.ClearGame();
+
+        _currentHoleProperties.ClearGame();
 
         if (_currentGame == this)
         {

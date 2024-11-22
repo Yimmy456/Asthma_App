@@ -27,11 +27,7 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
 
         _minMaxV3Values.MaintainValues();
 
-        //_completionMeter = _gameProperties.GetMeter();
-
         LookIntoCamera();
-
-        //RotateSpaceFunction();
 
         RotateHoles();
 
@@ -155,8 +151,6 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
 
             _gameProperties.AddObjectsAsGO(_newBlock);
 
-            _currentBlocksAndHoles.AddBlock(_newBlock.GetComponent<InhalerMatchingObjectScript>());
-
             _newBlock.GetComponent<DraggableClass>().SetCamera(_camera);
 
             _newBlock.GetComponent<DraggableClass>().GetBody().velocity = Vector3.zero;
@@ -204,8 +198,6 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
 
                         _holeInfo.GetTextOutline().effectColor = _c;
                     }
-
-                    _currentBlocksAndHoles.AddHole(_holeInfo);
                 }
             }
             catch (Exception e)
@@ -215,11 +207,6 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
         }
 
         AlignHolePositions();
-
-        if(_reverseDirectionForHoles)
-        {
-            _currentBlocksAndHoles.ReverseLists();
-        }
 
         _completionMeter.SetMaxValue(_gameProperties.GetListOfObjects().Count);
         
@@ -261,7 +248,9 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
 
         _floor.SetActive(false);
 
-        _currentBlocksAndHoles.ClearLists();
+        _gameProperties.ClearObjectLists();
+
+        _currentHoleProperties.ClearObjectLists();
 
         if(_currentGame == this)
         {
