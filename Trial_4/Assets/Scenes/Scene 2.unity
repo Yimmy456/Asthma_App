@@ -5167,18 +5167,13 @@ MonoBehaviour:
   _gameProperties:
     _listOfObjects: []
     _listOfObjectsAsGO: []
+  _currentHoleProperties:
+    _listOfObjects: []
+    _listOfObjectsAsGO: []
   _presetBlocksAndHoles:
   - rid: 4452223140269654040
   - rid: 4452223140269654041
   - rid: 4452223140269654042
-  _currentBlocksAndHoles:
-    _blockGOs: []
-    _holeGOs: []
-    _reverseLists: 0
-    _blocks: []
-    _holes: []
-    _selectedBlock: {fileID: 0}
-    _selectedHole: {fileID: 0}
   _floor: {fileID: 762438675}
   _spawningArea: {fileID: 837075716}
   _addedDistanceForHoles: 0
@@ -5186,21 +5181,23 @@ MonoBehaviour:
   _spawningSizeForBlocks: 300
   _spawningSizeForHoles: 3
   _spawningDistanceForBlocks: 2
-  _minMaxV3Values:
+  _spawningRangesForBlocks:
     _xRange:
-      _variable1: -3
-      _variable2: 3
+      _variable1: -5
+      _variable2: 5
     _yRange:
       _variable1: 5
       _variable2: 5
     _zRange:
-      _variable1: -3
-      _variable2: 3
+      _variable1: -5
+      _variable2: 5
   _reverseDirectionForHoles: 0
   _currentRotation: {fileID: 0}
   _draggingZOffset: -3.8
   _additionalLookingAngles: {x: 0, y: 0, z: 0}
   _spaceCamera: {fileID: 0}
+  _currentBlock: {fileID: 0}
+  _currentHole: {fileID: 0}
   _highlightingAnimationProperties:
     _animationSpeed: 0.01
     _withDeltaTime: 1
@@ -6941,6 +6938,9 @@ MonoBehaviour:
   _gameProperties:
     _listOfObjects: []
     _listOfObjectsAsGO: []
+  _currentHoleProperties:
+    _listOfObjects: []
+    _listOfObjectsAsGO: []
   _presetBlocksAndHoles:
   - rid: 4275215052147785877
   - rid: 4275215052147785875
@@ -6948,14 +6948,6 @@ MonoBehaviour:
   - rid: 4275215052147785878
   - rid: 4275215052147785879
   - rid: 4275215052147785874
-  _currentBlocksAndHoles:
-    _blockGOs: []
-    _holeGOs: []
-    _reverseLists: 0
-    _blocks: []
-    _holes: []
-    _selectedBlock: {fileID: 0}
-    _selectedHole: {fileID: 0}
   _floor: {fileID: 762438675}
   _spawningArea: {fileID: 837075716}
   _addedDistanceForHoles: 1
@@ -6963,7 +6955,7 @@ MonoBehaviour:
   _spawningSizeForBlocks: 2
   _spawningSizeForHoles: 2
   _spawningDistanceForBlocks: 1
-  _minMaxV3Values:
+  _spawningRangesForBlocks:
     _xRange:
       _variable1: -5
       _variable2: 5
@@ -6978,6 +6970,8 @@ MonoBehaviour:
   _draggingZOffset: -3.8
   _additionalLookingAngles: {x: 0, y: 90, z: 0}
   _spaceCamera: {fileID: 1330074157}
+  _currentBlock: {fileID: 0}
+  _currentHole: {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -21249,6 +21243,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 392666912}
+        m_TargetAssemblyTypeName: MainPlayerCanvasScript, Assembly-CSharp
+        m_MethodName: SetShowingInhalerPropertiesBoolean
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 392666907}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -31244,7 +31250,7 @@ GameObject:
   - component: {fileID: 1047295127}
   - component: {fileID: 1047295126}
   m_Layer: 5
-  m_Name: Inhaler Game (1)
+  m_Name: (Template Button)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31317,7 +31323,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 309082474}
         m_TargetAssemblyTypeName: InhalerMatchingGameScript, Assembly-CSharp
-        m_MethodName: StartGame
+        m_MethodName: IStartExperience
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -31329,7 +31335,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 392666912}
         m_TargetAssemblyTypeName: MainPlayerCanvasScript, Assembly-CSharp
-        m_MethodName: SetShowInhalerBoolean
+        m_MethodName: SetShowingInhalerPropertiesBoolean
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -34379,6 +34385,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 392666912}
+        m_TargetAssemblyTypeName: MainPlayerCanvasScript, Assembly-CSharp
+        m_MethodName: SetShowingInhalerPropertiesBoolean
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 716302322}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
@@ -49416,6 +49434,9 @@ MonoBehaviour:
   _gameProperties:
     _listOfObjects: []
     _listOfObjectsAsGO: []
+  _currentHoleProperties:
+    _listOfObjects: []
+    _listOfObjectsAsGO: []
   _presetBlocksAndHoles:
   - rid: 4968103879110557720
   - rid: 4968103902080663552
@@ -49443,14 +49464,6 @@ MonoBehaviour:
   - rid: 4968103902080663574
   - rid: 4968103902080663575
   - rid: 4968103902080663576
-  _currentBlocksAndHoles:
-    _blockGOs: []
-    _holeGOs: []
-    _reverseLists: 0
-    _blocks: []
-    _holes: []
-    _selectedBlock: {fileID: 0}
-    _selectedHole: {fileID: 0}
   _floor: {fileID: 762438675}
   _spawningArea: {fileID: 837075716}
   _addedDistanceForHoles: 0.4
@@ -49458,7 +49471,7 @@ MonoBehaviour:
   _spawningSizeForBlocks: 1
   _spawningSizeForHoles: 0.5
   _spawningDistanceForBlocks: 1
-  _minMaxV3Values:
+  _spawningRangesForBlocks:
     _xRange:
       _variable1: -5
       _variable2: 5
@@ -49473,6 +49486,8 @@ MonoBehaviour:
   _draggingZOffset: -1.8
   _additionalLookingAngles: {x: 0, y: 90, z: 0}
   _spaceCamera: {fileID: 1330074157}
+  _currentBlock: {fileID: 0}
+  _currentHole: {fileID: 0}
   _currentWord:
     _informationName: 
     _informationDesc: 
@@ -52249,7 +52264,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 392666912}
         m_TargetAssemblyTypeName: MainPlayerCanvasScript, Assembly-CSharp
-        m_MethodName: SetShowInhalerBoolean
+        m_MethodName: SetShowingInhalerPropertiesBoolean
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

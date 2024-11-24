@@ -411,9 +411,9 @@ public class ExhibitionCanvasScript : MonoBehaviour
 
         _audioSource.clip = null;
 
-        yield return new WaitForSeconds(5.0f);
+        //yield return new WaitForSeconds(5.0f);
 
-        _exhibition.ICompleteExperience();
+        //_exhibition.ICompleteExperience();
     }
 
     void ColorTitle(Color _input)

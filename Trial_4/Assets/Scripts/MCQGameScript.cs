@@ -40,13 +40,9 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
     // Update is called once per frame
     void Update()
     {
-        _completionMeter.UpdateUI();
-
-        //_completionMeter = _gameProperties.GetMeter();
-
-        if(_gameDone)
+        if(_currentGame == this)
         {
-            ICompleteExperience();
+            IUpdateExperience();
         }
     }
 
@@ -184,6 +180,16 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
         MCQManagerScript.GetInstance().GetSelectedQuestions().Clear();
 
         MoveBackDoctorSalem();
+    }
+
+    public override void IUpdateExperience()
+    {
+        _completionMeter.UpdateUI();
+
+        if (_gameDone)
+        {
+            ICompleteExperience();
+        }
     }
 
     public override void IStartExperience()

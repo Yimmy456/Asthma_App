@@ -108,7 +108,10 @@ public class ExhibitionScript : MonoBehaviour, ExperienceInterface, RewardingBad
     // Update is called once per frame
     void Update()
     {
-
+        if (_exhibitionOn && _currentGroup != null)
+        {
+            IUpdateExperience();
+        }
     }
 
     public MeterClass GetObjectComplete()
@@ -243,7 +246,7 @@ public class ExhibitionScript : MonoBehaviour, ExperienceInterface, RewardingBad
 
         _objectsComplete.SetMaxValue(_count);
 
-        _objectsComplete.SetValue(0);
+        _objectsComplete.SetValue(_currentGroup.GetGroupCompletionMeter().GetValue());
 
         _badgePreperation.SetBadgeName(_currentGroup.GetBadgeName());
 
@@ -385,6 +388,25 @@ public class ExhibitionScript : MonoBehaviour, ExperienceInterface, RewardingBad
     public void IResumeExperience()
     {
 
+    }
+
+    public void IUpdateExperience()
+    {
+        if(_currentGroup.GetGroupCompletionMeter().GetPercentage() == 100.0f && !_currentGroup.GetGroupComplete())
+        {
+            StartCoroutine(IWaitUntilCompletion());
+
+            _currentGroup.SetGroupComplete(true);
+        }
+    }
+
+    public IEnumerator IWaitUntilCompletion()
+    {
+        Debug.Log("Wait for 2 seconds until completion...");
+
+        yield return new WaitForSeconds(2.0f);
+
+        ICompleteExperience();
     }
 
     public void IStopExperience()
@@ -545,7 +567,7 @@ public class ExhibitionScript : MonoBehaviour, ExperienceInterface, RewardingBad
 
         if (_dialogues != null)
         {
-            if (_badge.GetBadgeCollected())
+            if (!_badge.GetBadgeCollected())
             {
                 _dialogues.PlayClip("New Badge Earned");
             }
@@ -554,6 +576,18 @@ public class ExhibitionScript : MonoBehaviour, ExperienceInterface, RewardingBad
                 _dialogues.PlayClip("Badge Already Earned");
             }
         }
+
+        if(_newBadgeText != null)
+        {
+            if (!_badge.GetBadgeCollected())
+            {
+                _newBadgeText.text = "Congratulations! You have earned a new badge! It is the " + @"""" + _badgePreperation.GetBadgeName() + @"""" + " badge!";
+            }
+            else
+            {
+                _newBadgeText.text = "Well Done! Although, you have already earned the " + @"""" + _badgePreperation.GetBadgeName() + @"""" + "badge.";
+            }
+        }    
 
         BadgesManagerScript.GetInstance().SetBadgeEarned(_badge);
 
@@ -624,14 +658,9 @@ public class ExhibitionScript : MonoBehaviour, ExperienceInterface, RewardingBad
             return;
         }
 
-        if(_currentGroup.GetGroupComplete() || _currentGroup.GetGroupCompletionMeter().GetPercentage() > 100.0f)
-        {
-            return;
-        }
-
         IRewardBadge();
 
-        _currentGroup.SetGroupComplete(true);
+        _canvas.gameObject.SetActive(false);
     }
 
     public void IChooseToRestartExperience()

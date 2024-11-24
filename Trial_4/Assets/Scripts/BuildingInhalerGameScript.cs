@@ -60,9 +60,7 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
     {
         if (_currentGame == this)
         {
-            UpdateStatus();
-
-            _completionMeter.UpdateUI();
+            IUpdateExperience();            
         }
     }
 
@@ -333,36 +331,9 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
         _capLocalPosition = _cap.transform.localPosition;
     }
 
-    void UpdateStatus()
+    public override void IUpdateExperience()
     {
-        MatchingGameHoleScript _currentHole;
-
-        //_currentBlocksAndHoles
-
-        /*if(DraggableManagerClass.GetInstance() != null && _currentBlocksAndHoles.GetSelectedHole() != null)
-        {
-            if(DraggableManagerClass.GetInstance().GetCurrentlyDraggedObject() != null)
-            {
-                MatchingGameBlockScript _block = DraggableManagerClass.GetInstance().GetCurrentlyDraggedObject().gameObject.GetComponent<MatchingGameBlockScript>();
-
-                bool _dragEnded = DraggableManagerClass.GetInstance().GetTouchPhase() == TouchPhase.Ended;
-
-                if(_block != null && _dragEnded)
-                {
-                    _currentHole = _currentBlocksAndHoles.GetSelectedHole();
-
-                    if(_currentHole != null)
-                    {
-                        if(_block.GetMatchedHole() != _currentHole)
-                        {
-
-                        }
-                    }
-                }
-            }
-        }*/
-
-        if(_currentPhaseNumber == 0 && _currentHoleProperties.GetListOfObjects()[0].GetObjectPlaced())
+        if (_currentPhaseNumber == 0 && _currentHoleProperties.GetListOfObjects()[0].GetObjectPlaced())
         {
             Debug.Log("In the building game, we are entering phase 2.");
 
@@ -378,7 +349,7 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
             _instancedArrowAnimations[0].SetAnimateBoolean(false);
 
-            if(_animationCoroutineArrow != null)
+            if (_animationCoroutineArrow != null)
             {
                 StopCoroutine(_animationCoroutineArrow);
             }
@@ -397,7 +368,7 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
             SetResponseText("Well Done!\n\n2. Now, find the medicine, and drag it on the shaded area above the neck.", new Color(0.0f, 1.0f, 0.0f, 1.0f), new Vector2(1.0f, -1.0f), new Color(0.0f, 0.5f, 0.0f, 0.5f));
 
-            if(_dialogues != null)
+            if (_dialogues != null)
             {
                 _dialogues.PlayClip("Dr. Salem Assembly Game Step 2");
             }
@@ -405,7 +376,7 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
             _completionMeter.SignalToUpdateUI();
         }
 
-        if(_currentPhaseNumber == 1 && _currentHoleProperties.GetListOfObjects()[1].GetObjectPlaced())
+        if (_currentPhaseNumber == 1 && _currentHoleProperties.GetListOfObjects()[1].GetObjectPlaced())
         {
             _currentHole = _currentHoleProperties.GetListOfObjects()[1];
 
@@ -450,7 +421,7 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
             }
         }
 
-        if(_currentPhaseNumber == 2 && _cap != null)
+        if (_currentPhaseNumber == 2 && _cap != null)
         {
             if (_cap.GetComponent<DraggableClass>() != null)
             {
@@ -466,7 +437,7 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
                     _highlightingAnimationProperties.SetAnimateBoolean(false);
 
-                    if(_animationCoroutineHighlight != null)
+                    if (_animationCoroutineHighlight != null)
                     {
                         StopCoroutine(_animationCoroutineHighlight);
                     }
@@ -507,7 +478,7 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
                     {
                         AudioSource _as = _currentHoleProperties.GetListOfObjects()[0].GetAudioSource();
 
-                        if(_as != null)
+                        if (_as != null)
                         {
                             _as.clip = _correctAudioClip;
 
@@ -517,7 +488,7 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
                     _completionMeter.SignalToUpdateUI();
                 }
-                else if(_cap.GetComponent<DraggableClass>().GetTouchPhase() == TouchPhase.Ended)
+                else if (_cap.GetComponent<DraggableClass>().GetTouchPhase() == TouchPhase.Ended)
                 {
                     _cap.transform.localPosition = _capLocalPosition;
 
@@ -536,7 +507,7 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
             }
         }
 
-        if(_currentPhaseNumber == 3 && _currentHoleProperties.GetListOfObjects()[2].GetObjectPlaced())
+        if (_currentPhaseNumber == 3 && _currentHoleProperties.GetListOfObjects()[2].GetObjectPlaced())
         {
             _instancedArrowAnimations[3].SetAnimateBoolean(false);
 
@@ -560,6 +531,8 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
             _currentInstancedArrowAnimation = null;
         }
+
+        _completionMeter.UpdateUI();
     }
 
     public override void IStopExperience()

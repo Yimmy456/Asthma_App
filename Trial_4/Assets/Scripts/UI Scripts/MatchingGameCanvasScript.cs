@@ -38,7 +38,7 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
     protected float _spawningDistanceForBlocks = 5.0f;
 
     [SerializeField]
-    protected MinMaxV3ValuesClass _minMaxV3Values;
+    protected MinMaxV3ValuesClass _spawningRangesForBlocks;
 
     [SerializeField]
     protected bool _reverseDirectionForHoles;
@@ -78,7 +78,7 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
     {
         //_completionMeter = _gameProperties.GetMeter();
 
-        _minMaxV3Values.MaintainValues();
+        _spawningRangesForBlocks.MaintainValues();
     }
 
     public GamePropertiesClass<MatchingGameHoleScript> GetCurrentHoleProperties()
@@ -148,7 +148,7 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
 
         while (!_spotFound)
         {
-            _currentPos = _minMaxV3Values.GetRandomVector3();
+            _currentPos = _spawningRangesForBlocks.GetRandomVector3();
 
             for (int _i = 0; _i < _posListInput.Count && !_rejectSpot; _i++)
             {

@@ -21,7 +21,7 @@ public class GameGenericMBScript<T> : GameMBScript
             return;
         }
 
-        Debug.Log("We are preparing your selected game...");
+        //Debug.Log("We are preparing your selected game...");
 
         //GameCanvasScript _gameCanvas = _gameCanvas.gameObject.GetComponent<GameCanvasScript>();
 

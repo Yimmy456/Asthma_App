@@ -35,7 +35,9 @@ public interface ExperienceInterface
     public abstract void IStartExperience(string _input);
     public abstract void IStopExperience();
     public abstract void ICompleteExperience();
+    public abstract void IUpdateExperience();
     public abstract void IChooseToQuitExperience();
     public abstract void IChooseToRestartExperience();
     public abstract void IResumeExperience();
+    public abstract IEnumerator IWaitUntilCompletion();
 }

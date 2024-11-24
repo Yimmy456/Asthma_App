@@ -18,36 +18,12 @@ public class LetterGameScript : MatchingGameCanvasScript
     [SerializeField]
     DefinitionClass _currentWord;
 
-    LetterHoleScript _currentHole;
-
     private void Update()
     {
-        if(_progressUpdated && !_progressUpdatedSwitchOn)
+        if (_currentGame == this)
         {
-            _progressUpdateCoroutine = StartCoroutine(ProgressUpdateCoroutineFunction());
-
-            Debug.Log("Switch is triggered as on.");
-
-            _progressUpdatedSwitchOn = true;
+            IUpdateExperience();
         }
-
-        //_completionMeter = _gameProperties.GetMeter();
-
-        LookIntoCamera();
-
-        //RotateSpaceFunction();
-
-        if(_completionMeter.GetPercentage() == 100.0f && !_gameDone)
-        {
-            ICompleteExperience();
-        }
-
-        _completionMeter.UpdateUI();
-    }
-
-    public LetterHoleScript GetCurrentHole()
-    {
-        return _currentHole;
     }
 
 
@@ -173,14 +149,26 @@ public class LetterGameScript : MatchingGameCanvasScript
 
     public  override void ICompleteExperience()
     {
-        if (!_gameDone)
-        {
-            //StopGame();
+        //StartCoroutine(IWaitUntilCompletion());
+        _floor.SetActive(false);
 
-            _gameDone = true;
-        }
+        _informationCanvas.gameObject.SetActive(true);
 
-        StartCoroutine(WaitUntilCompletion());
+        _gameProperties.ClearObjectLists();
+
+        _currentHoleProperties.ClearObjectLists();
+
+        _informationCanvas.SetText(SetInfoText());
+
+        Button _nextB = _informationCanvas.GetNextButton();
+
+        _gameSpace.transform.localRotation = Quaternion.Euler(0.0f, -90.0f, 0.0f);
+
+        _nextB.onClick.AddListener(delegate { base.ICompleteExperience(); _informationCanvas.gameObject.SetActive(false); _nextB.onClick.RemoveAllListeners(); });
+
+        _dialogues.PlayClip("Dr. Salem Letter Matching Game Word 'Asthma' Winning");
+
+        _gameCanvas.gameObject.SetActive(false);
     }
 
     void CreateWord(DefinitionClass _input)
@@ -298,7 +286,9 @@ public class LetterGameScript : MatchingGameCanvasScript
 
             _newLetterHoleGO.transform.localEulerAngles = _facingDirection;
 
-            //_currentBlocksAndHoles.IncreaseTotalBlocksAndHoles();
+            _currentHoleProperties.AddObjectToList(_newLetterHole);
+
+            _currentHoleProperties.AddObjectsAsGO(_newLetterHoleGO);
 
             _letterFound = false;
         }
@@ -323,35 +313,6 @@ public class LetterGameScript : MatchingGameCanvasScript
         gameObject.SetActive(false);
     }
 
-    IEnumerator WaitUntilCompletion()
-    {
-        float _seconds = _dialogues.GetAudioSource().clip.length;
-
-        yield return new WaitForSeconds(_seconds);
-
-        _dialogues.StopCurrentDialogue();
-
-        yield return new WaitForSeconds(1.0f);
-
-        _floor.SetActive(false);
-
-        _informationCanvas.gameObject.SetActive(true);
-
-        _gameProperties.ClearObjectLists();
-
-        _informationCanvas.SetText(SetInfoText());
-
-        Button _nextB = _informationCanvas.GetNextButton();
-
-        _gameSpace.transform.localRotation = Quaternion.Euler(0.0f, -90.0f, 0.0f);
-
-        _nextB.onClick.AddListener(delegate { base.ICompleteExperience(); _informationCanvas.gameObject.SetActive(false); _nextB.onClick.RemoveAllListeners(); });
-
-        _dialogues.PlayClip("Dr. Salem Letter Matching Game Word 'Asthma' Winning");
-
-        _gameCanvas.gameObject.SetActive(false);
-    }
-
     void UseAlternateDialogue(int _indexInput, string _wordInput, LetterHoleScript _holeInput)
     {
         if(_holeInput == null)
@@ -366,5 +327,79 @@ public class LetterGameScript : MatchingGameCanvasScript
                 _holeInput.SetCorrectMatchDialogue("Matching Letter Game 'A' 2");
             }
         }
+    }
+
+    public override void IUpdateExperience()
+    {
+        if (_progressUpdated && !_progressUpdatedSwitchOn)
+        {
+            _progressUpdateCoroutine = StartCoroutine(ProgressUpdateCoroutineFunction());
+
+            Debug.Log("Switch is triggered as on.");
+
+            _progressUpdatedSwitchOn = true;
+        }
+
+        //_completionMeter = _gameProperties.GetMeter();
+
+        LookIntoCamera();
+
+        //RotateSpaceFunction();
+
+        _completionMeter.UpdateUI();
+
+        /*if (_completionMeter.GetPercentage() == 100.0f && !_gameDone)
+        {
+            _gameDone = true;
+
+            ICompleteExperience();
+        }*/
+
+        if(_completionMeter.GetPercentage() == 100.0f && !_waitToCompleteSignal)
+        {
+            StartCoroutine(IWaitUntilCompletion());
+
+            _waitToCompleteSignal = true;
+        }
+    }
+
+    public override IEnumerator IWaitUntilCompletion()
+    {
+        if(_dialogues == null)
+        {
+            Debug.LogError("There is no dialogue script assigned.");
+
+            yield break;
+        }
+
+        if(_dialogues.GetAudioSource() == null)
+        {
+            Debug.LogError("There is no audio source assigned.");
+
+            yield break;
+        }
+
+        AudioClip _c = _dialogues.GetAudioSource().clip;
+
+        if (_c == null)
+        {
+            Debug.LogError("There is no audio clip being played.");
+
+            yield break;
+        }
+
+        float _seconds = _c.length;
+
+        Debug.Log("We are waiting for the dialogue to be complete before the conclusion...");
+
+        yield return new WaitForSeconds(_seconds);
+
+        _dialogues.GetAudioSource().Stop();
+
+        yield return new WaitForSeconds(2.0f);
+
+        Debug.Log("YAY! We are now concluding the game!");
+
+        ICompleteExperience();
     }
 }

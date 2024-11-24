@@ -73,6 +73,8 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
 
     protected Coroutine _progressUpdateCoroutine;
 
+    protected bool _waitToCompleteSignal = false;
+
     public string GetGameName()
     {
         return _gameName;
@@ -169,6 +171,11 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
         return _gameDone;
     }
 
+    public bool GetWaitToCompleteSignal()
+    {
+        return _waitToCompleteSignal;
+    }
+
     protected virtual string SetInfoText()
     {
         return "";
@@ -255,6 +262,11 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
     }
 
     //Functions from "ExperienceInterface"
+
+    public virtual void IUpdateExperience()
+    {
+
+    }
 
     public virtual void ICompleteExperience()
     {
@@ -375,6 +387,8 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
 
         _gamePaused = false;
 
+        _waitToCompleteSignal = false;
+
         _mainCanvases.SetCanvasesOn(false);
 
         _mainCanvases.GetDoctorCanvas().gameObject.SetActive(true);
@@ -387,6 +401,8 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
         {
             _gameIndicatorCanvas.gameObject.SetActive(PrepareGameIndicator());
         }
+
+        GetAndSetRestartAndQuitButtons();
     }
 
     public virtual void IStartExperience(int _input) { if (_currentGame != null) { return; } IStartExperience(); }
@@ -475,9 +491,16 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
 
         _completionMeter.UpdateUI();
 
+        _waitToCompleteSignal = false;
+
         //SetResponseTextProperties();
 
         ClearResponseText();
+
+        if (_gameCanvas.GetQuitButton() != null)
+        {
+            _gameCanvas.GetQuitButton().onClick.RemoveAllListeners();
+        }
 
         if (_mainCanvases.GetDoctorCanvas() != null)
         {
@@ -577,6 +600,11 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
         _yesOrNoCanvas.GetYesButton().onClick.RemoveAllListeners();
 
         _yesOrNoCanvas.GetNoButton().onClick.RemoveAllListeners();
+    }
+
+    public virtual IEnumerator IWaitUntilCompletion()
+    {
+        yield return null;
     }
 
     //Functions from "YesOrNoInterface"
@@ -828,5 +856,18 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
         }
 
         return _boolS.GetBooleanValue();
+    }
+
+    void GetAndSetRestartAndQuitButtons()
+    {
+        if(_gameCanvas == null)
+        {
+            return;
+        }
+
+        if(_gameCanvas.GetQuitButton() != null)
+        {
+            _gameCanvas.GetQuitButton().onClick.AddListener(delegate { IChooseToQuitExperience(); });
+        }
     }
 }

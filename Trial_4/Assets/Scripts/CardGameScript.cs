@@ -97,20 +97,9 @@ public class CardGameScript : GameGenericMBScript<CardScript>
     // Update is called once per frame
     void Update()
     {
-        if(_evaluateCards != EvaluateCardsEnum.None && !_evalInProcess)
+        if(_currentGame == this)
         {
-            _evalCoroutine = StartCoroutine(MatchCardsFunction());
-
-            _evalInProcess = true;
-        }
-
-        //_completionMeter = _completionMeter.;
-
-        _completionMeter.UpdateUI();
-
-        if(_completionMeter.GetPercentage() == 100.0f && !_gameDone && GetResponseText().text == "")
-        {
-            ICompleteExperience();
+            IUpdateExperience();
         }
     }
 
@@ -249,6 +238,37 @@ public class CardGameScript : GameGenericMBScript<CardScript>
         SetBadge("Cards' Badge");
     }
 
+    public override void IUpdateExperience()
+    {
+        if (_evaluateCards != EvaluateCardsEnum.None && !_evalInProcess)
+        {
+            _evalCoroutine = StartCoroutine(MatchCardsFunction());
+
+            _evalInProcess = true;
+        }
+
+        //_completionMeter = _completionMeter.;
+
+        _completionMeter.UpdateUI();
+
+        if (_completionMeter.GetPercentage() == 100.0f && !_waitToCompleteSignal)
+        {
+            StartCoroutine(IWaitUntilCompletion());
+
+            _waitToCompleteSignal = true;
+        }
+    }
+
+    public override IEnumerator IWaitUntilCompletion()
+    {
+        while(GetResponseText().text != "")
+        {
+            yield return null;
+        }
+
+        ICompleteExperience();
+    }
+
     void ReorganizeObjects()
     {
         List<GameObject> _currentObjects = new List<GameObject>(_gameProperties.GetListOfObjectsAsGO());
@@ -308,11 +328,6 @@ public class CardGameScript : GameGenericMBScript<CardScript>
 
     public CardScript SelectedCard2()
     { return _selectedCard2; }
-
-    public Text GetResponseText()
-    {
-        return GetResponseText();
-    }
 
     public AudioSource GetAudioSource()
     {

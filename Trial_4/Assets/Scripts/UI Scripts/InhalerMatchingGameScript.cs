@@ -23,17 +23,9 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
     // Update is called once per frame
     void Update()
     {
-        _completionMeter.UpdateUI();
-
-        _minMaxV3Values.MaintainValues();
-
-        LookIntoCamera();
-
-        RotateHoles();
-
-        if(_completionMeter.GetPercentage() == 100.0f && !_gameDone)
+        if(_currentGame == this)
         {
-            ICompleteExperience();
+            IUpdateExperience();
         }
     }
 
@@ -169,12 +161,13 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
 
             _newHole.transform.localScale = (Vector3.one * _spawningSizeForHoles);
 
+            _currentHoleProperties.AddObjectsAsGO(_newHole);
+
             _currentlySelectedPositionForHoles.z = _currentlySelectedPositionForHoles.z + _addedDistanceForHoles;
 
             _newHole.transform.localRotation = Quaternion.Euler(_facingDirection);
 
             InhalerMatchingObjectHoleScript _holeInfo = _newHole.GetComponent<InhalerMatchingObjectHoleScript>();
-
 
             try
             {
@@ -189,6 +182,8 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
                     _holeInfo.SetCamera(_camera);
 
                     _holeInfo.SetHoleName(_givenName);
+
+                    _currentHoleProperties.AddObjectToList(_holeInfo);
 
                     if (_holeInfo.GetNameText() != null && _currentInfo != null)
                     {
@@ -215,6 +210,22 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
         if(_currentRotation != null)
         {
             _currentRotation.GetComponent<RotationScript>().SetDoAction(true);
+        }
+    }
+
+    public override void IUpdateExperience()
+    {
+        _completionMeter.UpdateUI();
+
+        _spawningRangesForBlocks.MaintainValues();
+
+        LookIntoCamera();
+
+        RotateHoles();
+
+        if (_completionMeter.GetPercentage() == 100.0f && !_gameDone)
+        {
+            ICompleteExperience();
         }
     }
 
