@@ -285,9 +285,7 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
 
         if (_currentQuestionIndex >= _numberOfQuestions)
         {
-            _gameDone = true;
-
-            //_currentQuestionIndex = -1;
+            ICompleteExperience();
 
             return;
         }

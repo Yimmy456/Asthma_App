@@ -315,6 +315,8 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
 
         Button _backB = _newBadgeCanvas.gameObject.GetComponent<RectTransform>().Find("Back Button").gameObject.GetComponent<Button>();
 
+        ClearResponseText();
+
         if (_gameIndicatorCanvas != null)
         {
             if (_gameIndicatorCanvas.gameObject.activeSelf)
@@ -399,7 +401,14 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
 
         if(_gameIndicatorCanvas != null && _camera != null)
         {
-            _gameIndicatorCanvas.gameObject.SetActive(PrepareGameIndicator());
+            bool _choice = PrepareGameIndicator();
+
+            _gameIndicatorCanvas.gameObject.SetActive(_choice);
+
+            if(_choice)
+            {
+                _gameIndicatorCanvas.SetIndicatorColor(_gameColor);
+            }
         }
 
         GetAndSetRestartAndQuitButtons();
@@ -425,6 +434,11 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
         if (_dialogues != null)
         {
             _dialogues.StopCurrentDialogue();
+        }
+
+        if (_gameIndicatorCanvas != null)
+        {
+            _gameIndicatorCanvas.gameObject.SetActive(false);
         }
 
         _mainCanvases.SetCanvasesOn(false);
@@ -561,6 +575,11 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
             _dialogues.StopCurrentDialogue();
         }
 
+        if(_gameIndicatorCanvas != null)
+        {
+            _gameIndicatorCanvas.gameObject.SetActive(false);
+        }
+
         _mainCanvases.SetCanvasesOn(false);
 
         _gameCanvas.gameObject.SetActive(false);
@@ -590,9 +609,11 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
 
         _yesOrNoCanvas.gameObject.SetActive(false);
 
-        if (_gameIndicatorCanvas != null)
+        _mainCanvases.GetDoctorCanvas().gameObject.SetActive(true);
+
+        if (_gameIndicatorCanvas != null && _camera != null)
         {
-            _gameIndicatorCanvas.gameObject.SetActive(true);
+            _gameIndicatorCanvas.gameObject.SetActive(PrepareGameIndicator());
         }
 
         _gamePaused = false;

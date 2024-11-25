@@ -63,6 +63,8 @@ public class MainPlayerCanvasScript : MonoBehaviour
         }
 
         _shakingInhalerProperties.SetShowingInhalerBoolean(false);
+
+        _shakingInhalerProperties.SetInitalInhalerRotation();
     }
 
     // Update is called once per frame

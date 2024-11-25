@@ -157,8 +157,6 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
             _gameProperties.AddObjectsAsGO(_newBlock);
 
-            //_currentBlocksAndHoles.AddBlock(_newBlock.GetComponent<InhalerMatchingObjectScript>());
-
             _newBlock.GetComponent<DraggableClass>().SetCamera(_camera);
 
             _newBlock.GetComponent<DraggableClass>().GetBody().velocity = Vector3.zero;
@@ -186,6 +184,8 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
             InhalerMatchingObjectHoleScript _holeInfo = _newHole.GetComponent<InhalerMatchingObjectHoleScript>();
 
             Destroy(_newHole.transform.Find("Arrow Location").gameObject);
+
+            _currentHoleProperties.AddObjectsAsGO(_newHole);
 
             if(_i == 0)
             {
@@ -329,6 +329,8 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
         }
 
         _capLocalPosition = _cap.transform.localPosition;
+
+        _cap.SetActive(true);
     }
 
     public override void IUpdateExperience()
@@ -444,7 +446,9 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
                     _cap.layer = 0;
 
-                    Destroy(_cap);
+                    //Destroy(_cap);
+
+                    _cap.SetActive(false);
 
                     _instancedArrowAnimations[2].SetAnimateBoolean(false);
 
@@ -525,7 +529,7 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
                 _dialogues.PlayClip("Dr. Salem Assembly Game Final");
             }
 
-            StartCoroutine(FinalStep());
+            StartCoroutine(IWaitUntilCompletion());
 
             _currentPhaseNumber = -1;
 
@@ -544,6 +548,11 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
             _currentInstancedArrowAnimation.SetAnimateBoolean(false);
 
             _currentInstancedArrowAnimation = null;
+        }
+
+        if(_cap != null)
+        {
+            _cap.transform.localPosition = _capLocalPosition;
         }
 
         _currentPhaseNumber = 0;
@@ -569,9 +578,9 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
         _instancedArrowAnimations.Clear();
 
-        _gameProperties.ClearGame();
+        _gameProperties.ClearObjectLists();
 
-        _currentHoleProperties.ClearGame();
+        _currentHoleProperties.ClearObjectLists();
 
         if (_currentGame == this)
         {
@@ -585,10 +594,10 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
         {
             _yesOrNoCanvas.GetNoButton().onClick.AddListener(delegate { _currentInstancedArrowAnimation.SetPauseAnimation(false); });
 
-            _yesOrNoCanvas.GetNoButton().onClick.AddListener(delegate { _informationCanvas.gameObject.SetActive(true); });
-
             _currentInstancedArrowAnimation.SetPauseAnimation(true);
         }
+
+        _yesOrNoCanvas.GetNoButton().onClick.AddListener(delegate { IResumeExperience(); });
 
         _yesOrNoCanvas.GetYesButton().onClick.AddListener(delegate { IStopExperience(); });
 
@@ -619,13 +628,15 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
         _animationCoroutineHighlight = StartCoroutine(_highlightingAnimationProperties.Animate());
     }
 
-    IEnumerator FinalStep()
+    public override IEnumerator IWaitUntilCompletion()
     {
         SetResponseText("Excellent! We now have a complete inhaler!", new Color(0.0f, 1.0f, 0.0f, 1.0f), new Vector2(1.0f, -1.0f), new Color(0.0f, 0.5f, 0.0f, 0.5f));
 
         yield return new WaitForSeconds(5.0f);
 
         base.ICompleteExperience();
+
+        _currentHoleProperties.ClearObjectLists();
 
         _currentPhaseNumber = 0;
     }

@@ -1779,7 +1779,21 @@ public class InhalerPropertiesClass
     [SerializeField]
     UITextPropertiesClass _textPropertiesToHideInhaler;
 
+    Quaternion _initalRotation;
+
     bool _showingInhalerBoolean = false;
+
+    bool _setInhalerRotation = false;
+
+    public void SetInitalInhalerRotation()
+    {
+        if(!_setInhalerRotation && _inhalerGO != null)
+        {
+            _initalRotation = _inhalerGO.transform.rotation;
+
+            _setInhalerRotation = true;
+        }
+    }
 
     public GameObject GetInhalerGameObject()
     {
@@ -1851,10 +1865,12 @@ public class InhalerPropertiesClass
 
         _selectedUItextProperties.SetTextProperties("", false);
 
-        //4. Returning the GO to the initial position.
+        //4. Returning the GO to the initial position and rotation if disabled.
         if(!_showingInhalerBoolean)
         {
             _inhalerGO.transform.localPosition = _inhalerInitialPosition;
+
+            _inhalerGO.transform.rotation = _initalRotation;
         }
     }
 }
