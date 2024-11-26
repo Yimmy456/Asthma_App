@@ -235,10 +235,11 @@ MonoBehaviour:
   _draggableOn: 1
   _body: {fileID: 1234296815325961420}
   _camera: {fileID: 0}
-  _applyGravity: 0
-  _zOffset: 0
+  _applyGravity: 1
   _maintainZDistance: 0
-  _2DOffset: {x: 0, y: 0}
+  _offset: {x: 0, y: 0, z: 0}
+  _lookingDirection: {x: -1, y: -1, z: -1}
+  _lookingAxis: 0
   _draggableType: 2
 --- !u!114 &1234296815325961423
 MonoBehaviour:

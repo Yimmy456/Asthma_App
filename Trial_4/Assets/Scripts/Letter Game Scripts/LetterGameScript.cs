@@ -342,7 +342,7 @@ public class LetterGameScript : MatchingGameCanvasScript
 
         //_completionMeter = _gameProperties.GetMeter();
 
-        LookIntoCamera();
+        base.LookIntoCamera();
 
         //RotateSpaceFunction();
 

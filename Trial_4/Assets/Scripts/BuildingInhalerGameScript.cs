@@ -29,6 +29,8 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
     ArrowAnimationClass _currentInstancedArrowAnimation;
 
+    Quaternion _gameSpaceInitialRotation;
+
     [ContextMenu("Add Components.")]
     protected override void AddToBnHList()
     {
@@ -256,6 +258,11 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
             _go.transform.rotation = _currentAnim.GetArrowContainer().transform.rotation;
 
+            if (_go != null)
+            {
+                _go.transform.parent = _gameSpace.transform;
+            }
+
             _newAnim.SetArrowContainer(_go);
 
             _arrow3dObject = _go.transform.Find("Arrow 3D Object").gameObject;
@@ -266,7 +273,7 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
             _instancedArrowAnimations.Add(_newAnim);
 
-            _go.transform.parent = _mainContainer.transform;
+            //_go.transform.parent = _mainContainer.transform;
 
             _arrow3dObject.transform.localScale = Vector3.one * _arrowSize;
 
@@ -294,6 +301,8 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
         _animationCoroutineArrow = StartCoroutine(_instancedArrowAnimations[0].Animate());
 
         SetResponseText("So, you want to help Fasty assemble the inhaler? Very well! Let's get started, my friend!\n\n1. Find the neck and place it on the shaded area which is pointed by the green arrow.", new Color(0.0f, 1.0f, 0.0f, 1.0f), new Vector2(1.0f, -1.0f), new Color(0.0f, 0.5f, 0.0f, 0.5f));
+
+        _gameSpaceInitialRotation = _gameSpace.transform.rotation;
 
         _responseText.fontSize = 50;
     }
@@ -536,6 +545,8 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
             _currentInstancedArrowAnimation = null;
         }
 
+        LookIntoCamera();
+
         _completionMeter.UpdateUI();
     }
 
@@ -554,6 +565,8 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
         {
             _cap.transform.localPosition = _capLocalPosition;
         }
+
+        _gameSpace.transform.rotation = _gameSpaceInitialRotation;
 
         _currentPhaseNumber = 0;
 
@@ -639,5 +652,40 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
         _currentHoleProperties.ClearObjectLists();
 
         _currentPhaseNumber = 0;
+    }
+
+    protected override void LookIntoCamera()
+    {
+        if (_gameSpace == null || _camera == null || _currentGame == null)
+        {
+            return;
+        }
+
+        if (_currentGame != this)
+        {
+            return;
+        }
+
+        var _lookPosCam = _camera.gameObject.transform.position - _gameSpace.transform.position;
+
+        _lookPosCam.y = 0.0f;
+
+        var _rot = Quaternion.LookRotation(_lookPosCam);
+
+        _rot = _rot * Quaternion.Euler(_additionalLookingAngles);
+
+        bool _notHolding = true;
+
+        if (DraggableManagerClass.GetInstance() != null)
+        {
+            _notHolding = !DraggableManagerClass.GetInstance().GetDraggingSomething();
+        }
+
+        if (_notHolding)
+        {
+            //_gameSpace.transform.rotation = Quaternion.Slerp(_gameSpace.transform.rotation, _rot, Time.deltaTime);
+
+            _gameSpace.transform.rotation = _rot;
+        }
     }
 }

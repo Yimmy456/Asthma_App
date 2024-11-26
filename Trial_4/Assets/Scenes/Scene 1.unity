@@ -36984,7 +36984,7 @@ MonoBehaviour:
   _reverseDirectionForHoles: 0
   _currentRotation: {fileID: 0}
   _draggingZOffset: -3.8
-  _additionalLookingAngles: {x: 0, y: 0, z: 0}
+  _additionalLookingAngles: {x: 0, y: 90, z: 0}
   _spaceCamera: {fileID: 0}
   _currentBlock: {fileID: 0}
   _currentHole: {fileID: 0}

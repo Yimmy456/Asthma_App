@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Number Highlighting Material
+  m_Name: Number Highlighting Material 1
   m_Shader: {fileID: -6465566751694194690, guid: eb58f08921183044cbfb430e3086b85d, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -135,7 +135,7 @@ Material:
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _OpaqueCullMode: 2
-    - _Outline_Thickness: 0.02
+    - _Outline_Thickness: 0.005
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0

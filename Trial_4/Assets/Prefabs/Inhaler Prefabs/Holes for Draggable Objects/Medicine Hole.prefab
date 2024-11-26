@@ -5311,6 +5311,10 @@ MonoBehaviour:
   _audioSource: {fileID: 7954945815584176416}
   _localPositionAfterPlacement: {x: 0, y: 0, z: 0}
   _talkingSeconds: 5
+  _drSalemClip: {fileID: 0}
+  _dialogues: {fileID: 0}
+  _correctMatchDialogue: 
+  _incorrectMatchDialogue: Matching Game Incorrect
   _textCanvas: {fileID: 8479175938098358177}
   _nameText: {fileID: 8479175938788858591}
   _textOutline: {fileID: 8479175938788858589}

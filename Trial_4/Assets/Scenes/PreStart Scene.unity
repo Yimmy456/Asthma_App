@@ -518,6 +518,8 @@ MonoBehaviour:
       m_Mode: 0
       m_NumColorKeys: 3
       m_NumAlphaKeys: 2
+    _countText: {fileID: 0}
+    _percentageText: {fileID: 0}
 --- !u!4 &81654952
 Transform:
   m_ObjectHideFlags: 0
@@ -914,6 +916,8 @@ MonoBehaviour:
       m_Mode: 0
       m_NumColorKeys: 3
       m_NumAlphaKeys: 2
+    _countText: {fileID: 0}
+    _percentageText: {fileID: 0}
 --- !u!1 &545774295
 GameObject:
   m_ObjectHideFlags: 0

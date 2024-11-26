@@ -50,7 +50,7 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
     protected float _draggingZOffset = -3.8f;
 
     [SerializeField]
-    Vector3 _additionalLookingAngles;
+    protected Vector3 _additionalLookingAngles;
 
     [SerializeField]
     Camera _spaceCamera;
@@ -209,7 +209,7 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
         }
     }
 
-    protected void LookIntoCamera()
+    protected virtual void LookIntoCamera()
     {
         if(_gameSpace == null || _camera == null || _currentGame == null)
         {

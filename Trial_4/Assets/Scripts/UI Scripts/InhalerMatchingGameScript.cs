@@ -219,13 +219,15 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
 
         _spawningRangesForBlocks.MaintainValues();
 
-        LookIntoCamera();
+        base.LookIntoCamera();
 
         RotateHoles();
 
-        if (_completionMeter.GetPercentage() == 100.0f && !_gameDone)
+        if (_completionMeter.GetPercentage() == 100.0f && !_waitToCompleteSignal)
         {
-            ICompleteExperience();
+            StartCoroutine(IWaitUntilCompletion());
+
+            _waitToCompleteSignal = true;
         }
     }
 
@@ -299,5 +301,18 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
         _rotationProperties.SetAxis(Vector3.up);
 
         _rotationProperties.SetConstant(100.0f);
+    }
+
+    public override IEnumerator IWaitUntilCompletion()
+    {
+
+        while(_dialogues.GetOverallTalkingStatus() == TalkingStatusEnum.Talking)
+        {
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(2.0f);
+
+        ICompleteExperience();
     }
 }

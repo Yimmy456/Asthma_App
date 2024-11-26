@@ -54,7 +54,7 @@ MonoBehaviour:
   m_Active: 1
   settings:
     passTag: RenderObjects
-    Event: 450
+    Event: 1000
     filterSettings:
       RenderQueueType: 1
       LayerMask:
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Active: 1
   settings:
     passTag: RenderObjects
-    Event: 450
+    Event: 1000
     filterSettings:
       RenderQueueType: 0
       LayerMask:
@@ -152,7 +152,7 @@ MonoBehaviour:
         serializedVersion: 2
         m_Bits: 1024
       PassNames: []
-    overrideMaterial: {fileID: 2100000, guid: dd1f6107f6105dc4992ab65f771faa38, type: 2}
+    overrideMaterial: {fileID: 2100000, guid: 99ef895ea566940479b9f437c22d1a49, type: 2}
     overrideMaterialPassIndex: 0
     overrideDepthState: 0
     depthCompareFunction: 4
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Active: 1
   settings:
     passTag: RenderObjects
-    Event: 500
+    Event: 400
     filterSettings:
       RenderQueueType: 0
       LayerMask:
@@ -570,7 +570,7 @@ MonoBehaviour:
         serializedVersion: 2
         m_Bits: 1024
       PassNames: []
-    overrideMaterial: {fileID: 2100000, guid: dd1f6107f6105dc4992ab65f771faa38, type: 2}
+    overrideMaterial: {fileID: 2100000, guid: 99ef895ea566940479b9f437c22d1a49, type: 2}
     overrideMaterialPassIndex: 0
     overrideDepthState: 0
     depthCompareFunction: 4
