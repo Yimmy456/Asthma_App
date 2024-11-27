@@ -26374,7 +26374,7 @@ MonoBehaviour:
   _destroyAfter: 35
   _minPos: {x: 6000, y: 1100, z: -1000}
   _maxPos: {x: 8000, y: 1100, z: -500}
-  _initialRotation: {x: 45, y: 0, z: 0}
+  _initialRotation: {x: 45, y: 90, z: 0}
   _parent: {fileID: 1876913524}
 --- !u!4 &1031019085
 Transform:

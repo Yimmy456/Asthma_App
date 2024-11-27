@@ -185,6 +185,11 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
 
                     _currentHoleProperties.AddObjectToList(_holeInfo);
 
+                    if (_currentPreset.GetGameBlockHole().GetCorrectMatchDialogue() != "")
+                    {
+                        _holeInfo.SetCorrectMatchDialogue(_currentPreset.GetGameBlockHole().GetCorrectMatchDialogue());
+                    }
+
                     if (_holeInfo.GetNameText() != null && _currentInfo != null)
                     {
                         _holeInfo.GetNameText().text = _currentInfo.GetObjectName();
