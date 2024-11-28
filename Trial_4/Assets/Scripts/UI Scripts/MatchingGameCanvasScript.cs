@@ -180,8 +180,18 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
 
     }
 
+    public override void IStopExperience()
+    {
+        foreach(MatchingBlockAndHoleClass _cl in _presetBlocksAndHoles)
+        {
+            _cl.ResetIndex();
+        }
 
-    
+        base.IStopExperience();
+    }
+
+
+
     protected void AlignHolePositions()
     {
         float _pos = (_currentHoleProperties.GetListOfObjectsAsGO().Count + _addedSpace) * _addedDistanceForHoles;

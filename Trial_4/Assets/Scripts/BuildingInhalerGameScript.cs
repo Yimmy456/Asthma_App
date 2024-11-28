@@ -217,6 +217,8 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
                     //_currentBlocksAndHoles.AddHole(_holeInfo);
 
                     _currentHoleProperties.AddObjectToList(_holeInfo);
+
+                    _holeInfo.SetCorrectMatchDialogue("");
                 }
             }
             catch (Exception e)
@@ -303,6 +305,11 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
         SetResponseText("So, you want to help Fasty assemble the inhaler? Very well! Let's get started, my friend!\n\n1. Find the neck and place it on the shaded area which is pointed by the green arrow.", new Color(0.0f, 1.0f, 0.0f, 1.0f), new Vector2(1.0f, -1.0f), new Color(0.0f, 0.5f, 0.0f, 0.5f));
 
         _gameSpaceInitialRotation = _gameSpace.transform.rotation;
+
+        if (_dialogues != null)
+        {
+            _dialogues.PlayClip("Dr. Salem Assembly Game Step 1");
+        }
 
         _responseText.fontSize = 50;
     }

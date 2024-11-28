@@ -69,7 +69,7 @@ MonoBehaviour:
   _talkingSeconds: 5
   _drSalemClip: {fileID: 0}
   _dialogues: {fileID: 0}
-  _correctMatchDialogue: 
+  _correctMatchDialogue: Matching Letter Game 'M'
   _incorrectMatchDialogue: Matching Game Incorrect
   _textCanvas: {fileID: 4400855780515122031}
   _nameText: {fileID: 4400855781176309265}

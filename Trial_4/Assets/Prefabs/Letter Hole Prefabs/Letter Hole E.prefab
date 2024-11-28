@@ -4935,6 +4935,13 @@ MonoBehaviour:
     _name: 
   _holeCanvas: {fileID: 0}
   _matchingPS: {fileID: 1888916856}
+  _audioSource: {fileID: 0}
+  _localPositionAfterPlacement: {x: 0, y: 0, z: 0}
+  _talkingSeconds: 5
+  _drSalemClip: {fileID: 0}
+  _dialogues: {fileID: 0}
+  _correctMatchDialogue: 
+  _incorrectMatchDialogue: Matching Game Incorrect
   _letter: 69
 --- !u!64 &1494302391887280724
 MeshCollider:

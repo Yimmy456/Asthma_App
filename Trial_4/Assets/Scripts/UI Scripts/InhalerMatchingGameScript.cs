@@ -105,6 +105,8 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
 
         _currentlySelectedPositionForHoles = Vector3.zero;
 
+        string _currentDialogue;
+
         for(int _i = 0; _i < _presetBlocksAndHoles.Count; _i++)
         {
             //1. Instantiating Block
@@ -155,6 +157,8 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
 
             GameObject _newHole = Instantiate(_currentPreset.GetGameBlockHole().gameObject);
 
+            _currentDialogue = _currentPreset.GetDialogueOfCurrentIndex();
+
             _newHole.transform.parent = _gameSpace.transform;
 
             _newHole.transform.localPosition = _currentlySelectedPositionForHoles;
@@ -184,6 +188,13 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
                     _holeInfo.SetHoleName(_givenName);
 
                     _currentHoleProperties.AddObjectToList(_holeInfo);
+
+                    _holeInfo.SetCorrectMatchDialogue(_currentDialogue);
+
+                    if (_dialogues != null)
+                    {
+                        _holeInfo.SetDialogues(_dialogues);
+                    }
 
                     if (_currentPreset.GetGameBlockHole().GetCorrectMatchDialogue() != "")
                     {

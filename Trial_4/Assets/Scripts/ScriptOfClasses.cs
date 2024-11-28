@@ -689,7 +689,35 @@ public class MinMaxV3ValuesClass
 [Serializable]
 public class MatchingBlockAndHoleClass
 {
+    [SerializeField]
+    protected List<string> _holeDialogueNames;
 
+    protected int _dialogueIndex = 0;
+
+    public List<string> GetHoleDialogueNames()
+    {
+        return _holeDialogueNames;
+    }
+
+    public void IncrementIndex()
+    {
+        _dialogueIndex++;
+
+        if(_dialogueIndex >= _holeDialogueNames.Count)
+        {
+            _dialogueIndex = 0;
+        }
+    }
+
+    public void ResetIndex()
+    {
+        _dialogueIndex = 0;
+    }
+
+    public string GetDialogueOfCurrentIndex()
+    {
+        return _holeDialogueNames[_dialogueIndex];
+    }
 }
 
 [Serializable]

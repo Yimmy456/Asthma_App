@@ -195,6 +195,8 @@ public class LetterGameScript : MatchingGameCanvasScript
 
         _currentlySelectedPositionForHoles.z = 0.0f;
 
+        string _currentDialogue;
+
         List<Vector3> _positions = new List<Vector3>();
 
         for(int _i = 0; _i < _count; _i++)
@@ -266,7 +268,13 @@ public class LetterGameScript : MatchingGameCanvasScript
 
             _newLetterHoleGO = Instantiate(_blockAndHole.GetGameBlockHole().gameObject);
 
+            _currentDialogue = _blockAndHole.GetDialogueOfCurrentIndex();
+
             _newLetterHole = _newLetterHoleGO.GetComponent<LetterHoleScript>();
+
+            _newLetterHole.SetCorrectMatchDialogue(_currentDialogue);
+
+            _blockAndHole.IncrementIndex();
 
             _newLetterHole.SetHoleGameCanvas(this);
 
@@ -278,7 +286,7 @@ public class LetterGameScript : MatchingGameCanvasScript
 
             _newLetterHoleGO.transform.localScale = (Vector3.one * _spawningSizeForHoles);
 
-            UseAlternateDialogue(_i, _word, _newLetterHole);
+            //UseAlternateDialogue(_i, _word, _newLetterHole);
 
             _newLetterHoleGO.transform.localPosition = _currentlySelectedPositionForHoles;
 
