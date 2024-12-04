@@ -331,7 +331,7 @@ MonoBehaviour:
     _badgeName: 
     _infoClipName: 
     _infoCategory: 1
-    _sprite: {fileID: 0}
+    _sprite: {fileID: 21300000, guid: 7ff4149ae7786004f942b4b7a6aea34d, type: 3}
     _wordType: 0
   - _informationName: Air Pollution
     _informationDesc: Large black smoke that is emitted from workstations, which
@@ -394,7 +394,8 @@ MonoBehaviour:
     _sprite: {fileID: 21300000, guid: 3c500a5e698c0e748b10d1537ed2cdf7, type: 3}
     _wordType: 0
   - _informationName: Mould and Damp
-    _informationDesc: 
+    _informationDesc: Damp is the excess moisture in the air that causes mould and
+      unpleasant smells. Mould is a fungus that grown in damps or humid conditions.
     _informationExamples: []
     _informationLearned: 0
     _badgeName: 
@@ -457,7 +458,7 @@ MonoBehaviour:
     _badgeName: 
     _infoClipName: 
     _infoCategory: 3
-    _sprite: {fileID: 21300000, guid: 61efea9a62174954ebb886a3b0b1a775, type: 3}
+    _sprite: {fileID: 21300000, guid: 2662aaeea4b42d54eb48bdd9aa88f596, type: 3}
     _wordType: 0
   - _informationName: Preventer
     _informationDesc: A brown inhaler that helps the airways in the lungs work better.
@@ -466,7 +467,7 @@ MonoBehaviour:
     _badgeName: 
     _infoClipName: 
     _infoCategory: 3
-    _sprite: {fileID: 0}
+    _sprite: {fileID: 21300000, guid: a157b816d816503438b42644a494cc44, type: 3}
     _wordType: 0
   - _informationName: Hybrid Inhaler
     _informationDesc: A purple or red inhaler that work as a reliver and preventer
@@ -476,16 +477,25 @@ MonoBehaviour:
     _badgeName: 
     _infoClipName: 
     _infoCategory: 3
-    _sprite: {fileID: 0}
+    _sprite: {fileID: 21300000, guid: 2f5f99e2fac7da949ba2bc8e104c95fd, type: 3}
     _wordType: 0
-  - _informationName: Spyrometry
+  - _informationName: Spacer
+    _informationDesc: 
+    _informationExamples: []
+    _informationLearned: 0
+    _badgeName: 
+    _infoClipName: 
+    _infoCategory: 3
+    _sprite: {fileID: 21300000, guid: 583d897f3c24a974db210ee346ce37f7, type: 3}
+    _wordType: 0
+  - _informationName: Spirometry
     _informationDesc: A tool used to measure lung function and asthma control.
     _informationExamples: []
     _informationLearned: 0
     _badgeName: 
     _infoClipName: 
     _infoCategory: 3
-    _sprite: {fileID: 0}
+    _sprite: {fileID: 21300000, guid: ef920a82520d37444aecf18613d8f96d, type: 3}
     _wordType: 0
   _infoCardFrontMaterial: {fileID: 21300000, guid: fad6a380fe357324ca8b1c72aa90f27f, type: 3}
   _informationLearnedMeter:
