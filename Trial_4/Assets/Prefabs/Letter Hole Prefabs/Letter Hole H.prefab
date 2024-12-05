@@ -5081,8 +5081,8 @@ MonoBehaviour:
   _audioSource: {fileID: 920590733}
   _localPositionAfterPlacement: {x: 0, y: 0, z: 0}
   _talkingSeconds: 5
-  _drSalemClip: {fileID: 0}
+  _drSalemClip: {fileID: 8300000, guid: f26e6445b8819724e897d4fc83d0920e, type: 3}
   _dialogues: {fileID: 0}
-  _correctMatchDialogue: 
+  _correctMatchDialogue: Matching Letter Game 'H'
   _incorrectMatchDialogue: Matching Game Incorrect
   _letter: 72

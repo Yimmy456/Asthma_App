@@ -158,6 +158,39 @@ MonoBehaviour:
     _informationExamples: []
     _informationLearned: 0
     _badgeName: 
+    _infoClipName: Card Matching Game (Age)
+    _infoCategory: 0
+  - _informationName: Replace Spacer 6 to 12 months
+    _informationDesc: A useful tip is to replace your spacer every 6 to 12 months.
+    _informationExamples:
+    - Make sure the inhaler is the correct one to fit the inhaler
+    - If the inhaler is in parts, fit them together
+    - If the inhaler contains corticosteriod, rinse your mouth out with water after
+      the dose
+    - Spacers are available in different sizes and with face masks if needed
+    - Wash your spacer twice a week
+    - Replace your spacer every 6 to 12 months
+    - Speak to your nurse or pharmacist if you experience problems using your inhaler
+      and spacer device
+    - Always read you spacer's leaflets
+    _informationLearned: 0
+    _badgeName: 
+    _infoClipName: 
+    _infoCategory: 0
+  - _informationName: Not Cleaning Spacer
+    _informationDesc: A common mistake of using an inhaler is not cleaning the spacer.
+    _informationExamples:
+    - Not standing or sitting upright
+    - Not holding the inhaler upright
+    - Not shaking the inhaler before using it and hetween doses
+    - Not breathing in soon enough after pressing the inhaler so the medication falls
+      to the bottom of the spacer
+    - Not remembering to hold your breath
+    - Taking several puffs without waiting
+    - Not shaking the inhaler between puffs
+    - Not cleaning he spacer correctly
+    _informationLearned: 0
+    _badgeName: 
     _infoClipName: 
     _infoCategory: 0
   - _informationName: Being Healthy
@@ -182,23 +215,6 @@ MonoBehaviour:
     - Taking several puffs without waiting
     - Not shaking the inhaler between puffs
     - Not cleaning he spacer correctly
-    _informationLearned: 0
-    _badgeName: 
-    _infoClipName: 
-    _infoCategory: 0
-  - _informationName: Useful Tips
-    _informationDesc: 
-    _informationExamples:
-    - Make sure the inhaler is the correct one to fit the inhaler
-    - If the inhaler is in parts, fit them together
-    - If the inhaler contains corticosteriod, rinse your mouth out with water after
-      the dose
-    - Spacers are available in different sizes and with face masks if needed
-    - Wash your spacer twice a week
-    - Replace your spacer every 6 to 12 months
-    - Speak to your nurse or pharmacist if you experience problems using your inhaler
-      and spacer device
-    - Always read you spacer's leaflets
     _informationLearned: 0
     _badgeName: 
     _infoClipName: 
@@ -399,7 +415,7 @@ MonoBehaviour:
     _informationExamples: []
     _informationLearned: 0
     _badgeName: 
-    _infoClipName: 
+    _infoClipName: Card Matching Game (Damp and Mould)
     _infoCategory: 1
     _sprite: {fileID: 21300000, guid: 06262a97aa8961c4e8de630895f8213b, type: 3}
     _wordType: 0

@@ -614,8 +614,6 @@ public class CardGameScript : GameGenericMBScript<CardScript>
             _infoCard._text = GetResponseText();
         }
 
-        //int _selectedInfo = UnityEngine.Random.Range(0, _listInput.Count);
-
         _infoCard.SetIsInfoCard(true);
 
         InformationClass _info = BookScript.GetInstance().GetGeneralInformation()[_indexInput];
@@ -623,8 +621,6 @@ public class CardGameScript : GameGenericMBScript<CardScript>
         _infoCard.SetCardName(_info.GetInformationName());
 
         _infoCard.SetCardDescription(_info.GetInformationDescription());
-
-        //_listInput.RemoveAt(_selectedInfo);
 
         SetCardMaterial(_infoCard, BookScript.GetInstance().GetInfoCardFrontMaterial());
     }

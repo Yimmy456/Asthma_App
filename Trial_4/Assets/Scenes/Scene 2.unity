@@ -43771,7 +43771,7 @@ MonoBehaviour:
       _outlineThickness: 1
       _talkingSeconds: 5
       _audioClip: {fileID: 0}
-      _audioClip2: 
+      _audioClip2: Exhibition Medicine
       _displayExplained: 0
       _exhibitID: c0f80417-a8ab-4d1f-9a07-05a9a48795cc
       _uiAnimatorController: {fileID: 9100000, guid: fb5e9286be5971543b98eb4eba4cf901, type: 2}
@@ -43783,7 +43783,7 @@ MonoBehaviour:
       _outlineThickness: 1
       _talkingSeconds: 5
       _audioClip: {fileID: 0}
-      _audioClip2: 
+      _audioClip2: Exhibition Spacer
       _displayExplained: 0
       _exhibitID: df1ac9fa-7f6a-453a-a20d-8da9c654f616
       _uiAnimatorController: {fileID: 9100000, guid: 5a0e0d613b7707d45ba333ba315ee815, type: 2}
@@ -43795,7 +43795,7 @@ MonoBehaviour:
       _outlineThickness: 1
       _talkingSeconds: 5
       _audioClip: {fileID: 0}
-      _audioClip2: 
+      _audioClip2: Exhibition Whole Inhaler
       _displayExplained: 0
       _exhibitID: 12331b8f-7821-46ad-8686-a3feb056fe58
       _uiAnimatorController: {fileID: 9100000, guid: e9aeb14429a2df74986892e417f159b6, type: 2}
@@ -60557,6 +60557,24 @@ MonoBehaviour:
     _clipName: Press next
   - _clip: {fileID: 8300000, guid: 90b2b5631f48fab4f80cf15bb5eb0b67, type: 3}
     _clipName: Dr. Salem Exhibition Hybrid Inhaler
+  - _clip: {fileID: 8300000, guid: f26e6445b8819724e897d4fc83d0920e, type: 3}
+    _clipName: Matching Letter Game 'H'
+  - _clip: {fileID: 8300000, guid: 856949bd1a953914092a5d2c7fddef2f, type: 3}
+    _clipName: Exhibition Medicine
+  - _clip: {fileID: 8300000, guid: 8c0c207f1c928664390f1f1d9873f0b5, type: 3}
+    _clipName: Exhibition Spacer
+  - _clip: {fileID: 8300000, guid: 40a38bcd76f9fb247be6c2f23133a628, type: 3}
+    _clipName: Exhibition Whole Inhaler
+  - _clip: {fileID: 8300000, guid: 53b54e67f309300488914237707b35c8, type: 3}
+    _clipName: Card Matching Game (Damp and Mould)
+  - _clip: {fileID: 8300000, guid: b41ad119c330c67418c34c4d24c00d92, type: 3}
+    _clipName: Card Matching Game (Age)
+  - _clip: {fileID: 8300000, guid: 1cd0d42aa5e825a41a67042c1a7943fe, type: 3}
+    _clipName: Card Matching Game (Replace Spacer)
+  - _clip: {fileID: 8300000, guid: 17ce4b57b3db8cc4b9a1a14940a86e27, type: 3}
+    _clipName: Card Matching Game (Not Cleaning Spacer)
+  - _clip: {fileID: 8300000, guid: 91ee95e1b21cd2544af69c277a55936f, type: 3}
+    _clipName: Card Matching Game (Not Holding Breath)
   _audioSource: {fileID: 1757740976}
   _animator: {fileID: 919132149601814142}
 --- !u!4 &972334789260026595
