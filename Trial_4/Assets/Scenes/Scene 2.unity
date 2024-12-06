@@ -2221,6 +2221,7 @@ MonoBehaviour:
   _gameIndicatorCanvas: {fileID: 888431178}
   _responseText: {fileID: 167036495}
   _informationCanvas: {fileID: 834040356}
+  _gameIntroDialogueName: Game Introduction (Card Game)
   _gameProperties:
     _listOfObjects: []
     _listOfObjectsAsGO: []
@@ -5164,6 +5165,7 @@ MonoBehaviour:
   _gameIndicatorCanvas: {fileID: 888431178}
   _responseText: {fileID: 167036495}
   _informationCanvas: {fileID: 834040356}
+  _gameIntroDialogueName: 
   _gameProperties:
     _listOfObjects: []
     _listOfObjectsAsGO: []
@@ -6938,6 +6940,7 @@ MonoBehaviour:
   _gameIndicatorCanvas: {fileID: 888431178}
   _responseText: {fileID: 167036495}
   _informationCanvas: {fileID: 834040356}
+  _gameIntroDialogueName: Game Introduction (Inhaler-Matching Game)
   _gameProperties:
     _listOfObjects: []
     _listOfObjectsAsGO: []
@@ -26398,6 +26401,7 @@ MonoBehaviour:
   _gameIndicatorCanvas: {fileID: 0}
   _responseText: {fileID: 1125309073}
   _informationCanvas: {fileID: 834040356}
+  _gameIntroDialogueName: Game Introduction (MCQ Game)
   _gameProperties:
     _listOfObjects: []
     _listOfObjectsAsGO: []
@@ -49434,6 +49438,7 @@ MonoBehaviour:
   _gameIndicatorCanvas: {fileID: 888431178}
   _responseText: {fileID: 167036495}
   _informationCanvas: {fileID: 834040356}
+  _gameIntroDialogueName: Game Introduction (Spelling Game)
   _gameProperties:
     _listOfObjects: []
     _listOfObjectsAsGO: []
@@ -49558,7 +49563,8 @@ MonoBehaviour:
     - rid: 4968103902080663558
       type: {class: WordMatchingBlockAndHoleClass, ns: , asm: Assembly-CSharp}
       data:
-        _holeDialogueNames: []
+        _holeDialogueNames:
+        - Matching Letter Game 'H'
         _gameBlock: {fileID: 5556330312391539798, guid: 11194dd2173796443afad9bffe29935e, type: 3}
         _gameBlockHole: {fileID: 5871864656161178322, guid: 92f9ab643fb84674daa32e1b782ad8a6, type: 3}
         _matchingAttribute: 72
@@ -60575,6 +60581,16 @@ MonoBehaviour:
     _clipName: Card Matching Game (Not Cleaning Spacer)
   - _clip: {fileID: 8300000, guid: 91ee95e1b21cd2544af69c277a55936f, type: 3}
     _clipName: Card Matching Game (Not Holding Breath)
+  - _clip: {fileID: 8300000, guid: 290768f0ef290cd4ba34121ab6e0c99b, type: 3}
+    _clipName: Card Matching Game (Not Straight)
+  - _clip: {fileID: 8300000, guid: 0bbff8af8680e5c4288c76bfa8100dd6, type: 3}
+    _clipName: Game Introduction (Card Game)
+  - _clip: {fileID: 8300000, guid: c357da2e42740a24e8994cfa47e651b9, type: 3}
+    _clipName: Game Introduction (Inhaler-Matching Game)
+  - _clip: {fileID: 8300000, guid: 72a5d38141e99894e88be60097fe60ff, type: 3}
+    _clipName: Game Introduction (Spelling Game)
+  - _clip: {fileID: 8300000, guid: d770e10df3653d34789e6535252c057b, type: 3}
+    _clipName: Game Introduction (MCQ Game)
   _audioSource: {fileID: 1757740976}
   _animator: {fileID: 919132149601814142}
 --- !u!4 &972334789260026595

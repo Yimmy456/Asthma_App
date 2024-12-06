@@ -61,6 +61,9 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
     [SerializeField]
     protected InformationCanvasScript _informationCanvas;
 
+    [SerializeField]
+    protected string _gameIntroDialogueName;
+
     protected bool _currentGameInSession;
 
     protected static GameMBScript _currentGame = null;
@@ -194,6 +197,11 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
     public Text GetResponseText()
     {
         return _responseText;
+    }
+
+    public string GetGameIntroDialogueName()
+    {
+        return _gameIntroDialogueName;
     }
 
     protected virtual void SetBadge()
@@ -409,6 +417,11 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
             {
                 _gameIndicatorCanvas.SetIndicatorColor(_gameColor);
             }
+        }
+
+        if(_gameIntroDialogueName != "" && _dialogues != null)
+        {
+            _dialogues.PlayClip(_gameIntroDialogueName);
         }
 
         GetAndSetRestartAndQuitButtons();
