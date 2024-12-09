@@ -256,15 +256,9 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
 
     public override void IChooseToQuitExperience()
     {
-        //base.QuitGame();
-
-        //_gameProperties.GetYesOrNoCanvas().gameObject.SetActive(true);
-
-        //gameObject.SetActive(false);
-
         _yesOrNoCanvas.GetYesButton().onClick.AddListener(delegate { IStopExperience(); });
 
-        //_gameProperties.GetYesOrNoCanvas().GetText().text = "Are you sure you want to quit the game?";
+        _yesOrNoCanvas.GetNoButton().onClick.AddListener(delegate { base.IResumeExperience(); });
 
         base.IChooseToQuitExperience();
     }
@@ -321,13 +315,40 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
 
     public override IEnumerator IWaitUntilCompletion()
     {
-
-        while(_dialogues.GetOverallTalkingStatus() == TalkingStatusEnum.Talking)
+        if (_dialogues == null)
         {
-            yield return null;
+            Debug.LogError("There is no dialogue script assigned.");
+
+            yield break;
         }
 
+        if (_dialogues.GetAudioSource() == null)
+        {
+            Debug.LogError("There is no audio source assigned.");
+
+            yield break;
+        }
+
+        AudioClip _c = _dialogues.GetAudioSource().clip;
+
+        if (_c == null)
+        {
+            Debug.LogError("There is no audio clip being played.");
+
+            yield break;
+        }
+
+        float _seconds = _c.length;
+
+        Debug.Log("We are waiting for the dialogue to be complete before the conclusion...");
+
+        yield return new WaitForSeconds(_seconds);
+
+        _dialogues.GetAudioSource().Stop();
+
         yield return new WaitForSeconds(2.0f);
+
+        Debug.Log("YAY! We are now concluding the game!");
 
         ICompleteExperience();
     }

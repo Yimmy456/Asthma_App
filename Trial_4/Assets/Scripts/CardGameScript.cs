@@ -925,6 +925,8 @@ public class CardGameScript : GameGenericMBScript<CardScript>
     {
         _yesOrNoCanvas.GetYesButton().onClick.AddListener(delegate { IStopExperience(); });
 
+        _yesOrNoCanvas.GetNoButton().onClick.AddListener(delegate { base.IResumeExperience(); });
+
         base.IChooseToQuitExperience();
     }
 }

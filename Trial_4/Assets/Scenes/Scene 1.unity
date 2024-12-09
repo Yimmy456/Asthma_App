@@ -14500,6 +14500,11 @@ MonoBehaviour:
     _mainPlayerCanvas: {fileID: 392666910}
     _indicatorCanvas: {fileID: 444502315}
     _doctorCanvas: {fileID: 716302325}
+    _doctorCanvasImageAnchoredPositionV2: {x: 0, y: -100}
+    _doctorCanvasImageSizeDelta: {x: 400, y: 400}
+    _doctorCanvasImageScale: {x: 1, y: 1, z: 1}
+    _doctorCanvasImageScaleConstant: 0.7
+    _modifyDoctorCanvasImageAccordingly: 1
   _gameMenuCanvas: {fileID: 956544989}
   _gameIndicatorCanvas: {fileID: 0}
   _responseText: {fileID: 1074681070}
@@ -20535,6 +20540,11 @@ MonoBehaviour:
     _mainPlayerCanvas: {fileID: 392666910}
     _indicatorCanvas: {fileID: 444502315}
     _doctorCanvas: {fileID: 716302325}
+    _doctorCanvasImageAnchoredPositionV2: {x: 0, y: 0}
+    _doctorCanvasImageSizeDelta: {x: 0, y: 0}
+    _doctorCanvasImageScale: {x: 1, y: 1, z: 1}
+    _doctorCanvasImageScaleConstant: 1
+    _modifyDoctorCanvasImageAccordingly: 0
   _gameMenuCanvas: {fileID: 956544989}
   _gameIndicatorCanvas: {fileID: 888431178}
   _responseText: {fileID: 1721945221}
@@ -37007,6 +37017,11 @@ MonoBehaviour:
     _mainPlayerCanvas: {fileID: 392666910}
     _indicatorCanvas: {fileID: 444502315}
     _doctorCanvas: {fileID: 716302325}
+    _doctorCanvasImageAnchoredPositionV2: {x: 0, y: 0}
+    _doctorCanvasImageSizeDelta: {x: 0, y: 0}
+    _doctorCanvasImageScale: {x: 1, y: 1, z: 1}
+    _doctorCanvasImageScaleConstant: 1
+    _modifyDoctorCanvasImageAccordingly: 0
   _gameMenuCanvas: {fileID: 956544989}
   _gameIndicatorCanvas: {fileID: 888431178}
   _responseText: {fileID: 1721945221}
@@ -38695,38 +38710,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parent: {fileID: 1473257035}
-  _objectsComplete:
-    _textGradient:
-      serializedVersion: 2
-      key0: {r: 1, g: 0, b: 0, a: 1}
-      key1: {r: 1, g: 1, b: 0, a: 1}
-      key2: {r: 0, g: 1, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
-      ctime1: 32768
-      ctime2: 65535
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
-      atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_NumColorKeys: 3
-      m_NumAlphaKeys: 2
-    _countText: {fileID: 0}
-    _percentageText: {fileID: 0}
   _camera: {fileID: 1075211029}
   _exhibitionGroups:
   - _groupName: Inhaler Group
@@ -38742,7 +38725,7 @@ MonoBehaviour:
       _audioClip2: Dr. Salem Exhibition Reliever Inhaler
       _displayExplained: 0
       _exhibitID: 00ec696b-7659-4c9b-b070-3f3eb7b4b531
-      _uiAnimatorController: {fileID: 0}
+      _uiAnimatorController: {fileID: 9100000, guid: 0653c6d4930f6e747b55a8a8bb499ca5, type: 2}
     - _listItemGameObject: {fileID: 134907928583110029, guid: 9cda32f608d9a1748811798032632f27, type: 3}
       _listItemName: Preventer Inhaler
       _listItemDescription: 
@@ -38754,7 +38737,7 @@ MonoBehaviour:
       _audioClip2: Dr. Salem Exhibition Preventer Inhaler
       _displayExplained: 0
       _exhibitID: de53be5a-7c18-4271-ba2b-8efa4bf9570c
-      _uiAnimatorController: {fileID: 0}
+      _uiAnimatorController: {fileID: 9100000, guid: cfad4e9eeda80dd46974956295eba2c4, type: 2}
     - _listItemGameObject: {fileID: 2169771285789508442, guid: 88de728b7d43f4747800db0c967bca33, type: 3}
       _listItemName: Hybrid Inhaler
       _listItemDescription: 
@@ -38766,7 +38749,7 @@ MonoBehaviour:
       _audioClip2: Dr. Salem Exhibition Hybrid Inhaler
       _displayExplained: 0
       _exhibitID: abfb7fc8-bf0c-48ce-bb4a-7e83ccda7e82
-      _uiAnimatorController: {fileID: 0}
+      _uiAnimatorController: {fileID: 9100000, guid: 3a259843a555f644f8d04bdc923a9a80, type: 2}
     - _listItemGameObject: {fileID: 8907650479044642488, guid: 0436b66cd5d38544a9af82cb0be2fa8a, type: 3}
       _listItemName: Medicine
       _listItemDescription: 
@@ -38775,10 +38758,10 @@ MonoBehaviour:
       _outlineThickness: 1
       _talkingSeconds: 5
       _audioClip: {fileID: 0}
-      _audioClip2: 
+      _audioClip2: Exhibition Medicine
       _displayExplained: 0
       _exhibitID: c0f80417-a8ab-4d1f-9a07-05a9a48795cc
-      _uiAnimatorController: {fileID: 0}
+      _uiAnimatorController: {fileID: 9100000, guid: fb5e9286be5971543b98eb4eba4cf901, type: 2}
     - _listItemGameObject: {fileID: 124029742880193190, guid: 454d18a21a2477e49bca97b83ec8176c, type: 3}
       _listItemName: Spacer
       _listItemDescription: 
@@ -38787,10 +38770,10 @@ MonoBehaviour:
       _outlineThickness: 1
       _talkingSeconds: 5
       _audioClip: {fileID: 0}
-      _audioClip2: 
+      _audioClip2: Exhibition Spacer
       _displayExplained: 0
       _exhibitID: df1ac9fa-7f6a-453a-a20d-8da9c654f616
-      _uiAnimatorController: {fileID: 0}
+      _uiAnimatorController: {fileID: 9100000, guid: 5a0e0d613b7707d45ba333ba315ee815, type: 2}
     - _listItemGameObject: {fileID: 7795114222376234084, guid: dd596e05b8b1d57498cc79d52d969db1, type: 3}
       _listItemName: Whole Inhaler
       _listItemDescription: 
@@ -38799,10 +38782,10 @@ MonoBehaviour:
       _outlineThickness: 1
       _talkingSeconds: 5
       _audioClip: {fileID: 0}
-      _audioClip2: 
+      _audioClip2: Exhibition Whole Inhaler
       _displayExplained: 0
       _exhibitID: 12331b8f-7821-46ad-8686-a3feb056fe58
-      _uiAnimatorController: {fileID: 0}
+      _uiAnimatorController: {fileID: 9100000, guid: e9aeb14429a2df74986892e417f159b6, type: 2}
     _groupCompletionMeter:
       _textGradient:
         serializedVersion: 2
@@ -41230,6 +41213,11 @@ MonoBehaviour:
     _mainPlayerCanvas: {fileID: 392666910}
     _indicatorCanvas: {fileID: 444502315}
     _doctorCanvas: {fileID: 716302325}
+    _doctorCanvasImageAnchoredPositionV2: {x: 0, y: 0}
+    _doctorCanvasImageSizeDelta: {x: 0, y: 0}
+    _doctorCanvasImageScale: {x: 1, y: 1, z: 1}
+    _doctorCanvasImageScaleConstant: 1
+    _modifyDoctorCanvasImageAccordingly: 0
   _gameMenuCanvas: {fileID: 701158061}
   _gameIndicatorCanvas: {fileID: 888431178}
   _responseText: {fileID: 1721945221}
@@ -48890,6 +48878,11 @@ MonoBehaviour:
     _mainPlayerCanvas: {fileID: 392666910}
     _indicatorCanvas: {fileID: 444502315}
     _doctorCanvas: {fileID: 716302325}
+    _doctorCanvasImageAnchoredPositionV2: {x: 0, y: 0}
+    _doctorCanvasImageSizeDelta: {x: 0, y: 0}
+    _doctorCanvasImageScale: {x: 1, y: 1, z: 1}
+    _doctorCanvasImageScaleConstant: 1
+    _modifyDoctorCanvasImageAccordingly: 0
   _gameMenuCanvas: {fileID: 956544989}
   _gameIndicatorCanvas: {fileID: 888431178}
   _responseText: {fileID: 1721945221}
@@ -51487,6 +51480,11 @@ MonoBehaviour:
     _mainPlayerCanvas: {fileID: 392666910}
     _indicatorCanvas: {fileID: 444502315}
     _doctorCanvas: {fileID: 716302325}
+    _doctorCanvasImageAnchoredPositionV2: {x: 0, y: 0}
+    _doctorCanvasImageSizeDelta: {x: 0, y: 0}
+    _doctorCanvasImageScale: {x: 1, y: 1, z: 1}
+    _doctorCanvasImageScaleConstant: 1
+    _modifyDoctorCanvasImageAccordingly: 0
   _cursorImage: {fileID: 601827387}
   _objectTitleText: {fileID: 852745502}
   _objectDescriptionText: {fileID: 845060678}

@@ -91,7 +91,7 @@ public class ExhibitionCanvasScript : MonoBehaviour
             CheckTimeElaped();
         }
 
-        if(_doctorSalemDialogues != null && _currentlyTalkedAboutObject != null)
+        /*if(_doctorSalemDialogues != null && _currentlyTalkedAboutObject != null)
         {
             if(_doctorSalemDialogues.GetOverallTalkingStatus() == TalkingStatusEnum.Completed)
             {
@@ -108,7 +108,7 @@ public class ExhibitionCanvasScript : MonoBehaviour
 
                 Debug.Log("Explanation is complete.");
             }
-        }
+        }*/
     }
 
     public void QuitExhibition()
@@ -293,24 +293,9 @@ public class ExhibitionCanvasScript : MonoBehaviour
 
         AudioClip _c = _doctorSalemDialogues.GetClip(_currentObject.GetObjectAudioClip2()).GetClip();
 
-        /*if (_audioSource != null && _currentObject.GetObjectAudioClip() != null)
-        {
-            _talkingCoroutine = StartCoroutine(TalkingCoroutine2(_currentObject.GetObjectAudioClip(), _fullTitle, _description));
-        }
-        else
-        {
-            _talkingCoroutine = StartCoroutine(TalkingCoroutine(_time, _fullTitle, _description));
-        }*/
-
         if (_audioSource != null && _c != null)
         {
-            _talkingCoroutine = StartCoroutine(TalkingCoroutine2(_c, _fullTitle, _description));
-
-            _doctorSalemDialogues.SetDialogueCoroutine(_talkingCoroutine);
-        }
-        else
-        {
-            _talkingCoroutine = StartCoroutine(TalkingCoroutine(_time, _fullTitle, _description));
+            _talkingCoroutine = StartCoroutine(TalkingCoroutine(_c, _fullTitle, _description));
 
             _doctorSalemDialogues.SetDialogueCoroutine(_talkingCoroutine);
         }
@@ -319,52 +304,10 @@ public class ExhibitionCanvasScript : MonoBehaviour
 
         ColorTitle(_color);
 
-        //if(_exhibition.GetDialogues() != null)
-        //{
-          //  _exhibition.GetDialogues().PlayExhibitClip(_currentObject);
-        //}
-
         _currentlyTalkedAboutObject = _currentObject;
     }
-
-
     
-    IEnumerator TalkingCoroutine(float _timeInput, string _titleInput, string _descriptionInput)
-    {
-        _objectTitleText.text = _titleInput;
-
-        _objectDescriptionText.text = _descriptionInput;
-
-        _currentlyTalkedAboutObject = _currentObject;
-
-        _timerStarts = true;
-
-        if(_doctorAnimator != null)
-        {
-            _doctorAnimator.SetBool("Talking", true);
-        }
-
-        yield return new WaitForSeconds(_timeInput);
-
-        if (_doctorAnimator != null)
-        {
-            _doctorAnimator.SetBool("Talking", false);
-        }
-
-        _timerStarts = false;
-
-        _timeElapsed = 0.0f;
-
-        _objectDescriptionText.text = "";
-
-        _objectTitleText.text = "";
-
-        _currentlyTalkedAboutObject = null;
-    }
-
-    
-    
-    IEnumerator TalkingCoroutine2(AudioClip _clipInput, string _titleInput, string _descriptionInput)
+    IEnumerator TalkingCoroutine(AudioClip _clipInput, string _titleInput, string _descriptionInput)
     {
         if(_audioSource.isPlaying)
         {
@@ -407,13 +350,11 @@ public class ExhibitionCanvasScript : MonoBehaviour
 
         _objectTitleText.text = "";
 
+        ExhibitionListItemClass _exhItem = _exhibition.GetExhibitItemByID(_currentlyTalkedAboutObject.GetObjectID());
+
         _currentlyTalkedAboutObject = null;
 
         _audioSource.clip = null;
-
-        //yield return new WaitForSeconds(5.0f);
-
-        //_exhibition.ICompleteExperience();
     }
 
     void ColorTitle(Color _input)
@@ -589,11 +530,11 @@ public class ExhibitionCanvasScript : MonoBehaviour
         {
             float _ratio = (float)_completed / (float)_total;
 
-            if (_exhibition.GetObjectComplete() != null)
+            if (_exhibition.GetCurrentGroup().GetGroupCompletionMeter() != null)
             {
-                if (_exhibition.GetObjectComplete().GetTextGradient() != null)
+                if (_exhibition.GetCurrentGroup().GetGroupCompletionMeter().GetTextGradient() != null)
                 {
-                    Color _c1 = _exhibition.GetObjectComplete().GetTextGradient().Evaluate(_ratio);
+                    Color _c1 = _exhibition.GetCurrentGroup().GetGroupCompletionMeter().GetTextGradient().Evaluate(_ratio);
 
                     _percentageText.color = _c1;
 
@@ -636,6 +577,7 @@ public class ExhibitionCanvasScript : MonoBehaviour
         if(_input.GetObjectID() == "")
         {
             Debug.LogError("There is no ID.");
+
             return;
         }
 
@@ -654,7 +596,7 @@ public class ExhibitionCanvasScript : MonoBehaviour
         {
             _item.SetDisplayExplained(true);
 
-            _exhibition.GetObjectComplete().AddToValue(1);
+            _exhibition.GetCurrentGroup().GetGroupCompletionMeter().AddToValue(1);
 
             Debug.Log("The object is explained for the first time.");
         }

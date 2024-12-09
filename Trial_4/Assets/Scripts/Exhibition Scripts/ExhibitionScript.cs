@@ -11,9 +11,6 @@ public class ExhibitionScript : MonoBehaviour, ExperienceInterface, RewardingBad
     Transform _parent;
 
     [SerializeField]
-    MeterClass _objectsComplete;
-
-    [SerializeField]
     Camera _camera;
 
     [SerializeField]
@@ -86,23 +83,17 @@ public class ExhibitionScript : MonoBehaviour, ExperienceInterface, RewardingBad
 
     BadgeScript _currentBadge;
 
+    float _percentageRef;
+
     // Start is called before the first frame update
     void Start()
     {
-        //_exhibitionObjects = new List<GameObject>();
-
-        if (_objectsComplete == null)
-        {
-            _objectsComplete = new MeterClass();
-        }
+        InitializeExhibition();
     }
 
     void OnEnable()
     {
-        if (_objectsComplete == null)
-        {
-            _objectsComplete = new MeterClass();
-        }
+        InitializeExhibition();
     }
 
     // Update is called once per frame
@@ -111,12 +102,9 @@ public class ExhibitionScript : MonoBehaviour, ExperienceInterface, RewardingBad
         if (_exhibitionOn && _currentGroup != null)
         {
             IUpdateExperience();
-        }
-    }
 
-    public MeterClass GetObjectComplete()
-    {
-        return _objectsComplete;
+            //Debug.Log("Exibition is " + _currentGroup.GetGroupCompletionMeter().GetPercentage().ToString("0.00") + "% complete.");
+        }
     }
 
     public bool GetExhibitionOn()
@@ -244,10 +232,6 @@ public class ExhibitionScript : MonoBehaviour, ExperienceInterface, RewardingBad
 
         float _rotAngle;
 
-        _objectsComplete.SetMaxValue(_count);
-
-        _objectsComplete.SetValue(_currentGroup.GetGroupCompletionMeter().GetValue());
-
         _badgePreperation.SetBadgeName(_currentGroup.GetBadgeName());
 
         if (BadgesManagerScript.GetInstance() != null)
@@ -358,11 +342,6 @@ public class ExhibitionScript : MonoBehaviour, ExperienceInterface, RewardingBad
                 _currentExh.SetRotateWhenHit(false);
             }
 
-            if(_currentListItem.GetDisplayExplained())
-            {
-                _objectsComplete.AddToValue(1);
-            }
-
             _exhibitions.Add(_currentExh);
         }
 
@@ -371,6 +350,8 @@ public class ExhibitionScript : MonoBehaviour, ExperienceInterface, RewardingBad
         _currentGroup.SetExhibitionInPlay(true);
 
         _exhibitionRaycastOn = true;
+
+        //_objectsComplete = _currentGroup.GetGroupCompletionMeter();
 
         if (DataPersistenceManager.GetInstance() != null)
         {
@@ -666,6 +647,16 @@ public class ExhibitionScript : MonoBehaviour, ExperienceInterface, RewardingBad
     public void IChooseToRestartExperience()
     {
 
+    }
+
+    void InitializeExhibition()
+    {
+        for(int _i = 0; _i < _exhibitionGroups.Count; _i++)
+        {
+            int _count = _exhibitionGroups[_i].GetExhibitionGroupListItems().Count;
+
+            _exhibitionGroups[_i].GetGroupCompletionMeter().SetMaxValue(_count);
+        }
     }
 }
 

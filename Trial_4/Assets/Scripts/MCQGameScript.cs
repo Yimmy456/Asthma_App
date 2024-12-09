@@ -166,6 +166,8 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
 
     public override void IChooseToQuitExperience()
     {
+        _yesOrNoCanvas.GetNoButton().onClick.AddListener(delegate { base.IResumeExperience(); });
+
         base.IChooseToQuitExperience();
     }
 
@@ -178,8 +180,6 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
         _currentQuestionIndex = -1;
 
         MCQManagerScript.GetInstance().GetSelectedQuestions().Clear();
-
-        MoveBackDoctorSalem();
     }
 
     public override void IUpdateExperience()
@@ -214,8 +214,6 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
         bool _questionInList = false;
 
         bool _comp = false;
-
-        MoveDoctorSalem();
 
         while(_counter < _numberOfQuestions)
         {
@@ -296,7 +294,11 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
 
         _mcqCanvas.SetQuestionNumber(_currentQuestionIndex + 1);
 
-        if(_dialogues != null)
+        if(!_introductionDialogueComplete)
+        {
+            _introductionDialogueComplete = true;
+        }
+        else if(_dialogues != null)
         {
             _dialogues.StopCurrentDialogue();
         }
@@ -315,46 +317,6 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
         Debug.Log("We will quit the MCQ game.");
 
         base.ISetActionsOfYesButtonToQuit();
-    }
-
-    void MoveDoctorSalem()
-    {
-        if(_mainCanvases.GetDoctorCanvas() == null)
-        {
-            return;
-        }
-
-        Canvas _docCanvas = _mainCanvases.GetDoctorCanvas();
-
-        DialogueCanvasScript _dialogueS = _docCanvas.gameObject.GetComponent<DialogueCanvasScript>();
-
-        if(_dialogueS == null)
-        {
-            return;
-        }
-
-        _dialogueS.SetImageAnchoredPosition(new Vector2(0.0f, -100.0f));
-
-        _dialogueS.SetUniformScale(0.7f);
-    }
-
-    void MoveBackDoctorSalem()
-    {
-        if (_mainCanvases.GetDoctorCanvas() == null)
-        {
-            return;
-        }
-
-        Canvas _docCanvas = _mainCanvases.GetDoctorCanvas();
-
-        DialogueCanvasScript _dialogueS = _docCanvas.gameObject.GetComponent<DialogueCanvasScript>();
-
-        if (_dialogueS == null)
-        {
-            return;
-        }
-
-        _dialogueS.ResetDoctorsImageToOriginalValues();
     }
 
     public string SelectRandomDialogue(bool _correctlyInput = true)

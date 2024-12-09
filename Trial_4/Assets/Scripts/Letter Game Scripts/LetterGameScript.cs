@@ -142,7 +142,7 @@ public class LetterGameScript : MatchingGameCanvasScript
     {
         _yesOrNoCanvas.GetYesButton().onClick.AddListener(delegate { IStopExperience(); });
 
-        //_gameProperties._yesOrNoCanvas().GetText().text = "Are you sure you want to quit the game?";
+        _yesOrNoCanvas.GetNoButton().onClick.AddListener(delegate { base.IResumeExperience(); });
 
         base.IChooseToQuitExperience();
     }
