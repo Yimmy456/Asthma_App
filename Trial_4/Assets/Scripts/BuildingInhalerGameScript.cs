@@ -617,7 +617,7 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
             _currentInstancedArrowAnimation.SetPauseAnimation(true);
         }
 
-        _yesOrNoCanvas.GetNoButton().onClick.AddListener(delegate { base.IResumeExperience(); });
+        _yesOrNoCanvas.GetNoButton().onClick.AddListener(delegate { IResumeExperience(); });
 
         _yesOrNoCanvas.GetYesButton().onClick.AddListener(delegate { IStopExperience(); });
 

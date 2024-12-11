@@ -517,21 +517,6 @@ public class MainCanvasesClass
     [SerializeField]
     Canvas _doctorCanvas;
 
-    [SerializeField]
-    Vector2 _doctorCanvasImageAnchoredPositionV2;
-
-    [SerializeField]
-    Vector2 _doctorCanvasImageSizeDelta;
-
-    [SerializeField]
-    Vector3 _doctorCanvasImageScale = Vector3.one;
-
-    [SerializeField]
-    float _doctorCanvasImageScaleConstant = 1.0f;
-
-    [SerializeField]
-    bool _modifyDoctorCanvasImageAccordingly = false;
-
     bool _canvasesOn = true;
 
     public Canvas GetMainPlayerCanvas()
@@ -597,87 +582,6 @@ public class MainCanvasesClass
         bool _secondValue = _setting.GetValue();
 
         _indicatorCanvas.gameObject.SetActive(_canvasesOn && _secondValue);
-    }
-
-    public void SetDoctorImageCanvasPropertiesAccordingly()
-    {
-        if(!_modifyDoctorCanvasImageAccordingly)
-        {
-            Debug.Log("The doctor's image does not need to be modified for this experience.");
-
-            return;
-        }
-
-        if(_doctorCanvas == null)
-        {
-            Debug.LogError("The doctor's canvas is not assigned.");
-            
-            return;
-        }
-
-        GameObject _image = _doctorCanvas.GetComponent<RectTransform>().Find("Dr. Salem's Image").gameObject;
-
-        if(_image == null)
-        {
-            Debug.LogError("The image is not found in the canvas.");
-
-            return;
-        }
-
-        RectTransform _rt = _image.GetComponent<RectTransform>();
-
-        if(_rt == null)
-        {
-            Debug.LogError("The image does not contain a RectTransform component.");
-
-            return;
-        }
-
-        _rt.anchoredPosition = _doctorCanvasImageAnchoredPositionV2;
-
-        _rt.sizeDelta = _doctorCanvasImageSizeDelta;
-
-        Vector3 _finalScale = _doctorCanvasImageScale * _doctorCanvasImageScaleConstant;
-
-        _rt.localScale = _finalScale;
-
-        Debug.Log("The doctor's image has successfully been modified accordingly.");
-    }
-
-    public void SetDoctorImageCanvasPropertiesBackToDefault()
-    {
-        if (_doctorCanvas == null)
-        {
-            Debug.LogError("The doctor's canvas is not assigned.");
-
-            return;
-        }
-
-        GameObject _image = _doctorCanvas.GetComponent<RectTransform>().Find("Dr. Salem's Image").gameObject;
-
-        if (_image == null)
-        {
-            Debug.LogError("The image is not found in the canvas.");
-
-            return;
-        }
-
-        RectTransform _rt = _image.GetComponent<RectTransform>();
-
-        if (_rt == null)
-        {
-            Debug.LogError("The image does not contain a RectTransform component.");
-
-            return;
-        }
-
-        _rt.anchoredPosition = new Vector2(0.0f, -122.0f);
-
-        _rt.sizeDelta = new Vector2(400.0f, 400.0f);
-
-        _rt.localScale = Vector3.one;
-
-        Debug.Log("The doctor's image has successfully been modified back to default.");
     }
 }
 

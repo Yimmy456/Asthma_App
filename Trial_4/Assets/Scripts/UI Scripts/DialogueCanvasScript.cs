@@ -76,4 +76,11 @@ public class DialogueCanvasScript : MonoBehaviour
 
         _doctorsImage.localScale = _size;
     }
+
+    public void ResetDoctorsImageToOriginalValues()
+    {
+        SetImageAnchoredPosition(new Vector2(0.0f, -217.0f));
+
+        SetUniformScale(1.0f);
+    }
 }

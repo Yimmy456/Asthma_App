@@ -78,8 +78,6 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
 
     protected bool _waitToCompleteSignal = false;
 
-    protected bool _introductionDialogueComplete = false;
-
     public string GetGameName()
     {
         return _gameName;
@@ -409,8 +407,6 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
 
         _gameCanvas.gameObject.SetActive(true);
 
-        _mainCanvases.SetDoctorImageCanvasPropertiesAccordingly();
-
         if(_gameIndicatorCanvas != null && _camera != null)
         {
             bool _choice = PrepareGameIndicator();
@@ -524,13 +520,9 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
 
         _waitToCompleteSignal = false;
 
-        _introductionDialogueComplete = false;
-
         //SetResponseTextProperties();
 
         ClearResponseText();
-
-        _mainCanvases.SetDoctorImageCanvasPropertiesBackToDefault();
 
         if (_gameCanvas.GetQuitButton() != null)
         {
@@ -603,15 +595,9 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
 
         _mainCanvases.SetCanvasesOn(false);
 
-        if (_gameCanvas != null)
-        {
-            _gameCanvas.gameObject.SetActive(false);
-        }
+        _gameCanvas.gameObject.SetActive(false);
 
-        if (_gameIndicatorCanvas != null)
-        {
-            _gameIndicatorCanvas.gameObject.SetActive(false);
-        }
+        _gameIndicatorCanvas.gameObject.SetActive(false);
 
         _mainCanvases.GetDoctorCanvas().gameObject.SetActive(false);
 

@@ -756,6 +756,83 @@ public class DialoguesScript : MonoBehaviour
         }
     }
 
+    public void PlayExhibitClip(ExhibitionObjectScript _exhibitInput)
+    {
+        if(_exhibitInput == null)
+        {
+            return;
+        }
+
+        if(_exhibitInput.GetObjectAudioClip2() == "")
+        {
+            return;
+        }
+
+        StopCurrentDialogue();
+
+        _dialogueCoroutine = StartCoroutine(PlayExhibitDialogue(_exhibitInput));
+    }
+
+    IEnumerator PlayExhibitDialogue(ExhibitionObjectScript _input)
+    {
+        AudioClipClass _clip = GetClip(_input.GetObjectAudioClip2());
+
+        if (_clip == null || _audioSource == null || _animator == null)
+        {
+            yield break;
+        }
+
+        if (_clip.GetClip() == null)
+        {
+            yield break;
+        }
+
+        _currentAudioClip = _clip;
+
+        float _seconds = _clip.GetClip().length;
+
+        _audioSource.clip = _clip.GetClip();
+
+        _audioSource.Play();
+
+        _isTalking = true;
+
+        _animator.SetBool(_talkingString, true);
+
+        Debug.Log("We are starting to talk about '" + _input + "'.");
+
+        yield return new WaitForSeconds(_seconds);
+
+        _currentAudioClip = null;
+
+        _audioSource.clip = null;
+
+        _isTalking = false;
+
+        if(_input.GetExhibition() != null)
+        {
+            Debug.Log("The explanation is done.");
+
+            ExhibitionListItemClass _item = _input.GetExhibition().GetExhibitItemByID(_input.GetObjectID());
+
+            if (_item != null)
+            {
+                if(!_item.GetDisplayExplained())
+                {
+                    _input.GetExhibition().GetCurrentGroup().GetGroupCompletionMeter().AddToValue(1);
+
+                    _item.SetDisplayExplained(true);
+
+                    Debug.Log("The meter is added for the exibition.");
+                }
+            }
+        }
+
+        Debug.Log("We are stopping talking about '" + _input + "'.");
+
+        _animator.SetBool(_talkingString, false);
+    }
+
     public void SetDialogueCoroutine(Coroutine _input)
     {
         _dialogueCoroutine = _input;
