@@ -6,8 +6,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
-using TMPro;
-using UnityEditor;
+//using TMPro;
+//using UnityEditor;
 
 [System.Serializable]
 public class MeterClass
