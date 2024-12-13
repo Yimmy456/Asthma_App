@@ -69,6 +69,8 @@ public class PrintingManagerScript : MonoBehaviour
 
     Coroutine _statusTextCoroutine;
 
+    string _errorText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -131,11 +133,14 @@ public class PrintingManagerScript : MonoBehaviour
         }
         catch (Exception ex)
         {
+            if (_errorType != 1)
+            {
+                _errorType = 2;
+
+                _errorText = ex.Message;
+            }
+
             _printingProcessStatus = ProcessStatusEnum.Cancelled;
-
-            _errorType = 2;
-
-            //return;
         }
     }
 
@@ -911,7 +916,7 @@ public class PrintingManagerScript : MonoBehaviour
 
             _statusText.gameObject.GetComponent<Outline>().effectColor = new Color(0.5f, 0.0f, 0.0f, 0.5f);
 
-            _statusText.text = _errorType == 1 ? "Some answers have not been answered yet. You need to answer all of the questions before you can print." : "An error has occured. The printing process cannot be complete.";
+            _statusText.text = _errorType == 1 ? "Some answers have not been answered yet. You need to answer all of the questions before you can print." : _errorText;
 
             yield return new WaitForSeconds(6.0f);
         }
@@ -919,6 +924,8 @@ public class PrintingManagerScript : MonoBehaviour
         _printingProcessStatus = ProcessStatusEnum.Idle;
 
         _errorType = 0;
+
+        _errorText = "";
 
         _statusText.text = "";
     }
