@@ -6,8 +6,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
-using TMPro;
-using UnityEditor;
+//using TMPro;
+//using UnityEditor;
 
 [System.Serializable]
 public class MeterClass
@@ -2957,3 +2957,44 @@ public class BadgePreperationClass
         }
     }
 }
+
+/*
+public class PrintingErrorException : Exception
+{
+    int _errorNumber = 0;
+
+    public PrintingErrorException() : base()
+    {
+
+    }
+
+    public PrintingErrorException(string message) : base(message)
+    {
+
+    }
+
+    public PrintingErrorException(string message,  Exception innerException) : base(message, innerException)
+    {
+
+    }
+
+    public PrintingErrorException(int _input) : base()
+    {
+        _errorNumber = _input;
+    }
+
+    public PrintingErrorException(int _input, string message) : base(message)
+    {
+        _errorNumber = _input;
+    }
+
+    public PrintingErrorException(int _input, string message, Exception innerException) : base(message, innerException)
+    {
+        _errorNumber = _input;
+    }
+
+    public int GetErrorNumber()
+    {
+        return _errorNumber;
+    }
+}*/
