@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -41564,20 +41564,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioClips:
-  - _clip: {fileID: 8300000, guid: 673a42d3a73500a41b76d94618186ff1, type: 3}
+  - _clip: {fileID: 8300000, guid: 653edd599f1a27a41af133168f98ead8, type: 3}
     _clipName: Hello, My Friend
-  - _clip: {fileID: 8300000, guid: 1279f3c5b527d4145bbaa0a2afe45784, type: 3}
+  - _clip: {fileID: 8300000, guid: 04f5442b437d769429cd7558db2a2bd0, type: 3}
     _clipName: Hooray
-  - _clip: {fileID: 8300000, guid: cd8de22e08b15f940bda9b3f07878b63, type: 3}
+  - _clip: {fileID: 8300000, guid: 1d9f91f0eff89364f8edce7a5ebbba4b, type: 3}
     _clipName: Let's Begin
-  - _clip: {fileID: 8300000, guid: 768a69ff9b2fe294e9ce4947eb014471, type: 3}
+  - _clip: {fileID: 8300000, guid: 82c4c0920b53f194f913d072943c4f32, type: 3}
     _clipName: Nope
-  - _clip: {fileID: 8300000, guid: 9c3391805ceafb6479005dc639d20733, type: 3}
+  - _clip: {fileID: 8300000, guid: 756c3167db00609478d0e8c61d796cec, type: 3}
     _clipName: WOW!
-  - _clip: {fileID: 8300000, guid: 85efb681864b3af47bfbd38c865450a0, type: 3}
+  - _clip: {fileID: 8300000, guid: c2538a1c5f42c2f4aa90b8ed19401f11, type: 3}
     _clipName: Yes!
-  - _clip: {fileID: 8300000, guid: 0635845b9d0476142855c9819c40dc9e, type: 3}
+  - _clip: {fileID: 8300000, guid: d7d2c0a607337fc45b8b88cce7a65aa2, type: 3}
     _clipName: You Won!
+  - _clip: {fileID: 8300000, guid: c8dbd0dea2218cb4c9214b84f130de6d, type: 3}
+    _clipName: Exiting Rocket State 1
+  - _clip: {fileID: 8300000, guid: 9c1d9e98154eacb40b6e8e88c399b42f, type: 3}
+    _clipName: Exiting Rocket State 2
   _audioSource: {fileID: 830334516}
   _animator: {fileID: 8979086420280341110}
 --- !u!1 &1663800521

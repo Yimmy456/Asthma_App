@@ -1158,9 +1158,23 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 11.433333
+    functionName: PlayFastyDialogue
+    data: Exiting Rocket State 1
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 12.233334
     functionName: PlaySoundEffect
     data: Rocket Door Sound Effect
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 19.466667
+    functionName: PlayFastyDialogue
+    data: Exiting Rocket State 2
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
