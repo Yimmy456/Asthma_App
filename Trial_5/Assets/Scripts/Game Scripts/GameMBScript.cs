@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface, RewardingBadgeInterface
+public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface, RewardingBadgeInterface, GameCorrectOrWrongInterface
 { 
     [Header("1. Variables of all games")]
     [SerializeField]
@@ -63,6 +63,9 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
 
     [SerializeField]
     protected string _gameIntroDialogueName;
+
+    [SerializeField]
+    protected DialoguesScript _fastyDialogues;
 
     protected bool _currentGameInSession;
 
@@ -917,5 +920,61 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
         {
             _gameCanvas.GetQuitButton().onClick.AddListener(delegate { IChooseToQuitExperience(); });
         }
+    }
+
+    public virtual void IGameCorrect()
+    {
+        if (_fastyDialogues != null)
+        {
+            _fastyDialogues.PlayRandomDialogue(new List<string>() { "Yes!", "Hooray" });
+        }
+    }
+
+    public virtual void IGameIncorrect()
+    {
+        if(_fastyDialogues != null)
+        {
+            _fastyDialogues.PlayRandomDialogue(new List<string>() { "Hmm Uh uh", "Nope" });
+        }
+    }
+
+    public virtual void IGameCorrect(int _indexInput)
+    {
+        IGameCorrect();
+    }
+
+    public virtual void IGameIncorrect(int _indexInput)
+    {
+        IGameIncorrect();
+    }
+
+    public virtual void IGameCorrect(string _dialogueNameInput)
+    {
+        if (_fastyDialogues != null)
+        {
+            _fastyDialogues.PlayRandomDialogue(new List<string>() { "Yes!", "Hooray" });
+        }
+
+        IGameCorrect();
+    }
+
+    public virtual void IGameIncorrect(string _dialogueNameInput)
+    {
+        if (_fastyDialogues != null)
+        {
+            _fastyDialogues.PlayRandomDialogue(new List<string>() { "Hmm Uh uh", "Nope" });
+        }
+
+        IGameIncorrect();
+    }
+
+    public virtual void IGameCorrect(string _dialogueNameInput, int _indexInput)
+    {
+        IGameCorrect();
+    }
+
+    public virtual void IGameIncorrect(string _dialogueNameInput, int _indexInput)
+    {
+        IGameIncorrect();
     }
 }

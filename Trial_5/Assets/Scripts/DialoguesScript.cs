@@ -760,6 +760,104 @@ public class DialoguesScript : MonoBehaviour
     {
         _dialogueCoroutine = _input;
     }
+
+    public void PlayRandomDialogue(List<string> _clipNamesInput)
+    {
+
+        if(_audioSource == null || _clipNamesInput == null)
+        {
+            return;
+        }
+
+        if(_clipNamesInput.Count == 0)
+        {
+            return;
+        }
+
+        List<AudioClip> _selectedClips = new List<AudioClip>();
+
+        bool _clipFound = false;
+
+        string _currentName;
+
+        for (int _i = 0; _i < _clipNamesInput.Count; _i++)
+        {
+            _currentName = _clipNamesInput[_i];
+
+            for (int _j = 0; _j < _audioClips.Count && !_clipFound; _j++)
+            {
+                if (_audioClips[_j].GetClipName() == _currentName)
+                {
+                    _selectedClips.Add(_audioClips[_j].GetClip());
+
+                    _clipFound = true;
+                }
+            }
+
+            _clipFound = false;
+        }
+
+        if (_selectedClips.Count == 0)
+        {
+            return;
+        }
+
+        int _selectedIndex = Random.Range(0, _selectedClips.Count - 1);
+
+        AudioClip _clip = _selectedClips[_selectedIndex];
+
+        _audioSource.clip = _clip;
+
+        _audioSource.Play();
+    }
+
+    public AudioClipClass GetRandomDialogue(List<string> _clipNamesInput)
+    {
+
+        if (_clipNamesInput == null)
+        {
+            return null;
+        }
+
+        if (_clipNamesInput.Count == 0)
+        {
+            return null;
+        }
+
+        List<AudioClipClass> _selectedClips = new List<AudioClipClass>();
+
+        bool _clipFound = false;
+
+        string _currentName;
+
+        for (int _i = 0; _i < _clipNamesInput.Count; _i++)
+        {
+            _currentName = _clipNamesInput[_i];
+
+            for (int _j = 0; _j < _audioClips.Count && !_clipFound; _j++)
+            {
+                if (_audioClips[_j].GetClipName() == _currentName)
+                {
+                    _selectedClips.Add(_audioClips[_j]);
+
+                    _clipFound = true;
+                }
+            }
+
+            _clipFound = false;
+        }
+
+        if (_selectedClips.Count == 0)
+        {
+            return null;
+        }
+
+        int _selectedIndex = Random.Range(0, _selectedClips.Count - 1);
+
+        AudioClipClass _clip = _selectedClips[_selectedIndex];
+
+        return _clip;
+    }
 }
 
 

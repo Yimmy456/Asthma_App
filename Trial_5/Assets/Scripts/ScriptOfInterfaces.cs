@@ -41,3 +41,22 @@ public interface ExperienceInterface
     public abstract void IResumeExperience();
     public abstract IEnumerator IWaitUntilCompletion();
 }
+
+public interface GameCorrectOrWrongInterface
+{
+    public abstract void IGameCorrect();
+
+    public abstract void IGameCorrect(int _indexInput);
+
+    public abstract void IGameIncorrect();
+
+    public abstract void IGameIncorrect(int _indexInput);
+
+    public abstract void IGameCorrect(string _dialogueNameInput);
+
+    public abstract void IGameCorrect(string _dialogueNameInput, int _indexInput);
+
+    public abstract void IGameIncorrect(string _dialogueNameInput);
+
+    public abstract void IGameIncorrect(string _dialogueNameInput, int _indexInput);
+}

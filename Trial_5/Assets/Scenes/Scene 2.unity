@@ -23109,6 +23109,8 @@ MonoBehaviour:
     _clipName: Exiting Rocket State 1
   - _clip: {fileID: 8300000, guid: 9c1d9e98154eacb40b6e8e88c399b42f, type: 3}
     _clipName: Exiting Rocket State 2
+  - _clip: {fileID: 8300000, guid: f970cc712ec02154a804e0642a7d6ab1, type: 3}
+    _clipName: Hmm Uh uh
   _audioSource: {fileID: 1816639744}
   _animator: {fileID: 296267562}
 --- !u!1 &682305366

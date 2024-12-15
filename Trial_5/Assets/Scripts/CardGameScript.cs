@@ -394,119 +394,17 @@ public class CardGameScript : GameGenericMBScript<CardScript>
 
         if(_evaluateCards == EvaluateCardsEnum.ShowInfoCard)
         {
-            string _infoText = "";
-
-            if(_selectedCard1.GetIsInfoCard())
-            {
-                _infoText = _selectedCard1.GetCardDescription();
-
-                _selectedCard1.SetCardDone(true);
-
-                if(_selectedCard2 != null)
-                {
-                    _selectedCard2.SetCardFlipped(false);
-                     
-                    StartCoroutine(FlipDownCardAnimation(_selectedCard2));
-                }
-            }
-            else if(_selectedCard2.GetIsInfoCard())
-            {
-                _infoText = _selectedCard2.GetCardDescription();
-
-                _selectedCard2.SetCardDone(true);
-
-                _selectedCard1.SetCardFlipped(false);
-
-                StartCoroutine(FlipDownCardAnimation(_selectedCard1));
-            }
-
-            _completionMeter.AddToValue(1);
-
-            _completionMeter.SignalToUpdateUI();
-
-            bool _finalCard = !_gameDone && _completionMeter.GetPercentage() == 100.0f;
-
-            string _textToDisplay = _infoP.GetUITextString() + " Fun Fact:\n\n" + _infoText;
-
-            SetResponseText(_textToDisplay, _infoP.GetUTextColor(), _infoP.GetTextTimeToDisplay(), _finalCard);
-
-            if (_audioSource != null && _correctAudioClip != null)
-            {
-                _audioSource.clip = _correctAudioClip;
-
-                _audioSource.Play();
-            }
-
-            if (_finalCard)
-            {
-                _gameCanvas.gameObject.SetActive(false);
-            }
+            IGameCorrect(_selectedCard1.GetCardDescription(), 1);
         }
+
         else if(CardsMatch() && _evaluateCards == EvaluateCardsEnum.MatchCards)
         {
-            _selectedCard1.SetCardDone(true);
-
-            _selectedCard2.SetCardDone(true);
-
-            _completionMeter.AddToValue(2);
-
-            _completionMeter.SignalToUpdateUI();
-
-            string _cardDesc = _selectedCard1.GetCardDescription();
-
-            float _seconds = -1.0f;
-
-            _cardDesc = _matchP.GetUITextString() + " " + _cardDesc;
-
-            if (_dialogues != null)
-            {
-                _dialogues.PlayClip("That's a match", _selectedCard1.GetDialogueClipName());
-
-                _seconds = _dialogues.GetClip("That's a match").GetClip().length;
-
-                AudioClip _cl = _dialogues.GetClip(_selectedCard1.GetDialogueClipName()).GetClip();
-
-                if(_cl != null)
-                {
-                    _seconds = _seconds + _cl.length;
-                }
-            }
-
-            //if (_completionMeter..GetPercentage() < 100.0f)
-            //{
-                SetResponseText(_cardDesc, _matchP.GetUTextColor(), (_seconds + 2.0f));
-            //}
-
-            if(_audioSource != null && _correctAudioClip != null)
-            {
-                _audioSource.clip = _correctAudioClip;
-
-                _audioSource.Play();
-            }
+            IGameCorrect(_selectedCard1.GetDialogueClipName());
         }
+
         else if(_evaluateCards == EvaluateCardsEnum.MatchCards)
         {
-            _selectedCard1.SetCardFlipped(false);
-
-            _selectedCard2.SetCardFlipped(false);
-
-            SetResponseText(_noMatchP.GetUITextString(), _noMatchP.GetUTextColor(), _noMatchP.GetTextTimeToDisplay());
-
-            StartCoroutine(FlipDownCardAnimation(_selectedCard1));
-
-            StartCoroutine(FlipDownCardAnimation(_selectedCard2));
-
-            if (_dialogues != null)
-            {
-                _dialogues.PlayClip("Not a match (Card Game)");
-            }
-
-            if (_audioSource != null && _incorrectAudioClip != null)
-            {
-                _audioSource.clip = _incorrectAudioClip;
-
-                _audioSource.Play();
-            }
+            IGameIncorrect();
         }
 
         _selectedCard1 = null;
@@ -928,5 +826,142 @@ public class CardGameScript : GameGenericMBScript<CardScript>
         _yesOrNoCanvas.GetNoButton().onClick.AddListener(delegate { base.IResumeExperience(); });
 
         base.IChooseToQuitExperience();
+    }
+
+    public override void IGameCorrect()
+    {
+        if(_audioSource != null && _correctAudioClip != null)
+        {
+            _audioSource.clip = _correctAudioClip;
+
+            _audioSource.Play();
+        }
+
+        base.IGameCorrect();
+    }
+
+    public override void IGameCorrect(string _dialogueNameInput)
+    {
+        _selectedCard1.SetCardDone(true);
+
+        _selectedCard2.SetCardDone(true);
+
+        _completionMeter.AddToValue(2);
+
+        _completionMeter.SignalToUpdateUI();
+
+        string _cardDesc = _selectedCard1.GetCardDescription();
+
+        float _seconds = -1.0f;
+
+        _cardDesc = _matchP.GetUITextString() + " " + _cardDesc;
+
+        if (_dialogues != null)
+        {
+            _dialogues.PlayClip("That's a match", _dialogueNameInput);
+
+            _seconds = _dialogues.GetClip("That's a match").GetClip().length;
+
+            AudioClip _cl = _dialogues.GetClip(_dialogueNameInput).GetClip();
+
+            if (_cl != null)
+            {
+                _seconds = _seconds + _cl.length;
+            }
+        }
+
+        SetResponseText(_cardDesc, _matchP.GetUTextColor(), (_seconds + 2.0f));
+
+        if (_audioSource != null && _correctAudioClip != null)
+        {
+            _audioSource.clip = _correctAudioClip;
+
+            _audioSource.Play();
+        }
+
+        base.IGameCorrect(_dialogueNameInput);
+    }
+
+    public override void IGameCorrect(string _dialogueNameInput, int _indexInput = 1)
+    {
+        if (_indexInput == 1)
+        {
+            string _infoText = "";
+
+            if (_selectedCard1.GetIsInfoCard())
+            {
+                _infoText = _selectedCard1.GetCardDescription();
+
+                _selectedCard1.SetCardDone(true);
+
+                if (_selectedCard2 != null)
+                {
+                    _selectedCard2.SetCardFlipped(false);
+
+                    StartCoroutine(FlipDownCardAnimation(_selectedCard2));
+                }
+            }
+            else if (_selectedCard2.GetIsInfoCard())
+            {
+                _infoText = _selectedCard2.GetCardDescription();
+
+                _selectedCard2.SetCardDone(true);
+
+                _selectedCard1.SetCardFlipped(false);
+
+                StartCoroutine(FlipDownCardAnimation(_selectedCard1));
+            }
+
+            _completionMeter.AddToValue(1);
+
+            _completionMeter.SignalToUpdateUI();
+
+            bool _finalCard = !_gameDone && _completionMeter.GetPercentage() == 100.0f;
+
+            string _textToDisplay = _infoP.GetUITextString() + " Fun Fact:\n\n" + _infoText;
+
+            SetResponseText(_textToDisplay, _infoP.GetUTextColor(), _infoP.GetTextTimeToDisplay(), _finalCard);
+
+            if (_finalCard)
+            {
+                _gameCanvas.gameObject.SetActive(false);
+            }
+        }
+
+        if (_audioSource != null && _correctAudioClip != null)
+        {
+            _audioSource.clip = _correctAudioClip;
+
+            _audioSource.Play();
+        }
+
+        base.IGameCorrect(_dialogueNameInput, _indexInput);
+    }
+
+    public override void IGameIncorrect()
+    {
+        _selectedCard1.SetCardFlipped(false);
+
+        _selectedCard2.SetCardFlipped(false);
+
+        SetResponseText(_noMatchP.GetUITextString(), _noMatchP.GetUTextColor(), _noMatchP.GetTextTimeToDisplay());
+
+        StartCoroutine(FlipDownCardAnimation(_selectedCard1));
+
+        StartCoroutine(FlipDownCardAnimation(_selectedCard2));
+
+        if (_dialogues != null)
+        {
+            _dialogues.PlayClip("Not a match (Card Game)");
+        }
+
+        if (_audioSource != null && _incorrectAudioClip != null)
+        {
+            _audioSource.clip = _incorrectAudioClip;
+
+            _audioSource.Play();
+        }
+
+        base.IGameIncorrect();
     }
 }
