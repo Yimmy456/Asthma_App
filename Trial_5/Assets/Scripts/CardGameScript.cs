@@ -837,6 +837,8 @@ public class CardGameScript : GameGenericMBScript<CardScript>
             _audioSource.Play();
         }
 
+        Debug.Log("We are entering the " + @"""" + "correct" + @"""" + " phase in the cards' game.");
+
         base.IGameCorrect();
     }
 
@@ -878,6 +880,8 @@ public class CardGameScript : GameGenericMBScript<CardScript>
 
             _audioSource.Play();
         }
+
+        Debug.Log("We are entering the " + @"""" + "correct" + @"""" + " phase in the cards' game.");
 
         base.IGameCorrect(_dialogueNameInput);
     }
@@ -926,6 +930,8 @@ public class CardGameScript : GameGenericMBScript<CardScript>
             {
                 _gameCanvas.gameObject.SetActive(false);
             }
+
+            Debug.Log("We are entering the " + @"""" + "bonus correct" + @"""" + " phase in the cards' game.");
         }
 
         if (_audioSource != null && _correctAudioClip != null)
@@ -961,6 +967,8 @@ public class CardGameScript : GameGenericMBScript<CardScript>
 
             _audioSource.Play();
         }
+
+        Debug.Log("We are entering the " + @"""" + "incorrect" + @"""" + " phase in the cards' game.");
 
         base.IGameIncorrect();
     }

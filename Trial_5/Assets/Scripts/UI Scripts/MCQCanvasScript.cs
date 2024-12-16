@@ -51,6 +51,16 @@ public class MCQCanvasScript : GameCanvasScript
         return _progressionSlider;
     }
 
+    public Button[] GetAnswerButtons()
+    {
+        return _answerButtons;
+    }
+
+    public Button GetNextButton()
+    {
+        return _nextButton;
+    }
+
     public void SetQuestionNumber(int _input)
     {
         if(_questionTextNumberField == null)
@@ -100,17 +110,18 @@ public class MCQCanvasScript : GameCanvasScript
         {
             if(_correctButton == _answerButtons[_i])
             {
-                _answerButtons[_i].onClick.AddListener(delegate { CorrectAnswer(); });
+                _answerButtons[_i].onClick.AddListener(delegate { _game.IGameCorrect(); });
             }
             else
             {
-                _answerButtons[_i].onClick.AddListener(delegate { IncorrectAnswer(); });
+                _answerButtons[_i].onClick.AddListener(delegate { _game.IGameIncorrect(); });
             }
         }
 
         _nextButton.gameObject.SetActive(false);
     }
 
+    /*
     void IncorrectAnswer()
     {
         if(_game == null)
@@ -197,7 +208,7 @@ public class MCQCanvasScript : GameCanvasScript
         _game.GetCompletionMeter().SignalToUpdateUI();
 
         _nextButton.gameObject.SetActive(true);
-    }
+    }*/
 
     IEnumerator DisplayResponse(string _textInput, float _timeInput, Color _textColorInput)
     {

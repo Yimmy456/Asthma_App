@@ -334,4 +334,93 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
 
         return _r[_int];
     }
+
+    public override void IGameCorrect()
+    {
+        StopResponseTextCoroutine();
+
+        MCQCanvasScript _mcqC = (MCQCanvasScript)_gameCanvas;
+
+        if(_mcqC == null)
+        {
+            return;
+        }
+
+        if (_audioSource != null && _correctAudioClip != null)
+        {
+            _audioSource.clip = _correctAudioClip;
+
+            _audioSource.Play();
+        }
+
+        if (_dialogues != null)
+        {
+            _dialogues.PlayClip(_currentQuestion.GetDialogueClipName());
+        }
+
+        _mcqC.StopDisplayResponseCoroutine();        
+
+        for (int _i = 0; _i < 4; _i++)
+        {
+            _mcqC.GetAnswerButtons()[_i].interactable = false;
+        }
+
+        if (_dialogues != null)
+        {
+            string _dialogueS = SelectRandomDialogue();
+
+            //List<string> _dialoguesStrings = new List<string>() { _dialogueS, _game.GetCurrentQuestion().GetDialogueClipName(), "Press Next"};
+
+            //_game.GetDialogues().PlayClips(_dialoguesStrings);
+
+            _dialogues.PlayClip(_dialogueS, _currentQuestion.GetDialogueClipName(), "Press next");
+        }
+
+        string _response = "That's correct! Well done! ";
+
+        _response = _response + _currentQuestion.GetCorrectAnswerResponse() + "Press on " + @"""" + "Next" + @"""" + " to continue.";
+
+        //_responseTextCoroutine = StartCoroutine(DisplayResponse(_response, 5.0f, new Color(0.0f, 1.0f, 0.0f, 1.0f)));
+
+        SetResponseText(_response, new Color(0.0f, 1.0f, 0.0f, 1.0f), 5.0f, 70);
+
+        _mcqC.GetNextButton().interactable = true;
+
+        _completionMeter.AddToValue(1);
+
+        _completionMeter.SignalToUpdateUI();
+
+        _mcqC.GetNextButton().gameObject.SetActive(true);
+
+        Debug.Log("We are entering the " + @"""" + "correct" + @"""" + " phase of the MCQ question.");
+
+        base.IGameCorrect();
+    }
+
+    public override void IGameIncorrect()
+    {
+        StopResponseTextCoroutine();
+
+        //_responseTextCoroutine = StartCoroutine(DisplayResponse("This is not the correct answer. Please, try again. I know you can do it!", 5.0f, new Color(0.5f, 0.5f, 0.5f, 1.0f)));
+
+        SetResponseText("This is not the correct answer. Please, try again. I know you can do it!", new Color(0.5f, 0.5f, 0.5f, 1.0f), 5.0f, 70);
+
+        if (_audioSource != null && _incorrectAudioClip != null)
+        {
+            _audioSource.clip = _incorrectAudioClip;
+
+            _audioSource.Play();
+        }
+
+        if (GetDialogues() != null)
+        {
+            string _dialogueS = SelectRandomDialogue(false);
+
+            _dialogues.PlayClip(_dialogueS);
+        }
+
+        Debug.Log("We are entering the " + @"""" + "incorrect" + @"""" + " phase of the MCQ question.");
+
+        base.IGameIncorrect();
+    }
 }

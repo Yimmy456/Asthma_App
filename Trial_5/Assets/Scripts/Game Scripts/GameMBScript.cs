@@ -83,6 +83,8 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
 
     protected bool _introductionDialogueComplete = false;
 
+    Coroutine _responseTextCoroutine;
+
     public string GetGameName()
     {
         return _gameName;
@@ -207,6 +209,11 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
     public string GetGameIntroDialogueName()
     {
         return _gameIntroDialogueName;
+    }
+
+    public Coroutine GetResponseTextCoroutine()
+    {
+        return _responseTextCoroutine;
     }
 
     protected virtual void SetBadge()
@@ -922,6 +929,7 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
         }
     }
 
+
     public virtual void IGameCorrect()
     {
         if (_fastyDialogues != null)
@@ -950,21 +958,11 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
 
     public virtual void IGameCorrect(string _dialogueNameInput)
     {
-        if (_fastyDialogues != null)
-        {
-            _fastyDialogues.PlayRandomDialogue(new List<string>() { "Yes!", "Hooray" });
-        }
-
         IGameCorrect();
     }
 
     public virtual void IGameIncorrect(string _dialogueNameInput)
     {
-        if (_fastyDialogues != null)
-        {
-            _fastyDialogues.PlayRandomDialogue(new List<string>() { "Hmm Uh uh", "Nope" });
-        }
-
         IGameIncorrect();
     }
 
@@ -976,5 +974,57 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
     public virtual void IGameIncorrect(string _dialogueNameInput, int _indexInput)
     {
         IGameIncorrect();
+    }
+
+    IEnumerator SetResponseTextCoroutine(string _textInput, Color _textColorInput, float _timeInput, int _fontSizeInput)
+    {
+        _responseText.text = _textInput;
+
+        Outline _outline = _responseText.gameObject.GetComponent<Outline>();
+
+        _responseText.fontSize = _fontSizeInput;
+
+        if(_outline != null)
+        {
+            Color _outlineColor = ToolsStruct.ChangeColorValue(_textColorInput, 0.5f, 0.5f, true);
+
+            _outline.effectColor = _outlineColor;
+        }
+
+        yield return new WaitForSeconds(_timeInput);
+
+        _responseText.text = "";
+    }
+
+    protected void SetResponseText(string _textInput, Color _textColorInput, float _timeInput = 5.0f, int _fontSizeInput = 40)
+    {
+        if(_responseText == null)
+        {
+            return;
+        }
+
+        if(_responseTextCoroutine != null)
+        {
+            StopCoroutine(_responseTextCoroutine);
+        }
+
+        _responseTextCoroutine = StartCoroutine(SetResponseTextCoroutine(_textInput, _textColorInput, _timeInput, _fontSizeInput));
+    }
+
+    protected void StopResponseTextCoroutine()
+    {
+        if (_responseText == null)
+        {
+            return;
+        }
+
+        if (_responseTextCoroutine != null)
+        {
+            StopCoroutine(_responseTextCoroutine);
+
+            _responseTextCoroutine = null;
+        }
+
+        _responseText.text = "";
     }
 }
