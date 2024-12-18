@@ -151,6 +151,8 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
             _newBlock.GetComponent<InhalerMatchingObjectScript>().GetDraggableProperties().SetMaintainZDistance(false);
 
+            _newBlock.GetComponent<InhalerMatchingObjectScript>().GetDraggableProperties().SetOffset_Z(_draggingZOffset);
+
             _newBlock.GetComponent<InhalerMatchingObjectScript>().GetDraggableProperties().SetApplyGravity(true);
 
             _newBlock.GetComponent<InhalerMatchingObjectScript>().SetObjectName(_currentPreset.GetMatchingAttribute());

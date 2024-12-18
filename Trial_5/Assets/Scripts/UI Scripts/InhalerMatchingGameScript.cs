@@ -141,6 +141,8 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
 
             _newBlock.GetComponent<InhalerMatchingObjectScript>().SetObjectName(_givenName);
 
+            _newBlock.GetComponent<InhalerMatchingObjectScript>().GetDraggableProperties().SetOffset_Z(_draggingZOffset);
+
             _gameProperties.AddObjectToList(_newBlock.GetComponent<InhalerMatchingObjectScript>());
 
             _gameProperties.AddObjectsAsGO(_newBlock);
@@ -158,6 +160,8 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
             GameObject _newHole = Instantiate(_currentPreset.GetGameBlockHole().gameObject);
 
             _currentDialogue = _currentPreset.GetDialogueOfCurrentIndex();
+
+            Debug.Log("The current dialogue is " + @"""" + _currentDialogue + @"""" + ".");
 
             _newHole.transform.parent = _gameSpace.transform;
 
@@ -191,15 +195,17 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
 
                     _holeInfo.SetCorrectMatchDialogue(_currentDialogue);
 
+                    Debug.Log("The name of the correct dialogue at index " + (_i + 1).ToString() + " is " + @"""" + _holeInfo.GetCorrectMatchDialogue() + @"""" + ".");
+
                     if (_dialogues != null)
                     {
                         _holeInfo.SetDialogues(_dialogues);
                     }
 
-                    if (_currentPreset.GetGameBlockHole().GetCorrectMatchDialogue() != "")
-                    {
-                        _holeInfo.SetCorrectMatchDialogue(_currentPreset.GetGameBlockHole().GetCorrectMatchDialogue());
-                    }
+                    //if (_currentPreset.GetGameBlockHole().GetCorrectMatchDialogue() != "")
+                    //{
+                        //_holeInfo.SetCorrectMatchDialogue(_currentPreset.GetGameBlockHole().GetCorrectMatchDialogue());
+                    //}
 
                     if (_holeInfo.GetNameText() != null && _currentInfo != null)
                     {

@@ -1791,7 +1791,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Inhaler Animation
+          m_StringArgument: Dr. Salem Inhaler Animation Condensed
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &92383609
@@ -5207,7 +5207,7 @@ MonoBehaviour:
       _variable2: 5
   _reverseDirectionForHoles: 0
   _currentRotation: {fileID: 0}
-  _draggingZOffset: -3.8
+  _draggingZOffset: 0
   _additionalLookingAngles: {x: 0, y: 90, z: 0}
   _spaceCamera: {fileID: 0}
   _currentBlock: {fileID: 0}
@@ -6991,7 +6991,7 @@ MonoBehaviour:
       _variable2: 5
   _reverseDirectionForHoles: 0
   _currentRotation: {fileID: 0}
-  _draggingZOffset: -3.8
+  _draggingZOffset: 0
   _additionalLookingAngles: {x: 0, y: 90, z: 0}
   _spaceCamera: {fileID: 1330074157}
   _currentBlock: {fileID: 0}
@@ -7003,7 +7003,7 @@ MonoBehaviour:
       type: {class: InhalerMatchingBlockAndHoleClass, ns: , asm: Assembly-CSharp}
       data:
         _holeDialogueNames:
-        - Matching Letter Game 'A' 2
+        - Exhibition Spacer
         _gameBlock: {fileID: 2174617261687129083, guid: 9b47524623f387b4ca4a61b910e3b353, type: 3}
         _gameBlockHole: {fileID: 8581338652280826735, guid: 4ff361af7c490bf429906f17d2cb6fe0, type: 3}
         _matchingAttribute: 
@@ -7011,7 +7011,7 @@ MonoBehaviour:
       type: {class: InhalerMatchingBlockAndHoleClass, ns: , asm: Assembly-CSharp}
       data:
         _holeDialogueNames:
-        - Matching Letter Game 'A' 2
+        - Exhibition Whole Inhaler
         _gameBlock: {fileID: 6346176784116105242, guid: 891dabd826fccc043a8ee91678456837, type: 3}
         _gameBlockHole: {fileID: 3590374774483419534, guid: 55fc979955600eb4c8120a84735c34bd, type: 3}
         _matchingAttribute: 
@@ -7019,7 +7019,7 @@ MonoBehaviour:
       type: {class: InhalerMatchingBlockAndHoleClass, ns: , asm: Assembly-CSharp}
       data:
         _holeDialogueNames:
-        - Matching Letter Game 'A' 2
+        - Dr. Salem Exhibition Reliever Inhaler
         _gameBlock: {fileID: -2329902138911935774, guid: 8803084197b67cd419006f6a332e9da9, type: 3}
         _gameBlockHole: {fileID: 8478333606759067134, guid: 49ba93ab6b3a78048a56af8982d4646c, type: 3}
         _matchingAttribute: 
@@ -7027,7 +7027,7 @@ MonoBehaviour:
       type: {class: InhalerMatchingBlockAndHoleClass, ns: , asm: Assembly-CSharp}
       data:
         _holeDialogueNames:
-        - Matching Letter Game 'A' 2
+        - Exhibition Medicine
         _gameBlock: {fileID: 8143845998381502398, guid: 43b76909340fe664c8bd0ffb127dd972, type: 3}
         _gameBlockHole: {fileID: 8749786294909660480, guid: e5bdcc2d5ac48e64d9ede70d8cc1d38a, type: 3}
         _matchingAttribute: 
@@ -7035,7 +7035,7 @@ MonoBehaviour:
       type: {class: InhalerMatchingBlockAndHoleClass, ns: , asm: Assembly-CSharp}
       data:
         _holeDialogueNames:
-        - Matching Letter Game 'A' 2
+        - Dr. Salem Exhibition Preventer Inhaler
         _gameBlock: {fileID: 8173101078571741731, guid: 857b8cb551eae7b4f9c24396f768d804, type: 3}
         _gameBlockHole: {fileID: 8478333606759067134, guid: 49ba93ab6b3a78048a56af8982d4646c, type: 3}
         _matchingAttribute: 
@@ -7043,7 +7043,7 @@ MonoBehaviour:
       type: {class: InhalerMatchingBlockAndHoleClass, ns: , asm: Assembly-CSharp}
       data:
         _holeDialogueNames:
-        - Matching Letter Game 'A' 2
+        - Dr. Salem Exhibition Hybrid Inhaler
         _gameBlock: {fileID: -6271362131891551829, guid: c63ad3d61f3aaa8428f93bfc9ea5c405, type: 3}
         _gameBlockHole: {fileID: 8478333606759067134, guid: 49ba93ab6b3a78048a56af8982d4646c, type: 3}
         _matchingAttribute: 
@@ -23047,7 +23047,7 @@ MonoBehaviour:
   _defaultAnimator: {fileID: 296267562}
   _inhalerAnimator: {fileID: 442917245}
   _mainPlayerCanvasClass: {fileID: 392666912}
-  _animationClip: {fileID: -945580332620029257, guid: 62cd77fe3e3e30b47b8d520c32ec0630, type: 3}
+  _animationClip: {fileID: 7400000, guid: 01c1c45e8e0cac642884b9b4e8a34544, type: 2}
   _doctorTalking: {fileID: 919132149601814143}
   _countingText: {fileID: 152717985}
   _countingTextOutline: {fileID: 152717987}
@@ -23081,6 +23081,7 @@ MonoBehaviour:
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   _dialogues: {fileID: 682149338}
+  _animationDurationConstant: 1
 --- !u!114 &682149338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60300,6 +60301,8 @@ MonoBehaviour:
     _clipName: Game Introduction (Spelling Game)
   - _clip: {fileID: 8300000, guid: d770e10df3653d34789e6535252c057b, type: 3}
     _clipName: Game Introduction (MCQ Game)
+  - _clip: {fileID: 8300000, guid: c00557bfd7c1a4d4eba817aa272d873b, type: 3}
+    _clipName: Dr. Salem Inhaler Animation Condensed
   _audioSource: {fileID: 1757740976}
   _animator: {fileID: 919132149601814142}
 --- !u!4 &972334789260026595

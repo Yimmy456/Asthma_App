@@ -59,6 +59,9 @@ public class FastyScript : MonoBehaviour
     [SerializeField]
     DialoguesScript _dialogues;
 
+    [SerializeField]
+    float _animationDurationConstant = 1.0f;
+
     bool _startCounting = false;
 
     Coroutine _inhalerCoroutine;
@@ -203,7 +206,7 @@ public class FastyScript : MonoBehaviour
 
         yield return new WaitForSeconds(_seconds - _s);*/
 
-        yield return new WaitForSeconds(_seconds);
+        yield return new WaitForSeconds(_seconds * _animationDurationConstant);
 
         AbortAnimaton();
     }
