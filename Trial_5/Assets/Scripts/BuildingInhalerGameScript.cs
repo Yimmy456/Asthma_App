@@ -643,7 +643,7 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
             _cap.GetComponent<DraggableClass>().SetDraggableOn(true);
         }
 
-        _cap.layer = 7;
+        _cap.layer = 8;
 
         _animationCoroutineHighlight = StartCoroutine(_highlightingAnimationProperties.Animate());
     }

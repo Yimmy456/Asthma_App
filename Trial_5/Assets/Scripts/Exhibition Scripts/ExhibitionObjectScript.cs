@@ -371,7 +371,7 @@ public class ExhibitionObjectScript : MonoBehaviour
         {
             if (_exhibitionCanvas.GetCurrentObject() == this && !_highlighted)
             {
-                SetObjectLayer(gameObject, 7);
+                SetObjectLayer(gameObject, 8);
 
                 _highlightingProperties.SetHighlightingMaterialColor(_objectColor);
 
