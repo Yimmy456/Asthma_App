@@ -175,7 +175,7 @@ MonoBehaviour:
     - Always read you spacer's leaflets
     _informationLearned: 0
     _badgeName: 
-    _infoClipName: 
+    _infoClipName: Card Matching Game (Replace Spacer)
     _infoCategory: 0
   - _informationName: Not Cleaning Spacer
     _informationDesc: A common mistake of using an inhaler is not cleaning the spacer.
@@ -191,7 +191,7 @@ MonoBehaviour:
     - Not cleaning he spacer correctly
     _informationLearned: 0
     _badgeName: 
-    _infoClipName: 
+    _infoClipName: Card Matching Game (Not Cleaning Spacer)
     _infoCategory: 0
   - _informationName: Being Healthy
     _informationDesc: Some activities will help you be healthy.
@@ -217,7 +217,7 @@ MonoBehaviour:
     - Not cleaning he spacer correctly
     _informationLearned: 0
     _badgeName: 
-    _infoClipName: 
+    _infoClipName: Card Matching Game (Not Holding Breath)
     _infoCategory: 0
   _definitions:
   - _informationName: Asthma

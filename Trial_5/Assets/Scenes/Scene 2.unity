@@ -60303,6 +60303,8 @@ MonoBehaviour:
     _clipName: Game Introduction (MCQ Game)
   - _clip: {fileID: 8300000, guid: c00557bfd7c1a4d4eba817aa272d873b, type: 3}
     _clipName: Dr. Salem Inhaler Animation Condensed
+  - _clip: {fileID: 8300000, guid: 33b82c81608282b44b3051dca7266c71, type: 3}
+    _clipName: Dr. Salem Info Card Found
   _audioSource: {fileID: 1757740976}
   _animator: {fileID: 919132149601814142}
 --- !u!4 &972334789260026595

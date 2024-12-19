@@ -394,7 +394,14 @@ public class CardGameScript : GameGenericMBScript<CardScript>
 
         if(_evaluateCards == EvaluateCardsEnum.ShowInfoCard)
         {
-            IGameCorrect(_selectedCard1.GetCardDescription(), 1);
+            if (_selectedCard1.GetIsInfoCard())
+            {
+                IGameCorrect(_selectedCard1.GetDialogueClipName(), 1);
+            }
+            else if (_selectedCard2.GetIsInfoCard())
+            {
+                IGameCorrect(_selectedCard2.GetDialogueClipName(), 1);
+            }
         }
 
         else if(CardsMatch() && _evaluateCards == EvaluateCardsEnum.MatchCards)
@@ -519,6 +526,8 @@ public class CardGameScript : GameGenericMBScript<CardScript>
         _infoCard.SetCardName(_info.GetInformationName());
 
         _infoCard.SetCardDescription(_info.GetInformationDescription());
+
+        _infoCard.SetDialogueClipName(_info.GetInfoClipName());
 
         SetCardMaterial(_infoCard, BookScript.GetInstance().GetInfoCardFrontMaterial());
     }
@@ -844,6 +853,11 @@ public class CardGameScript : GameGenericMBScript<CardScript>
 
     public override void IGameCorrect(string _dialogueNameInput)
     {
+        if(_evaluateCards != EvaluateCardsEnum.MatchCards)
+        {
+            return;
+        }
+
         _selectedCard1.SetCardDone(true);
 
         _selectedCard2.SetCardDone(true);
@@ -892,9 +906,13 @@ public class CardGameScript : GameGenericMBScript<CardScript>
         {
             string _infoText = "";
 
+            string _dialogueName = "";
+
             if (_selectedCard1.GetIsInfoCard())
             {
                 _infoText = _selectedCard1.GetCardDescription();
+
+                _dialogueName = _selectedCard1.GetDialogueClipName();
 
                 _selectedCard1.SetCardDone(true);
 
@@ -908,6 +926,8 @@ public class CardGameScript : GameGenericMBScript<CardScript>
             else if (_selectedCard2.GetIsInfoCard())
             {
                 _infoText = _selectedCard2.GetCardDescription();
+
+                _dialogueName = _selectedCard2.GetDialogueClipName();
 
                 _selectedCard2.SetCardDone(true);
 
@@ -925,6 +945,17 @@ public class CardGameScript : GameGenericMBScript<CardScript>
             string _textToDisplay = _infoP.GetUITextString() + " Fun Fact:\n\n" + _infoText;
 
             SetResponseText(_textToDisplay, _infoP.GetUTextColor(), _infoP.GetTextTimeToDisplay(), _finalCard);
+
+            if (_dialogues != null)
+            {
+                Debug.Log("The name of the clip is " + @"""" + _dialogueName + @"""" + ".");
+
+                _dialogues.PlayClip("Dr. Salem Info Card Found", _dialogueNameInput);
+
+                //_seconds = _dialogues.GetClip("That's a match").GetClip().length;
+
+                //AudioClip _cl = _dialogues.GetClip(_dialogueNameInput).GetClip();
+            }
 
             if (_finalCard)
             {

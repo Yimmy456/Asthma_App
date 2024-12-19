@@ -229,6 +229,8 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
         
         _completionMeter.SignalToUpdateUI();
 
+        SetBadge("Inhaler Matching Badge");
+
         if(_currentRotation != null)
         {
             _currentRotation.GetComponent<RotationScript>().SetDoAction(true);
