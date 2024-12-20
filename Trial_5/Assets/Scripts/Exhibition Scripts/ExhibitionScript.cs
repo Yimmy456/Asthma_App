@@ -351,6 +351,8 @@ public class ExhibitionScript : MonoBehaviour, ExperienceInterface, RewardingBad
 
         _exhibitionRaycastOn = true;
 
+        _canvas.ShowStati(false);
+
         //_objectsComplete = _currentGroup.GetGroupCompletionMeter();
 
         if (DataPersistenceManager.GetInstance() != null)
@@ -594,6 +596,8 @@ public class ExhibitionScript : MonoBehaviour, ExperienceInterface, RewardingBad
 
                 _badgePreperation.GetNewBadgeCanvas().gameObject.SetActive(false);
 
+                _canvas.ShowStati(false);
+
                 if (_backButton != null)
                 {
                     _backButton.onClick.RemoveAllListeners();
@@ -614,6 +618,8 @@ public class ExhibitionScript : MonoBehaviour, ExperienceInterface, RewardingBad
                 _badgePreperation.GetNewBadgeCanvas().gameObject.SetActive(false);
 
                 _exhibitionRaycastOn = true;
+
+                _canvas.ShowStati(false);
 
                 if (_nextButton != null)
                 {

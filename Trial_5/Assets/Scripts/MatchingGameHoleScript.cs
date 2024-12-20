@@ -478,6 +478,8 @@ public class MatchingGameHoleScript : MonoBehaviour
 
         //_holeCanvas.GetGameProperties().GetMeter().AddToValue(1);
 
+        _holeCanvas.IGameCorrect();
+
         _holeCanvas.GetCompletionMeter().AddToValue(1);
 
         _holeCanvas.GetCompletionMeter().SignalToUpdateUI();

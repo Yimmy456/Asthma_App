@@ -410,4 +410,14 @@ public class LetterGameScript : MatchingGameCanvasScript
 
         ICompleteExperience();
     }
+
+    public override void IGameCorrect()
+    {
+        base.IGameCorrect();
+    }
+
+    public override void IGameIncorrect()
+    {
+        base.IGameIncorrect();
+    }
 }

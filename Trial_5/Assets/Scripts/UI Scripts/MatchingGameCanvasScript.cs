@@ -303,4 +303,44 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
             _hole.transform.rotation = _currentRotation.rotation;
         }
     }
+
+    public override void IGameCorrect(int _indexInput)
+    {
+        base.IGameCorrect(_indexInput);
+    }
+
+    public override void IGameCorrect()
+    {
+        base.IGameCorrect();
+    }
+
+    public override void IGameCorrect(string _dialogueNameInput)
+    {
+        base.IGameCorrect(_dialogueNameInput);
+    }
+
+    public override void IGameCorrect(string _dialogueNameInput, int _indexInput)
+    {
+        base.IGameCorrect(_dialogueNameInput, _indexInput);
+    }
+
+    public override void IGameIncorrect()
+    {
+        base.IGameIncorrect();
+    }
+
+    public override void IGameIncorrect(int _indexInput)
+    {
+        base.IGameIncorrect(_indexInput);
+    }
+
+    public override void IGameIncorrect(string _dialogueNameInput)
+    {
+        base.IGameIncorrect(_dialogueNameInput);
+    }
+
+    public override void IGameIncorrect(string _dialogueNameInput, int _indexInput)
+    {
+        base.IGameIncorrect(_dialogueNameInput, _indexInput);
+    }
 }

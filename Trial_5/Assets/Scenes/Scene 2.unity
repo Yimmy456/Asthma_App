@@ -2227,7 +2227,7 @@ MonoBehaviour:
   _responseText: {fileID: 167036495}
   _informationCanvas: {fileID: 834040356}
   _gameIntroDialogueName: Game Introduction (Card Game)
-  _fastyDialogues: {fileID: 0}
+  _fastyDialogues: {fileID: 682149338}
   _gameProperties:
     _listOfObjects: []
     _listOfObjectsAsGO: []
@@ -3480,14 +3480,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 163659057}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1165778561}
-  m_Father: {fileID: 1397013150}
-  m_RootOrder: 3
+  m_Father: {fileID: 1101266767}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -12759,7 +12759,7 @@ ParticleSystem:
   CollisionModule:
     enabled: 0
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -12875,7 +12875,7 @@ ParticleSystem:
     m_EnergyLossOnCollision:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -12930,7 +12930,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 2048
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -16791,13 +16791,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 437027871}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1397013150}
-  m_RootOrder: 4
+  m_Father: {fileID: 1101266767}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.3}
   m_AnchorMax: {x: 1, y: 0.3}
@@ -18564,12 +18564,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 505063541}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1397013150}
+  m_Father: {fileID: 1101266767}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
@@ -23732,7 +23732,7 @@ RectTransform:
   m_Children:
   - {fileID: 1671981379}
   m_Father: {fileID: 1397013150}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -26262,7 +26262,7 @@ MonoBehaviour:
   _responseText: {fileID: 1125309073}
   _informationCanvas: {fileID: 834040356}
   _gameIntroDialogueName: Game Introduction (MCQ Game)
-  _fastyDialogues: {fileID: 0}
+  _fastyDialogues: {fileID: 682149338}
   _gameProperties:
     _listOfObjects: []
     _listOfObjectsAsGO: []
@@ -31711,13 +31711,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1071654180}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1397013150}
-  m_RootOrder: 5
+  m_Father: {fileID: 1101266767}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.2}
   m_AnchorMax: {x: 1, y: 0.2}
@@ -32224,6 +32224,47 @@ MonoBehaviour:
   _drSalemDialogues: {fileID: 919132149601814144}
   _fastyDialogues: {fileID: 682149338}
   _started: 0
+--- !u!1 &1101266766
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1101266767}
+  m_Layer: 5
+  m_Name: Main Objects' Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1101266767
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101266766}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1164217578}
+  - {fileID: 505063542}
+  - {fileID: 163659058}
+  - {fileID: 437027872}
+  - {fileID: 1071654181}
+  m_Father: {fileID: 1397013150}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1106223608
 GameObject:
   m_ObjectHideFlags: 0
@@ -33890,13 +33931,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1164217577}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 1397013150}
-  m_RootOrder: 2
+  m_Father: {fileID: 1101266767}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -33916,7 +33957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -40793,15 +40834,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1924421598}
+  - {fileID: 1101266767}
   - {fileID: 1767963020}
-  - {fileID: 505063542}
-  - {fileID: 1164217578}
-  - {fileID: 163659058}
-  - {fileID: 437027872}
-  - {fileID: 1071654181}
   - {fileID: 1594487856}
   - {fileID: 715577201}
-  - {fileID: 1924421598}
   m_Father: {fileID: 2027623194}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -40849,6 +40886,8 @@ MonoBehaviour:
   _panelParent: {fileID: 1936028414}
   _doctorAnimator: {fileID: 919132149601814142}
   _audioSource: {fileID: 1045844157}
+  _statusPanelRectTransform: {fileID: 1924421598}
+  _mainObjectsPanelRectTransform: {fileID: 1101266767}
 --- !u!1 &1397361682
 GameObject:
   m_ObjectHideFlags: 0
@@ -44252,7 +44291,7 @@ RectTransform:
   m_Children:
   - {fileID: 801536220}
   m_Father: {fileID: 1397013150}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -44360,19 +44399,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1397013151}
           m_TargetAssemblyTypeName: ExhibitionCanvasScript, Assembly-CSharp
-          m_MethodName: EndPanels
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1924421597}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
+          m_MethodName: ShowStati
           m_Mode: 6
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -44381,18 +44408,6 @@ MonoBehaviour:
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1164217577}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
           m_CallState: 2
   - eventID: 2
     callback:
@@ -44400,19 +44415,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1397013151}
           m_TargetAssemblyTypeName: ExhibitionCanvasScript, Assembly-CSharp
-          m_MethodName: PreparePanels
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1924421597}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
+          m_MethodName: ShowStati
           m_Mode: 6
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -44421,18 +44424,6 @@ MonoBehaviour:
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 1
-          m_CallState: 2
-        - m_Target: {fileID: 1164217577}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
           m_CallState: 2
 --- !u!1 &1594778983
 GameObject:
@@ -48617,7 +48608,7 @@ RectTransform:
   m_Children:
   - {fileID: 966465910}
   m_Father: {fileID: 1397013150}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -49148,7 +49139,7 @@ MonoBehaviour:
   _responseText: {fileID: 167036495}
   _informationCanvas: {fileID: 834040356}
   _gameIntroDialogueName: Game Introduction (Spelling Game)
-  _fastyDialogues: {fileID: 0}
+  _fastyDialogues: {fileID: 682149338}
   _gameProperties:
     _listOfObjects: []
     _listOfObjectsAsGO: []
@@ -50796,7 +50787,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1847
+    m_Bits: 3895
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -53276,7 +53267,7 @@ RectTransform:
   - {fileID: 1893434575}
   - {fileID: 1361058220}
   m_Father: {fileID: 1397013150}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -61250,7 +61241,7 @@ GameObject:
   - component: {fileID: 6506071574842571621}
   - component: {fileID: 6506071574842571623}
   - component: {fileID: 6506071574842571622}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Platform_Centre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65291,7 +65282,7 @@ GameObject:
   - component: {fileID: 7340275246915769583}
   - component: {fileID: 7340275246915769585}
   - component: {fileID: 7340275246915769584}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Platform_Inner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66537,7 +66528,7 @@ GameObject:
   - component: {fileID: 134787040506528198}
   - component: {fileID: 7423599351923173007}
   - component: {fileID: 7423599351923173006}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Platform_Outer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67007,7 +66998,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7244548383708814813}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Platform Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}

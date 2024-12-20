@@ -129,10 +129,12 @@ public class LetterHoleScript : MatchingGameHoleScript
                 Debug.Log("We are playing the audio for the incorrect reponse for hole " + @"""" + gameObject.name + @"""" + ".");
             }
 
-            if (_dialogues != null)
-            {
-                _dialogues.PlayClip(_incorrectMatchDialogue);
-            }
+            _holeCanvas.IGameIncorrect();
+
+            //if (_dialogues != null)
+            //{
+            //    _dialogues.PlayClip(_incorrectMatchDialogue);
+            //}
         }
 
         ResetValues();

@@ -802,7 +802,7 @@ public class DialoguesScript : MonoBehaviour
             return;
         }
 
-        int _selectedIndex = Random.Range(0, _selectedClips.Count - 1);
+        int _selectedIndex = Random.Range(0, _selectedClips.Count);
 
         AudioClip _clip = _selectedClips[_selectedIndex];
 

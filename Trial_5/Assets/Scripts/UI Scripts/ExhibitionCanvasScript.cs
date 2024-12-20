@@ -65,6 +65,12 @@ public class ExhibitionCanvasScript : MonoBehaviour
     [SerializeField]
     AudioSource _audioSource;
 
+    [SerializeField]
+    RectTransform _statusPanelRectTransform;
+
+    [SerializeField]
+    RectTransform _mainObjectsPanelRectTransform;
+
     bool _timerStarts;
 
     float _timeElapsed = 0.0f;
@@ -146,6 +152,16 @@ public class ExhibitionCanvasScript : MonoBehaviour
     public MainCanvasesClass GetMainCanvases()
     {
         return _mainCanvases;
+    }
+
+    public RectTransform GetStatusPanelRectTransform()
+    {
+        return _statusPanelRectTransform;
+    }
+
+    public RectTransform GetMainObjectsPanelRectTransform()
+    {
+        return _mainObjectsPanelRectTransform;
     }
 
     public void SetCurrentObject(ExhibitionObjectScript _input)
@@ -295,7 +311,7 @@ public class ExhibitionCanvasScript : MonoBehaviour
 
         if (_audioSource != null && _c != null)
         {
-            _talkingCoroutine = StartCoroutine(TalkingCoroutine(_c, _fullTitle, _description));
+            _talkingCoroutine = StartCoroutine(TalkingCoroutine(_c, _fullTitle, _description, _index));
 
             _doctorSalemDialogues.SetDialogueCoroutine(_talkingCoroutine);
         }
@@ -307,7 +323,7 @@ public class ExhibitionCanvasScript : MonoBehaviour
         _currentlyTalkedAboutObject = _currentObject;
     }
     
-    IEnumerator TalkingCoroutine(AudioClip _clipInput, string _titleInput, string _descriptionInput)
+    IEnumerator TalkingCoroutine(AudioClip _clipInput, string _titleInput, string _descriptionInput, int _indexInput)
     {
         if(_audioSource.isPlaying)
         {
@@ -355,6 +371,8 @@ public class ExhibitionCanvasScript : MonoBehaviour
         _currentlyTalkedAboutObject = null;
 
         _audioSource.clip = null;
+
+        UpdatePanelToYes(_indexInput - 1);
     }
 
     void ColorTitle(Color _input)
@@ -386,7 +404,7 @@ public class ExhibitionCanvasScript : MonoBehaviour
         //_currentlyTalkedAboutObject.
     }
 
-    public void PreparePanels()
+    void PreparePanels()
     {
         if (_exhibition == null || _panelTemplate == null || _panelParent == null)
         {
@@ -555,7 +573,7 @@ public class ExhibitionCanvasScript : MonoBehaviour
         }
     }
 
-    public void EndPanels()
+    void EndPanels()
     {
         foreach(GameObject _obj in _panels)
         {
@@ -602,5 +620,64 @@ public class ExhibitionCanvasScript : MonoBehaviour
         }
 
         Debug.Log("The object is explained.");
+    }
+
+    public void ShowStati(bool _input)
+    {
+        if(_statusPanelRectTransform != null)
+        {
+            if (_input)
+            {
+                PreparePanels();
+            }
+            else
+            {
+                EndPanels();
+            }
+
+            _statusPanelRectTransform.gameObject.SetActive(_input);
+        }
+
+        if(_mainObjectsPanelRectTransform != null)
+        {
+            _mainObjectsPanelRectTransform.gameObject.SetActive(!_input);
+        }
+    }
+
+    void UpdatePanelToYes(int _input)
+    {
+        if(_panelParent == null || _panels == null || _input < 0 || _statusPanelRectTransform == null)
+        {
+            return;
+        }
+
+        if(_input >= _panels.Count || !_statusPanelRectTransform.gameObject.activeSelf)
+        {
+            return;
+        }
+
+        GameObject _selectedPanel = _panels[_input];
+
+        Text _tx = _selectedPanel.GetComponent<RectTransform>().Find("Exhibit Talked About Panel").gameObject.GetComponent<RectTransform>().Find("Text").gameObject.GetComponent<Text>();
+
+        if(_tx == null)
+        {
+            return;
+        }
+
+        _tx.text = "Yes";
+
+        Color _greenColor = new Color(0.0f, 1.0f, 0.0f, 1.0f);
+
+        _tx.color = _greenColor;
+
+        Outline _outline = _tx.gameObject.GetComponent<Outline>();
+
+        if (_outline != null)
+        {
+            Color _outlineColor = ToolsStruct.ChangeColorValue(_greenColor, 0.5f, 0.5f, true);
+
+            _outline.effectColor = _outlineColor;
+        }
     }
 }
