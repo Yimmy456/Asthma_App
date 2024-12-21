@@ -645,9 +645,9 @@ public class ExhibitionScript : MonoBehaviour, ExperienceInterface, RewardingBad
             return;
         }
 
-        IRewardBadge();
-
         _canvas.gameObject.SetActive(false);
+
+        IRewardBadge();
     }
 
     public void IChooseToRestartExperience()

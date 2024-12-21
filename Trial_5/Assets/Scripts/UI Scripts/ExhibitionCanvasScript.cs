@@ -368,6 +368,8 @@ public class ExhibitionCanvasScript : MonoBehaviour
 
         ExhibitionListItemClass _exhItem = _exhibition.GetExhibitItemByID(_currentlyTalkedAboutObject.GetObjectID());
 
+        _exhItem.SetDisplayExplained(true);
+
         _currentlyTalkedAboutObject = null;
 
         _audioSource.clip = null;
@@ -615,6 +617,8 @@ public class ExhibitionCanvasScript : MonoBehaviour
             _item.SetDisplayExplained(true);
 
             _exhibition.GetCurrentGroup().GetGroupCompletionMeter().AddToValue(1);
+
+            _exhibition.GetCurrentGroup().GetGroupCompletionMeter().SignalToUpdateUI();
 
             Debug.Log("The object is explained for the first time.");
         }
