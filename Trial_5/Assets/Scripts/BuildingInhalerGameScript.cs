@@ -187,20 +187,18 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
             InhalerMatchingObjectHoleScript _holeInfo = _newHole.GetComponent<InhalerMatchingObjectHoleScript>();
 
-            Destroy(_newHole.transform.Find("Arrow Location").gameObject);
+            DestroyArrowLocations(_newHole);
+
+            //Destroy(_newHole.transform.Find("Arrow Location").gameObject);
 
             _currentHoleProperties.AddObjectsAsGO(_newHole);
 
-            if(_i == 0)
-            {
-                _newHole.SetActive(true);
+            //_newHole.transform.Find
 
-                Destroy(_newHole.transform.Find("Arrow Location 2").gameObject);
-            }
-            else
-            {
-                _newHole.SetActive(false);
-            }
+            //if(_i == 0)
+            //{
+            _newHole.SetActive(_i == 0);
+            //}
 
             try
             {
@@ -695,6 +693,44 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
             //_gameSpace.transform.rotation = Quaternion.Slerp(_gameSpace.transform.rotation, _rot, Time.deltaTime);
 
             _gameSpace.transform.rotation = _rot;
+        }
+    }
+
+    void DestroyArrowLocations(GameObject _input)
+    {
+        if(_input == null)
+        {
+            return;
+        }
+
+        List<GameObject> _arrowLocations = new List<GameObject>();
+
+        Transform _tr;
+
+        for(int _i = 0; _i < _input.transform.childCount; _i++)
+        {
+            _tr = _input.transform.GetChild(_i);
+
+            if (_tr == null)
+            {
+                continue;
+            }
+
+            if(_tr.gameObject.tag == "Arrow Location Tag")
+            {
+                _arrowLocations.Add(_tr.gameObject);
+            }
+        }
+
+        string _name;
+
+        foreach(GameObject _go in _arrowLocations)
+        {
+            _name = _go.name;
+
+            Destroy(_go);
+
+            Debug.Log(@"""" + _name + @"""" + " has been destroyed.");
         }
     }
 }

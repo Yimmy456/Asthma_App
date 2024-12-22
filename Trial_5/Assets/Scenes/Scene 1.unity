@@ -1697,7 +1697,7 @@ Transform:
   m_GameObject: {fileID: 81408529}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1081781373}
@@ -2807,9 +2807,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 149289267}
-  m_Layer: 0
-  m_Name: Arrow Location
-  m_TagString: Untagged
+  m_Layer: 12
+  m_Name: Arrow Location 4
+  m_TagString: Arrow Location Tag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6679,9 +6679,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 276930176}
-  m_Layer: 0
-  m_Name: Arrow Location
-  m_TagString: Untagged
+  m_Layer: 12
+  m_Name: Arrow Location 2
+  m_TagString: Arrow Location Tag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12159,9 +12159,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -12332,7 +12332,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 2048
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -30361,9 +30361,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1081781373}
-  m_Layer: 0
-  m_Name: Arrow Location
-  m_TagString: Untagged
+  m_Layer: 12
+  m_Name: Arrow Location 1
+  m_TagString: Arrow Location Tag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30403,7 +30403,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1081885258
 RectTransform:
   m_ObjectHideFlags: 0
@@ -39601,7 +39601,7 @@ MonoBehaviour:
   _addedDistanceForHoles: 0
   _facingDirection: {x: 0, y: 0, z: 0}
   _spawningSizeForBlocks: 300
-  _spawningSizeForHoles: 1.5
+  _spawningSizeForHoles: 10
   _spawningDistanceForBlocks: 2
   _spawningRangesForBlocks:
     _xRange:
@@ -39636,7 +39636,7 @@ MonoBehaviour:
       _variable1: 1
       _variable2: 1
   _arrowContainerSize: 100
-  _arrowSize: 3
+  _arrowSize: 10
   _numberModelSize: 0.3
   _arrowAnimations:
   - _animationSpeed: 0.5
@@ -47326,9 +47326,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1771176719}
-  m_Layer: 0
-  m_Name: Arrow Location 2
-  m_TagString: Untagged
+  m_Layer: 12
+  m_Name: Arrow Location 3
+  m_TagString: Arrow Location Tag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47886,7 +47886,7 @@ Transform:
   m_GameObject: {fileID: 1808488132}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 276930176}
@@ -48810,7 +48810,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1847
+    m_Bits: 3895
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -51925,7 +51925,7 @@ Transform:
   m_GameObject: {fileID: 1971063224}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1771176719}
@@ -56453,7 +56453,7 @@ Transform:
   m_GameObject: {fileID: 2089026871}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 149289267}
@@ -59547,7 +59547,7 @@ GameObject:
   - component: {fileID: 9160298310710328696}
   - component: {fileID: 7161234658707295698}
   - component: {fileID: 2406121986962002290}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Platform_Inner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59618,7 +59618,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1887173565860767531
 Transform:
   m_ObjectHideFlags: 0
@@ -60335,7 +60335,7 @@ GameObject:
   - component: {fileID: 1307161811846423324}
   - component: {fileID: 4790754862014689718}
   - component: {fileID: 5001100437589754971}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Platform_Outer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60740,7 +60740,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2319468292868757568}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Platform Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63119,7 +63119,7 @@ GameObject:
   - component: {fileID: 6286534131873387732}
   - component: {fileID: 1456554902172854963}
   - component: {fileID: 2230288834331983608}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Platform_Centre
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Arrow Location Tag
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - Highlighting Arrow
   - Highlighting Number
   - Landing Platform
-  - 
+  - Arrow Location Layer
   - 
   - 
   - 

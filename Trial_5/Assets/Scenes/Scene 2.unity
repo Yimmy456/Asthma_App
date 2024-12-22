@@ -5271,7 +5271,7 @@ MonoBehaviour:
   _addedDistanceForHoles: 0
   _facingDirection: {x: 0, y: 0, z: 0}
   _spawningSizeForBlocks: 300
-  _spawningSizeForHoles: 3
+  _spawningSizeForHoles: 10
   _spawningDistanceForBlocks: 2
   _spawningRangesForBlocks:
     _xRange:
@@ -18940,8 +18940,8 @@ GameObject:
   m_Component:
   - component: {fileID: 511462052}
   m_Layer: 0
-  m_Name: Arrow Location
-  m_TagString: Untagged
+  m_Name: Arrow Location 4
+  m_TagString: Arrow Location Tag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25985,8 +25985,8 @@ GameObject:
   m_Component:
   - component: {fileID: 842127046}
   m_Layer: 0
-  m_Name: Arrow Location
-  m_TagString: Untagged
+  m_Name: Arrow Location 2
+  m_TagString: Arrow Location Tag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26087,8 +26087,8 @@ GameObject:
   m_Component:
   - component: {fileID: 856004070}
   m_Layer: 0
-  m_Name: Arrow Location
-  m_TagString: Untagged
+  m_Name: Arrow Location 1
+  m_TagString: Arrow Location Tag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32353,8 +32353,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1106223609}
   m_Layer: 0
-  m_Name: Arrow Location 2
-  m_TagString: Untagged
+  m_Name: Arrow Location 3
+  m_TagString: Arrow Location Tag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
