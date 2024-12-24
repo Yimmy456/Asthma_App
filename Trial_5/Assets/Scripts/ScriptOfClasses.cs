@@ -1776,6 +1776,22 @@ public class ArrowAnimationClass : BasicAnimationClass
         _animateBoolean = false;
     }
 
+    public void SetAnimationGeometryConstant(float _input)
+    {
+        if(_input <= 0.0f)
+        {
+            return;
+        }
+
+        _animationSpeed = _animationSpeed * _input;
+
+        //_arrowObject.transform.localPosition = Vector3.one * _input;
+
+        _pointA = _pointA * _input;
+
+        _pointB = _pointB * _input;
+    }
+
 }
 
 [System.Serializable]

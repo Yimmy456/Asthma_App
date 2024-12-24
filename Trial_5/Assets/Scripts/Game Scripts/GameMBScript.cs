@@ -14,6 +14,9 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
     protected Transform _mainContainer;
 
     [SerializeField]
+    protected Transform _sceneContainer;
+
+    [SerializeField]
     protected GameObject _gameSpace;
 
     [SerializeField]

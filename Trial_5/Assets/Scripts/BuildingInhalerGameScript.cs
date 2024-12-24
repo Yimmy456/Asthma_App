@@ -27,6 +27,9 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
     [SerializeField]
     List<ArrowAnimationClass> _instancedArrowAnimations;
 
+    [SerializeField]
+    PlaceIndicatorScript _placeIndicator;
+
     ArrowAnimationClass _currentInstancedArrowAnimation;
 
     Quaternion _gameSpaceInitialRotation;
@@ -173,6 +176,8 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
             GameObject _newHole = Instantiate(_currentPreset.GetGameBlockHole().gameObject);
 
+            _newHole.transform.parent = null;
+
             _currentHolePosition = _currentPreset.GetGameBlockHole().gameObject.transform.position;
 
             _currentHoleRotation = _currentPreset.GetGameBlockHole().gameObject.transform.rotation;
@@ -233,6 +238,8 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
         string _numberModelName;
 
+        Transform _p;
+
         for(int _i = 0;  _i < _arrowAnimations.Count; _i++)
         {
             ArrowAnimationClass _currentAnim = _arrowAnimations[_i];
@@ -252,20 +259,49 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
             _newAnim.SetSpaceType(_currentAnim.GetSpaceType());
 
-            _newAnim.SetAnimationSpeed(_currentAnim.GetAnimationSpeed());
+            _newAnim.SetAnimationSpeed(_currentAnim.GetAnimationSpeed());            
 
-            _go = Instantiate(_currentAnim.GetArrowContainer());
+            _go = Instantiate(_currentAnim.GetArrowContainer(), _currentAnim.GetArrowContainer().transform.position, _currentAnim.GetArrowContainer().transform.rotation);
 
-            _go.transform.position = _currentAnim.GetArrowContainer().transform.position;
+            //SetArrowContainerGeometry(_currentAnim.GetArrowContainer(), _go);
 
-            _go.transform.rotation = _currentAnim.GetArrowContainer().transform.rotation;
+            _go.transform.parent = _gameSpace.transform;
 
-            if (_go != null)
-            {
-                _go.transform.parent = _gameSpace.transform;
-            }
+            _go.transform.localScale = Vector3.one * _arrowContainerSize;
 
             _newAnim.SetArrowContainer(_go);
+
+            _newAnim.GetArrowContainer().SetActive(false);
+
+            _instancedArrowAnimations.Add(_newAnim);
+
+            _arrow3dObject = _go.transform.Find("Arrow 3D Object").gameObject;
+
+            _p = _arrow3dObject.transform.parent;
+
+            _arrow3dObject.transform.parent = _sceneContainer.transform;
+
+            _arrow3dObject.transform.localScale = Vector3.one * _arrowSize;
+
+            _arrow3dObject.transform.parent = _p;
+
+            _newAnim.SetArrowObject(_arrow3dObject);
+
+            _numberModelName = "Number " + _numberModel.ToString() + " Model";
+
+            _number3dObject = _go.transform.Find(_numberModelName).gameObject;
+
+            _p = _number3dObject.transform.parent;
+
+            _number3dObject.transform.parent = _sceneContainer;
+
+            _number3dObject.transform.localScale = Vector3.one * _numberModelSize;
+
+            _number3dObject.transform.parent = _p;
+
+            _newAnim.SetNumber3DObject(_number3dObject);
+
+            /*
 
             _arrow3dObject = _go.transform.Find("Arrow 3D Object").gameObject;
 
@@ -281,11 +317,7 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
             _numberModelName = "Number " + _numberModel.ToString() + " Model";
 
-            _number3dObject = _go.transform.Find(_numberModelName).gameObject;
-
-            _newAnim.SetNumber3DObject(_number3dObject);
-
-            _number3dObject.transform.localScale = Vector3.one * _numberModelSize;
+            _number3dObject.transform.localScale = Vector3.one * _numberModelSize;*/
         }
 
         _completionMeter.SetMaxValue(4);
@@ -732,5 +764,33 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
             Debug.Log(@"""" + _name + @"""" + " has been destroyed.");
         }
+    }
+
+    void SetArrowContainerGeometry(GameObject _originalContainerInput, GameObject _copiedContainerInput)
+    {
+        if(_originalContainerInput == null || _copiedContainerInput == null)
+        {
+            return;
+        }
+
+        GameObject _copy = Instantiate(_originalContainerInput);
+
+        _copy.transform.parent = null;
+
+        Vector3 _position = _copy.transform.position;
+
+        Quaternion _q = _copy.transform.rotation;
+
+        Vector3 _scale = _copy.transform.localScale;
+
+        _copiedContainerInput.transform.parent = null;
+
+        _copiedContainerInput.transform.position = _position;
+
+        _copiedContainerInput.transform.rotation = _q;
+
+        _copiedContainerInput.transform.localScale = _scale;
+
+        Destroy(_copy);
     }
 }
