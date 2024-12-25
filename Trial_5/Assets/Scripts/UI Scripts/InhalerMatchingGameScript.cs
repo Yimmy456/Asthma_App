@@ -360,4 +360,16 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
 
         ICompleteExperience();
     }
+
+    public override void IGameCorrect()
+    {
+        base.IGameCorrect();
+    }
+
+    public override void IGameIncorrect()
+    {
+        _dialogues.PlayClip("Matching Game Incorrect");
+
+        base.IGameIncorrect();
+    }
 }

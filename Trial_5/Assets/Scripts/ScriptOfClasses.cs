@@ -1815,6 +1815,8 @@ public class BasicAnimationClass
     protected bool _switch;
 
     protected float _delta = 0.0f;
+
+    protected static Coroutine _animationCoroutine;
     
     public float GetAnimationSpeed()
     {
@@ -1849,6 +1851,11 @@ public class BasicAnimationClass
     public float GetDelta()
     {
         return _delta;
+    }
+
+    public Coroutine GetAnimationCoroutine()
+    {
+        return _animationCoroutine;
     }
 
     public void SetAnimationSpeed(float _input)
@@ -2288,6 +2295,28 @@ public class ShrinkAndExpandAnimationClass : BasicAnimationClass
 
         _animateBoolean = false;
     }
+
+    /*public void PlayAnimation(bool _increase = true)
+    {
+        if(_gameObject == null)
+        {
+            _animateBoolean = false;
+
+            _increaseOrDecrease = IncreasOrDecreaseEnum.None;
+
+            _animationCoroutine = null;
+
+            return;
+        }
+
+        if(_increase)
+        {
+            if(_t < 1.0f && _increaseOrDecrease != IncreasOrDecreaseEnum.Increase)
+            {
+                _animationCoroutine = MonoBehaviour.StartCoroutine(Animate());
+            }
+        }
+    }*/
 }
 
 [System.Serializable]

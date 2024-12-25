@@ -367,6 +367,8 @@ public class LetterGameScript : MatchingGameCanvasScript
         {
             StartCoroutine(IWaitUntilCompletion());
 
+            _gameCanvas.GetQuitButton().gameObject.SetActive(false);
+
             _waitToCompleteSignal = true;
         }
     }
@@ -418,6 +420,8 @@ public class LetterGameScript : MatchingGameCanvasScript
 
     public override void IGameIncorrect()
     {
+        _dialogues.PlayClip("Matching Game Incorrect");
+
         base.IGameIncorrect();
     }
 }

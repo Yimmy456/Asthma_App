@@ -34188,11 +34188,10 @@ MonoBehaviour:
   _camera: {fileID: 1075211029}
   _distanceText: {fileID: 1081885259}
   _mainSceneTransform: {fileID: 1759490899}
-  _constantSizeOfMainScene: 0.3
+  _constantSizeOfMainScene: 0.2
   _expandingAnimationSpeed: 2
   _front: {fileID: 366229647}
   _frontDistance: 5
-  _landingTerrain: {fileID: 601199372}
   _shinkAndExpandAnimationForLandingTerrain:
     _animationSpeed: 1
     _withDeltaTime: 1
@@ -39648,7 +39647,7 @@ MonoBehaviour:
       _variable2: 5
   _reverseDirectionForHoles: 0
   _currentRotation: {fileID: 0}
-  _draggingZOffset: -3.8
+  _draggingZOffset: -1
   _additionalLookingAngles: {x: 0, y: 90, z: 0}
   _spaceCamera: {fileID: 0}
   _currentBlock: {fileID: 0}

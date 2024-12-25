@@ -71,9 +71,6 @@ public class PlaceIndicatorScript : MonoBehaviour
     float _frontDistance = 5.0f;
 
     [SerializeField]
-    GameObject _landingTerrain;
-
-    [SerializeField]
     ShrinkAndExpandAnimationClass _shinkAndExpandAnimationForLandingTerrain;
 
     [SerializeField]
@@ -89,6 +86,8 @@ public class PlaceIndicatorScript : MonoBehaviour
     bool _terrainFound = false;
 
     float _showingT = 0.0f;
+
+    Coroutine _animationCoroutine;
 
     Coroutine _startingAnimationCoroutine;
 
@@ -118,9 +117,9 @@ public class PlaceIndicatorScript : MonoBehaviour
                 _indicator.SetActive(false);
             }
 
-            if(_landingTerrain != null)
+            if(_mainSceneTransform != null)
             {
-                _landingTerrain.SetActive(false);
+                _mainSceneTransform.gameObject.SetActive(false);
             }
 
             if (_noLandButton != null)
@@ -142,9 +141,9 @@ public class PlaceIndicatorScript : MonoBehaviour
                 _indicator.SetActive(true);
             }
 
-            if (_landingTerrain != null)
+            if(_mainSceneTransform != null)
             {
-                _landingTerrain.SetActive(true);
+                _mainSceneTransform.gameObject.SetActive(true);
             }
         }
 
@@ -178,10 +177,16 @@ public class PlaceIndicatorScript : MonoBehaviour
                 _indicator.transform.localScale = Vector3.one * _planeDistance;
             }
 
-            if(_landingTerrain != null && _shinkAndExpandAnimationForLandingTerrain.GetT() < 1.0f && _shinkAndExpandAnimationForLandingTerrain.GetIncreaseOrDecrease() != IncreasOrDecreaseEnum.Increase)
+            if(_shinkAndExpandAnimationForLandingTerrain.GetT() < 1.0f && _shinkAndExpandAnimationForLandingTerrain.GetIncreaseOrDecrease() != IncreasOrDecreaseEnum.Increase)
             {
                 //_landingTerrain.SetActive(true);
-                StartCoroutine(_shinkAndExpandAnimationForLandingTerrain.Animate());                
+
+                if(_animationCoroutine != null)
+                {
+                    StopCoroutine(_animationCoroutine);
+                }
+
+                _animationCoroutine = StartCoroutine(_shinkAndExpandAnimationForLandingTerrain.Animate());                
             }
 
             //StartCoroutine(_arrowAnimationClass.Animate());
@@ -239,10 +244,16 @@ public class PlaceIndicatorScript : MonoBehaviour
 
             _terrainFound = false;
 
-            if (_landingTerrain != null && _shinkAndExpandAnimationForLandingTerrain.GetT() > 0.0f && _shinkAndExpandAnimationForLandingTerrain.GetIncreaseOrDecrease() != IncreasOrDecreaseEnum.Decrease)
+            if (_shinkAndExpandAnimationForLandingTerrain.GetT() > 0.0f && _shinkAndExpandAnimationForLandingTerrain.GetIncreaseOrDecrease() != IncreasOrDecreaseEnum.Decrease)
             {
                 //_landingTerrain.SetActive(true);
-                StartCoroutine(_shinkAndExpandAnimationForLandingTerrain.ReverseAnimate());
+
+                if(_animationCoroutine != null)
+                {
+                    StopCoroutine(_animationCoroutine);
+                }
+
+                _animationCoroutine = StartCoroutine(_shinkAndExpandAnimationForLandingTerrain.ReverseAnimate());
             }
 
 

@@ -348,6 +348,8 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
             }
         }
 
+        _gameCanvas.GetQuitButton().gameObject.SetActive(true);
+
         if (_b != null)
         {
             _b.onClick.AddListener(delegate

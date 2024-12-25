@@ -5287,7 +5287,7 @@ MonoBehaviour:
       _variable2: 5
   _reverseDirectionForHoles: 0
   _currentRotation: {fileID: 0}
-  _draggingZOffset: 0
+  _draggingZOffset: 2
   _additionalLookingAngles: {x: 0, y: 180, z: 0}
   _spaceCamera: {fileID: 0}
   _currentBlock: {fileID: 0}

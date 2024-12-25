@@ -538,6 +538,8 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
                         }
                     }
 
+                    IGameCorrect();
+
                     _completionMeter.SignalToUpdateUI();
                 }
                 else if (_cap.GetComponent<DraggableClass>().GetTouchPhase() == TouchPhase.Ended)
@@ -555,6 +557,8 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
                             _as.Play();
                         }
                     }
+
+                    IGameIncorrect();
                 }
             }
         }
@@ -576,6 +580,8 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
             {
                 _dialogues.PlayClip("Dr. Salem Assembly Game Final");
             }
+
+            _gameCanvas.GetQuitButton().gameObject.SetActive(false);
 
             StartCoroutine(IWaitUntilCompletion());
 
@@ -726,6 +732,18 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
             _gameSpace.transform.rotation = _rot;
         }
+    }
+
+    public override void IGameCorrect()
+    {
+        base.IGameCorrect();
+    }
+
+    public override void IGameIncorrect()
+    {
+        _dialogues.PlayClip("Dr. Salem Assembly Game Not Right");
+
+        base.IGameIncorrect();
     }
 
     void DestroyArrowLocations(GameObject _input)
