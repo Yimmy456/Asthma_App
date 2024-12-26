@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+//using System.Numerics;
 //using TMPro;
 //using UnityEditor;
 
@@ -2190,6 +2191,21 @@ public class ShrinkAndExpandAnimationClass : BasicAnimationClass
     public Vector3 GetMaxSize() { return _maxSize; }
 
     public float GetMaxSizeConstant() { return _maxSizeConstant; }
+
+    public void SetMaxSize(Vector3 _input)
+    {
+        _maxSize = _input;
+    }
+
+    public void SetMaxSize(float _inputX, float _inputY, float _inputZ)
+    {
+        SetMaxSize(new Vector3(_inputX, _inputY, _inputZ));
+    }
+
+    public void SetMaxSizeConstant(float _input)
+    {
+        _maxSizeConstant = _input;
+    }
 
     public IncreasOrDecreaseEnum GetIncreaseOrDecrease()
     {

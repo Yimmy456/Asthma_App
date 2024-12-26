@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Animations;
+using Unity.VisualScripting;
 
 public class MainSceneScript : MonoBehaviour, YesOrNoInterface
 {
@@ -96,6 +97,16 @@ public class MainSceneScript : MonoBehaviour, YesOrNoInterface
         return _yesOrNoCanvas;
     }
 
+    public Animator GetAnimator()
+    {
+        return _animator;
+    }
+
+    public Animator GetFastyAnimator()
+    {
+        return _fastyAnimator;
+    }
+    
     public void ISetActionsOfNoButton()
     {
         _playerCanvas.gameObject.SetActive(true);
@@ -403,5 +414,7 @@ public class MainSceneScript : MonoBehaviour, YesOrNoInterface
         }
 
         _as.Play();
+
+        Debug.Log("We are playing the " + @"""" + _input + @"""" + " sound effect.");
     }
 }

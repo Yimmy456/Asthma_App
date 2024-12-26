@@ -604,6 +604,13 @@ public class ExhibitionScript : MonoBehaviour, ExperienceInterface, RewardingBad
                 }
 
                 _nextButton.onClick.RemoveAllListeners();
+
+                _nextButton.onClick.AddListener(delegate
+                {
+                    _canvas.GetMainCanvases().GetMainPlayerCanvas().gameObject.SetActive(true);
+
+                    _badgePreperation.GetNewBadgeCanvas().gameObject.SetActive(false);
+                });
             });
         }
 
@@ -624,6 +631,13 @@ public class ExhibitionScript : MonoBehaviour, ExperienceInterface, RewardingBad
                 if (_nextButton != null)
                 {
                     _nextButton.onClick.RemoveAllListeners();
+
+                    _nextButton.onClick.AddListener(delegate
+                    {
+                        _canvas.GetMainCanvases().GetMainPlayerCanvas().gameObject.SetActive(true);
+
+                        _badgePreperation.GetNewBadgeCanvas().gameObject.SetActive(false);
+                    });
                 }
 
                 _backButton.onClick.RemoveAllListeners();

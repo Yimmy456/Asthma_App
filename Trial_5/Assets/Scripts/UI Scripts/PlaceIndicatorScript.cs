@@ -79,6 +79,12 @@ public class PlaceIndicatorScript : MonoBehaviour
     [SerializeField]
     ArrowAnimationClass2 _arrowAnimationClass;
 
+    [SerializeField]
+    GameObject _rocketContainer;
+
+    [SerializeField]
+    GameObject _sceneManager;
+
     float _planeDistance = -1.0f;
 
     bool _lookForTerrainBool = false;
@@ -177,7 +183,9 @@ public class PlaceIndicatorScript : MonoBehaviour
                 _indicator.transform.localScale = Vector3.one * _planeDistance;
             }
 
-            if(_shinkAndExpandAnimationForLandingTerrain.GetT() < 1.0f && _shinkAndExpandAnimationForLandingTerrain.GetIncreaseOrDecrease() != IncreasOrDecreaseEnum.Increase)
+            _shinkAndExpandAnimationForLandingTerrain.SetMaxSizeConstant(_constantSizeOfMainScene);
+
+            if (_shinkAndExpandAnimationForLandingTerrain.GetT() < 1.0f && _shinkAndExpandAnimationForLandingTerrain.GetIncreaseOrDecrease() != IncreasOrDecreaseEnum.Increase)
             {
                 //_landingTerrain.SetActive(true);
 
@@ -404,6 +412,19 @@ public class PlaceIndicatorScript : MonoBehaviour
             Debug.Log("'_t' is now '" + _t.ToString() + "', and _v3C is now " + _v3C.ToString() + ".");
 
             yield return null;
+        }
+
+        if(_rocketContainer != null)
+        {
+            _rocketContainer.SetActive(true);
+
+            if (_sceneManager != null)
+            {
+                if (_sceneManager.GetComponent<MainSceneScript>() != null)
+                {
+                    _sceneManager.GetComponent<MainSceneScript>().GetAnimator().SetTrigger("Trigger Landing Animation");
+                }
+            }
         }
     }
 

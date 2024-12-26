@@ -197,6 +197,11 @@ public class InhalerMatchingObjectHoleScript : MatchingGameHoleScript
         {
             _textCanvas.gameObject.SetActive(false);
         }
+
+        if(_holeCanvas != null)
+        {
+            _holeCanvas.IGameCorrect();
+        }
     }
 
     IEnumerator DisplayResponse()
