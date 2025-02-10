@@ -10,7 +10,7 @@ using System.Threading;
 public class PlaceIndicatorScript : MonoBehaviour
 {
     private ARRaycastManager _raycastManager;
-
+    private ARPlaneManager _planeManager;
     [SerializeField]
     private GameObject _indicator;
     private List<ARRaycastHit> _hits = new List<ARRaycastHit>();
@@ -101,6 +101,7 @@ public class PlaceIndicatorScript : MonoBehaviour
     void Start()
     {
         _raycastManager = FindObjectOfType<ARRaycastManager>();
+        _planeManager = FindObjectOfType<ARPlaneManager>();
         //_indicator = transform.GetChild(0).gameObject;
         //_indicator.SetActive(false);
     }
@@ -116,14 +117,20 @@ public class PlaceIndicatorScript : MonoBehaviour
 
     void LookForTerrain()
     {
-        if(!_lookForTerrainBool)
+        if (_terrainFound)
+        {
+            Debug.LogError("+++: " + _terrainFound);
+            return;
+
+        }
+        if (!_lookForTerrainBool)
         {
             if (_indicator != null)
             {
                 _indicator.SetActive(false);
             }
 
-            if(_mainSceneTransform != null)
+            if (_mainSceneTransform != null)
             {
                 _mainSceneTransform.gameObject.SetActive(false);
             }
@@ -147,7 +154,7 @@ public class PlaceIndicatorScript : MonoBehaviour
                 _indicator.SetActive(true);
             }
 
-            if(_mainSceneTransform != null)
+            if (_mainSceneTransform != null)
             {
                 _mainSceneTransform.gameObject.SetActive(true);
             }
@@ -189,12 +196,12 @@ public class PlaceIndicatorScript : MonoBehaviour
             {
                 //_landingTerrain.SetActive(true);
 
-                if(_animationCoroutine != null)
+                if (_animationCoroutine != null)
                 {
                     StopCoroutine(_animationCoroutine);
                 }
 
-                _animationCoroutine = StartCoroutine(_shinkAndExpandAnimationForLandingTerrain.Animate());                
+                _animationCoroutine = StartCoroutine(_shinkAndExpandAnimationForLandingTerrain.Animate());
             }
 
             //StartCoroutine(_arrowAnimationClass.Animate());
@@ -202,7 +209,8 @@ public class PlaceIndicatorScript : MonoBehaviour
             SetSceneSize();
 
             _terrainFound = true;
-
+            _raycastManager.enabled = false;
+            _planeManager.enabled = false;
             _distanceText.text = "Distance: " + _planeDistance.ToString("0.00");
 
             //RotateIndicator();
@@ -256,7 +264,7 @@ public class PlaceIndicatorScript : MonoBehaviour
             {
                 //_landingTerrain.SetActive(true);
 
-                if(_animationCoroutine != null)
+                if (_animationCoroutine != null)
                 {
                     StopCoroutine(_animationCoroutine);
                 }
@@ -302,7 +310,7 @@ public class PlaceIndicatorScript : MonoBehaviour
     {
         _started = false;
 
-        if(_startingAnimator != null)
+        if (_startingAnimator != null)
         {
             _startingAnimator.Play("Rocket Landing Animation 2", -1, 0);
         }
@@ -355,7 +363,7 @@ public class PlaceIndicatorScript : MonoBehaviour
 
     public void SetSceneSize()
     {
-        if(_mainSceneTransform == null)
+        if (_mainSceneTransform == null)
         {
             return;
         }
@@ -364,7 +372,7 @@ public class PlaceIndicatorScript : MonoBehaviour
 
         _mainSceneTransform.localScale = _size;
 
-        if(_front == null)
+        if (_front == null)
         {
             return;
         }
@@ -378,7 +386,7 @@ public class PlaceIndicatorScript : MonoBehaviour
 
     void CallToStartAnimation()
     {
-        if(_mainSceneTransform == null)
+        if (_mainSceneTransform == null)
         {
             Debug.LogError("There is nothing to expand.");
 
@@ -396,9 +404,9 @@ public class PlaceIndicatorScript : MonoBehaviour
 
         Vector3 _v3C = _v31;
 
-        for(float _t = 0.0f; _t < 1.0f; _t += (Time.deltaTime * _expandingAnimationSpeed))
+        for (float _t = 0.0f; _t < 1.0f; _t += (Time.deltaTime * _expandingAnimationSpeed))
         {
-            if(_t >= 1.0f)
+            if (_t >= 1.0f)
             {
                 _t = 1.0f;
 
@@ -414,7 +422,7 @@ public class PlaceIndicatorScript : MonoBehaviour
             yield return null;
         }
 
-        if(_rocketContainer != null)
+        if (_rocketContainer != null)
         {
             _rocketContainer.SetActive(true);
 
