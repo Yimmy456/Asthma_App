@@ -43,6 +43,8 @@ public class LetterGameScript : MatchingGameCanvasScript
 
         _floor.SetActive(true);
 
+        _walls.SetActive(true);
+
         CreateWord(_word);
 
         _completionMeter.SetMaxValue(_gameProperties.GetListOfObjects().Count);
@@ -86,6 +88,8 @@ public class LetterGameScript : MatchingGameCanvasScript
 
             _floor.SetActive(true);
 
+            _walls.SetActive(true);
+
             CreateWord(_word2);
 
             _completionMeter.SetMaxValue(_gameProperties.GetListOfObjects().Count);
@@ -126,6 +130,8 @@ public class LetterGameScript : MatchingGameCanvasScript
 
         _floor.SetActive(false);
 
+        _walls.SetActive(false);
+
         _gameProperties.ClearObjectLists();
 
         _currentHoleProperties.ClearObjectLists();
@@ -151,6 +157,8 @@ public class LetterGameScript : MatchingGameCanvasScript
     {
         //StartCoroutine(IWaitUntilCompletion());
         _floor.SetActive(false);
+
+        _walls.SetActive(false);
 
         _informationCanvas.gameObject.SetActive(true);
 

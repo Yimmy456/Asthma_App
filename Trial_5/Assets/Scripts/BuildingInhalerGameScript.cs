@@ -113,6 +113,8 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
         _floor.SetActive(true);
 
+        _walls.SetActive(true);
+
         SetBadge(BadgesManagerScript.GetInstance().GetBadgeByName("Inhaler Assembly Badge"));
 
         SetResponseTextProperties(-551.0f, 287.0f);
@@ -616,6 +618,8 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
         _currentPhaseNumber = 0;
 
         _floor.SetActive(false);
+
+        _walls.SetActive(false);
 
         if(_animationCoroutineArrow != null)
         {

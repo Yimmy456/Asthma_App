@@ -20,6 +20,9 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
     protected GameObject _floor;
 
     [SerializeField]
+    protected GameObject _walls;
+
+    [SerializeField]
     protected Transform _spawningArea;
 
     [SerializeField]

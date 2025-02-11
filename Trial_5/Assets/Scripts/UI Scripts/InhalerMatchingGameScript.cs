@@ -101,6 +101,8 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
 
         _floor.SetActive(true);
 
+        _walls.SetActive(true);
+
         List<Vector3> _selectedPos = new List<Vector3>();
 
         _currentlySelectedPositionForHoles = Vector3.zero;
@@ -278,6 +280,8 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
         _addedSpace = 0;
 
         _floor.SetActive(false);
+
+        _walls.SetActive(false);
 
         _gameProperties.ClearObjectLists();
 
