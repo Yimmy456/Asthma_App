@@ -372,8 +372,9 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
 
     public override void IGameIncorrect()
     {
-        _dialogues.PlayClip("Matching Game Incorrect");
-
         base.IGameIncorrect();
+
+        _fastyDelayCoroutine = StartCoroutine("Matching Game Incorrect", _fastyDialogueDelay);
+        //_dialogues.PlayClip("Matching Game Incorrect");
     }
 }

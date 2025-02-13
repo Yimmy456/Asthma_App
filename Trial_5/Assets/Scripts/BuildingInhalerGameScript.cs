@@ -196,16 +196,9 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
             DestroyArrowLocations(_newHole);
 
-            //Destroy(_newHole.transform.Find("Arrow Location").gameObject);
-
             _currentHoleProperties.AddObjectsAsGO(_newHole);
 
-            //_newHole.transform.Find
-
-            //if(_i == 0)
-            //{
             _newHole.SetActive(_i == 0);
-            //}
 
             try
             {
@@ -220,8 +213,6 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
                     _holeInfo.SetCamera(_camera);
 
                     _holeInfo.SetHoleName(_currentPreset.GetMatchingAttribute());
-
-                    //_currentBlocksAndHoles.AddHole(_holeInfo);
 
                     _currentHoleProperties.AddObjectToList(_holeInfo);
 
@@ -495,8 +486,6 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
                     }
 
                     _cap.layer = 0;
-
-                    //Destroy(_cap);
 
                     _cap.SetActive(false);
 

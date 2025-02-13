@@ -22045,7 +22045,6 @@ MonoBehaviour:
   _currentRotation: {fileID: 344282881}
   _draggingZOffset: -3
   _additionalLookingAngles: {x: 0, y: 90, z: 0}
-  _spaceCamera: {fileID: 0}
   _currentBlock: {fileID: 0}
   _currentHole: {fileID: 0}
   _currentWord:
@@ -40271,7 +40270,6 @@ MonoBehaviour:
   _currentRotation: {fileID: 0}
   _draggingZOffset: -2
   _additionalLookingAngles: {x: 0, y: 90, z: 0}
-  _spaceCamera: {fileID: 0}
   _currentBlock: {fileID: 0}
   _currentHole: {fileID: 0}
   _highlightingAnimationProperties:
@@ -54281,7 +54279,6 @@ MonoBehaviour:
   _currentRotation: {fileID: 0}
   _draggingZOffset: -2
   _additionalLookingAngles: {x: 0, y: 90, z: 0}
-  _spaceCamera: {fileID: 0}
   _currentBlock: {fileID: 0}
   _currentHole: {fileID: 0}
   references:

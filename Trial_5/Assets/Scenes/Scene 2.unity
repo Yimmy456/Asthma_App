@@ -5290,7 +5290,6 @@ MonoBehaviour:
   _currentRotation: {fileID: 0}
   _draggingZOffset: 2
   _additionalLookingAngles: {x: 0, y: 180, z: 0}
-  _spaceCamera: {fileID: 0}
   _currentBlock: {fileID: 0}
   _currentHole: {fileID: 0}
   _highlightingAnimationProperties:
@@ -7077,7 +7076,6 @@ MonoBehaviour:
   _currentRotation: {fileID: 0}
   _draggingZOffset: 0
   _additionalLookingAngles: {x: 0, y: 90, z: 0}
-  _spaceCamera: {fileID: 1330074157}
   _currentBlock: {fileID: 0}
   _currentHole: {fileID: 0}
   references:
@@ -41468,7 +41466,7 @@ MonoBehaviour:
   _panels: []
   _panelParent: {fileID: 1936028414}
   _doctorAnimator: {fileID: 919132149601814142}
-  _audioSource: {fileID: 1045844157}
+  _audioSource: {fileID: 1757740976}
   _statusPanelRectTransform: {fileID: 1924421598}
   _mainObjectsPanelRectTransform: {fileID: 1101266767}
 --- !u!1 &1397361682
@@ -44239,7 +44237,7 @@ MonoBehaviour:
   _exhibitionUniformScale: 1
   _doctorDialogue:
     _doctorAnimator: {fileID: 919132149601814142}
-    _doctorAudioSource: {fileID: 1045844157}
+    _doctorAudioSource: {fileID: 1757740976}
     _doctorDefaultAudioClip: {fileID: 0}
   _welcomingClip: {fileID: 0}
   _dialogues: {fileID: 919132149601814144}
@@ -49023,7 +49021,7 @@ GameObject:
   - component: {fileID: 1757740975}
   - component: {fileID: 1757740976}
   m_Layer: 7
-  m_Name: Audio Source
+  m_Name: Doctor's Audio Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49907,7 +49905,6 @@ MonoBehaviour:
   _currentRotation: {fileID: 344282881}
   _draggingZOffset: -1.8
   _additionalLookingAngles: {x: 0, y: 90, z: 0}
-  _spaceCamera: {fileID: 1330074157}
   _currentBlock: {fileID: 0}
   _currentHole: {fileID: 0}
   _currentWord:

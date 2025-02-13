@@ -428,8 +428,10 @@ public class LetterGameScript : MatchingGameCanvasScript
 
     public override void IGameIncorrect()
     {
-        _dialogues.PlayClip("Matching Game Incorrect");
-
         base.IGameIncorrect();
+
+        //_dialogues.PlayClip("Matching Game Incorrect");
+
+        _fastyDelayCoroutine = StartCoroutine(PlayDialogueAfterDelay("Matching Game Incorrect", (_fastyDialogueDelay + 0.5f)));
     }
 }

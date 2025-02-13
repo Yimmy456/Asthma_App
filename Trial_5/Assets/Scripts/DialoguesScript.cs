@@ -122,7 +122,7 @@ public class DialoguesScript : MonoBehaviour
         _dialogueCoroutine = StartCoroutine(PlayDialogue(_input1, _input2));
     }
 
-    public void PlayClip(string _input1, string _input2, string _input3)
+    public void PlayClip(string _input1, string _input2, string _input3, float _initialDelayInput = 0.0f)
     {
         if (_input1 == "" || _input2 == "")
         {
@@ -132,10 +132,10 @@ public class DialoguesScript : MonoBehaviour
 
         StopCurrentDialogue();
 
-        _dialogueCoroutine = StartCoroutine(PlayDialogue(_input1, _input2, _input3));
+        _dialogueCoroutine = StartCoroutine(PlayDialogue(_input1, _input2, _input3, _initialDelayInput));
     }
 
-    IEnumerator PlayDialogue(string _input)
+    IEnumerator PlayDialogue(string _input, float _initialiDelayInput = 0.0f)
     {
         AudioClipClass _clip = GetClip(_input);
 
@@ -147,6 +147,11 @@ public class DialoguesScript : MonoBehaviour
         if(_clip.GetClip() == null)
         {
             yield break;
+        }
+
+        if(_initialiDelayInput > 0.0f)
+        {
+            yield return new WaitForSeconds(_initialiDelayInput);
         }
 
         _currentAudioClip = _clip;
@@ -210,7 +215,7 @@ public class DialoguesScript : MonoBehaviour
         _animator.SetBool(_talkingString, false);
     }
 
-    IEnumerator PlayDialogue(string _input1, string _input2)
+    IEnumerator PlayDialogue(string _input1, string _input2, float _initialDelayInput = 0.0f)
     {
         //Audio Clip 1
 
@@ -228,6 +233,11 @@ public class DialoguesScript : MonoBehaviour
             Debug.LogError("1. Error 2: There is no file for the clip by the name '" + _input1 + "'.");
 
             yield break;
+        }
+
+        if(_initialDelayInput > 0.0f)
+        {
+            yield return new WaitForSeconds(_initialDelayInput);
         }
 
         _currentAudioClip = _clip;
@@ -399,7 +409,7 @@ public class DialoguesScript : MonoBehaviour
     }
 
 
-    IEnumerator PlayDialogue(string _input1, string _input2, string _input3)
+    IEnumerator PlayDialogue(string _input1, string _input2, string _input3, float _initialDelayInput = 0.0f)
     {
         //Audio Clip 1
 
@@ -733,27 +743,28 @@ public class DialoguesScript : MonoBehaviour
         if(_dialogueCoroutine != null)
         {
             StopCoroutine(_dialogueCoroutine);
-
-            _audioSource.Stop();
-
-            _animator.SetBool(_talkingString, false);
-
-            _currentAudioClip = null;
-
-            _dialogueCoroutine = null;
-
-            _overallTalkingStatus = TalkingStatusEnum.Cancelled;
-
-            _singleTalkingStatus = TalkingStatusEnum.Cancelled;
-
-            for (int _f = 0; _f < 1; _f++);
-
-            _overallTalkingStatus = TalkingStatusEnum.Not_Talking;
-
-            _singleTalkingStatus = TalkingStatusEnum.Not_Talking;
-
-            _isTalking = false;
         }
+
+        _audioSource.Stop();
+
+        _animator.SetBool(_talkingString, false);
+
+        _currentAudioClip = null;
+
+        _dialogueCoroutine = null;
+
+        _overallTalkingStatus = TalkingStatusEnum.Cancelled;
+
+        _singleTalkingStatus = TalkingStatusEnum.Cancelled;
+
+        for (int _f = 0; _f < 1; _f++) ;
+
+        _overallTalkingStatus = TalkingStatusEnum.Not_Talking;
+
+        _singleTalkingStatus = TalkingStatusEnum.Not_Talking;
+
+        _isTalking = false;
+
     }
 
     public void SetDialogueCoroutine(Coroutine _input)
@@ -772,6 +783,114 @@ public class DialoguesScript : MonoBehaviour
         if(_clipNamesInput.Count == 0)
         {
             return;
+        }
+
+        List<AudioClip> _selectedClips = new List<AudioClip>();
+
+        bool _clipFound = false;
+
+        string _currentName;
+
+        for (int _i = 0; _i < _clipNamesInput.Count; _i++)
+        {
+            _currentName = _clipNamesInput[_i];
+
+            for (int _j = 0; _j < _audioClips.Count && !_clipFound; _j++)
+            {
+                if (_audioClips[_j].GetClipName() == _currentName)
+                {
+                    _selectedClips.Add(_audioClips[_j].GetClip());
+
+                    _clipFound = true;
+                }
+            }
+
+            _clipFound = false;
+        }
+
+        if (_selectedClips.Count == 0)
+        {
+            return;
+        }
+
+        int _selectedIndex = Random.Range(0, _selectedClips.Count);
+
+        AudioClip _clip = _selectedClips[_selectedIndex];
+
+        _audioSource.clip = _clip;
+
+        _audioSource.Play();
+    }
+
+    public void PlayRandomDialogueWithOutput(List<string> _clipNamesInput, out AudioClip _audioClipOutput)
+    {
+        _audioClipOutput = null;
+
+        if (_audioSource == null || _clipNamesInput == null)
+        {
+            return;
+        }
+
+        if (_clipNamesInput.Count == 0)
+        {
+            return;
+        }
+
+        List<AudioClip> _selectedClips = new List<AudioClip>();
+
+        bool _clipFound = false;
+
+        string _currentName;
+
+        for (int _i = 0; _i < _clipNamesInput.Count; _i++)
+        {
+            _currentName = _clipNamesInput[_i];
+
+            for (int _j = 0; _j < _audioClips.Count && !_clipFound; _j++)
+            {
+                if (_audioClips[_j].GetClipName() == _currentName)
+                {
+                    _selectedClips.Add(_audioClips[_j].GetClip());
+
+                    _clipFound = true;
+                }
+            }
+
+            _clipFound = false;
+        }
+
+        if (_selectedClips.Count == 0)
+        {
+            return;
+        }
+
+        int _selectedIndex = Random.Range(0, _selectedClips.Count);
+
+        AudioClip _clip = _selectedClips[_selectedIndex];
+
+        _audioSource.clip = _clip;
+
+        _audioClipOutput = _clip;
+
+        _audioSource.Play();
+    }
+
+
+    public void PlayRandomDialogue(List<string> _clipNamesInput, float _initialDelayInput = 0.0f)
+    {
+        if (_audioSource == null || _clipNamesInput == null)
+        {
+            return;
+        }
+
+        if (_clipNamesInput.Count == 0)
+        {
+            return;
+        }
+
+        if (_initialDelayInput > 0.0f)
+        {
+            for (float _t = 0.0f; _t < _initialDelayInput; _t += Time.deltaTime);
         }
 
         List<AudioClip> _selectedClips = new List<AudioClip>();

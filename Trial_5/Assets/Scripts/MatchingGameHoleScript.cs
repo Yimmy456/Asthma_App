@@ -474,10 +474,6 @@ public class MatchingGameHoleScript : MonoBehaviour
 
         _currentObject.SetMatchedHole(this);
 
-        //_holeObject = _currentObject.gameObject;
-
-        //_holeCanvas.GetGameProperties().GetMeter().AddToValue(1);
-
         _holeCanvas.IGameCorrect();
 
         _holeCanvas.GetCompletionMeter().AddToValue(1);
@@ -520,11 +516,6 @@ public class MatchingGameHoleScript : MonoBehaviour
         }
 
         _currentObject.transform.localPosition = _localPositionAfterPlacement;
-
-        if(_dialogues != null)
-        {
-            _dialogues.PlayClip(_correctMatchDialogue);
-        }
 
         ResetValues();
     }

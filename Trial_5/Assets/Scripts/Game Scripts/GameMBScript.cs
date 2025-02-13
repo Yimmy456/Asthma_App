@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface, RewardingBadgeInterface, GameCorrectOrWrongInterface
+public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface, RewardingBadgeInterface, GameCorrectOrWrongInterface, DialogueDelayInterface
 { 
     [Header("1. Variables of all games")]
     [SerializeField]
@@ -85,6 +85,10 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
     protected bool _waitToCompleteSignal = false;
 
     protected bool _introductionDialogueComplete = false;
+
+    protected float _fastyDialogueDelay = -1.0f;
+
+    protected Coroutine _fastyDelayCoroutine;
 
     Coroutine _responseTextCoroutine;
 
@@ -217,6 +221,11 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
     public Coroutine GetResponseTextCoroutine()
     {
         return _responseTextCoroutine;
+    }
+
+    public float GetDialogueFastyDialogueDelay()
+    {
+        return _fastyDialogueDelay;
     }
 
     protected virtual void SetBadge()
@@ -939,15 +948,33 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
     {
         if (_fastyDialogues != null)
         {
-            _fastyDialogues.PlayRandomDialogue(new List<string>() { "Yes!", "Hooray" });
+            _fastyDialogues.PlayRandomDialogueWithOutput(new List<string>() { "Yes!", "Hooray" }, out AudioClip _c);
+
+            if(_c != null)
+            {
+                _fastyDialogueDelay = _c.length;
+            }
+            else
+            {
+                _fastyDialogueDelay = -1.0f;
+            }
         }
     }
 
     public virtual void IGameIncorrect()
     {
-        if(_fastyDialogues != null)
+        if (_fastyDialogues != null)
         {
-            _fastyDialogues.PlayRandomDialogue(new List<string>() { "Hmm Uh uh", "Nope" });
+            _fastyDialogues.PlayRandomDialogueWithOutput(new List<string>() { "Hmm Uh uh", "Nope" }, out AudioClip _c);
+
+            if (_c != null)
+            {
+                _fastyDialogueDelay = _c.length;
+            }
+            else
+            {
+                _fastyDialogueDelay = -1.0f;
+            }
         }
     }
 
@@ -1031,5 +1058,28 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
         }
 
         _responseText.text = "";
+    }
+
+    public IEnumerator PlayDialogueAfterDelay(string _dialogueNameInput, float _delayInput = 0.0f)
+    {
+        yield return new WaitForSeconds(_delayInput);
+
+        _dialogues.PlayClip(_dialogueNameInput);
+    }
+
+    public  virtual IEnumerator PlayDialogueAfterDelay(string _dialogueName1Input, string _dialogueName2Input, float _delayInput = 0.0f)
+    {
+        yield break;
+    }
+
+
+    public  virtual IEnumerator PlayDialogueAfterDelay(string _dialogueName1Input, string _dialogueName2Input, string _dialogueName3Input, float _delayInput = 0.0f)
+    {
+        yield break;
+    }
+
+    public virtual IEnumerator PlayDialogueAfterDelay(List<string> _dialogueNamesInput, float _delayInput = 0.0f)
+    {
+        yield break;
     }
 }

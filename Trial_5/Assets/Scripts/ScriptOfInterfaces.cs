@@ -60,3 +60,14 @@ public interface GameCorrectOrWrongInterface
 
     public abstract void IGameIncorrect(string _dialogueNameInput, int _indexInput);
 }
+
+public interface DialogueDelayInterface
+{
+    public abstract IEnumerator PlayDialogueAfterDelay(string _dialogueNameInput, float _delayInput = 0.0f);
+
+    public abstract IEnumerator PlayDialogueAfterDelay(string _dialogueName1Input, string _dialogueName2Input, float _delayInput = 0.0f);
+
+    public abstract IEnumerator PlayDialogueAfterDelay(string _dialogueName1Input, string _dialogueName2Input, string _dialogueName3Input, float _delayInput = 0.0f);
+
+    public abstract IEnumerator PlayDialogueAfterDelay(List<string> _dialogueNamesInput, float _delayInput = 0.0f);
+}

@@ -55,9 +55,6 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
     [SerializeField]
     protected Vector3 _additionalLookingAngles;
 
-    [SerializeField]
-    Camera _spaceCamera;
-
     protected Vector3 _initialPositionForHoles;
 
     protected Vector3 _currentlySelectedPositionForHoles;
@@ -253,35 +250,6 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
         {
             _gameSpace.transform.rotation = Quaternion.Slerp(_gameSpace.transform.rotation, _rot, Time.deltaTime);
         }
-    }
-
-    protected void RotateSpaceFunction()
-    {
-        if(_gameSpace == null || _camera == null || _currentGame != this || _spaceCamera == null)
-        {
-            return;
-        }
-
-        Vector3 _pos = _spaceCamera.WorldToScreenPoint(_camera.gameObject.transform.position);
-
-        bool _withinSight = _pos.z > 0.0f && _pos.x > 0.0f && _pos.x < Screen.width && _pos.y > 0.0f && _pos.y < Screen.height;
-
-        float _distance = Vector3.Distance(_spaceCamera.gameObject.transform.position, _camera.gameObject.transform.position);
-
-        if(_withinSight && _distance <= 5.0f)
-        {
-            return;
-        }
-
-        var _lookPosCam = _camera.gameObject.transform.position - _gameSpace.transform.position;
-
-        _lookPosCam.y = 0.0f;
-
-        var _rot = Quaternion.LookRotation(_lookPosCam);
-
-        _rot = _rot * Quaternion.Euler(_additionalLookingAngles);
-
-        _gameSpace.transform.rotation = Quaternion.Slerp(_gameSpace.transform.rotation, _rot, Time.deltaTime);
     }
 
     protected void RotateHoles()

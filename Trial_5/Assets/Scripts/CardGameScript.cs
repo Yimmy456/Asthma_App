@@ -951,10 +951,6 @@ public class CardGameScript : GameGenericMBScript<CardScript>
                 Debug.Log("The name of the clip is " + @"""" + _dialogueName + @"""" + ".");
 
                 _dialogues.PlayClip("Dr. Salem Info Card Found", _dialogueNameInput);
-
-                //_seconds = _dialogues.GetClip("That's a match").GetClip().length;
-
-                //AudioClip _cl = _dialogues.GetClip(_dialogueNameInput).GetClip();
             }
 
             if (_finalCard)
@@ -987,17 +983,26 @@ public class CardGameScript : GameGenericMBScript<CardScript>
 
         StartCoroutine(FlipDownCardAnimation(_selectedCard2));
 
-        if (_dialogues != null)
-        {
-            _dialogues.PlayClip("Not a match (Card Game)");
-        }
-
         if (_audioSource != null && _incorrectAudioClip != null)
         {
             _audioSource.clip = _incorrectAudioClip;
 
             _audioSource.Play();
         }
+
+        if(_fastyDialogueDelay > 0.0f)
+        {
+            Debug.Log("We are setting the delay...");
+
+            for (float _f = 0.0f; _f < _fastyDialogueDelay; _f += Time.deltaTime);
+        }
+
+        //if (_dialogues != null)
+        //{
+        //    _dialogues.PlayClip("Not a match (Card Game)");
+        //}
+
+        _fastyDelayCoroutine = StartCoroutine("Not a match (Card Game)", _fastyDialogueDelay);
 
         Debug.Log("We are entering the " + @"""" + "incorrect" + @"""" + " phase in the cards' game.");
 

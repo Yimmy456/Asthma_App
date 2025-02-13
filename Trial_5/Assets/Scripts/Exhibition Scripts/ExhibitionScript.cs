@@ -228,8 +228,6 @@ public class ExhibitionScript : MonoBehaviour, ExperienceInterface, RewardingBad
 
         MeshCollider _collider;
 
-        //MeshCollider _collider2;
-
         float _rotAngle;
 
         _badgePreperation.SetBadgeName(_currentGroup.GetBadgeName());
@@ -280,8 +278,6 @@ public class ExhibitionScript : MonoBehaviour, ExperienceInterface, RewardingBad
             _go.transform.localScale = (Vector3.one * _currentListItem.GetLocalScaleConstant() * _exhibitionUniformScale * _currentGroup.GetExhibitionGroupUniformScale());
 
             _collider = _go.GetComponent<MeshCollider>();
-
-            //_collider2 = _go.AddComponent<MeshCollider>();
 
             _exhibitionsGO.Add(_go);
 
@@ -353,14 +349,10 @@ public class ExhibitionScript : MonoBehaviour, ExperienceInterface, RewardingBad
 
         _canvas.ShowStati(false);
 
-        //_objectsComplete = _currentGroup.GetGroupCompletionMeter();
-
         if (DataPersistenceManager.GetInstance() != null)
         {
             if (!DataPersistenceManager.GetInstance().GetExhibitionIntroduced())
             {
-                //PlayDialogue(_welcomingClip);
-
                 PlayDialogue("Dr. Salem Exhibition Introduction");
 
                 DataPersistenceManager.GetInstance().SetExhibitionIntroduced(true);

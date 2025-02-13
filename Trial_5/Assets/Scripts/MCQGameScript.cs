@@ -401,6 +401,8 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
     {
         StopResponseTextCoroutine();
 
+        base.IGameIncorrect();
+
         //_responseTextCoroutine = StartCoroutine(DisplayResponse("This is not the correct answer. Please, try again. I know you can do it!", 5.0f, new Color(0.5f, 0.5f, 0.5f, 1.0f)));
 
         SetResponseText("This is not the correct answer. Please, try again. I know you can do it!", new Color(0.5f, 0.5f, 0.5f, 1.0f), 5.0f, 70);
@@ -416,11 +418,11 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
         {
             string _dialogueS = SelectRandomDialogue(false);
 
-            _dialogues.PlayClip(_dialogueS);
+            //_dialogues.PlayClip(_dialogueS);
+
+            _fastyDelayCoroutine = StartCoroutine(_dialogueS, _fastyDialogueDelay);
         }
 
         Debug.Log("We are entering the " + @"""" + "incorrect" + @"""" + " phase of the MCQ question.");
-
-        base.IGameIncorrect();
     }
 }
