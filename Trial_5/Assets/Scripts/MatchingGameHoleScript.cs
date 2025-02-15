@@ -512,7 +512,7 @@ public class MatchingGameHoleScript : MonoBehaviour
 
         if(_dialogues != null)
         {
-            _dialogues.PlayClip(_correctMatchDialogue);
+            _dialogues.PlayClip(_correctMatchDialogue, 0.75f);
         }
 
         _currentObject.transform.localPosition = _localPositionAfterPlacement;

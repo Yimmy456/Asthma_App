@@ -432,6 +432,6 @@ public class LetterGameScript : MatchingGameCanvasScript
 
         //_dialogues.PlayClip("Matching Game Incorrect");
 
-        _fastyDelayCoroutine = StartCoroutine(PlayDialogueAfterDelay("Matching Game Incorrect", (_fastyDialogueDelay + 0.5f)));
+        _fastyDelayCoroutine = StartCoroutine(PlayDialogueAfterDelay("Matching Game Incorrect", (_fastyDialogueDelay)));
     }
 }
