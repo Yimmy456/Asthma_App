@@ -6,8 +6,7 @@ using Unity.Mathematics;
 using UnityEngine;
 
 public class MCQManagerScript : MonoBehaviour
-{
-    
+{    
     static MCQManagerScript _instance;
 
     [SerializeField]
@@ -15,6 +14,9 @@ public class MCQManagerScript : MonoBehaviour
 
     [SerializeField]
     List<QuestionClass> _selectedQuestions;
+
+    [SerializeField]
+    List<string> _questionsToAvoid;
 
     [ContextMenu("Give IDs to Questions")]
     void GiveIDs()
@@ -100,6 +102,11 @@ public class MCQManagerScript : MonoBehaviour
     public List<QuestionClass> GetSelectedQuestions()
     {
         return _selectedQuestions;
+    }
+
+    public List<string> GetQuestionsToAvoid()
+    {
+        return _questionsToAvoid;
     }
 
     public void SetSelectedQuestions(List<QuestionClass> _input)

@@ -229,6 +229,11 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
                 {
                     _questionInList = true;
                 }
+
+                if(MCQManagerScript.GetInstance().GetQuestionsToAvoid().Contains(_currentQuestion.GetQuestionID()))
+                {
+                    _questionInList = true;
+                }
             }
 
             if(_questionInList)
@@ -337,6 +342,8 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
 
     public override void IGameCorrect()
     {
+        base.IGameCorrect();
+
         StopResponseTextCoroutine();
 
         MCQCanvasScript _mcqC = (MCQCanvasScript)_gameCanvas;
@@ -373,7 +380,7 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
 
             //_game.GetDialogues().PlayClips(_dialoguesStrings);
 
-            _dialogues.PlayClip(_dialogueS, _currentQuestion.GetDialogueClipName(), "Press next");
+            _dialogues.PlayClip(_dialogueS, _currentQuestion.GetDialogueClipName(), "Press next", _fastyDialogueDelay);
         }
 
         string _response = "That's correct! Well done! ";
@@ -393,8 +400,6 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
         _mcqC.GetNextButton().gameObject.SetActive(true);
 
         Debug.Log("We are entering the " + @"""" + "correct" + @"""" + " phase of the MCQ question.");
-
-        base.IGameCorrect();
     }
 
     public override void IGameIncorrect()

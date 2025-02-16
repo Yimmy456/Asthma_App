@@ -109,7 +109,7 @@ public class DialoguesScript : MonoBehaviour
         _dialogueCoroutine = StartCoroutine(PlayDialogue(_input, _delayInput));
     }
 
-    public void PlayClip(string _input1, string _input2)
+    public void PlayClip(string _input1, string _input2, float _dialogueDelayInput = 0.0f)
     {
         if (_input1 == "" || _input2 == "")
         {
@@ -119,7 +119,7 @@ public class DialoguesScript : MonoBehaviour
 
         StopCurrentDialogue();
 
-        _dialogueCoroutine = StartCoroutine(PlayDialogue(_input1, _input2));
+        _dialogueCoroutine = StartCoroutine(PlayDialogue(_input1, _input2, _dialogueDelayInput));
     }
 
     public void PlayClip(string _input1, string _input2, string _input3, float _initialDelayInput = 0.0f)
@@ -427,6 +427,11 @@ public class DialoguesScript : MonoBehaviour
             Debug.LogError("1. Error 2: There is no file for the clip by the name '" + _input1 + "'.");
 
             yield break;
+        }
+
+        if (_initialDelayInput > 0.0f)
+        {
+            yield return new WaitForSeconds(_initialDelayInput);
         }
 
         _currentAudioClip = _clip;

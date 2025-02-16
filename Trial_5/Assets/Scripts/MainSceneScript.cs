@@ -66,6 +66,12 @@ public class MainSceneScript : MonoBehaviour, YesOrNoInterface
     [SerializeField]
     DialoguesScript _fastyDialogues;
 
+    [SerializeField]
+    AudioSource _rocketAudioSource;
+
+    [SerializeField]
+    AudioSource _rocketDoorAudioSource;
+
     //[SerializeField]
     //Animator _sceneAnimator;
 
@@ -416,5 +422,52 @@ public class MainSceneScript : MonoBehaviour, YesOrNoInterface
         _as.Play();
 
         Debug.Log("We are playing the " + @"""" + _input + @"""" + " sound effect.");
+    }
+
+    public void PlayAudioSource(int _indexInput = 0)
+    {
+        if(_indexInput == 1)
+        {
+            if (_rocketDoorAudioSource == null)
+            {
+                Debug.LogError("We cannot play the audio source in index " + _indexInput + ". The source is missing.");
+
+                return;
+            }
+
+            if(_rocketDoorAudioSource.clip == null)
+            {
+
+                Debug.LogError("We cannot play the audio source in index " + _indexInput + ". The clip in the source is missing.");
+
+                return;
+            }
+
+            _rocketDoorAudioSource.Play();
+
+            Debug.Log("We playing the audio source in index " + _indexInput + ".");
+        }
+
+        if(_indexInput == 0)
+        {
+            if(_rocketAudioSource == null)
+            {
+                Debug.LogError("We cannot play the audio source in index " + _indexInput + ". The source is missing.");
+
+                return;
+            }
+
+            if(_rocketAudioSource.clip == null)
+            {
+
+                Debug.LogError("We cannot play the audio source in index " + _indexInput + ". The clip in the source is missing.");
+
+                return;
+            }
+
+            _rocketAudioSource.Play();
+
+            Debug.Log("We playing the audio source in index " + _indexInput + ".");
+        }
     }
 }

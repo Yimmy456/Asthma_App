@@ -32718,6 +32718,8 @@ MonoBehaviour:
   _menuButton: {fileID: 1153826026}
   _drSalemDialogues: {fileID: 919132149601814144}
   _fastyDialogues: {fileID: 682149338}
+  _rocketAudioSource: {fileID: 1981848324}
+  _rocketDoorAudioSource: {fileID: 864266539}
   _started: 0
 --- !u!1 &1101266766
 GameObject:
@@ -45228,7 +45230,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1605485442
 RectTransform:
   m_ObjectHideFlags: 0

@@ -902,6 +902,8 @@ public class CardGameScript : GameGenericMBScript<CardScript>
 
     public override void IGameCorrect(string _dialogueNameInput, int _indexInput = 1)
     {
+        base.IGameCorrect(_dialogueNameInput, _indexInput);
+
         if (_indexInput == 1)
         {
             string _infoText = "";
@@ -950,7 +952,7 @@ public class CardGameScript : GameGenericMBScript<CardScript>
             {
                 Debug.Log("The name of the clip is " + @"""" + _dialogueName + @"""" + ".");
 
-                _dialogues.PlayClip("Dr. Salem Info Card Found", _dialogueNameInput);
+                _dialogues.PlayClip("Dr. Salem Info Card Found", _dialogueNameInput, _fastyDialogueDelay);
             }
 
             if (_finalCard)
@@ -967,8 +969,6 @@ public class CardGameScript : GameGenericMBScript<CardScript>
 
             _audioSource.Play();
         }
-
-        base.IGameCorrect(_dialogueNameInput, _indexInput);
     }
 
     public override void IGameIncorrect()

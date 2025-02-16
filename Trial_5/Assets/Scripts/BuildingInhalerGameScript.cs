@@ -455,8 +455,7 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
                 _dialogues.PlayClip("Dr. Salem Assembly Game Step 3");
             }
 
-            SetResponseText("You're doing great!\n\n3. Remove the cap from the neck.", new Color(0.0f, 1.0f, 0.0f, 1.0f), new Vector2(1.0f, -1.0f), new Color(0.0f, 0.5f, 0.0f, 0.5f));
-
+            SetResponseText("You're doing great! Just remember, though: You need to read the expiry date on the medication before inserting it. If the expiry date is due, do not use it. Moving forward...\n\n3. Remove the cap from the neck.", new Color(0.0f, 1.0f, 0.0f, 1.0f), new Vector2(1.0f, -1.0f), new Color(0.0f, 0.5f, 0.0f, 0.5f));
 
             if (_arrowAnimations[1].GetArrowContainer().activeSelf)
             {
@@ -734,7 +733,7 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
     public override void IGameIncorrect()
     {
-        _dialogues.PlayClip("Dr. Salem Assembly Game Not Right");
+        _dialogues.PlayClip("Dr. Salem Assembly Game Not Right", _fastyDialogueDelay);
 
         base.IGameIncorrect();
     }

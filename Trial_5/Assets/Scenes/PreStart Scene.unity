@@ -1590,6 +1590,9 @@ MonoBehaviour:
     _correctAnswerResponse: 
     _dialogueClipName: Dr. Salem MCQ You Could Need the Inhaler
   _selectedQuestions: []
+  _questionsToAvoid:
+  - 0927233d-29b5-402b-922a-fb49c2b924b4
+  - d23be9d4-b8fb-429d-8e85-0e85bf6a89ed
 --- !u!1 &1722041706
 GameObject:
   m_ObjectHideFlags: 0
@@ -1652,8 +1655,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data:
     _json: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"User
-      Type","value":null,"typeHandle":{"Identification":"UserTypeEnum, Assembly-CSharp,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"First
+      Type","value":{"$content":"Doctor","$type":"UserTypeEnum"},"typeHandle":{"Identification":"UserTypeEnum,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"},{"name":"First
       Use Complete","value":{"$content":false,"$type":"System.Boolean"},"typeHandle":{"Identification":"System.Boolean,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","$version":"A"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
     _objectReferences: []
