@@ -2791,7 +2791,7 @@ public class DateClass
         }
         else if (_monthInput == 4 || _monthInput == 6 || _monthInput == 9 || _monthInput == 11)
         {
-            _monthInput = 30;
+            _maxDays = 30;
         }
 
         if (_dayInput < 1)
@@ -2804,6 +2804,8 @@ public class DateClass
         }
 
         _date = new DateTime(_yearInput, _monthInput, _dayInput);
+
+        Debug.Log("The date is '" + _date.ToString() + "'.");
 
         _dateConfirmed = true;
     }
