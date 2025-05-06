@@ -15,6 +15,8 @@ public class GameDataScript
 
     public bool _userTypeSelected;
 
+    public bool _tutorialComplete;
+
     public UserTypeEnum _userType;
 
     public GameDataScript()
@@ -24,6 +26,8 @@ public class GameDataScript
         _userType = UserTypeEnum.Random_User;
 
         _userTypeSelected = false;
+
+        _tutorialComplete = false;
 
         _badgesCollected = new SerializableDictionaryScript<string, bool>();
 
@@ -37,6 +41,11 @@ public class GameDataScript
         _userType = _input;
 
         _userTypeSelected = true;
+    }
+
+    public void SetTutorialComplete(bool _input = true)
+    {
+        _tutorialComplete = _input;
     }
 
     public void AddBadge(BadgeScript _input)

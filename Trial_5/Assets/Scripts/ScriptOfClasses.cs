@@ -3021,6 +3021,193 @@ public class BadgePreperationClass
     }
 }
 
+[System.Serializable]
+public class TutorialSubjectTargetClass
+{
+    [SerializeField]
+    string _name;
+
+    [SerializeField]
+    TutorialSubjectTypeEnum _subjectType;
+
+    [SerializeField]
+    GameObject _subject;
+
+    [SerializeField]
+    string _text;
+
+    [SerializeField]
+    TutorialSubjectTargetUIElementsClass _UIElements;
+
+    public string GetName()
+    {
+        return _name;
+    }
+
+    public TutorialSubjectTypeEnum GetSubjectType()
+    {
+        return _subjectType;
+    }
+
+    public GameObject GetSubject()
+    {
+        return _subject;
+    }
+
+    public string GetText()
+    {
+        return _text;
+    }
+
+    public TutorialSubjectTargetUIElementsClass GetUIElements()
+    {
+        return _UIElements;
+    }
+}
+
+[System.Serializable]
+public class TutorialSubjectTargetUIElementsClass
+{
+    [Header("1. Variables Regarding the text.")]
+
+    [SerializeField]
+    Vector2 _textAnchorMin = new Vector2(0.5f, 0.5f);
+
+    [SerializeField]
+    Vector2 _textAnchorMax = new Vector2(0.5f, 0.5f);
+
+    [SerializeField]
+    Vector2 _textAnchoredPosition;
+
+    [SerializeField]
+    Vector2 _textDeltaSize = Vector2.one;
+
+    [SerializeField]
+    Vector3 _textScale = Vector3.one;
+
+    [SerializeField]
+    float _textScaleConstant = 1.0f;
+
+    [SerializeField]
+    int _textFontSize = 30;
+
+    [Header("2. Variables Regarding the arrow.")]
+
+    [SerializeField]
+    bool _showArrow = true;
+
+    [SerializeField]
+    float _arrowRotation = 0.0f;
+
+    [SerializeField]
+    Vector2 _arrowAnchorMin = new Vector2(0.5f, 0.5f);
+
+    [SerializeField]
+    Vector2 _arrowAnchorMax = new Vector2(0.5f, 0.5f);
+
+    [SerializeField]
+    Vector2 _arrowAnchoredPosition;
+
+    [SerializeField]
+    Vector2 _arrowDeltaSize = Vector2.one;
+
+    [SerializeField]
+    Vector3 _arrowScale = Vector3.one;
+
+    [SerializeField]
+    float _arrowScaleConstant = 1.0f;
+
+    //Functions regarding the texts
+
+    public Vector2 GetTextAnchorMin()
+    {
+        return _textAnchorMin;
+    }
+
+    public Vector2 GetTextAnchorMax()
+    {
+        return _textAnchorMax;
+    }
+
+    public Vector2 GetTextAnchoredPosition()
+    {
+        return _textAnchoredPosition;
+    }
+
+    public Vector2 GetTextDeltaSize()
+    {
+        return _textDeltaSize;
+    }
+
+    public Vector3 GetTextScale()
+    {
+        return _textScale;
+    }
+
+    public float GetTextScaleConstant()
+    {
+        return _textScaleConstant;
+    }
+
+    public Vector3 GetTextScaleMultConstant()
+    {
+        return (_textScale * _textScaleConstant);
+    }
+
+    //Functions regarding the arrow
+
+    public bool GetShowArrow()
+    {
+        return _showArrow;
+    }
+
+    public float GetArrowRotation(bool _inRadians = false)
+    {
+        if(_inRadians)
+        {
+            return (_arrowRotation * Mathf.Deg2Rad);
+        }
+
+        return _arrowRotation;
+    }
+
+    public Vector2 GetArrowAnchorMin()
+    {
+        return _arrowAnchorMin;
+    }
+
+    public Vector2 GetArrowAnchorMax()
+    {
+        return _arrowAnchorMax;
+    }
+
+    public Vector2 GetArrowAnchoredPosition()
+    {
+        return _arrowAnchoredPosition;
+    }
+
+    public Vector2 GetArrowDeltaSize()
+    {
+        return _arrowDeltaSize;
+    }
+
+    public Vector3 GetArrowScale()
+    {
+        return _arrowScale;
+    }
+
+    public float GetArrowScaleConstant()
+    {
+        return _arrowScaleConstant;
+    }
+
+    public Vector3 GetArrowScaleMultConstant()
+    {
+        return (_arrowScale * _arrowScaleConstant);
+    }
+}
+
+
 /*
 public class PrintingErrorException : Exception
 {

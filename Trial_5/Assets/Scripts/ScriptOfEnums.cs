@@ -118,3 +118,11 @@ public enum TalkingStatusEnum
     Cancelled,
     Completed,
 }
+
+public enum TutorialSubjectTypeEnum
+{
+    UI,
+    World_Object,
+    Other,
+    None,
+}

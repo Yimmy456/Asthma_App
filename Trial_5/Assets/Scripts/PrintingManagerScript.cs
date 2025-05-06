@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using iTextSharp.text;
@@ -72,11 +72,13 @@ public class PrintingManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _path = Application.persistentDataPath + "/Asthma Status Document.pdf";
+        //_path = Application.persistentDataPath + "/Asthma Status Document.pdf";
 
         //_path = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
         //_path = _path + "/Asthma Status Document.pdf";
+
+        _path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "Asthma Status Document.pdf");
 
         _firstRowBaseColor = new BaseColor(_firstRowColor.r, _firstRowColor.g, _firstRowColor.b, _firstRowColor.a);
 
