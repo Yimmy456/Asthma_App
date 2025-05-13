@@ -93,7 +93,7 @@ public class TutorialManagerScript : MonoBehaviour
     }
 
     void SetIndexOnStart()
-    {
+    { 
         _currentIndex = _tutorialMode ? 0 : -1;
     }
 }

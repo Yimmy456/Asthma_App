@@ -434,4 +434,28 @@ public class LetterGameScript : MatchingGameCanvasScript
 
         _fastyDelayCoroutine = StartCoroutine(PlayDialogueAfterDelay("Matching Game Incorrect", (_fastyDialogueDelay)));
     }
+
+    protected override IEnumerator SetNewTargetForIndicator()
+    {
+        if(_gameIndicatorCanvas == null)
+        {
+            yield break;
+        }
+
+        if(!PrepareGameIndicator())
+        {
+            yield break;
+        }
+
+        _gameIndicatorCanvas.gameObject.SetActive(false);
+
+        yield return new WaitForSeconds(10.0f);
+
+        if(_completionMeter.GetPercentage() == 100.0f)
+        {
+            yield break;
+        }
+
+
+    }
 }

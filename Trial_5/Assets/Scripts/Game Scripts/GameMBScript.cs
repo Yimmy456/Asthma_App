@@ -70,6 +70,8 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
     [SerializeField]
     protected DialoguesScript _fastyDialogues;
 
+    protected Coroutine _indicatorCoroutine;
+
     protected bool _currentGameInSession;
 
     protected static GameMBScript _currentGame = null;
@@ -444,6 +446,8 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
             if(_choice)
             {
                 _gameIndicatorCanvas.SetIndicatorColor(_gameColor);
+
+                _gameIndicatorCanvas.SetColorForMeterText(_gameColor);
             }
         }
 
@@ -913,7 +917,7 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
         _rt.sizeDelta = _dS;
     }
 
-    bool PrepareGameIndicator()
+    protected bool PrepareGameIndicator()
     {
         if (SettingsManager.GetInstance() == null)
         {
@@ -1081,5 +1085,10 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
     public virtual IEnumerator PlayDialogueAfterDelay(List<string> _dialogueNamesInput, float _delayInput = 0.0f)
     {
         yield break;
+    }
+
+    protected virtual IEnumerator SetNewTargetForIndicator()
+    {
+        yield return null;
     }
 }

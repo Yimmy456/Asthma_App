@@ -73,6 +73,26 @@ public class UIIndicatorCanvasScript : MonoBehaviour
         _targetObject = _input;
     }
 
+    public void SetColorForMeterText(Color _input)
+    {
+        if(_meterText == null)
+        {
+            return;
+        }
+
+        _meterText.color = _input;        
+
+        float _h, _s, _v;
+
+        Color.RGBToHSV(_input, out _h, out _s, out _v);
+
+        _v = _v / 2.0f;
+
+        Color _outlineColor = Color.HSVToRGB(_h, _s, _v);
+
+        _meterText.gameObject.GetComponent<Outline>().effectColor = _outlineColor;
+    }
+
     void LookForObject()
     {
         if(Application.platform == RuntimePlatform.Android)

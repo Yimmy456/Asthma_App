@@ -337,6 +337,13 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
         }
 
         _responseText.fontSize = 50;
+
+        if(_indicatorCoroutine != null)
+        {
+            StopCoroutine(_indicatorCoroutine);
+        }
+
+        _indicatorCoroutine = StartCoroutine(SetNewTargetForIndicator());
     }
 
     void GetCap(GameObject _input)
@@ -417,6 +424,13 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
             }
 
             _completionMeter.SignalToUpdateUI();
+
+            if(_indicatorCoroutine != null)
+            {
+                StopCoroutine(_indicatorCoroutine);
+            }
+
+            _indicatorCoroutine = StartCoroutine(SetNewTargetForIndicator());
         }
 
         if (_currentPhaseNumber == 1 && _currentHoleProperties.GetListOfObjects()[1].GetObjectPlaced())
@@ -461,6 +475,13 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
             {
                 _arrowAnimations[1].GetArrowContainer().SetActive(false);
             }
+
+            if (_indicatorCoroutine != null)
+            {
+                StopCoroutine(_indicatorCoroutine);
+            }
+
+            _indicatorCoroutine = StartCoroutine(SetNewTargetForIndicator());
         }
 
         if (_currentPhaseNumber == 2 && _cap != null)
@@ -531,6 +552,13 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
                     IGameCorrect();
 
                     _completionMeter.SignalToUpdateUI();
+
+                    if (_indicatorCoroutine != null)
+                    {
+                        StopCoroutine(_indicatorCoroutine);
+                    }
+
+                    _indicatorCoroutine = StartCoroutine(SetNewTargetForIndicator());
                 }
                 else if (_cap.GetComponent<DraggableClass>().GetTouchPhase() == TouchPhase.Ended)
                 {
@@ -578,7 +606,14 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
             _currentPhaseNumber = -1;
 
             _currentInstancedArrowAnimation = null;
-        }
+
+            if (_indicatorCoroutine != null)
+            {
+                StopCoroutine(_indicatorCoroutine);
+            }
+
+            _gameIndicatorCanvas.gameObject.SetActive(false);
+        }   
 
         LookIntoCamera();
 
@@ -774,6 +809,54 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
             Debug.Log(@"""" + _name + @"""" + " has been destroyed.");
         }
+    }
+
+    protected override IEnumerator SetNewTargetForIndicator()
+    {
+        if(_gameIndicatorCanvas == null)
+        {
+            yield break;
+        }
+
+        _gameIndicatorCanvas.gameObject.SetActive(false);
+
+        yield return new WaitForSeconds(10.0f);
+
+        if(_completionMeter.GetPercentage() == 100.0f)
+        {
+            yield break;
+        }
+
+        if(_currentPhaseNumber == 0)
+        {
+            _gameIndicatorCanvas.SetTargetObject(_gameProperties.GetListOfObjectsAsGO()[0]);
+        }
+
+        if (_currentPhaseNumber == 1)
+        {
+            _gameIndicatorCanvas.SetTargetObject(_gameProperties.GetListOfObjectsAsGO()[1]);
+        }
+
+        if(_currentPhaseNumber == 2)
+        {
+            if (_cap != null)
+            {
+                _gameIndicatorCanvas.SetTargetObject(_cap);
+            }
+            else
+            {
+                yield break;
+            }
+        }
+
+        if (_currentPhaseNumber == 3)
+        {
+            _gameIndicatorCanvas.SetTargetObject(_gameProperties.GetListOfObjectsAsGO()[2]);
+        }
+
+        bool _choice = PrepareGameIndicator();
+
+        _gameIndicatorCanvas.gameObject.SetActive(_choice);
     }
 
     void SetArrowContainerGeometry(GameObject _originalContainerInput, GameObject _copiedContainerInput)
