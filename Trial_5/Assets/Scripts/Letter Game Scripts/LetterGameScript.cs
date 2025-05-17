@@ -54,6 +54,15 @@ public class LetterGameScript : MatchingGameCanvasScript
         _completionMeter.SignalToUpdateUI();
 
         SetBadge(2);
+
+        if(_indicatorCoroutine != null)
+        {
+            StopCoroutine(_indicatorCoroutine);
+
+            _gameIndicatorCanvasCountdownStarted = false;
+        }
+
+        //_indicatorCoroutine = StartCoroutine(SetNewTargetForIndicator());
     }
 
     public override void IStartExperience(int _input)
@@ -99,6 +108,15 @@ public class LetterGameScript : MatchingGameCanvasScript
             _completionMeter.SignalToUpdateUI();
 
             string _badgeName = "Spelling Badge (" + _word2.GetInformationName() + ")";
+
+            if(_indicatorCoroutine != null)
+            {
+                StopCoroutine(_indicatorCoroutine);
+            }
+
+            TriggerStartNewTarget();
+
+            //_indicatorCoroutine = StartCoroutine(SetNewTargetForIndicator());
 
             //string _badgeName = "Spelling Badge (" + _textInput + ")";
 
@@ -371,6 +389,10 @@ public class LetterGameScript : MatchingGameCanvasScript
             ICompleteExperience();
         }*/
 
+        //UpdateGameIndicator();
+
+        UpdateTargetForIndicator2();
+
         if(_completionMeter.GetPercentage() == 100.0f && !_waitToCompleteSignal)
         {
             StartCoroutine(IWaitUntilCompletion());
@@ -424,6 +446,15 @@ public class LetterGameScript : MatchingGameCanvasScript
     public override void IGameCorrect()
     {
         base.IGameCorrect();
+
+        if(_indicatorCoroutine != null)
+        {
+            StopCoroutine(_indicatorCoroutine);
+
+            _gameIndicatorCanvasCountdownStarted = false;
+        }
+
+        //_indicatorCoroutine = StartCoroutine(SetNewTargetForIndicator());
     }
 
     public override void IGameIncorrect()
@@ -433,9 +464,18 @@ public class LetterGameScript : MatchingGameCanvasScript
         //_dialogues.PlayClip("Matching Game Incorrect");
 
         _fastyDelayCoroutine = StartCoroutine(PlayDialogueAfterDelay("Matching Game Incorrect", (_fastyDialogueDelay)));
+
+        if (_indicatorCoroutine != null)
+        {
+            StopCoroutine(_indicatorCoroutine);
+
+            _gameIndicatorCanvasCountdownStarted = false;
+        }
+
+        //_indicatorCoroutine = StartCoroutine(SetNewTargetForIndicator());
     }
 
-    protected override IEnumerator SetNewTargetForIndicator()
+    protected override IEnumerator SetNewTargetForIndicator2()
     {
         if(_gameIndicatorCanvas == null)
         {
@@ -447,15 +487,111 @@ public class LetterGameScript : MatchingGameCanvasScript
             yield break;
         }
 
-        _gameIndicatorCanvas.gameObject.SetActive(false);
-
-        yield return new WaitForSeconds(10.0f);
-
         if(_completionMeter.GetPercentage() == 100.0f)
         {
+            _gameIndicatorCanvasCountdownStarted = false;
+
+            _gameIndicatorCanvas.gameObject.SetActive(false);
+
             yield break;
         }
 
+        _gameIndicatorCanvas.gameObject.SetActive(false);
 
+        _gameIndicatorCanvasCountdownStarted = true;
+
+        yield return new WaitForSeconds(10.0f);
+
+        _gameIndicatorCanvasCountdownStarted = false;
+
+        if(_currentBlock != null)
+        {
+            List<MatchingGameHoleScript> _holes = new List<MatchingGameHoleScript>();
+
+            MatchingGameHoleScript _currentHole = null;
+
+            LetterHoleScript _currentLetterHole = null;
+
+            LetterBlockScript _letterBlock = (LetterBlockScript)(_currentBlock);
+
+            if(_letterBlock == null)
+            {
+                yield break;
+            }
+
+            char _value = _letterBlock.GetLetter();
+
+            for(int _i = 0; _i < _currentHoleProperties.GetListOfObjects().Count; _i++)
+            {
+                _currentHole = _currentHoleProperties.GetListOfObjects()[_i];
+
+                if(_currentHole == null)
+                {
+                    continue;
+                }
+
+                if(_currentHole.GetObjectPlaced())
+                {
+                    continue;
+                }
+
+                _currentLetterHole = (LetterHoleScript)(_currentHole);
+
+                if(_currentLetterHole == null)
+                {
+                    continue;
+                }
+
+                if(_value == _currentLetterHole.GetLetter())
+                {
+                    _holes.Add(_currentLetterHole);
+                }
+            }
+
+            if(_holes.Count == 0)
+            {
+                yield break;
+            }
+
+            int _rand = Random.Range(0, _holes.Count);
+
+            _gameIndicatorCanvas.SetTargetObject(_holes[_rand].gameObject);
+
+            _gameIndicatorCanvas.gameObject.SetActive(true);
+        }
+        else
+        {
+            MatchingGameBlockScript _selectedBlock = null;
+
+            LetterBlockScript _selectedLetterBlock = null;
+
+            int _index = -1;
+
+            while(_selectedBlock == null)
+            {
+                _index = Random.Range(0, _gameProperties.GetListOfObjects().Count);
+
+                if (_gameProperties.GetListOfObjects()[_index] != null)
+                {
+                    if (!_gameProperties.GetListOfObjects()[_index].GetBlockPlaced())
+                    {
+                        _selectedBlock = _gameProperties.GetListOfObjects()[_index];
+                    }
+                }
+            }
+
+            if((LetterBlockScript)(_selectedBlock) != null)
+            {
+                _selectedLetterBlock = (LetterBlockScript)(_selectedBlock);
+
+                _gameIndicatorCanvas.SetTargetObject(_selectedLetterBlock.gameObject);
+
+                _gameIndicatorCanvas.gameObject.SetActive(true);
+            }
+        }
     }
+
+
+
+
 }

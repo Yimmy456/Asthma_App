@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.HighDefinition;
 
 public class BuildingInhalerGameScript : MatchingGameCanvasScript
 {
@@ -343,7 +344,7 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
             StopCoroutine(_indicatorCoroutine);
         }
 
-        _indicatorCoroutine = StartCoroutine(SetNewTargetForIndicator());
+        //_indicatorCoroutine = StartCoroutine(SetNewTargetForIndicator());
     }
 
     void GetCap(GameObject _input)
@@ -424,13 +425,6 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
             }
 
             _completionMeter.SignalToUpdateUI();
-
-            if(_indicatorCoroutine != null)
-            {
-                StopCoroutine(_indicatorCoroutine);
-            }
-
-            _indicatorCoroutine = StartCoroutine(SetNewTargetForIndicator());
         }
 
         if (_currentPhaseNumber == 1 && _currentHoleProperties.GetListOfObjects()[1].GetObjectPlaced())
@@ -475,13 +469,6 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
             {
                 _arrowAnimations[1].GetArrowContainer().SetActive(false);
             }
-
-            if (_indicatorCoroutine != null)
-            {
-                StopCoroutine(_indicatorCoroutine);
-            }
-
-            _indicatorCoroutine = StartCoroutine(SetNewTargetForIndicator());
         }
 
         if (_currentPhaseNumber == 2 && _cap != null)
@@ -552,13 +539,6 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
                     IGameCorrect();
 
                     _completionMeter.SignalToUpdateUI();
-
-                    if (_indicatorCoroutine != null)
-                    {
-                        StopCoroutine(_indicatorCoroutine);
-                    }
-
-                    _indicatorCoroutine = StartCoroutine(SetNewTargetForIndicator());
                 }
                 else if (_cap.GetComponent<DraggableClass>().GetTouchPhase() == TouchPhase.Ended)
                 {
@@ -618,6 +598,8 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
         LookIntoCamera();
 
         _completionMeter.UpdateUI();
+
+        UpdateGameIndicatorCanvas();
     }
 
     public override void IStopExperience()
@@ -811,54 +793,46 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
         }
     }
 
-    protected override IEnumerator SetNewTargetForIndicator()
+    /*
+    protected override IEnumerator SetNewTargetHole()
     {
         if(_gameIndicatorCanvas == null)
         {
             yield break;
         }
 
-        _gameIndicatorCanvas.gameObject.SetActive(false);
-
-        yield return new WaitForSeconds(10.0f);
-
-        if(_completionMeter.GetPercentage() == 100.0f)
+        if(_currentPhaseNumber == 2)
         {
             yield break;
         }
 
-        if(_currentPhaseNumber == 0)
+        _gameIndicatorCanvas.gameObject.SetActive(false);
+
+        _holeIndicatorCountdownStarted = true;
+
+        yield return new WaitForSeconds(10.0f);
+
+        _holeIndicatorCountdownStarted = false;
+
+        if (_currentPhaseNumber == 0)
         {
-            _gameIndicatorCanvas.SetTargetObject(_gameProperties.GetListOfObjectsAsGO()[0]);
+            _gameIndicatorCanvas.SetTargetObject(_currentHoleProperties.GetListOfObjectsAsGO()[0]);
         }
 
         if (_currentPhaseNumber == 1)
         {
-            _gameIndicatorCanvas.SetTargetObject(_gameProperties.GetListOfObjectsAsGO()[1]);
-        }
-
-        if(_currentPhaseNumber == 2)
-        {
-            if (_cap != null)
-            {
-                _gameIndicatorCanvas.SetTargetObject(_cap);
-            }
-            else
-            {
-                yield break;
-            }
+            _gameIndicatorCanvas.SetTargetObject(_currentHoleProperties.GetListOfObjectsAsGO()[1]);
         }
 
         if (_currentPhaseNumber == 3)
         {
-            _gameIndicatorCanvas.SetTargetObject(_gameProperties.GetListOfObjectsAsGO()[2]);
+            _gameIndicatorCanvas.SetTargetObject(_currentHoleProperties.GetListOfObjectsAsGO()[2]);
         }
 
-        bool _choice = PrepareGameIndicator();
-
-        _gameIndicatorCanvas.gameObject.SetActive(_choice);
+        _gameIndicatorCanvas.gameObject.SetActive(true);
     }
 
+    */
     void SetArrowContainerGeometry(GameObject _originalContainerInput, GameObject _copiedContainerInput)
     {
         if(_originalContainerInput == null || _copiedContainerInput == null)
@@ -885,5 +859,69 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
         _copiedContainerInput.transform.localScale = _scale;
 
         Destroy(_copy);
+    }
+
+    void UpdateGameIndicatorCanvas()
+    {
+        if(_gameIndicatorCanvas == null)
+        {
+            return;
+        }
+
+        if(!PrepareGameIndicator())
+        {
+            return;
+        }
+
+        if(_currentBlock != null)
+        {
+            if(_gameIndicatorCanvas.GetTargetObject() != null)
+            {
+                if(_gameIndicatorCanvas.GetTargetObject().GetComponent<MatchingGameHoleScript>() != null)
+                {
+                    return;
+                }
+            }
+
+            if(_holeIndicatorCountdownStarted)
+            {
+                return;
+            }
+            else if(_indicatorCoroutine != null)
+            {
+                StopCoroutine(_indicatorCoroutine);
+
+                _gameIndicatorCanvasCountdownStarted = false;
+            }
+
+            //_indicatorCoroutine = StartCoroutine(SetNewTargetHole());
+        }
+        else if (_currentBlock == null)
+        {
+            if (_gameIndicatorCanvas.GetTargetObject() != null)
+            {
+                if (_gameIndicatorCanvas.GetTargetObject().GetComponent<MatchingGameBlockScript>() != null)
+                {
+                    return;
+                }
+                else if (_gameIndicatorCanvas.GetTargetObject().GetComponent<MatchingGameHoleScript>() != null)
+                {
+                    _gameIndicatorCanvas.SetTargetObject(null);
+                }
+            }
+
+            if (_gameIndicatorCanvasCountdownStarted)
+            {
+                return;
+            }
+            else if (_indicatorCoroutine != null)
+            {
+                StopCoroutine(_indicatorCoroutine);
+
+                _holeIndicatorCountdownStarted = false;
+            }
+
+            //_indicatorCoroutine = StartCoroutine(SetNewTargetForIndicator());
+        }
     }
 }

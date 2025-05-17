@@ -377,4 +377,123 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
         _fastyDelayCoroutine = StartCoroutine("Matching Game Incorrect", _fastyDialogueDelay);
         //_dialogues.PlayClip("Matching Game Incorrect");
     }
+
+    protected override IEnumerator SetNewTargetForIndicator2()
+    {
+        if (_gameIndicatorCanvas == null)
+        {
+            yield break;
+        }
+
+        if (!PrepareGameIndicator())
+        {
+            yield break;
+        }
+
+        if (_completionMeter.GetPercentage() == 100.0f)
+        {
+            _gameIndicatorCanvasCountdownStarted = false;
+
+            _gameIndicatorCanvas.gameObject.SetActive(false);
+
+            yield break;
+        }
+
+        _gameIndicatorCanvas.gameObject.SetActive(false);
+
+        _gameIndicatorCanvasCountdownStarted = true;
+
+        yield return new WaitForSeconds(10.0f);
+
+        _gameIndicatorCanvasCountdownStarted = false;
+
+        if (_currentBlock != null)
+        {
+            List<MatchingGameHoleScript> _holes = new List<MatchingGameHoleScript>();
+
+            MatchingGameHoleScript _currentHole = null;
+
+            InhalerMatchingObjectHoleScript _currentInhalerHole = null;
+
+            InhalerMatchingObjectScript _currentInhalerBlock = (InhalerMatchingObjectScript)(_currentBlock);
+
+            if (_currentInhalerBlock == null)
+            {
+                yield break;
+            }
+
+            string _value = _currentInhalerBlock.GetObjectName();
+
+            for (int _i = 0; _i < _currentHoleProperties.GetListOfObjects().Count && _currentInhalerHole == null; _i++)
+            {
+                _currentHole = _currentHoleProperties.GetListOfObjects()[_i];
+
+                if (_currentHole == null)
+                {
+                    continue;
+                }
+
+                if (_currentHole.GetObjectPlaced())
+                {
+                    continue;
+                }
+
+                _currentInhalerHole = (InhalerMatchingObjectHoleScript)(_currentHole);
+
+                if (_currentInhalerHole == null)
+                {
+                    continue;
+                }
+
+                if (_value == _currentInhalerHole.GetHoleName() && ((InhalerMatchingObjectHoleScript)_currentHole) != null)
+                {
+                    _currentInhalerHole = (InhalerMatchingObjectHoleScript)_currentHole;
+                }
+            }
+
+            if (_holes.Count == 0)
+            {
+                yield break;
+            }
+
+            int _rand = UnityEngine..Random.Range(0, _holes.Count);
+
+            _gameIndicatorCanvas.SetTargetObject(_holes[_rand].gameObject);
+
+            _gameIndicatorCanvas.gameObject.SetActive(true);
+        }
+        else
+        {
+            MatchingGameBlockScript _selectedBlock = null;
+
+            LetterBlockScript _selectedLetterBlock = null;
+
+            int _index = -1;
+
+            while (_selectedBlock == null)
+            {
+                _index = Random.Range(0, _gameProperties.GetListOfObjects().Count);
+
+                if (_gameProperties.GetListOfObjects()[_index] != null)
+                {
+                    if (!_gameProperties.GetListOfObjects()[_index].GetBlockPlaced())
+                    {
+                        _selectedBlock = _gameProperties.GetListOfObjects()[_index];
+                    }
+                }
+            }
+
+            if ((LetterBlockScript)(_selectedBlock) != null)
+            {
+                _selectedLetterBlock = (LetterBlockScript)(_selectedBlock);
+
+                _gameIndicatorCanvas.SetTargetObject(_selectedLetterBlock.gameObject);
+
+                _gameIndicatorCanvas.gameObject.SetActive(true);
+            }
+        }
+    }
+
+
+
 }

@@ -63,6 +63,11 @@ public class UIIndicatorCanvasScript : MonoBehaviour
         return _indicatorColor;
     }
 
+    public GameObject GetTargetObject()
+    {
+        return _targetObject;
+    }
+
     public void SetIndicatorColor(Color _input)
     {
         _indicatorColor = _input;

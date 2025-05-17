@@ -94,6 +94,8 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
 
     Coroutine _responseTextCoroutine;
 
+    protected bool _gameIndicatorCanvasCountdownStarted = false;
+
     public string GetGameName()
     {
         return _gameName;
@@ -1085,10 +1087,5 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
     public virtual IEnumerator PlayDialogueAfterDelay(List<string> _dialogueNamesInput, float _delayInput = 0.0f)
     {
         yield break;
-    }
-
-    protected virtual IEnumerator SetNewTargetForIndicator()
-    {
-        yield return null;
     }
 }

@@ -67,6 +67,8 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
     [SerializeField]
     protected MatchingGameHoleScript _currentHole;
 
+    protected bool _holeIndicatorCountdownStarted = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -313,5 +315,99 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
     public override void IGameIncorrect(string _dialogueNameInput, int _indexInput)
     {
         base.IGameIncorrect(_dialogueNameInput, _indexInput);
+    }
+
+    protected virtual IEnumerator SetNewTargetForIndicator2()
+    {
+        yield break;
+    }
+
+    public void TriggerStartNewTarget()
+    {
+        if (_indicatorCoroutine != null)
+        {
+            StopCoroutine(_indicatorCoroutine);
+        }
+
+        _indicatorCoroutine = StartCoroutine(SetNewTargetForIndicator2());
+    }
+
+    public void TriggerStopNewTarget()
+    {
+        if (_indicatorCoroutine != null)
+        {
+            StopCoroutine(_indicatorCoroutine);
+        }
+
+        if (_gameIndicatorCanvasCountdownStarted)
+        {
+            _gameIndicatorCanvasCountdownStarted = false;
+        }
+    }
+
+    protected void UpdateTargetForIndicator2()
+    {
+        if (_gameIndicatorCanvas == null)
+        {
+            return;
+        }
+
+        if (!PrepareGameIndicator())
+        {
+            return;
+        }
+
+        if (_gameIndicatorCanvasCountdownStarted)
+        {
+            return;
+        }
+
+        if (_completionMeter.GetPercentage() == 100.0f)
+        {
+            _gameIndicatorCanvas.gameObject.SetActive(false);
+
+            TriggerStopNewTarget();
+
+            _gameIndicatorCanvas.SetTargetObject(null);
+
+            return;
+        }
+
+        if (_currentBlock != null)
+        {
+            if (_gameIndicatorCanvas.GetTargetObject() != null)
+            {
+                if (_gameIndicatorCanvas.GetTargetObject().GetComponent<MatchingGameHoleScript>())
+                {
+                    return;
+                }
+                else if (_gameIndicatorCanvas.GetTargetObject().GetComponent<MatchingGameBlockScript>() != null)
+                {
+                    _gameIndicatorCanvas.gameObject.SetActive(false);
+
+                    _gameIndicatorCanvas.SetTargetObject(null);
+                }
+            }
+
+            TriggerStartNewTarget();
+        }
+        else
+        {
+            if (_gameIndicatorCanvas.GetTargetObject() != null)
+            {
+                if (_gameIndicatorCanvas.GetTargetObject().GetComponent<MatchingGameBlockScript>())
+                {
+                    return;
+                }
+                else if (_gameIndicatorCanvas.GetTargetObject().GetComponent<MatchingGameHoleScript>() != null)
+                {
+                    _gameIndicatorCanvas.gameObject.SetActive(false);
+
+                    _gameIndicatorCanvas.SetTargetObject(null);
+                }
+            }
+
+            TriggerStartNewTarget();
+        }
     }
 }
