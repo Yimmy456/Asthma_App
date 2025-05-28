@@ -322,30 +322,7 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
         yield break;
     }
 
-    public void TriggerStartNewTarget()
-    {
-        if (_indicatorCoroutine != null)
-        {
-            StopCoroutine(_indicatorCoroutine);
-        }
-
-        _indicatorCoroutine = StartCoroutine(SetNewTargetForIndicator2());
-    }
-
-    public void TriggerStopNewTarget()
-    {
-        if (_indicatorCoroutine != null)
-        {
-            StopCoroutine(_indicatorCoroutine);
-        }
-
-        if (_gameIndicatorCanvasCountdownStarted)
-        {
-            _gameIndicatorCanvasCountdownStarted = false;
-        }
-    }
-
-    protected void UpdateTargetForIndicator2()
+    protected override void UpdateTargetForIndicator2()
     {
         if (_gameIndicatorCanvas == null)
         {
@@ -408,6 +385,29 @@ public class MatchingGameCanvasScript : GameGenericMBScript<MatchingGameBlockScr
             }
 
             TriggerStartNewTarget();
+        }
+    }
+
+    public void TriggerStartNewTarget()
+    {
+        if (_indicatorCoroutine != null)
+        {
+            StopCoroutine(_indicatorCoroutine);
+        }
+
+        _indicatorCoroutine = StartCoroutine(SetNewTargetForIndicator2());
+    }
+
+    public void TriggerStopNewTarget()
+    {
+        if (_indicatorCoroutine != null)
+        {
+            StopCoroutine(_indicatorCoroutine);
+        }
+
+        if (_gameIndicatorCanvasCountdownStarted)
+        {
+            _gameIndicatorCanvasCountdownStarted = false;
         }
     }
 }

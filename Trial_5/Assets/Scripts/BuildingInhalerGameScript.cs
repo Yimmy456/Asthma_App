@@ -35,6 +35,8 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
     Quaternion _gameSpaceInitialRotation;
 
+    GameObject _currentCorrectObject;
+
     [ContextMenu("Add Components.")]
     protected override void AddToBnHList()
     {
@@ -332,6 +334,8 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
         _gameSpaceInitialRotation = _gameSpace.transform.rotation;
 
+        _currentCorrectObject = _gameProperties.GetListOfObjectsAsGO()[0];
+
         if (_dialogues != null)
         {
             _dialogues.PlayClip("Dr. Salem Assembly Game Step 1");
@@ -425,6 +429,8 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
             }
 
             _completionMeter.SignalToUpdateUI();
+
+            _currentCorrectObject = _gameProperties.GetListOfObjectsAsGO()[1];
         }
 
         if (_currentPhaseNumber == 1 && _currentHoleProperties.GetListOfObjects()[1].GetObjectPlaced())
@@ -464,6 +470,8 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
             }
 
             SetResponseText("You're doing great! Just remember, though: You need to read the expiry date on the medication before inserting it. If the expiry date is due, do not use it. Moving forward...\n\n3. Remove the cap from the neck.", new Color(0.0f, 1.0f, 0.0f, 1.0f), new Vector2(1.0f, -1.0f), new Color(0.0f, 0.5f, 0.0f, 0.5f));
+
+            _currentCorrectObject = _cap;
 
             if (_arrowAnimations[1].GetArrowContainer().activeSelf)
             {
@@ -538,6 +546,8 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
                     IGameCorrect();
 
+                    _currentCorrectObject = _gameProperties.GetListOfObjectsAsGO()[2];
+
                     _completionMeter.SignalToUpdateUI();
                 }
                 else if (_cap.GetComponent<DraggableClass>().GetTouchPhase() == TouchPhase.Ended)
@@ -592,6 +602,8 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
                 StopCoroutine(_indicatorCoroutine);
             }
 
+            _currentCorrectObject = null;
+
             _gameIndicatorCanvas.gameObject.SetActive(false);
         }   
 
@@ -626,7 +638,9 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
 
         _walls.SetActive(false);
 
-        if(_animationCoroutineArrow != null)
+        _currentCorrectObject = null;
+
+        if (_animationCoroutineArrow != null)
         {
             StopCoroutine(_animationCoroutineArrow);
         }
@@ -922,6 +936,130 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
             }
 
             //_indicatorCoroutine = StartCoroutine(SetNewTargetForIndicator());
+        }
+    }
+
+    protected override IEnumerator SetNewTargetForIndicator2()
+    {
+        if (_gameIndicatorCanvas == null)
+        {
+            yield break;
+        }
+
+        if (!PrepareGameIndicator())
+        {
+            yield break;
+        }
+
+        if (_completionMeter.GetPercentage() == 100.0f)
+        {
+            _gameIndicatorCanvasCountdownStarted = false;
+
+            _gameIndicatorCanvas.gameObject.SetActive(false);
+
+            yield break;
+        }
+
+        if(_currentCorrectObject == null)
+        {
+            yield break;
+        }
+
+        if(_currentBlock != null)
+        {
+            if(_currentBlock != _currentCorrectObject)
+            {
+                yield break;
+            }
+        }
+
+        _gameIndicatorCanvas.gameObject.SetActive(false);
+
+        _gameIndicatorCanvasCountdownStarted = true;
+
+        yield return new WaitForSeconds(10.0f);
+
+
+
+        _gameIndicatorCanvasCountdownStarted = false;
+
+        _gameIndicatorCanvas.gameObject.SetActive(true);
+    }
+
+    protected override void UpdateTargetForIndicator2()
+    {
+        if (_gameIndicatorCanvas == null)
+        {
+            return;
+        }
+
+        if (!PrepareGameIndicator())
+        {
+            return;
+        }
+
+        if (_gameIndicatorCanvasCountdownStarted)
+        {
+            return;
+        }
+
+        if (_completionMeter.GetPercentage() == 100.0f)
+        {
+            _gameIndicatorCanvas.gameObject.SetActive(false);
+
+            TriggerStopNewTarget();
+
+            _gameIndicatorCanvas.SetTargetObject(null);
+
+            return;
+        }
+
+        if(_currentPhaseNumber == 0)
+        {
+            if(_currentBlock != null)
+            {
+                if(_currentBlock == _gameProperties.GetListOfObjectsAsGO()[0])
+                {
+                    TriggerStartNewTarget();
+                }
+            }
+        }
+
+        if (_currentBlock != null)
+        {
+            if (_gameIndicatorCanvas.GetTargetObject() != null)
+            {
+                if (_gameIndicatorCanvas.GetTargetObject().GetComponent<MatchingGameHoleScript>())
+                {
+                    return;
+                }
+                else if (_gameIndicatorCanvas.GetTargetObject().GetComponent<MatchingGameBlockScript>() != null)
+                {
+                    _gameIndicatorCanvas.gameObject.SetActive(false);
+
+                    _gameIndicatorCanvas.SetTargetObject(null);
+                }
+            }
+
+            TriggerStartNewTarget();
+        }
+        else
+        {
+            if (_gameIndicatorCanvas.GetTargetObject() != null)
+            {
+                if (_gameIndicatorCanvas.GetTargetObject().GetComponent<MatchingGameBlockScript>())
+                {
+                    return;
+                }
+                else if (_gameIndicatorCanvas.GetTargetObject().GetComponent<MatchingGameHoleScript>() != null)
+                {
+                    _gameIndicatorCanvas.gameObject.SetActive(false);
+
+                    _gameIndicatorCanvas.SetTargetObject(null);
+                }
+            }
+
+            TriggerStartNewTarget();
         }
     }
 }

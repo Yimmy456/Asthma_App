@@ -136,6 +136,8 @@ public class MatchingGameBlockScript : MonoBehaviour
         _aVel.z = 0.0f;
 
         _draggableProperties.SetBodyAngularVelocity(_aVel);
+
+        MaintainFromFalling();
     }
 
     void ResetValues()
@@ -146,6 +148,20 @@ public class MatchingGameBlockScript : MonoBehaviour
             {
                 _objectCanvas.SetCurrentBlock(null);
             }
+        }
+    }
+
+    void MaintainFromFalling()
+    {
+        float _yPosition = gameObject.transform.position.y;
+
+        if(_yPosition <= -20.0f)
+        {
+            Vector3 _pos = gameObject.transform.position;
+
+            _pos.y = 10.0f;
+
+            gameObject.transform.position = _pos;
         }
     }
 }

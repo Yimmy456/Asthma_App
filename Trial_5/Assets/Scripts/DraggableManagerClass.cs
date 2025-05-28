@@ -23,6 +23,8 @@ public class DraggableManagerClass : MonoBehaviour
 
     List<DraggableClass> _endsDragging = new List<DraggableClass>();
 
+    float _zIndexConstant = 1.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,6 +76,11 @@ public class DraggableManagerClass : MonoBehaviour
     public TouchPhase GetTouchPhase()
     {
         return _touchPhase;
+    }
+
+    public float GetZIndexConstant()
+    {
+        return _zIndexConstant;
     }
 
     public void AddDraggable(DraggableClass _input)
@@ -160,6 +167,16 @@ public class DraggableManagerClass : MonoBehaviour
         }
 
         _endsDragging.Remove(_input);
+    }
+
+    public void SetZConstant(ResizingSceneSliderScript _input)
+    {
+        if(_input == null)
+        {
+            return;
+        }
+
+        _zIndexConstant = _input.GetScale();
     }
 
     public bool GetDraggingBegins(DraggableClass _input)

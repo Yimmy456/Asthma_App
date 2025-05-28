@@ -97,6 +97,18 @@ public class DialoguesScript : MonoBehaviour
         return _singleTalkingStatus;
     }
 
+    public void PlayClip(string _input)
+    {
+        if (_input == "")
+        {
+            return;
+        }
+
+        StopCurrentDialogue();
+
+        _dialogueCoroutine = StartCoroutine(PlayDialogue(_input, 0.0f));
+    }
+
     public void PlayClip(string _input, float _delayInput = 0.0f)
     {
         if(_input == "")

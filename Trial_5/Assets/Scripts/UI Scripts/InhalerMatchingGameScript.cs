@@ -257,8 +257,10 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
 
             _waitToCompleteSignal = true;
         }
-
-        UpdateTargetForIndicator2();
+        else if (_completionMeter.GetPercentage() < 100.0f)
+        {
+            UpdateTargetForIndicator2();
+        }
     }
 
     public  override void ICompleteExperience()
@@ -378,8 +380,8 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
     {
         base.IGameIncorrect();
 
-        _fastyDelayCoroutine = StartCoroutine("Matching Game Incorrect", _fastyDialogueDelay);
-        //_dialogues.PlayClip("Matching Game Incorrect");
+        //_fastyDelayCoroutine = StartCoroutine("Matching Game Incorrect", _fastyDialogueDelay);
+        _dialogues.PlayClip("Matching Game Incorrect");
     }
 
     protected override IEnumerator SetNewTargetForIndicator2()
@@ -408,6 +410,15 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
         _gameIndicatorCanvasCountdownStarted = true;
 
         yield return new WaitForSeconds(10.0f);
+
+        if (_completionMeter.GetPercentage() == 100.0f)
+        {
+            _gameIndicatorCanvasCountdownStarted = false;
+
+            _gameIndicatorCanvas.gameObject.SetActive(false);
+
+            yield break;
+        }
 
         _gameIndicatorCanvasCountdownStarted = false;
 
@@ -508,7 +519,7 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
         }
     }
 
-    protected void UpdateTargetForIndicator2()
+    protected override void UpdateTargetForIndicator2()
     {
         if (_gameIndicatorCanvas == null)
         {

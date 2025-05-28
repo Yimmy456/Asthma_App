@@ -107,7 +107,7 @@ public class UIIndicatorCanvasScript : MonoBehaviour
 
         if(_targetObject == null || _arrow == null || _camera == null)
         {
-            Debug.Log("We are returning at 1.");
+            //Debug.Log("We are returning at 1.");
 
             return;
         }

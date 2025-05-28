@@ -202,6 +202,8 @@ public class DraggableClass : MonoBehaviour
         else if(GetFront() != null)
         {
             _pos.z = _camera.WorldToScreenPoint(GetFront().position).z + _offset.z;
+
+            _pos.z = _pos.z * DraggableManagerClass.GetInstance().GetZIndexConstant();
         }
 
         //_pos.x = _pos.x + _2DOffset.x;

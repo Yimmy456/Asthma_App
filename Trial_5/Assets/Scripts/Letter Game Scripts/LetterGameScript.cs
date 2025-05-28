@@ -590,8 +590,4 @@ public class LetterGameScript : MatchingGameCanvasScript
             }
         }
     }
-
-
-
-
 }

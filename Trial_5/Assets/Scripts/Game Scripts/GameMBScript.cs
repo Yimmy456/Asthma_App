@@ -1088,4 +1088,33 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
     {
         yield break;
     }
+
+    protected virtual void UpdateTargetForIndicator2()
+    {
+        if (_gameIndicatorCanvas == null)
+        {
+            return;
+        }
+
+        if (!PrepareGameIndicator())
+        {
+            return;
+        }
+
+        if (_gameIndicatorCanvasCountdownStarted)
+        {
+            return;
+        }
+
+        if (_completionMeter.GetPercentage() == 100.0f)
+        {
+            _gameIndicatorCanvas.gameObject.SetActive(false);
+
+            //TriggerStopNewTarget();
+
+            _gameIndicatorCanvas.SetTargetObject(null);
+
+            return;
+        }
+    }
 }

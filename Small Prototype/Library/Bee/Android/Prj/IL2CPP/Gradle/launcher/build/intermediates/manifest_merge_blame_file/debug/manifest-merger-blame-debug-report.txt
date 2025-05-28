@@ -1,0 +1,130 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.DefaultCompany.SmallPrototype"
+4    android:installLocation="preferExternal"
+5    android:versionCode="1"
+6    android:versionName="0.1" >
+7
+8    <uses-sdk
+9        android:minSdkVersion="26"
+9-->C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\launcher\src\main\AndroidManifest.xml
+10        android:targetSdkVersion="30" />
+10-->C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\launcher\src\main\AndroidManifest.xml
+11
+12    <supports-screens
+12-->C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\launcher\src\main\AndroidManifest.xml:3:3-163
+13        android:anyDensity="true"
+13-->C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\launcher\src\main\AndroidManifest.xml:3:135-160
+14        android:largeScreens="true"
+14-->C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\launcher\src\main\AndroidManifest.xml:3:78-105
+15        android:normalScreens="true"
+15-->C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\launcher\src\main\AndroidManifest.xml:3:49-77
+16        android:smallScreens="true"
+16-->C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\launcher\src\main\AndroidManifest.xml:3:21-48
+17        android:xlargeScreens="true" />
+17-->C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\launcher\src\main\AndroidManifest.xml:3:106-134
+18
+19    <uses-feature android:glEsVersion="0x00030000" />
+19-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:5-54
+19-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:19-51
+20    <uses-feature
+20-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:5-15:36
+21        android:name="android.hardware.vulkan.version"
+21-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:9-55
+22        android:required="false" />
+22-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:15:9-33
+23
+24    <uses-permission android:name="android.permission.INTERNET" />
+24-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:17:5-67
+24-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:17:22-64
+25
+26    <uses-feature
+26-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:19:5-21:36
+27        android:name="android.hardware.touchscreen"
+27-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:20:9-52
+28        android:required="false" />
+28-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:21:9-33
+29
+30    <application
+30-->C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\launcher\src\main\AndroidManifest.xml:4:3-83
+31        android:debuggable="true"
+32        android:extractNativeLibs="true"
+32-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:23:18-50
+33        android:icon="@mipmap/app_icon"
+33-->C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\launcher\src\main\AndroidManifest.xml:4:49-80
+34        android:label="@string/app_name" >
+34-->C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\launcher\src\main\AndroidManifest.xml:4:16-48
+35        <activity
+35-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:24:9-44:20
+36            android:name="com.unity3d.player.UnityPlayerActivity"
+36-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:25:13-66
+37            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
+37-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:26:13-194
+38            android:hardwareAccelerated="false"
+38-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:27:13-48
+39            android:launchMode="singleTask"
+39-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:28:13-44
+40            android:resizeableActivity="false"
+40-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:29:13-47
+41            android:screenOrientation="portrait"
+41-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:30:13-49
+42            android:theme="@style/UnityThemeSelector" >
+42-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:31:13-54
+43            <intent-filter>
+43-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:32:13-36:29
+44                <action android:name="android.intent.action.MAIN" />
+44-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:33:17-69
+44-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:33:25-66
+45
+46                <category android:name="android.intent.category.LAUNCHER" />
+46-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:35:17-77
+46-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:35:27-74
+47            </intent-filter>
+48
+49            <meta-data
+49-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:38:13-40:40
+50                android:name="unityplayer.UnityActivity"
+50-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:39:17-57
+51                android:value="true" />
+51-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:40:17-37
+52            <meta-data
+52-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:41:13-43:40
+53                android:name="android.notch_support"
+53-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:42:17-53
+54                android:value="true" />
+54-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:43:17-37
+55        </activity>
+56
+57        <meta-data
+57-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:46:9-48:33
+58            android:name="unity.splash-mode"
+58-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:47:13-45
+59            android:value="0" />
+59-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:48:13-30
+60        <meta-data
+60-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:49:9-51:36
+61            android:name="unity.splash-enable"
+61-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:50:13-47
+62            android:value="True" />
+62-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:51:13-33
+63        <meta-data
+63-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:52:9-54:36
+64            android:name="unity.launch-fullscreen"
+64-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:53:13-51
+65            android:value="True" />
+65-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:54:13-33
+66        <meta-data
+66-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:55:9-57:37
+67            android:name="unity.allow-resizable-window"
+67-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:56:13-56
+68            android:value="False" />
+68-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:57:13-34
+69        <meta-data
+69-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:58:9-60:50
+70            android:name="notch.config"
+70-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:59:13-40
+71            android:value="portrait|landscape" />
+71-->[:unityLibrary] C:\Users\Manar 2\Desktop\Repository\Asthma_App\Small Prototype\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\library_manifest\debug\AndroidManifest.xml:60:13-47
+72    </application>
+73
+74</manifest>

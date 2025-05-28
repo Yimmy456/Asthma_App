@@ -1,0 +1,2 @@
+com/DefaultCompany/SmallPrototype/BuildConfig.java
+ com.DefaultCompany.SmallPrototype.BuildConfig

@@ -236,6 +236,12 @@ public class CardGameScript : GameGenericMBScript<CardScript>
         _completionMeter.SignalToUpdateUI();
 
         SetBadge("Cards' Badge");
+
+        _gameIndicatorCanvas.SetTargetObject(_gameSpace);
+
+        _gameIndicatorCanvas.SetIndicatorColor(_gameColor);
+
+        _gameIndicatorCanvas.gameObject.SetActive(true);
     }
 
     public override void IUpdateExperience()
@@ -988,21 +994,27 @@ public class CardGameScript : GameGenericMBScript<CardScript>
             _audioSource.clip = _incorrectAudioClip;
 
             _audioSource.Play();
+
+            Debug.Log("We are playing the 'incorrect' dialogue of the game.");
+        }
+        else
+        {
+            Debug.LogError("We cannot play the 'incorrect' dialogue of the game because there is an error.");
         }
 
-        if(_fastyDialogueDelay > 0.0f)
+        if (_fastyDialogueDelay > 0.0f)
         {
             Debug.Log("We are setting the delay...");
 
-            for (float _f = 0.0f; _f < _fastyDialogueDelay; _f += Time.deltaTime);
+            for (float _f = 0.0f; _f < _fastyDialogueDelay; _f += Time.deltaTime) ;
         }
 
-        //if (_dialogues != null)
-        //{
-        //    _dialogues.PlayClip("Not a match (Card Game)");
-        //}
+        if (_dialogues != null)
+        {
+            _dialogues.PlayClip("Not a match (Card Game)");
+        }
 
-        _fastyDelayCoroutine = StartCoroutine("Not a match (Card Game)", _fastyDialogueDelay);
+        //_fastyDelayCoroutine = StartCoroutine("Not a match (Card Game)", _fastyDialogueDelay);
 
         Debug.Log("We are entering the " + @"""" + "incorrect" + @"""" + " phase in the cards' game.");
 
