@@ -37761,7 +37761,8 @@ MonoBehaviour:
     _pointC: {x: 0, y: 0, z: 0}
     _updateAnimationSpeed: 5
   _rocketContainer: {fileID: 0}
-  _sceneManager: {fileID: 0}
+  _sceneManager: {fileID: 1093082201}
+  _resizer: {fileID: 419789921}
 --- !u!4 &1228395063
 Transform:
   m_ObjectHideFlags: 0

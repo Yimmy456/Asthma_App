@@ -85,6 +85,9 @@ public class PlaceIndicatorScript : MonoBehaviour
     [SerializeField]
     GameObject _sceneManager;
 
+    [SerializeField]
+    ResizingSceneSliderScript _resizer;
+
     float _planeDistance = -1.0f;
 
     bool _lookForTerrainBool = false;
@@ -393,6 +396,11 @@ public class PlaceIndicatorScript : MonoBehaviour
         Vector3 _v31 = Vector3.one * _constantSizeOfMainScene;
 
         Vector3 _v32 = Vector3.one * _constantSizeOfMainScene * _planeDistance;
+
+        if (_resizer != null)
+        {
+            _resizer.SetDistanceConstant(_constantSizeOfMainScene * _planeDistance);
+        }
 
         Vector3 _v3C = _v31;
 

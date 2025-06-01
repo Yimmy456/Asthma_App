@@ -39,6 +39,8 @@ public class ResizingSceneSliderScript : MonoBehaviour
 
     Coroutine _animationCoroutine;
 
+    float _distanceConstant = 1.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -82,6 +84,11 @@ public class ResizingSceneSliderScript : MonoBehaviour
         _show = true;
 
         _animationCoroutine = StartCoroutine(ShowSliderCoroutine());
+    }
+
+    public void SetDistanceConstant(float _input)
+    {
+        _distanceConstant = _input;
     }
 
     IEnumerator ShowSliderCoroutine()
@@ -205,7 +212,7 @@ public class ResizingSceneSliderScript : MonoBehaviour
             return;
         }
 
-        Vector3 _newSize = Vector3.one * _slider.value;
+        Vector3 _newSize = Vector3.one * _slider.value * _distanceConstant;
 
         _scale = _slider.value;
 
