@@ -409,6 +409,10 @@ public class LetterGameScript : MatchingGameCanvasScript
         {
             Debug.LogError("There is no dialogue script assigned.");
 
+            yield return new WaitForSeconds(10.0f);
+
+            ICompleteExperience();
+
             yield break;
         }
 
@@ -416,14 +420,26 @@ public class LetterGameScript : MatchingGameCanvasScript
         {
             Debug.LogError("There is no audio source assigned.");
 
+            yield return new WaitForSeconds(10.0f);
+
+            ICompleteExperience();
+
             yield break;
         }
+
+        yield return new WaitForSeconds(1.0f);
 
         AudioClip _c = _dialogues.GetAudioSource().clip;
 
         if (_c == null)
         {
             Debug.LogError("There is no audio clip being played.");
+
+            _dialogues.GetAudioSource().Stop();
+
+            yield return new WaitForSeconds(10.0f);
+
+            ICompleteExperience();
 
             yield break;
         }
