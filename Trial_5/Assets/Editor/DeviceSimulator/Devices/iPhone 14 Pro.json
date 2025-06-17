@@ -1,0 +1,30 @@
+{
+  "screens": [
+    {
+      "name": "iPhone 14 Pro",
+      "width": 430,
+      "height": 932,
+      "dpi": 460,
+      "systemFonts": [],
+      "safeArea": {
+        "x": 0,
+        "y": 59,
+        "width": 430,
+        "height": 793
+      },
+      "cutouts": [
+        {
+          "x": 149,
+          "y": 0,
+          "width": 132,
+          "height": 59
+        }
+      ],
+      "orientation": "Portrait",
+      "deviceInfo": {
+        "manufacturer": "Apple",
+        "model": "iPhone 14 Pro"
+      }
+    }
+  ]
+}

@@ -14,6 +14,10 @@ using I18N;
 using I18N.West;
 using System.Diagnostics;
 
+#if UNITY_ANDROID
+using UnityEngine.Android;
+#endif
+
 public class PrintingManagerScript : MonoBehaviour
 {
     string _path = "";
@@ -164,6 +168,8 @@ public class PrintingManagerScript : MonoBehaviour
             throw new Exception("Some questions have not been answered yet.");
         }
 
+        GrantPermission();
+
         List<ActionPlanQuestionScript> _questions = GetQuestions();
 
         if (File.Exists(_path))
@@ -312,6 +318,8 @@ public class PrintingManagerScript : MonoBehaviour
 
         if (File.Exists(_path))
         {
+            StartCoroutine(RequestPermissions());
+
             UnityEngine.Debug.Log("File is found. We will start printing.");
         }
         else
@@ -1012,5 +1020,42 @@ public class PrintingManagerScript : MonoBehaviour
         _cellInput.BorderWidthRight = _borderSizeInput;
 
         _cellInput.BorderWidthTop = _borderSizeInput;
+    }
+
+    IEnumerator RequestPermissions()
+    {
+        // Android
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead) || !Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite))
+            {
+                Permission.RequestUserPermissions(new string[] { Permission.ExternalStorageRead, Permission.ExternalStorageWrite });
+                yield return new WaitUntil(() => Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead) && Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite));
+            }
+            else
+            {
+                yield break;
+            }
+        }
+        // iOS (Conceptual - requires UIDocumentPickerViewController implementation)
+        else if (Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            // Implement UIDocumentPickerViewController logic here
+            // Example:
+            // UIDocumentPickerViewController picker = new UIDocumentPickerViewController(new string[] { "public.data" }, UIDocumentPickerMode.Import);
+            // picker.delegate = this;
+            // picker.present(true);
+        }
+    }
+
+    void GrantPermission()
+    {
+#if UNITY_ANDROID
+        if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite))
+        {
+            Permission.RequestUserPermission(Permission.ExternalStorageWrite);
+            return; // Wait for permission to be granted
+        }
+#endif
     }
 }
