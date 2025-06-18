@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 //using TMPro;
@@ -1115,6 +1116,72 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
             _gameIndicatorCanvas.SetTargetObject(null);
 
             return;
+        }
+    }
+
+    protected void SetQuitButtonToActive(bool _input)
+    {
+        try
+        {
+            if (_gameCanvas == null)
+            {
+                throw new Exception("Quit Button Error 1: We cannot activate/deactivate the quit button because the game canvas is not assigned.");
+            }
+
+            if (_gameCanvas.GetQuitButton() == null)
+            {
+                throw new Exception("Quit Button Error 2: We cannot activate/deactivate the quit button because it is not assigned.");
+            }
+
+            _gameCanvas.GetQuitButton().gameObject.SetActive(_input);
+
+            if (_input)
+            {
+                Debug.Log("We activated the quit button.");
+            }
+            else
+            {
+                Debug.Log("We deactivated the quit button.");
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e.Message);
+        }
+    }
+
+    protected void SwitchQuitButtonToActive()
+    {
+        try
+        {
+            if (_gameCanvas == null)
+            {
+                throw new Exception("Quit Button Error 1: We cannot switch the quit button to active/inactive because the game canvas is not assigned.");
+            }
+
+            if (_gameCanvas.GetQuitButton() == null)
+            {
+                throw new Exception("Quit Button Error 2: We cannot switch the quit button to active/inactive because it is not assigned.");
+            }
+
+            bool _value = _gameCanvas.GetQuitButton().gameObject.activeSelf;
+
+            _value = !_value;
+
+            _gameCanvas.GetQuitButton().gameObject.SetActive(_value);
+
+            if (_value)
+            {
+                Debug.Log("We switched the quit button to active.");
+            }
+            else
+            {
+                Debug.Log("We switched the quit button to inactive.");
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e.Message);
         }
     }
 }

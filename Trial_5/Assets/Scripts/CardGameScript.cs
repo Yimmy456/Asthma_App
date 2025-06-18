@@ -267,7 +267,9 @@ public class CardGameScript : GameGenericMBScript<CardScript>
 
     public override IEnumerator IWaitUntilCompletion()
     {
-        while(GetResponseText().text != "")
+        SetQuitButtonToActive(false);
+
+        while (GetResponseText().text != "")
         {
             yield return null;
         }
@@ -709,6 +711,8 @@ public class CardGameScript : GameGenericMBScript<CardScript>
         base.ICompleteExperience();
 
         _selectedWords.Clear();
+
+        SetQuitButtonToActive(true);
     }
 
     void SetCardPositionAndProperty(ref GameObject _cardObjectInput, ref Vector3 _posInput)
