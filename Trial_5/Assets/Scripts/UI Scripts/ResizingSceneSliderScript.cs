@@ -72,6 +72,16 @@ public class ResizingSceneSliderScript : MonoBehaviour
         UpdateScene();
     }
 
+    public float GetSliderValue()
+    {
+        if(_slider == null)
+        {
+            return 0.0f;
+        }
+
+        return _slider.value;
+    }
+
     public void ShowSlider()
     {
         if(_show)

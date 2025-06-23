@@ -616,9 +616,11 @@ public class MainCanvasesClass
             return;
         }
 
-        GameObject _image = _doctorCanvas.GetComponent<RectTransform>().Find("Dr. Salem's Image").gameObject;
+        GameObject _image = _doctorCanvas.GetComponent<RectTransform>().Find("SafeArea").gameObject;
 
-        if(_image == null)
+        _image = _image.GetComponent<RectTransform>().Find("Dr. Salem's Image Container").gameObject;
+
+        if (_image == null)
         {
             Debug.LogError("The image is not found in the canvas.");
 
@@ -654,7 +656,9 @@ public class MainCanvasesClass
             return;
         }
 
-        GameObject _image = _doctorCanvas.GetComponent<RectTransform>().Find("Dr. Salem's Image").gameObject;
+        GameObject _image = _doctorCanvas.GetComponent<RectTransform>().Find("SafeArea").gameObject;
+
+        _image = _image.GetComponent<RectTransform>().Find("Dr. Salem's Image Container").gameObject;
 
         if (_image == null)
         {

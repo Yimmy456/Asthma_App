@@ -35845,6 +35845,7 @@ MonoBehaviour:
   _rocketContainer: {fileID: 551265654}
   _sceneManager: {fileID: 1093082201}
   _resizer: {fileID: 52044227}
+  _resizingSlider: {fileID: 1256449954}
 --- !u!4 &1228395063
 Transform:
   m_ObjectHideFlags: 0

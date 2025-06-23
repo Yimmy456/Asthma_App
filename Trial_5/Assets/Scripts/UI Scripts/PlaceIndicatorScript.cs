@@ -365,6 +365,14 @@ public class PlaceIndicatorScript : MonoBehaviour
 
         Vector3 _size = Vector3.one * _constantSizeOfMainScene;
 
+        if(_resizer != null)
+        {
+            if(_resizer.GetSliderValue() > 0.0f)
+            {
+                _size = _size * _resizer.GetSliderValue();
+            }
+        }
+
         _mainSceneTransform.localScale = _size;
 
         if(_front == null)
