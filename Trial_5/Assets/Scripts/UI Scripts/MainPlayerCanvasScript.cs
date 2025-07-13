@@ -44,6 +44,9 @@ public class MainPlayerCanvasScript : MonoBehaviour
     [SerializeField]
     InhalerPropertiesClass _shakingInhalerProperties;
 
+    [SerializeField]
+    TutorialManagerScript _tutorialManager;
+
     Coroutine _coroutine;
 
     bool _animationComplete = true;
@@ -218,6 +221,8 @@ public class MainPlayerCanvasScript : MonoBehaviour
         }
 
         _animationComplete = true;
+
+        ContinueTutorial();
     }
 
     IEnumerator HideButtons()
@@ -746,5 +751,25 @@ public class MainPlayerCanvasScript : MonoBehaviour
     public void SwitchShowingInhalerPropertiesBoolean()
     {
         _shakingInhalerProperties.SwitchShowingInhalerBoolean();
+    }
+
+    void ContinueTutorial()
+    {
+        if(_tutorialManager == null)
+        {
+            return;
+        }
+
+        if(!_tutorialManager.GetTutorialMode())
+        {
+            return;
+        }
+
+        for(int _i = 0; _i < _menuButtonList.Count; _i++)
+        {
+            _menuButtonList[_i].interactable = false;
+        }
+
+        _tutorialManager.GoToNextStepUnderIndexMatchCondition(3);
     }
 }

@@ -33,6 +33,9 @@ public class ResizingSceneSliderScript : MonoBehaviour
     [SerializeField]
     Gradient _gradient;
 
+    [SerializeField]
+    Button _resetSizeButton;
+
     float _scale = 1.0f;
 
     bool _show = false;
@@ -82,6 +85,11 @@ public class ResizingSceneSliderScript : MonoBehaviour
         return _slider.value;
     }
 
+    public Button GetResetSizeButton()
+    {
+        return _resetSizeButton;
+    }
+
     public void ShowSlider()
     {
         if(_show)
@@ -103,7 +111,7 @@ public class ResizingSceneSliderScript : MonoBehaviour
 
     IEnumerator ShowSliderCoroutine()
     {
-        float _a = 90.0f;
+        float _a = 250.0f;
 
         float _b = -50.0f;
 
@@ -153,7 +161,7 @@ public class ResizingSceneSliderScript : MonoBehaviour
 
     IEnumerator HideSliderCoroutine()
     {
-        float _a = 90.0f;
+        float _a = 250.0f;
 
         float _b = -50.0f;
 
@@ -256,6 +264,11 @@ public class ResizingSceneSliderScript : MonoBehaviour
             return;
         }
 
+        if(_resetSizeButton != null)
+        {
+            _resetSizeButton.gameObject.SetActive(_slider.value != 1.0f);
+        }
+
         DraggableManagerClass.GetInstance().SetZConstant(this);
     }
 
@@ -267,5 +280,15 @@ public class ResizingSceneSliderScript : MonoBehaviour
     public bool GetShow()
     {
         return _show;
+    }
+
+    public void ResetSceneSize()
+    {
+        if(_slider == null)
+        {
+            return;
+        }
+
+        _slider.value = 1.0f;
     }
 }

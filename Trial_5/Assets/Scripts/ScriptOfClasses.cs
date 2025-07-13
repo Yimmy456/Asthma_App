@@ -3025,49 +3025,6 @@ public class BadgePreperationClass
     }
 }
 
-[System.Serializable]
-public class TutorialSubjectTargetClass
-{
-    [SerializeField]
-    string _name;
-
-    [SerializeField]
-    TutorialSubjectTypeEnum _subjectType;
-
-    [SerializeField]
-    GameObject _subject;
-
-    [SerializeField]
-    string _text;
-
-    [SerializeField]
-    TutorialSubjectTargetUIElementsClass _UIElements;
-
-    public string GetName()
-    {
-        return _name;
-    }
-
-    public TutorialSubjectTypeEnum GetSubjectType()
-    {
-        return _subjectType;
-    }
-
-    public GameObject GetSubject()
-    {
-        return _subject;
-    }
-
-    public string GetText()
-    {
-        return _text;
-    }
-
-    public TutorialSubjectTargetUIElementsClass GetUIElements()
-    {
-        return _UIElements;
-    }
-}
 
 [System.Serializable]
 public class TutorialSubjectTargetUIElementsClass
