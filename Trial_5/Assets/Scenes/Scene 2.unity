@@ -1242,6 +1242,102 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 52713640}
   m_CullTransparentMesh: 1
+--- !u!1 &54296888
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 54296889}
+  - component: {fileID: 54296892}
+  - component: {fileID: 54296891}
+  - component: {fileID: 54296890}
+  m_Layer: 0
+  m_Name: Text (Legacy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &54296889
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54296888}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1542747393}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -650}
+  m_SizeDelta: {x: 0, y: 300}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &54296890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54296888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0.5019608, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
+--- !u!114 &54296891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54296888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 1b26adbfa7b4c05459e641c5bcd9c78d, type: 3}
+    m_FontSize: 190
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 7
+    m_MaxSize: 300
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &54296892
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54296888}
+  m_CullTransparentMesh: 1
 --- !u!1 &62357195
 GameObject:
   m_ObjectHideFlags: 0
@@ -1836,7 +1932,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -2871,6 +2967,83 @@ Transform:
   m_Father: {fileID: 1649416158}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &117278886
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 117278887}
+  - component: {fileID: 117278889}
+  - component: {fileID: 117278888}
+  m_Layer: 0
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &117278887
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117278886}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1871254582}
+  m_Father: {fileID: 1694982957}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &117278888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117278886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &117278889
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117278886}
+  m_CullTransparentMesh: 1
 --- !u!1 &121150170
 GameObject:
   m_ObjectHideFlags: 0
@@ -5630,42 +5803,53 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvas: {fileID: 1165819537}
   _tutorialSubjectTargets:
-  - _text: Welcome to AirQuest! Press the "Next" button to start.
+  - _name: 
+    _text: Welcome to AirQuest! Press the "Next" button to start.
     _object: {fileID: 0}
     _arrowPosition: {x: 0, y: 0}
     _zRotation: 0
     _scale: 1
     _mask: {fileID: 0}
     _showNextButton: 0
-  - _text: This is Dr. Salem. He will be your guide in this exciting adventure!
+    _waitingSeconds: -1
+  - _name: 
+    _text: This is Dr. Salem. He will be your guide in this exciting adventure!
     _object: {fileID: 0}
     _arrowPosition: {x: 0, y: 0}
     _zRotation: 0
     _scale: 1
     _mask: {fileID: 0}
     _showNextButton: 0
-  - _text: To start your adventure, you need to press on that button.
+    _waitingSeconds: -1
+  - _name: 
+    _text: To start your adventure, you need to press on that button.
     _object: {fileID: 0}
     _arrowPosition: {x: 0, y: 0}
     _zRotation: 0
     _scale: 1
     _mask: {fileID: 0}
     _showNextButton: 0
-  - _text: You need to find a physical surface to continue...
+    _waitingSeconds: -1
+  - _name: 
+    _text: You need to find a physical surface to continue...
     _object: {fileID: 0}
     _arrowPosition: {x: 0, y: 0}
     _zRotation: 0
     _scale: 1
     _mask: {fileID: 0}
     _showNextButton: 0
-  - _text: Great! You found a spot! Now you need to press the "Land" button.
+    _waitingSeconds: -1
+  - _name: 
+    _text: Great! You found a spot! Now you need to press the "Land" button.
     _object: {fileID: 0}
     _arrowPosition: {x: 0, y: 0}
     _zRotation: 0
     _scale: 1
     _mask: {fileID: 0}
     _showNextButton: 0
-  - _text: Our friend Fasty is now landing his rocket. Let's wait until he lands
+    _waitingSeconds: -1
+  - _name: 
+    _text: Our friend Fasty is now landing his rocket. Let's wait until he lands
       safely and exits his spaceship to greet us...
     _object: {fileID: 0}
     _arrowPosition: {x: 0, y: 0}
@@ -5673,7 +5857,9 @@ MonoBehaviour:
     _scale: 1
     _mask: {fileID: 0}
     _showNextButton: 0
-  - _text: Awesome! Now that Fasty has landed, let us take a look at what we will
+    _waitingSeconds: -1
+  - _name: 
+    _text: Awesome! Now that Fasty has landed, let us take a look at what we will
       need to knowwhen playing this game. Press "next" to proceed.
     _object: {fileID: 0}
     _arrowPosition: {x: 0, y: 0}
@@ -5681,7 +5867,9 @@ MonoBehaviour:
     _scale: 1
     _mask: {fileID: 0}
     _showNextButton: 0
-  - _text: This is the "Exit" button. If you ever want to head back to the main menu,
+    _waitingSeconds: -1
+  - _name: 
+    _text: This is the "Exit" button. If you ever want to head back to the main menu,
       you can press this button, then press "Yes" on the next canvas. If you change
       your mind about leaving, you can press "No" instead.
     _object: {fileID: 0}
@@ -5690,7 +5878,9 @@ MonoBehaviour:
     _scale: 1
     _mask: {fileID: 0}
     _showNextButton: 0
-  - _text: This is the main menu button. This button has many options for you to
+    _waitingSeconds: -1
+  - _name: 
+    _text: This is the main menu button. This button has many options for you to
       select from. The options include awesome game that we can enjoy together, a
       nice exhibition that can teach us about inhalers, words and phrases about asthma,
       and settings that you might want to adjust. Press the button to see the available
@@ -5701,110 +5891,196 @@ MonoBehaviour:
     _scale: 1
     _mask: {fileID: 0}
     _showNextButton: 0
-  - _text: 'This is the games button. You can tap here to play exciting games! '
+    _waitingSeconds: -1
+  - _name: 
+    _text: 'This is the games button. You can tap here to play exciting games! '
     _object: {fileID: 0}
     _arrowPosition: {x: 0, y: 0}
     _zRotation: 0
     _scale: 1
     _mask: {fileID: 0}
     _showNextButton: 0
+    _waitingSeconds: -1
   _tutorialSubjectTargets2:
-  - _text: Welcome to AirQuest! Press the "Next" button to start.
+  - _name: Welcome
+    _text: Welcome to AirQuest! Press the "Next" button to start.
     _object: {fileID: 673797643}
     _arrowPosition: {x: -280, y: 332}
     _zRotation: 225
     _scale: 1
     _mask: {fileID: 1740414677}
     _showNextButton: 1
-  - _text: Press the "Land" button to continue.
+    _waitingSeconds: -1
+  - _name: Land Button
+    _text: Press the "Land" button to continue.
     _object: {fileID: 1845927809}
+    _arrowPosition: {x: 0, y: 420}
+    _zRotation: 180
+    _scale: 1
+    _mask: {fileID: 1740414677}
+    _showNextButton: 0
+    _waitingSeconds: -1
+  - _name: Waiting
+    _text: Now we are waiting for the rocket to land...
+    _object: {fileID: 0}
+    _arrowPosition: {x: 0, y: 0}
+    _zRotation: 180
+    _scale: 1
+    _mask: {fileID: 0}
+    _showNextButton: 0
+    _waitingSeconds: 33.4
+  - _name: Dr. Salem
+    _text: This is Dr. Salem. He will be you guide throughout this application.
+    _object: {fileID: 334509318}
     _arrowPosition: {x: 0, y: 332}
     _zRotation: 180
     _scale: 1
-    _mask: {fileID: 679063373}
-    _showNextButton: 0
-  - _text: This is the "Menu" button. It has everything you need as we enjoy this
+    _mask: {fileID: 355978135}
+    _showNextButton: 1
+    _waitingSeconds: -1
+  - _name: Fasty
+    _text: This is Fasty. He will be joining you in this amazing adventure!
+    _object: {fileID: 682149335}
+    _arrowPosition: {x: 0, y: 0}
+    _zRotation: 180
+    _scale: 1
+    _mask: {fileID: 0}
+    _showNextButton: 1
+    _waitingSeconds: -1
+  - _name: Menu Button
+    _text: This is the "Menu" button. It has everything you need as we enjoy this
       adventure together! Press on it to reveal what's inside. Press here to see
       the options.
     _object: {fileID: 1153826024}
+    _arrowPosition: {x: 0, y: 420}
+    _zRotation: 180
+    _scale: 1
+    _mask: {fileID: 1740414677}
+    _showNextButton: 0
+    _waitingSeconds: -1
+  - _name: Loading Menu Sub-Buttons
+    _text: 
+    _object: {fileID: 152832402}
     _arrowPosition: {x: 0, y: 332}
     _zRotation: 180
     _scale: 1
-    _mask: {fileID: 1871254584}
+    _mask: {fileID: 0}
     _showNextButton: 0
-  - _text: This is the "Dictionary" button. Here is where you can learn about all
+    _waitingSeconds: 2.5
+  - _name: Menu Options
+    _text: These 7 buttons are the menu's options.
+    _object: {fileID: 0}
+    _arrowPosition: {x: 0, y: 332}
+    _zRotation: 180
+    _scale: 1
+    _mask: {fileID: 1740414677}
+    _showNextButton: 1
+    _waitingSeconds: -1
+  - _name: Dictionary Button
+    _text: This is the "Dictionary" button. Here is where you can learn about all
       of the words and phrases about asthma.
     _object: {fileID: 2003581052}
     _arrowPosition: {x: 0, y: 332}
     _zRotation: 180
     _scale: 1
-    _mask: {fileID: 2054016413}
+    _mask: {fileID: 1740414677}
     _showNextButton: 1
-  - _text: This is the "Settings" button. If you want to modify a specific setting,
+    _waitingSeconds: -1
+  - _name: Settings Button
+    _text: This is the "Settings" button. If you want to modify a specific setting,
       you can just press this button and a menu will appear.
     _object: {fileID: 1377619283}
     _arrowPosition: {x: 0, y: 332}
     _zRotation: 180
     _scale: 1
-    _mask: {fileID: 1871254584}
+    _mask: {fileID: 1740414677}
     _showNextButton: 1
-  - _text: This is the "Badges" button. As you go through new experiences of this
+    _waitingSeconds: -1
+  - _name: Badges Button
+    _text: This is the "Badges" button. As you go through new experiences of this
       application, you will earn new badges along the way. Press here at anytime
       to see the badges that you have earned!
     _object: {fileID: 1490923372}
     _arrowPosition: {x: 0, y: 332}
     _zRotation: 180
     _scale: 1
-    _mask: {fileID: 247174097}
+    _mask: {fileID: 1740414677}
     _showNextButton: 1
-  - _text: This is the "Games" button. You can play 5 exciting mini-games to learn
+    _waitingSeconds: -1
+  - _name: Games Button
+    _text: This is the "Games" button. You can play 5 exciting mini-games to learn
       more about asthma. Win them all to earn badges!
     _object: {fileID: 250300279}
     _arrowPosition: {x: 0, y: 332}
     _zRotation: 180
     _scale: 1
-    _mask: {fileID: 635726907}
+    _mask: {fileID: 1740414677}
     _showNextButton: 1
-  - _text: This is the "Exhibition". It will show you the difference types and components
+    _waitingSeconds: -1
+  - _name: Exhibition Button
+    _text: This is the "Exhibition". It will show you the difference types and components
       of inhalers.
     _object: {fileID: 1545742854}
     _arrowPosition: {x: 0, y: 332}
     _zRotation: 180
     _scale: 1
-    _mask: {fileID: 105508245}
+    _mask: {fileID: 1740414677}
     _showNextButton: 1
-  - _text: This is the "Restart" Button. If you do wisbh to repeat the game because
+    _waitingSeconds: -1
+  - _name: Restart Button
+    _text: This is the "Restart" Button. If you do wisbh to repeat the game because
       of some reason, you can just press here.
     _object: {fileID: 904721485}
     _arrowPosition: {x: 0, y: 332}
     _zRotation: 180
     _scale: 1
-    _mask: {fileID: 496630232}
+    _mask: {fileID: 1740414677}
     _showNextButton: 1
-  - _text: This is the "Procedure" Button. When pressed, Fasty will demonstrate to
+    _waitingSeconds: -1
+  - _name: Procedure Button
+    _text: This is the "Procedure" Button. When pressed, Fasty will demonstrate to
       you how you can use the inhaler.
     _object: {fileID: 92383606}
     _arrowPosition: {x: 0, y: 332}
     _zRotation: 180
     _scale: 1
-    _mask: {fileID: 32268538}
+    _mask: {fileID: 1740414677}
     _showNextButton: 1
-  - _text: This is the "Inhaler" Button. When you press it an inhaler will appear
+    _waitingSeconds: -1
+  - _name: Inhaler Button
+    _text: This is the "Inhaler" Button. When you press it an inhaler will appear
       in front of Fasty. You can tap and hold onto the inahler and move it around
       with your finger.
     _object: {fileID: 962652047}
     _arrowPosition: {x: 0, y: 332}
     _zRotation: 180
     _scale: 1
-    _mask: {fileID: 161476536}
+    _mask: {fileID: 1740414677}
     _showNextButton: 0
-  - _text: This is Dr. Salem. He will be you guide throughout this application.
-    _object: {fileID: 334509318}
+    _waitingSeconds: -1
+  - _name: Inhaler
+    _text: This is the "Inhaler" Button. When you press it an inhaler will appear
+      in front of Fasty. You can tap and hold onto the inahler and move it around
+      with your finger.
+    _object: {fileID: 1219848555049984593}
     _arrowPosition: {x: 0, y: 332}
     _zRotation: 180
     _scale: 1
-    _mask: {fileID: 161476536}
+    _mask: {fileID: 0}
     _showNextButton: 1
+    _waitingSeconds: -1
+  - _name: Resizing Button
+    _text: This is the "Inhaler" Button. When you press it an inhaler will appear
+      in front of Fasty. You can tap and hold onto the inahler and move it around
+      with your finger.
+    _object: {fileID: 152832402}
+    _arrowPosition: {x: 0, y: 332}
+    _zRotation: 180
+    _scale: 1
+    _mask: {fileID: 1740414677}
+    _showNextButton: 1
+    _waitingSeconds: -1
+  _mainPlayerCanvas: {fileID: 392666912}
 --- !u!1 &227547013
 GameObject:
   m_ObjectHideFlags: 0
@@ -10058,7 +10334,7 @@ GameObject:
   - component: {fileID: 355978135}
   - component: {fileID: 355978134}
   m_Layer: 0
-  m_Name: Mask 11
+  m_Name: Mask Dr. Salem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25239,7 +25515,7 @@ GameObject:
   - component: {fileID: 679063373}
   - component: {fileID: 679063375}
   m_Layer: 0
-  m_Name: Mask 1
+  m_Name: Mask Menu Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25254,17 +25530,17 @@ RectTransform:
   m_GameObject: {fileID: 679063371}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1344662009}
   m_Father: {fileID: 1694982957}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 130}
-  m_SizeDelta: {x: 250, y: 250}
+  m_AnchoredPosition: {x: 0, y: 155}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &679063373
 MonoBehaviour:
@@ -25280,9 +25556,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.4}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -36759,6 +37035,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 223396271}
+        m_TargetAssemblyTypeName: TutorialManagerScript, Assembly-CSharp
+        m_MethodName: GoToNextStepUnderNameMatchCondition
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Menu Button
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1153826027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37528,7 +37816,7 @@ RectTransform:
   - {fileID: 679884381}
   - {fileID: 1710683861}
   m_Father: {fileID: 2027623194}
-  m_RootOrder: 22
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -37555,9 +37843,9 @@ MonoBehaviour:
   _camera: {fileID: 488612397}
   _panel: {fileID: 762768792}
   _uiMasks:
+  - {fileID: 1740414677}
   - {fileID: 679063373}
   - {fileID: 1871254584}
-  - {fileID: 1177965911}
   - {fileID: 2054016413}
   - {fileID: 247174097}
   - {fileID: 635726907}
@@ -37566,7 +37854,8 @@ MonoBehaviour:
   - {fileID: 32268538}
   - {fileID: 161476536}
   - {fileID: 355978135}
-  _defaultUiMask: {fileID: 1740414677}
+  _nextButton: {fileID: 1904157151}
+  _uiIndicator: {fileID: 1809596160}
 --- !u!114 &1165819538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37626,7 +37915,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!1 &1169157989
 GameObject:
@@ -46895,6 +47184,83 @@ Transform:
   m_Father: {fileID: 142345710}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -36.21822, y: 179.99829, z: -179.9706}
+--- !u!1 &1542747392
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1542747393}
+  - component: {fileID: 1542747395}
+  - component: {fileID: 1542747394}
+  m_Layer: 0
+  m_Name: Arrow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1542747393
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542747392}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 54296889}
+  m_Father: {fileID: 1809596159}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 604, y: 851}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1542747394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542747392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 22f7eb8e991ec534bb6411484e5a7eeb, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1542747395
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542747392}
+  m_CullTransparentMesh: 1
 --- !u!1 &1545742854
 GameObject:
   m_ObjectHideFlags: 0
@@ -51105,9 +51471,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 117278887}
   - {fileID: 1740414676}
   - {fileID: 679063372}
-  - {fileID: 1871254582}
   - {fileID: 1177965909}
   - {fileID: 2054016411}
   - {fileID: 247174095}
@@ -52638,7 +53004,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1694982957}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -54976,6 +55342,130 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1806866264}
   m_CullTransparentMesh: 1
+--- !u!1 &1809596158
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1809596159}
+  - component: {fileID: 1809596163}
+  - component: {fileID: 1809596162}
+  - component: {fileID: 1809596161}
+  - component: {fileID: 1809596160}
+  m_Layer: 0
+  m_Name: Tutorial Indicator Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1809596159
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809596158}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1542747393}
+  m_Father: {fileID: 2027623194}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &1809596160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809596158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ee14d8c2711243478897c421781214d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetObject: {fileID: 0}
+  _arrow: {fileID: 1542747392}
+  _camera: {fileID: 488612397}
+  _resolutionText: {fileID: 0}
+  _cursorSprite: {fileID: 21300000, guid: 60cd767bb2f79c4448c73549ac339e44, type: 3}
+  _arrowSprite: {fileID: 21300000, guid: 22f7eb8e991ec534bb6411484e5a7eeb, type: 3}
+  _onscreenDistanceThreshold: 10
+  _meterText: {fileID: 54296891}
+  _onscreenOffset: {x: 0, y: 0}
+  _indicatorColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &1809596161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809596158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &1809596162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809596158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 1080, y: 1920}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0.5
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &1809596163
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809596158}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &1812278873
 GameObject:
   m_ObjectHideFlags: 0
@@ -56907,7 +57397,7 @@ GameObject:
   - component: {fileID: 1871254584}
   - component: {fileID: 1871254583}
   m_Layer: 0
-  m_Name: Mask 2
+  m_Name: Mask Land Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56920,19 +57410,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1871254581}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 644020609}
-  m_Father: {fileID: 1694982957}
-  m_RootOrder: 2
+  m_Father: {fileID: 117278887}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 130}
-  m_SizeDelta: {x: 250, y: 250}
+  m_AnchoredPosition: {x: 0, y: 155}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1871254583
 MonoBehaviour:
@@ -56961,9 +57451,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.4}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -57885,7 +58375,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1904157150
 RectTransform:
   m_ObjectHideFlags: 0
@@ -57904,8 +58394,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -125, y: 125}
-  m_SizeDelta: {x: 250, y: 250}
+  m_AnchoredPosition: {x: -100, y: 100}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1904157151
 MonoBehaviour:
@@ -61044,6 +61534,7 @@ Transform:
   - {fileID: 1916310820}
   - {fileID: 665322804}
   - {fileID: 1313643286}
+  - {fileID: 1809596159}
   - {fileID: 1165819536}
   m_Father: {fileID: 1093082202}
   m_RootOrder: 6

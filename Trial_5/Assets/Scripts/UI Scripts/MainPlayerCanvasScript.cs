@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 using UnityEngine.UI;
 //using UnityEngine.UIElements;
@@ -686,6 +687,77 @@ public class MainPlayerCanvasScript : MonoBehaviour
             _c.a = 0.0f;
 
             _currentButton.image.color = _c;
+        }
+    }
+
+    public void ShowButtonsImmediately()
+    {
+        TerminateAnimations();
+
+        _showMenuButtons = true;
+
+        Button _currentButton;
+
+        Color _c;
+
+        float _angle = 0.0f;
+
+        float _count = _menuButtonList.Count;
+
+        Vector2 _position = Vector2.zero;
+
+        for (int _i = 0; _i < _menuButtonList.Count; _i++)
+        {
+            if (_menuButtonList[_i] == null)
+            {
+                continue;
+            }
+
+            _angle = (_count > 1) ? (((_i * _buttonCircleProperties.GetSpreadingDegrees()) / (_count - 1)) + _buttonCircleProperties.GetAdditionalDegrees()) : _buttonCircleProperties.GetDefaultAngle();
+            
+            if (!_buttonCircleProperties.GetIsCounterClockwise())
+            {
+                _angle = -_angle;
+            }
+
+            _position.x = Mathf.Cos(_angle * Mathf.Deg2Rad) * _buttonCircleProperties.GetRadius() * -_scaleConstant;
+
+            _position.y = Mathf.Sin(_angle * Mathf.Deg2Rad) * _buttonCircleProperties.GetRadius() * _scaleConstant;
+
+            if (_buttonCircleProperties.GetSwitchAxes())
+            {
+                float _sw = _position.x;
+
+                _position.x = _position.y;
+
+                _position.y = _sw;
+            }
+
+            _currentButton = _menuButtonList[_i];
+
+            _currentButton.interactable = true;
+
+            _currentButton.GetComponent<RectTransform>().anchoredPosition = _position;
+
+            _c = _currentButton.image.color;
+
+            _c.a = 1.0f;
+
+            _currentButton.image.color = _c;
+        }
+    }
+
+    public void ToggleShowingButtonsImmediately()
+    {
+        TerminateAnimations();
+
+        if(_showMenuButtons)
+        {
+            HideButtonsImmediately2();
+        }
+        else
+        {
+            ShowButtonsImmediately();
         }
     }
 

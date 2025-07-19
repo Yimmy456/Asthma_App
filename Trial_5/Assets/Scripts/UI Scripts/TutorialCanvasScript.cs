@@ -32,7 +32,10 @@ public class TutorialCanvasScript : MonoBehaviour
     List<Image> _uiMasks;
 
     [SerializeField]
-    Image _defaultUiMask;
+    Button _nextButton;
+
+    [SerializeField]
+    UIIndicatorCanvasScript _uiIndicator;
 
     public TutorialManagerScript TutorialManager
     {
@@ -71,6 +74,11 @@ public class TutorialCanvasScript : MonoBehaviour
         return _panel;
     }
 
+    public UIIndicatorCanvasScript GetUIIndicator()
+    {
+        return _uiIndicator;
+    }
+
     public void SetArrowPositionBasedOnObject(GameObject _gameObjectInput, string _textInput, Vector2 _positionInput, float _rotationInput = 0.0f, float _scaleInput = 1.0f)
     {
         if(_gameObjectInput == null)
@@ -89,17 +97,36 @@ public class TutorialCanvasScript : MonoBehaviour
 
             _targetObject = null;
 
-            _currentText = "";
+            _uiText.GetComponent<RectTransform>().parent = gameObject.GetComponent<RectTransform>();
+
+            _uiText.GetComponent<RectTransform>().anchoredPosition = new Vector2(0.0f, 0.0f);
+
+            _uiText.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0.5f);
+
+            _uiText.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.5f);
+
+            _uiText.GetComponent<RectTransform>().rotation = Quaternion.identity;
+
+            if (_uiIndicator != null)
+            {
+                _uiIndicator.gameObject.SetActive(false);
+
+                _uiIndicator.SetTargetObject(null);
+            }
         }
         else if(_gameObjectInput.GetComponent<RectTransform>() != null)
         {
             _arrowTransform.gameObject.SetActive(true);
+
+            _arrowTransform.parent = _gameObjectInput.GetComponent<RectTransform>();
 
             _arrowTransform.anchoredPosition = _positionInput;
 
             _arrowTransform.anchorMin = _gameObjectInput.GetComponent<RectTransform>().anchorMin;
 
             _arrowTransform.anchorMax = _gameObjectInput.GetComponent<RectTransform>().anchorMax;
+
+            _arrowTransform.parent = gameObject.GetComponent<RectTransform>();
 
             _arrowTransform.rotation = Quaternion.Euler(0.0f, 0.0f, _rotationInput);
 
@@ -109,11 +136,18 @@ public class TutorialCanvasScript : MonoBehaviour
 
             AdjustText();
 
-            _currentText = _textInput;
+            if (_uiIndicator != null)
+            {
+                _uiIndicator.gameObject.SetActive(false);
+
+                _uiIndicator.SetTargetObject(null);
+            }
+
+            //_tutorialManager.SeeCurrentLesson();
         }
         else if(_gameObjectInput.transform != null)
         {
-            _arrowTransform.gameObject.SetActive(true);
+            _arrowTransform.gameObject.SetActive(false);
 
             _arrowTransform.anchoredPosition = _positionInput;
 
@@ -129,8 +163,17 @@ public class TutorialCanvasScript : MonoBehaviour
 
             AdjustText();
 
-            _currentText = _textInput;
+            if(_uiIndicator != null)
+            {
+                _uiIndicator.SetTargetObject(_gameObjectInput);
+
+                _uiIndicator.gameObject.SetActive(true);
+            }
+
+            //_tutorialManager.SeeCurrentLesson();
         }
+
+        _currentText = _textInput;
 
         if (_uiText != null)
         {
@@ -248,12 +291,6 @@ public class TutorialCanvasScript : MonoBehaviour
 
     void PrepareMask(TutorialLessonClass _input)
     {
-
-        if (_defaultUiMask != null)
-        {
-            _defaultUiMask.gameObject.SetActive(false);
-        }
-
         for (int _i = 0; _i < _uiMasks.Count; _i++)
         {
             Image _mask = _uiMasks[_i];
@@ -268,9 +305,10 @@ public class TutorialCanvasScript : MonoBehaviour
         {
             _input.GetMask().gameObject.SetActive(true);
         }
-        else if(_defaultUiMask != null)
-        {
-            _defaultUiMask.gameObject.SetActive(true);
-        }
+    }
+
+    public Button GetNextButton()
+    {
+        return _nextButton;
     }
 }

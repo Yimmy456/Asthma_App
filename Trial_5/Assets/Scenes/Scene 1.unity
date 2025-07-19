@@ -15152,6 +15152,7 @@ MonoBehaviour:
       _uiTextOutlineDistance: {x: 1, y: -1}
       _uiTextOutlineAlpha: 0.5
       _uiTextOutlineColorValue: 0.5
+  _tutorialManager: {fileID: 0}
 --- !u!1 &393231100
 GameObject:
   m_ObjectHideFlags: 0
@@ -43159,6 +43160,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tutorialManager: {fileID: 1677486200}
   _canvas: {fileID: 1479688131}
+  _arrowTransform: {fileID: 0}
+  _uiText: {fileID: 0}
+  _targetObject: {fileID: 0}
+  _camera: {fileID: 0}
+  _panel: {fileID: 0}
+  _uiMasks: []
+  _nextButton: {fileID: 0}
+  _uiIndicator: {fileID: 0}
 --- !u!1 &1485575928
 GameObject:
   m_ObjectHideFlags: 0
@@ -48101,213 +48110,105 @@ MonoBehaviour:
   _canvas: {fileID: 1479688132}
   _tutorialSubjectTargets:
   - _name: Introduction
-    _subjectType: 3
-    _subject: {fileID: 0}
     _text: Welcome to AirQuest! Press the "Next" button to start.
-    _UIElements:
-      _textAnchorMin: {x: 0.5, y: 0.5}
-      _textAnchorMax: {x: 0.5, y: 0.5}
-      _textAnchoredPosition: {x: 0, y: 0}
-      _textDeltaSize: {x: 1, y: 1}
-      _textScale: {x: 1, y: 1, z: 1}
-      _textScaleConstant: 1
-      _textFontSize: 30
-      _showArrow: 0
-      _arrowRotation: 0
-      _arrowAnchorMin: {x: 0.5, y: 0.5}
-      _arrowAnchorMax: {x: 0.5, y: 0.5}
-      _arrowAnchoredPosition: {x: 0, y: 0}
-      _arrowDeltaSize: {x: 1, y: 1}
-      _arrowScale: {x: 1, y: 1, z: 1}
-      _arrowScaleConstant: 1
+    _object: {fileID: 0}
+    _arrowPosition: {x: 0, y: 0}
+    _zRotation: 0
+    _scale: 1
+    _mask: {fileID: 0}
+    _showNextButton: 0
+    _waitingSeconds: -1
   - _name: Dr. Salem
-    _subjectType: 0
-    _subject: {fileID: 334509318}
     _text: This is Dr. Salem. He will be your guide in this exciting adventure!
-    _UIElements:
-      _textAnchorMin: {x: 0.5, y: 0.5}
-      _textAnchorMax: {x: 0.5, y: 0.5}
-      _textAnchoredPosition: {x: 0, y: 0}
-      _textDeltaSize: {x: 1, y: 1}
-      _textScale: {x: 1, y: 1, z: 1}
-      _textScaleConstant: 1
-      _textFontSize: 30
-      _showArrow: 1
-      _arrowRotation: 0
-      _arrowAnchorMin: {x: 0.5, y: 0.5}
-      _arrowAnchorMax: {x: 0.5, y: 0.5}
-      _arrowAnchoredPosition: {x: 0, y: 0}
-      _arrowDeltaSize: {x: 1, y: 1}
-      _arrowScale: {x: 1, y: 1, z: 1}
-      _arrowScaleConstant: 1
+    _object: {fileID: 0}
+    _arrowPosition: {x: 0, y: 0}
+    _zRotation: 0
+    _scale: 1
+    _mask: {fileID: 0}
+    _showNextButton: 0
+    _waitingSeconds: -1
   - _name: Start Button
-    _subjectType: 0
-    _subject: {fileID: 201964839}
     _text: To start your adventure, you need to press on that button.
-    _UIElements:
-      _textAnchorMin: {x: 0.5, y: 0.5}
-      _textAnchorMax: {x: 0.5, y: 0.5}
-      _textAnchoredPosition: {x: 0, y: 0}
-      _textDeltaSize: {x: 1, y: 1}
-      _textScale: {x: 1, y: 1, z: 1}
-      _textScaleConstant: 1
-      _textFontSize: 30
-      _showArrow: 1
-      _arrowRotation: 0
-      _arrowAnchorMin: {x: 0.5, y: 0.5}
-      _arrowAnchorMax: {x: 0.5, y: 0.5}
-      _arrowAnchoredPosition: {x: 0, y: 0}
-      _arrowDeltaSize: {x: 1, y: 1}
-      _arrowScale: {x: 1, y: 1, z: 1}
-      _arrowScaleConstant: 1
+    _object: {fileID: 0}
+    _arrowPosition: {x: 0, y: 0}
+    _zRotation: 0
+    _scale: 1
+    _mask: {fileID: 0}
+    _showNextButton: 0
+    _waitingSeconds: -1
   - _name: Finding a surface
-    _subjectType: 3
-    _subject: {fileID: 0}
     _text: You need to find a physical surface to continue...
-    _UIElements:
-      _textAnchorMin: {x: 0.5, y: 0.5}
-      _textAnchorMax: {x: 0.5, y: 0.5}
-      _textAnchoredPosition: {x: 0, y: 0}
-      _textDeltaSize: {x: 1, y: 1}
-      _textScale: {x: 1, y: 1, z: 1}
-      _textScaleConstant: 1
-      _textFontSize: 30
-      _showArrow: 1
-      _arrowRotation: 0
-      _arrowAnchorMin: {x: 0.5, y: 0.5}
-      _arrowAnchorMax: {x: 0.5, y: 0.5}
-      _arrowAnchoredPosition: {x: 0, y: 0}
-      _arrowDeltaSize: {x: 1, y: 1}
-      _arrowScale: {x: 1, y: 1, z: 1}
-      _arrowScaleConstant: 1
+    _object: {fileID: 0}
+    _arrowPosition: {x: 0, y: 0}
+    _zRotation: 0
+    _scale: 1
+    _mask: {fileID: 0}
+    _showNextButton: 0
+    _waitingSeconds: -1
   - _name: Confirming the surface
-    _subjectType: 0
-    _subject: {fileID: 201964839}
     _text: Great! You found a spot! Now you need to press the "Land" button.
-    _UIElements:
-      _textAnchorMin: {x: 0.5, y: 0.5}
-      _textAnchorMax: {x: 0.5, y: 0.5}
-      _textAnchoredPosition: {x: 0, y: 0}
-      _textDeltaSize: {x: 1, y: 1}
-      _textScale: {x: 1, y: 1, z: 1}
-      _textScaleConstant: 1
-      _textFontSize: 30
-      _showArrow: 1
-      _arrowRotation: 0
-      _arrowAnchorMin: {x: 0.5, y: 0.5}
-      _arrowAnchorMax: {x: 0.5, y: 0.5}
-      _arrowAnchoredPosition: {x: 0, y: 0}
-      _arrowDeltaSize: {x: 1, y: 1}
-      _arrowScale: {x: 1, y: 1, z: 1}
-      _arrowScaleConstant: 1
+    _object: {fileID: 0}
+    _arrowPosition: {x: 0, y: 0}
+    _zRotation: 0
+    _scale: 1
+    _mask: {fileID: 0}
+    _showNextButton: 0
+    _waitingSeconds: -1
   - _name: Fasty Landing
-    _subjectType: 1
-    _subject: {fileID: 551265654}
     _text: Our friend Fasty is now landing his rocket. Let's wait until he lands
       safely and exits his spaceship to greet us...
-    _UIElements:
-      _textAnchorMin: {x: 0.5, y: 0.5}
-      _textAnchorMax: {x: 0.5, y: 0.5}
-      _textAnchoredPosition: {x: 0, y: 0}
-      _textDeltaSize: {x: 1, y: 1}
-      _textScale: {x: 1, y: 1, z: 1}
-      _textScaleConstant: 1
-      _textFontSize: 30
-      _showArrow: 1
-      _arrowRotation: 0
-      _arrowAnchorMin: {x: 0.5, y: 0.5}
-      _arrowAnchorMax: {x: 0.5, y: 0.5}
-      _arrowAnchoredPosition: {x: 0, y: 0}
-      _arrowDeltaSize: {x: 1, y: 1}
-      _arrowScale: {x: 1, y: 1, z: 1}
-      _arrowScaleConstant: 1
+    _object: {fileID: 0}
+    _arrowPosition: {x: 0, y: 0}
+    _zRotation: 0
+    _scale: 1
+    _mask: {fileID: 0}
+    _showNextButton: 0
+    _waitingSeconds: -1
   - _name: Main Menu Introduction
-    _subjectType: 3
-    _subject: {fileID: 0}
     _text: Awesome! Now that Fasty has landed, let us take a look at what we will
       need to knowwhen playing this game. Press "next" to proceed.
-    _UIElements:
-      _textAnchorMin: {x: 0.5, y: 0.5}
-      _textAnchorMax: {x: 0.5, y: 0.5}
-      _textAnchoredPosition: {x: 0, y: 0}
-      _textDeltaSize: {x: 1, y: 1}
-      _textScale: {x: 1, y: 1, z: 1}
-      _textScaleConstant: 1
-      _textFontSize: 30
-      _showArrow: 1
-      _arrowRotation: 0
-      _arrowAnchorMin: {x: 0.5, y: 0.5}
-      _arrowAnchorMax: {x: 0.5, y: 0.5}
-      _arrowAnchoredPosition: {x: 0, y: 0}
-      _arrowDeltaSize: {x: 1, y: 1}
-      _arrowScale: {x: 1, y: 1, z: 1}
-      _arrowScaleConstant: 1
+    _object: {fileID: 0}
+    _arrowPosition: {x: 0, y: 0}
+    _zRotation: 0
+    _scale: 1
+    _mask: {fileID: 0}
+    _showNextButton: 0
+    _waitingSeconds: -1
   - _name: Exit Button
-    _subjectType: 0
-    _subject: {fileID: 389913171}
     _text: This is the "Exit" button. If you ever want to head back to the main menu,
       you can press this button, then press "Yes" on the next canvas. If you change
       your mind about leaving, you can press "No" instead.
-    _UIElements:
-      _textAnchorMin: {x: 0.5, y: 0.5}
-      _textAnchorMax: {x: 0.5, y: 0.5}
-      _textAnchoredPosition: {x: 0, y: 0}
-      _textDeltaSize: {x: 1, y: 1}
-      _textScale: {x: 1, y: 1, z: 1}
-      _textScaleConstant: 1
-      _textFontSize: 30
-      _showArrow: 1
-      _arrowRotation: 0
-      _arrowAnchorMin: {x: 0.5, y: 0.5}
-      _arrowAnchorMax: {x: 0.5, y: 0.5}
-      _arrowAnchoredPosition: {x: 0, y: 0}
-      _arrowDeltaSize: {x: 1, y: 1}
-      _arrowScale: {x: 1, y: 1, z: 1}
-      _arrowScaleConstant: 1
+    _object: {fileID: 0}
+    _arrowPosition: {x: 0, y: 0}
+    _zRotation: 0
+    _scale: 1
+    _mask: {fileID: 0}
+    _showNextButton: 0
+    _waitingSeconds: -1
   - _name: Main Menu Button
-    _subjectType: 0
-    _subject: {fileID: 1153826024}
     _text: This is the main menu button. This button has many options for you to
       select from. The options include awesome game that we can enjoy together, a
       nice exhibition that can teach us about inhalers, words and phrases about asthma,
       and settings that you might want to adjust. Press the button to see the available
       options.
-    _UIElements:
-      _textAnchorMin: {x: 0.5, y: 0.5}
-      _textAnchorMax: {x: 0.5, y: 0.5}
-      _textAnchoredPosition: {x: 0, y: 0}
-      _textDeltaSize: {x: 1, y: 1}
-      _textScale: {x: 1, y: 1, z: 1}
-      _textScaleConstant: 1
-      _textFontSize: 30
-      _showArrow: 1
-      _arrowRotation: 0
-      _arrowAnchorMin: {x: 0.5, y: 0.5}
-      _arrowAnchorMax: {x: 0.5, y: 0.5}
-      _arrowAnchoredPosition: {x: 0, y: 0}
-      _arrowDeltaSize: {x: 1, y: 1}
-      _arrowScale: {x: 1, y: 1, z: 1}
-      _arrowScaleConstant: 1
+    _object: {fileID: 0}
+    _arrowPosition: {x: 0, y: 0}
+    _zRotation: 0
+    _scale: 1
+    _mask: {fileID: 0}
+    _showNextButton: 0
+    _waitingSeconds: -1
   - _name: Games Button
-    _subjectType: 0
-    _subject: {fileID: 250300279}
     _text: 'This is the games button. You can tap here to play exciting games! '
-    _UIElements:
-      _textAnchorMin: {x: 0.5, y: 0.5}
-      _textAnchorMax: {x: 0.5, y: 0.5}
-      _textAnchoredPosition: {x: 0, y: 0}
-      _textDeltaSize: {x: 1, y: 1}
-      _textScale: {x: 1, y: 1, z: 1}
-      _textScaleConstant: 1
-      _textFontSize: 30
-      _showArrow: 1
-      _arrowRotation: 0
-      _arrowAnchorMin: {x: 0.5, y: 0.5}
-      _arrowAnchorMax: {x: 0.5, y: 0.5}
-      _arrowAnchoredPosition: {x: 0, y: 0}
-      _arrowDeltaSize: {x: 1, y: 1}
-      _arrowScale: {x: 1, y: 1, z: 1}
-      _arrowScaleConstant: 1
+    _object: {fileID: 0}
+    _arrowPosition: {x: 0, y: 0}
+    _zRotation: 0
+    _scale: 1
+    _mask: {fileID: 0}
+    _showNextButton: 0
+    _waitingSeconds: -1
+  _tutorialSubjectTargets2: []
+  _mainPlayerCanvas: {fileID: 0}
 --- !u!1 &1679114144
 GameObject:
   m_ObjectHideFlags: 0
@@ -53671,7 +53572,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}

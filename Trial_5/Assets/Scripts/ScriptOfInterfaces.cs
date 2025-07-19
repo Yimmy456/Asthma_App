@@ -71,3 +71,12 @@ public interface DialogueDelayInterface
 
     public abstract IEnumerator PlayDialogueAfterDelay(List<string> _dialogueNamesInput, float _delayInput = 0.0f);
 }
+
+public interface StateInterface
+{    
+    public abstract void IOnStateEnter();
+
+    public abstract void IOnStateStay();
+
+    public abstract void IOnStateExit();
+}

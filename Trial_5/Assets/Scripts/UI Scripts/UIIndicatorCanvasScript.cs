@@ -41,6 +41,8 @@ public class UIIndicatorCanvasScript : MonoBehaviour
 
     float _threshold;
 
+    bool _targetInSight;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,6 +68,16 @@ public class UIIndicatorCanvasScript : MonoBehaviour
     public GameObject GetTargetObject()
     {
         return _targetObject;
+    }
+
+    public bool GetTargetInSight()
+    {
+        if(_targetObject == null)
+        {
+            return false;
+        }
+
+        return _targetInSight;
     }
 
     public void SetIndicatorColor(Color _input)
@@ -140,6 +152,8 @@ public class UIIndicatorCanvasScript : MonoBehaviour
         Vector3 _pos = _camera.WorldToScreenPoint(_targetObject.transform.position);
 
         bool _withinScreen = _pos.z > 0.0f && _pos.x > 0.0f && _pos.x < Screen.width && _pos.y > 0.0f && _pos.y < Screen.height;
+
+        _targetInSight = _withinScreen;
 
         Vector3 _screenCenter = new Vector3(Screen.width, Screen.height, 0.0f) / 2.0f;
 
