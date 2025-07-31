@@ -2029,6 +2029,97 @@ public class InhalerPropertiesClass
 
 
 [System.Serializable]
+public class UIAnimationClass : BasicAnimationClass
+{
+    [SerializeField]
+    RectTransform _rectTransform;
+
+    [SerializeField]
+    Vector2 _posA;
+
+    [SerializeField]
+    Vector2 _posB;
+
+    Vector2 _pos1;
+
+    Vector2 _pos2;
+
+    public RectTransform GetRectTransform()
+    {
+        return _rectTransform;
+    }
+
+    public Vector2 GetPositionA()
+    {
+        return _posA;
+    }
+
+    public Vector2 GetPositionB()
+    {
+        return _posB;
+    }
+
+    public override IEnumerator Animate()
+    {
+        if(_rectTransform == null || !_animateBoolean)
+        {
+            yield break;
+        }
+
+        _pos1 = _posA;
+
+        _pos2 = _posB;
+
+        _t = 0.5f;
+
+        while(_animateBoolean)
+        {
+            if (_pauseAnimation)
+            {
+                yield return null;
+
+                continue;
+            }
+
+            _delta = _animationSpeed;
+
+            if(_withDeltaTime)
+            {
+                _delta = _delta * Time.deltaTime;
+            }
+
+            _t = _t + _delta;
+
+            if(_t >= 1.0f)
+            {
+                _t = 1.0f;
+
+                _switch = true;
+            }
+
+            _rectTransform.anchoredPosition = Vector2.Lerp(_pos1, _pos2, _t);
+
+            if(_switch)
+            {
+                _t = 0.0f;
+
+                Vector2 _s = _pos2;
+
+                _pos2 = _pos1;
+
+                _pos1 = _s;
+
+                _switch = false;
+            }
+
+            yield return null;
+        }
+
+        _rectTransform.anchoredPosition = Vector2.Lerp(_posA, _posB, 0.5f);
+    }
+}
+
+[System.Serializable]
 public class UITextPropertiesClass
 {
     [SerializeField]

@@ -1,4 +1,5 @@
 using Org.BouncyCastle.Asn1.Mozilla;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,9 +16,6 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
     List<TutorialLessonClass> _tutorialSubjectTargets;
 
     [SerializeField]
-    List<TutorialLessonClass> _tutorialSubjectTargets2;
-
-    [SerializeField]
     MainPlayerCanvasScript _mainPlayerCanvas;
 
     int _currentIndex = -1;
@@ -28,6 +26,19 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
 
     Coroutine _watingCoroutine;
 
+    [SerializeField]
+    Button _exitButton;
+
+    [SerializeField]
+    Button _resizingButton;
+
+    [SerializeField]
+    Button _menuButton;
+
+    [SerializeField]
+    Button _inhalerButton;
+
+    Coroutine _arrowAnimationCoroutine;
     public TutorialCanvasScript Canvas
     {
         get
@@ -45,7 +56,7 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
             {
                 _tutorialMode = !DataPersistenceManager.GetInstance().GetGameData()._tutorialComplete;
 
-                if (_tutorialMode)
+                /*if (_tutorialMode)
                 {
                     IStartExperience();
                 }
@@ -54,9 +65,11 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
                     _canvas.GetUIIndicator().gameObject.SetActive(false);
 
                     _canvas.gameObject.SetActive(false);
-                }
 
-                //IStartExperience();
+                    gameObject.SetActive(false);
+                }*/
+
+                IStartExperience();
             }
         }
     }
@@ -79,11 +92,11 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
 
     public TutorialLessonClass GetTutorialSubjectByName(string _input)
     {
-        for(int _i = 0; _i < _tutorialSubjectTargets2.Count; _i++)
+        for(int _i = 0; _i < _tutorialSubjectTargets.Count; _i++)
         {
-            if (_tutorialSubjectTargets2[_i].GetName() == _input)
+            if (_tutorialSubjectTargets[_i].GetName() == _input)
             {
-                return _tutorialSubjectTargets2[_i];
+                return _tutorialSubjectTargets[_i];
             }
         }
 
@@ -92,9 +105,9 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
 
     public int GetLessonIndex(string _nameInput)
     {
-        for(int _i = 0; _i < _tutorialSubjectTargets2.Count; _i++)
+        for(int _i = 0; _i < _tutorialSubjectTargets.Count; _i++)
         {
-            if (_tutorialSubjectTargets2[_i].GetName() == _nameInput)
+            if (_tutorialSubjectTargets[_i].GetName() == _nameInput)
             {
                 return _i;
             }
@@ -104,14 +117,24 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
 
     public int GetLessonIndex(TutorialLessonClass _input)
     {
-        for (int _i = 0; _i < _tutorialSubjectTargets2.Count; _i++)
+        for (int _i = 0; _i < _tutorialSubjectTargets.Count; _i++)
         {
-            if (_tutorialSubjectTargets2[_i] == _input)
+            if (_tutorialSubjectTargets[_i] == _input)
             {
                 return _i;
             }
         }
         return -1;
+    }
+
+    public TutorialLessonClass GetCurrentLesson()
+    {
+        if(_currentIndex == -1 || !_tutorialMode)
+        {
+            return null;
+        }
+
+        return _tutorialSubjectTargets[_currentIndex];
     }
 
     public void SetTutorialMode(bool _input)
@@ -164,7 +187,7 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
             return;
         }
 
-        if (_tutorialSubjectTargets2[_currentIndex].GetName() != _input)
+        if (_tutorialSubjectTargets[_currentIndex].GetName() != _input)
         {
             return;
         }
@@ -208,10 +231,23 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
         {
             _canvas.gameObject.SetActive(true);
 
-            _canvas.SetArrowPositionBasedOnObject(_tutorialSubjectTargets2[0]);
+            _canvas.SetArrowPositionBasedOnObject(_tutorialSubjectTargets[0]);
 
-            _tutorialSubjectTargets2[0].IOnStateEnter();
+            _tutorialSubjectTargets[0].IOnStateEnter();
+
+            if(_canvas.GetArrowAnimation() != null)
+            {
+                _arrowAnimationCoroutine = StartCoroutine(_canvas.GetArrowAnimation().Animate());
+            }
         }
+
+        ShowOrHideButton(_exitButton);
+
+        ShowOrHideButton(_resizingButton);
+
+        ShowOrHideButton(_menuButton);
+
+        ShowOrHideButton(_inhalerButton);
     }
 
     public void IStartExperience(int _input)
@@ -236,11 +272,21 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
 
             _canvas.ResetCanvas();
         }
+
+        ShowOrHideButton(_exitButton, 2);
+
+        ShowOrHideButton(_resizingButton, 2);
+
+        ShowOrHideButton(_menuButton, 2);
+
+        ShowOrHideButton(_inhalerButton, 2);
     }
 
     public void ICompleteExperience()
     {
         DataPersistenceManager.GetInstance().GetGameData()._tutorialComplete = true;
+
+        IStopExperience();
     }
 
     public void IChooseToQuitExperience()
@@ -266,7 +312,7 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
             {
                 if(_canvas.GetUIIndicator().gameObject.activeSelf && _canvas.GetUIIndicator().GetTargetObject() != null)
                 {
-                    if (_tutorialSubjectTargets2[_currentIndex].GetShowNextButton())
+                    if (_tutorialSubjectTargets[_currentIndex].GetShowNextButton())
                     {
                         _canvas.GetNextButton().gameObject.SetActive(_canvas.GetUIIndicator().GetTargetInSight());
                     }
@@ -274,7 +320,10 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
             }
         }
 
-        _tutorialSubjectTargets2[_currentIndex].IOnStateStay();
+        if (_currentIndex >= 0 && _currentIndex < _tutorialSubjectTargets.Count)
+        {
+            _tutorialSubjectTargets[_currentIndex].IOnStateStay();
+        }
     }
 
     public void IResumeExperience()
@@ -310,37 +359,27 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
             return;
         }
 
-        TutorialLessonClass _currentSubject = _tutorialSubjectTargets2[_currentIndex];
+        TutorialLessonClass _currentSubject = _tutorialSubjectTargets[_currentIndex];
 
         if (_currentSubject.GetName() == "Menu Button")
         {
-            if(_canvas != null && _currentObjectDuplicate != null)
+            if (_currentObjectDuplicate != null)
             {
-                if(_currentObjectDuplicate.GetComponent<Button>() != null)
-                {
-                    //Button _bt = _currentObjectDuplicate.GetComponent<Button>();
+                _currentObjectDuplicate.SetActive(true);
 
-                    //_bt.onClick.RemoveAllListeners();
-
-                    //_bt.onClick.AddListener(delegate { _mainPlayerCanvas.ShowButtonsImmediately(); Destroy(_bt.gameObject); });
-                }
+                ShowOrHideButton(_currentObjectDuplicate.GetComponent<Button>(), 2);
             }
         }
 
-        if(_currentSubject.GetName() == "Inhaler Button")
+        if (_currentSubject.GetName() == "Inhaler Button")
         {
-            if (_canvas != null && _currentObjectDuplicate != null)
+            if (_currentObjectDuplicate != null)
             {
-                if (_currentObjectDuplicate.GetComponent<Button>() != null)
-                {
-                    Button _bt = _currentObjectDuplicate.GetComponent<Button>();
+                _currentObjectDuplicate.SetActive(true);
 
-                    _bt.onClick.RemoveAllListeners();
+                ShowOrHideButton(_currentObjectDuplicate.GetComponent<Button>(), 2);
 
-                    _bt.onClick.AddListener(delegate { GoToNextStepUnderNameMatchCondition("Inhaler Button"); });
-
-                    _bt.onClick.AddListener(delegate { Destroy(_bt.gameObject); });
-                }
+                _currentObjectDuplicate.GetComponent<Button>().onClick.AddListener(delegate { GoToNextStepUnderNameMatchCondition("Inhaler Button"); Destroy(_currentObjectDuplicate); });
             }
         }
 
@@ -350,63 +389,65 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
             {
                 if (_canvas.GetNextButton() != null)
                 {
+                    _inhalerButton.gameObject.SetActive(true);
+
+                    ShowOrHideButton(_inhalerButton, 1);
+
                     _canvas.GetNextButton().onClick.AddListener(delegate { _mainPlayerCanvas.GetShakingInhalerProperties().SetShowingInhalerBoolean(false); });
                 }
             }
         }
 
-        /*if(_currentSubject.GetName() == "Dictionary Button")
+        if (_currentSubject.GetName() == "Resizing Button")
         {
-            if (_canvas != null && _currentObjectDuplicate != null)
+            if (_currentObjectDuplicate != null)
             {
-                if (_currentObjectDuplicate.GetComponent<Button>() != null)
-                {
-                    Button _bt = _currentObjectDuplicate.GetComponent<Button>();
+                _currentObjectDuplicate.SetActive(true);
 
-                    _bt.onClick.RemoveAllListeners();
-
-                    _bt.interactable = false;
-
-                    Color _c = _bt.image.color;
-
-                    _c.a = 1.0f;
-
-                    _bt.image.color = _c;
-
-                    RectTransform _rt1 = _currentObject.GetComponent<RectTransform>();
-
-                    RectTransform _rt2 = _currentObjectDuplicate.GetComponent<RectTransform>();
-
-                    _rt2.parent = _rt1;
-
-                    //_rt2.anchorMin = new Vector2(0.5f, 0.5f);
-
-                    //_rt2.anchorMax = new Vector2(0.5f, 0.5f);
-
-                    _rt2.localScale = Vector3.one;
-
-                    _rt2.parent = _canvas.GetComponent<RectTransform>();
-
-                    Vector3 _ap = _rt2.anchoredPosition;
-
-                    _ap.x = -236.0f;
-
-                    _rt2.anchoredPosition = _ap;
-                }
+                ShowOrHideButton(_currentObjectDuplicate.GetComponent<Button>(), 1);
             }
-        }*/
+        }
+
+        if (_currentSubject.GetName() == "Exit Button")
+        {
+            if (_currentObjectDuplicate != null)
+            {
+                _currentObjectDuplicate.SetActive(true);
+
+                ShowOrHideButton(_currentObjectDuplicate.GetComponent<Button>(), 1);
+            }
+        }
+
+        if (_currentSubject.GetName() == "End")
+        {
+            _canvas.GetNextButton().onClick.AddListener(delegate { ICompleteExperience(); });
+        }
     }
 
     void ProcessOfGoingToNextStep()
     {
-        if (_currentIndex == _tutorialSubjectTargets2.Count)
+        if (_canvas != null)
+        {
+            if (_canvas.GetArrowAnimation() != null)
+            {
+                _canvas.GetArrowAnimation().SetAnimateBoolean(false);
+            }
+        }
+
+        if (_arrowAnimationCoroutine != null)
+        {
+            StopCoroutine(_arrowAnimationCoroutine);
+        }
+
+
+        if (_currentIndex == _tutorialSubjectTargets.Count)
         {
             ICompleteExperience();
 
             return;
         }
 
-        TutorialLessonClass _currentSubject = _tutorialSubjectTargets2[_currentIndex];
+        TutorialLessonClass _currentSubject = _tutorialSubjectTargets[_currentIndex];
 
         if (_canvas != null)
         {
@@ -428,23 +469,11 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
             {
                 _currentObjectDuplicate = Instantiate(_currentObject);
 
-                //_currentObjectDuplicate.GetComponent<RectTransform>().parent = _canvas.GetComponent<RectTransform>();
-
-                //_currentObject.SetActive(false);
-
                 _currentObjectDuplicate.SetActive(true);
 
                 RectTransform _rt1 = _currentObject.GetComponent<RectTransform>();
 
                 RectTransform _rt2 = _currentObjectDuplicate.GetComponent<RectTransform>();
-
-                /*_rt2.anchorMin = _rt1.anchorMin;
-
-                _rt2.anchorMax = _rt1.anchorMax;
-
-                _rt2.anchoredPosition = _rt1.anchoredPosition;
-
-                _rt2.localScale = _rt1.localScale;*/
 
                 _rt2.parent = _rt1;
 
@@ -469,7 +498,16 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
                         _currentObjectDuplicate.GetComponent<Button>().interactable = false;
                     }
                 }
+
+                _canvas.GetArrowAnimation().SetAnimateBoolean(true);
+
+                _arrowAnimationCoroutine = StartCoroutine(_canvas.GetArrowAnimation().Animate());
             }
+        }
+
+        if (!(_currentIndex >= 0 && _currentIndex < _tutorialSubjectTargets.Count))
+        {
+            return;
         }
 
         _currentSubject.IOnStateEnter();
@@ -508,6 +546,8 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
 
     void ProcessOfLeavingPreviousStep()
     {
+        CheckCurrentLessonBeforeLeaving();
+
         if (_currentObjectDuplicate != null)
         {
             Destroy(_currentObjectDuplicate);
@@ -523,7 +563,89 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
             _currentObject = null;
         }
 
-        _tutorialSubjectTargets2[_currentIndex].IOnStateExit();
+        if (_currentIndex >= 0 && _currentIndex < _tutorialSubjectTargets.Count)
+        {
+            _tutorialSubjectTargets[_currentIndex].IOnStateExit();
+        }
+    }
+
+    void CheckCurrentLessonBeforeLeaving()
+    {
+        if(!_tutorialMode)
+        {
+            return;
+        }
+
+        TutorialLessonClass _currentLesson = _tutorialSubjectTargets[_currentIndex];
+
+        if(_currentLesson.GetName() == "Menu Button")
+        {
+            _currentObject.gameObject.SetActive(true);
+
+            _currentObject.GetComponent<Button>().interactable = true;
+
+            ShowOrHideButton(_currentObject.GetComponent<Button>(), 2);
+
+            Destroy(_currentObjectDuplicate);
+        }
+
+        if(_currentLesson.GetName() == "Procedure Button")
+        {
+            _mainPlayerCanvas.HideButtonsImmediately2();
+        }
+
+        if (_currentLesson.GetName() == "Inhaler Button")
+        {
+            _currentObject.gameObject.SetActive(true);
+
+            _currentObject.GetComponent<Button>().interactable = true;
+
+            ShowOrHideButton(_currentObject.GetComponent<Button>(), 2);
+        }
+
+        if(_currentLesson.GetName() == "Resizing Button")
+        {
+            _currentObject.gameObject.SetActive(true);
+
+            ShowOrHideButton(_currentObject.GetComponent<Button>(), 2);
+
+            Destroy(_currentObjectDuplicate);
+        }
+    }
+
+    void ShowOrHideButton(Button _buttonInput, int _actionInput = 0)
+    {
+        if(_buttonInput == null)
+        {
+            Debug.LogError("There is no button.");
+
+            return;
+        }
+
+        Color _c;
+
+        switch (_actionInput)
+        {
+            case 1:
+                _c = _buttonInput.image.color;
+                _c.a = 1.0f;
+                _buttonInput.image.color = _c;
+                _buttonInput.interactable = false;
+                break;
+            case 2:
+                _c = _buttonInput.image.color;
+                _c.a = 1.0f;
+                _buttonInput.image.color = _c;
+                _buttonInput.interactable = true;
+                break;
+            default:
+                _c = _buttonInput.image.color;
+                _c.a = 0.0f;
+                _buttonInput.image.color = _c;
+                _buttonInput.interactable = false;
+                break;
+        }
+
     }
 
 }
@@ -535,7 +657,13 @@ public class TutorialLessonClass : StateInterface
     string _name;
 
     [SerializeField]
+    TransformTypeEnum _transformType;
+
+    [SerializeField]
     string _text;
+
+    [SerializeField]
+    string _alternativeText;
 
     [SerializeField]
     GameObject _object;
@@ -558,6 +686,12 @@ public class TutorialLessonClass : StateInterface
     [SerializeField]
     float _waitingSeconds = -1.0f;
 
+    [SerializeField]
+    Vector2 _textPosition = Vector2.zero;
+
+    [SerializeField]
+    Vector2 _textSize = new Vector2(100.0f, 100.0f);
+
     public GameObject GetGameObject()
     {
         return _object;
@@ -571,6 +705,11 @@ public class TutorialLessonClass : StateInterface
     public string GetText()
     {
         return _text;
+    }
+
+    public string GetAlternativeText()
+    {
+        return _alternativeText;
     }
 
     public Vector2 GetArrowPosition()
@@ -601,6 +740,21 @@ public class TutorialLessonClass : StateInterface
     public float GetWaitingSeconds()
     {
         return _waitingSeconds;
+    }
+
+    public TransformTypeEnum GetTransformType()
+    {
+        return _transformType;
+    }
+
+    public Vector2 GetTextPosition()
+    {
+        return _textPosition;
+    }
+
+    public Vector2 GetTextSize()
+    {
+        return _textSize;
     }
 
     public void IOnStateEnter()

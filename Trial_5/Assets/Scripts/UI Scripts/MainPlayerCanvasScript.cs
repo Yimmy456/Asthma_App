@@ -668,8 +668,6 @@ public class MainPlayerCanvasScript : MonoBehaviour
 
         _showMenuButtons = false;
 
-        //_animationComplete = true;
-
         Button _currentButton;
 
         Color _c;

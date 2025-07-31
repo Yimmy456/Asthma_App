@@ -119,10 +119,9 @@ public enum TalkingStatusEnum
     Completed,
 }
 
-public enum TutorialSubjectTypeEnum
+public enum TransformTypeEnum
 {
-    UI,
-    World_Object,
-    Other,
     None,
+    RectTransform,
+    NormalTransform,
 }
