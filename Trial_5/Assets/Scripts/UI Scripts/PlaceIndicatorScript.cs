@@ -100,6 +100,8 @@ public class PlaceIndicatorScript : MonoBehaviour
 
     Coroutine _startingAnimationCoroutine;
 
+    bool _ready = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -158,6 +160,8 @@ public class PlaceIndicatorScript : MonoBehaviour
 
         var _ray = new Vector2(Screen.width / 2, Screen.height / 2);
 
+        _ready = false;
+
         if (_action != null)
         {
             _startButton.onClick.RemoveListener(_action);
@@ -207,6 +211,8 @@ public class PlaceIndicatorScript : MonoBehaviour
             _terrainFound = true;
 
             _distanceText.text = "Distance: " + _planeDistance.ToString("0.00");
+
+            _ready = true;
 
             //RotateIndicator();
 
@@ -344,6 +350,11 @@ public class PlaceIndicatorScript : MonoBehaviour
     public GameObject GetPointingArrowGameObject()
     {
         return _pointingArrowGameObject;
+    }
+
+    public bool GetIsReady()
+    {
+        return _ready;
     }
 
     public void SetIndicatorOn(bool _input = true)

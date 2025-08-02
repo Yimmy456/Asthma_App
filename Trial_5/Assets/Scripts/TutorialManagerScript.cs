@@ -1,6 +1,4 @@
-using Org.BouncyCastle.Asn1.Mozilla;
-using System;
-using System.Collections;
+wenusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -37,6 +35,12 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
 
     [SerializeField]
     Button _inhalerButton;
+
+    [SerializeField]
+    Button _startButton;
+
+    [SerializeField]
+    PlaceIndicatorScript _placeIndicator;
 
     Coroutine _arrowAnimationCoroutine;
     public TutorialCanvasScript Canvas
@@ -135,6 +139,11 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
         }
 
         return _tutorialSubjectTargets[_currentIndex];
+    }
+
+    public PlaceIndicatorScript GetPlaceIndicator()
+    {
+        return _placeIndicator;
     }
 
     public void SetTutorialMode(bool _input)
@@ -306,7 +315,7 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
             return;
         }
 
-        if(_canvas != null)
+        if (_canvas != null)
         {
             if(_canvas.GetUIIndicator() != null)
             {
@@ -415,6 +424,18 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
                 _currentObjectDuplicate.SetActive(true);
 
                 ShowOrHideButton(_currentObjectDuplicate.GetComponent<Button>(), 1);
+            }
+        }
+
+        if(_currentSubject.GetName() == "Start Button")
+        {
+            if(_currentObjectDuplicate != null)
+            {
+                _currentObjectDuplicate.SetActive(true);
+
+                ShowOrHideButton(_currentObjectDuplicate.GetComponent<Button>(), 2);
+
+                _currentObjectDuplicate.GetComponent<Button>().onClick.AddListener(delegate { GoToNextStepUnderNameMatchCondition("Start Button"); Destroy(_currentObjectDuplicate); });
             }
         }
 
@@ -660,12 +681,6 @@ public class TutorialLessonClass : StateInterface
     TransformTypeEnum _transformType;
 
     [SerializeField]
-    string _text;
-
-    [SerializeField]
-    string _alternativeText;
-
-    [SerializeField]
     GameObject _object;
 
     [SerializeField]
@@ -687,10 +702,7 @@ public class TutorialLessonClass : StateInterface
     float _waitingSeconds = -1.0f;
 
     [SerializeField]
-    Vector2 _textPosition = Vector2.zero;
-
-    [SerializeField]
-    Vector2 _textSize = new Vector2(100.0f, 100.0f);
+    TutorialLessonTextPropoertiesClass _textPropoerties;
 
     public GameObject GetGameObject()
     {
@@ -700,16 +712,6 @@ public class TutorialLessonClass : StateInterface
     public string GetName()
     {
         return _name;
-    }
-
-    public string GetText()
-    {
-        return _text;
-    }
-
-    public string GetAlternativeText()
-    {
-        return _alternativeText;
     }
 
     public Vector2 GetArrowPosition()
@@ -747,14 +749,9 @@ public class TutorialLessonClass : StateInterface
         return _transformType;
     }
 
-    public Vector2 GetTextPosition()
+    public TutorialLessonTextPropoertiesClass GetTextProperties()
     {
-        return _textPosition;
-    }
-
-    public Vector2 GetTextSize()
-    {
-        return _textSize;
+        return _textPropoerties;
     }
 
     public void IOnStateEnter()
@@ -770,5 +767,80 @@ public class TutorialLessonClass : StateInterface
     public void IOnStateExit()
     {
         Debug.Log("Ending tutorial name " + @"""" + _name + @"""" + ".");
+    }
+}
+
+[System.Serializable]
+public class TutorialLessonTextPropoertiesClass
+{
+    [Header("Lesson Text Prpoerties")]
+
+    [SerializeField]
+    string _text;
+
+    [SerializeField]
+    string _alternativeText;
+
+    [SerializeField]
+    Vector2 _anchorMin = new Vector2(0.5f, 0.5f);
+
+    [SerializeField]
+    Vector2 _anchorMax = new Vector2(0.5f, 0.5f);
+
+    [SerializeField]
+    bool _inRelationToArrow;
+
+    [SerializeField]
+    Vector2 _anchoredPosition;
+
+    [SerializeField]
+    Vector2 _size = new Vector2(100.0f, 100.0f);
+
+    [SerializeField]
+    float _sizeConstant = 1.0f;
+
+    public string GetText()
+    {
+        return _text;
+    }
+
+    public string GetAlternativeText()
+    {
+        return _alternativeText;
+    }
+
+    public Vector2 GetAnchorMin()
+    {
+        return _anchorMin;
+    }
+
+    public Vector2 GetAnchorMax()
+    {
+        return _anchorMax;
+    }
+
+    public bool GetInRelationToArrow()
+    {
+        return _inRelationToArrow;
+    }
+
+    public Vector2 GetAnchoredPosition()
+    {
+        return _anchoredPosition;
+    }
+
+    public Vector2 GetSize()
+    {
+        return _size;
+    }
+
+    public float GetSizeConstant()
+    {
+        return _sizeConstant;
+    }
+
+    public Vector2 GetFinalSize()
+    {
+        return (_size * _sizeConstant);
     }
 }
