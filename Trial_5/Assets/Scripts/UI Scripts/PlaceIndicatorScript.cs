@@ -88,6 +88,9 @@ public class PlaceIndicatorScript : MonoBehaviour
     [SerializeField]
     ResizingSceneSliderScript _resizer;
 
+    [SerializeField]
+    RectTransform _landButtonContainerRectTransform;
+
     float _planeDistance = -1.0f;
 
     bool _lookForTerrainBool = false;
