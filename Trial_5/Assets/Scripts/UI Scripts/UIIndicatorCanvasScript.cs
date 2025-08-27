@@ -151,6 +151,8 @@ public class UIIndicatorCanvasScript : MonoBehaviour
 
         Vector3 _pos = _camera.WorldToScreenPoint(_targetObject.transform.position);
 
+        Vector3 _pos2 = _camera.WorldToViewportPoint(_targetObject.transform.position);
+
         bool _withinScreen = _pos.z > 0.0f && _pos.x > 0.0f && _pos.x < Screen.width && _pos.y > 0.0f && _pos.y < Screen.height;
 
         _targetInSight = _withinScreen;
@@ -218,7 +220,19 @@ public class UIIndicatorCanvasScript : MonoBehaviour
             {
                 _arrow.SetActive(true);
 
-                _arrow.transform.localPosition = (_pos - _screenCenter) + new Vector3(_onscreenOffset.x, _onscreenOffset.y, 0.0f);
+                _arrow.GetComponent<RectTransform>().anchorMin = _pos2;
+
+                _arrow.GetComponent<RectTransform>().anchorMax = _pos2;
+
+                _arrow.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+
+                Vector3 _localP = _arrow.GetComponent<RectTransform>().localPosition;
+
+                _arrow.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0.5f);
+
+                _arrow.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.5f);
+
+                _arrow.GetComponent<RectTransform>().localPosition = _localP;
 
                 _arrow.transform.localRotation = Quaternion.identity;
 
