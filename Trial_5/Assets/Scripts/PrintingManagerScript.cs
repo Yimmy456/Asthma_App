@@ -14,10 +14,6 @@ using I18N;
 using I18N.West;
 using System.Diagnostics;
 
-#if UNITY_ANDROID
-using UnityEngine.Android;
-#endif
-
 public class PrintingManagerScript : MonoBehaviour
 {
     string _path = "";
@@ -27,10 +23,10 @@ public class PrintingManagerScript : MonoBehaviour
     string _genderImagePath = "";
 
     [SerializeField]
-    Color _firstRowColor;
+    UnityEngine.Color _firstRowColor;
 
     [SerializeField]
-    Color _secondRowColor;
+    UnityEngine.Color _secondRowColor;
 
     [SerializeField]
     float _rowHeight = 40.0f;
@@ -168,7 +164,7 @@ public class PrintingManagerScript : MonoBehaviour
             throw new Exception("Some questions have not been answered yet.");
         }
 
-        GrantPermission();
+        //GrantPermission();
 
         List<ActionPlanQuestionScript> _questions = GetQuestions();
 
@@ -318,7 +314,7 @@ public class PrintingManagerScript : MonoBehaviour
 
         if (File.Exists(_path))
         {
-            StartCoroutine(RequestPermissions());
+            //StartCoroutine(RequestPermissions());
 
             UnityEngine.Debug.Log("File is found. We will start printing.");
         }
@@ -885,9 +881,9 @@ public class PrintingManagerScript : MonoBehaviour
 
         int _index = 0;
 
-        _statusText.color = Color.white;
+        _statusText.color = UnityEngine.Color.white;
 
-        _statusText.gameObject.GetComponent<Outline>().effectColor = new Color(0.5f, 0.5f, 0.5f, 0.5f);
+        _statusText.gameObject.GetComponent<Outline>().effectColor = new UnityEngine.Color(0.5f, 0.5f, 0.5f, 0.5f);
 
         while (_printingProcessStatus == ProcessStatusEnum.InProgress)
         {
@@ -905,9 +901,9 @@ public class PrintingManagerScript : MonoBehaviour
 
         if (_printingProcessStatus == ProcessStatusEnum.Complete)
         {
-            _statusText.color = Color.green;
+            _statusText.color = UnityEngine.Color.green;
 
-            _statusText.gameObject.GetComponent<Outline>().effectColor = new Color(0.0f, 0.5f, 0.0f, 0.5f);
+            _statusText.gameObject.GetComponent<Outline>().effectColor = new UnityEngine.Color(0.0f, 0.5f, 0.0f, 0.5f);
 
             _statusText.text = "Printing Complete.";
 
@@ -919,9 +915,9 @@ public class PrintingManagerScript : MonoBehaviour
         }
         else if (_printingProcessStatus == ProcessStatusEnum.Cancelled || _printingProcessStatus == ProcessStatusEnum.Idle)
         {
-            _statusText.color = Color.red;
+            _statusText.color = UnityEngine.Color.red;
 
-            _statusText.gameObject.GetComponent<Outline>().effectColor = new Color(0.5f, 0.0f, 0.0f, 0.5f);
+            _statusText.gameObject.GetComponent<Outline>().effectColor = new UnityEngine.Color(0.5f, 0.0f, 0.0f, 0.5f);
 
             _statusText.text = _errorText;
 
@@ -948,9 +944,9 @@ public class PrintingManagerScript : MonoBehaviour
 
         int _index = 0;
 
-        _statusText.color = Color.white;
+        _statusText.color = UnityEngine.Color.white;
 
-        _statusText.gameObject.GetComponent<Outline>().effectColor = new Color(0.5f, 0.5f, 0.5f, 0.5f);
+        _statusText.gameObject.GetComponent<Outline>().effectColor = new UnityEngine.Color(0.5f, 0.5f, 0.5f, 0.5f);
 
         while (!_input.HasExited)
         {
@@ -966,9 +962,9 @@ public class PrintingManagerScript : MonoBehaviour
             }
         }
 
-        _statusText.color = Color.green;
+        _statusText.color = UnityEngine.Color.green;
 
-        _statusText.gameObject.GetComponent<Outline>().effectColor = new Color(0.0f, 0.5f, 0.0f, 0.5f);
+        _statusText.gameObject.GetComponent<Outline>().effectColor = new UnityEngine.Color(0.0f, 0.5f, 0.0f, 0.5f);
 
         _statusText.text = "Printing Complete.";
 
@@ -1020,42 +1016,5 @@ public class PrintingManagerScript : MonoBehaviour
         _cellInput.BorderWidthRight = _borderSizeInput;
 
         _cellInput.BorderWidthTop = _borderSizeInput;
-    }
-
-    IEnumerator RequestPermissions()
-    {
-        // Android
-        if (Application.platform == RuntimePlatform.Android)
-        {
-            if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead) || !Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite))
-            {
-                Permission.RequestUserPermissions(new string[] { Permission.ExternalStorageRead, Permission.ExternalStorageWrite });
-                yield return new WaitUntil(() => Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead) && Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite));
-            }
-            else
-            {
-                yield break;
-            }
-        }
-        // iOS (Conceptual - requires UIDocumentPickerViewController implementation)
-        else if (Application.platform == RuntimePlatform.IPhonePlayer)
-        {
-            // Implement UIDocumentPickerViewController logic here
-            // Example:
-            // UIDocumentPickerViewController picker = new UIDocumentPickerViewController(new string[] { "public.data" }, UIDocumentPickerMode.Import);
-            // picker.delegate = this;
-            // picker.present(true);
-        }
-    }
-
-    void GrantPermission()
-    {
-#if UNITY_ANDROID
-        if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite))
-        {
-            Permission.RequestUserPermission(Permission.ExternalStorageWrite);
-            return; // Wait for permission to be granted
-        }
-#endif
     }
 }

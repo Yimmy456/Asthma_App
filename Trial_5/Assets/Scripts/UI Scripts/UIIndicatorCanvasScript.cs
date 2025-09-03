@@ -43,6 +43,8 @@ public class UIIndicatorCanvasScript : MonoBehaviour
 
     bool _targetInSight;
 
+    //Vector2 _anchoredPosition = new Vector2(0.0f, 0.0f);
+
     // Start is called before the first frame update
     void Start()
     {
@@ -202,7 +204,9 @@ public class UIIndicatorCanvasScript : MonoBehaviour
 
             _arrow.GetComponent<RectTransform>().sizeDelta = new Vector2(604, 851);
 
-            if(_arrow.GetComponent<Image>().color != _indicatorColor)
+            //_anchoredPosition = _arrow.GetComponent<RectTransform>().anchoredPosition;
+
+            if (_arrow.GetComponent<Image>().color != _indicatorColor)
             {
                 _arrow.GetComponent<Image>().color = _indicatorColor;
             }
@@ -239,6 +243,8 @@ public class UIIndicatorCanvasScript : MonoBehaviour
                 _arrow.GetComponent<Image>().sprite = _cursorSprite;
 
                 _arrow.GetComponent<Image>().color = _indicatorColor;
+
+                //_anchoredPosition = _arrow.GetComponent<RectTransform>().anchoredPosition;
 
                 _meterText.color = _indicatorColor;
 
