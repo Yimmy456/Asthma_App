@@ -85,7 +85,7 @@ public class MenuSceneScript : MonoBehaviour
 
         if(_phonePlayButton != null)
         {
-            _bool = Application.platform == RuntimePlatform.Android;
+            _bool = Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer;
 
             _phonePlayButton.gameObject.SetActive(_bool);
         }
