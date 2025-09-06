@@ -362,6 +362,11 @@ public class PlaceIndicatorScript : MonoBehaviour
 
     public void SetIndicatorOn(bool _input = true)
     {
+        if(_indicator == null)
+        {
+            return;
+        }
+
         _indicator.gameObject.SetActive(_input);
     }
 

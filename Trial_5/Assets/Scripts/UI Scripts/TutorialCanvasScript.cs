@@ -236,7 +236,11 @@ public class TutorialCanvasScript : MonoBehaviour
 
             _uiText.GetComponent<RectTransform>().localScale = Vector2.one * _input.GetSizeConstant();
 
-            _uiText.GetComponent<RectTransform>().parent = _canvas.GetComponent<RectTransform>();
+            _uiText.GetComponent<RectTransform>().offsetMin = _input.GetOffsetMin();
+
+            //_uiText.GetComponent<RectTransform>().offsetMax = _input.GetOffsetMax();
+
+            //_uiText.GetComponent<RectTransform>().parent = _canvas.GetComponent<RectTransform>();
         }
         else
         {
@@ -249,6 +253,10 @@ public class TutorialCanvasScript : MonoBehaviour
             _uiText.GetComponent<RectTransform>().sizeDelta = _input.GetSize();
 
             _uiText.GetComponent<RectTransform>().localScale = Vector2.one * _input.GetSizeConstant();
+
+            //_uiText.GetComponent<RectTransform>().offsetMin = _input.GetOffsetMin();
+
+            //_uiText.GetComponent<RectTransform>().offsetMax = _input.GetOffsetMax();
         }
 
         _currentText = _input.GetText();
@@ -402,64 +410,43 @@ public class TutorialCanvasScript : MonoBehaviour
     {
         if(_uiIndicator == null || _tutorialManager == null || _uiText == null)
         {
+            Debug.Log("We are leaving 'Land Button' at stage 1.");
+
             return;
         }
 
-        if(!_tutorialManager.GetTutorialMode() || _uiIndicator.GetTargetObject() == null)
+        if(!_tutorialManager.GetTutorialMode())
         {
+            Debug.Log("We are leaving 'Land Button' at stage 2.");
+
             return;
         }
 
-        if(_tutorialManager.GetCurrentLesson().GetTextProperties().GetAlternativeText() != "")
+
+        if(_tutorialManager.GetCurrentLesson().GetName() == "Land Button")
         {
-            if(_tutorialManager.GetCurrentLesson().GetName() == "Land Button" && _tutorialManager.GetPlaceIndicator() != null)
+            PlaceIndicatorScript _pi =  _tutorialManager.GetPlaceIndicator();            
+
+            if(_pi == null)
             {
-                PlaceIndicatorScript _pi = _tutorialManager.GetPlaceIndicator();
-
-                if (_pi.GetIsReady())
-                {
-                    _uiText.text = _tutorialManager.GetCurrentLesson().GetTextProperties().GetText();
-                }
-                else
-                {
-                    _uiText.text = _tutorialManager.GetCurrentLesson().GetTextProperties().GetAlternativeText();
-                }
-                
-                _currentText = _uiText.text;
-
                 return;
-            }
+            }          
+            
+            _pi.SetIndicatorOn(true);
 
-
-            bool _onScreen = _uiIndicator.GetTargetInSight();
-
-            if (_onScreen)
+            if(_pi.GetIsReady())
             {
-                _uiText.text = _tutorialManager.GetCurrentLesson().GetTextProperties().GetText();
+                _currentText = _tutorialManager.GetCurrentLesson().GetTextProperties().GetText();                
             }
             else
             {
-                _uiText.text = _tutorialManager.GetCurrentLesson().GetTextProperties().GetAlternativeText();
+                _currentText = _tutorialManager.GetCurrentLesson().GetTextProperties().GetAlternativeText();
             }
 
-            _currentText = _uiText.text;
+            _uiText.text = _currentText;
+
+            return;
         }
 
-
-
-        /*if(_uiIndicator.GetTargetInSight())
-        {
-            if (_uiText.text == _tutorialManager.GetCurrentLesson().GetText())
-            {
-                _uiText.text = _tutorialManager.GetCurrentLesson().GetText();
-            }
-        }
-        else
-        {
-            if (_uiText.text != _tutorialManager.GetCurrentLesson().GetAlternativeText())
-            {
-                _uiText.text = _tutorialManager.GetCurrentLesson().GetAlternativeText();
-            }
-        }*/
     }
 }
