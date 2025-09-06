@@ -370,6 +370,34 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
 
         TutorialLessonClass _currentSubject = _tutorialSubjectTargets[_currentIndex];
 
+        /*if(_currentSubject.GetName() == "Start Button")
+        {
+            if (_currentSubject.GetGameObject() == null)
+            {
+                return;
+            }
+
+            if (!_currentSubject.GetGameObject().activeSelf)
+            {
+                _currentSubject.GetGameObject().SetActive(true);
+            }
+        }*/
+
+        if(_currentSubject.GetName() == "Land Button")
+        {
+            if(_currentSubject.GetGameObject() == null)
+            {
+                return;
+            }
+
+            if(!_currentSubject.GetGameObject().activeSelf)
+            {
+                _currentSubject.GetGameObject().SetActive(true);
+
+                Debug.Log("The game object is set to 'true'.");
+            }
+        }
+
         if (_currentSubject.GetName() == "Menu Button")
         {
             if (_currentObjectDuplicate != null)
@@ -427,7 +455,7 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
             }
         }
 
-        if(_currentSubject.GetName() == "Start Button")
+        /*if(_currentSubject.GetName() == "Start Button")
         {
             if(_currentObjectDuplicate != null)
             {
@@ -435,9 +463,9 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
 
                 ShowOrHideButton(_currentObjectDuplicate.GetComponent<Button>(), 2);
 
-                _currentObjectDuplicate.GetComponent<Button>().onClick.AddListener(delegate { GoToNextStepUnderNameMatchCondition("Start Button"); Destroy(_currentObjectDuplicate); });
+                _currentObjectDuplicate.GetComponent<Button>().onClick.AddListener(delegate { GoToNextStepUnderNameMatchCondition("Start Button"); _currentObject.SetActive(false); Destroy(_currentObjectDuplicate); });
             }
-        }
+        }*/
 
         if (_currentSubject.GetName() == "End")
         {
@@ -799,6 +827,12 @@ public class TutorialLessonTextPropoertiesClass
     [SerializeField]
     float _sizeConstant = 1.0f;
 
+    [SerializeField]
+    Vector2 _offsetMin = Vector2.zero;
+
+    [SerializeField]
+    Vector2 _offsetMax = Vector2.zero;
+
     public string GetText()
     {
         return _text;
@@ -842,5 +876,15 @@ public class TutorialLessonTextPropoertiesClass
     public Vector2 GetFinalSize()
     {
         return (_size * _sizeConstant);
+    }
+
+    public Vector2 GetOffsetMin()
+    {
+        return _offsetMin;
+    }
+
+    public Vector2 GetOffsetMax()
+    {
+        return _offsetMax;
     }
 }
