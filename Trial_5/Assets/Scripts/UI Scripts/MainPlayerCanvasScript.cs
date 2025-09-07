@@ -475,7 +475,14 @@ public class MainPlayerCanvasScript : MonoBehaviour
         {
             for(int _i = 0; _i < _menuButtonList.Count; _i++)
             {
-                _menuButtonList[_i].interactable = true;
+                if (_tutorialManager != null)
+                {
+                    _menuButtonList[_i].interactable = !_tutorialManager.GetTutorialMode();
+                }
+                else
+                {
+                    _menuButtonList[_i].interactable = true;
+                }
             }
 
             _animationComplete = true;

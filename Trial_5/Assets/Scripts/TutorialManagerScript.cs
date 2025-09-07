@@ -408,6 +408,16 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
             }
         }
 
+        if (_currentSubject.GetName() == "Loading Menu Sub-Buttons" && _mainPlayerCanvas != null)
+        {
+            for (int _i = 0; _i < _mainPlayerCanvas.GetMenuButtonList().Count; _i++)
+            {
+                _mainPlayerCanvas.GetMenuButtonList()[_i].interactable = false;
+            }
+
+            _mainPlayerCanvas.GetMenuButton().interactable = false;
+        }
+
         if (_currentSubject.GetName() == "Inhaler Button")
         {
             if (_currentObjectDuplicate != null)
@@ -431,6 +441,14 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
                     ShowOrHideButton(_inhalerButton, 1);
 
                     _canvas.GetNextButton().onClick.AddListener(delegate { _mainPlayerCanvas.GetShakingInhalerProperties().SetShowingInhalerBoolean(false); });
+                }
+            }
+
+            if (_mainPlayerCanvas.GetShakingInhalerProperties().GetInhalerGameObject() != null)
+            {
+                if (_mainPlayerCanvas.GetShakingInhalerProperties().GetInhalerGameObject().GetComponent<DraggableClass>() != null)
+                {
+                    _mainPlayerCanvas.GetShakingInhalerProperties().GetInhalerGameObject().GetComponent<DraggableClass>().SetDraggableOn(false);
                 }
             }
         }
@@ -730,6 +748,9 @@ public class TutorialLessonClass : StateInterface
     float _waitingSeconds = -1.0f;
 
     [SerializeField]
+    TutorialLessonArrowPropoertiesClass _arrowPropoerties;
+
+    [SerializeField]
     TutorialLessonTextPropoertiesClass _textPropoerties;
 
     public GameObject GetGameObject()
@@ -775,6 +796,11 @@ public class TutorialLessonClass : StateInterface
     public TransformTypeEnum GetTransformType()
     {
         return _transformType;
+    }
+
+    public TutorialLessonArrowPropoertiesClass GetArrowProperties()
+    {
+        return _arrowPropoerties;
     }
 
     public TutorialLessonTextPropoertiesClass GetTextProperties()
@@ -886,5 +912,72 @@ public class TutorialLessonTextPropoertiesClass
     public Vector2 GetOffsetMax()
     {
         return _offsetMax;
+    }
+}
+
+[System.Serializable]
+public class TutorialLessonArrowPropoertiesClass
+{
+    [Header("Arrow Prpoerties")]
+
+    [SerializeField]
+    bool _arrowInvolved = true;
+
+    [SerializeField]
+    Vector2 _anchorMin = new Vector2(0.5f, 0.5f);
+
+    [SerializeField]
+    Vector2 _anchorMax = new Vector2(0.5f, 0.5f);
+
+    [SerializeField]
+    Vector2 _anchoredPosition;
+
+    [SerializeField]
+    float _zRotation;
+
+    [SerializeField]
+    float _sizeConstant = 1.0f;
+
+    [SerializeField]
+    Vector3 _V3Scale = Vector3.one;
+
+    public bool GetArrowInvolved()
+    {
+        return _arrowInvolved;
+    }
+
+    public Vector2 GetAnchorMin()
+    {
+        return _anchorMin;
+    }
+
+    public Vector2 GetAnchorMax()
+    {
+        return _anchorMax;
+    }
+
+    public Vector2 GetAnchoredPosition()
+    {
+        return _anchoredPosition;
+    }
+
+    public float GetZRotation()
+    {
+        return _zRotation;
+    }
+
+    public float GetSizeConstant()
+    {
+        return _sizeConstant;
+    }
+
+    public Vector3 GetV3Scale()
+    {
+        return _V3Scale;
+    }
+
+    public Vector3 GetFinalV3Scale()
+    {
+        return (_V3Scale * _sizeConstant);
     }
 }

@@ -72,7 +72,7 @@ public class TutorialCanvasScript : MonoBehaviour
 
     public void SetArrowPositionBasedOnObject(TutorialLessonClass _input)
     {
-        SetArrowPositionBasedOnObject(_input.GetGameObject(), _input.GetTextProperties(), _input.GetArrowPosition(), _input.GetZRotation(), _input.GetScale());
+        SetArrowPositionBasedOnObject(_input.GetGameObject(), _input.GetTextProperties(), _input.GetArrowProperties());
 
         PrepareMask(_input);
     }
@@ -82,9 +82,9 @@ public class TutorialCanvasScript : MonoBehaviour
         return _uiIndicator;
     }
 
-    public void SetArrowPositionBasedOnObject(GameObject _gameObjectInput, TutorialLessonTextPropoertiesClass _textPropertiesInput, Vector2 _arrowPositionInput, float _rotationInput = 0.0f, float _scaleInput = 1.0f)
+    public void SetArrowPositionBasedOnObject(GameObject _gameObjectInput, TutorialLessonTextPropoertiesClass _textPropertiesInput, TutorialLessonArrowPropoertiesClass _arrowPropertiesInput)
     {
-        if(_gameObjectInput == null)
+        /*if(_gameObjectInput == null)
         {
             _arrowContainerTransform.gameObject.SetActive(false);
 
@@ -138,11 +138,11 @@ public class TutorialCanvasScript : MonoBehaviour
 
             _arrowContainerTransform.anchorMax = _gameObjectInput.GetComponent<RectTransform>().anchorMax;
 
-            _arrowContainerTransform.anchoredPosition = _arrowPositionInput;
+            //_arrowContainerTransform.anchoredPosition = _arrowPositionInput;
 
-            _arrowContainerTransform.rotation = Quaternion.Euler(0.0f, 0.0f, _rotationInput);
+            //_arrowContainerTransform.rotation = Quaternion.Euler(0.0f, 0.0f, _rotationInput);
 
-            _arrowTransform.localScale = Vector3.one * _scaleInput;
+            //_arrowTransform.localScale = Vector3.one * _scaleInput;
 
             _targetObject = _gameObjectInput.GetComponent<RectTransform>();
 
@@ -178,19 +178,19 @@ public class TutorialCanvasScript : MonoBehaviour
         {
             _arrowContainerTransform.gameObject.SetActive(false);
 
-            _arrowContainerTransform.anchoredPosition = _arrowPositionInput;
+            //_arrowContainerTransform.anchoredPosition = _arrowPositionInput;
 
             _arrowContainerTransform.anchorMin = new Vector2(0.5f, 0.5f);
 
             _arrowContainerTransform.anchorMax = new Vector2(0.5f, 0.5f);
 
-            _arrowContainerTransform.rotation = Quaternion.Euler(0.0f, 0.0f, _rotationInput);
+            //_arrowContainerTransform.rotation = Quaternion.Euler(0.0f, 0.0f, _rotationInput);
 
-            _arrowTransform.localScale = Vector3.one * _scaleInput;
+            //_arrowTransform.localScale = Vector3.one * _scaleInput;
 
             _targetObject = _gameObjectInput.transform;
 
-            AdjustText();
+            //AdjustText();
 
             if(_uiIndicator != null)
             {
@@ -208,11 +208,53 @@ public class TutorialCanvasScript : MonoBehaviour
             _uiText.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.5f);
 
             _uiText.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-        }
+        }*/
 
         //_uiText.GetComponent<RectTransform>().anchoredPosition = _textSizeInput;
 
+        if(_gameObjectInput == null)
+        {
+            _targetObject = null;
+
+            if (_uiIndicator != null)
+            {
+                _uiIndicator.gameObject.SetActive(false);
+
+                _uiIndicator.SetTargetObject(null);
+            }
+
+            _arrowAnimation.SetAnimateBoolean(false);
+        }
+        else if(_gameObjectInput.GetComponent<RectTransform>() != null)
+        {
+            _targetObject = _gameObjectInput.GetComponent<RectTransform>();
+
+            if (_uiIndicator != null)
+            {
+                _uiIndicator.gameObject.SetActive(false);
+
+                _uiIndicator.SetTargetObject(null);
+            }
+
+            _arrowAnimation.SetAnimateBoolean(true);
+        }
+        else if(_gameObjectInput.transform != null)
+        {
+            if (_uiIndicator != null)
+            {
+                _uiIndicator.SetTargetObject(_gameObjectInput);
+
+                _uiIndicator.gameObject.SetActive(true);
+            }
+
+            _tutorialManager.SetCurrentObject(_targetObject.gameObject);
+
+            _arrowAnimation.SetAnimateBoolean(false);
+        }
+
         AdjustText2(_textPropertiesInput);
+
+        SetArrow(_arrowPropertiesInput);
     }
 
     void AdjustText2(TutorialLessonTextPropoertiesClass _input)
@@ -236,7 +278,7 @@ public class TutorialCanvasScript : MonoBehaviour
 
             _uiText.GetComponent<RectTransform>().localScale = Vector2.one * _input.GetSizeConstant();
 
-            _uiText.GetComponent<RectTransform>().offsetMin = _input.GetOffsetMin();
+            //_uiText.GetComponent<RectTransform>().offsetMin = _input.GetOffsetMin();
 
             //_uiText.GetComponent<RectTransform>().offsetMax = _input.GetOffsetMax();
 
@@ -262,6 +304,43 @@ public class TutorialCanvasScript : MonoBehaviour
         _currentText = _input.GetText();
 
         _uiText.text = _currentText;
+    }
+
+    void SetArrow(TutorialLessonArrowPropoertiesClass _input)
+    {
+        if(_input == null)
+        {
+            return;
+        }
+
+        if(!_input.GetArrowInvolved())
+        {
+            _arrowContainerTransform.gameObject.SetActive(false);
+
+            _arrowContainerTransform.anchorMin = new Vector2(0.5f, 0.5f);
+
+            _arrowContainerTransform.anchorMax = new Vector2(0.5f, 0.5f);
+
+            _arrowContainerTransform.anchoredPosition = new Vector2(0.0f, 0.0f);
+
+            _arrowContainerTransform.rotation = Quaternion.identity;
+
+            _arrowContainerTransform.localScale = Vector3.one;
+
+            return;
+        }
+
+        _arrowContainerTransform.gameObject.SetActive(true);
+
+        _arrowContainerTransform.anchorMin = _input.GetAnchorMin();
+
+        _arrowContainerTransform.anchorMax = _input.GetAnchorMax();
+
+        _arrowContainerTransform.anchoredPosition = _input.GetAnchoredPosition();
+
+        _arrowContainerTransform.rotation = Quaternion.Euler(0.0f, 0.0f, _input.GetZRotation());
+
+        _arrowContainerTransform.localScale = _input.GetFinalV3Scale();
     }
 
     void AdjustText()
