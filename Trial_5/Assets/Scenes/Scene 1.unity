@@ -14887,7 +14887,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -34676,7 +34676,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -55338,11 +55338,20 @@ MonoBehaviour:
     _arrowPosition: {x: -279.99997, y: 331.99997}
     _zRotation: 225
     _scale: 1
-    _mask: {fileID: 0}
+    _mask: {fileID: 647291370}
     _showNextButton: 1
+    _nextButtonPosition: {x: -100, y: 100}
     _waitingSeconds: -1
+    _arrowPropoerties:
+      _arrowInvolved: 1
+      _anchorMin: {x: 1, y: 0}
+      _anchorMax: {x: 1, y: 0}
+      _anchoredPosition: {x: -280, y: 332}
+      _zRotation: 225
+      _sizeConstant: 1
+      _V3Scale: {x: 1, y: 1, z: 1}
     _textPropoerties:
-      _text: Welcome to AirQuest! Press the green "Next" button to start the tutorial.
+      _text: Welcome to AirQuest! Press the green arrow button to start the tutorial.
       _alternativeText: 
       _anchorMin: {x: 0.5, y: 0.5}
       _anchorMax: {x: 0.5, y: 0.5}
@@ -55350,15 +55359,26 @@ MonoBehaviour:
       _anchoredPosition: {x: 0, y: 100}
       _size: {x: 800, y: 400}
       _sizeConstant: 1
+      _offsetMin: {x: 0, y: 0}
+      _offsetMax: {x: 0, y: 0}
   - _name: Start Button
     _transformType: 1
     _object: {fileID: 201964839}
-    _arrowPosition: {x: -250, y: -250}
+    _arrowPosition: {x: -300, y: -300}
     _zRotation: -45
     _scale: 1
     _mask: {fileID: 0}
     _showNextButton: 0
+    _nextButtonPosition: {x: -100, y: 100}
     _waitingSeconds: -1
+    _arrowPropoerties:
+      _arrowInvolved: 1
+      _anchorMin: {x: 1, y: 1}
+      _anchorMax: {x: 1, y: 1}
+      _anchoredPosition: {x: -350, y: -350}
+      _zRotation: -45
+      _sizeConstant: 1
+      _V3Scale: {x: 1, y: 1, z: 1}
     _textPropoerties:
       _text: Before we begin, press the blue button with the rocket icon.
       _alternativeText: 
@@ -55366,8 +55386,10 @@ MonoBehaviour:
       _anchorMax: {x: 0.5, y: 0.5}
       _inRelationToArrow: 0
       _anchoredPosition: {x: 0, y: 0}
-      _size: {x: 100, y: 100}
+      _size: {x: 984, y: 400}
       _sizeConstant: 1
+      _offsetMin: {x: 0, y: 0}
+      _offsetMax: {x: 0, y: 0}
   - _name: Land Button
     _transformType: 1
     _object: {fileID: 392972757}
@@ -55376,17 +55398,28 @@ MonoBehaviour:
     _scale: 1
     _mask: {fileID: 0}
     _showNextButton: 0
+    _nextButtonPosition: {x: -100, y: 100}
     _waitingSeconds: -1
+    _arrowPropoerties:
+      _arrowInvolved: 1
+      _anchorMin: {x: 0.5, y: 0}
+      _anchorMax: {x: 0.5, y: 0}
+      _anchoredPosition: {x: 0, y: 470}
+      _zRotation: 180
+      _sizeConstant: 1
+      _V3Scale: {x: 1, y: 1, z: 1}
     _textPropoerties:
       _text: Great! You found a good surface! Now, press the "Land" button to start
         the game.
       _alternativeText: You will need to find a physical surface before we can start.
       _anchorMin: {x: 0.5, y: 0}
       _anchorMax: {x: 0.5, y: 0}
-      _inRelationToArrow: 1
-      _anchoredPosition: {x: 0, y: -120}
-      _size: {x: 700, y: 300}
+      _inRelationToArrow: 0
+      _anchoredPosition: {x: 0, y: 700}
+      _size: {x: 800, y: 300}
       _sizeConstant: 1
+      _offsetMin: {x: 0, y: 0}
+      _offsetMax: {x: 0, y: 0}
   - _name: Waiting
     _transformType: 0
     _object: {fileID: 0}
@@ -55395,7 +55428,16 @@ MonoBehaviour:
     _scale: 1
     _mask: {fileID: 0}
     _showNextButton: 0
+    _nextButtonPosition: {x: -100, y: 100}
     _waitingSeconds: 33.4
+    _arrowPropoerties:
+      _arrowInvolved: 0
+      _anchorMin: {x: 0.5, y: 0.5}
+      _anchorMax: {x: 0.5, y: 0.5}
+      _anchoredPosition: {x: 0, y: 0}
+      _zRotation: 0
+      _sizeConstant: 1
+      _V3Scale: {x: 1, y: 1, z: 1}
     _textPropoerties:
       _text: Now we are waiting for the rocket to land and for the astronaut to get
         out of the rocket...
@@ -55406,6 +55448,8 @@ MonoBehaviour:
       _anchoredPosition: {x: 0, y: 250}
       _size: {x: 0, y: 300}
       _sizeConstant: 1
+      _offsetMin: {x: 10, y: 0}
+      _offsetMax: {x: 10, y: 0}
   - _name: Dr. Salem
     _transformType: 1
     _object: {fileID: 218937778}
@@ -55414,7 +55458,16 @@ MonoBehaviour:
     _scale: 1
     _mask: {fileID: 778581738}
     _showNextButton: 1
+    _nextButtonPosition: {x: -100, y: 100}
     _waitingSeconds: -1
+    _arrowPropoerties:
+      _arrowInvolved: 1
+      _anchorMin: {x: 0.5, y: 1}
+      _anchorMax: {x: 0.5, y: 1}
+      _anchoredPosition: {x: 0, y: -600}
+      _zRotation: 0
+      _sizeConstant: 1
+      _V3Scale: {x: 1, y: 1, z: 1}
     _textPropoerties:
       _text: This is Dr. Salem. He will be you guide throughout this application.
       _alternativeText: 
@@ -55424,6 +55477,8 @@ MonoBehaviour:
       _anchoredPosition: {x: 0, y: 170}
       _size: {x: 0, y: 250}
       _sizeConstant: 1
+      _offsetMin: {x: 0, y: 0}
+      _offsetMax: {x: 0, y: 0}
   - _name: Fasty
     _transformType: 2
     _object: {fileID: 1661460775}
@@ -55432,7 +55487,16 @@ MonoBehaviour:
     _scale: 1
     _mask: {fileID: 0}
     _showNextButton: 1
+    _nextButtonPosition: {x: -100, y: 100}
     _waitingSeconds: -1
+    _arrowPropoerties:
+      _arrowInvolved: 0
+      _anchorMin: {x: 0.5, y: 0.5}
+      _anchorMax: {x: 0.5, y: 0.5}
+      _anchoredPosition: {x: 0, y: 0}
+      _zRotation: 0
+      _sizeConstant: 1
+      _V3Scale: {x: 1, y: 1, z: 1}
     _textPropoerties:
       _text: Great! You found him! This is Fasty. He will be joining you in this
         amazing adventure!
@@ -55444,6 +55508,8 @@ MonoBehaviour:
       _anchoredPosition: {x: 0, y: 200}
       _size: {x: 900, y: 400}
       _sizeConstant: 1
+      _offsetMin: {x: 0, y: 0}
+      _offsetMax: {x: 0, y: 0}
   - _name: Menu Button
     _transformType: 1
     _object: {fileID: 1153826024}
@@ -55452,18 +55518,28 @@ MonoBehaviour:
     _scale: 1
     _mask: {fileID: 647291370}
     _showNextButton: 0
+    _nextButtonPosition: {x: -100, y: 100}
     _waitingSeconds: -1
+    _arrowPropoerties:
+      _arrowInvolved: 1
+      _anchorMin: {x: 0.5, y: 0}
+      _anchorMax: {x: 0.5, y: 0}
+      _anchoredPosition: {x: 0, y: 470}
+      _zRotation: 180
+      _sizeConstant: 1
+      _V3Scale: {x: 1, y: 1, z: 1}
     _textPropoerties:
-      _text: This is the "Menu" button. It has everything you need as we enjoy this
-        adventure together! Press on it to reveal what's inside. Press here to see
-        the options.
+      _text: This is the menu button. It has everything you need as we enjoy this
+        adventure together! Press here to see the options.
       _alternativeText: 
       _anchorMin: {x: 0.5, y: 0.5}
       _anchorMax: {x: 0.5, y: 0.5}
-      _inRelationToArrow: 1
-      _anchoredPosition: {x: 0, y: 470}
-      _size: {x: 100, y: 100}
+      _inRelationToArrow: 0
+      _anchoredPosition: {x: 0, y: -300}
+      _size: {x: 984, y: 400}
       _sizeConstant: 1
+      _offsetMin: {x: 10, y: 0}
+      _offsetMax: {x: 10, y: 0}
   - _name: Loading Menu Sub-Buttons
     _transformType: 0
     _object: {fileID: 0}
@@ -55472,7 +55548,16 @@ MonoBehaviour:
     _scale: 1
     _mask: {fileID: 0}
     _showNextButton: 0
+    _nextButtonPosition: {x: -100, y: 100}
     _waitingSeconds: 2.5
+    _arrowPropoerties:
+      _arrowInvolved: 0
+      _anchorMin: {x: 0.5, y: 0.5}
+      _anchorMax: {x: 0.5, y: 0.5}
+      _anchoredPosition: {x: 0, y: 0}
+      _zRotation: 0
+      _sizeConstant: 1
+      _V3Scale: {x: 1, y: 1, z: 1}
     _textPropoerties:
       _text: 
       _alternativeText: 
@@ -55482,6 +55567,8 @@ MonoBehaviour:
       _anchoredPosition: {x: 0, y: 0}
       _size: {x: 100, y: 100}
       _sizeConstant: 1
+      _offsetMin: {x: 0, y: 0}
+      _offsetMax: {x: 0, y: 0}
   - _name: Menu Options
     _transformType: 0
     _object: {fileID: 0}
@@ -55490,7 +55577,16 @@ MonoBehaviour:
     _scale: 1
     _mask: {fileID: 647291370}
     _showNextButton: 1
+    _nextButtonPosition: {x: -100, y: 100}
     _waitingSeconds: -1
+    _arrowPropoerties:
+      _arrowInvolved: 0
+      _anchorMin: {x: 0.5, y: 0.5}
+      _anchorMax: {x: 0.5, y: 0.5}
+      _anchoredPosition: {x: 0, y: 0}
+      _zRotation: 180
+      _sizeConstant: 1
+      _V3Scale: {x: 1, y: 1, z: 1}
     _textPropoerties:
       _text: These 7 buttons are the menu's options.
       _alternativeText: 
@@ -55498,8 +55594,10 @@ MonoBehaviour:
       _anchorMax: {x: 0.5, y: 0.5}
       _inRelationToArrow: 0
       _anchoredPosition: {x: 0, y: 0}
-      _size: {x: 100, y: 100}
+      _size: {x: 700, y: 200}
       _sizeConstant: 1
+      _offsetMin: {x: 0, y: 0}
+      _offsetMax: {x: 0, y: 0}
   - _name: Dictionary Button
     _transformType: 1
     _object: {fileID: 2003581052}
@@ -55508,17 +55606,28 @@ MonoBehaviour:
     _scale: 1
     _mask: {fileID: 647291370}
     _showNextButton: 1
+    _nextButtonPosition: {x: -100, y: 100}
     _waitingSeconds: -1
+    _arrowPropoerties:
+      _arrowInvolved: 1
+      _anchorMin: {x: 0.5, y: 0}
+      _anchorMax: {x: 0.5, y: 0}
+      _anchoredPosition: {x: -236, y: 332}
+      _zRotation: 180
+      _sizeConstant: 0.8
+      _V3Scale: {x: 1, y: 1, z: 1}
     _textPropoerties:
-      _text: This is the "Dictionary" button. Here is where you can learn about all
+      _text: This is the dictionary button. Here is where you can learn about all
         of the words and phrases about asthma.
       _alternativeText: 
       _anchorMin: {x: 0.5, y: 0.5}
       _anchorMax: {x: 0.5, y: 0.5}
-      _inRelationToArrow: 1
-      _anchoredPosition: {x: -236, y: -686}
-      _size: {x: 100, y: 100}
+      _inRelationToArrow: 0
+      _anchoredPosition: {x: 0, y: 0}
+      _size: {x: 984, y: 400}
       _sizeConstant: 1
+      _offsetMin: {x: 0, y: 0}
+      _offsetMax: {x: 0, y: 0}
   - _name: Settings Button
     _transformType: 1
     _object: {fileID: 1377619283}
@@ -55527,17 +55636,28 @@ MonoBehaviour:
     _scale: 1
     _mask: {fileID: 647291370}
     _showNextButton: 1
+    _nextButtonPosition: {x: -100, y: 100}
     _waitingSeconds: -1
+    _arrowPropoerties:
+      _arrowInvolved: 1
+      _anchorMin: {x: 0.5, y: 0}
+      _anchorMax: {x: 0.5, y: 0}
+      _anchoredPosition: {x: -204.382, y: 437.9999}
+      _zRotation: 180
+      _sizeConstant: 0.8
+      _V3Scale: {x: 1, y: 1, z: 1}
     _textPropoerties:
-      _text: This is the "Settings" button. If you want to modify a specific setting,
-        you can just press this button and a menu will appear.
+      _text: This is the settings button. If you want to modify a specific setting,
+        you can just press this button and the settings menu will appear.
       _alternativeText: 
       _anchorMin: {x: 0.5, y: 0.5}
       _anchorMax: {x: 0.5, y: 0.5}
-      _inRelationToArrow: 1
-      _anchoredPosition: {x: -204.382, y: -568}
-      _size: {x: 100, y: 100}
+      _inRelationToArrow: 0
+      _anchoredPosition: {x: 0, y: 0}
+      _size: {x: 984, y: 400}
       _sizeConstant: 1
+      _offsetMin: {x: 0, y: 0}
+      _offsetMax: {x: 0, y: 0}
   - _name: Badges Button
     _transformType: 1
     _object: {fileID: 1490923372}
@@ -55546,16 +55666,28 @@ MonoBehaviour:
     _scale: 1
     _mask: {fileID: 647291370}
     _showNextButton: 1
+    _nextButtonPosition: {x: -100, y: 100}
     _waitingSeconds: -1
+    _arrowPropoerties:
+      _arrowInvolved: 1
+      _anchorMin: {x: 0.5, y: 0}
+      _anchorMax: {x: 0.5, y: 0}
+      _anchoredPosition: {x: -118, y: 524.382}
+      _zRotation: 180
+      _sizeConstant: 0.8
+      _V3Scale: {x: 1, y: 1, z: 1}
     _textPropoerties:
-      _text: 
+      _text: This is the badges button.  When you accomplish something, you earn
+        a badge! You can see all of your earned badges here.
       _alternativeText: 
       _anchorMin: {x: 0.5, y: 0.5}
       _anchorMax: {x: 0.5, y: 0.5}
       _inRelationToArrow: 0
-      _anchoredPosition: {x: -118, y: -481.6179}
-      _size: {x: 100, y: 100}
+      _anchoredPosition: {x: 0, y: 0}
+      _size: {x: 984, y: 400}
       _sizeConstant: 1
+      _offsetMin: {x: 0, y: 0}
+      _offsetMax: {x: 0, y: 0}
   - _name: Games Button
     _transformType: 1
     _object: {fileID: 250300279}
@@ -55564,17 +55696,28 @@ MonoBehaviour:
     _scale: 1
     _mask: {fileID: 647291370}
     _showNextButton: 1
+    _nextButtonPosition: {x: -100, y: 100}
     _waitingSeconds: -1
+    _arrowPropoerties:
+      _arrowInvolved: 1
+      _anchorMin: {x: 0.5, y: 0}
+      _anchorMax: {x: 0.5, y: 0}
+      _anchoredPosition: {x: 0, y: 556}
+      _zRotation: 180
+      _sizeConstant: 0.8
+      _V3Scale: {x: 1, y: 1, z: 1}
     _textPropoerties:
-      _text: This is the "Games" button. You can play 5 exciting mini-games to learn
+      _text: This is the games button. You can play 5 exciting mini-games to learn
         more about asthma. Win them all to earn badges!
       _alternativeText: 
       _anchorMin: {x: 0.5, y: 0.5}
       _anchorMax: {x: 0.5, y: 0.5}
       _inRelationToArrow: 0
-      _anchoredPosition: {x: 0, y: -450}
-      _size: {x: 100, y: 100}
+      _anchoredPosition: {x: 0, y: 0}
+      _size: {x: 984, y: 400}
       _sizeConstant: 1
+      _offsetMin: {x: 0, y: 0}
+      _offsetMax: {x: 0, y: 0}
   - _name: Exhibition Button
     _transformType: 1
     _object: {fileID: 412206478}
@@ -55583,17 +55726,28 @@ MonoBehaviour:
     _scale: 1
     _mask: {fileID: 647291370}
     _showNextButton: 1
+    _nextButtonPosition: {x: -100, y: 100}
     _waitingSeconds: -1
+    _arrowPropoerties:
+      _arrowInvolved: 1
+      _anchorMin: {x: 0.5, y: 0}
+      _anchorMax: {x: 0.5, y: 0}
+      _anchoredPosition: {x: 118, y: 524.382}
+      _zRotation: 180
+      _sizeConstant: 0.8
+      _V3Scale: {x: 1, y: 1, z: 1}
     _textPropoerties:
-      _text: This is the "Exhibition". It will show you the difference types and
-        components of inhalers.
+      _text: This is the exhibition button. It will show you the difference types
+        and components of inhalers.
       _alternativeText: 
       _anchorMin: {x: 0.5, y: 0.5}
       _anchorMax: {x: 0.5, y: 0.5}
       _inRelationToArrow: 0
-      _anchoredPosition: {x: 118, y: -481.6179}
-      _size: {x: 100, y: 100}
+      _anchoredPosition: {x: 0, y: 0}
+      _size: {x: 984, y: 400}
       _sizeConstant: 1
+      _offsetMin: {x: 0, y: 0}
+      _offsetMax: {x: 0, y: 0}
   - _name: Restart Button
     _transformType: 1
     _object: {fileID: 904721485}
@@ -55602,16 +55756,28 @@ MonoBehaviour:
     _scale: 1
     _mask: {fileID: 647291370}
     _showNextButton: 1
+    _nextButtonPosition: {x: -100, y: 100}
     _waitingSeconds: -1
+    _arrowPropoerties:
+      _arrowInvolved: 1
+      _anchorMin: {x: 0.5, y: 0}
+      _anchorMax: {x: 0.5, y: 0}
+      _anchoredPosition: {x: 204.382, y: 437.9999}
+      _zRotation: 180
+      _sizeConstant: 0.8
+      _V3Scale: {x: 1, y: 1, z: 1}
     _textPropoerties:
-      _text: This is the "Restart" Button
+      _text: This is the restart button. If you wish to restart the game, or believe
+        something is wrong, you can press this button to restart.
       _alternativeText: 
       _anchorMin: {x: 0.5, y: 0.5}
       _anchorMax: {x: 0.5, y: 0.5}
       _inRelationToArrow: 0
-      _anchoredPosition: {x: 204.382, y: -568}
-      _size: {x: 100, y: 100}
+      _anchoredPosition: {x: 0, y: 0}
+      _size: {x: 984, y: 400}
       _sizeConstant: 1
+      _offsetMin: {x: 0, y: 0}
+      _offsetMax: {x: 0, y: 0}
   - _name: Procedure Button
     _transformType: 1
     _object: {fileID: 1893404549}
@@ -55620,17 +55786,28 @@ MonoBehaviour:
     _scale: 1
     _mask: {fileID: 647291370}
     _showNextButton: 1
+    _nextButtonPosition: {x: -100, y: 100}
     _waitingSeconds: -1
+    _arrowPropoerties:
+      _arrowInvolved: 1
+      _anchorMin: {x: 0.5, y: 0}
+      _anchorMax: {x: 0.5, y: 0}
+      _anchoredPosition: {x: 236, y: 320}
+      _zRotation: 180
+      _sizeConstant: 0.8
+      _V3Scale: {x: 1, y: 1, z: 1}
     _textPropoerties:
-      _text: This is the "Procedure" Button. When pressed, Fasty will demonstrate
-        to you how you can use the inhaler.
+      _text: This is the procedure button. When pressed, Fasty will demonstrate to
+        you how you can use the inhaler.
       _alternativeText: 
       _anchorMin: {x: 0.5, y: 0.5}
       _anchorMax: {x: 0.5, y: 0.5}
       _inRelationToArrow: 0
       _anchoredPosition: {x: 0, y: 0}
-      _size: {x: 100, y: 100}
+      _size: {x: 984, y: 400}
       _sizeConstant: 1
+      _offsetMin: {x: 0, y: 0}
+      _offsetMax: {x: 0, y: 0}
   - _name: Inhaler Button
     _transformType: 1
     _object: {fileID: 1435741335}
@@ -55639,18 +55816,29 @@ MonoBehaviour:
     _scale: 1
     _mask: {fileID: 647291370}
     _showNextButton: 0
+    _nextButtonPosition: {x: -100, y: 100}
     _waitingSeconds: -1
+    _arrowPropoerties:
+      _arrowInvolved: 1
+      _anchorMin: {x: 1, y: 0}
+      _anchorMax: {x: 1, y: 0}
+      _anchoredPosition: {x: -280, y: 332}
+      _zRotation: 225
+      _sizeConstant: 1
+      _V3Scale: {x: 1, y: 1, z: 1}
     _textPropoerties:
-      _text: This is the "Inhaler" Button. When you press it an inhaler will appear
+      _text: This is the inhaler button. When you press it an inhaler will appear
         in front of Fasty. You can tap and hold onto the inahler and move it around
-        with your finger.
+        with your finger. Press it now to reveal the inhaler now.
       _alternativeText: 
       _anchorMin: {x: 0.5, y: 0.5}
       _anchorMax: {x: 0.5, y: 0.5}
       _inRelationToArrow: 0
-      _anchoredPosition: {x: -100, y: 370}
-      _size: {x: 100, y: 100}
+      _anchoredPosition: {x: 0, y: -300}
+      _size: {x: 984, y: 600}
       _sizeConstant: 1
+      _offsetMin: {x: 0, y: 0}
+      _offsetMax: {x: 0, y: 0}
   - _name: Inhaler
     _transformType: 2
     _object: {fileID: 655293315}
@@ -55659,19 +55847,29 @@ MonoBehaviour:
     _scale: 1
     _mask: {fileID: 0}
     _showNextButton: 1
+    _nextButtonPosition: {x: -100, y: 100}
     _waitingSeconds: -1
+    _arrowPropoerties:
+      _arrowInvolved: 0
+      _anchorMin: {x: 0.5, y: 0.5}
+      _anchorMax: {x: 0.5, y: 0.5}
+      _anchoredPosition: {x: 0, y: 0}
+      _zRotation: 0
+      _sizeConstant: 1
+      _V3Scale: {x: 1, y: 1, z: 1}
     _textPropoerties:
-      _text: This is the "Inhaler" Button. When you press it an inhaler will appear
-        in front of Fasty. You can tap and hold onto the inahler and move it around
-        with your finger.
+      _text: Awesome! You found the inhaler! You can use your finger to shake the
+        inhaler up and down.
       _alternativeText: Move your phone towards the direction of the while arrow
         until you find the blue inhaler.
       _anchorMin: {x: 0.5, y: 0.5}
       _anchorMax: {x: 0.5, y: 0.5}
       _inRelationToArrow: 0
       _anchoredPosition: {x: 0, y: 332}
-      _size: {x: 100, y: 100}
+      _size: {x: 984, y: 400}
       _sizeConstant: 1
+      _offsetMin: {x: 0, y: 0}
+      _offsetMax: {x: 0, y: 0}
   - _name: Resizing Button
     _transformType: 1
     _object: {fileID: 1210077915}
@@ -55680,18 +55878,28 @@ MonoBehaviour:
     _scale: 1
     _mask: {fileID: 647291370}
     _showNextButton: 1
+    _nextButtonPosition: {x: -100, y: 100}
     _waitingSeconds: -1
-    _textPropoerties:
-      _text: This is the "Inhaler" Button. When you press it an inhaler will appear
-        in front of Fasty. You can tap and hold onto the inahler and move it around
-        with your finger.
-      _alternativeText: 
-      _anchorMin: {x: 0.5, y: 0.5}
-      _anchorMax: {x: 0.5, y: 0.5}
-      _inRelationToArrow: 0
-      _anchoredPosition: {x: -275, y: 0}
-      _size: {x: 100, y: 100}
+    _arrowPropoerties:
+      _arrowInvolved: 1
+      _anchorMin: {x: 1, y: 0.5}
+      _anchorMax: {x: 1, y: 0.5}
+      _anchoredPosition: {x: -265, y: 0}
+      _zRotation: -90
       _sizeConstant: 1
+      _V3Scale: {x: 1, y: 1, z: 1}
+    _textPropoerties:
+      _text: This is the resizing button. If you think that the scene is too big
+        or too small, you can press here and adjust the scene to your prefered size.
+      _alternativeText: 
+      _anchorMin: {x: 0, y: 0.5}
+      _anchorMax: {x: 0, y: 0.5}
+      _inRelationToArrow: 0
+      _anchoredPosition: {x: 325, y: 0}
+      _size: {x: 650, y: 600}
+      _sizeConstant: 1
+      _offsetMin: {x: 0, y: 0}
+      _offsetMax: {x: 0, y: 0}
   - _name: Exit Button
     _transformType: 1
     _object: {fileID: 389913171}
@@ -55700,17 +55908,28 @@ MonoBehaviour:
     _scale: 1
     _mask: {fileID: 647291370}
     _showNextButton: 1
+    _nextButtonPosition: {x: -100, y: 100}
     _waitingSeconds: -1
+    _arrowPropoerties:
+      _arrowInvolved: 1
+      _anchorMin: {x: 0, y: 0}
+      _anchorMax: {x: 0, y: 0}
+      _anchoredPosition: {x: 270, y: 322}
+      _zRotation: 135
+      _sizeConstant: 1
+      _V3Scale: {x: 1, y: 1, z: 1}
     _textPropoerties:
-      _text: This is the "Exit" button. If you wish to leave the game or return to
+      _text: This is the exit button. If you wish to leave the game or return to
         the menu scene, simply tap on this button.
       _alternativeText: 
       _anchorMin: {x: 0.5, y: 0.5}
       _anchorMax: {x: 0.5, y: 0.5}
       _inRelationToArrow: 0
-      _anchoredPosition: {x: 280, y: 332}
-      _size: {x: 100, y: 100}
+      _anchoredPosition: {x: 0, y: -200}
+      _size: {x: 800, y: 300}
       _sizeConstant: 1
+      _offsetMin: {x: 0, y: 0}
+      _offsetMax: {x: 0, y: 0}
   - _name: End
     _transformType: 0
     _object: {fileID: 0}
@@ -55719,7 +55938,16 @@ MonoBehaviour:
     _scale: 1
     _mask: {fileID: 647291370}
     _showNextButton: 1
+    _nextButtonPosition: {x: -100, y: 100}
     _waitingSeconds: -1
+    _arrowPropoerties:
+      _arrowInvolved: 0
+      _anchorMin: {x: 0.5, y: 0.5}
+      _anchorMax: {x: 0.5, y: 0.5}
+      _anchoredPosition: {x: 0, y: 0}
+      _zRotation: 0
+      _sizeConstant: 1
+      _V3Scale: {x: 1, y: 1, z: 1}
     _textPropoerties:
       _text: This is the end of the tutorial. Enjoy!
       _alternativeText: 
@@ -55727,8 +55955,10 @@ MonoBehaviour:
       _anchorMax: {x: 0.5, y: 0.5}
       _inRelationToArrow: 0
       _anchoredPosition: {x: 0, y: 0}
-      _size: {x: 100, y: 100}
+      _size: {x: 984, y: 400}
       _sizeConstant: 1
+      _offsetMin: {x: 0, y: 0}
+      _offsetMax: {x: 0, y: 0}
   _mainPlayerCanvas: {fileID: 392666912}
   _exitButton: {fileID: 389913173}
   _resizingButton: {fileID: 1210077916}

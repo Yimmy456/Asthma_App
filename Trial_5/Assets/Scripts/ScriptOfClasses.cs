@@ -2904,8 +2904,6 @@ public class DateClass
 
         _date = new DateTime(_yearInput, _monthInput, _dayInput);
 
-        Debug.Log("The date is '" + _date.ToString() + "'.");
-
         _dateConfirmed = true;
     }
 
