@@ -1,3 +1,4 @@
+using Org.BouncyCastle.Asn1.BC;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -72,7 +73,7 @@ public class TutorialCanvasScript : MonoBehaviour
 
     public void SetArrowPositionBasedOnObject(TutorialLessonClass _input)
     {
-        SetArrowPositionBasedOnObject(_input.GetGameObject(), _input.GetTextProperties(), _input.GetArrowPosition(), _input.GetZRotation(), _input.GetScale());
+        SetArrowPositionBasedOnObject(_input.GetGameObject(), _input.GetTextProperties(), _input.GetArrowProperties());
 
         PrepareMask(_input);
     }
@@ -82,33 +83,13 @@ public class TutorialCanvasScript : MonoBehaviour
         return _uiIndicator;
     }
 
-    public void SetArrowPositionBasedOnObject(GameObject _gameObjectInput, TutorialLessonTextPropoertiesClass _textPropertiesInput, Vector2 _arrowPositionInput, float _rotationInput = 0.0f, float _scaleInput = 1.0f)
+    public void SetArrowPositionBasedOnObject(GameObject _gameObjectInput, TutorialLessonTextPropoertiesClass _textPropertiesInput, TutorialLessonArrowPropoertiesClass _arrowPropertiesInput)
     {
+        //_uiText.GetComponent<RectTransform>().anchoredPosition = _textSizeInput;
+
         if(_gameObjectInput == null)
         {
-            _arrowContainerTransform.gameObject.SetActive(false);
-
-            _arrowContainerTransform.anchoredPosition = Vector3.zero;
-
-            _arrowContainerTransform.anchorMin = new Vector2(0.5f, 0.5f);
-
-            _arrowContainerTransform.anchorMax = new Vector2(0.5f, 0.5f);
-
-            _arrowContainerTransform.rotation = Quaternion.identity;
-
-            _arrowTransform.localScale = Vector3.one;
-
             _targetObject = null;
-
-            _uiText.GetComponent<RectTransform>().parent = gameObject.GetComponent<RectTransform>();
-
-            _uiText.GetComponent<RectTransform>().anchoredPosition = new Vector2(0.0f, 0.0f);
-
-            _uiText.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0.5f);
-
-            _uiText.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.5f);
-
-            _uiText.GetComponent<RectTransform>().rotation = Quaternion.identity;
 
             if (_uiIndicator != null)
             {
@@ -121,32 +102,7 @@ public class TutorialCanvasScript : MonoBehaviour
         }
         else if(_gameObjectInput.GetComponent<RectTransform>() != null)
         {
-
-            _arrowContainerTransform.gameObject.SetActive(true);
-
-            _arrowContainerTransform.parent = _gameObjectInput.GetComponent<RectTransform>();
-
-            _arrowContainerTransform.anchorMin = new Vector2(0.5f, 0.5f);
-
-            _arrowContainerTransform.anchorMax = new Vector2(0.5f, 0.5f);
-
-            _arrowContainerTransform.anchoredPosition = Vector2.zero;
-
-            _arrowContainerTransform.parent = gameObject.GetComponent<RectTransform>();
-
-            _arrowContainerTransform.anchorMin = _gameObjectInput.GetComponent<RectTransform>().anchorMin;
-
-            _arrowContainerTransform.anchorMax = _gameObjectInput.GetComponent<RectTransform>().anchorMax;
-
-            _arrowContainerTransform.anchoredPosition = _arrowPositionInput;
-
-            _arrowContainerTransform.rotation = Quaternion.Euler(0.0f, 0.0f, _rotationInput);
-
-            _arrowTransform.localScale = Vector3.one * _scaleInput;
-
             _targetObject = _gameObjectInput.GetComponent<RectTransform>();
-
-            //AdjustText();
 
             if (_uiIndicator != null)
             {
@@ -156,43 +112,10 @@ public class TutorialCanvasScript : MonoBehaviour
             }
 
             _arrowAnimation.SetAnimateBoolean(true);
-
-            _uiText.GetComponent<RectTransform>().anchoredPosition = _textPropertiesInput.GetAnchoredPosition();
-
-
-            if(_tutorialManager.GetCurrentLesson().GetName() == "Welcome")
-            {
-                _uiText.GetComponent<RectTransform>().parent = _canvas.GetComponent<RectTransform>();
-
-                _uiText.GetComponent<RectTransform>().anchorMin = Vector2.one * 0.5f;
-
-                _uiText.GetComponent<RectTransform>().anchorMax = Vector2.one * 0.5f;
-
-                _uiText.GetComponent<RectTransform>().anchoredPosition = new Vector2(0.0f, 200.0f);
-
-                //Debug.Log("We are setting the text for the " + @"""" + "Welcoming" + @"""" + " lesson.");
-            }
-
         }
         else if(_gameObjectInput.transform != null)
         {
-            _arrowContainerTransform.gameObject.SetActive(false);
-
-            _arrowContainerTransform.anchoredPosition = _arrowPositionInput;
-
-            _arrowContainerTransform.anchorMin = new Vector2(0.5f, 0.5f);
-
-            _arrowContainerTransform.anchorMax = new Vector2(0.5f, 0.5f);
-
-            _arrowContainerTransform.rotation = Quaternion.Euler(0.0f, 0.0f, _rotationInput);
-
-            _arrowTransform.localScale = Vector3.one * _scaleInput;
-
-            _targetObject = _gameObjectInput.transform;
-
-            AdjustText();
-
-            if(_uiIndicator != null)
+            if (_uiIndicator != null)
             {
                 _uiIndicator.SetTargetObject(_gameObjectInput);
 
@@ -202,20 +125,14 @@ public class TutorialCanvasScript : MonoBehaviour
             _tutorialManager.SetCurrentObject(_targetObject.gameObject);
 
             _arrowAnimation.SetAnimateBoolean(false);
-
-            _uiText.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0.5f);
-
-            _uiText.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.5f);
-
-            _uiText.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
         }
 
-        //_uiText.GetComponent<RectTransform>().anchoredPosition = _textSizeInput;
+        AdjustText(_textPropertiesInput);
 
-        AdjustText2(_textPropertiesInput);
+        SetArrow(_arrowPropertiesInput);
     }
 
-    void AdjustText2(TutorialLessonTextPropoertiesClass _input)
+    void AdjustText(TutorialLessonTextPropoertiesClass _input)
     {
         if(_uiText == null || _input == null)
         {
@@ -236,7 +153,7 @@ public class TutorialCanvasScript : MonoBehaviour
 
             _uiText.GetComponent<RectTransform>().localScale = Vector2.one * _input.GetSizeConstant();
 
-            _uiText.GetComponent<RectTransform>().offsetMin = _input.GetOffsetMin();
+            //_uiText.GetComponent<RectTransform>().offsetMin = _input.GetOffsetMin();
 
             //_uiText.GetComponent<RectTransform>().offsetMax = _input.GetOffsetMax();
 
@@ -259,93 +176,66 @@ public class TutorialCanvasScript : MonoBehaviour
             //_uiText.GetComponent<RectTransform>().offsetMax = _input.GetOffsetMax();
         }
 
+        SetUITextOffset(_input.GetOffsetMin(), _input.GetOffsetMax());
+
         _currentText = _input.GetText();
+
+        if(_tutorialManager.GetCurrentLesson().GetShowNextButton() && _tutorialManager.GetCurrentLesson().GetName() != "Welcome" && _tutorialManager.GetCurrentLesson().GetName() != "End")
+        {
+            if (_tutorialManager.GetCurrentLesson().GetName() == "Inhaler")
+            {
+                _currentText = _currentText + "\n\nPress the green arrow button above the grey button that has the red " + @"""" + "No" + @"""" + " sign to proceed.";
+            }
+            else
+            {
+                _currentText = _currentText + "\n\nPress the green arrow button on the bottom corner to continue.";
+            }
+
+            Vector2 _size = _uiText.GetComponent<RectTransform>().sizeDelta;
+
+            _size.y = _size.y + 400.0f;
+
+            _uiText.GetComponent<RectTransform>().sizeDelta = _size;
+        }
 
         _uiText.text = _currentText;
     }
 
-    void AdjustText()
+    void SetArrow(TutorialLessonArrowPropoertiesClass _input)
     {
-        if(_uiText == null)
+        if(_input == null)
         {
             return;
         }
 
-        _uiText.GetComponent<RectTransform>().parent = _arrowContainerTransform;
-
-        _uiText.GetComponent<RectTransform>().rotation = Quaternion.identity;
-
-        _uiText.GetComponent<RectTransform>().anchoredPosition = new Vector2(0.0f, -250.0f);
-
-        _uiText.GetComponent<RectTransform>().parent = gameObject.GetComponent<RectTransform>();
-
-        _uiText.GetComponent<RectTransform>().rotation = Quaternion.identity;
-    }
-
-    void UpdatePositionByObject()
-    {
-        if(_targetObject == null || _camera == null || _tutorialManager == null || _arrowTransform == null || _arrowContainerTransform == null)
+        if(!_input.GetArrowInvolved())
         {
+            _arrowContainerTransform.gameObject.SetActive(false);
+
+            _arrowContainerTransform.anchorMin = new Vector2(0.5f, 0.5f);
+
+            _arrowContainerTransform.anchorMax = new Vector2(0.5f, 0.5f);
+
+            _arrowContainerTransform.anchoredPosition = new Vector2(0.0f, 0.0f);
+
+            _arrowContainerTransform.rotation = Quaternion.identity;
+
+            _arrowContainerTransform.localScale = Vector3.one;
+
             return;
         }
 
-        if(!_tutorialManager.GetTutorialMode() || _targetObject.GetComponent<RectTransform>() != null)
-        {
-            return;
-        }
+        _arrowContainerTransform.gameObject.SetActive(true);
 
-        Vector3 _pos = _camera.WorldToScreenPoint(_targetObject.transform.position);
+        _arrowContainerTransform.anchorMin = _input.GetAnchorMin();
 
-        bool _withinScreen = _pos.z > 0.0f && _pos.x > 0.0f && _pos.x < Screen.width && _pos.y > 0.0f && _pos.y < Screen.height;
+        _arrowContainerTransform.anchorMax = _input.GetAnchorMax();
 
-        Vector3 _screenCenter = new Vector3(Screen.width, Screen.height, 0.0f) / 2.0f;
+        _arrowContainerTransform.anchoredPosition = _input.GetAnchoredPosition();
 
-        if (!_withinScreen)
-        {
-            if (_pos.z < 0.0f)
-            {
-                _pos = _pos * -1.0f;
-            }
+        _arrowContainerTransform.rotation = Quaternion.Euler(0.0f, 0.0f, _input.GetZRotation());
 
-            _pos -= _screenCenter;
-
-            float _angle = Mathf.Atan2(_pos.y, _pos.x);
-
-            _angle -= 90.0f * Mathf.Deg2Rad;
-
-            float _cos = Mathf.Cos(_angle);
-
-            float _sin = -Mathf.Sin(_angle);
-
-            float _m = _cos / _sin;
-
-            Vector3 _bounds = _screenCenter;
-
-            _pos = _cos > 0.0f ? new Vector3(_bounds.y / _m, _bounds.y, 0.0f) : new Vector3(-_bounds.y / _m, -_bounds.y, 0.0f);
-
-
-            if (_pos.x > _bounds.x)
-            {
-                _pos = new Vector3(_bounds.x, _bounds.x * _m, 0.0f);
-            }
-            else if (_pos.x < -_bounds.x)
-            {
-                _pos = new Vector3(-_bounds.x, -_bounds.x * _m, 0.0f);
-            }
-
-            _arrowContainerTransform.transform.localPosition = _pos;
-
-            _arrowContainerTransform.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, _angle * Mathf.Rad2Deg);
-        }
-        else
-        {
-            float _d = Vector3.Distance(_camera.transform.position, _targetObject.transform.position);
-
-            _arrowContainerTransform.transform.localPosition = (_pos - _screenCenter);
-
-            _arrowContainerTransform.transform.localRotation = Quaternion.identity;
-            
-        }
+        _arrowContainerTransform.localScale = _input.GetFinalV3Scale();
     }
 
     public void ResetCanvas()
@@ -408,7 +298,7 @@ public class TutorialCanvasScript : MonoBehaviour
 
     void UpdateUIIndicator()
     {
-        if(_uiIndicator == null || _tutorialManager == null || _uiText == null)
+        if(_tutorialManager == null || _uiText == null)
         {
             Debug.Log("We are leaving 'Land Button' at stage 1.");
 
@@ -448,5 +338,108 @@ public class TutorialCanvasScript : MonoBehaviour
             return;
         }
 
+
+        if(_uiIndicator == null)
+        {
+            return;
+        }
+
+        if (_tutorialManager.GetCurrentLesson().GetName() == "Fasty" || _tutorialManager.GetCurrentLesson().GetName() == "Inhaler")
+        {
+            if (_uiIndicator.GetTargetInSight())
+            {
+                _currentText = _tutorialManager.GetCurrentLesson().GetTextProperties().GetText();
+
+                bool _nb = _tutorialManager.GetCurrentLesson().GetShowNextButton();
+
+                _nextButton.gameObject.SetActive(_nb);
+
+                _nextButton.GetComponent<RectTransform>().anchoredPosition = _tutorialManager.GetCurrentLesson().GetNextButtonPosition();
+
+                if (_nb)
+                {
+                    string _s = _currentText;
+
+                    if (_tutorialManager.GetCurrentLesson().GetName() == "Inhaler")
+                    {
+                        _s = _s + "\n\nPress the green arrow button above the grey button that has the red " + @"""" + "No" + @"""" + " sign to proceed.";
+                    }
+                    else
+                    {
+                        _s = _s + "\n\nPress the green arrow button on the bottom corner to continue.";
+                    }
+
+                    _currentText = _s;
+                }
+            }
+            else
+            {
+                _currentText = _tutorialManager.GetCurrentLesson().GetTextProperties().GetAlternativeText();
+
+                _nextButton.gameObject.SetActive(false);
+            }
+
+            _uiText.text = _currentText;
+        }
+
+    }
+
+    void SetUITextOffset(Vector2 _minInput, Vector2 _maxInput)
+    {
+        if(_uiText == null)
+        {
+            return;
+        }
+
+        if(_uiText.GetComponent<RectTransform>() == null)
+        {
+            return;
+        }
+
+        //Min Values
+
+        if(_minInput.x != 0.0f && _minInput.y != 0.0f)
+        {
+            _uiText.GetComponent<RectTransform>().offsetMin = _minInput;
+        }
+        else if(_minInput.x != 0.0f)
+        {
+            Vector2 _v2 = _uiText.GetComponent<RectTransform>().offsetMin;
+
+            _v2.x = _minInput.x;
+
+            _uiText.GetComponent<RectTransform>().offsetMin = _v2;
+        }
+        else if (_minInput.y != 0.0f)
+        {
+            Vector2 _v2 = _uiText.GetComponent<RectTransform>().offsetMin;
+
+            _v2.y = _minInput.y;
+
+            _uiText.GetComponent<RectTransform>().offsetMin = _v2;
+        }
+
+        //Max Values
+
+        if (_maxInput.x != 0.0f && _maxInput.y != 0.0f)
+        {
+            _uiText.GetComponent<RectTransform>().offsetMax = -_maxInput;
+        }
+        else if (_maxInput.x != 0.0f)
+        {
+            Vector2 _v2 = _uiText.GetComponent<RectTransform>().offsetMax;
+
+            _v2.x = -_maxInput.x;
+
+            _uiText.GetComponent<RectTransform>().offsetMax = _v2;
+        }
+        else if (_maxInput.y != 0.0f)
+        {
+            Vector2 _v2 = _uiText.GetComponent<RectTransform>().offsetMax;
+
+            _v2.y = -_maxInput.y;
+
+            _uiText.GetComponent<RectTransform>().offsetMax = _v2;
+        }
     }
 }

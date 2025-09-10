@@ -370,18 +370,18 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
 
         TutorialLessonClass _currentSubject = _tutorialSubjectTargets[_currentIndex];
 
-        /*if(_currentSubject.GetName() == "Start Button")
+        if(_currentSubject.GetName() == "Start Button")
         {
             if (_currentSubject.GetGameObject() == null)
             {
                 return;
             }
 
-            if (!_currentSubject.GetGameObject().activeSelf)
+            if (_currentSubject.GetGameObject().activeSelf)
             {
-                _currentSubject.GetGameObject().SetActive(true);
+                _currentSubject.GetGameObject().SetActive(false);
             }
-        }*/
+        }
 
         if(_currentSubject.GetName() == "Land Button")
         {
@@ -408,6 +408,34 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
             }
         }
 
+        if (_currentSubject.GetName() == "Loading Menu Sub-Buttons" && _mainPlayerCanvas != null)
+        {
+            for (int _i = 0; _i < _mainPlayerCanvas.GetMenuButtonList().Count; _i++)
+            {
+                _mainPlayerCanvas.GetMenuButtonList()[_i].interactable = false;
+            }
+
+            _mainPlayerCanvas.GetMenuButton().interactable = false;
+        }
+
+        if (_currentSubject.GetName() == "Dictionary Button" || _currentSubject.GetName() == "Settings Button" || _currentSubject.GetName() == "Badges Button" || _currentSubject.GetName() == "Games Button" || _currentSubject.GetName() == "Exhibition Button" || _currentSubject.GetName() == "Restart Button" || _currentSubject.GetName() == "Procedure Button")
+        {
+            if (_currentObjectDuplicate != null)
+            {
+                if (_currentObjectDuplicate.GetComponent<RectTransform>() != null)
+                {
+                    Vector3 _localP = _currentObjectDuplicate.GetComponent<RectTransform>().localPosition;
+
+                    _currentObjectDuplicate.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0.0f);
+
+                    _currentObjectDuplicate.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.0f);
+
+                    _currentObjectDuplicate.GetComponent<RectTransform>().localPosition = _localP;
+                }
+            }
+        }
+
+
         if (_currentSubject.GetName() == "Inhaler Button")
         {
             if (_currentObjectDuplicate != null)
@@ -430,9 +458,17 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
 
                     ShowOrHideButton(_inhalerButton, 1);
 
-                    _canvas.GetNextButton().onClick.AddListener(delegate { _mainPlayerCanvas.GetShakingInhalerProperties().SetShowingInhalerBoolean(false); });
+                    //_canvas.GetNextButton().onClick.AddListener(delegate { _mainPlayerCanvas.GetShakingInhalerProperties().SetShowingInhalerBoolean(false); });
                 }
             }
+
+            /*if (_mainPlayerCanvas.GetShakingInhalerProperties().GetInhalerGameObject() != null)
+            {
+                if (_mainPlayerCanvas.GetShakingInhalerProperties().GetInhalerGameObject().GetComponent<DraggableClass>() != null)
+                {
+                    _mainPlayerCanvas.GetShakingInhalerProperties().GetInhalerGameObject().GetComponent<DraggableClass>().SetDraggableOn(false);
+                }
+            }*/
         }
 
         if (_currentSubject.GetName() == "Resizing Button")
@@ -546,6 +582,8 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
                     {
                         _currentObjectDuplicate.GetComponent<Button>().interactable = false;
                     }
+
+                    _canvas.GetNextButton().GetComponent<RectTransform>().anchoredPosition = _currentSubject.GetNextButtonPosition();
                 }
 
                 _canvas.GetArrowAnimation().SetAnimateBoolean(true);
@@ -727,7 +765,13 @@ public class TutorialLessonClass : StateInterface
     bool _showNextButton;
 
     [SerializeField]
+    Vector2 _nextButtonPosition = new Vector2(-100.0f, 100.0f);
+
+    [SerializeField]
     float _waitingSeconds = -1.0f;
+
+    [SerializeField]
+    TutorialLessonArrowPropoertiesClass _arrowPropoerties;
 
     [SerializeField]
     TutorialLessonTextPropoertiesClass _textPropoerties;
@@ -767,6 +811,11 @@ public class TutorialLessonClass : StateInterface
         return _showNextButton;
     }
 
+    public Vector2 GetNextButtonPosition()
+    {
+        return _nextButtonPosition;
+    }
+
     public float GetWaitingSeconds()
     {
         return _waitingSeconds;
@@ -775,6 +824,11 @@ public class TutorialLessonClass : StateInterface
     public TransformTypeEnum GetTransformType()
     {
         return _transformType;
+    }
+
+    public TutorialLessonArrowPropoertiesClass GetArrowProperties()
+    {
+        return _arrowPropoerties;
     }
 
     public TutorialLessonTextPropoertiesClass GetTextProperties()
@@ -886,5 +940,72 @@ public class TutorialLessonTextPropoertiesClass
     public Vector2 GetOffsetMax()
     {
         return _offsetMax;
+    }
+}
+
+[System.Serializable]
+public class TutorialLessonArrowPropoertiesClass
+{
+    [Header("Arrow Prpoerties")]
+
+    [SerializeField]
+    bool _arrowInvolved = true;
+
+    [SerializeField]
+    Vector2 _anchorMin = new Vector2(0.5f, 0.5f);
+
+    [SerializeField]
+    Vector2 _anchorMax = new Vector2(0.5f, 0.5f);
+
+    [SerializeField]
+    Vector2 _anchoredPosition;
+
+    [SerializeField]
+    float _zRotation;
+
+    [SerializeField]
+    float _sizeConstant = 1.0f;
+
+    [SerializeField]
+    Vector3 _V3Scale = Vector3.one;
+
+    public bool GetArrowInvolved()
+    {
+        return _arrowInvolved;
+    }
+
+    public Vector2 GetAnchorMin()
+    {
+        return _anchorMin;
+    }
+
+    public Vector2 GetAnchorMax()
+    {
+        return _anchorMax;
+    }
+
+    public Vector2 GetAnchoredPosition()
+    {
+        return _anchoredPosition;
+    }
+
+    public float GetZRotation()
+    {
+        return _zRotation;
+    }
+
+    public float GetSizeConstant()
+    {
+        return _sizeConstant;
+    }
+
+    public Vector3 GetV3Scale()
+    {
+        return _V3Scale;
+    }
+
+    public Vector3 GetFinalV3Scale()
+    {
+        return (_V3Scale * _sizeConstant);
     }
 }
