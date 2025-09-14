@@ -393,8 +393,11 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
             if(!_currentSubject.GetGameObject().activeSelf)
             {
                 _currentSubject.GetGameObject().SetActive(true);
+            }
 
-                Debug.Log("The game object is set to 'true'.");
+            if(_currentObject != null)
+            {
+                _currentObject.SetActive(false);
             }
         }
 
@@ -458,7 +461,7 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
 
                     ShowOrHideButton(_inhalerButton, 1);
 
-                    //_canvas.GetNextButton().onClick.AddListener(delegate { _mainPlayerCanvas.GetShakingInhalerProperties().SetShowingInhalerBoolean(false); });
+                    _canvas.GetNextButton().onClick.AddListener(delegate { _mainPlayerCanvas.GetShakingInhalerProperties().SetShowingInhalerBoolean(false); });
                 }
             }
 
@@ -750,15 +753,6 @@ public class TutorialLessonClass : StateInterface
     GameObject _object;
 
     [SerializeField]
-    Vector2 _arrowPosition;
-
-    [SerializeField]
-    float _zRotation;
-
-    [SerializeField]
-    float _scale = 1.0f;
-
-    [SerializeField]
     Image _mask;
 
     [SerializeField]
@@ -784,21 +778,6 @@ public class TutorialLessonClass : StateInterface
     public string GetName()
     {
         return _name;
-    }
-
-    public Vector2 GetArrowPosition()
-    {
-        return _arrowPosition;
-    }
-
-    public float GetZRotation()
-    {
-        return _zRotation;
-    }
-
-    public float GetScale()
-    {
-        return _scale;
     }
 
     public Image GetMask()
@@ -870,9 +849,6 @@ public class TutorialLessonTextPropoertiesClass
     Vector2 _anchorMax = new Vector2(0.5f, 0.5f);
 
     [SerializeField]
-    bool _inRelationToArrow;
-
-    [SerializeField]
     Vector2 _anchoredPosition;
 
     [SerializeField]
@@ -886,6 +862,9 @@ public class TutorialLessonTextPropoertiesClass
 
     [SerializeField]
     Vector2 _offsetMax = Vector2.zero;
+
+    [SerializeField]
+    bool _withinSafeArea;
 
     public string GetText()
     {
@@ -905,11 +884,6 @@ public class TutorialLessonTextPropoertiesClass
     public Vector2 GetAnchorMax()
     {
         return _anchorMax;
-    }
-
-    public bool GetInRelationToArrow()
-    {
-        return _inRelationToArrow;
     }
 
     public Vector2 GetAnchoredPosition()
@@ -941,6 +915,11 @@ public class TutorialLessonTextPropoertiesClass
     {
         return _offsetMax;
     }
+
+    public bool GetWithinSafeArea()
+    {
+        return _withinSafeArea;
+    }
 }
 
 [System.Serializable]
@@ -968,6 +947,9 @@ public class TutorialLessonArrowPropoertiesClass
 
     [SerializeField]
     Vector3 _V3Scale = Vector3.one;
+
+    [SerializeField]
+    bool _withinSafeArea;
 
     public bool GetArrowInvolved()
     {
@@ -1007,5 +989,10 @@ public class TutorialLessonArrowPropoertiesClass
     public Vector3 GetFinalV3Scale()
     {
         return (_V3Scale * _sizeConstant);
+    }
+
+    public bool GetWithinSafeArea()
+    {
+        return _withinSafeArea;
     }
 }

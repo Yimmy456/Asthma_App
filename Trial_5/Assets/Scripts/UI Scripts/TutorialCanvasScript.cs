@@ -41,6 +41,9 @@ public class TutorialCanvasScript : MonoBehaviour
     [SerializeField]
     UIAnimationClass _arrowAnimation;
 
+    [SerializeField]
+    RectTransform _safeArea;
+
     public TutorialManagerScript TutorialManager
     {
         get
@@ -81,6 +84,16 @@ public class TutorialCanvasScript : MonoBehaviour
     public UIIndicatorCanvasScript GetUIIndicator()
     {
         return _uiIndicator;
+    }
+
+    public RectTransform GetSafeArea()
+    {
+        return _safeArea;
+    }
+
+    public UISafeAreaScript GetSafeAreaProperties()
+    {
+        return _safeArea.GetComponent<UISafeAreaScript>();
     }
 
     public void SetArrowPositionBasedOnObject(GameObject _gameObjectInput, TutorialLessonTextPropoertiesClass _textPropertiesInput, TutorialLessonArrowPropoertiesClass _arrowPropertiesInput)
@@ -139,42 +152,24 @@ public class TutorialCanvasScript : MonoBehaviour
             return;
         }
 
-        if(_input.GetInRelationToArrow())
+        if (_input.GetWithinSafeArea())
         {
-            _uiText.GetComponent<RectTransform>().parent = _arrowContainerTransform;
-
-            _uiText.GetComponent<RectTransform>().anchorMin = _input.GetAnchorMin();
-
-            _uiText.GetComponent<RectTransform>().anchorMax = _input.GetAnchorMax();
-
-            _uiText.GetComponent<RectTransform>().anchoredPosition = _input.GetAnchoredPosition();
-
-            _uiText.GetComponent<RectTransform>().sizeDelta = _input.GetSize();
-
-            _uiText.GetComponent<RectTransform>().localScale = Vector2.one * _input.GetSizeConstant();
-
-            //_uiText.GetComponent<RectTransform>().offsetMin = _input.GetOffsetMin();
-
-            //_uiText.GetComponent<RectTransform>().offsetMax = _input.GetOffsetMax();
-
-            //_uiText.GetComponent<RectTransform>().parent = _canvas.GetComponent<RectTransform>();
+            _uiText.GetComponent<RectTransform>().parent = _safeArea;
         }
         else
         {
-            _uiText.GetComponent<RectTransform>().anchorMin = _input.GetAnchorMin();
-
-            _uiText.GetComponent<RectTransform>().anchorMax = _input.GetAnchorMax();
-
-            _uiText.GetComponent<RectTransform>().anchoredPosition = _input.GetAnchoredPosition();
-
-            _uiText.GetComponent<RectTransform>().sizeDelta = _input.GetSize();
-
-            _uiText.GetComponent<RectTransform>().localScale = Vector2.one * _input.GetSizeConstant();
-
-            //_uiText.GetComponent<RectTransform>().offsetMin = _input.GetOffsetMin();
-
-            //_uiText.GetComponent<RectTransform>().offsetMax = _input.GetOffsetMax();
+            _uiText.GetComponent<RectTransform>().parent = gameObject.GetComponent<RectTransform>();
         }
+
+        _uiText.GetComponent<RectTransform>().anchorMin = _input.GetAnchorMin();
+
+        _uiText.GetComponent<RectTransform>().anchorMax = _input.GetAnchorMax();
+
+        _uiText.GetComponent<RectTransform>().anchoredPosition = _input.GetAnchoredPosition();
+
+        _uiText.GetComponent<RectTransform>().sizeDelta = _input.GetSize();
+
+        _uiText.GetComponent<RectTransform>().localScale = Vector2.one * _input.GetSizeConstant();
 
         SetUITextOffset(_input.GetOffsetMin(), _input.GetOffsetMax());
 
@@ -208,7 +203,16 @@ public class TutorialCanvasScript : MonoBehaviour
             return;
         }
 
-        if(!_input.GetArrowInvolved())
+        if(_input.GetWithinSafeArea())
+        {
+            _arrowContainerTransform.parent = _safeArea;
+        }
+        else
+        {
+            _arrowContainerTransform.parent = gameObject.GetComponent<RectTransform>();
+        }
+
+        if (!_input.GetArrowInvolved())
         {
             _arrowContainerTransform.gameObject.SetActive(false);
 
