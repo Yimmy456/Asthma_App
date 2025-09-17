@@ -155,33 +155,17 @@ public class DictionaryUICanvasScript : CollectionUICanvasScript
         //Declaring Variables
         RectTransform _canvasRectT = _selectedItemCanvas.gameObject.GetComponent<RectTransform>();
 
-        Text _wordText = _canvasRectT.Find("Word Text").gameObject.GetComponent<Text>();
+        _collectionUIProperties.SetTitleText(_wordInput.GetInformationName());
 
-        Text _indexText = _canvasRectT.Find("Index Text").gameObject.GetComponent<Text>();
+        _collectionUIProperties.SetIndexText(_indexInput);
 
-        Text _typeText = _canvasRectT.Find("Type Text").gameObject.GetComponent<Text>();
+        _collectionUIProperties.SetCategory2("Type", GetWordTypeAsText(_wordInput));
 
-        Text _categoryText = _canvasRectT.Find("Category Text").gameObject.GetComponent<Text>();
+        _collectionUIProperties.SetCategory1("Category", GetWordCategoryAsText(_wordInput));
 
-        Text _definitionText = _canvasRectT.Find("Definition Text").gameObject.GetComponent<Text>();
+        _collectionUIProperties.SetDescriptionText(_wordInput.GetInformationDescription());
 
-        Image _cardImage = _canvasRectT.Find("Card Image").gameObject.GetComponent<Image>();
-
-        //Initializing Variables
-        _wordText.text = _wordInput.GetInformationName();
-
-        _indexText.text = _indexInput.ToString() + ".";
-
-        _typeText.text = "Type: " + GetWordTypeAsText(_wordInput);
-
-        _categoryText.text = "Category: " + GetWordCategoryAsText(_wordInput);
-
-        _definitionText.text = _wordInput.GetInformationDescription();
-
-        if(_wordInput.GetSprite() != null)
-        {
-            _cardImage.sprite = _wordInput.GetSprite();
-        }
+        _collectionUIProperties.SetImageSprite(_wordInput.GetSprite());
     }
 
     string GetWordTypeAsText(DefinitionClass _input)

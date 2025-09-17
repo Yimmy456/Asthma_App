@@ -3262,6 +3262,122 @@ public class TutorialSubjectTargetUIElementsClass
 }
 
 
+[System.Serializable]
+public class CollectionUIProperties
+{
+    [SerializeField]
+    Image _image;
+
+    [SerializeField]
+    Text _descriptionText;
+
+    [SerializeField]
+    Text _titleText;
+
+    [SerializeField]
+    Text _indexText;
+
+    [SerializeField]
+    Text _category1Text;
+
+    [SerializeField]
+    Text _category2Text;
+
+    public Image GetImage()
+    {
+        return _image;
+    }
+
+    public Text GetDescriptionText()
+    {
+        return _descriptionText;
+    }
+
+    public Text GetTitleText()
+    {
+        return _titleText;
+    }
+
+    public Text GetIndexText()
+    {
+        return _indexText;
+    }
+
+    public Text GetCategory1Text()
+    {
+        return _category1Text;
+    }
+
+    public Text GetCategory2Text()
+    {
+        return _category2Text;
+    }
+
+    public void SetImageSprite(Sprite _input)
+    {
+        if(_image == null || _input == null)
+        {
+            return;
+        }
+
+        _image.sprite = _input;
+    }
+
+    public void SetDescriptionText(string _input)
+    {
+        if(_descriptionText == null)
+        {
+            return;
+        }
+
+        _descriptionText.text = _input;
+    }
+
+    public void SetTitleText(string _input)
+    {
+        if(_titleText == null)
+        {
+            return;
+        }
+
+        _titleText.text = _input;
+    }
+
+    public void SetIndexText(int _input = 0)
+    {
+        if(_indexText == null)
+        {
+            return;
+        }
+
+        string _s = _input.ToString() + ".";
+
+        _indexText.text = _s;
+    }
+
+    public void SetCategory1(string _titleInput, string _infoInput)
+    {
+        if(_category1Text == null)
+        {
+            return;
+        }
+
+        _category1Text.text = _titleInput + ": " + _infoInput;
+    }
+
+    public void SetCategory2(string _titleInput, string _infoInput)
+    {
+        if (_category2Text == null)
+        {
+            return;
+        }
+
+        _category2Text.text = _titleInput + ": " + _infoInput;
+    }
+
+}
+
+
 /*
 public class PrintingErrorException : Exception
 {

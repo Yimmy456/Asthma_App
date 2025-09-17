@@ -209,13 +209,13 @@ public class BadgesUIScript : CollectionUICanvasScript
 
         _bt.onClick.AddListener(delegate { _selectedItemCanvas.gameObject.SetActive(true); });
 
-        _bt.onClick.AddListener(delegate { _selectedItemCanvas.gameObject.transform.Find("Image").GetComponent<Image>().sprite = _sp; });
+        _bt.onClick.AddListener(delegate { _collectionUIProperties.SetImageSprite(_sp); });
 
-        _bt.onClick.AddListener(delegate { _selectedItemCanvas.gameObject.transform.Find("Description Text").GetComponent<Text>().text = _descT; });
+        _bt.onClick.AddListener(delegate { _collectionUIProperties.SetDescriptionText(_descT); });
 
-        _bt.onClick.AddListener(delegate { _selectedItemCanvas.gameObject.transform.Find("Badge Name Text").GetComponent<Text>().text = _nameT; });
+        _bt.onClick.AddListener(delegate { _collectionUIProperties.SetTitleText(_nameT); });
 
-        _bt.onClick.AddListener(delegate { _selectedItemCanvas.gameObject.transform.Find("Index Text").GetComponent<Text>().text = _indexInput.ToString() + "."; });
+        _bt.onClick.AddListener(delegate { _collectionUIProperties.SetIndexText(_indexInput); });
 
         _bt.onClick.AddListener(delegate { gameObject.SetActive(false); });
     }
