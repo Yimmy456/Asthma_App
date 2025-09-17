@@ -175,10 +175,14 @@ public class DraggableClass : MonoBehaviour
                 DraggableManagerClass.GetInstance().SetTouchPhase(UnityEngine.TouchPhase.Canceled);
             }
 
-            DraggableManagerClass.GetInstance().RemoveDraggable(this);
+            if (DraggableManagerClass.GetInstance().GetDraggingEnds(this))
+            {
+                DraggableManagerClass.GetInstance().RemoveFromEndsDragging(this);
+            }
         }
 
-        if(_dragged)
+
+        if (_dragged)
         {
             DragFunction();
         }
