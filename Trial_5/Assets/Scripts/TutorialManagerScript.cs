@@ -73,7 +73,7 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
                     gameObject.SetActive(false);
                 }*/
 
-                IStartExperience();
+                //IStartExperience();
             }
         }
     }

@@ -31,6 +31,9 @@ public class CollectionUICanvasScript : CanvasScript
     [SerializeField]
     protected Vector2 _distance;
 
+    [SerializeField]
+    protected CollectionUIProperties _collectionUIProperties;
+
     protected GameObject _currentRowObject;
 
 
