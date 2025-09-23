@@ -5286,6 +5286,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1093082204}
+        m_TargetAssemblyTypeName: MainSceneScript, Assembly-CSharp
+        m_MethodName: SetState
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &198716075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5558,7 +5570,7 @@ MonoBehaviour:
           m_StringArgument: Start Button
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 201964839}
+      - m_Target: {fileID: 279646243}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -21053,6 +21065,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1093082204}
+        m_TargetAssemblyTypeName: MainSceneScript, Assembly-CSharp
+        m_MethodName: SetState
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &592737360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36212,6 +36236,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1093082204}
+        m_TargetAssemblyTypeName: MainSceneScript, Assembly-CSharp
+        m_MethodName: SetState
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1172525974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50007,6 +50043,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1093082204}
+        m_TargetAssemblyTypeName: MainSceneScript, Assembly-CSharp
+        m_MethodName: SetState
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1699643187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54183,6 +54231,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1093082204}
+        m_TargetAssemblyTypeName: MainSceneScript, Assembly-CSharp
+        m_MethodName: SetState
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1873549280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56597,6 +56657,7 @@ MonoBehaviour:
   _inhalerButton: {fileID: 1435741337}
   _startButton: {fileID: 201964841}
   _placeIndicator: {fileID: 1228395062}
+  _startTutorial: 0
 --- !u!1 &1954624279
 GameObject:
   m_ObjectHideFlags: 0

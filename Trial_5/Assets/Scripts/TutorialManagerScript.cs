@@ -43,6 +43,10 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
     PlaceIndicatorScript _placeIndicator;
 
     Coroutine _arrowAnimationCoroutine;
+
+    [SerializeField]
+    bool _startTutorial = true;
+
     public TutorialCanvasScript Canvas
     {
         get
@@ -72,8 +76,14 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
 
                     gameObject.SetActive(false);
                 }*/
-
-                //IStartExperience();
+                if (_startTutorial)
+                {
+                    IStartExperience();
+                }
+                else
+                {
+                    _tutorialMode = false;
+                }
             }
         }
     }
