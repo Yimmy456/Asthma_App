@@ -125,3 +125,13 @@ public enum TransformTypeEnum
     RectTransform,
     NormalTransform,
 }
+
+public enum GameStateEnum
+{
+    Starting_State,
+    Main_State,
+    Game_State,
+    Exhibition_State,
+    Menu_State,
+    Other_State,
+}

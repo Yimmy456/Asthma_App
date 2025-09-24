@@ -77,11 +77,12 @@ public class MainSceneScript : MonoBehaviour, YesOrNoInterface
 
     public bool _started;
 
+    GameStateEnum _state;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        _state = GameStateEnum.Starting_State;
     }
 
     // Update is called once per frame
@@ -111,6 +112,11 @@ public class MainSceneScript : MonoBehaviour, YesOrNoInterface
     public Animator GetFastyAnimator()
     {
         return _fastyAnimator;
+    }
+
+    public GameStateEnum GetState()
+    {
+        return _state;
     }
     
     public void ISetActionsOfNoButton()
@@ -468,6 +474,37 @@ public class MainSceneScript : MonoBehaviour, YesOrNoInterface
             _rocketAudioSource.Play();
 
             Debug.Log("We playing the audio source in index " + _indexInput + ".");
+        }
+    }
+
+    public void SetState(GameStateEnum _input)
+    {
+        _state = _input;
+    }
+
+    public void SetState(int _input)
+    {
+        switch(_input)
+        {
+            case 0:
+                _state = GameStateEnum.Starting_State;
+                break;
+            case 1:
+                _state = GameStateEnum.Main_State;
+                break;
+            case 2:
+                _state = GameStateEnum.Game_State;
+                break;
+            case 3:
+                _state = GameStateEnum.Exhibition_State;
+                break;
+            case 4:
+                _state = GameStateEnum.Menu_State;
+                break;
+            default:
+                _state = GameStateEnum.Other_State;
+                break;
+
         }
     }
 }
