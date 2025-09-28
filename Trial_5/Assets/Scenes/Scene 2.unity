@@ -6012,7 +6012,7 @@ MonoBehaviour:
   _inhalerButton: {fileID: 962652049}
   _startButton: {fileID: 0}
   _placeIndicator: {fileID: 0}
-  _startTutorial: 1
+  _startTutorial: 0
 --- !u!1 &227547013
 GameObject:
   m_ObjectHideFlags: 0
