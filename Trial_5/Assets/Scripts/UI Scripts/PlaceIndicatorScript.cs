@@ -124,14 +124,14 @@ public class PlaceIndicatorScript : MonoBehaviour
 
     void LookForTerrain()
     {
-        if(!_lookForTerrainBool)
+        if (!_lookForTerrainBool)
         {
             if (_indicator != null)
             {
                 _indicator.SetActive(false);
             }
 
-            if(_mainSceneTransform != null)
+            if (_mainSceneTransform != null)
             {
                 _mainSceneTransform.gameObject.SetActive(false);
             }
@@ -155,7 +155,7 @@ public class PlaceIndicatorScript : MonoBehaviour
                 _indicator.SetActive(true);
             }
 
-            if(_mainSceneTransform != null)
+            if (_mainSceneTransform != null)
             {
                 _mainSceneTransform.gameObject.SetActive(true);
             }
@@ -199,12 +199,12 @@ public class PlaceIndicatorScript : MonoBehaviour
             {
                 //_landingTerrain.SetActive(true);
 
-                if(_animationCoroutine != null)
+                if (_animationCoroutine != null)
                 {
                     StopCoroutine(_animationCoroutine);
                 }
 
-                _animationCoroutine = StartCoroutine(_shinkAndExpandAnimationForLandingTerrain.Animate());                
+                _animationCoroutine = StartCoroutine(_shinkAndExpandAnimationForLandingTerrain.Animate());
             }
 
             //StartCoroutine(_arrowAnimationClass.Animate());
@@ -223,7 +223,15 @@ public class PlaceIndicatorScript : MonoBehaviour
             {
                 _startButton.gameObject.SetActive(true);
 
-                _action = delegate { _started = true; CallToStartAnimation(); };
+                _action = delegate {
+                    _started = true;
+                    CallToStartAnimation();
+
+                    if (DraggableManagerClass.GetInstance() != null)
+                    {
+                        DraggableManagerClass.GetInstance().SetSceneDistance(_planeDistance);
+                    }
+                };
 
                 _startButton.onClick.AddListener(_action);
             }
@@ -268,7 +276,7 @@ public class PlaceIndicatorScript : MonoBehaviour
             {
                 //_landingTerrain.SetActive(true);
 
-                if(_animationCoroutine != null)
+                if (_animationCoroutine != null)
                 {
                     StopCoroutine(_animationCoroutine);
                 }
@@ -314,7 +322,7 @@ public class PlaceIndicatorScript : MonoBehaviour
     {
         _started = false;
 
-        if(_startingAnimator != null)
+        if (_startingAnimator != null)
         {
             _startingAnimator.Play("Rocket Landing Animation 2", -1, 0);
         }
@@ -362,7 +370,7 @@ public class PlaceIndicatorScript : MonoBehaviour
 
     public void SetIndicatorOn(bool _input = true)
     {
-        if(_indicator == null)
+        if (_indicator == null)
         {
             return;
         }
@@ -377,16 +385,16 @@ public class PlaceIndicatorScript : MonoBehaviour
 
     public void SetSceneSize()
     {
-        if(_mainSceneTransform == null)
+        if (_mainSceneTransform == null)
         {
             return;
         }
 
         Vector3 _size = Vector3.one * _constantSizeOfMainScene;
 
-        if(_resizer != null)
+        if (_resizer != null)
         {
-            if(_resizer.GetSliderValue() > 0.0f)
+            if (_resizer.GetSliderValue() > 0.0f)
             {
                 _size = _size * _resizer.GetSliderValue();
             }
@@ -394,7 +402,7 @@ public class PlaceIndicatorScript : MonoBehaviour
 
         _mainSceneTransform.localScale = _size;
 
-        if(_front == null)
+        if (_front == null)
         {
             return;
         }
@@ -408,7 +416,7 @@ public class PlaceIndicatorScript : MonoBehaviour
 
     void CallToStartAnimation()
     {
-        if(_mainSceneTransform == null)
+        if (_mainSceneTransform == null)
         {
             Debug.LogError("There is nothing to expand.");
 
@@ -431,9 +439,9 @@ public class PlaceIndicatorScript : MonoBehaviour
 
         Vector3 _v3C = _v31;
 
-        for(float _t = 0.0f; _t < 1.0f; _t += (Time.deltaTime * _expandingAnimationSpeed))
+        for (float _t = 0.0f; _t < 1.0f; _t += (Time.deltaTime * _expandingAnimationSpeed))
         {
-            if(_t >= 1.0f)
+            if (_t >= 1.0f)
             {
                 _t = 1.0f;
 
@@ -449,7 +457,7 @@ public class PlaceIndicatorScript : MonoBehaviour
             yield return null;
         }
 
-        if(_rocketContainer != null)
+        if (_rocketContainer != null)
         {
             _rocketContainer.SetActive(true);
 

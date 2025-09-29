@@ -616,9 +616,9 @@ public class MainCanvasesClass
             return;
         }
 
-        GameObject _image = _doctorCanvas.GetComponent<RectTransform>().Find("SafeArea").gameObject;
+        GameObject _image = _doctorCanvas.GetComponent<RectTransform>().Find("Safe Area Panel").gameObject;
 
-        _image = _image.GetComponent<RectTransform>().Find("Dr. Salem's Image Container").gameObject;
+        _image = _image.GetComponent<RectTransform>().Find("Dr. Salem's Image").gameObject;
 
         if (_image == null)
         {
@@ -656,9 +656,9 @@ public class MainCanvasesClass
             return;
         }
 
-        GameObject _image = _doctorCanvas.GetComponent<RectTransform>().Find("SafeArea").gameObject;
+        GameObject _image = _doctorCanvas.GetComponent<RectTransform>().Find("Safe Area Panel").gameObject;
 
-        _image = _image.GetComponent<RectTransform>().Find("Dr. Salem's Image Container").gameObject;
+        _image = _image.GetComponent<RectTransform>().Find("Dr. Salem's Image").gameObject;
 
         if (_image == null)
         {

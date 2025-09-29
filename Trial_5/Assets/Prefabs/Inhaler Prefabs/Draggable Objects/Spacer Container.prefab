@@ -86,9 +86,10 @@ MonoBehaviour:
   _body: {fileID: 1901578447943063915}
   _camera: {fileID: 0}
   _applyGravity: 0
-  _zOffset: 0
   _maintainZDistance: 1
-  _2DOffset: {x: 0, y: 0}
+  _offset: {x: 0, y: 0, z: 3}
+  _lookingDirection: {x: -1, y: -1, z: -1}
+  _lookingAxis: 2
   _draggableType: 2
 --- !u!114 &1901578447943063916
 MonoBehaviour:

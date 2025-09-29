@@ -237,7 +237,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _applyGravity: 1
   _maintainZDistance: 0
-  _offset: {x: 0, y: 0, z: 0}
+  _offset: {x: 0, y: 0, z: 3}
   _lookingDirection: {x: -1, y: -1, z: -1}
   _lookingAxis: 0
   _draggableType: 2

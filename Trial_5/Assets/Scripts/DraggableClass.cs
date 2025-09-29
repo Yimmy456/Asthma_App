@@ -53,7 +53,7 @@ public class DraggableClass : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(_controller == null)
+        if (_controller == null)
         {
             _controller = new PlayerController();
             _controller.Enable();
@@ -70,13 +70,13 @@ public class DraggableClass : MonoBehaviour
 
     private void OnEnable()
     {
-        if(_controller == null)
+        if (_controller == null)
         {
             _controller = new PlayerController();
             _controller.Enable();
         }
 
-        if(DraggableManagerClass.GetInstance() != null)
+        if (DraggableManagerClass.GetInstance() != null)
         {
             if (!DraggableManagerClass.GetInstance().GetDraggables().Contains(this))
             {
@@ -87,9 +87,9 @@ public class DraggableClass : MonoBehaviour
 
     private void OnDestroy()
     {
-        if(DraggableManagerClass.GetInstance() != null)
+        if (DraggableManagerClass.GetInstance() != null)
         {
-            if(DraggableManagerClass.GetInstance().GetDraggables().Contains(this))
+            if (DraggableManagerClass.GetInstance().GetDraggables().Contains(this))
             {
                 DraggableManagerClass.GetInstance().RemoveDraggable(this);
             }
@@ -104,17 +104,17 @@ public class DraggableClass : MonoBehaviour
 
     void DetectTouch()
     {
-        if(_camera == null || _controller == null || DraggableManagerClass.GetInstance() == null)
+        if (_camera == null || _controller == null || DraggableManagerClass.GetInstance() == null)
         {
             return;
         }
 
-        if(_controller.Touch.TouchPress.WasPressedThisFrame())
-        { 
+        if (_controller.Touch.TouchPress.WasPressedThisFrame())
+        {
 
             Vector2 _touchPosition = _controller.Touch.Position.ReadValue<Vector2>();
 
-            if(Application.platform == RuntimePlatform.WindowsEditor)
+            if (Application.platform == RuntimePlatform.WindowsEditor)
             {
                 _touchPosition = _controller.Move.CursorPosition.ReadValue<Vector2>();
             }
@@ -123,9 +123,9 @@ public class DraggableClass : MonoBehaviour
 
             RaycastHit _hit;
 
-            if(Physics.Raycast(_ray, out _hit))
+            if (Physics.Raycast(_ray, out _hit))
             {
-                if(_hit.collider.transform == gameObject.transform && _draggableOn && DraggableManagerClass.GetInstance().GetDraggableOn())
+                if (_hit.collider.transform == gameObject.transform && _draggableOn && DraggableManagerClass.GetInstance().GetDraggableOn())
                 {
                     _dragged = true;
                     _touchingSomething = true;
@@ -143,13 +143,13 @@ public class DraggableClass : MonoBehaviour
                 }
             }
         }
-        else if(_touchPhase == UnityEngine.TouchPhase.Began)
+        else if (_touchPhase == UnityEngine.TouchPhase.Began)
         {
             _touchPhase = UnityEngine.TouchPhase.Moved;
 
             RotateToLookAtCamera();
 
-            if(DraggableManagerClass.GetInstance().GetTouchPhase() != UnityEngine.TouchPhase.Moved)
+            if (DraggableManagerClass.GetInstance().GetTouchPhase() != UnityEngine.TouchPhase.Moved)
             {
                 DraggableManagerClass.GetInstance().SetTouchPhase(UnityEngine.TouchPhase.Moved);
             }
@@ -157,20 +157,20 @@ public class DraggableClass : MonoBehaviour
             DraggableManagerClass.GetInstance().AddToIsDragging(this);
         }
 
-        if(_controller.Touch.TouchPress.WasReleasedThisFrame())
+        if (_controller.Touch.TouchPress.WasReleasedThisFrame())
         {
             _touchingSomething = false;
 
-            if(_dragged)
+            if (_dragged)
             {
                 ResetValues();
             }
         }
-        else if(_touchPhase == UnityEngine.TouchPhase.Ended)
+        else if (_touchPhase == UnityEngine.TouchPhase.Ended)
         {
             _touchPhase = UnityEngine.TouchPhase.Canceled;
 
-            if(DraggableManagerClass.GetInstance().GetTouchPhase() != UnityEngine.TouchPhase.Canceled)
+            if (DraggableManagerClass.GetInstance().GetTouchPhase() != UnityEngine.TouchPhase.Canceled)
             {
                 DraggableManagerClass.GetInstance().SetTouchPhase(UnityEngine.TouchPhase.Canceled);
             }
@@ -194,7 +194,7 @@ public class DraggableClass : MonoBehaviour
 
         Vector3 _pos = _controller.Touch.Position.ReadValue<Vector2>();
 
-        if(Application.platform == RuntimePlatform.WindowsEditor)
+        if (Application.platform == RuntimePlatform.WindowsEditor)
         {
             _pos = _controller.Move.CursorPosition.ReadValue<Vector2>();
         }
@@ -203,11 +203,15 @@ public class DraggableClass : MonoBehaviour
         {
             _pos.z = _camera.WorldToScreenPoint(gameObject.transform.position).z + _offset.z;
         }
-        else if(GetFront() != null)
+        else
         {
-            _pos.z = _camera.WorldToScreenPoint(GetFront().position).z + _offset.z;
+            //_pos.z = _camera.WorldToScreenPoint(GetFront().position).z + _offset.z;
 
-            _pos.z = _pos.z * DraggableManagerClass.GetInstance().GetZIndexConstant();
+            _pos.z = _offset.z;
+
+            _pos.z = _pos.z * DraggableManagerClass.GetInstance().GetSceneDistance();
+
+            //_pos.z = _pos.z * DraggableManagerClass.GetInstance().GetZIndexConstant();
         }
 
         //_pos.x = _pos.x + _2DOffset.x;
@@ -224,7 +228,9 @@ public class DraggableClass : MonoBehaviour
 
         Vector3 _v3 = _camera.ScreenToWorldPoint(_pos2);
 
-        DebugDragInfo();
+        Debug.Log("The distance between the D-object (" + gameObject.name + ") and the camera is '" + Vector3.Distance(_camera.gameObject.transform.position, gameObject.transform.position) + "'.");
+
+        //DebugDragInfo();
 
         //RotateToLookAtCamera();
 
@@ -240,7 +246,7 @@ public class DraggableClass : MonoBehaviour
 
         _draggingSpeed = Mathf.Sqrt(_draggingSpeed);
 
-        if(_draggingSpeed == 0.0f)
+        if (_draggingSpeed == 0.0f)
         {
             _draggingDirection = -181.0f;
         }
@@ -269,17 +275,17 @@ public class DraggableClass : MonoBehaviour
             DraggableManagerClass.GetInstance().SetCurrentlyDraggedObject(null);
         }
 
-        if(DraggableManagerClass.GetInstance().GetTouchPhase() == UnityEngine.TouchPhase.Began || DraggableManagerClass.GetInstance().GetTouchPhase() == UnityEngine.TouchPhase.Moved)
+        if (DraggableManagerClass.GetInstance().GetTouchPhase() == UnityEngine.TouchPhase.Began || DraggableManagerClass.GetInstance().GetTouchPhase() == UnityEngine.TouchPhase.Moved)
         {
             DraggableManagerClass.GetInstance().SetTouchPhase(UnityEngine.TouchPhase.Ended);
         }
 
         DraggableManagerClass.GetInstance().AddToEndsDragging(this);
 
-        if(_body != null)
+        if (_body != null)
         {
             _body.useGravity = _applyGravity;
-        }    
+        }
     }
 
     public static bool GetTouchingSomething()
@@ -295,7 +301,7 @@ public class DraggableClass : MonoBehaviour
     public Vector2 GetOnScreenPosition()
     {
         return _onScreenPosition;
-    }    
+    }
 
     public Vector2 GetDraggingVelocity()
     {
@@ -356,7 +362,7 @@ public class DraggableClass : MonoBehaviour
 
     public void SetBodyAngularVelocity(Vector3 _v3Input, float _constantInput = 1.0f)
     {
-        if(_body == null)
+        if (_body == null)
         {
             return;
         }
@@ -378,19 +384,19 @@ public class DraggableClass : MonoBehaviour
 
     public float GetDraggingDirection(bool _coterminalInput = true, bool _radiansInput = false)
     {
-        if(_draggingDirection == -181.0f)
+        if (_draggingDirection == -181.0f)
         {
             return -181.0f;
         }
 
         float _d = _draggingDirection;
 
-        if(_coterminalInput && _d < 0.0f)
+        if (_coterminalInput && _d < 0.0f)
         {
             _d = _d + 360.0f;
         }
 
-        if(_radiansInput)
+        if (_radiansInput)
         {
             _d = _d * Mathf.Deg2Rad;
         }
@@ -410,12 +416,12 @@ public class DraggableClass : MonoBehaviour
 
     public bool DirectionWithinRange(float _min = 0.0f, bool _incMin = true, float _max = 0.0f, bool _incMax = true, bool _inRadians = false)
     {
-        if(_draggingDirection == -181.0f)
+        if (_draggingDirection == -181.0f)
         {
             return false;
         }
 
-        if(_min > _max)
+        if (_min > _max)
         {
             float _r = _min;
             _min = _max;
@@ -428,7 +434,7 @@ public class DraggableClass : MonoBehaviour
 
         float _fullCircle = _inRadians ? (Mathf.PI * 2.0f) : 360.0f;
 
-        if(_dir1 >= _fullCircle)
+        if (_dir1 >= _fullCircle)
         {
             _dir1 = _dir1 - _fullCircle;
         }
@@ -437,7 +443,7 @@ public class DraggableClass : MonoBehaviour
 
         float _dir2 = _min;
 
-        if(_dir2 < 0.0f)
+        if (_dir2 < 0.0f)
         {
             _dir2 = _dir2 + _fullCircle;
         }
@@ -466,7 +472,7 @@ public class DraggableClass : MonoBehaviour
 
     public Transform GetFront()
     {
-        if(_camera == null)
+        if (_camera == null)
         {
             return null;
         }
@@ -552,7 +558,7 @@ public class DraggableClass : MonoBehaviour
 
     public void RemoveRigidBody()
     {
-        if(_body != null)
+        if (_body != null)
         {
             Destroy(_body);
         }
@@ -575,7 +581,7 @@ public class DraggableClass : MonoBehaviour
 
     void RotateToLookAtCamera()
     {
-        if(!GetLooksAtCamera() || _lookingAxis == Axis.None)
+        if (!GetLooksAtCamera() || _lookingAxis == Axis.None)
         {
             return;
         }
@@ -584,7 +590,7 @@ public class DraggableClass : MonoBehaviour
 
         Quaternion _q = Quaternion.identity;
 
-        if(_lookingAxis == Axis.X)
+        if (_lookingAxis == Axis.X)
         {
             _q = Quaternion.LookRotation(_dirV3, Vector3.right);
         }

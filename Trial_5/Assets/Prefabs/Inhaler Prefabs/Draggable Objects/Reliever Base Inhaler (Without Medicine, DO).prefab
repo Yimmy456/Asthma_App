@@ -75,9 +75,10 @@ MonoBehaviour:
   _body: {fileID: 1661411330097794776}
   _camera: {fileID: 0}
   _applyGravity: 1
-  _zOffset: 0
   _maintainZDistance: 0
-  _2DOffset: {x: 0, y: 0}
+  _offset: {x: 0, y: 0, z: 3}
+  _lookingDirection: {x: -1, y: -1, z: -1}
+  _lookingAxis: 2
   _draggableType: 2
 --- !u!54 &1661411330097794776
 Rigidbody:
@@ -324,9 +325,10 @@ MonoBehaviour:
   _body: {fileID: 0}
   _camera: {fileID: 0}
   _applyGravity: 0
-  _zOffset: 0
   _maintainZDistance: 1
-  _2DOffset: {x: 0, y: 0}
+  _offset: {x: 0, y: 0, z: 0}
+  _lookingDirection: {x: -1, y: -1, z: -1}
+  _lookingAxis: 2
   _draggableType: 0
 --- !u!1001 &227163307
 PrefabInstance:
@@ -411,6 +413,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9ad23e262ad520343ad12570bf97a7b5, type: 3}
   m_PrefabInstance: {fileID: 227163307}
   m_PrefabAsset: {fileID: 0}
+--- !u!64 &1742039371
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149247312378}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5216243977776925454, guid: 9ad23e262ad520343ad12570bf97a7b5, type: 3}
 --- !u!114 &1742039370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,21 +443,8 @@ MonoBehaviour:
   _body: {fileID: 0}
   _camera: {fileID: 0}
   _applyGravity: 0
-  _zOffset: 0
   _maintainZDistance: 1
-  _2DOffset: {x: 0, y: 0}
+  _offset: {x: 0, y: 0, z: 0}
+  _lookingDirection: {x: -1, y: -1, z: -1}
+  _lookingAxis: 2
   _draggableType: 0
---- !u!64 &1742039371
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132149247312378}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 5216243977776925454, guid: 9ad23e262ad520343ad12570bf97a7b5, type: 3}
