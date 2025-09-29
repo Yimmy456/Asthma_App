@@ -19,10 +19,6 @@ public class InhalerMatchingObjectScript : MatchingGameBlockScript
     void Update()
     {
         UpdateBlockWhenDragged();
-
-        MaintainVelocity();
-
-        StayInXnZRange();
     }
 
     public string GetObjectName()

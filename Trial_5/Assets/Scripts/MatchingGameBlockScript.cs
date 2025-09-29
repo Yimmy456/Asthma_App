@@ -35,8 +35,6 @@ public class MatchingGameBlockScript : MonoBehaviour
     void Update()
     {
         MaintainVelocity();
-
-        StayInXnZRange();
     }
 
     public DraggableClass GetDraggableProperties()
@@ -114,7 +112,7 @@ public class MatchingGameBlockScript : MonoBehaviour
         _draggableProperties.GetBody().angularVelocity = new Vector3(0.0f, 0.0f, 0.0f);
     }
 
-    protected void MaintainVelocity()
+    void MaintainVelocity()
     {
         if(_draggableProperties.GetDragged() || _blockPlaced || _draggableProperties.GetBody() == null)
         {
@@ -124,6 +122,8 @@ public class MatchingGameBlockScript : MonoBehaviour
         Vector3 _vel = _draggableProperties.GetBody().velocity;
 
         _vel.x = 0.0f;
+
+        //_vel.y = _draggableProperties.GetBody().velocity.y;
 
         _vel.z = 0.0f;
 
@@ -153,56 +153,15 @@ public class MatchingGameBlockScript : MonoBehaviour
 
     void MaintainFromFalling()
     {
-        float _yPosition = gameObject.transform.localPosition.y;
+        float _yPosition = gameObject.transform.position.y;
 
         if(_yPosition <= -20.0f)
         {
-            Debug.LogError(gameObject.name + " is falling! (1)");
-
-            Vector3 _pos = gameObject.transform.localPosition;
-
-            _pos.y = 50.0f;
-
-            gameObject.transform.localPosition = _pos;
-        }
-
-        /*_yPosition = gameObject.transform.localPosition.y;
-
-        if (_yPosition <= -20.0f)
-        {
-            Debug.LogError(gameObject.name + " is falling! (2)");
-
-            Vector3 _pos = gameObject.transform.localPosition;
+            Vector3 _pos = gameObject.transform.position;
 
             _pos.y = 10.0f;
 
-            gameObject.transform.localPosition = _pos;
-        }*/
-    }
-
-    protected void StayInXnZRange()
-    {
-        if (_draggableProperties.GetDragged() || _blockPlaced || _draggableProperties.GetBody() == null)
-        {
-            return;
+            gameObject.transform.position = _pos;
         }
-
-        Vector3 _pos3 = gameObject.transform.localPosition;
-
-        if(!(_pos3.x <= 900 && _pos3.x >= -900.0f))
-        {
-            float _randX = Random.Range(-900.0f, 900.0f);
-
-            _pos3.x = _randX;
-        }
-
-        if (!(_pos3.z <= 900 && _pos3.z >= -900.0f))
-        {
-            float _randZ = Random.Range(-900.0f, 900.0f);
-
-            _pos3.z = _randZ;
-        }
-
-        gameObject.transform.localPosition = _pos3;
     }
 }

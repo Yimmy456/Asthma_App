@@ -12,10 +12,6 @@ public class LetterBlockScript : MatchingGameBlockScript
     private void Update()
     {
         UpdateBlockWhenDragged();
-
-        MaintainVelocity();
-
-        StayInXnZRange();
     }
 
     public char GetLetter()
