@@ -205,13 +205,9 @@ public class DraggableClass : MonoBehaviour
         }
         else
         {
-            //_pos.z = _camera.WorldToScreenPoint(GetFront().position).z + _offset.z;
-
             _pos.z = _offset.z;
 
             _pos.z = _pos.z * DraggableManagerClass.GetInstance().GetSceneDistance();
-
-            //_pos.z = _pos.z * DraggableManagerClass.GetInstance().GetZIndexConstant();
         }
 
         //_pos.x = _pos.x + _2DOffset.x;
@@ -468,18 +464,6 @@ public class DraggableClass : MonoBehaviour
         }
 
         return true;
-    }
-
-    public Transform GetFront()
-    {
-        if (_camera == null)
-        {
-            return null;
-        }
-
-        Transform _t = _camera.gameObject.transform.Find("Front");
-
-        return _t;
     }
 
     public Camera GetCamera()

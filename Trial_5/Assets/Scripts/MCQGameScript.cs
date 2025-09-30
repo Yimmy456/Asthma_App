@@ -425,7 +425,7 @@ public class MCQGameScript : GameGenericMBScript<QuestionClass>
 
             //_dialogues.PlayClip(_dialogueS);
 
-            _fastyDelayCoroutine = StartCoroutine(_dialogueS, _fastyDialogueDelay);
+            //_fastyDelayCoroutine = StartCoroutine(_dialogueS, _fastyDialogueDelay);
         }
 
         Debug.Log("We are entering the " + @"""" + "incorrect" + @"""" + " phase of the MCQ question.");

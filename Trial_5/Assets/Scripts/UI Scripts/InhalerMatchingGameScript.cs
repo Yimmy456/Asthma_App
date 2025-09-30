@@ -255,6 +255,12 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
         {
             StartCoroutine(IWaitUntilCompletion());
 
+            _gameIndicatorCanvas.gameObject.SetActive(false);
+
+            TriggerStopNewTarget();
+
+            _gameIndicatorCanvas.SetTargetObject(null);
+
             _waitToCompleteSignal = true;
         }
         else if (_completionMeter.GetPercentage() < 100.0f)
@@ -333,6 +339,9 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
 
     public override IEnumerator IWaitUntilCompletion()
     {
+
+        /*yield return new WaitForSeconds(1.0f);
+
         if (_dialogues == null)
         {
             Debug.LogError("There is no dialogue script assigned.");
@@ -354,6 +363,64 @@ public class InhalerMatchingGameScript : MatchingGameCanvasScript
             Debug.LogError("There is no audio clip being played.");
 
             yield break;
+        }
+
+        float _seconds = _c.length;
+
+        Debug.Log("We are waiting for the dialogue to be complete before the conclusion...");
+
+        yield return new WaitForSeconds(_seconds - 1.0f);
+
+        _dialogues.GetAudioSource().Stop();
+
+        yield return new WaitForSeconds(2.0f);
+
+        Debug.Log("YAY! We are now concluding the game!");
+
+        ICompleteExperience();*/
+
+        if (_dialogues == null)
+        {
+            Debug.LogError("There is no dialogue script assigned.");
+
+            yield return new WaitForSeconds(10.0f);
+
+            ICompleteExperience();
+
+            yield break;
+        }
+
+        if (_dialogues.GetAudioSource() == null)
+        {
+            Debug.LogError("There is no audio source assigned.");
+
+            yield return new WaitForSeconds(10.0f);
+
+            ICompleteExperience();
+
+            yield break;
+        }
+
+        yield return new WaitForSeconds(1.0f);
+
+        AudioClip _c = _dialogues.GetAudioSource().clip;
+
+        if (_c == null)
+        {
+            Debug.LogError("There is no audio clip being played.");
+
+            _dialogues.GetAudioSource().Stop();
+
+            yield return new WaitForSeconds(10.0f);
+
+            ICompleteExperience();
+
+            yield break;
+        }
+
+        if (_gameCanvas.GetQuitButton() != null)
+        {
+            _gameCanvas.GetQuitButton().gameObject.SetActive(false);
         }
 
         float _seconds = _c.length;

@@ -28,9 +28,6 @@ public class BuildingInhalerGameScript : MatchingGameCanvasScript
     [SerializeField]
     List<ArrowAnimationClass> _instancedArrowAnimations;
 
-    [SerializeField]
-    PlaceIndicatorScript _placeIndicator;
-
     ArrowAnimationClass _currentInstancedArrowAnimation;
 
     Quaternion _gameSpaceInitialRotation;

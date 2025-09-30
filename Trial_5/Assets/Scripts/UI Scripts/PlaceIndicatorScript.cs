@@ -5,6 +5,7 @@ using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using System.Threading;
 
 public class PlaceIndicatorScript : MonoBehaviour
@@ -111,6 +112,19 @@ public class PlaceIndicatorScript : MonoBehaviour
         _raycastManager = FindObjectOfType<ARRaycastManager>();
         //_indicator = transform.GetChild(0).gameObject;
         //_indicator.SetActive(false);
+
+        if((Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsEditor) && SceneManager.GetActiveScene().name == "Scene 2")
+        {
+            if(_startButton != null && DraggableManagerClass.GetInstance() != null)
+            {
+                _startButton.onClick.AddListener(
+                    delegate
+                    {
+                        DraggableManagerClass.GetInstance().SetSceneDistance(1.0f);
+                    }    
+                );
+            }
+        }
     }
 
     // Update is called once per frame

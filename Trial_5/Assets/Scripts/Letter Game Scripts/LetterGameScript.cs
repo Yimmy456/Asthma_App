@@ -587,6 +587,8 @@ public class LetterGameScript : MatchingGameCanvasScript
             {
                 _index = Random.Range(0, _gameProperties.GetListOfObjects().Count);
 
+                Debug.Log("'Index' is equal to " + _index.ToString() + ".");
+
                 if (_gameProperties.GetListOfObjects()[_index] != null)
                 {
                     if (!_gameProperties.GetListOfObjects()[_index].GetBlockPlaced())
