@@ -320,14 +320,16 @@ public class GameMBScript : MonoBehaviour, ExperienceInterface, YesOrNoInterface
 
         _newBadgeCanvas.gameObject.SetActive(true);
 
-        Text _newBadgeText = _newBadgeCanvas.gameObject.GetComponent<RectTransform>().Find("Congratulations Text").gameObject.GetComponent<Text>();
+        RectTransform _safeArea = _newBadgeCanvas.gameObject.GetComponent<RectTransform>().Find("Safe Area Panel").GetComponent<RectTransform>();
+
+        Text _newBadgeText = _safeArea.Find("Congratulations Text").gameObject.GetComponent<Text>();
 
         if (_newBadgeText != null)
         {
             _newBadgeText.text = GetBadgeStatement();
         }
 
-        Image _badgeImage = _newBadgeCanvas.gameObject.GetComponent<RectTransform>().Find("Badge Image").gameObject.GetComponent<Image>();
+        Image _badgeImage = _safeArea.Find("Badge Image").gameObject.GetComponent<Image>();
 
         if (_badgeImage != null)
         {
