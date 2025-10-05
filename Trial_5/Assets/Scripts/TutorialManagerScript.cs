@@ -404,11 +404,6 @@ public class TutorialManagerScript : MonoBehaviour, ExperienceInterface
             {
                 _currentSubject.GetGameObject().SetActive(true);
             }
-
-            if(_currentObject != null)
-            {
-                _currentObject.SetActive(false);
-            }
         }
 
         if (_currentSubject.GetName() == "Menu Button")

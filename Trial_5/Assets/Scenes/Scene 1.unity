@@ -13408,7 +13408,7 @@ ParticleSystem:
     m_EnergyLossOnCollision:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -14427,7 +14427,7 @@ Transform:
   m_GameObject: {fileID: 368887651}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: 1.1374999, z: 0}
-  m_LocalScale: {x: 0.0050000004, y: 0.005, z: 0.005}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 543450653413146392}
@@ -56036,7 +56036,7 @@ MonoBehaviour:
       _withinSafeArea: 0
   - _name: Dr. Salem
     _transformType: 1
-    _object: {fileID: 0}
+    _object: {fileID: 334509318}
     _mask: {fileID: 778581738}
     _showNextButton: 1
     _nextButtonPosition: {x: -100, y: 100}
@@ -56426,6 +56426,35 @@ MonoBehaviour:
       _offsetMin: {x: 10, y: 0}
       _offsetMax: {x: 10, y: 0}
       _withinSafeArea: 0
+  - _name: Inhaler Button Switch
+    _transformType: 1
+    _object: {fileID: 1435741335}
+    _mask: {fileID: 647291370}
+    _showNextButton: 1
+    _nextButtonPosition: {x: -100, y: 350}
+    _waitingSeconds: -1
+    _arrowPropoerties:
+      _arrowInvolved: 1
+      _anchorMin: {x: 1, y: 0}
+      _anchorMax: {x: 1, y: 0}
+      _anchoredPosition: {x: -300, y: 300}
+      _zRotation: -135
+      _sizeConstant: 1
+      _V3Scale: {x: 1, y: 1, z: 1}
+      _withinSafeArea: 0
+    _textPropoerties:
+      _text: "Great! Just look \u2014 the button changed when you tapped it! Blue
+        means the inhaler appears, and grey means it goes away. It switches each
+        time you tap it."
+      _alternativeText: 
+      _anchorMin: {x: 0, y: 0.5}
+      _anchorMax: {x: 1, y: 0.5}
+      _anchoredPosition: {x: 0, y: 0}
+      _size: {x: 984, y: 500}
+      _sizeConstant: 1
+      _offsetMin: {x: 10, y: 0}
+      _offsetMax: {x: 10, y: 0}
+      _withinSafeArea: 0
   - _name: Resizing Button
     _transformType: 1
     _object: {fileID: 1210077915}
@@ -56516,7 +56545,7 @@ MonoBehaviour:
   _inhalerButton: {fileID: 1435741337}
   _startButton: {fileID: 201964841}
   _placeIndicator: {fileID: 1228395062}
-  _startTutorial: 0
+  _startTutorial: 1
 --- !u!1 &1954624279
 GameObject:
   m_ObjectHideFlags: 0

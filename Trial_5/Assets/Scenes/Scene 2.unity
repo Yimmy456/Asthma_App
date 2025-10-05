@@ -6108,7 +6108,7 @@ MonoBehaviour:
   _inhalerButton: {fileID: 962652049}
   _startButton: {fileID: 0}
   _placeIndicator: {fileID: 0}
-  _startTutorial: 0
+  _startTutorial: 1
 --- !u!1 &227547013
 GameObject:
   m_ObjectHideFlags: 0
@@ -14552,7 +14552,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
     type: 1
     collisionMode: 0
@@ -15689,7 +15689,7 @@ Transform:
   m_GameObject: {fileID: 368887651}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: 1.1374999, z: 0}
-  m_LocalScale: {x: 0.0050000004, y: 0.005, z: 0.005}
+  m_LocalScale: {x: 0.005, y: 0.005, z: 0.005}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 543450653413146392}
